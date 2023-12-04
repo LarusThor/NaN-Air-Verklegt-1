@@ -1,10 +1,13 @@
 class AirplaneUI():
     def __init__(self) -> None:
-        pass
+        print("inside airplane")
+        # options = ["1. Airplane types and license", "2. Add new airplane", "3. Airplane usage"]
+        # self.menu(options)
+        # action = str(input("Enter your action: ").lower())
 
     def types(self):
-        pass
-
+        pass 
+    
     def add_airplane(self):
         pass
 
