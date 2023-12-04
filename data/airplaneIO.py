@@ -2,7 +2,7 @@ class AirplaneIO:
     def __init__(self):
         pass  
 
-    def airplane_data(self):
+    def read_airplane(self):
         airplane_dict = {}
         with open("files/aircraft.csv", "r") as f:
             for line in lines[1:]:
