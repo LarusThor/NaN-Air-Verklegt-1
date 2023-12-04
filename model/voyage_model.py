@@ -13,3 +13,11 @@ class Voyage:
         self.availableSeats = availableSeats
         self.status = status
         self.bookingStatus = bookingStatus
+
+#destination -> upcoming_flights.csv -> arr_at
+#departureDate -> upcoming_flights.csv -> departure
+#departureTimeFromIceland -> upcoming_flights.csv -> departure
+#arrivalDate -> upcoming_flights.csv -> arrival
+#arrivalTime -> upcoming_flights.csv -> arrival
+#flightNumberArrival -> upcoming_flights.csv -> flight_nr
+#flightNumberDeparture -> upcoming_flights.csv -> flight_nr

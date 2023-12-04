@@ -8,3 +8,6 @@ class Employee:
 
 #name -> crew.csv -> name
 #socialID -> crew.csv -> nid
+#email -> crew.csv -> email
+#phonenumber -> crew.csv -> phone_nr
+#landline is optional

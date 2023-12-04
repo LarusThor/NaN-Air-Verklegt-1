@@ -3,4 +3,10 @@ class Schedule:
         self.scheduledFlight = scheduledFlight
         self.scheduledEmployee = scheduledEmployee
         self.scheduledDestination = scheduledDestination
-        
+
+
+#scheduledFlight -> upcoming_flights.csv -> flight_nr
+#scheduledDestination -> upcoming_flights.csv -> arr_at
+#scheduledEmployee ....
+
+
