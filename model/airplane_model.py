@@ -5,9 +5,13 @@ class Airplane:
         self.airplaneID = airplaneID
         self.airplaneUasge = airplaneUsage
         self.airplaneTime = airplaneTime
-
-    def __
-
+        
+    def __str__(self):
+        pass
+    
+    
+    
+    
 #+ airplainType:str
 #+ airplane:str
 #+ airplaneID: int
