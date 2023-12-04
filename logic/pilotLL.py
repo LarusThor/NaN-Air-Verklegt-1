@@ -1,4 +1,6 @@
-class PilotLL():
+from employeeLL import EmployeeLL
+
+class PilotLL(EmployeeLL):
     def __init__(self) -> None:
         pass
 
