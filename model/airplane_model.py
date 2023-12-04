@@ -6,19 +6,3 @@ class Airplane:
         self.airplaneUasge = airplaneUsage
         self.airplaneTime = airplaneTime
         
-    def __str__(self) str:
-        return
-    
-    
-    def __int__(self) str:
-        return
-        
-    
-    
-    
-    
-#+ airplainType:str
-#+ airplane:str
-#+ airplaneID: int
-#+ airplaneUsage:str
-#+ airplaneTime:str
