@@ -6,3 +6,5 @@ class Employee:
         self.phonenumber = phonenumber
         self.landline = landline
 
+#name -> crew.csv -> name
+#socialID -> crew.csv -> nid
