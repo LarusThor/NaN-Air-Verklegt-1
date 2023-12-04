@@ -6,7 +6,7 @@ class Airplane:
         self.airplaneUasge = airplaneUsage
         self.airplaneTime = airplaneTime
 
-
+    def __
 
 #+ airplainType:str
 #+ airplane:str
