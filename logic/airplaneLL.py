@@ -2,6 +2,7 @@
 
 class AirplaneLL():
     def __init__(self) -> None:
+        #self.data_wrapper = data_connection
         pass
    
     def get_most_used_plane(self):

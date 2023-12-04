@@ -2,6 +2,7 @@
 
 class VoyageLL():
     def __init__(self) -> None:
+        #self.data_wrapper = data_connection
         pass
     
     def get_voyages(self):
