@@ -6,7 +6,9 @@ class ScheduleLL():
         pass
     
     def schedule_employee(self):
+        """ Returns employee schedule """
         pass
     
     def schedule_voyage(self):
+        """ Return voyage schedule. """
         pass
