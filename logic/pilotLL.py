@@ -1,3 +1,5 @@
+#import wrapper
+
 from employeeLL import EmployeeLL
 
 class PilotLL(EmployeeLL):
