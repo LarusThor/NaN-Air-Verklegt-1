@@ -1,7 +1,7 @@
 #import wrapper
 
 class EmployeeLL():
-    def __init__(self, name, social_id, home_address, mobile_number, email, landline = None) -> None:
+    def __init__(self, name:str, social_id:str, home_address:str, mobile_number:int, email:str, landline:int = None) -> None:
         #self.data_wrapper = data_connection
         self.name = name
         self.social_id = social_id
