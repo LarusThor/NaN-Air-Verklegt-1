@@ -21,3 +21,4 @@ class Voyage:
 #arrivalTime -> upcoming_flights.csv -> arrival
 #flightNumberArrival -> upcoming_flights.csv -> flight_nr
 #flightNumberDeparture -> upcoming_flights.csv -> flight_nr
+#seatSales -> past_flights.csv -> seats_sold
