@@ -1,4 +1,6 @@
 class DestinationsUI():
+    def __init__(self) -> None:
+        pass
 
     def print_all_destination(self):
         pass

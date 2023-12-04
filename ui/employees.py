@@ -1,4 +1,7 @@
 class EmployeesUI():
+    def __init__(self) -> None:
+        pass
+    
     def list_employeeUI(self):
         pass
 
@@ -49,6 +52,6 @@ class EmployeesUI():
 
     def print_emai(self):
         pass
-    
+
     def print_work_title(self):
         pass
