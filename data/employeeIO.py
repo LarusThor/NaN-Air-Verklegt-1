@@ -1,8 +1,13 @@
-class EmployeeIO():
+class EmployeeIO:
     def __init__(self):
         pass
 
     def read_employee(self):
+        employee_dict = {}
         with open("files/crew.csv", "r") as f:
+            lines = f.readlines()
             for line in lines[1:]:
-                
+                line = line.strip()
+                social_id, name, role, rank, licence, address, phone_nr, pref_nr, slot_param = line.split(",")
+                employee_dict[social_id] = [name, role, rank, licence, address, phone_nr, pref_nr, slot_param]
+        return employee_dict
