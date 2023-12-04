@@ -1,3 +1,10 @@
+from airplaneUI import AirplaneUI
+from destinationsUI import DestinationsUI
+from employeesUI import EmployeesUI
+from flight_infoUI import FlightInfoUI
+from scheduleUI import ScheduleUI
+from voyagesUI import VoyagesUI
+
 import os
 
 LINE = "*"*30
@@ -7,7 +14,7 @@ class MainMenu_UI:
     def __init__(self) -> None:
         pass
 
-    def menu(self):
+    def menu(self, list_of_options):
     # Get terminal size
         terminal_size = os.get_terminal_size()
         terminal_width = terminal_size.columns
@@ -34,9 +41,26 @@ class MainMenu_UI:
         while True:
             self.menu()
             action = input("Enter your action: ").lower()
+            if action == "1":
+                pass
+
+            elif action == "2":
+                pass
+
+            elif action == "3":
+                pass
+
+            elif action == "4":
+                pass
+
+            elif action == "5":
+                pass
+
+            elif action == "6":
+                pass
 
 
 test = MainMenu_UI()
-test.menu()
+test.menu(OPTIONS)
 test.input_prompt()
 
