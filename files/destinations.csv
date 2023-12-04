@@ -1,7 +1,7 @@
-id,destination,numeric_id, contactName, contactNumber 
-LYR,Longyearbyean,3340, Sara Jackman, 8978654
-GOH,Nuuk,4392, Oliver Pierce, 8787432
-KUS,Kulusuk,2023, Phil Spencer, 8978658
-FAE,Thorshavn,4932, Marcus Jacobs, 8978657
-LWK,Tingwall,2349, Rita Nielsen, 8786432
-KEF,Keflavik,9023, Michelle Randal, 7868654
+id,destination,numeric_id, emergency_contact_name, emergency_contact_number, airport_name, distance_from_iceland
+LYR,Longyearbyean,3340, Sara Jackman, 8978654, Svalbard Airport, 2018
+GOH,Nuuk,4392, Oliver Pierce, 8787432, Nuuk International Airport, 1405
+KUS,Kulusuk,2023, Phil Spencer, 8978658, Kulusuk Airport, 712
+FAE,Thorshavn,4932, Marcus Jacobs, 8978657, Vagar Floghavn, 828
+LWK,Tingwall,2349, Rita Nielsen, 8786432, Tingwall Airport, 1186
+KEF,Keflavik,9023, Michelle Randal, 7868654, Keflavik Airport, 0
