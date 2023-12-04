@@ -1,7 +1,7 @@
 class Airplane:
-    def __init__(self,airplaneType,airplane,airplaneID,airplaneUsage,airplaneTime, airplaneManufacturer) -> str:
+    def __init__(self,airplaneType,airplaneInsignia,airplaneID,airplaneUsage,airplaneTime, airplaneManufacturer) -> str:
         self.airplaneType = airplaneType
-        self.airplane = airplane
+        self.airplaneInsignia = airplaneInsignia
         self.airplaneID = airplaneID
         self.airplaneUasge = airplaneUsage
         self.airplaneTime = airplaneTime

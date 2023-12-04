@@ -7,6 +7,14 @@ class Destination:
         self.emergencyContact = emergencyContact
         self.emergencyNumber = emergencyNumber
         self.airportName = airportName
-        self.estimatedFlightDuration = estimatedFlightDuration
+        #self.estimatedFlightDuration = estimatedFlightDuration
         self.distanceFromIceland = distanceFromIceland
     
+    
+# destination = destination
+# past_flight = (arrival/departure)
+# past_flight = (arrival/departure)
+# destination = emergencyContactName
+# destination = emergencyContactNumber
+# destination = airport_name
+# destination = distanceFromIceland
