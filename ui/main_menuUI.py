@@ -36,4 +36,7 @@ class MainMenu_UI:
             action = input("Enter your action: ").lower()
 
 
+test = MainMenu_UI()
+test.menu()
+test.input_prompt()
 
