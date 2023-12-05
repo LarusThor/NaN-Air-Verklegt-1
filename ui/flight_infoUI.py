@@ -1,24 +1,18 @@
-class FlightInfoUI():
-    def __init__(self) -> None:
-        pass
+from main_menuUI import display_options
 
-    def get_flight_info(self):
-        pass
+FLIGHT_INFORMATION_OPTIONS = ["1. Booking status for specific voyage", "2. Booking status for a specific date"]
 
-    def enter_flight_number(self):
-        pass
+def flight_information():
+            display_options(FLIGHT_INFORMATION_OPTIONS)
+            action = str(input("Enter your action: ").lower())
+            
+            if action == "m":
+                None
 
-    def flight_seat_status(self):
-        pass
+            elif action == "1":
+                flight_number = input("Enter flight number: ")
+                #print if the voyage if fully booked or not
 
-    def get_status_on_flight(self):
-        pass
-
-    def enter_destination(self):
-        pass
-
-    def enter_week_number(self):
-        pass
-    
-    def print_destination_sales(self):
-        pass
+            elif action == "2":
+                date = input("Enter date; day/month/year: ")  
+                #print the booking status for the flights on that date

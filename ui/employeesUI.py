@@ -1,57 +1,68 @@
-class EmployeesUI():
-    def __init__(self) -> None:
-        pass
-    
-    def get_employees(self):
-        pass
+from main_menuUI import display_options
 
-    def print_captains(self):
-        pass
+EMPLOYEES_OPTIONS = ["1. List employees - Alphabetical", "2. Employee information", "3. Add employee"]
 
-    def print_flight_attendans(self):
-        pass
 
-    def print_all(self):
-        pass
+def employees():
+    display_options(EMPLOYEES_OPTIONS)
+    action = str(input("Enter your action: ").lower())
 
-    def employee_informationUI(self):
-        pass
+    if action == "m":
+        None
 
-    def select_employee(self):
-        pass
+    elif action == "1":
+        display_options(["1. Print pilots", "2. Print flight attendants", "3. Print all employees", "4. Print most experienced"])
+        action = str(input("Enter your action: ").lower())
 
-    def print_info(self):
-        pass
+        if action == "m":
+            None
 
-    def change_information(self):
-        pass
+        elif action == "1":
+            pass #print out a list of all pilots
 
-    def change_email(self):
-        pass
+        elif action == "2":
+            pass #print out all the flight attendants
 
-    def change_phone_number(self):
-        pass
+        elif action == "3":
+            pass #print out all the employees
 
-    def change_home_address(self):
-        pass
+        elif action == "4":
+            pass #print the most experienced
 
-    def add_employeeUI(self):
-        pass
+    elif action == "2": #employee information
+        employees_social_id = input("Enter the employees social ID")
+        #print the name of the employee
+        display_options(["1. Print employee information\n2. Change employee information."])
+        action = str(input("Enter your action: ").lower())
+        if action == "m":
+            None
+        elif action == "1":
+            pass #print the employees info
+        elif action == "2":
+            display_options("1. Edit home address", "2. Edit phone number", "3. Edit email", "4. Edit home address")
+            action = str(input("Enter your action: ").lower())
 
-    def print_name(self):
-        pass
-
-    def print_socialID(self):
-        pass
-
-    def print_home_address(self):
-        pass
-
-    def print_phone_number(self):
-        pass
-
-    def print_emai(self):
-        pass
-
-    def print_work_title(self):
-        pass
+    elif action == "3":
+        print("New employee:")
+        name = input("Name: ")
+        social_id = input("Social ID: ")
+        phone_number = input("Phone number: ")
+        email = input("Email: ")
+        home_adress = input("Home adress: ")
+        work_titles = ["Captain", "Pilot", "Flight Service Manager", "Flight Attendant"]
+        print("Work title:\n1. Captain\n2. Pilot\n3. Flight Service Manager\n4. Flight Attendant")
+        work_title = input()
+        if work_title == "1" or work_title == "2":
+            flight_type = input("Flight type: ")
+        print("New employee:")
+        print("Name:", name)
+        print("Social ID:", social_id)
+        print("Phone number:", phone_number)
+        print("Email:", email)
+        print("Home adress:", home_adress)
+        print("Work title:", work_titles[int(work_title) + 1])
+        save_prompt = "Would you like to save the new employee, (y)es or (n)o? ".lower()
+        if save_prompt == "y":
+            print("New employee saved!")
+        elif save_prompt == "n":
+            print("New employee not saved.")
