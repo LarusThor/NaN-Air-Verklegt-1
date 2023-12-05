@@ -38,4 +38,5 @@ def input_prompt():
 def main():
     input_prompt()
 
-main()
+if __name__ == "__main__":
+    main()
