@@ -2,6 +2,17 @@ from logic.employeeLL import EmployeeLL
 from data.data_wrapper import DataWrapper
 
 
+
+social_id_to_test = "1405853585"  # Replace with an existing social ID in your data
+employee_info = EmployeeLL.get_employee_info(social_id_to_test, 1405853585)
+
+print(employee_info)
+
+
+
+
+
+"""
 employee_manager = EmployeeLL()
 
 # Test get_employee_list method
@@ -13,6 +24,8 @@ print(employee_list)
 pilots_list = employee_manager.get_flight_attendants()
 print("\nPilots:")
 print(pilots_list)
+"""
+
 
 """"
 # Create an instance of EmployeeLL
