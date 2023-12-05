@@ -1,13 +1,6 @@
 from data.employeeIO import EmployeeIO
 from data.destinationIO import DestinationIO
 from data.airplaneIO import AirplaneIO
-<<<<<<< HEAD
-from data.flight_attendantIO import FlightAttendantIO
-from data.pilotIO import PilotIO
-from data.scheduleIO import ScheduleIO
-from data.voyageIO import VoyageIO
-=======
->>>>>>> eb2252a0031517240a00edf6279886c27c9e0339
 
 
 class DataWrapper:
