@@ -1,9 +1,14 @@
 from data.employeeIO import EmployeeIO
+from data.destinationIO import DestinationIO
 
 
 class DataWrapper:
     def __init__(self):
         self.employeeIO = EmployeeIO()
+        self.destinationIO = DestinationIO()
 
     def get_all_staff_members(self):
         return self.employeeIO.read_employee()
+
+    def get_all_destinations(self):
+        return self.destinationIO.read_destination()
