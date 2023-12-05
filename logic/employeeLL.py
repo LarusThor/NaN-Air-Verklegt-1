@@ -17,9 +17,9 @@ class EmployeeLL:
     def get_all_pilots(self):
         """ Returns a list of all pilots. """
         name_list = []
-        for key, value in self.employee_list.items():
-            name = value.name
-            role = value.role
+        for key, employee_data in self.employee_list.items():
+            name = employee_data.name
+            role = employee_data.role
             if role == "Pilot":
                 name_list.append(name)
         return name_list
@@ -27,25 +27,24 @@ class EmployeeLL:
     def get_flight_attendants(self):
         """ Returns a list of all flight attendants. """
         name_list = []
-        for key, value in self.employee_list.items():
-            name = value.name
-            role = value.role
-            rank = value.rank
-            if rank == "Flight Attendant":
+        for key, employee_data in self.employee_list.items():
+            name = employee_data.name
+            role = employee_data.role
+            if role == "Cabincrew":
                 name_list.append(name)
         return name_list
 
     def get_employee_info(self, social_id):
         """Returns information about a chosen employee."""
         social_id = str(social_id)
-        for key, value in self.employee_list.items():
-            name = value.name
-            role = value.role
-            rank = value.rank
-            licence = value.license
-            address = value.address
-            phone_nr = value.phone_nr
-            email = value.email
+        for key, employee_data in self.employee_list.items():
+            name = employee_data.name
+            role = employee_data.role
+            rank = employee_data.rank
+            licence = employee_data.license
+            address = employee_data.address
+            phone_nr = employee_data.phone_nr
+            email = employee_data.email
             if str(key) == str(social_id):
                 return name
                 #return f"{name}, {social_id}, {phone_nr}, {email}, {address}, {role}, {licence}"
