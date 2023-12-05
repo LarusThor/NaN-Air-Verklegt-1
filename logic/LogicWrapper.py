@@ -28,3 +28,6 @@ class LogicWrapper():
     
     def destination_list(self):
         return self.destination.get_destination_list()
+    
+    def airplane_types(self):
+        return self.airplane.get_all_airplane_types()

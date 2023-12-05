@@ -9,7 +9,7 @@ class AirplaneIO:
             for line in lines[1:]:
                 line = line.strip()
                 plane_insignia, plane_type_id, date_of_manufacture, last_maintenance = line.split(",")
-                airplane_list.append(plane_insignia, plane_type_id, date_of_manufacture, last_maintenance)
+                airplane_list.append([plane_insignia, plane_type_id, date_of_manufacture, last_maintenance])
         return airplane_list
     
     def aircraft_types(self):

@@ -7,7 +7,7 @@ class DataWrapper:
     def __init__(self):
         self.employeeIO = EmployeeIO()
         self.destinationIO = DestinationIO()
-        self.airplaneIO = AirplaneIO
+        self.airplaneIO = AirplaneIO()
 
     def get_all_staff_members(self):
         return self.employeeIO.read_employee()
