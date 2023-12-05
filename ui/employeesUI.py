@@ -60,10 +60,13 @@ def employee_info():
     #print the name of the employee
     display_options(EMPLOYEE_INFORMATION_OPTIONS)
     action = str(input("Enter your action: ").lower())
+
     if action == "m":
         None
+
     elif action == "1":
         pass #print the employees info
+
     elif action == "2":
         display_options(CHANGE_EMPLOYEE_INFO_OPTIONS)
         action = str(input("Enter your action: ").lower())
@@ -79,6 +82,7 @@ def add_employee():
     work_titles = ["Captain", "Pilot", "Flight Service Manager", "Flight Attendant"]
     print("Work title:\n1. Captain\n2. Pilot\n3. Flight Service Manager\n4. Flight Attendant")
     work_title = input()
+
     if work_title == "1" or work_title == "2":
         flight_type = input("Flight type: ")
     print("New employee:")
@@ -89,8 +93,10 @@ def add_employee():
     print("Home adress:", home_adress)
     print("Work title:", work_titles[int(work_title) + 1])
     save_prompt = "Would you like to save the new employee, (y)es or (n)o? ".lower()
+
     if save_prompt == "y":
         print("New employee saved!")
+
     elif save_prompt == "n":
         print("New employee not saved.")
 
