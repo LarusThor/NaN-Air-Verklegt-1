@@ -2,7 +2,7 @@ class EmployeesUI():
     def __init__(self) -> None:
         pass
     
-    def list_employeeUI(self):
+    def get_employees(self):
         pass
 
     def print_captains(self):

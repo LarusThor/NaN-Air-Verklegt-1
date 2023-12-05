@@ -2,13 +2,13 @@ class DestinationsUI():
     def __init__(self) -> None:
         pass
 
-    def print_all_destination(self):
+    def get_all_destination(self):
         pass
 
-    def print_popular_dsetination(self):
+    def get_popular_dsetination(self):
         pass
 
-    def go_to_add_destination(self):
+    def add_destination(self):
         pass
 
     def print_country(self):
