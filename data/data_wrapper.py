@@ -1,5 +1,6 @@
 from data.employeeIO import EmployeeIO
 from data.destinationIO import DestinationIO
+from data.airplaneIO import AirplaneIO
 
 
 class DataWrapper:
@@ -12,3 +13,5 @@ class DataWrapper:
 
     def get_all_destinations(self):
         return self.destinationIO.read_destination()
+    
+    
