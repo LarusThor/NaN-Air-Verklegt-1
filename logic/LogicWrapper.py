@@ -11,4 +11,7 @@ from validationLL import ValidationLL
 class LogicWrapper():
     def __init__(self, data_connection) -> None:
         self.DataWrapper = DataWrapper()
-        pass
+        self.employee = EmployeeLL() 
+    
+    def employee_list(self):
+        return self.employee.get_all_pilots()

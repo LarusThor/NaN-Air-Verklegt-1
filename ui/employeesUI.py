@@ -1,4 +1,5 @@
 from main_menuUI import display_options
+from logic.LogicWrapper import EmployeeLL
 
 EMPLOYEES_OPTIONS = ["1. List employees - Alphabetical", "2. Employee information", "3. Add employee"]
 LIST_EMPLOYEES_OPTIONS = ["1. Print pilots", "2. Print flight attendants", "3. Print all employees", "4. Print most experienced"]
@@ -21,8 +22,9 @@ def employees():
             None
 
         elif action == "1":
-            pass #print out a list of all pilots
-
+            print(EmployeeLL.get_employee_list())
+            # print(employees_listed.get_all_pilots())
+            
         elif action == "2":
             pass #print out all the flight attendants
 

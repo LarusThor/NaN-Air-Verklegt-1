@@ -1,5 +1,5 @@
 import os
-OUTLINE = "*"*50
+OUTLINE = "-"*50
 MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Schedule", "5. Voyages", "6. Flight information"]
 
 def display_options(list_of_options):
@@ -15,7 +15,7 @@ def display_options(list_of_options):
     # Print empty lines above the menu
     print("\n" * empty_lines_above)
 
-    padding = (terminal_width) // 3
+    padding = (terminal_width) // 150
     print(" " * padding + OUTLINE)
     # Print menu items centered in the terminal
     for item in list_of_options:
