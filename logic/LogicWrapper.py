@@ -25,3 +25,6 @@ class LogicWrapper():
     
     def flight_attendant_list(self):
         return self.employee.get_flight_attendants()
+    
+    def destination_list(self):
+        return self.destination.get_destination_list()
