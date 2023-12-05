@@ -26,8 +26,8 @@ def employees():
             None
 
         elif action == "1":
-            print(pilot_list)
-            # print(employees_listed.get_all_pilots())
+            for pilot in pilot_list:
+                print(pilot)
             
         elif action == "2":
             print(flight_attendant_list)
