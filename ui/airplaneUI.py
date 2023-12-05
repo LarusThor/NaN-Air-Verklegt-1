@@ -6,36 +6,17 @@ PILOTS_BY_LICENSE_OPTIONS = ["1. Licensed pilots for a specific airplane type", 
 AIRPLANE_USAGE = ["1. Get most used airplane", "2. Get airplane which flown furthest"]
 
 def airplane():
-    display_options(AIRPLANE_OPTIONS)
-    action = str(input("Enter your action: ").lower())
-
-    if action == "m":
-        None
-    
-    elif action == "1":
-        #Airplane types and license
-        display_options(AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
+    def airplane_usage():
+        display_options(AIRPLANE_USAGE)
         action = str(input("Enter your action: ").lower())
         if action == "m":
             None
         elif action == "1":
-            display_options(PILOTS_BY_LICENSE_OPTIONS)
-            action = str(input("Enter your action: ").lower())
-            if action == "m":
-                None
-            elif action == "1":
-                airplane_type = input("Enter the airplane type: ")
-                pass # get_pilots_by_type
-            elif action == "2":
-                pass #get_all_pilots_by_license
-            elif action == "3":
-                pass #get_number_of_pilots_for_a_type
+            pass #get_most_used_airplane
         elif action == "2":
-            pass #get_list_of_all_aiplane_types
-        
+            pass #get_most_flown_airplane
 
-    elif action == "2":
-        # add_airplane()
+    def add_airplane(): #if nr 2 from AIRPLANE_OPTIONS is chosen
         name = input("Enter airplane name: ")
         type = input("Enter airplane type: ")
         manufacturer = input("Enter airplane manufacturer: ")
@@ -51,14 +32,51 @@ def airplane():
         elif save_prompt == "n":
             print("New airplane was not saved.")
 
-        
-    elif action == "3":
-        # airplane_usage()
-        display_options(AIRPLANE_USAGE)
+
+    def pilots_by_licanse(): # if nr 1 from AIRPLANE_TYPES_AND_LICENSE_OPTIONS is chosen
+            display_options(PILOTS_BY_LICENSE_OPTIONS)
+            action = str(input("Enter your action: ").lower())
+
+            if action == "m":
+                None
+
+            elif action == "1":
+                airplane_type = input("Enter the airplane type: ")
+                pass # get_pilots_by_type
+
+            elif action == "2":
+                pass #get_all_pilots_by_license
+
+            elif action == "3":
+                pass #get_number_of_pilots_for_a_type
+
+
+    def airplane_types_and_licanse(): #if nr 1 from AIRPLANE_OPTIONS is chosen
+        display_options(AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
+        
         if action == "m":
             None
+            
         elif action == "1":
-            pass #get_most_used_airplane
+            pilots_by_licanse()
+
         elif action == "2":
-            pass #get_most_flown_airplane
+            pass #get_list_of_all_aiplane_types
+        
+    
+    #main
+    display_options(AIRPLANE_OPTIONS)
+    action = str(input("Enter your action: ").lower())
+
+    if action == "m":
+        None
+    
+    elif action == "1":
+        airplane_types_and_licanse()
+        
+    elif action == "2":
+        add_airplane()
+        
+    elif action == "3":
+        airplane_usage()
