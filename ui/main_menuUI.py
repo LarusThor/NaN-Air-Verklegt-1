@@ -26,17 +26,17 @@ def display_options(list_of_options):
     # Print empty lines below the menu
     print("\n" * empty_lines_below)
 
-def ascii_art():
-      return""" 
-                _____
-              __\ _~-\____
-      =  = ==(___NaN-Air__)
-                  \_____\___________________,-~~~~~~~`-.._
-                  /     o O o o o o O O o o o o o o O o  |\_
-                  `~-.__        ___..----..                  )
-                        `---~~\___________/------------`````
-                        =  ===(_________)
-      """
+# def ascii_art():
+#       return""" 
+#                 _____
+#               __\ _~-\____
+#       =  = ==(___NaN-Air__)
+#                   \_____\___________________,-~~~~~~~`-.._
+#                   /     o O o o o o O O o o o o o o O o  |\_
+#                   `~-.__        ___..----..                  )
+#                         `---~~\___________/------------`````
+#                         =  ===(_________)
+#       """
 
 def main():
      display_options(MAIN_MENU_OPTIONS)
