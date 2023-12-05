@@ -1,4 +1,4 @@
-from main_menuUI import display_options
+from ui.main_menuUI import display_options
 
 FLIGHT_INFORMATION_OPTIONS = ["1. Booking status for specific voyage", "2. Booking status for a specific date"]
 

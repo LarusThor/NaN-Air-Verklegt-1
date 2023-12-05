@@ -6,7 +6,7 @@ class EmployeeLL:
         self.employee_list = self.data_wrapper.get_all_staff_members()
 
 
-    def get_employee_list(self, options):
+    def get_employee_list(self):
         """ Returns a list of all employees within the system. """
         name_list = []
         for social_id, employee_data in self.employee_list.items():
