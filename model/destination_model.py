@@ -1,16 +1,14 @@
 class Destination:
-    def __init__(self, destination, destinationDate, emergencyContact, emergencyNumber, 
-                 airportName, estimatedFlightDuration, distanceFromIceland) -> str:
+    def __init__(self, destination_id, destination, emergencyContact, emergencyNumber, 
+                 airportName, distanceFromIceland) -> str:
+        self.destination_id = destination_id
         self.destination = destination
-        self.destinationDate = destinationDate
         self.emergencyContact = emergencyContact
         self.emergencyNumber = emergencyNumber
         self.airportName = airportName
-        self.estimatedFlightDuration = estimatedFlightDuration
         self.distanceFromIceland = distanceFromIceland
     
-#estimatedFlightDuration - > past_flights.csv -> (departure, arrival)
-#destinationDate -> past_flights.csv -> (departure, arrival)
+#destination_id -> destinations.csv -> id
 #destination -> destinations.csv -> destination
 #emergencyContact -> destinations.csv -> emergency_contact_name
 #emergencyNumber -> destinations.csv -> emergency_contact_number
