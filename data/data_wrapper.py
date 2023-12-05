@@ -16,4 +16,7 @@ class DataWrapper:
         return self.destinationIO.read_destination()
     
     def get_airplanes(self):
-        return self.airplaneIO.read_airplane()
+        return self.airplaneIO.aircraft_info()
+    
+    def get_airplane_types(self):
+        return self.airplaneIO.aircraft_types()
