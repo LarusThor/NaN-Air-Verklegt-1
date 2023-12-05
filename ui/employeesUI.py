@@ -8,7 +8,8 @@ CHANGE_EMPLOYEE_INFO_OPTIONS = ["1. Edit home address", "2. Edit phone number", 
 
 logic_wrapper = LogicWrapper()
 employee_list = logic_wrapper.employee_list()
-
+pilot_list = logic_wrapper.pilot_list()
+flight_attendant_list = logic_wrapper.flight_attendant_list()
 
 def employees():
     display_options(EMPLOYEES_OPTIONS)
@@ -25,12 +26,12 @@ def employees():
             None
 
         elif action == "1":
-            print(employee_list)
-            # print(employees_listed.get_all_pilots())
+            for pilot in pilot_list:
+                print(pilot)
             
         elif action == "2":
-            pass #print out all the flight attendants
-
+            print(flight_attendant_list)
+            
         elif action == "3":
             print(employee_list)
 

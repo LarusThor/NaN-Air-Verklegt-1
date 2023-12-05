@@ -37,8 +37,3 @@ def display_options(list_of_options):
 #                         `---~~\___________/------------`````
 #                         =  ===(_________)
 #       """
-
-def main():
-     display_options(MAIN_MENU_OPTIONS)
-
-main()
