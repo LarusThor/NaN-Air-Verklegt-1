@@ -35,6 +35,8 @@ def input_prompt():
         elif action == "6":
             flight_information()
 
+def main():
+    test = display_options(MAIN_MENU_OPTIONS)
+    input_prompt()
 
-test = display_options(MAIN_MENU_OPTIONS)
-input_prompt()
+main()
