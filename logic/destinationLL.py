@@ -1,4 +1,4 @@
-#import wrapper
+from data.data_wrapper import DataWrapper
 
 class DestinationLL():
     def __init__(self) -> None:
@@ -7,7 +7,14 @@ class DestinationLL():
    
     def get_destination_list(self):
         """ Returns a list of destinations within the system. """
-        pass
+        dest = DataWrapper()
+        dest_list = dest.get_all_destinations()
+        destination_names = []  # New list to store destination names
+        for destination in dest_list:
+            for key, value in destination.items():
+                if key == 'destination':
+                    destination_names.append(value)
+        return destination_names
    
     def get_most_popular_destination(self): #reyna að stytta nafn
         """ Returns the most popular destination. """
