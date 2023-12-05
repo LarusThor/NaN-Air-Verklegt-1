@@ -1,8 +1,9 @@
 class Voyage:
-    def __init__(self, destination, departureDate, depatureTimeFromIceland, 
+    def __init__(self, destination, estimatedFlightDuration, departureDate, depatureTimeFromIceland, 
                  arrivalDate, arrivalTime, flightNumberArrival, flightNumberDeparture, 
                  seatSales, availableSeats, status, bookingStatus) -> str:
         self.destination = destination
+        self.estimatedFlightDuration = estimatedFlightDuration
         self.departureDate = departureDate
         self.departureTimeFromIceland = depatureTimeFromIceland
         self.arrivalDate = arrivalDate
