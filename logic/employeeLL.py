@@ -4,6 +4,7 @@ class EmployeeLL:
     def __init__(self):
         self.data_wrapper = DataWrapper()
         self.employee_list = self.data_wrapper.get_all_staff_members()
+        self.pilot_list = self.data_wrapper.get_all_pilots()
 
 
     def get_employee_list(self):
@@ -17,9 +18,9 @@ class EmployeeLL:
     def get_all_pilots(self):
         """ Returns a list of all pilots. """
         name_list = []
-        for key, value in self.employee_list.items():
-            name = value[0]
-            role = value[1]
+        for key, value in self.pilot_list.items():
+            name = value.name
+            role = value.role
             if role == "Pilot":
                 name_list.append(name)
         return name_list
