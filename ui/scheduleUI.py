@@ -1,6 +1,7 @@
 from main_menuUI import display_options
 
 SCHEDULE_OPTIONS = ["1. Schedule for a specific day", "2. Schedule for specific employee"]
+SCHEDULE_FOR_A_DAY_OPTIONS = ["1. See who was working", "2. See who was not working"]
 
 
 def schedule():
@@ -15,7 +16,7 @@ def schedule():
         print("Input date as: day/month/year")
         date = input("Enter date: ")
 
-        display_options(["1. See who was working", "2. See who was not working"])
+        display_options(SCHEDULE_FOR_A_DAY_OPTIONS)
         action = str(input("Enter your action: ").lower())
         if action == "m":
             None
