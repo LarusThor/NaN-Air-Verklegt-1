@@ -1,6 +1,7 @@
 from main_menuUI import display_options
 
-VOYAGES_OPTIONS =["1. Create a voyage", "2. List of voyages", "3. Staff a voyage", "4. cancel a voyage"]
+VOYAGES_OPTIONS = ["1. Create a voyage", "2. List of voyages", "3. Staff a voyage", "4. cancel a voyage"]
+LIST_VOYAGES_OPTIONS = ["1. List of voyages by day", "2. List of voyages by week"]
 
 
 def voyages():
@@ -32,7 +33,7 @@ def voyages():
             print("New voyage was not saved.")
 
     elif action == "2":
-        display_options(["1. List of voyages by day", "2. List of voyages by week"])
+        display_options(LIST_VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         if action == "m":
             None

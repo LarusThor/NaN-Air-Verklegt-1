@@ -1,6 +1,9 @@
 from main_menuUI import display_options
 
 EMPLOYEES_OPTIONS = ["1. List employees - Alphabetical", "2. Employee information", "3. Add employee"]
+LIST_EMPLOYEES_OPTIONS = ["1. Print pilots", "2. Print flight attendants", "3. Print all employees", "4. Print most experienced"]
+EMPLOYEE_INFORMATION_OPTIONS = ["1. Print employee information", "2. Change employee information."]
+CHANGE_EMPLOYEE_INFO_OPTIONS = ["1. Edit home address", "2. Edit phone number", "3. Edit email", "4. Edit home address"]
 
 
 def employees():
@@ -11,7 +14,7 @@ def employees():
         None
 
     elif action == "1":
-        display_options(["1. Print pilots", "2. Print flight attendants", "3. Print all employees", "4. Print most experienced"])
+        display_options(LIST_EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
 
         if action == "m":
@@ -32,14 +35,14 @@ def employees():
     elif action == "2": #employee information
         employees_social_id = input("Enter the employees social ID")
         #print the name of the employee
-        display_options(["1. Print employee information\n2. Change employee information."])
+        display_options(EMPLOYEE_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())
         if action == "m":
             None
         elif action == "1":
             pass #print the employees info
         elif action == "2":
-            display_options("1. Edit home address", "2. Edit phone number", "3. Edit email", "4. Edit home address")
+            display_options(CHANGE_EMPLOYEE_INFO_OPTIONS)
             action = str(input("Enter your action: ").lower())
 
     elif action == "3":
