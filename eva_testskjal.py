@@ -1,4 +1,4 @@
-from employeeLL import EmployeeLL
+from logic.employeeLL import EmployeeLL
 from data.data_wrapper import DataWrapper
 
 # Create an instance of EmployeeLL
