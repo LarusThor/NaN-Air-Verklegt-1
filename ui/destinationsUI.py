@@ -1,10 +1,10 @@
 from ui.main_menuUI import display_options
-# from logic.LogicWrapper import LogicWrapper
+from logic.LogicWrapper import LogicWrapper
 
 DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Destination information"]
 
-# logic_wrapper = LogicWrapper()
-# destinations_list = logic_wrapper.destination_list()
+logic_wrapper = LogicWrapper()
+destinations_list = logic_wrapper.destination_list()
 
 def destinations():
     display_options(DESTINATIONS_OPTIONS)
@@ -14,8 +14,7 @@ def destinations():
         None
     
     elif action == "1":
-        pass
-        # print(destinations_list)
+        print(destinations_list)
 
     elif action == "2":
         pass #get_most_popular_destination
