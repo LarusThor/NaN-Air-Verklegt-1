@@ -1,4 +1,4 @@
-#import wrapper
+from data.data_wrapper import DataWrapper
 
 class EmployeeLL():
     def __init__(self, name:str, social_id:str, home_address:str, mobile_number:int, email:str, landline:int = None) -> None:
