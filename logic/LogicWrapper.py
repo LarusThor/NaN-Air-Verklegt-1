@@ -17,6 +17,7 @@ class LogicWrapper():
         self.schedule = ScheduleLL()
         self.voyage = VoyageLL()
     
+    #Employee:
     def employee_list(self):
         return self.employee.get_employee_list()
     
@@ -26,5 +27,10 @@ class LogicWrapper():
     def flight_attendant_list(self):
         return self.employee.get_flight_attendants()
     
+    #Destinations:
     def destination_list(self):
         return self.destination.get_destination_list()
+    
+    #Airplanes:
+    def airplane_types(self):
+        return self.airplane.get_all_airplane_types()

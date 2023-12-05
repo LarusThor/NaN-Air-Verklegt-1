@@ -10,10 +10,10 @@ class DestinationLL():
         dest = DataWrapper()
         dest_list = dest.get_all_destinations()
         destination_names = []  # New list to store destination names
-        for destination in dest_list:
-            for key, value in destination.items():
-                if key == 'destination':
-                    destination_names.append(value)
+        # for destination in dest_list:
+        for key, value in dest_list.items():
+            if key == 'destination':
+                destination_names.append(value)
         return destination_names
     
     def add_destination(self, destination):

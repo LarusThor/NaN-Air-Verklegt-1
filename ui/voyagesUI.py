@@ -5,13 +5,7 @@ LIST_VOYAGES_OPTIONS = ["1. List of voyages by day", "2. List of voyages by week
 
 
 def voyages():
-    display_options(VOYAGES_OPTIONS)
-    action = str(input("Enter your action: ").lower())
-    
-    if action == "m":
-        None
-
-    elif action == "1":
+    def add_voyage():
         print("New voyage: ")
         destination = input("Destination: ")
         airplane_type = input("Airplane type: ")
@@ -31,15 +25,28 @@ def voyages():
             print("New voyage has been saved!")
         elif save_prompt == "n":
             print("New voyage was not saved.")
+    
+    
+    display_options(VOYAGES_OPTIONS)
+    action = str(input("Enter your action: ").lower())
+    
+    if action == "m":
+        None
+
+    elif action == "1":
+        add_voyage()
 
     elif action == "2":
         display_options(LIST_VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
+        
         if action == "m":
             None
+        
         elif action == "1":
             date = input("Enter date; day/month/year: ")
             #print voyages by date
+        
         elif action == "2":
             week = input("Enter week number (1-52): ")
             #print voyage by week
@@ -55,7 +62,9 @@ def voyages():
         flight_number = input("Enter flight number: ")
         save_prompt = input(f"Would you like to cancel voyage {flight_number}? (y)es or (n)o")
         #TODO show th ifo for the voyage
+
         if save_prompt == "y":
             print("Voyage has been canceled!")
+            
         elif save_prompt == "n":
             print("Voyage was not canceled.")

@@ -1,4 +1,4 @@
-from ui.main_menuUI import display_options
+from ui.main_menuUI import display_options, main_menu
 from ui.airplaneUI import airplane
 from ui.destinationsUI import destinations
 from ui.employeesUI import employees
@@ -14,7 +14,7 @@ MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Sched
     
 def input_prompt():
     while True:
-        display_options(MAIN_MENU_OPTIONS)            
+        main_menu()           
         action = str(input("Enter your action: ").lower())
         
         if action == "1":
@@ -36,7 +36,7 @@ def input_prompt():
             flight_information()
 
 def main():
-    test = display_options(MAIN_MENU_OPTIONS)
     input_prompt()
 
-main()
+if __name__ == "__main__":
+    main()
