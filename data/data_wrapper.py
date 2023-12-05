@@ -6,4 +6,4 @@ class DataWrapper:
         self.employeeIO = EmployeeIO()
 
     def get_all_staff_members(self):
-        return self.employeeIO.read_employee()
+        return self.employeeIO.read_employee(self)
