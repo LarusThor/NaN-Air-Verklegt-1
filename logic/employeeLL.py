@@ -1,15 +1,11 @@
 from data.data_wrapper import DataWrapper
 
 class EmployeeLL():
-    def __init__(self, name:str, social_id:str, home_address:str, mobile_number:int, email:str, landline:int = None) -> None:
-        #self.data_wrapper = data_connection
-        self.name = name
-        self.social_id = social_id
-        self.home_address = home_address
-        self.mobile_number = mobile_number
-        self.email = email
-        self.landline = landline
-    
+    def __init__(self, employee_list:list) -> None:
+        for elem in employee_list:
+            name = key
+
+
     def get_employee_list(self):
         """ Returns a list of all employees within the system. """
         pass
