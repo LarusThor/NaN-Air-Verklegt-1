@@ -7,7 +7,7 @@ class DestinationIO():
         pass
 
 
-    def read_destination_from_destinations(self):
+    def read_destination(self):
         destination_dict = {}
         with open("files/destinations.csv", "r") as f:
             lines = f.readlines()
