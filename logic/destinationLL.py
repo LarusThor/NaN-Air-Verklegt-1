@@ -15,6 +15,10 @@ class DestinationLL():
                 if key == 'destination':
                     destination_names.append(value)
         return destination_names
+    
+    def add_destination(self, destination):
+        """ Adds a destination to the system. """
+        pass
    
     def get_most_popular_destination(self): #reyna að stytta nafn
         """ Returns the most popular destination. """
