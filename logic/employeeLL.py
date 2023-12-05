@@ -3,10 +3,10 @@ from data.data_wrapper import DataWrapper
 class EmployeeLL():
     def __init__(self, employee_list:list) -> None:
         #self.data_wrapper = data_connection
-        self.employee_list = employee_list
+        self.employee_list = DataWrapper.get_all_staff_memmbers()
         for key, value in employee_list:
-            self.name = key
-            self.social_id = value[0]
+            self.social_id = key
+            self.name = value[0]
             self.role = value[1]
             self.rank = value[2]
             self.licence = value[3]
@@ -15,8 +15,12 @@ class EmployeeLL():
 
     def get_employee_list(self):
         """ Returns a list of all employees within the system. """
-        pass
-    
+        name_list = []
+        for key, value in self.employee_list:
+            self.social_id = key
+            self.name = value[0]
+            name_list.append(self.name)
+         
     def get_employee_info(self):
         """ Returns information about a chosen employee. """
         pass

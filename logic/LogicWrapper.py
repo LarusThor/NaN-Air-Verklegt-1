@@ -9,6 +9,6 @@ from voyageLL import VoyageLL
 from validationLL import ValidationLL
 
 class LogicWrapper():
-    def __init__(self) -> None:
+    def __init__(self, data_connection) -> None:
         self.DataWrapper = DataWrapper()
         pass
