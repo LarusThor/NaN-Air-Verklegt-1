@@ -15,6 +15,7 @@ class EmployeeLL:
         return name_list
 
     def get_all_pilots(self):
+        """ Returns a list of all pilots. """
         name_list = []
         for key, value in self.employee_list.items():
             name = value[0]
@@ -24,6 +25,7 @@ class EmployeeLL:
         return name_list
     
     def get_flight_attendants(self):
+        """ Returns a list of all flight attendants. """
         name_list = []
         for key, value in self.employee_list.items():
             name = value[0]
@@ -35,6 +37,7 @@ class EmployeeLL:
 
     def get_employee_info(self, social_id):
         """Returns information about a chosen employee."""
+        social_id = str(social_id)
         for key, value in self.employee_list.items():
             name = value[0]
             role = value[1]
@@ -43,8 +46,9 @@ class EmployeeLL:
             address = value[4]
             phone_nr = value[5]
             email = value[6]
-            if key == social_id:
-                return f"{name}, {social_id}, {phone_nr}, {email}, {address}, {role}, {licence}"
+            if str(key) == str(social_id):
+                return name
+                #return f"{name}, {social_id}, {phone_nr}, {email}, {address}, {role}, {licence}"
 
     def change_employee_info(self):
         """Lets user change employee information."""

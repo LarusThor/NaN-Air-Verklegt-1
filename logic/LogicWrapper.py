@@ -1,17 +1,21 @@
 from data.data_wrapper import DataWrapper
-#from airplaneLL import AirplaneLL
-#from destinationLL import DestinationLL
+from logic.airplaneLL import AirplaneLL
+from logic.destinationLL import DestinationLL
 from logic.employeeLL import EmployeeLL
-#from flightattendantLL import FlightAttendant
-#from pilotLL import PilotLL
-#from scheduleLL import ScheduleLL
-#from voyageLL import VoyageLL
-#from validationLL import ValidationLL
+#from logic.flightattendantLL import FlightAttendant
+#from logic.pilotLL import PilotLL
+from logic.scheduleLL import ScheduleLL
+from logic.voyageLL import VoyageLL
+#from logic.validationLL import ValidationLL
 
 class LogicWrapper():
     def __init__(self) -> None:
         self.DataWrapper = DataWrapper()
         self.employee = EmployeeLL() 
+        self.airplane = AirplaneLL()
+        self.destination = DestinationLL()
+        self.schedule = ScheduleLL()
+        self.voyage = VoyageLL()
     
     def employee_list(self):
         return self.employee.get_employee_list()
