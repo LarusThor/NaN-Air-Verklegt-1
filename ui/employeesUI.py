@@ -1,10 +1,15 @@
-from main_menuUI import display_options
+from ui.main_menuUI import display_options
+from logic.LogicWrapper import LogicWrapper
 
 EMPLOYEES_OPTIONS = ["1. List employees - Alphabetical", "2. Employee information", "3. Add employee"]
 LIST_EMPLOYEES_OPTIONS = ["1. Print pilots", "2. Print flight attendants", "3. Print all employees", "4. Print most experienced"]
 EMPLOYEE_INFORMATION_OPTIONS = ["1. Print employee information", "2. Change employee information."]
 CHANGE_EMPLOYEE_INFO_OPTIONS = ["1. Edit home address", "2. Edit phone number", "3. Edit email", "4. Edit home address"]
 
+logic_wrapper = LogicWrapper()
+employee_list = logic_wrapper.employee_list()
+pilot_list = logic_wrapper.pilot_list()
+flight_attendant_list = logic_wrapper.flight_attendant_list()
 
 def employees():
     display_options(EMPLOYEES_OPTIONS)
@@ -21,13 +26,14 @@ def employees():
             None
 
         elif action == "1":
-            pass #print out a list of all pilots
-
+            print(pilot_list)
+            # print(employees_listed.get_all_pilots())
+            
         elif action == "2":
-            pass #print out all the flight attendants
-
+            print(flight_attendant_list)
+            
         elif action == "3":
-            pass #print out all the employees
+            print(employee_list)
 
         elif action == "4":
             pass #print the most experienced

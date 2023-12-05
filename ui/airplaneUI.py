@@ -1,4 +1,4 @@
-from main_menuUI import display_options
+from ui.main_menuUI import display_options
  
 AIRPLANE_OPTIONS = ["1. Airplane types and license", "2. Add new airplane", "3. Airplane usage"]
 AIRPLANE_TYPES_AND_LICENSE_OPTIONS = ["1. Pilots by license", "2. List all airplane types"]

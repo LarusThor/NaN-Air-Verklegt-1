@@ -1,4 +1,4 @@
-from main_menuUI import display_options
+from ui.main_menuUI import display_options
 
 DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Destination information"]
 
