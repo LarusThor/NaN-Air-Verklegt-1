@@ -1,4 +1,4 @@
-from employeeIO import EmployeeIO
+from data.employeeIO import EmployeeIO
 
 
 class DataWrapper:
