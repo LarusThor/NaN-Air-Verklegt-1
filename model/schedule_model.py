@@ -7,6 +7,6 @@ class Schedule:
 
 #scheduledFlight -> upcoming_flights.csv -> flight_nr
 #scheduledDestination -> upcoming_flights.csv -> arr_at
-#scheduledEmployee ....
+#scheduledEmployee past_flights = 
 
 
