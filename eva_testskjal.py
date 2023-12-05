@@ -10,7 +10,7 @@ print("All employees:")
 print(employee_list)
 
 # Test get_all_pilots method
-pilots_list = employee_manager.get_all_pilots()
+pilots_list = employee_manager.get_flight_attendants()
 print("\nPilots:")
 print(pilots_list)
 
