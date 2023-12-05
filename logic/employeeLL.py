@@ -18,9 +18,9 @@ class EmployeeLL:
             name_list.append(name)
         return name_list
 
-    def get_employee_info(self):
+    def get_employee_info(self, social_id):
         """Returns information about a chosen employee."""
-        pass
+        return self.employee_list[social_id]
 
     def change_employee_info(self):
         """Lets user change employee information."""

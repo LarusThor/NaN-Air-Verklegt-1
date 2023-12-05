@@ -1,4 +1,4 @@
-from data.employeeIO import EmployeeIO
+from employeeIO import EmployeeIO
 
 
 class DataWrapper:
@@ -6,4 +6,4 @@ class DataWrapper:
         self.employeeIO = EmployeeIO()
 
     def get_all_staff_members(self):
-        return self.employeeIO.read_employee(self)
+        return self.employeeIO.read_employee()
