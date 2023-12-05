@@ -10,7 +10,7 @@ class EmployeeLL:
         """ Returns a list of all employees within the system. """
         name_list = []
         for social_id, employee_data in self.employee_list.items():
-            name = employee_data[0]
+            name = employee_data.name
             name_list.append(name)
         return name_list
 

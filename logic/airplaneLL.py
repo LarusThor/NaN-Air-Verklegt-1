@@ -1,9 +1,9 @@
-#import wrapper
+from data.data_wrapper import DataWrapper
 
 class AirplaneLL():
     def __init__(self) -> None:
-        #self.data_wrapper = data_connection
-        pass
+        self.data_wrapper = DataWrapper()
+        self.airplane_list = self.data_wrapper.get_airplanes()
    
     def get_most_used_plane(self):
         """ Returns the most used plane. """
