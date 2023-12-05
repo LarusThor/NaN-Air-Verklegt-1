@@ -4,7 +4,6 @@ class EmployeeLL:
     def __init__(self):
         self.data_wrapper = DataWrapper()
         self.employee_list = self.data_wrapper.get_all_staff_members()
-        self.pilot_list = self.data_wrapper.get_all_pilots()
 
 
     def get_employee_list(self):
@@ -18,7 +17,7 @@ class EmployeeLL:
     def get_all_pilots(self):
         """ Returns a list of all pilots. """
         name_list = []
-        for key, value in self.pilot_list.items():
+        for key, value in self.employee_list.items():
             name = value.name
             role = value.role
             if role == "Pilot":
@@ -29,9 +28,9 @@ class EmployeeLL:
         """ Returns a list of all flight attendants. """
         name_list = []
         for key, value in self.employee_list.items():
-            name = value[0]
-            role = value[1]
-            rank = value[2]
+            name = value.name
+            role = value.role
+            rank = value.rank
             if rank == "Flight Attendant":
                 name_list.append(name)
         return name_list
@@ -40,13 +39,13 @@ class EmployeeLL:
         """Returns information about a chosen employee."""
         social_id = str(social_id)
         for key, value in self.employee_list.items():
-            name = value[0]
-            role = value[1]
-            rank = value[2]
-            licence = value[3]
-            address = value[4]
-            phone_nr = value[5]
-            email = value[6]
+            name = value.name
+            role = value.role
+            rank = value.rank
+            licence = value.license
+            address = value.address
+            phone_nr = value.phone_nr
+            email = value.email
             if str(key) == str(social_id):
                 return name
                 #return f"{name}, {social_id}, {phone_nr}, {email}, {address}, {role}, {licence}"
