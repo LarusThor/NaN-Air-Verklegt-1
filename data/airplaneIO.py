@@ -5,6 +5,7 @@ class AirplaneIO:
     def read_airplane(self):
         airplane_dict = {}
         with open("files/aircraft.csv", "r") as f:
+            lines = f.readlines()
             for line in lines[1:]:
                 line = line.strip()
                 plane_insignia, plane_type_id, date_of_manufacture, last_maintenance = line.split(",")
