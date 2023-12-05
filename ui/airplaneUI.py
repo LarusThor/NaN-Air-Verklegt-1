@@ -1,7 +1,9 @@
 from main_menuUI import display_options
  
-MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Schedule", "5. Voyages", "6. Flight information"]
 AIRPLANE_OPTIONS = ["1. Airplane types and license", "2. Add new airplane", "3. Airplane usage"]
+AIRPLANE_TYPES_AND_LICENSE_OPTIONS = ["1. Pilots by license", "2. List all airplane types"]
+PILOTS_BY_LICENSE_OPTIONS = ["1. Licensed pilots for a specific airplane type", "2. All pilots listed by license", "3. Number of licensed pilots for each airplane type"]
+AIRPLANE_USAGE = ["1. Get most used airplane", "2. Get airplane which flown furthest"]
 
 def airplane():
     display_options(AIRPLANE_OPTIONS)
@@ -12,12 +14,12 @@ def airplane():
     
     elif action == "1":
         #Airplane types and license
-        display_options(["1. Pilots by license", "2. List all airplane types"])
+        display_options(AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         if action == "m":
             None
         elif action == "1":
-            display_options(["1. Licensed pilots for a specific airplane type", "2. All pilots listed by license", "3. Number of licensed pilots for each airplane type"])
+            display_options(PILOTS_BY_LICENSE_OPTIONS)
             action = str(input("Enter your action: ").lower())
             if action == "m":
                 None
@@ -52,7 +54,7 @@ def airplane():
         
     elif action == "3":
         # airplane_usage()
-        display_options(["1. Get most used airplane", "2. Get airplane which flown furthest"])
+        display_options(AIRPLANE_USAGE)
         action = str(input("Enter your action: ").lower())
         if action == "m":
             None
