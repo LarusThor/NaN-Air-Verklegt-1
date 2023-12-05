@@ -8,6 +8,7 @@ class EmployeeIO:
             lines = f.readlines()
             for line in lines[1:]:
                 line = line.strip()
-                social_id, name, role, rank, licence, address, phone_nr, pref_nr, slot_param = line.split(",")
-                employee_dict[social_id] = [name, role, rank, licence, address, phone_nr, pref_nr, slot_param]
+                social_id, name, role, rank, licence, address, phone_nr, email = line.split(",")
+                employee_dict[social_id] = [name, role, rank, licence, address, phone_nr, email]
+                
         return employee_dict

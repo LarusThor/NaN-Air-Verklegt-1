@@ -1,4 +1,4 @@
-#import wrapper
+from data.data_wrapper import DataWrapper
 from airplaneLL import AirplaneLL
 from destinationLL import DestinationLL
 from employeeLL import EmployeeLL
@@ -10,5 +10,5 @@ from validationLL import ValidationLL
 
 class LogicWrapper():
     def __init__(self) -> None:
-        #self.DataWrapper = DataWrapper()
+        self.DataWrapper = DataWrapper()
         pass
