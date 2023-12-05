@@ -36,7 +36,7 @@ def input_prompt():
             flight_information()
 
 def main():
-    test = display_options(MAIN_MENU_OPTIONS)
     input_prompt()
 
-main()
+if __name__ == "__main__":
+    main()

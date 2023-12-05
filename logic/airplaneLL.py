@@ -1,9 +1,10 @@
-#import wrapper
+from data.data_wrapper import DataWrapper
 
 class AirplaneLL():
     def __init__(self) -> None:
-        #self.data_wrapper = data_connection
-        pass
+        self.data_wrapper = DataWrapper()
+        self.airplane_list = self.data_wrapper.get_airplanes()
+        self.airplane_types = self.data_wrapper.get_airplane_types()
    
     def get_most_used_plane(self):
         """ Returns the most used plane. """
@@ -19,7 +20,15 @@ class AirplaneLL():
    
     def get_all_airplane_types(self):
         """ Returns a list of all the airplane types in the system. """
-        pass
+        airplane_types = self.airplane_types
+
+        type_list = []
+        for elem in airplane_types:
+            air_type = elem[0]
+            type_list.append(air_type)
+
+        return type_list
+
    
     def get_airplane_status_by_date_time(self): #laga þetta nafn líka
         """ Returns the status of a plane on a given day and time. """

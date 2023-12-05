@@ -59,6 +59,6 @@ def airplane():
         if action == "m":
             None
         elif action == "1":
-            pass #get_mosed_used_airplane
+            pass #get_most_used_airplane
         elif action == "2":
             pass #get_most_flown_airplane
