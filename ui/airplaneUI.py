@@ -6,7 +6,7 @@ PILOTS_BY_LICENSE_OPTIONS = ["1. Licensed pilots for a specific airplane type", 
 AIRPLANE_USAGE = ["1. Get most used airplane", "2. Get airplane which flown furthest"]
 
 def airplane():
-    def airplane_usage():
+    def airplane_usage(): #if nr 3 is chosen from AIRPLANE_OPTIONS
         display_options(AIRPLANE_USAGE)
         action = str(input("Enter your action: ").lower())
         if action == "m":
@@ -57,7 +57,7 @@ def airplane():
         
         if action == "m":
             None
-            
+
         elif action == "1":
             pilots_by_licanse()
 
