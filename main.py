@@ -1,34 +1,5 @@
-from ui.main_menuUI import display_options, main_menu
-from ui.airplaneUI import airplane
-from ui.destinationsUI import destinations
-from ui.employeesUI import employees
-from ui.scheduleUI import schedule
-from ui.voyagesUI import voyages
-from ui.flight_infoUI import flight_information
+from ui.mainUI import Main
 
-import os
+test = Main()
 
-#the menu
-MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Schedule", "5. Voyages", "6. Flight information"]
-
-    
-def input_prompt():
-    options = {
-        "1": airplane,
-        "2": destinations,
-        "3": employees,
-        "4": schedule,
-        "5": voyages,
-        "6": flight_information
-    }
-
-    while True:
-        main_menu()           
-        action = str(input("Enter your action: ").lower())
-        options[action]()
-
-def main():
-    input_prompt()
-
-if __name__ == "__main__":
-    main()
+test.input_prompt()
