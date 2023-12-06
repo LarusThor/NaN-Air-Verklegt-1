@@ -32,6 +32,10 @@ class LogicWrapper():
          """ Adds employee to the system. """
          return self.employee.add_employee(employee)
     
+    def employee_info(self, employee):
+        """ Returns information about a specific employee. """
+        return self.employee.get_employee(employee)
+    
     #Destinations:
     def destination_list(self):
         """ Returns a list of all destinations within the system. """
