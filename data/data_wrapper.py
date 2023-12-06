@@ -18,7 +18,7 @@ class DataWrapper:
     def get_all_staff_members(self) -> dict:
         return self.employeeIO.read_employee()
     
-    def add_new_employee(self, employee: Employee) -> None:
+    def add_new_employee(self, employee) -> None:
         return self.employeeIO.add_employee(employee)
     
     #airplanes
