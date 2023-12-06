@@ -1,26 +1,27 @@
-from ui.main_menuUI import display_options
+from ui.main_menuUI import Menu
 from logic.LogicWrapper import LogicWrapper
 
 DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Destination information"]
 
-logic_wrapper = LogicWrapper()
-destinations_list = logic_wrapper.destination_list()
 
-def destinations():
-    display_options(DESTINATIONS_OPTIONS)
-    action = str(input("Enter your action: ").lower())
+class DestinationsUI:
+    def __init__(self) -> None:
+        logic_wrapper = LogicWrapper()
+        self.menus = Menu()     
+        self.destinations_list = logic_wrapper.destination_list()   
 
-    if action == "m":
-        None
-    
-    elif action == "1":
-        print(destinations_list)
+    def destinations(self):
+        self.menus.display_options(DESTINATIONS_OPTIONS)
+        action = str(input("Enter your action: ").lower())
+        return action
 
-    elif action == "2":
-        pass #get_most_popular_destination
+    def get_all_destinations(self):
+        print(self.destinations_list)  
 
-    elif action == "3":
-        #add_destination
+    def get_most_popular_destination(self):
+        pass
+
+    def add_destination(self):
         print("New destination")
         country = input("Enter the country: ")
         airport = input("Enter the airport: ")
@@ -42,8 +43,8 @@ def destinations():
             print("Destination saved!")
         elif save_prompt == "n":
             print("Destionation not saved.")
-
-    elif action == "4":
-        #info about a destionation
+    
+    def get_destination_info(self):
         print("What destination would you like to get the information about?")
-        #print a list of destinations
+
+        

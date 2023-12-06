@@ -1,18 +1,31 @@
-from ui.main_menuUI import display_options
+from ui.main_menuUI import Menu
+from logic.LogicWrapper import LogicWrapper
 
 FLIGHT_INFORMATION_OPTIONS = ["1. Booking status for specific voyage", "2. Booking status for a specific date"]
 
-def flight_information():
-            display_options(FLIGHT_INFORMATION_OPTIONS)
-            action = str(input("Enter your action: ").lower())
-            
-            if action == "m":
-                None
+class FlightInfoUI:
+    def __init__(self) -> None:
+        self.logic_wrapper = LogicWrapper()
+        self.menus = Menu()
 
-            elif action == "1":
-                flight_number = input("Enter flight number: ")
-                #print if the voyage if fully booked or not
+    def flight_info_options(self):
+        self.menus.display_options(FLIGHT_INFORMATION_OPTIONS)
+        action = str(input("Enter your action: ").lower())
+        return action
+    
+    def get_voyage(self):
+        flight_number = input("Enter flight number: ")
+        return flight_number
+         
 
-            elif action == "2":
-                date = input("Enter date; day/month/year: ")  
-                #print the booking status for the flights on that date
+    def get_date(self):
+        date = input("Enter date; day/month/year: ") 
+        return date 
+         
+    def get_flight_status_by_voyage(self, voyage):
+        pass
+
+    def get_flight_status_by_date(self, date):
+        pass
+         
+         
