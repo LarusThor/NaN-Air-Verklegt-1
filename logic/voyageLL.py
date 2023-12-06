@@ -1,4 +1,4 @@
-#import wrapper
+from data.data_wrapper import DataWrapper
 
 class VoyageLL():
     def __init__(self) -> None:
