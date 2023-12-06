@@ -2,8 +2,6 @@ from data.data_wrapper import DataWrapper
 from logic.airplaneLL import AirplaneLL
 from logic.destinationLL import DestinationLL
 from logic.employeeLL import EmployeeLL
-#from logic.flightattendantLL import FlightAttendant
-#from logic.pilotLL import PilotLL
 from logic.scheduleLL import ScheduleLL
 from logic.voyageLL import VoyageLL
 #from logic.validationLL import ValidationLL
@@ -26,6 +24,9 @@ class LogicWrapper():
     
     def flight_attendant_list(self):
         return self.employee.get_flight_attendants()
+
+    def add_employee(self, employee):
+         return self.employee.add_employee(employee)
     
     #Destinations:
     def destination_list(self):
