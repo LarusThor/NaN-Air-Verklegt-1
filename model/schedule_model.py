@@ -2,9 +2,9 @@ from dataclasses import dataclass
 
 @dataclass
 class Schedule:
-    scheduledFlight: str
-    scheduledEmployee: str
-    scheduledDestination: str
+    scheduled_flight: str
+    scheduled_employee: str
+    scheduled_destination: str
     
 
 
