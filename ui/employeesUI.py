@@ -1,4 +1,4 @@
-from ui.main_menuUI import display_options
+from ui.main_menuUI import Menu
 from logic.LogicWrapper import LogicWrapper
 from model.employee_model import Employee
 
@@ -7,16 +7,26 @@ LIST_EMPLOYEES_OPTIONS = ["1. Print pilots", "2. Print flight attendants", "3. P
 EMPLOYEE_INFORMATION_OPTIONS = ["1. Print employee information", "2. Change employee information."]
 CHANGE_EMPLOYEE_INFO_OPTIONS = ["1. Edit home address", "2. Edit phone number", "3. Edit email", "4. Edit home address"]
 
-logic_wrapper = LogicWrapper()
-employee_list = logic_wrapper.employee_list()
-pilot_list = logic_wrapper.pilot_list()
-flight_attendant_list = logic_wrapper.flight_attendant_list()
+class EmployeeUI:
+    def __init__(self) -> None:
+        self.logic_wrapper = LogicWrapper()
+        self.menus = Menu()
+        self.all_employees_list = self.logic_wrapper.employee_list()
+        self.pilot_list = self.logic_wrapper.pilot_list()
+        self.flight_attendant_list = self.logic_wrapper.flight_attendant_list()
+        self.employee_info = self.logic_wrapper.employee_info
 
-
-def list_employees(): #if nr 1 from EMPLOYEES_OPTIONS is chosen
-    """four options on how to list the employees, 1. Print pilots, 2. Print flight attendants, 3. Print all employees, 4. Print most experienced""" 
+    def employees_options(self) -> str:
+        self.menus.display_options(EMPLOYEES_OPTIONS)
+        action = str(input("Enter your action: ").lower())
+        return action
     
-    def printing_crew(crew_list):
+    def list_employees_options(self) -> str:
+        self.menus.display_options(LIST_EMPLOYEES_OPTIONS)
+        action = str(input("Enter your action: ").lower())
+        return action
+
+    def print_crew(self, crew_list) -> None:
         """function used to print out a list"""
         crew_list.sort()
         for person in crew_list:
@@ -27,154 +37,138 @@ def list_employees(): #if nr 1 from EMPLOYEES_OPTIONS is chosen
         if action == "m":
             None
         elif action == "r":
-            list_employees()        
+            None
 
-
-    display_options(LIST_EMPLOYEES_OPTIONS)
-    action = str(input("Enter your action: ").lower())
-
-    if action == "m":
-        None
-    
-    elif action == "b":
-        employees()
-
-    elif action == "1": # print pilots
+    def get_pilots(self) -> None:
         print()
         print("All pilots:")
         print("-"*15)
-        printing_crew(pilot_list)
-
-    elif action == "2": # print flight attendants
+        self.print_crew(self.pilot_list)
+    
+    def get_flight_attendants(self) -> None:
         print()
         print("All flight attendants:")
         print("-"*15)
-        printing_crew(flight_attendant_list)
-        
-    elif action == "3": # print all employees
+        self.print_crew(self.flight_attendant_list)
+    
+    def get_all_employees(self) -> None:
         print()
         print("All employees:")
         print("-"*15)
-        printing_crew(employee_list)
+        self.print_crew(self.all_employees_list)
 
-    elif action == "4": #TODO
-        pass #print the most experienced
+    def get_most_experienced(self):
+        pass
 
-def employee_info(): #TODO
-    employees_social_id = input("Enter the employees social ID")
-    #print the name of the employee
-    display_options(EMPLOYEE_INFORMATION_OPTIONS)
-    action = str(input("Enter your action: ").lower())
+    def get_employee(self):
+        social_id = str(input("Enter employee social ID: ")).strip()
+        employee = self.employee_info(social_id)
+        print(employee)
 
-    if action == "m":
-        None
+    def employee_info_options(self) -> str:
+        self.menus.display_options(EMPLOYEE_INFORMATION_OPTIONS)
+        action = str(input("Enter your action: ").lower())   
+        return action 
 
-    elif action == "1":
-        pass #print the employees info
+    def get_info(self):
+        social_id = str(input("Enter employee social ID: ")).strip()
+        employee = self.employee_info(social_id)
+        print(employee)
 
-    elif action == "2":
-        display_options(CHANGE_EMPLOYEE_INFO_OPTIONS)
-        action = str(input("Enter your action: ").lower())
+    def change_info_options(self):
+        pass
 
+    def change_home_address(self):
+        pass
 
-def add_employee():
-    print("Fill out the following informaation about the new employee:")
-    name = input("Name: ")
-    social_id = input("Social ID: ")
-    phone_number = input("Phone number: ")
-    email = input("Email: ")
-    home_address = input("Home adress: ")
+    def change_phone_number(self):
+        pass
+    
+    def change_email(self):
+        pass
 
-    roles = ["Pilot","Cabincrew"]
-    print("Role:\n1. Pilot\n2. Cabincrew")
-    role = input()
-    while role != "1" and role != "2":
-        print("Invalid input! You can choose 1, 2")
-        role = input("Role: ")
-    ranks = ["Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
-    print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
-    rank = input()
-    while rank != "1" and rank != "2" and rank != "3" and rank != "4":
-        print("Invalid input! You can choose 1, 2, 3, or 4")
-        rank = input("Rank: ")
-    if rank == "1" or rank == "2":
-        licences = ["NAFokker100","NAFokkerF28","NABAE146"]
-        print("Licenses:\n1. NAFokker100\n2. NAFokkerF28\n3. NABAE146",)
-        licence = input()
-    else:
-        licence = "N/A"
-    optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
-    if optional_landline == "y":
-        landline = input("Landline number: ")
-    else:
-        landline = None
+    def add_employee(self): #define
+        print("Fill out the following informaation about the new employee:")
+        name = input("Name: ")
+        social_id = input("Social ID: ")
+        phone_number = input("Phone number: ")
+        email = input("Email: ")
+        home_address = input("Home adress: ")
 
-    print("New employee:")
-    print("Name:", name)
-    print("Social ID:", social_id)
-    print("Phone number:", phone_number)
-    print("Email:", email)
-    print("Home adress:", home_address)
-    print("Role:", roles[int(role) - 1])
-    print("Rank:", ranks[int(rank) - 1])
-    print("License:", licences[int(licence) - 1])
-    print("Landline number:", landline)
+        roles = ["Pilot","Cabincrew"]
+        print("Role:\n1. Pilot\n2. Cabincrew")
+        role = input()
+        while role != "1" and role != "2":
+            print("Invalid input! You can choose 1, 2")
+            role = input("Role: ")
+        ranks = ["Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
+        print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
+        rank = input()
+        while rank != "1" and rank != "2" and rank != "3" and rank != "4":
+            print("Invalid input! You can choose 1, 2, 3, or 4")
+            rank = input("Rank: ")
+        if rank == "1" or rank == "2":
+            licences = ["NAFokker100","NAFokkerF28","NABAE146"]
+            print("Licenses:\n1. NAFokker100\n2. NAFokkerF28\n3. NABAE146",)
+            licence = input()
+        else:
+            licence = "N/A"
+        optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
+        if optional_landline == "y":
+            landline = input("Landline number: ")
+        else:
+            landline = None
 
-    # TODO
-    employee = Employee(
-        name=name, 
-        socialID=social_id, 
-        phonenumber=phone_number,
-        role=role, 
-        rank=rank,
-        licence=licence,
-        email=email,
-        home_address=home_address,
-        landline=landline
-    )
+        print("New employee:")
+        print("Name:", name)
+        print("Social ID:", social_id)
+        print("Phone number:", phone_number)
+        print("Email:", email)
+        print("Home adress:", home_address)
+        print("Role:", roles[int(role) - 1])
+        print("Rank:", ranks[int(rank) - 1])
+        print("License:", licences[int(licence) - 1])
+        print("Landline number:", landline)
 
-    save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
-    while save_prompt != "y" and save_prompt != "n":
-        print("Invalid input!")
-        save_prompt = input("Enter Y for yes or N for no:").lower()
+        # TODO
+        employee = Employee(
+            name=name, 
+            socialID=social_id, 
+            phonenumber=phone_number,
+            role=role, 
+            rank=rank,
+            licence=licence,
+            email=email,
+            home_address=home_address,
+            landline=landline
+        )
 
-    if save_prompt == "y":
-        print()
-        print("New employee saved!")
-        print()
-        print("(M)enu  (R)epeat")
-        action = str(input("Enter your action: ").lower())
-        if action == "m":
-            None
-        elif action == "r":
+        save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
+        while save_prompt != "y" and save_prompt != "n":
+            print("Invalid input!")
+            save_prompt = input("Enter Y for yes or N for no:").lower()
+
+        if save_prompt == "y":
             print()
-            logic_wrapper.add_employee(employee)   
-
-    elif save_prompt == "n":
-        print()
-        print("New employee not saved.")
-        print()
-        print("(M)enu  (R)epeat")
-        action = str(input("Enter your action: ").lower())
-        if action == "m":
-            None
-        elif action == "r":
+            print("New employee saved!")
             print()
-            logic_wrapper.add_employee(employee)   
+            print("(M)enu  (R)epeat")
+            action = str(input("Enter your action: ").lower())
+            if action == "m":
+                None
+            elif action == "r":
+                print()
+                self.logic_wrapper.add_employee(employee)   
 
-#main
-def employees():
-    display_options(EMPLOYEES_OPTIONS)
-    action = str(input("Enter your action: ").lower())
-
-    if action == "m" or action == "b":
-        None
-
-    elif action == "1":
-        list_employees()
-
-    elif action == "2":
-        employee_info()
-
-    elif action == "3":
-        add_employee()
+        elif save_prompt == "n":
+            print()
+            print("New employee not saved.")
+            print()
+            print("(M)enu  (R)epeat")
+            action = str(input("Enter your action: ").lower())
+            if action == "m":
+                None
+            elif action == "r":
+                print()
+                self.logic_wrapper.add_employee(employee)   
+#

@@ -1,1 +1,11 @@
 **/__pycache__/
+*.pyc
+*.pyc
+data/__pycache__/airplaneIO.cpython-311.pyc
+data/__pycache__/data_wrapper.cpython-311.pyc
+data/__pycache__/destinationIO.cpython-311.pyc
+data/__pycache__/employeeIO.cpython-311.pyc
+data/__pycache__/scheduleIO.cpython-311.pyc
+data/__pycache__/voyageIO.cpython-311.pyc
+logic/__pycache__/airplaneLL.cpython-311.pyc
+*.pyc

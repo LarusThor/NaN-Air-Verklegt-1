@@ -1,8 +1,8 @@
 class ScheduleIO():
-    def __init__(self):
+    def __init__(self) -> None:
         pass
     
-    def read_schedule(self):
+    def read_schedule(self) -> dict:
         schedule_dict = {}
         with open("files/upcoming_flights.csv", "r") as f:
             lines = f.readlines()
@@ -13,7 +13,7 @@ class ScheduleIO():
 
         return schedule_dict
     
-    def read_schedule(self):
+    def read_schedule(self) -> dict:
         schedule_dict = {}
         with open("files/past_flights.csv", "r") as f:
             lines = f.readlines()

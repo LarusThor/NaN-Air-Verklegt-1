@@ -1,9 +1,9 @@
 class VoyageIO():
-    def __init__(self):
+    def __init__(self) -> None:
         pass
     
     
-    def read_voyage(self):
+    def read_voyage(self) -> dict:
         voyage_dict = {}
         with open("files/upcoming_flights.csv", "r") as f:
             lines = f.readlines()

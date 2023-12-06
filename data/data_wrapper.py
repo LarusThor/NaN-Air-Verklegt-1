@@ -15,22 +15,22 @@ class DataWrapper:
         self.upcoming_flightIO = upcomingFlightsIO()
 
     #Employee:
-    def get_all_staff_members(self):
+    def get_all_staff_members(self) -> dict:
         return self.employeeIO.read_employee()
     
-    def add_new_employee(self, employee):
+    def add_new_employee(self, employee: Employee) -> None:
         return self.employeeIO.add_employee(employee)
     
     #airplanes
-    def get_airplanes(self):
+    def get_airplanes(self) -> list[list]: 
         return self.airplaneIO.aircraft_info()
     
-    def get_airplane_types(self):
+    def get_airplane_types(self) -> list:
         return self.airplaneIO.aircraft_types()
     
 
     #destinations
-    def get_all_destinations(self):
+    def get_all_destinations(self) -> list:
         return self.destinationIO.read_all_destinations()
     
     def add_destinations(self, destination):

@@ -1,11 +1,21 @@
-from ui.main_menuUI import display_options
+from ui.main_menuUI import Menu
+from logic.LogicWrapper import LogicWrapper
 
 VOYAGES_OPTIONS = ["1. Create a voyage", "2. List of voyages", "3. Staff a voyage", "4. cancel a voyage"]
 LIST_VOYAGES_OPTIONS = ["1. List of voyages by day", "2. List of voyages by week"]
 
 
-def voyages():
-    def add_voyage():
+class VoyagesUI:
+    def __init__(self) -> None:
+        self.logic_wrapper = LogicWrapper()
+        self.menus = Menu()
+
+    def voyages_options(self) -> str:
+        self.menus.display_options(VOYAGES_OPTIONS)
+        action = str(input("Enter your action: ").lower())
+        return action
+    
+    def add_voyage(self) -> None:
         print("New voyage: ")
         destination = input("Destination: ")
         airplane_type = input("Airplane type: ")
@@ -25,40 +35,35 @@ def voyages():
             print("New voyage has been saved!")
         elif save_prompt == "n":
             print("New voyage was not saved.")
-    
-    
-    display_options(VOYAGES_OPTIONS)
-    action = str(input("Enter your action: ").lower())
-    
-    if action == "m":
-        None
 
-    elif action == "1":
-        add_voyage()
-
-    elif action == "2":
-        display_options(LIST_VOYAGES_OPTIONS)
+    def list_voyage_options(self) -> str:
+        self.menus.display_options(LIST_VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
+        return action
         
-        if action == "m":
-            None
-        
-        elif action == "1":
-            date = input("Enter date; day/month/year: ")
-            #print voyages by date
-        
-        elif action == "2":
-            week = input("Enter week number (1-52): ")
-            #print voyage by week
-        
-    elif action == "3":
+    def get_date(self) -> str:
+        date = input("Enter date; day/month/year: ")
+        return date
+    
+    def get_week(self) -> str:
+        week = input("Enter week number (1-52): ")
+        return week
+    
+    def get_voyage_by_date(self, date):
+        pass
+
+    def get_voyage_by_week(self, week):
+        pass
+
+
+    def staff_voyage(self) -> None:
         flight_number = input("Enter a flight number: ")
         captain = input("Enter captain's social ID: ")
         pilot = input("Enter pilot's social ID: ")
         head_flight_crew = input("Enter head flight attendant's social ID: ")
         #TODO add an option for more flight attendants
 
-    elif action == "4":
+    def cancel_voyage(self): #define
         flight_number = input("Enter flight number: ")
         save_prompt = input(f"Would you like to cancel voyage {flight_number}? (y)es or (n)o")
         #TODO show th ifo for the voyage
@@ -68,3 +73,4 @@ def voyages():
             
         elif save_prompt == "n":
             print("Voyage was not canceled.")
+

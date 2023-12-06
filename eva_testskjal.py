@@ -5,4 +5,4 @@ from logic.airplaneLL import AirplaneLL
 
 emp_ll = EmployeeLL()
 
-print(emp_ll.get_employee_info())
+print(emp_ll.get_employee("3009907461"))
