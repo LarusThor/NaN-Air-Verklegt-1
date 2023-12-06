@@ -22,7 +22,7 @@ class DestinationsUI:
             print(place)
         print()
         print("(M)enu  (R)epeat")
-        action = input("Enter your action :")
+        action = input("Enter your action : ")
         return action
 
     def get_most_popular_destination(self):
