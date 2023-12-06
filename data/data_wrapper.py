@@ -15,9 +15,6 @@ class DataWrapper:
     #employees 
     def get_all_staff_members(self):
         return self.employeeIO.read_employee()
-
-    def get_all_destinations(self):
-        return self.destinationIO.read_destination()
     
     def add_new_employee(self, employee):
         return self.employeeIO.add_employee(employee)
@@ -31,5 +28,8 @@ class DataWrapper:
     
 
     #destinations
+    def get_all_destinations(self):
+        return self.destinationIO.read_all_destinations()
+    
     def add_destinations(self, destination):
         return self.destinationIO.add_destination(destination)

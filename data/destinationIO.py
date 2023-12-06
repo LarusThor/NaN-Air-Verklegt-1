@@ -11,9 +11,13 @@ class DestinationIO():
         with open('files\destinations.csv', newline='', encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                destination = Destination(row['id'], row['destination'], row['emergency_contact_name'], row['emergency_contact_number'], row['airport_name'], row['distance_from_iceland'])
-                destination_list.append(destination)
-        return destination_list
+                destination_list.append(row)
+        destination_names = []  # New list to store destination names
+        for destination in destination_list:
+            for key, value in destination.items():
+                if key == 'destination':
+                    destination_names.append(value)
+        return destination_names
     
     def add_destination(self, destination):
         with open('files\destinations.csv', 'a', newline='', encoding="utf-8") as csvfile:
