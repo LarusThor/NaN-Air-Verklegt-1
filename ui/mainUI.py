@@ -1,5 +1,5 @@
 from logic.LogicWrapper import LogicWrapper
-from ui.main_menuUI import Menu
+from ui.menu_managerUI import Menu
 from ui.airplaneUI import AirplaneUI
 from ui.destinationsUI import DestinationsUI
 from ui.employeesUI import EmployeeUI
