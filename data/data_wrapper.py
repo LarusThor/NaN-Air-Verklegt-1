@@ -13,23 +13,23 @@ class DataWrapper:
         self.airplaneIO = AirplaneIO()
 
     #Employee:
-    def get_all_staff_members(self) -> function:
+    def get_all_staff_members(self):
         return self.employeeIO.read_employee()
     
-    def add_new_employee(self, employee: Employee) -> function:
+    def add_new_employee(self, employee: Employee):
         return self.employeeIO.add_employee(employee)
     
     #airplanes
-    def get_airplanes(self) -> function:
+    def get_airplanes(self):
         return self.airplaneIO.aircraft_info()
     
-    def get_airplane_types(self) -> function:
+    def get_airplane_types(self):
         return self.airplaneIO.aircraft_types()
     
 
     #destinations
-    def get_all_destinations(self) -> function:
+    def get_all_destinations(self):
         return self.destinationIO.read_all_destinations()
     
-    def add_destinations(self, destination: Destination) -> function: #TODO: check if Destination er rétt 
+    def add_destinations(self, destination: Destination): #TODO: check if Destination er rétt 
         return self.destinationIO.add_destination(destination)
