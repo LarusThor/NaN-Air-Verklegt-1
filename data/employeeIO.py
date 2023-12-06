@@ -18,13 +18,25 @@ class EmployeeIO:
 
         return employee_dict
 
-    def add_employee(self, employee):
+    def write_employees(self, employees: list[Employee]):
+        file_path = Path('files/crew.csv')
 
-        with open(Path('files/crew.csv'), 'a', newline='', encoding="utf-8") as csvfile:
-            fieldnames = ['social_id', 'name', 'role', 'rank', 'licence', 'address', 'phone_nr', 'email', 'landline']
+        fieldnames = ['social_id', 'name', 'role', 'rank', 'licence', 'address', 'phone_nr', 'email', 'landline']
+
+        with open(file_path, 'w', newline='', encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
 
-            writer.writerow({'social_id': employee.social_id, 'name': employee.name, 'role': employee.role, 'rank': employee.rank, 'licence': employee.licence, 'address': employee.home_address, 'phone_nr': employee.phonenumber, 'email': employee.email, 'landline': employee.landline})
+            for employee in employees:
+                writer.writerow({'social_id': employee.social_id, 'name': employee.name, 'role': employee.role, 'rank': employee.rank, 'licence': employee.licence, 'address': employee.home_address, 'phone_nr': employee.phonenumber, 'email': employee.email, 'landline': employee.landline})
+
+    # def add_employee(self, employee):
+
+    #     with open(Path('files/crew.csv'), 'a', newline='', encoding="utf-8") as csvfile:
+    #         fieldnames = ['social_id', 'name', 'role', 'rank', 'licence', 'address', 'phone_nr', 'email', 'landline']
+    #         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    #         writer.writerow({'social_id': employee.social_id, 'name': employee.name, 'role': employee.role, 'rank': employee.rank, 'licence': employee.licence, 'address': employee.home_address, 'phone_nr': employee.phonenumber, 'email': employee.email, 'landline': employee.landline})
 
 #name -> crew.csv -> name
 #socialID -> crew.csv -> nid

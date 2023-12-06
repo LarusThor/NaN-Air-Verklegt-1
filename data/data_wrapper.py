@@ -20,6 +20,9 @@ class DataWrapper:
     
     def add_new_employee(self, employee):
         return self.employeeIO.add_employee(employee)
+
+    def write_employees(self, employees):
+        return self.employeeIO.write_employees(employees)
     
     #airplanes
     def get_airplanes(self):

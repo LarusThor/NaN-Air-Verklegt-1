@@ -4,8 +4,8 @@ from model.employee_model import Employee
 emp_ll = EmployeeLL()
 
 employee = Employee(
-    name="Bruh",
-    social_id="test_ssn",
+    social_id="broseph",
+    name="Bruh Johnson",
     role="test_role",
     rank="test_rank",
     licence="f",

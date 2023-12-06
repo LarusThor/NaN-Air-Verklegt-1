@@ -5,7 +5,10 @@ from model.employee_model import Employee
 class EmployeeLL:
     def __init__(self) -> None:
         self.data_wrapper = DataWrapper()
+
+        # TODO: don't store employees here, always ask data 
         self.employee_dict = self.data_wrapper.get_all_staff_members()
+        print(self.employee_dict)
 
 
     def get_employee_dict(self) -> list[str]:
@@ -36,15 +39,24 @@ class EmployeeLL:
         return self.employee_dict[social_id]
 
 
-    def change_employee_info(self):
+    def change_employee_info(self, employee: Employee):
         """Lets user change employee information."""
-        pass
+        # TODO: cannot change name
+
+        assert employee.social_id in self.employee_dict, "Employee does not exist!"
+
+        self.employee_dict[employee.social_id] = employee
+
+        self.data_wrapper.write_employees(list(self.employee_dict.values()))
 
 
     def add_employee(self, employee: Employee) -> None:
         """Adds employee to the system."""
+
+        assert employee.social_id not in self.employee_dict, "Employee with same social_id already exists!"
+
         self.employee_dict[employee.social_id] = employee
-        self.data_wrapper.add_new_employee(employee)
+        self.data_wrapper.write_employees(list(self.employee_dict.values()))
 
     def get_total_hours_worked(self):
         """Returns total hours an employee has worked."""
