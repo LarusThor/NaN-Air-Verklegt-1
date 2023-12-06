@@ -6,11 +6,11 @@ class AirplaneLL():
         self.airplane_list = self.data_wrapper.get_airplanes()
         self.airplane_types = self.data_wrapper.get_airplane_types()
    
-    def get_most_used_plane(self):
+    def get_most_used_plane(self): #define
         """ Returns the most used plane. """
         pass
    
-    def get_furthest_flown_plane(self):
+    def get_furthest_flown_plane(self):# define
         """ Returns the plane that has flown the furthest"""
         pass
    
@@ -34,6 +34,6 @@ class AirplaneLL():
         """ Returns the status of a plane on a given day and time. """
         pass
    
-    def get_airplane_usage(self):
+    def get_airplane_usage(self): #define
         """ Returns the total usage of a specific plane. """
         pass
