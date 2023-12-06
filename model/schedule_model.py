@@ -1,8 +1,11 @@
+from dataclasses import dataclass
+
+@dataclass
 class Schedule:
-    def __init__(self, scheduledFlight, scheduledEmployee, scheduledDestination) -> str:
-        self.scheduledFlight = scheduledFlight
-        self.scheduledEmployee = scheduledEmployee
-        self.scheduledDestination = scheduledDestination
+    scheduledFlight: str
+    scheduledEmployee: str
+    scheduledDestination: str
+    
 
 
 #scheduledFlight -> upcoming_flights.csv -> flight_nr
