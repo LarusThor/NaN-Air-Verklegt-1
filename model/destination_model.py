@@ -4,10 +4,10 @@ from dataclasses import dataclass
 class Destination:
     destination_id: str
     destination: str
-    emergencyContact: str
-    emergencyNumber: str
-    airportName: str
-    distanceFromIceland: str
+    emergency_contact: str
+    emergency_number: str
+    airport_name: str
+    distance_from_iceland: str
         
     
 #destination_id -> destinations.csv -> id
