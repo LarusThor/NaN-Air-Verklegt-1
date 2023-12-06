@@ -2,8 +2,6 @@ from data.data_wrapper import DataWrapper
 from logic.airplaneLL import AirplaneLL
 from logic.destinationLL import DestinationLL
 from logic.employeeLL import EmployeeLL
-#from logic.flightattendantLL import FlightAttendant
-#from logic.pilotLL import PilotLL
 from logic.scheduleLL import ScheduleLL
 from logic.voyageLL import VoyageLL
 #from logic.validationLL import ValidationLL
