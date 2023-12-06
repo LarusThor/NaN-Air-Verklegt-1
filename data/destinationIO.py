@@ -6,7 +6,7 @@ class DestinationIO():
         pass
 
 
-    def read_all_destinations(self):
+    def read_all_destinations(self) -> list:
         destination_list = []
         with open('files/destinations.csv', newline='', encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)

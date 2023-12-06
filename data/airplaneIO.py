@@ -2,7 +2,7 @@ class AirplaneIO:
     def __init__(self):
         pass  
 
-    def aircraft_info(self):
+    def aircraft_info(self) -> list[list]:
         airplane_list = []
         with open("files/aircraft.csv", "r") as f:
             lines = f.readlines()
@@ -12,7 +12,7 @@ class AirplaneIO:
                 airplane_list.append([plane_insignia, plane_type_id, date_of_manufacture, last_maintenance])
         return airplane_list
     
-    def aircraft_types(self):
+    def aircraft_types(self) -> list:
         aircraft_types_list = []
         with open("files/aircraft_type.csv", "r") as f:
             lines = f.readlines()
