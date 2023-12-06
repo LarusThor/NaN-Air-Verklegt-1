@@ -19,7 +19,7 @@ class DestinationIO():
                     destination_names.append(value)
         return destination_names
     
-    def add_destination(self, destination):
+    def add_destination(self, destination: Destination) -> None:
         with open('files/destinations.csv', 'a', newline='', encoding="utf-8") as csvfile:
             fieldnames = ['id','destination', 'emergency_contact_name', 'emergency_contact_number', 'airport_name', 'distance_from_iceland']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
