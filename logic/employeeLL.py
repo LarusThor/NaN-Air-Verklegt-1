@@ -3,7 +3,7 @@ from dataclasses import asdict
 from model.employee_model import Employee
 
 class EmployeeLL:
-    def __init__(self):
+    def __init__(self) -> None:
         self.data_wrapper = DataWrapper()
         self.employee_list = self.data_wrapper.get_all_staff_members()
 
@@ -20,14 +20,12 @@ class EmployeeLL:
                 name_list.append(employee_data.name)
         return name_list
     
-    def get_flight_attendants(self):
+    def get_flight_attendants(self) -> list[str] :
         """ Returns a list of all flight attendants. """
         name_list = []
-        for key, employee_data in self.employee_list.items():
-            name = employee_data.name
-            role = employee_data.role
-            if role == "Cabincrew":
-                name_list.append(name)
+        for employee_data in self.employee_list.values():
+            if employee_data.role == "Cabincrew":
+                name_list.append(employee_data.name)
         return name_list
 
     def get_employee(self, social_id: str) -> Employee:

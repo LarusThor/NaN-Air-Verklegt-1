@@ -109,9 +109,10 @@ def add_employee():
         role=work_title, 
         email=email,
         home_address=home_adress, 
-        work_title=work_title,
-        rank="TODO"
-    )
+        landline = "TODO",
+        license = "TODO",
+        rank = "TODO"
+        )
 
     save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
     while save_prompt != "y" and save_prompt != "n":
@@ -128,7 +129,7 @@ def add_employee():
             None
         elif action == "r":
             print()
-            add_employee(employee)   
+            logic_wrapper.add_employee(employee)   
 
     elif save_prompt == "n":
         print()
@@ -140,7 +141,7 @@ def add_employee():
             None
         elif action == "r":
             print()
-            add_employee(employee)   
+            logic_wrapper.add_employee(employee)   
 
 #main
 def employees():
