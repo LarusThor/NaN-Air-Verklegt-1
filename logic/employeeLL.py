@@ -15,20 +15,20 @@ class EmployeeLL:
 
     def get_all_pilots(self) -> list[str]:
         """ Returns a list of all pilots. """
-        name_list = []
+        pilot_list = []
         for employee_data in self.employee_list.values():
             if employee_data.role == "Pilot":
-                name_list.append(employee_data.name)
-        return name_list
+                pilot_list.append(employee_data.name)
+        return pilot_list
     
 
     def get_flight_attendants(self) -> list[str] :
         """ Returns a list of all flight attendants. """
-        name_list = []
+        flight_attendant_list = []
         for employee_data in self.employee_list.values():
             if employee_data.role == "Cabincrew":
-                name_list.append(employee_data.name)
-        return name_list
+                flight_attendant_list.append(employee_data.name)
+        return flight_attendant_list
 
 
     def get_employee(self, social_id: str) -> Employee:
