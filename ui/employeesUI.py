@@ -83,34 +83,54 @@ def add_employee():
     social_id = input("Social ID: ")
     phone_number = input("Phone number: ")
     email = input("Email: ")
-    home_adress = input("Home adress: ")
-    work_titles = ["Captain", "Pilot", "Flight Service Manager", "Flight Attendant"]
-    print("Work title:\n1. Captain\n2. Pilot\n3. Flight Service Manager\n4. Flight Attendant")
-    work_title = input()
-    while work_title != "1" and work_title != "2" and work_title != "3" and work_title != "4":
-        print("Invalid input! You can choose 1, 2, 3, or 4")
-        work_title = input("Work title: ")
+    home_address = input("Home adress: ")
 
-    if work_title == "1" or work_title == "2":
-        flight_type = input("Enter the flight type the employee is qualified to fly: ")
+    roles = ["Pilot","Cabincrew"]
+    print("Role:\n1. Pilot\n2. Cabincrew")
+    role = input()
+    while role != "1" and role != "2":
+        print("Invalid input! You can choose 1, 2")
+        role = input("Role: ")
+    ranks = ["Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
+    print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
+    rank = input()
+    while rank != "1" and rank != "2" and rank != "3" and rank != "4":
+        print("Invalid input! You can choose 1, 2, 3, or 4")
+        rank = input("Rank: ")
+    if rank == "1" or rank == "2":
+        licences = ["NAFokker100","NAFokkerF28","NABAE146"]
+        print("Licenses:\n1. NAFokker100\n2. NAFokkerF28\n3. NABAE146",)
+        licence = input()
+    else:
+        licence = "N/A"
+    optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
+    if optional_landline == "y":
+        landline = input("Landline number: ")
+    else:
+        landline = None
+
     print("New employee:")
     print("Name:", name)
     print("Social ID:", social_id)
     print("Phone number:", phone_number)
     print("Email:", email)
-    print("Home adress:", home_adress)
-    print("Work title:", work_titles[int(work_title) - 1])
+    print("Home adress:", home_address)
+    print("Role:", roles[int(role) - 1])
+    print("Rank:", ranks[int(rank) - 1])
+    print("License:", licences[int(licence) - 1])
+    print("Landline number:", landline)
 
     # TODO
     employee = Employee(
         name=name, 
         socialID=social_id, 
         phonenumber=phone_number,
-        role=work_title, 
+        role=role, 
+        rank=rank,
+        licence=licence,
         email=email,
-        home_address=home_adress, 
-        work_title=work_title,
-        rank="TODO"
+        home_address=home_address,
+        landline=landline
     )
 
     save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
