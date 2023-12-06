@@ -10,9 +10,8 @@ class Employee:
     email: str
     phonenumber: str
     home_address: str
+    landline: str | None
 
-
-    
 #name -> crew.csv -> name
 #socialID -> crew.csv -> nid
 #email -> crew.csv -> email
