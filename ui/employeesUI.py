@@ -148,7 +148,7 @@ def add_employee():
             None
         elif action == "r":
             print()
-            add_employee(employee)   
+            logic_wrapper.add_employee(employee)   
 
     elif save_prompt == "n":
         print()
@@ -160,7 +160,7 @@ def add_employee():
             None
         elif action == "r":
             print()
-            add_employee(employee)   
+            logic_wrapper.add_employee(employee)   
 
 #main
 def employees():
