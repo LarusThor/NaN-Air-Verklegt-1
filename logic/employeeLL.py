@@ -44,9 +44,12 @@ class EmployeeLL:
         """Lets user change employee information."""
         pass
 
-    def add_employee(self, employee_info):
+    def add_employee(self, employee: Employee) -> None:
         """Adds employee to the system."""
-        pass
+        self.employee_list.append(employee)
+        #TODO: ask datawrapper to write the employee
+
+
 
     def get_total_hours_worked(self):
         """Returns total hours an employee has worked."""

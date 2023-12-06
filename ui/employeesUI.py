@@ -1,5 +1,6 @@
 from ui.main_menuUI import display_options
 from logic.LogicWrapper import LogicWrapper
+from model.employee_model import Employee
 
 EMPLOYEES_OPTIONS = ["1. List employees - Alphabetical", "2. Employee information", "3. Add employee"]
 LIST_EMPLOYEES_OPTIONS = ["1. Print pilots", "2. Print flight attendants", "3. Print all employees", "4. Print most experienced"]
@@ -99,6 +100,19 @@ def add_employee():
     print("Email:", email)
     print("Home adress:", home_adress)
     print("Work title:", work_titles[int(work_title) - 1])
+
+    # TODO
+    employee = Employee(
+        name=name, 
+        socialID=social_id, 
+        phonenumber=phone_number,
+        role=work_title, 
+        email=email,
+        home_address=home_adress, 
+        work_title=work_title,
+        rank="TODO"
+    )
+
     save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
     while save_prompt != "y" and save_prompt != "n":
         print("Invalid input!")
@@ -114,7 +128,7 @@ def add_employee():
             None
         elif action == "r":
             print()
-            add_employee()   
+            add_employee(employee)   
 
     elif save_prompt == "n":
         print()
@@ -126,7 +140,7 @@ def add_employee():
             None
         elif action == "r":
             print()
-            add_employee()   
+            add_employee(employee)   
 
 #main
 def employees():
