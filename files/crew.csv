@@ -1,4 +1,4 @@
-nid,name,role,rank,licence,address,phone_nr, email, landline
+social_id,name,role,rank,licence,address,phone_nr, email, landline
 3009907461,William Carillo,Pilot,Captain,NAFokkerF100,Fellsmúli 1,8998801, bruck@comcast.net, 7854878
 2910858778,Virginia Ho,Pilot,Captain,NABAE146,Fellsmúli 2,8998802, matthijs@att.net, 5205511
 2706838569,Gerard Norris,Pilot,Captain,NAFokkerF100,Fellsmúli 3,8998803, farber@gmail.com, 9114690
@@ -34,3 +34,5 @@ nid,name,role,rank,licence,address,phone_nr, email, landline
 1110732819,Arthur Karr,Cabincrew,Flight Attendant,N/A,Fellsmúli 33,8998833, sethbrown@msn.com, N/A
 2602806942,Teresa Thruman,Cabincrew,Flight Attendant,N/A,Fellsmúli 34,8998834, hermanab@live.com, N/A
 1107951952,Elizabeth Mcfadden,Cabincrew,Flight Attendant,N/A,Fellsmúli 35,8998835, yfreund@sbcglobal.net, N/A
+test_ssn,Bruh,test_role,test_rank,f,bruh street 69,0.5,f@f.f,??
+test_ssn,Bruh,test_role,test_rank,f,bruh street 69,0.5,f@f.f,??

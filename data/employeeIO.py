@@ -1,5 +1,6 @@
 import csv
 from model.employee_model import Employee
+from pathlib import Path
 
 class EmployeeIO:
     def __init__(self):
@@ -18,11 +19,12 @@ class EmployeeIO:
         return employee_dict
 
     def add_employee(self, employee):
-        with open('files\crew.csv', 'a', newline='', encoding="utf-8") as csvfile:
-            fieldnames = ['nid', 'name', 'role', 'rank', 'licence', 'address', 'phone_nr', 'email']
+
+        with open(Path('files/crew.csv'), 'a', newline='', encoding="utf-8") as csvfile:
+            fieldnames = ['social_id', 'name', 'role', 'rank', 'licence', 'address', 'phone_nr', 'email', 'landline']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-            writer.writerow({'nid': employee.socialID, 'name': employee.name, 'role': employee.role, 'rank': employee.rank, 'licence': employee.license, 'address': employee.home_address, 'phone_nr': employee.phonenumber, 'email': employee.email, 'landline': employee.landline})
+            writer.writerow({'social_id': employee.social_id, 'name': employee.name, 'role': employee.role, 'rank': employee.rank, 'licence': employee.licence, 'address': employee.home_address, 'phone_nr': employee.phonenumber, 'email': employee.email, 'landline': employee.landline})
 
 #name -> crew.csv -> name
 #socialID -> crew.csv -> nid

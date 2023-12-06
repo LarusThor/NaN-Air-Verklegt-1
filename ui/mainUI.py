@@ -71,13 +71,13 @@ class Main:
                 action = self.employee_ui.employees_options()
                 
                 if action == "m" or action == "b":
-                    None
+                    pass
 
                 # list employees :
                 elif action == "1":
                     action = self.employee_ui.list_employees_options()
                     if action == "m":
-                        None
+                        pass
                     # elif action == "b":
                     #     employees()
                     elif action == "1": 
@@ -97,7 +97,8 @@ class Main:
                     action = self.employee_ui.employee_info_options()
                     
                     if action == "m":
-                        None
+                        # TODO: ???
+                        pass
 
                     elif action == "1":
                         self.employee_ui.get_info(employee_name)
@@ -111,9 +112,9 @@ class Main:
                         elif action == "3":
                             self.employee_ui.change_email()
                         
-                    # Add employee :
-                    elif action == "3":
-                        self.employee_ui.add_employee()
+                # Add employee :
+                elif action == "3":
+                    self.employee_ui.add_employee()
 
             def schedule() -> None:
                 action = self.schedule_ui.schedule_options()

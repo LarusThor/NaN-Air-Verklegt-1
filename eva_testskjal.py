@@ -1,8 +1,18 @@
 from logic.employeeLL import EmployeeLL
-from data.data_wrapper import DataWrapper
-from logic.airplaneLL import AirplaneLL
-
+from model.employee_model import Employee
 
 emp_ll = EmployeeLL()
 
-print(emp_ll.get_employee_info())
+employee = Employee(
+    name="Bruh",
+    social_id="test_ssn",
+    role="test_role",
+    rank="test_rank",
+    licence="f",
+    email="f@f.f",
+    phonenumber="0.5",
+    home_address="bruh street 69",
+    landline="??"
+)
+
+emp_ll.add_employee(employee)
