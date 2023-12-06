@@ -1,4 +1,6 @@
 from data.data_wrapper import DataWrapper
+from dataclasses import asdict
+from model.employee_model import Employee
 
 class EmployeeLL:
     def __init__(self):
@@ -34,26 +36,15 @@ class EmployeeLL:
                 name_list.append(name)
         return name_list
 
-    def get_employee_info(self, social_id):
+    def get_employee(self, social_id: str) -> Employee:
         """Returns information about a chosen employee."""
-        social_id = str(social_id)
-        for key, employee_data in self.employee_list.items():
-            name = employee_data.name
-            role = employee_data.role
-            rank = employee_data.rank
-            licence = employee_data.license
-            address = employee_data.address
-            phone_nr = employee_data.phone_nr
-            email = employee_data.email
-            if str(key) == str(social_id):
-                return name
-                #return f"{name}, {social_id}, {phone_nr}, {email}, {address}, {role}, {licence}"
+        return self.employee_list[social_id]
 
     def change_employee_info(self):
         """Lets user change employee information."""
         pass
 
-    def add_employee(self):
+    def add_employee(self, employee_info):
         """Adds employee to the system."""
         pass
 

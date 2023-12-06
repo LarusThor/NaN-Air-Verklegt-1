@@ -1,13 +1,18 @@
+from dataclasses import dataclass
+
+@dataclass
 class Employee:
-    def __init__(self, name, socialID, role, rank, license, email, phonenumber, home_address) -> str:
-        self.name = name
-        self.socialID = socialID
-        self.role = role
-        self.rank = rank
-        self.license = license
-        self.email = email
-        self.phonenumber = phonenumber
-        self.home_address = home_address
+    name: str
+    socialID: str
+    role: str
+    rank: str
+    license: str
+    email: str
+    phonenumber: str
+    home_address: str
+
+
+    
 #name -> crew.csv -> name
 #socialID -> crew.csv -> nid
 #email -> crew.csv -> email
