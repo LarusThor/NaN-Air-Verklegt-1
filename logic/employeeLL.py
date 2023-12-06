@@ -8,22 +8,16 @@ class EmployeeLL:
         self.employee_list = self.data_wrapper.get_all_staff_members()
 
 
-    def get_employee_list(self):
+    def get_employee_list(self) -> list[str]:
         """ Returns a list of all employees within the system. """
-        name_list = []
-        for social_id, employee_data in self.employee_list.items():
-            name = employee_data.name
-            name_list.append(name)
-        return name_list
+        return [employee.name for employee in self.employee_list.values()]
 
-    def get_all_pilots(self):
+    def get_all_pilots(self) -> list[str]:
         """ Returns a list of all pilots. """
         name_list = []
-        for key, employee_data in self.employee_list.items():
-            name = employee_data.name
-            role = employee_data.role
-            if role == "Pilot":
-                name_list.append(name)
+        for employee_data in self.employee_list.values():
+            if employee_data.role == "Pilot":
+                name_list.append(employee_data.name)
         return name_list
     
     def get_flight_attendants(self):
