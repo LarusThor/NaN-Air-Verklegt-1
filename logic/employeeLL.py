@@ -12,6 +12,7 @@ class EmployeeLL:
         """ Returns a list of all employees within the system. """
         return [employee.name for employee in self.employee_list.values()]
 
+
     def get_all_pilots(self) -> list[str]:
         """ Returns a list of all pilots. """
         name_list = []
@@ -20,6 +21,7 @@ class EmployeeLL:
                 name_list.append(employee_data.name)
         return name_list
     
+
     def get_flight_attendants(self) -> list[str] :
         """ Returns a list of all flight attendants. """
         name_list = []
@@ -28,19 +30,21 @@ class EmployeeLL:
                 name_list.append(employee_data.name)
         return name_list
 
+
     def get_employee(self, social_id: str) -> Employee:
         """Returns information about a chosen employee."""
         return self.employee_list[social_id]
+
 
     def change_employee_info(self):
         """Lets user change employee information."""
         pass
 
+
     def add_employee(self, employee: Employee) -> None:
         """Adds employee to the system."""
         self.employee_list.append(employee)
         #TODO: ask datawrapper to write the employee
-
 
 
     def get_total_hours_worked(self):
