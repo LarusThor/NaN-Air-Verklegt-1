@@ -1,4 +1,4 @@
-from ui.main_menuUI import Menu
+from ui.menu_managerUI import Menu
 from logic.LogicWrapper import LogicWrapper
 
 DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Destination information"]
@@ -15,8 +15,15 @@ class DestinationsUI:
         action = str(input("Enter your action: ").lower())
         return action
 
-    def get_all_destinations(self) -> None:
-        print(self.destinations_list)
+    def get_all_destinations(self) -> str:
+        print()
+        print("Destinations:")
+        for place in self.destinations_list:
+            print(place)
+        print()
+        print("(M)enu  (R)epeat")
+        action = input("Enter your action :")
+        return action
 
     def get_most_popular_destination(self):
         pass

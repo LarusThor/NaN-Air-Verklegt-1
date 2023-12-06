@@ -1,4 +1,4 @@
-from ui.main_menuUI import Menu
+from ui.menu_managerUI import Menu
 from logic.LogicWrapper import LogicWrapper
 
 SCHEDULE_OPTIONS = ["1. Schedule for a specific day", "2. Schedule for specific employee"]
