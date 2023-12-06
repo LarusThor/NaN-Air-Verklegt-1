@@ -14,6 +14,7 @@ class EmployeeUI:
         self.all_employees_list = self.logic_wrapper.employee_list()
         self.pilot_list = self.logic_wrapper.pilot_list()
         self.flight_attendant_list = self.logic_wrapper.flight_attendant_list()
+        self.employee_info = self.logic_wrapper.employee_info
 
     def employees_options(self) -> str:
         self.menus.display_options(EMPLOYEES_OPTIONS)
@@ -60,7 +61,9 @@ class EmployeeUI:
         pass
 
     def get_employee(self):
-        pass
+        social_id = str(input("Enter employee social ID: ")).strip()
+        employee = self.employee_info(social_id)
+        print(employee)
 
     def employee_info_options(self) -> str:
         self.menus.display_options(EMPLOYEE_INFORMATION_OPTIONS)
@@ -68,7 +71,9 @@ class EmployeeUI:
         return action 
 
     def get_info(self):
-        pass
+        social_id = str(input("Enter employee social ID: ")).strip()
+        employee = self.employee_info(social_id)
+        print(employee)
 
     def change_info_options(self):
         pass
