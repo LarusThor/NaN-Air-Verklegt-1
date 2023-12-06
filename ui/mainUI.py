@@ -164,20 +164,14 @@ class Main:
                     date = self.flight_info.get_date()
                     self.flight_info.get_flight_status_by_date(date)
 
-            if action == "1":
-                airplane()
-
-            elif action == "2":
-                destinations()
-
-            elif action == "3":
-                employees()
-
-            elif action == "4":
-                schedule()
-
-            elif action == "5":
-                schedule()
-                
-            elif action == "6":
-                flight_information()
+           
+            options = {
+                "1": airplane,
+                "2": destinations,
+                "3": employees,
+                "4": schedule,
+                "5": voyages,
+                "6": flight_information
+            }
+            
+            options[action]()
