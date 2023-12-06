@@ -17,8 +17,12 @@ class DestinationLL():
         return destination_names
     
     def add_destination(self, destination):
-        """ Adds a destination to the system. """
-        pass
+        """Takes in a customer object and forwards it to the data layer"""
+        dest = DataWrapper()
+        dest.add_destinations(destination)
+
+    def get_all_customers(self):
+        return self.data_wrapper.get_all_customers()
    
     def get_most_popular_destination(self): #reyna að stytta nafn
         """ Returns the most popular destination. """
