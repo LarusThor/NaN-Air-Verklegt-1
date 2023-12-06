@@ -1,12 +1,14 @@
+from dataclasses import dataclass
+
+@dataclass
 class Destination:
-    def __init__(self, destination_id, destination, emergencyContact, emergencyNumber, 
-                 airportName, distanceFromIceland) -> str:
-        self.destination_id = destination_id
-        self.destination = destination
-        self.emergencyContact = emergencyContact
-        self.emergencyNumber = emergencyNumber
-        self.airportName = airportName
-        self.distanceFromIceland = distanceFromIceland
+    destination_id: str
+    destination: str
+    emergencyContact: str
+    emergencyNumber: str
+    airportName: str
+    distanceFromIceland: str
+        
     
 #destination_id -> destinations.csv -> id
 #destination -> destinations.csv -> destination
@@ -14,3 +16,4 @@ class Destination:
 #emergencyNumber -> destinations.csv -> emergency_contact_number
 #airportName -> destinations.csv -> airport_name
 #distanceFromIceland -> destinations.csv -> distance_from_iceland
+

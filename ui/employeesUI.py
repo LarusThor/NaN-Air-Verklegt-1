@@ -1,5 +1,6 @@
 from ui.main_menuUI import Menu
 from logic.LogicWrapper import LogicWrapper
+from model.employee_model import Employee
 
 EMPLOYEES_OPTIONS = ["1. List employees - Alphabetical", "2. Employee information", "3. Add employee"]
 LIST_EMPLOYEES_OPTIONS = ["1. Print pilots", "2. Print flight attendants", "3. Print all employees", "4. Print most experienced"]
@@ -77,8 +78,78 @@ class EmployeesUI:
     def get_info(self, employee_name):
         pass
 
+<<<<<<< HEAD
     def change_info_options(self):
         self.menus.display_options(CHANGE_EMPLOYEE_INFO_OPTIONS)
+=======
+
+def add_employee():
+    print("Fill out the following informaation about the new employee:")
+    name = input("Name: ")
+    social_id = input("Social ID: ")
+    phone_number = input("Phone number: ")
+    email = input("Email: ")
+    home_address = input("Home adress: ")
+
+    roles = ["Pilot","Cabincrew"]
+    print("Role:\n1. Pilot\n2. Cabincrew")
+    role = input()
+    while role != "1" and role != "2":
+        print("Invalid input! You can choose 1, 2")
+        role = input("Role: ")
+    ranks = ["Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
+    print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
+    rank = input()
+    while rank != "1" and rank != "2" and rank != "3" and rank != "4":
+        print("Invalid input! You can choose 1, 2, 3, or 4")
+        rank = input("Rank: ")
+    if rank == "1" or rank == "2":
+        licences = ["NAFokker100","NAFokkerF28","NABAE146"]
+        print("Licenses:\n1. NAFokker100\n2. NAFokkerF28\n3. NABAE146",)
+        licence = input()
+    else:
+        licence = "N/A"
+    optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
+    if optional_landline == "y":
+        landline = input("Landline number: ")
+    else:
+        landline = None
+
+    print("New employee:")
+    print("Name:", name)
+    print("Social ID:", social_id)
+    print("Phone number:", phone_number)
+    print("Email:", email)
+    print("Home adress:", home_address)
+    print("Role:", roles[int(role) - 1])
+    print("Rank:", ranks[int(rank) - 1])
+    print("License:", licences[int(licence) - 1])
+    print("Landline number:", landline)
+
+    # TODO
+    employee = Employee(
+        name=name, 
+        socialID=social_id, 
+        phonenumber=phone_number,
+        role=role, 
+        rank=rank,
+        licence=licence,
+        email=email,
+        home_address=home_address,
+        landline=landline
+    )
+
+    save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
+    while save_prompt != "y" and save_prompt != "n":
+        print("Invalid input!")
+        save_prompt = input("Enter Y for yes or N for no:").lower()
+
+    if save_prompt == "y":
+        print()
+        print("New employee saved!")
+        print()
+        print("(M)enu  (R)epeat")
+>>>>>>> 9968da1c59c0ac572f83d0cad99b3a18d800002b
         action = str(input("Enter your action: ").lower())
         return action
 
@@ -125,6 +196,7 @@ class EmployeesUI:
 
         if save_prompt == "y":
             print()
+<<<<<<< HEAD
             print("New employee saved!")
             print()
             print("(M)enu  (R)epeat")
@@ -134,6 +206,21 @@ class EmployeesUI:
             elif action == "r":
                 print()
                 EmployeesUI.add_employee()   
+=======
+            logic_wrapper.add_employee(employee)   
+
+    elif save_prompt == "n":
+        print()
+        print("New employee not saved.")
+        print()
+        print("(M)enu  (R)epeat")
+        action = str(input("Enter your action: ").lower())
+        if action == "m":
+            None
+        elif action == "r":
+            print()
+            logic_wrapper.add_employee(employee)   
+>>>>>>> 9968da1c59c0ac572f83d0cad99b3a18d800002b
 
         elif save_prompt == "n":
             print()
