@@ -6,17 +6,14 @@ class DestinationIO():
         pass
 
 
-    def read_destination(self):
-        destination_dict = {}
-        with open("files/destinations.csv", "r") as f:
-            lines = f.readlines()
-            for line in lines[1:]:
-                line = line.strip()
-                destination_id, destination_name,  emergency_contact, emergency_number, airport_name, distance_from_iceland = line.split(",")
-                destination = Destination(destination_id, destination_name, emergency_contact, emergency_number, airport_name, distance_from_iceland)
-                destination_dict[destination_id] = (destination)
-
-        return destination_dict
+    def read_all_destinations(self):
+        destination_list = []
+        with open('files\destinations.csv', newline='', encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                destination = Destination(row['id'], row['destination'], row['emergency_contact_name'], row['emergency_contact_number'], row['airport_name'], row['distance_from_iceland'])
+                destination_list.append(destination)
+        return destination_list
     
     def add_destination(self, destination):
         with open('files\destinations.csv', 'a', newline='', encoding="utf-8") as csvfile:
@@ -35,3 +32,5 @@ class DestinationIO():
 #airportName -> destinations.csv -> airport_name
 #distanceFromIceland -> destinations.csv -> distance_from_iceland
 
+'''destination_id, destination, emergencyContact, emergencyNumber, 
+                 airportName, distanceFromIceland'''

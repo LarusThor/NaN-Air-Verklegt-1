@@ -6,7 +6,7 @@ class Employee:
     socialID: str
     role: str
     rank: str
-    license: str
+    licence: str
     email: str
     phonenumber: str
     home_address: str
