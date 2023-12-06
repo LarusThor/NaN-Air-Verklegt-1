@@ -1,12 +1,15 @@
+from dataclasses import dataclass
+
+@dataclass
 class Airplane:
-    def __init__(self, airplaneID, airplaneManufacturer, airplaneType, airplaneCapacity, airplaneInsignia ,airplaneUsage,airplaneTotalFlightTime) -> str:
-        self.airplaneID = airplaneID
-        self.airplaneManufacturer = airplaneManufacturer
-        self.airplaneType = airplaneType
-        self.airplaneInsignia = airplaneInsignia
-        self.airplaneCapacity = airplaneCapacity
-        self.airplaneUsage = airplaneUsage
-        self.airplaneTotalFlightTime = airplaneTotalFlightTime
+    airplaneID: str
+    airplaneManufacturer: str
+    airplaneType: str
+    airplaneCapacity: str
+    airplaneInsignia: str
+    airplaneUsage: str
+    airplaneTotalFlightTime: str
+        
 
 #airplaneID -> aircraft_type.csv -> plane_type_id
 #airplaneManufacturer -> aircraft_type.csv -> manufacturer
