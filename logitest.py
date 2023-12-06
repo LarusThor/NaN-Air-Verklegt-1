@@ -1,17 +1,17 @@
-from data.destinationIO import DestinationIO
+from logic.LogicWrapper import LogicWrapper
 from model.destination_model import Destination
 
-'''dest = Destination(
-destination_id = "test",
-destination = "test",
-airportName = "test",
-distanceFromIceland = "test",
-emergencyContact = "test",
-emergencyNumber = "test")'''
+dest = Destination(
+destination_id = "Logi",
+destination = "er",
+emergencyContact = "bestur",
+emergencyNumber = "that's",
+airportName = "on",
+distanceFromIceland = "god"
+)
 
+d = LogicWrapper()
 
-d = DestinationIO()
-
-dest_list = d.read_all_destinations()
+dest_list = d.add_destination(dest)
 print(dest_list)
 'd.add_destination(dest)'
