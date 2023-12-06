@@ -15,8 +15,15 @@ class DestinationsUI:
         action = str(input("Enter your action: ").lower())
         return action
 
-    def get_all_destinations(self) -> None:
-        print(self.destinations_list)
+    def get_all_destinations(self) -> str:
+        print()
+        print("Destinations:")
+        for place in self.destinations_list:
+            print(place)
+        print()
+        print("(M)enu  (R)epeat")
+        action = input("Enter your action :")
+        return action
 
     def get_most_popular_destination(self):
         pass

@@ -20,7 +20,6 @@ class Main:
         self.voyages_ui = VoyagesUI()
         self.flight_info = FlightInfoUI()
         self.logic_wrapper = LogicWrapper()
-        self.pilots_list = self.logic_wrapper.pilot_list()
 
 
 
@@ -57,7 +56,7 @@ class Main:
             def destinations() -> None:
                 action = self.destinations_ui.destinations()
                 if action == "1":
-                    self.destinations_ui.get_all_destinations()
+                    action = self.destinations_ui.get_all_destinations()
 
                 elif action == "2":
                     self.destinations_ui.get_most_popular_destination()
