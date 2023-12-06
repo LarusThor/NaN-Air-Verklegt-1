@@ -7,7 +7,7 @@ class EmployeeIO:
 
     def read_employee(self):
         employee_dict = {}
-        with open("files/crew.csv", "r") as f:
+        with open("files/crew.csv", "r", newline='', encoding="utf-8") as f:
             lines = f.readlines()
             for line in lines[1:]:
                 line = line.strip()
@@ -18,11 +18,12 @@ class EmployeeIO:
         return employee_dict
 
     def add_employee(self, employee):
-        with open('files\crew.csv', 'a', newline='', encoding="utf-8") as csvfile:
+        with open('files/crew.csv', 'a', newline='', encoding="utf-8") as csvfile:
             fieldnames = ['nid', 'name', 'role', 'rank', 'licence', 'address', 'phone_nr', 'email']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-            writer.writerow({'nid': employee.socialID, 'name': employee.name, 'role': employee.role, 'rank': employee.rank, 'licence': employee.license, 'address': employee.home_address, 'phone_nr': employee.phonenumber, 'email': employee.email, 'landline': employee.landline})
+            writer.writerow(employee)
+
 
 #name -> crew.csv -> name
 #socialID -> crew.csv -> nid

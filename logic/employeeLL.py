@@ -44,7 +44,7 @@ class EmployeeLL:
     def add_employee(self, employee: Employee) -> None:
         """Adds employee to the system."""
         self.employee_list.append(employee)
-        #TODO: ask datawrapper to write the employee
+        self.data_wrapper.add_new_employee(employee)
 
 
     def get_total_hours_worked(self):
