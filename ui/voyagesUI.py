@@ -10,12 +10,12 @@ class VoyagesUI:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
 
-    def voyages_options(self):
+    def voyages_options(self) -> str:
         self.menus.display_options(VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
-    def add_voyage(self):
+    def add_voyage(self) -> None:
         print("New voyage: ")
         destination = input("Destination: ")
         airplane_type = input("Airplane type: ")
@@ -36,16 +36,16 @@ class VoyagesUI:
         elif save_prompt == "n":
             print("New voyage was not saved.")
 
-    def list_voyage_options(self):
+    def list_voyage_options(self) -> str:
         self.menus.display_options(LIST_VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
         
-    def get_date(self):
+    def get_date(self) -> str:
         date = input("Enter date; day/month/year: ")
         return date
     
-    def get_week(self):
+    def get_week(self) -> str:
         week = input("Enter week number (1-52): ")
         return week
     
@@ -56,14 +56,14 @@ class VoyagesUI:
         pass
 
 
-    def staff_voyage(self):
+    def staff_voyage(self) -> None:
         flight_number = input("Enter a flight number: ")
         captain = input("Enter captain's social ID: ")
         pilot = input("Enter pilot's social ID: ")
         head_flight_crew = input("Enter head flight attendant's social ID: ")
         #TODO add an option for more flight attendants
 
-    def cancel_voyage(self):
+    def cancel_voyage(self): #define
         flight_number = input("Enter flight number: ")
         save_prompt = input(f"Would you like to cancel voyage {flight_number}? (y)es or (n)o")
         #TODO show th ifo for the voyage

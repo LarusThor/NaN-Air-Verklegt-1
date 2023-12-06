@@ -10,18 +10,18 @@ class ScheduleUI:
         self.menus = Menu()
         self.logic_wrapper = LogicWrapper()
 
-    def schedule_options(self):
+    def schedule_options(self) -> str:
         self.menus.display_options(SCHEDULE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
-    def get_schedule_by_day(self):
+    def get_schedule_by_day(self) -> str:
         print("Choose day")
         print("Input date as: day/month/year")
         date = input("Enter date: ")
         return date
     
-    def schedule_for_a_day_options(self):
+    def schedule_for_a_day_options(self) -> str:
         self.menus.display_options(SCHEDULE_FOR_A_DAY_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
@@ -32,7 +32,7 @@ class ScheduleUI:
     def get_how_was_not_working(self, date):
         pass
 
-    def get_employee(self):
+    def get_employee(self) -> str:
         employee = input("Enter the employees social ID: ")
         return employee
     
