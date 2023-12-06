@@ -14,21 +14,21 @@ class AirplaneUI:
         self.airplane_types = self.logic_wrapper.airplane_types()
 
 
-    def airplane(self):
+    def airplane(self) -> str:
         self.menus.display_options(AIRPLANE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
-    def airplane_types_and_licanse(self): #if nr 1 from AIRPLANE_OPTIONS is chosen
+    def airplane_types_and_licanse(self) -> str: #if nr 1 from AIRPLANE_OPTIONS is chosen
         self.menus.display_options(AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
-    def pilots_by_licanse(self): # if nr 1 from AIRPLANE_TYPES_AND_LICENSE_OPTIONS is chosen
+    def pilots_by_licanse(self) -> None: # if nr 1 from AIRPLANE_TYPES_AND_LICENSE_OPTIONS is chosen
         self.menus.display_options(PILOTS_BY_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
     
-    def types(self):
+    def types(self) -> str:
         for item in self.airplane_types:
             print(item)
         print()
@@ -36,7 +36,7 @@ class AirplaneUI:
         action = str(input("Enter your action: ").lower())
         return action
 
-    def add_airplane(self):
+    def add_airplane(self): #define
         name = input("Enter airplane name: ")
         type = input("Enter airplane type: ")
         manufacturer = input("Enter airplane manufacturer: ")
@@ -48,7 +48,7 @@ class AirplaneUI:
         print("Number of seats:", number_of_seats)
         save_prompt = input("Would you like to save this new airplane, (y)es or (n)o? ").lower()
 
-    def airplane_usage_options(self):
+    def airplane_usage_options(self) -> str:
         self.menus.display_options(AIRPLANE_USAGE)
         action = str(input("Enter your action: ").lower())
         return action

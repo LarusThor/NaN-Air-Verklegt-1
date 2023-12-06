@@ -15,17 +15,17 @@ class EmployeeUI:
         self.pilot_list = self.logic_wrapper.pilot_list()
         self.flight_attendant_list = self.logic_wrapper.flight_attendant_list()
 
-    def employees_options(self):
+    def employees_options(self) -> str:
         self.menus.display_options(EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
-    def list_employees_options(self):
+    def list_employees_options(self) -> str:
         self.menus.display_options(LIST_EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
-    def print_crew(self, crew_list):
+    def print_crew(self, crew_list) -> None:
         """function used to print out a list"""
         crew_list.sort()
         for person in crew_list:
@@ -38,19 +38,19 @@ class EmployeeUI:
         elif action == "r":
             None
 
-    def get_pilots(self):
+    def get_pilots(self) -> None:
         print()
         print("All pilots:")
         print("-"*15)
         self.print_crew(self.pilot_list)
     
-    def get_flight_attendants(self):
+    def get_flight_attendants(self) -> None:
         print()
         print("All flight attendants:")
         print("-"*15)
         self.print_crew(self.flight_attendant_list)
     
-    def get_all_employees(self):
+    def get_all_employees(self) -> None:
         print()
         print("All employees:")
         print("-"*15)
@@ -62,7 +62,7 @@ class EmployeeUI:
     def get_employee(self):
         pass
 
-    def employee_info_options(self):
+    def employee_info_options(self) -> str:
         self.menus.display_options(EMPLOYEE_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())   
         return action 
@@ -82,7 +82,7 @@ class EmployeeUI:
     def change_email(self):
         pass
 
-    def add_employee(self):
+    def add_employee(self): #define
         print("Fill out the following informaation about the new employee:")
         name = input("Name: ")
         social_id = input("Social ID: ")
