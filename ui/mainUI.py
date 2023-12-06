@@ -2,7 +2,7 @@ from logic.LogicWrapper import LogicWrapper
 from ui.main_menuUI import Menu
 from ui.airplaneUI import AirplaneUI
 from ui.destinationsUI import DestinationsUI
-from ui.employeesUI import EmployeesUI
+from ui.employeesUI import EmployeeUI
 from ui.scheduleUI import ScheduleUI
 from ui.voyagesUI import VoyagesUI
 from ui.flight_infoUI import FlightInfoUI
@@ -15,7 +15,7 @@ class Main:
         self.menus = Menu()
         self.airplane_ui = AirplaneUI()
         self.destinations_ui = DestinationsUI()
-        self.employee_ui = EmployeesUI()
+        self.employee_ui = EmployeeUI()
         self.schedule_ui = ScheduleUI()
         self.voyages_ui = VoyagesUI()
         self.flight_info = FlightInfoUI()
@@ -69,14 +69,14 @@ class Main:
                     self.destinations_ui.get_destination_info()
 
             def employees():
-                action = self.employee_ui.employees()
+                action = self.employee_ui.employees_options()
                 
                 if action == "m" or action == "b":
                     None
 
                 # list employees :
                 elif action == "1":
-                    action = self.employee_ui.list_employees()
+                    action = self.employee_ui.list_employees_options()
                     if action == "m":
                         None
                     # elif action == "b":
