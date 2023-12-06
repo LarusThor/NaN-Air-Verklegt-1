@@ -1,5 +1,7 @@
-class PilotIO():
-    def __init__():
+from model.pilot_model import Pilot
+
+class PilotIO:
+    def __init__(self):
         pass
     
     def read_pilot(self):
@@ -9,6 +11,7 @@ class PilotIO():
             for line in lines[1:]:
                 line = line.strip()
                 nid, name, licence, phone_nr, email, licence, rank = line.split(",")
-                pilot_dict[nid] = [name, licence, phone_nr, email, licence, rank]
+                pilot = Pilot(nid, name, licence, phone_nr, email, licence, rank)                
+                pilot_dict[nid] = (pilot)
 
         return pilot_dict
