@@ -18,7 +18,7 @@ class AirplaneLL():
         """ Returns the plane that has gone on the most voyages. """
         pass
    
-    def get_all_airplane_types(self):
+    def get_all_airplane_types(self) -> list:
         """ Returns a list of all the airplane types in the system. """
         airplane_types = self.airplane_types
 
