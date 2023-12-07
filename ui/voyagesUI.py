@@ -9,6 +9,7 @@ class VoyagesUI:
     def __init__(self) -> None:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
+        self.get_voyages = self.logic_wrapper.upcoming_voyages()
 
     def voyages_options(self) -> str:
         self.menus.display_options(VOYAGES_OPTIONS)
@@ -49,8 +50,13 @@ class VoyagesUI:
         week = input("Enter week number (1-52): ")
         return week
     
-    def get_voyage_by_date(self, date):
-        pass
+    def get_voyage_by_date(self) -> str:
+        # print("{:<15}{:<10}{:<10}{:<20}{:<20}{:<15}{:<15}{:<15}{:<15}{:<15}{:<15}{:<15}{:<15}".format('Flight Number'),('Departure From'),('Arrival At'),('Departure Time'),('Arrival Time'),('Captain'),('Copilot'),('Flight Service Manager'),('Attendant 1'),('Attendant 2'),('Attendant 3'),('Attendant 4'),('Attendant 5'))
+        print("{:<10}{:>7}{:>7}{:>20}{:>20}{:>15}{:>15}{:>27}".format('Flight Number', 'From', 'To', 'Departure Time', 'Arrival Time', 'Captain', 'Copilot', 'Flight Service Manager'))
+        print("-" * 120)
+        # print(f"Flight Numberdep_from\tarr_at\tdeparture\tarrival\tcaptain\tcopilot\tfsm\tfa1\tfa2\tfa3\tfa4\tfa5")
+        for voyage in self.get_voyages:
+            print(voyage, end="\n")
 
     def get_voyage_by_week(self, week):
         pass

@@ -10,7 +10,7 @@ class UpcomingVoyageLL:
 
     def get_upcoming_voyages(self):
         upcoming_flights = []
-        for flight_data in self.upcoming_flights_dict.items():
+        for flight_data in self.upcoming_flights_dict.values():
             upcoming_flights.append(flight_data)
         return upcoming_flights
 
@@ -19,3 +19,6 @@ class UpcomingVoyageLL:
 
     def get_upcoming_voyages_by_week(self):
         pass
+
+
+#flightnr
