@@ -150,7 +150,7 @@ class EmployeeUI:
             save_prompt = input("Enter Y for yes or N for no:").lower()
 
         if save_prompt == "y":
-            self.logic_wrapper.add_employee(employee)
+            self.lo.add_employee(employee)
             print()
             print("New employee saved!")
             print()
