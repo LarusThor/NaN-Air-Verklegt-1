@@ -9,6 +9,7 @@ class VoyagesUI:
     def init(self) -> None:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
+        self.upcoming_voyages = self.logic_wrapper.upcoming_voyages()
 
     def voyages_options(self) -> str:
         self.menus.display_options(VOYAGES_OPTIONS)
@@ -49,8 +50,8 @@ class VoyagesUI:
         week = input("Enter week number (1-52): ")
         return week
 
-    def get_voyage_by_date(self, date):
-        pass
+    def get_voyage_by_date(self):
+        return self.upcoming_voyages
 
     def get_voyage_by_week(self, week):
         pass

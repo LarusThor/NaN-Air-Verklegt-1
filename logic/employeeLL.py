@@ -6,7 +6,6 @@ class EmployeeLL:
     def __init__(self) -> None:
         self.data_wrapper = DataWrapper()
 
-        # TODO: don't store employees here, always ask data 
         self.employee_dict = self.data_wrapper.get_all_staff_members()
 
 
