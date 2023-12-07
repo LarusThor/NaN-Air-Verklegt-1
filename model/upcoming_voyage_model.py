@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 @dataclass
-class UpcomingFlight:
+class UpcomingVoyage:
     flight_nr: str
     dep_from: str
     arr_at: str
