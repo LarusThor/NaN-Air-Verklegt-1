@@ -16,7 +16,12 @@ class DestinationLL():
    
     def get_most_popular_destination(self): #reyna að stytta nafn
         """ Returns the most popular destination. """
-        pass
+        #TODO: laga
+        destination_list = []
+        destinations = self.get_destination_list()
+        for elem in destinations:
+             destination_list.append(elem.destination)
+        return max(set(destination_list), key=destination_list.count)
    
     def change_destination_contact(self): #breyta í klasaritinu
         """ Changes the contact for a destination. """
