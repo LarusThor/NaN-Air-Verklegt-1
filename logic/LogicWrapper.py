@@ -18,7 +18,7 @@ class LogicWrapper():
     #Employee:
     def employee_list(self):
         """ Returns a list of all employees. """
-        return self.employee.get_employee_list()
+        return self.employee.get_employee_dict()
     
     def pilot_list(self):
         """ Returns a list of all pilots within the system. """

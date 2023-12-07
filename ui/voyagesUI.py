@@ -1,4 +1,4 @@
-from ui.main_menuUI import Menu
+from ui.menu_managerUI import Menu
 from logic.LogicWrapper import LogicWrapper
 
 VOYAGES_OPTIONS = ["1. Create a voyage", "2. List of voyages", "3. Staff a voyage", "4. cancel a voyage"]

@@ -1,5 +1,5 @@
 from logic.LogicWrapper import LogicWrapper
-from ui.main_menuUI import Menu
+from ui.menu_managerUI import Menu
 from ui.airplaneUI import AirplaneUI
 from ui.destinationsUI import DestinationsUI
 from ui.employeesUI import EmployeeUI
@@ -20,7 +20,6 @@ class Main:
         self.voyages_ui = VoyagesUI()
         self.flight_info = FlightInfoUI()
         self.logic_wrapper = LogicWrapper()
-        self.pilots_list = self.logic_wrapper.pilot_list()
 
 
 
@@ -57,7 +56,7 @@ class Main:
             def destinations() -> None:
                 action = self.destinations_ui.destinations()
                 if action == "1":
-                    self.destinations_ui.get_all_destinations()
+                    action = self.destinations_ui.get_all_destinations()
 
                 elif action == "2":
                     self.destinations_ui.get_most_popular_destination()
@@ -72,13 +71,13 @@ class Main:
                 action = self.employee_ui.employees_options()
                 
                 if action == "m" or action == "b":
-                    None
+                    pass
 
                 # list employees :
                 elif action == "1":
                     action = self.employee_ui.list_employees_options()
                     if action == "m":
-                        None
+                        pass
                     # elif action == "b":
                     #     employees()
                     elif action == "1": 
@@ -98,7 +97,8 @@ class Main:
                     action = self.employee_ui.employee_info_options()
                     
                     if action == "m":
-                        None
+                        # TODO: ???
+                        pass
 
                     elif action == "1":
                         self.employee_ui.get_info(employee_name)
@@ -112,9 +112,9 @@ class Main:
                         elif action == "3":
                             self.employee_ui.change_email()
                         
-                    # Add employee :
-                    elif action == "3":
-                        self.employee_ui.add_employee()
+                # Add employee :
+                elif action == "3":
+                    self.employee_ui.add_employee()
 
             def schedule() -> None:
                 action = self.schedule_ui.schedule_options()

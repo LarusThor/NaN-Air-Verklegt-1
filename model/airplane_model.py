@@ -1,20 +1,17 @@
 from dataclasses import dataclass
 
+# TODO: convert to snake_case
+
 @dataclass
 class Airplane:
-    airplaneID: str
-    airplaneManufacturer: str
-    airplaneType: str
-    airplaneCapacity: str
-    airplaneInsignia: str
-    airplaneUsage: str
-    airplaneTotalFlightTime: str
-        
+    plane_insignia: str
+    plane_type_id: str
+    manufacturer: str
+    model: str
+    capacity: int
 
-#airplaneID -> aircraft_type.csv -> plane_type_id
-#airplaneManufacturer -> aircraft_type.csv -> manufacturer
-#airplaneType -> aircraft_type.csv -> model
-#airplaneInsignia -> aircraft.csv -> plane_insignia
-#airplaneCapacity -> aircraft_type.csv -> capacity
-#airplaneUsage -> past_flights.csv -> (aircraft_id)
-#airplaneTotalFlightTime -> past_flights.csv -> (departure, arrival)
+    # TODO: make methods to get usage and total flight time
+    #airplaneUsage -> past_flights.csv -> (aircraft_id)
+    #airplaneTotalFlightTime -> past_flights.csv -> (departure, arrival)
+    # maybe this should be in logic layer instead though?
+
