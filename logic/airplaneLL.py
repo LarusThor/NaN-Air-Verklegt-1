@@ -37,3 +37,6 @@ class AirplaneLL():
     def get_airplane_usage(self):
         """ Returns the total usage of a specific plane. """
         pass
+    
+    def add_airplane(self, airplane):
+        self.data_wrapper.add_airplane(airplane)

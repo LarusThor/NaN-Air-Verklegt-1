@@ -1,6 +1,7 @@
 import csv
 from model.airplane_model import Airplane
 from model.airplane_type_model import AirplaneType
+from pathlib import Path
 
 class AirplaneIO:
     def __init__(self):
@@ -42,10 +43,14 @@ class AirplaneIO:
 
 
     def add_aircraft(self, aircraft):
+        print("saving_files")
         with open('files/aircraft.csv', 'a', newline='', encoding="utf-8") as csvfile:
             fieldnames = ['plane_insignia','plane_type_id','manufacturer','model','capacity']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
             writer.writerow({'plane_insignia': aircraft.plane_insignia, 'plane_type_id': aircraft.plane_type_id, 'manufacturer': aircraft.manufacturer, 'model': aircraft.model, 'capacity': aircraft.capacity})
 
-            writer.writerow(aircraft)
+            
+            
+            
+    
