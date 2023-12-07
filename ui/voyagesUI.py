@@ -52,7 +52,6 @@ class VoyagesUI:
     
     def get_voyage_by_date(self, date) -> str: 
         voyage_counter = 0
-        print(self.get_voyages)      
         print("=" * 130)
         print("{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format('Flight Number', 'From', 'To', 'Departure Time', 'Arrival Time', 'Captain', 'Copilot', 'Flight Service Manager'))
         print("=" * 130)
