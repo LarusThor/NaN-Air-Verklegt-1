@@ -141,9 +141,8 @@ class Main:
                 elif action == "2":
                     action = self.voyages_ui.list_voyage_options()
                     if action == "1":
-                        # date = self.voyages_ui.get_date()
-                        # self.voyages_ui.get_voyage_by_date(date)
-                        self.voyages_ui.get_voyage_by_date()
+                        date = self.voyages_ui.get_date()
+                        self.voyages_ui.get_voyage_by_date(date)
                     elif action == "2":
                         week = self.voyages_ui.get_week()
                         self.voyages_ui.get_voyage_by_week(week)

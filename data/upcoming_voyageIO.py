@@ -14,9 +14,9 @@ class UpcomingVoyageIO:
             lines = f.readlines()
             for line in lines[1:]:
                 line = line.strip()
-                flight_nr, dep_from, arr_at, departure, arrival, captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5 = line.split(",")
-                upcoming_flight = UpcomingVoyage(flight_nr, dep_from, arr_at, departure, arrival, captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5)
-                upcoming_flights_dict[flight_nr] = (upcoming_flight)
+                id, flight_nr, dep_from, arr_at, departure, arrival, captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5 = line.split(",")
+                upcoming_flight = UpcomingVoyage(id, flight_nr, dep_from, arr_at, departure, arrival, captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5)
+                upcoming_flights_dict[id] = (upcoming_flight)
 
         return upcoming_flights_dict
     

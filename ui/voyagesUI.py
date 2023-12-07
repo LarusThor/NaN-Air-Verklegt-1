@@ -43,21 +43,27 @@ class VoyagesUI:
         return action
         
     def get_date(self) -> str:
-        date = input("Enter date; day/month/year: ")
+        date = input("Enter date; year-month-day: ")
         return date
     
     def get_week(self) -> str:
         week = input("Enter week number (1-52): ")
         return week
     
-    def get_voyage_by_date(self) -> str:
-        # print("{:<15}{:<10}{:<10}{:<20}{:<20}{:<15}{:<15}{:<15}{:<15}{:<15}{:<15}{:<15}{:<15}".format('Flight Number'),('Departure From'),('Arrival At'),('Departure Time'),('Arrival Time'),('Captain'),('Copilot'),('Flight Service Manager'),('Attendant 1'),('Attendant 2'),('Attendant 3'),('Attendant 4'),('Attendant 5'))
-        print("{:<10}{:>7}{:>7}{:>20}{:>20}{:>15}{:>15}{:>27}".format('Flight Number', 'From', 'To', 'Departure Time', 'Arrival Time', 'Captain', 'Copilot', 'Flight Service Manager'))
-        print("-" * 120)
-        # print(f"Flight Numberdep_from\tarr_at\tdeparture\tarrival\tcaptain\tcopilot\tfsm\tfa1\tfa2\tfa3\tfa4\tfa5")
-        for voyage in self.get_voyages:
-            print(voyage, end="\n")
-
+    def get_voyage_by_date(self, date) -> str: 
+        voyage_counter = 0
+        print(self.get_voyages)      
+        print("=" * 130)
+        print("{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format('Flight Number', 'From', 'To', 'Departure Time', 'Arrival Time', 'Captain', 'Copilot', 'Flight Service Manager'))
+        print("=" * 130)
+        for id, flight_values in self.get_voyages.items():
+            if date in flight_values.departure:
+                print(f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure:^22}{flight_values.arrival:^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}", end="\n")
+                voyage_counter += 1
+                if voyage_counter == 2:
+                    voyage_counter = 0
+                    print("-" * 130)
+    
     def get_voyage_by_week(self, week):
         pass
 
