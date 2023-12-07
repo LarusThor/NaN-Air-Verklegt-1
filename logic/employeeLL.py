@@ -8,7 +8,6 @@ class EmployeeLL:
 
         # TODO: don't store employees here, always ask data 
         self.employee_dict = self.data_wrapper.get_all_staff_members()
-        print(self.employee_dict)
 
 
     def get_employee_dict(self) -> list[str]:
