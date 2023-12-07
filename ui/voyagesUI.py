@@ -6,16 +6,15 @@ LIST_VOYAGES_OPTIONS = ["1. List of voyages by day", "2. List of voyages by week
 
 
 class VoyagesUI:
-    def init(self) -> None:
+    def __init__(self) -> None:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
-        self.upcoming_voyages = self.logic_wrapper.upcoming_voyages()
 
     def voyages_options(self) -> str:
         self.menus.display_options(VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
-
+    
     def add_voyage(self) -> None:
         print("New voyage: ")
         destination = input("Destination: ")
@@ -41,17 +40,17 @@ class VoyagesUI:
         self.menus.display_options(LIST_VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
-
+        
     def get_date(self) -> str:
         date = input("Enter date; day/month/year: ")
         return date
-
+    
     def get_week(self) -> str:
         week = input("Enter week number (1-52): ")
         return week
-
-    def get_voyage_by_date(self):
-        return self.upcoming_voyages
+    
+    def get_voyage_by_date(self, date):
+        pass
 
     def get_voyage_by_week(self, week):
         pass
@@ -71,6 +70,6 @@ class VoyagesUI:
 
         if save_prompt == "y":
             print("Voyage has been canceled!")
-
+            
         elif save_prompt == "n":
             print("Voyage was not canceled.")
