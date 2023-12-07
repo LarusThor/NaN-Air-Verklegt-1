@@ -21,10 +21,9 @@ class AirplaneLL():
     def get_all_airplane_types(self):
         """ Returns a list of all the airplane types in the system. """
         airplane_types = self.airplane_types
-        print(airplane_types)
         type_list = []
         for elem in airplane_types:
-            print(elem.plane_type_id)
+            type_list.append(elem.plane_type_id)
             #air_type = elem[0]
             #type_list.append(air_type)
 
