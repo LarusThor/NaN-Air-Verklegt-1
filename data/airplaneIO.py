@@ -37,7 +37,6 @@ class AirplaneIO:
                     in zip(header_names, values)
                 }
                 airplane_types.append(AirplaneType(**args))
-
         return airplane_types
 
 

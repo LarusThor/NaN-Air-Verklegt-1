@@ -1,6 +1,7 @@
 from logic.employeeLL import EmployeeLL
 from model.employee_model import Employee
 
+
 emp_ll = EmployeeLL()
 
 employee = Employee(
@@ -15,4 +16,4 @@ employee = Employee(
     landline="??"
 )
 
-emp_ll.add_employee(employee)
+emp_ll.change_employee_info(employee)
