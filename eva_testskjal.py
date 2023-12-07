@@ -1,13 +1,19 @@
 from logic.employeeLL import EmployeeLL
 from model.employee_model import Employee
-from data.airplaneIO import AirplaneIO
-from logic.airplaneLL import AirplaneLL
-
-plane_io = AirplaneIO()
-
-print(plane_io.airplane_types())
 
 
-plane_ll = AirplaneLL()
+emp_ll = EmployeeLL()
 
-print(plane_ll.get_all_airplane_types())
+employee = Employee(
+    social_id="broseph",
+    name="Bruh Johnson",
+    role="test_role",
+    rank="test_rank",
+    licence="f",
+    email="f@f.f",
+    phonenumber="0.5",
+    home_address="bruh street 69",
+    landline="??"
+)
+
+emp_ll.change_employee_info(employee)
