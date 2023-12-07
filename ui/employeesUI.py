@@ -70,13 +70,25 @@ class EmployeeUI:
         action = str(input("Enter your action: ").lower())   
         return action 
 
-    def get_info(self):
+    def get_info(self, employee):
         social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
         print(employee)
 
     def change_info_options(self):
-        pass
+        #TODO: robert hjálp
+        employee = Employee(
+            social_id="broseph",
+            name="44",
+            role="test_role",
+            rank="test_rank",
+            licence="f",
+            email="f@f.f",
+            phonenumber="0.5",
+            home_address="bruh street 69",
+            landline="??"
+             )
+        self.logic_wrapper.change_employee_info(employee)
 
     def change_home_address(self):
         pass
