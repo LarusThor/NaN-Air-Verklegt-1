@@ -14,7 +14,7 @@ class EmployeeIO:
                 line = line.strip()
                 social_id, name, role, rank, license, address, phone_nr, email, landline = line.split(",")
                 employee = Employee(name, social_id, role, rank, license, email, phone_nr, address, landline)
-                employee_dict[social_id] = (employee)
+                employee_dict[social_id] = employee
 
         return employee_dict
 
