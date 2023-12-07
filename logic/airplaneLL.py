@@ -24,8 +24,9 @@ class AirplaneLL():
         print(airplane_types)
         type_list = []
         for elem in airplane_types:
-            air_type = elem[0]
-            type_list.append(air_type)
+            print(elem.plane_type_id)
+            #air_type = elem[0]
+            #type_list.append(air_type)
 
         return type_list
 
