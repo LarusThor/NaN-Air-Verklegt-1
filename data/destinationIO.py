@@ -6,7 +6,7 @@ class DestinationIO():
         pass
 
 
-    def read_all_destinations2(self):
+    def read_all_destinations(self):
         self.destination_list = []
         with open('files/destinations.csv', newline='', encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
@@ -19,7 +19,7 @@ class DestinationIO():
                     destination_names.append(value)
         return destination_names
     
-    def read_all_destinations(self):
+    def read_all_destinations2(self):
         dest_list = []
         with open('files/destinations.csv', 'r', newline='', encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
@@ -33,10 +33,10 @@ class DestinationIO():
             fieldnames = ['id','destination', 'emergency_contact_name', 'emergency_contact_number', 'airport_name', 'distance_from_iceland']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-            writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergencyContact, 'emergency_contact_number': destination.emergencyNumber, 'airport_name': destination.airportName, 'distance_from_iceland': destination.distanceFromIceland})
+            writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergencyContact, 'emergency_contact_number': destination.emergencyNumber, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distanceFromIceland})
         
     def update_destination(self, updated_destination):
-        dest_list = self.read_all_destinations()
+        dest_list = self.read_all_destinations2()
 
         for i, dest in enumerate(dest_list):
             if dest.destination_id == updated_destination.destination_id:
@@ -49,7 +49,7 @@ class DestinationIO():
             writer.writeheader()
             
             for destination in dest_list:
-                writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergencyContact, 'emergency_contact_number': destination.emergencyNumber, 'airport_name': destination.airportName, 'distance_from_iceland': destination.distanceFromIceland})
+                writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland})
         
 
 
