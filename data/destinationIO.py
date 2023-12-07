@@ -24,7 +24,8 @@ class DestinationIO():
         with open('files/destinations.csv', 'r', newline='', encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                dest_list.append(Destination(row["id"], row["destination"], row["emergency_contact_name"], row["destination_contact_number"], row["airport_name"], row["distance_from_iceland"]))
+                dest_list.append(Destination(row["id"], row["destination"], row["emergency_contact_name"], row["emergency_contact_number"], row["airport_name"], row["distance_from_iceland"]))
+            #id,destination,emergency_contact_name,emergency_contact_number,airport_name,distance_from_iceland
             return dest_list
 
     def add_destination(self, destination):

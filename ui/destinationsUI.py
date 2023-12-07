@@ -5,25 +5,18 @@ DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination"
 
 
 class DestinationsUI:
-    def init(self) -> None:
+    def __init__(self) -> None:
         logic_wrapper = LogicWrapper()
-        self.menus = Menu()
-        self.destinations_list = logic_wrapper.destination_list()
+        self.menus = Menu()     
+        self.destinations_list = logic_wrapper.destination_list()   
 
     def destinations(self) -> str:
         self.menus.display_options(DESTINATIONS_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
-    def get_all_destinations(self) -> str:
-        print()
-        print("Destinations:")
-        for place in self.destinations_list:
-            print(place)
-        print()
-        print("(M)enu  (R)epeat")
-        action = input("Enter your action : ")
-        return action
+    def get_all_destinations(self) -> None:
+        print(self.destinations_list)  
 
     def get_most_popular_destination(self):
         pass
@@ -50,6 +43,8 @@ class DestinationsUI:
             print("Destination saved!")
         elif save_prompt == "n":
             print("Destionation not saved.")
-
+    
     def get_destination_info(self): #define
         print("What destination would you like to get the information about?")
+
+        
