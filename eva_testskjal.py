@@ -1,7 +1,13 @@
 from logic.employeeLL import EmployeeLL
 from model.employee_model import Employee
+from logic.destinationLL import DestinationLL
 
 
+dest_ll = DestinationLL()
+
+print(dest_ll.get_most_popular_destination())
+
+"""
 emp_ll = EmployeeLL()
 
 employee = Employee(
@@ -17,3 +23,4 @@ employee = Employee(
 )
 
 emp_ll.change_employee_info(employee)
+"""

@@ -38,6 +38,9 @@ class LogicWrapper():
         """ Returns information about a specific employee. """
         return self.employee.get_employee(employee)
     
+    def change_employee_info(self, employee):
+        return self.employee.change_employee_info(employee)
+
     #Destinations:
     def destination_list(self):
         """ Returns a list of all destinations within the system. """
