@@ -52,3 +52,6 @@ class DataWrapper:
     
     def add_upcoming_flights(self, upcoming_flight):
         return self.upcoming_flightIO.add_upcoming_voyage(upcoming_flight)
+    
+    def add_airplane(self, airplane):
+        return self.airplaneIO.add_aircraft(airplane)

@@ -50,6 +50,9 @@ class LogicWrapper():
         """ Returns all airplane types within the system. """
         return self.airplane.get_all_airplane_types()
     
+    def add_airplane(self, airplane):
+        return self.airplane.add_airplane(airplane)
+    
     def add_destination(self, destination):
         """Takes in a customer object and forwards it to the data layer"""
         return self.destination.add_destination(destination)
