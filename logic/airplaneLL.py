@@ -21,13 +21,11 @@ class AirplaneLL():
     def get_all_airplane_types(self):
         """ Returns a list of all the airplane types in the system. """
         airplane_types = self.airplane_types
-        type_list = []
-        for elem in airplane_types:
-            type_list.append(elem.plane_type_id)
-            #air_type = elem[0]
-            #type_list.append(air_type)
+        type_set = set()
+        for plane in airplane_types:
+            type_set.update([plane.plane_type_id])
 
-        return type_list
+        return type_set
 
    
     def get_airplane_status_by_date_time(self): #laga þetta nafn líka
