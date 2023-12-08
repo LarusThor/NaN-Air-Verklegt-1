@@ -72,16 +72,18 @@ class VoyagesUI:
         print("=" * 130)
         print(VOYAGE_HEADER)
         print("=" * 130)
-        for id, flight_values in self.get_voyages.items():
-            departure = flight_values.departure.split()
-            date = date.join.departure[0]
-            ['2023','12','24']
-            if datetime.date(departure[0]).isocalendar().week == week_nr:
-                print(f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure:^22}{flight_values.arrival:^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}", end="\n")
-                voyage_counter += 1
-                if voyage_counter == 2:
-                    voyage_counter = 0
-                    print("-" * 130)
+        for id, flight_values in self.logic_wrapper.upcoming_voyages().items():
+            # print(type(flight_values.departure))
+            # print(flight_values.departure)
+            # departure_date = datetime.strptime(flight_values.departure, "%Y-%m-%d %H:%M:%S")
+            # date = departure_date[0].split("-")
+            # year, month, day = map(int, date)
+            if flight_values.departure.isocalendar().week == week_nr:
+                 print(f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure:^22}{flight_values.arrival:^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}", end="\n")
+                 voyage_counter += 1
+                 if voyage_counter == 2:
+                     voyage_counter = 0
+                     print("-" * 130)
 
 
     def staff_voyage(self) -> None:

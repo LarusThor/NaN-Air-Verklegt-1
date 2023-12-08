@@ -1,6 +1,7 @@
 import csv
 from pathlib import Path
 from model.upcoming_voyage_model import UpcomingVoyage
+from datetime import datetime
 
 
 class UpcomingVoyageIO:
@@ -15,7 +16,8 @@ class UpcomingVoyageIO:
             for line in lines[1:]:
                 line = line.strip()
                 id, flight_nr, dep_from, arr_at, departure, arrival, captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5 = line.split(",")
-                upcoming_flight = UpcomingVoyage(id, flight_nr, dep_from, arr_at, departure, arrival, captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5)
+                
+                upcoming_flight = UpcomingVoyage(id, flight_nr, dep_from, arr_at, datetime.strptime(departure, "%Y-%m-%d %H:%M:%S"), datetime.strptime(arrival, "%Y-%m-%d %H:%M:%S"), captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5)
                 upcoming_flights_dict[flight_nr] = upcoming_flight
 
         return upcoming_flights_dict
