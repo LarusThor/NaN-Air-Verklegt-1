@@ -19,6 +19,7 @@ class ScheduleLL():
 
     def employee_working(self, date):
         """ Returns a list of all employees working on a specific day. """    
+        #TODO: simplify
         workers_on_day = []
         voyage_list = self.past_voyage_list
         voyage_list.update(self.upcoming_voyage_lsit)
@@ -40,6 +41,7 @@ class ScheduleLL():
 
     def employee_not_working(self, date):
         """ Returns a list of all eployees not working on a specific day. """
+        #TODO: simplify, tengja betur við þá sem eru að virka
         all_workers = set()
         all_workers.update(self.employee_dict)
         workers_on_day = set()
