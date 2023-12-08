@@ -9,14 +9,14 @@ employee_ll = EmployeeLL()
 
 
 employee = Employee(
-    social_id="3009907461",
-    name="William Carillo",
+    social_id="2706838569",
+    name="Gerard Norris",
     role="Pilot",
     rank="Captain",
     licence="NAFokkerF100",
     email="bruck@comcast.net",
     phonenumber="8998801",
-    home_address="Fellsmúli 1",
+    home_address="Fellsmúli 4",
     landline="7854878"
 )
 

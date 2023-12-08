@@ -64,12 +64,11 @@ class EmployeeLL:
         total_hours = 0
         for flight in self.voyage_list.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
-            print("TEEEST", workers)
             if employee.social_id in workers:
                 departure = datetime.strptime(flight.departure, "%Y-%m-%d %H:%M:%S")
                 arrival = datetime.strptime(flight.arrival, "%Y-%m-%d %H:%M:%S") 
                 hours = (arrival - departure)
-                flights_list.append(f"{employee.name} worked {hours} hours")
+                flights_list.append(f"{flight.flight_nr}: {employee.name} worked {hours} hours")
                 total_hours += hours.total_seconds() / 3600
 
         return employee.name, flights_list, total_hours
