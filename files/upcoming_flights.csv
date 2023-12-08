@@ -21,3 +21,4 @@ id,flight_nr,dep_from,arr_at,departure,arrival,aircraft_id,captain,copilot,fsm,f
 20,NA062,LWK,KEF,2023-12-24 12:39:00,2023-12-24 14:39:00,N/A,2706838569,2410876598,1600904199,3003962187,2801645554,N/A,N/A,N/A
 21,NA061,KEF,LWK,2023-12-27 09:40:00,2023-12-27 11:40:00,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
 22,NA062,LWK,KEF,2023-12-27 12:40:00,2023-12-27 14:40:00,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+id,flight_nr,dep_from,arr_at,departure,arrival,captain,copilot,fsm,fa1,fa2,fa3,fa4,fa5
