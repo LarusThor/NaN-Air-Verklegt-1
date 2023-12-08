@@ -10,7 +10,7 @@ class ScheduleLL():
     def __init__(self) -> None:
         self.data_wrapper = DataWrapper()
         self.employee_dict = self.data_wrapper.get_all_staff_members()
-        self.past_voyage_list = self.data_wrapper.read_past_flights() #TODO: tengja frekar við hinn logic?
+        self.past_voyage_list = self.data_wrapper.get_past_flights() #TODO: tengja frekar við hinn logic?
         self.upcoming_voyage_lsit = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
     
     def schedule_employee(self):

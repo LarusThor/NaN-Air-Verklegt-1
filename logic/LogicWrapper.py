@@ -5,6 +5,7 @@ from logic.employeeLL import EmployeeLL
 from logic.scheduleLL import ScheduleLL
 from logic.voyageLL import VoyageLL
 from logic.upcoming_voyageLL import UpcomingVoyageLL
+from logic.past_voyageLL import PastVoyageLL
 #from logic.validationLL import ValidationLL
 
 class LogicWrapper():
@@ -15,8 +16,9 @@ class LogicWrapper():
         self.destination = DestinationLL()
         self.schedule = ScheduleLL()
         self.voyage = VoyageLL()
-        self.upcoming_voyage = UpcomingVoyageLL()
-    
+        self.list_upcoming_voyage = UpcomingVoyageLL()
+        self.list_past_voyages = PastVoyageLL()
+
     #Employee:
     def employee_list(self):
         """ Returns a list of all employees. """
@@ -47,7 +49,7 @@ class LogicWrapper():
         return self.destination.get_destination_list()
     
     def add_destination(self, destination):
-        """Takes in a customer object and forwards it to the data layer"""
+        """Takes in a customer object and forwards it to the data layer. """
         return self.destination.add_destination(destination)
     
     #Airplanes:
@@ -59,9 +61,15 @@ class LogicWrapper():
         return self.airplane.add_airplane(airplane)
     
     def add_destination(self, destination):
-        """Takes in a customer object and forwards it to the data layer"""
+        """Takes in a customer object and forwards it to the data layer. """
         return self.destination.add_destination(destination)
     
     #Upcoming voyages:
     def upcoming_voyages(self):
-        return self.upcoming_voyage.get_upcoming_voyages()
+        return self.list_upcoming_voyage.get_upcoming_voyages()
+    
+
+    #Past voyages:
+
+    def past_voyages(self):
+        return self.list_past_voyages.get_past_voyages()

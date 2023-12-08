@@ -40,7 +40,7 @@ class DataWrapper:
         return self.destinationIO.add_destination(destination)
     
     #past_flights
-    def read_past_flights(self):
+    def get_past_flights(self):
         return self.past_flightIO.read_past_flights()
 
     def add_past_flights(self, past_flight):
