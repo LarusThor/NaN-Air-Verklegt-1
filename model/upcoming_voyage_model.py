@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 
 @dataclass
 class UpcomingVoyage:
@@ -6,8 +7,8 @@ class UpcomingVoyage:
     flight_nr: str
     dep_from: str
     arr_at: str
-    departure: str
-    arrival: str
+    departure: datetime
+    arrival: datetime
     captain: str
     copilot: str
     fsm: str
