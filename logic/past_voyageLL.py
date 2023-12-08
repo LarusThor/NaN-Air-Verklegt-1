@@ -3,7 +3,8 @@ from data.data_wrapper import DataWrapper
 
 class PastVoyageLL:
     def __init__(self):
-        pass
+        self.data_wrapper = DataWrapper()
+        self.voyage_list = self.data_wrapper.read_past_flights()
 
     def past_flight_list(self):
-        pass
+        return self.voyage_list

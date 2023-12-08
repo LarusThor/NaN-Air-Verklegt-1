@@ -16,5 +16,6 @@ class PastVoyage:
     fa3: str
     fa4: str
     fa5: str
+    seats_sold: str
 
 #flight_nr,dep_from,arr_at,departure,arrival,aircraft_id,captain,copilot,fsm,fa1,fa2, seats_sold

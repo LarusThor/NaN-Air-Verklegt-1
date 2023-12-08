@@ -1,5 +1,4 @@
 from data.data_wrapper import DataWrapper
-from dataclasses import asdict
 from model.employee_model import Employee
 from model.past_voyage_model import PastVoyage
 from datetime import datetime
@@ -9,7 +8,7 @@ class EmployeeLL:
         self.data_wrapper = DataWrapper()
 
         self.employee_dict = self.data_wrapper.get_all_staff_members()
-
+        self.voyage_list = self.data_wrapper.read_past_flights()#TODO: tengja frekar við hinn logic?
 
     def get_employee_dict(self) -> list[str]:
         """ Returns a list of all employees within the system. """
@@ -58,19 +57,18 @@ class EmployeeLL:
         self.employee_dict[employee.social_id] = employee
         self.data_wrapper.write_employees(list(self.employee_dict.values()))
 
-    def get_total_hours_worked(self, employee: Employee, past_voyage: PastVoyage):
+    def get_total_hours_worked(self, employee: Employee):
         """Returns total hours an employee has worked."""
+        #TODO: laga listann af voyages: fáum bara fyrstu 10
         flights_list = []
         total_hours = 0
-        workers = [past_voyage.captain, past_voyage.copilot, past_voyage.fsm, past_voyage.fa1, past_voyage.fa2, past_voyage.fa3, past_voyage.fa4, past_voyage.fa5]
-        departure = datetime.strptime(past_voyage.departure, "%Y-%m-%d %H:%M:%S")
-        arrival = datetime.strptime(past_voyage.arrival, "%Y-%m-%d %H:%M:%S") 
-        hours = (arrival - departure)
-        if employee.social_id in workers:
-            flights_list.append(f"{employee.name} worked {hours} hours")
-            total_hours += hours.total_seconds() / 3600
+        for flight in self.voyage_list.values():
+            workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
+            if employee.social_id in workers:
+                departure = datetime.strptime(flight.departure, "%Y-%m-%d %H:%M:%S")
+                arrival = datetime.strptime(flight.arrival, "%Y-%m-%d %H:%M:%S") 
+                hours = (arrival - departure)
+                flights_list.append(f"{flight.flight_nr}: {employee.name} worked {hours} hours")
+                total_hours += hours.total_seconds() / 3600
 
         return employee.name, flights_list, total_hours
-
-
-#3009907461,William Carillo,Pilot,Captain,NAFokkerF100,Fellsmúli 1,8998801, bruck@comcast.net, 7854878

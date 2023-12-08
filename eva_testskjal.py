@@ -2,20 +2,29 @@ from logic.employeeLL import EmployeeLL
 from model.employee_model import Employee
 from logic.destinationLL import DestinationLL
 from model.past_voyage_model import PastVoyage
+from logic.past_voyageLL import PastVoyageLL
+from logic.scheduleLL import ScheduleLL
 
+
+schedule_stuff = ScheduleLL()
+
+print(schedule_stuff.employee_working("2023-11-02"))
+
+
+"""
 employee_ll = EmployeeLL()
 
 
 
 employee = Employee(
-    social_id="3009907461",
-    name="William Carillo",
+    social_id="2706838569",
+    name="Gerard Norris",
     role="Pilot",
     rank="Captain",
     licence="NAFokkerF100",
     email="bruck@comcast.net",
     phonenumber="8998801",
-    home_address="Fellsmúli 1",
+    home_address="Fellsmúli 4",
     landline="7854878"
 )
 
@@ -35,12 +44,13 @@ voyage = PastVoyage(
     fa3 =  "N/A",
     fa4 = "N/A",
     fa5 = "N/A",
+    seats_sold = "N/A"
 
 )
 
-print(employee_ll.get_total_hours_worked(employee, voyage))
+print(employee_ll.get_total_hours_worked(employee))
 
-
+"""
 
 
 """
