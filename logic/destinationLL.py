@@ -8,6 +8,7 @@ class DestinationLL():
         self.past_voyage_list = self.data_wrapper.get_past_flights()
         self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
    
+   
     def get_destination_list(self):
         """ Returns a list of destinations within the system. """
         destination_list = []
@@ -23,6 +24,7 @@ class DestinationLL():
         dest = self.data_wrapper
         dest.add_destinations(destination)
    
+
     def get_most_popular_destination(self): #reyna að stytta nafn
         """ Returns the most popular destination. """
         destination_list = []
@@ -38,6 +40,7 @@ class DestinationLL():
         most_popular = max(set(destination_list), key=destination_list.count)
         return most_popular, destination_dict
    
+
     def change_destination_contact(self): #breyta í klasaritinu
         """ Changes the contact for a destination. """
         pass

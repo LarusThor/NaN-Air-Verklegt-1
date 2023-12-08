@@ -7,9 +7,9 @@ from logic.scheduleLL import ScheduleLL
 from logic.airplaneLL import AirplaneLL
 
 
-destination_test = DestinationLL()
+test = AirplaneLL()
 
-print(destination_test.get_destination_list())
+print(test.get_airplane_usage())
 
 
 """

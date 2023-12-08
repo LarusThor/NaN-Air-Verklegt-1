@@ -5,7 +5,9 @@ class AirplaneLL():
         self.data_wrapper = DataWrapper()
         self.airplane_list = self.data_wrapper.get_airplanes()
         self.airplane_types = self.data_wrapper.get_airplane_types()
-   
+        self.past_voyage_list = self.data_wrapper.get_past_flights()
+        self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
+
     def get_most_used_plane(self):
         """ Returns the most used plane. """
         pass
@@ -27,14 +29,31 @@ class AirplaneLL():
 
         return type_set
 
-   
     def get_airplane_status_by_date_time(self): #laga þetta nafn líka
         """ Returns the status of a plane on a given day and time. """
         pass
    
     def get_airplane_usage(self):
-        """ Returns the total usage of a specific plane. """
-        pass
+        """ Returns the total number of voyages for a specific plane. """
+        #TODO: laga, erum ekki að fá allan listan, bara 22 ferðir
+        airplane_list = []
+        airplane_dict = {}
+        voyage_list = {}
+        voyage_list.update(self.upcoming_voyage_list)
+        voyage_list.update(self.past_voyage_list)
+
+        for voyage in voyage_list.values():
+            if voyage.aircraft_id != "N/A":
+                airplane_list.append(voyage.aircraft_id)
+
+        for destination in airplane_list:
+            counter = (airplane_list.count(destination))//2
+            airplane_dict[destination] = counter
+        most_popular = max(set(airplane_list), key=airplane_list.count)
+        #TODO: finna út hvernig ég raða listan í stærðarröð út frá dicts
+        return most_popular, airplane_dict
+          
     
     def add_airplane(self, airplane):
+        """ Adds airplane to the system. """
         self.data_wrapper.add_airplane(airplane)

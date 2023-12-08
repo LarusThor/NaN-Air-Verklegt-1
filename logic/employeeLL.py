@@ -58,6 +58,7 @@ class EmployeeLL:
         self.employee_dict[employee.social_id] = employee
         self.data_wrapper.write_employees(list(self.employee_dict.values()))
 
+
     def get_total_hours_worked(self, employee: Employee):
         """Returns total hours an employee has worked."""
         #TODO: laga listann af voyages: fáum bara fyrstu 10

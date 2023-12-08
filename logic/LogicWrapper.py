@@ -19,6 +19,7 @@ class LogicWrapper():
         self.list_upcoming_voyage = UpcomingVoyageLL()
         self.list_past_voyages = PastVoyageLL()
 
+
     #Employee:
     def employee_list(self):
         """ Returns a list of all employees. """
@@ -48,6 +49,7 @@ class LogicWrapper():
         """ doc """
         return self.employee.get_total_hours_worked(employee)
 
+
     #Destinations:
     def destination_list(self):
         """ Returns a list of all destinations within the system. """
@@ -57,6 +59,7 @@ class LogicWrapper():
         """Takes in a customer object and forwards it to the data layer. """
         return self.destination.add_destination(destination)
     
+
     #Airplanes:
     def airplane_types(self):
         """ Returns all airplane types within the system. """
@@ -69,6 +72,7 @@ class LogicWrapper():
         """ Takes in a customer object and forwards it to the data layer. """
         return self.destination.add_destination(destination)
     
+
     #Upcoming voyages:
     def upcoming_voyages(self):
         """ doc. """
@@ -76,6 +80,7 @@ class LogicWrapper():
     
     def add_upcoming_voyages(self, upcoming_voyage):
         return self.list_upcoming_voyage.add_upcoming_voyage(upcoming_voyage)
+
 
     #Past voyages:
 
@@ -89,7 +94,7 @@ class LogicWrapper():
     def employee_schedule_by_week(self, employee:str, year:str, week:str):
         """ Returns an employees schedule on a specific week. """
         return self.schedule.employee_schedule_by_week(employee, year, week)
-    
+ 
     def employee_working(self, date):
         """ doc """
         return self.schedule.employee_working(date)
