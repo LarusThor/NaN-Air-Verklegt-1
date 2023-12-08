@@ -17,38 +17,45 @@ class ScheduleLL():
         """ Returns employee schedule """
         pass
 
-    def employee_working(self, a_date):
+    def employee_working(self, date):
         """ Returns a list of all employees working on a specific day. """    
         workers_on_day = []
-        flight_list = []
         voyage_list = self.past_voyage_list
         voyage_list.update(self.upcoming_voyage_lsit)
-        date = a_date
-        #print(voyage_list)
-    
+        a_date = datetime.strptime(date, "%Y-%m-%d").date()
+
         for flight in voyage_list.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
-            departure_date = datetime(flight.departure, "%Y-%m-%d %H:%M:%S").date()
-            arrival_date = flight.arrival
-
+            departure_date = flight.departure.date()
+            arrival_date = flight.arrival.date()
             dates = [departure_date, arrival_date]
-            print(date)
-            print(dates)
-            if date in dates:
-                workers_on_day.append(workers)
-                flight_list.append(flight.flight_id)
-                #print(flight)
+            if a_date in dates:
+                for worker in workers:
+                    #TODO: tengja við að finna employee frá social id
+                    pass
+                workers_on_day.append([flight.flight_nr, workers])
         
-        return flight_list, workers_on_day
-        
-        
-
-        #return employee.name, flights_list, total_hours
+        return workers_on_day
     
 
     def employee_not_working(self, date):
         """ Returns a list of all eployees not working on a specific day. """
-        pass
+        all_workers = set()
+        all_workers.update(self.employee_dict)
+        workers_on_day = set()
+        voyage_list = self.past_voyage_list
+        voyage_list.update(self.upcoming_voyage_lsit)
+        a_date = datetime.strptime(date, "%Y-%m-%d").date()
+
+        for flight in voyage_list.values():
+            workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
+            departure_date = flight.departure.date()
+            arrival_date = flight.arrival.date()
+            dates = [departure_date, arrival_date]
+            if a_date in dates:
+                workers_on_day.update(workers)
+        
+        return all_workers-workers_on_day
 
     
     def schedule_voyage(self):

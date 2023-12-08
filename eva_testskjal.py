@@ -8,7 +8,7 @@ from logic.scheduleLL import ScheduleLL
 
 schedule_stuff = ScheduleLL()
 
-print(schedule_stuff.employee_working("2023-11-04"))
+print(schedule_stuff.employee_working("2023-11-02"))
 
 
 """
