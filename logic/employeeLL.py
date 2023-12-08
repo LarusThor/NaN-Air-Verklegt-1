@@ -1,6 +1,8 @@
 from data.data_wrapper import DataWrapper
 from dataclasses import asdict
 from model.employee_model import Employee
+from model.past_voyage_model import PastVoyage
+from datetime import datetime
 
 class EmployeeLL:
     def __init__(self) -> None:
@@ -56,8 +58,19 @@ class EmployeeLL:
         self.employee_dict[employee.social_id] = employee
         self.data_wrapper.write_employees(list(self.employee_dict.values()))
 
-    def get_total_hours_worked(self):
+    def get_total_hours_worked(self, employee: Employee, past_voyage: PastVoyage):
         """Returns total hours an employee has worked."""
-        pass
+        flights_list = []
+        total_hours = 0
+        workers = [past_voyage.captain, past_voyage.copilot, past_voyage.fsm, past_voyage.fa1, past_voyage.fa2, past_voyage.fa3, past_voyage.fa4, past_voyage.fa5]
+        departure = datetime.strptime(past_voyage.departure, "%Y-%m-%d %H:%M:%S")
+        arrival = datetime.strptime(past_voyage.arrival, "%Y-%m-%d %H:%M:%S") 
+        hours = (arrival - departure)
+        if employee.social_id in workers:
+            flights_list.append(f"{employee.name} worked {hours} hours")
+            total_hours += hours.total_seconds() / 3600
+
+        return employee.name, flights_list, total_hours
 
 
+#3009907461,William Carillo,Pilot,Captain,NAFokkerF100,Fellsmúli 1,8998801, bruck@comcast.net, 7854878
