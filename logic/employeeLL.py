@@ -59,6 +59,7 @@ class EmployeeLL:
 
     def get_total_hours_worked(self, employee: Employee):
         """Returns total hours an employee has worked."""
+        #TODO: laga listann af voyages: fáum bara fyrstu 10
         flights_list = []
         total_hours = 0
         for flight in self.voyage_list.values():
