@@ -19,16 +19,19 @@ class AirplaneUI:
         self.menus.display_options(AIRPLANE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
-    
+
+
     def airplane_types_and_licanse(self) -> str: #if nr 1 from AIRPLANE_OPTIONS is chosen
         self.menus.display_options(AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
+
     def pilots_by_licanse(self) -> None: # if nr 1 from AIRPLANE_TYPES_AND_LICENSE_OPTIONS is chosen
         self.menus.display_options(PILOTS_BY_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
     
+
     def types(self) -> str:
         for item in self.airplane_types:
             print(item)
@@ -36,6 +39,7 @@ class AirplaneUI:
         print("(M)enu  (R)epeat")
         action = str(input("Enter your action: ").lower())
         return action
+
 
     def add_airplane(self): #define
         name = input("Enter airplane name: ")
@@ -59,8 +63,10 @@ class AirplaneUI:
         action = str(input("Enter your action: ").lower())
         return action
 
+
     def most_used_airplane():
         pass
+
 
     def flown_furthest_airplane():
         pass

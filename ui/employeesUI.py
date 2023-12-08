@@ -16,15 +16,18 @@ class EmployeeUI:
         self.flight_attendant_list = self.logic_wrapper.flight_attendant_list()
         self.employee_info = self.logic_wrapper.employee_info
 
+
     def employees_options(self) -> str:
         self.menus.display_options(EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
+
     def list_employees_options(self) -> str:
         self.menus.display_options(LIST_EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
+
 
     def print_crew(self, crew_list) -> None:
         """function used to print out a list"""
@@ -39,41 +42,49 @@ class EmployeeUI:
         elif action == "r":
             None
 
+
     def get_pilots(self) -> None:
         print()
         print("All pilots:")
         print("-"*15)
         self.print_crew(self.pilot_list)
     
+
     def get_flight_attendants(self) -> None:
         print()
         print("All flight attendants:")
         print("-"*15)
         self.print_crew(self.flight_attendant_list)
     
+
     def get_all_employees(self) -> None:
         print()
         print("All employees:")
         print("-"*15)
         self.print_crew(self.all_employees_list)
 
+
     def get_most_experienced(self):
         pass
+
 
     def get_employee(self):
         social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
         print(employee)
 
+
     def employee_info_options(self) -> str:
         self.menus.display_options(EMPLOYEE_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())   
         return action 
 
+
     def get_info(self, employee):
         social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
         print(employee)
+
 
     def change_info_options(self):
         #TODO: robert hjálp
@@ -90,16 +101,21 @@ class EmployeeUI:
              )
         self.logic_wrapper.change_employee_info(employee)
 
+
     def change_home_address(self):
         pass
+
 
     def change_phone_number(self):
         pass
     
+
     def change_email(self):
         pass
 
+
     def add_employee(self): #define
+        #TODO: rosa ljótt getum við stytt eða fegrað?
         print("Fill out the following informaation about the new employee:")
         name = input("Name: ")
         social_id = input("Social ID: ")

@@ -8,5 +8,6 @@ class PastVoyageLL:
 
         self.past_voyages_dict = self.data_wrapper.get_past_flights()
 
+
     def get_past_voyages(self):
         return self.past_voyages_dict

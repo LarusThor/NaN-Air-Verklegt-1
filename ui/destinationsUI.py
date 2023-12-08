@@ -10,16 +10,20 @@ class DestinationsUI:
         self.menus = Menu()     
         self.destinations_list = logic_wrapper.destination_list()   
 
+
     def destinations(self) -> str:
         self.menus.display_options(DESTINATIONS_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
+
     def get_all_destinations(self) -> None:
         print(self.destinations_list)  
 
+
     def get_most_popular_destination(self):
         pass
+
 
     def add_destination(self) -> None:
         print("New destination")
@@ -43,6 +47,7 @@ class DestinationsUI:
             print("Destination saved!")
         elif save_prompt == "n":
             print("Destionation not saved.")
+    
     
     def get_destination_info(self): #define
         print("What destination would you like to get the information about?")

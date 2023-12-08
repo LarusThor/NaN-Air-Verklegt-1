@@ -12,7 +12,8 @@ class ScheduleLL():
         self.employee_dict = self.data_wrapper.get_all_staff_members()
         self.past_voyage_list = self.data_wrapper.get_past_flights() #TODO: tengja frekar við hinn logic?
         self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
-    
+
+
     def employee_schedule_by_week(self, employee, year, week_nr) -> str:
         """ Returns employee schedule """
         employee_list = []
@@ -30,9 +31,7 @@ class ScheduleLL():
         else:
             return f"{employee} is not scheduled for any flights in week {week_nr}"
         
-
-
-
+        
     def employee_working(self, date:datetime) -> list:
         """ Returns a list of all employees working on a specific day. """    
         #TODO: simplify
