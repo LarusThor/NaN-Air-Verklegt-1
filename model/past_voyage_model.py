@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 
 @dataclass
 class PastVoyage:
@@ -6,8 +7,8 @@ class PastVoyage:
     flight_nr: str
     dep_from: str
     arr_at: str
-    departure: str
-    arrival: str
+    departure: datetime
+    arrival: datetime
     aircraft_id: str
     captain: str
     copilot: str
