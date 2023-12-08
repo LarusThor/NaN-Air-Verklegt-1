@@ -8,12 +8,10 @@ from logic.scheduleLL import ScheduleLL
 
 schedule_stuff = ScheduleLL()
 
-print(schedule_stuff.employee_working("2023-11-02"))
-
+print(schedule_stuff.schedule_employee_by_week("2706838569", "2023", "45"))
 
 """
 employee_ll = EmployeeLL()
-
 
 
 employee = Employee(
