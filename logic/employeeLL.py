@@ -1,5 +1,4 @@
 from data.data_wrapper import DataWrapper
-from dataclasses import asdict
 from model.employee_model import Employee
 from model.past_voyage_model import PastVoyage
 from datetime import datetime
@@ -72,6 +71,3 @@ class EmployeeLL:
                 total_hours += hours.total_seconds() / 3600
 
         return employee.name, flights_list, total_hours
-
-
-#3009907461,William Carillo,Pilot,Captain,NAFokkerF100,Fellsmúli 1,8998801, bruck@comcast.net, 7854878
