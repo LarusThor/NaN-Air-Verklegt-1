@@ -23,7 +23,7 @@ class ScheduleLL():
         flight_list = []
         voyage_list = self.past_voyage_list
         voyage_list.update(self.upcoming_voyage_lsit)
-        date = a_date, "
+        date = a_date
         #print(voyage_list)
     
         for flight in voyage_list.values():
