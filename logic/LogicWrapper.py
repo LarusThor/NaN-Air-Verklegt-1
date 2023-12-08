@@ -74,6 +74,8 @@ class LogicWrapper():
         """ doc. """
         return self.list_upcoming_voyage.get_upcoming_voyages()
     
+    def add_upcoming_voyages(self, upcoming_voyage):
+        return self.list_upcoming_voyage.add_upcoming_voyage(upcoming_voyage)
 
     #Past voyages:
 

@@ -9,6 +9,7 @@ class UpcomingVoyage:
     arr_at: str
     departure: datetime
     arrival: datetime
+    aircraft_id: str
     captain: str
     copilot: str
     fsm: str

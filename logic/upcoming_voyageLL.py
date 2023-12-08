@@ -11,7 +11,8 @@ class UpcomingVoyageLL:
     def get_upcoming_voyages(self):
         return self.upcoming_flights_dict
 
- 
+    def add_upcoming_voyage(self, airplane):
+        self.data_wrapper.add_upcoming_flights(airplane)
 
 
 #flightnr

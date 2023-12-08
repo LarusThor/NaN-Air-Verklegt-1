@@ -6,6 +6,7 @@ class Voyage:
     estimated_flight_duration: str
     departure_date: str
     depature_time_from_iceland: str
+    aircraft_id: str
     arrival_date: str
     arrival_time: str
     flight_number_arrival: str
