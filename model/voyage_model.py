@@ -3,17 +3,18 @@ from dataclasses import dataclass
 @dataclass
 class Voyage:
     destination: str
-    estimatedFlightDuration: str
-    departureDate: str
-    depatureTimeFromIceland: str
-    arrivalDate: str
-    arrivalTime: str
-    flightNumberArrival: str
-    flightNumberDeparture: str
-    seatSales: str
-    availableSeats: str
+    estimated_flight_duration: str
+    departure_date: str
+    depature_time_from_iceland: str
+    aircraft_id: str
+    arrival_date: str
+    arrival_time: str
+    flight_number_arrival: str
+    flight_number_departure: str
+    seat_sales: str
+    available_seats: str
     status: str
-    bookingStatus: str
+    booking_status: str
         
 
 #destination -> upcoming_flights.csv -> arr_at

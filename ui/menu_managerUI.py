@@ -4,9 +4,9 @@ OUTLINE = "-"*50
 MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Schedule", "5. Voyages", "6. Flight information"]
 
 class Menu():
-    def __init__(self) -> None:
+    def init(self) -> None:
         self.logic_wrapper = LogicWrapper()
-        
+
     def main_menu(self) -> None:
     # Get terminal size
         terminal_size = os.get_terminal_size()
@@ -29,7 +29,7 @@ class Menu():
         print(" " * padding + OUTLINE)
 
         # Print empty lines below the menu
-        print("\n" * empty_lines_below)  
+        print("\n" * empty_lines_below)
 
     def display_options(self, list_of_options) -> None:
     # Get terminal size
@@ -54,17 +54,4 @@ class Menu():
 
         # Print empty lines below the menu
         print("\n" * empty_lines_below)
-
-# def ascii_art():
-#       return""" 
-#                 _____
-#               __\ _~-\____
-#       =  = ==(___NaN-Air__)
-#                   \_____\___________________,-~~~~~~~`-.._
-#                   /     o O o o o o O O o o o o o o O o  |\_
-#                   `~-.__        ___..----..                  )
-#                         `---~~\___________/------------`````
-#                         =  ===(_________)
-#       """
-
 

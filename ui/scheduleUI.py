@@ -1,4 +1,4 @@
-from ui.main_menuUI import Menu
+from ui.menu_managerUI import Menu
 from logic.LogicWrapper import LogicWrapper
 
 SCHEDULE_OPTIONS = ["1. Schedule for a specific day", "2. Schedule for specific employee"]
@@ -26,7 +26,7 @@ class ScheduleUI:
         action = str(input("Enter your action: ").lower())
         return action
 
-    def get_how_was_working(self, date):
+    def who_was_working(self, date):
         pass
 
     def get_how_was_not_working(self, date):

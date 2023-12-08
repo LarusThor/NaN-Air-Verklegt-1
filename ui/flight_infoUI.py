@@ -1,4 +1,4 @@
-from ui.main_menuUI import Menu
+from ui.menu_managerUI import Menu
 from logic.LogicWrapper import LogicWrapper
 
 FLIGHT_INFORMATION_OPTIONS = ["1. Booking status for specific voyage", "2. Booking status for a specific date"]
