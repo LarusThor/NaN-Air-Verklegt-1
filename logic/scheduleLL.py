@@ -13,7 +13,7 @@ class ScheduleLL():
         self.past_voyage_list = self.data_wrapper.get_past_flights() #TODO: tengja frekar við hinn logic?
         self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
     
-    def schedule_employee_by_week(self, employee, year, week_nr):
+    def employee_schedule_by_week(self, employee, year, week_nr):
         """ Returns employee schedule """
         employee_list = []
         voyage_list = self.past_voyage_list

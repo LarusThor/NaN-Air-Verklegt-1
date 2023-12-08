@@ -41,7 +41,12 @@ class LogicWrapper():
         return self.employee.get_employee(employee)
     
     def change_employee_info(self, employee):
+        """ doc """
         return self.employee.change_employee_info(employee)
+    
+    def total_hours_worked(self, employee):
+        """ doc """
+        return self.employee.get_total_hours_worked(employee)
 
     #Destinations:
     def destination_list(self):
@@ -61,15 +66,32 @@ class LogicWrapper():
         return self.airplane.add_airplane(airplane)
     
     def add_destination(self, destination):
-        """Takes in a customer object and forwards it to the data layer. """
+        """ Takes in a customer object and forwards it to the data layer. """
         return self.destination.add_destination(destination)
     
     #Upcoming voyages:
     def upcoming_voyages(self):
+        """ doc. """
         return self.list_upcoming_voyage.get_upcoming_voyages()
     
 
     #Past voyages:
 
     def past_voyages(self):
+        """ doc """
         return self.list_past_voyages.get_past_voyages()
+    
+
+    #schedule
+
+    def employee_schedule_by_week(self, employee:str, year:str, week:str):
+        """ Returns an employees schedule on a specific week. """
+        return self.schedule.employee_schedule_by_week(employee, year, week)
+    
+    def employee_working(self, date):
+        """ doc """
+        return self.schedule.employee_working(date)
+
+    def employee_not_working(self, date):
+        """ doc """
+        return self.schedule.employee_not_working(date)
