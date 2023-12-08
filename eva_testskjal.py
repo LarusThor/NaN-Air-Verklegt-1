@@ -6,9 +6,10 @@ from logic.past_voyageLL import PastVoyageLL
 from logic.scheduleLL import ScheduleLL
 from logic.airplaneLL import AirplaneLL
 
-airplanell = AirplaneLL()
 
-print(airplanell.get_all_airplane_types())
+destination_test = DestinationLL()
+
+print(destination_test.get_most_popular_destination())
 
 
 """
