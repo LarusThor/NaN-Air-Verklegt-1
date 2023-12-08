@@ -23,17 +23,17 @@ class ScheduleLL():
         flight_list = []
         voyage_list = self.past_voyage_list
         voyage_list.update(self.upcoming_voyage_lsit)
-        date = datetime.strptime(a_date, "%Y-%m-%d").date()
+        date = a_date, "
         #print(voyage_list)
-        
+    
         for flight in voyage_list.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
-            departure_date = datetime.strptime(flight.departure,  "%Y-%m-%d %H:%M:%S").date()
-            arrival_date = datetime.strptime(flight.arrival,  "%Y-%m-%d %H:%M:%S").date()
+            departure_date = datetime(flight.departure, "%Y-%m-%d %H:%M:%S").date()
+            arrival_date = flight.arrival
 
             dates = [departure_date, arrival_date]
-            #print(date)
-            #print(dates)
+            print(date)
+            print(dates)
             if date in dates:
                 workers_on_day.append(workers)
                 flight_list.append(flight.flight_id)
