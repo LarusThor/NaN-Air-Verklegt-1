@@ -52,7 +52,8 @@ class DestinationIO():
                 writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergencyContact, 'emergency_contact_number': destination.emergencyNumber, 'airport_name': destination.airportName, 'distance_from_iceland': destination.distanceFromIceland})
         
 
-
+    def write_destination(self, destination: list[Destination]):
+        pass
         
 #destination_id -> destinations.csv -> id
 #destination -> destinations.csv -> destination
