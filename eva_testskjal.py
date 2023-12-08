@@ -2,6 +2,7 @@ from logic.employeeLL import EmployeeLL
 from model.employee_model import Employee
 from logic.destinationLL import DestinationLL
 from model.past_voyage_model import PastVoyage
+from logic.past_voyageLL import PastVoyageLL
 
 employee_ll = EmployeeLL()
 
@@ -35,10 +36,12 @@ voyage = PastVoyage(
     fa3 =  "N/A",
     fa4 = "N/A",
     fa5 = "N/A",
+    seats_sold = "N/A"
 
 )
 
-print(employee_ll.get_total_hours_worked(employee, voyage))
+print(employee_ll.get_total_hours_worked(employee))
+
 
 
 
