@@ -19,7 +19,7 @@ class UpcomingVoyageLL:
         pass
 
     def get_upcoming_voyages_by_week(self):
-        pass
+        return self.upcoming_flights_dict
 
 
 #flightnr

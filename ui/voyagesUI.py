@@ -1,8 +1,11 @@
 from ui.menu_managerUI import Menu
 from logic.LogicWrapper import LogicWrapper
+from datetime import datetime
 
 VOYAGES_OPTIONS = ["1. Create a voyage", "2. List of voyages", "3. Staff a voyage", "4. cancel a voyage"]
 LIST_VOYAGES_OPTIONS = ["1. List of voyages by day", "2. List of voyages by week"]
+VOYAGE_HEADER = ("{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format('Flight Number', 'From', 'To', 'Departure Time', 'Arrival Time', 'Captain', 'Copilot', 'Flight Service Manager'))
+
 
 
 class VoyagesUI:
@@ -53,7 +56,7 @@ class VoyagesUI:
     def get_voyage_by_date(self, date) -> str: 
         voyage_counter = 0
         print("=" * 130)
-        print("{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format('Flight Number', 'From', 'To', 'Departure Time', 'Arrival Time', 'Captain', 'Copilot', 'Flight Service Manager'))
+        print(VOYAGE_HEADER)
         print("=" * 130)
         for id, flight_values in self.get_voyages.items():
             if date in flight_values.departure:
@@ -63,8 +66,22 @@ class VoyagesUI:
                     voyage_counter = 0
                     print("-" * 130)
     
-    def get_voyage_by_week(self, week):
-        pass
+    def get_voyage_by_week(self, week_nr):
+        voyage_counter = 0
+        date = ""
+        print("=" * 130)
+        print(VOYAGE_HEADER)
+        print("=" * 130)
+        for id, flight_values in self.get_voyages.items():
+            departure = flight_values.departure.split()
+            date = date.join.departure[0]
+            ['2023','12','24']
+            if datetime.date(departure[0]).isocalendar().week == week_nr:
+                print(f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure:^22}{flight_values.arrival:^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}", end="\n")
+                voyage_counter += 1
+                if voyage_counter == 2:
+                    voyage_counter = 0
+                    print("-" * 130)
 
 
     def staff_voyage(self) -> None:
