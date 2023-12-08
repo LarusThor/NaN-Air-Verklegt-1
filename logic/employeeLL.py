@@ -8,7 +8,7 @@ class EmployeeLL:
         self.data_wrapper = DataWrapper()
 
         self.employee_dict = self.data_wrapper.get_all_staff_members()
-        self.voyage_list = self.data_wrapper.read_past_flights()
+        self.voyage_list = self.data_wrapper.read_past_flights()#TODO: tengja frekar við hinn logic?
 
     def get_employee_dict(self) -> list[str]:
         """ Returns a list of all employees within the system. """

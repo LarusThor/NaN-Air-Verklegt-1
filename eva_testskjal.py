@@ -3,7 +3,15 @@ from model.employee_model import Employee
 from logic.destinationLL import DestinationLL
 from model.past_voyage_model import PastVoyage
 from logic.past_voyageLL import PastVoyageLL
+from logic.scheduleLL import ScheduleLL
 
+
+schedule_stuff = ScheduleLL()
+
+print(schedule_stuff.employee_working("2023-11-02"))
+
+
+"""
 employee_ll = EmployeeLL()
 
 
@@ -42,8 +50,7 @@ voyage = PastVoyage(
 
 print(employee_ll.get_total_hours_worked(employee))
 
-
-
+"""
 
 
 """
