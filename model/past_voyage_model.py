@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 @dataclass
 class PastVoyage:
+    flight_id: str
     flight_nr: str
     dep_from: str
     arr_at: str
