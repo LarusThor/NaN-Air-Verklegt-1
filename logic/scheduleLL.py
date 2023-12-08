@@ -22,6 +22,7 @@ class ScheduleLL():
         for flight in voyage_list.values():
             weeks = str(flight.departure.isocalendar().week)
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
+            
             if employee in workers and weeks == week_nr:
                 if year in flight.departure.strftime('%Y-%m-%d %H:%M:%S'):
                     employee_list.append(flight.flight_nr)
@@ -45,7 +46,9 @@ class ScheduleLL():
             departure_date = flight.departure.date()
             arrival_date = flight.arrival.date()
             dates = [departure_date, arrival_date]
+            
             if a_date in dates:
+                
                 for worker in workers:
                     #TODO: tengja við að finna employee frá social id
                     pass

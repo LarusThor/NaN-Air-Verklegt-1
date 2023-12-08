@@ -19,18 +19,22 @@ class EmployeeLL:
     def get_all_pilots(self) -> list[str]:
         """ Returns a list of all pilots. """
         pilot_list = []
+
         for employee_data in self.employee_dict.values():
             if employee_data.role == "Pilot":
                 pilot_list.append(employee_data.name)
+        
         return pilot_list
     
 
     def get_flight_attendants(self) -> list[str] :
         """ Returns a list of all flight attendants. """
         flight_attendant_list = []
+        
         for employee_data in self.employee_dict.values():
             if employee_data.role == "Cabincrew":
                 flight_attendant_list.append(employee_data.name)
+        
         return flight_attendant_list
 
 
@@ -64,8 +68,10 @@ class EmployeeLL:
         #TODO: laga listann af voyages: fáum bara fyrstu 10
         flights_list = []
         total_hours = 0
+        
         for flight in self.past_voyage_dict.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
+            
             if employee.social_id in workers:
                 departure = datetime.strptime(flight.departure, "%Y-%m-%d %H:%M:%S")
                 arrival = datetime.strptime(flight.arrival, "%Y-%m-%d %H:%M:%S") 
