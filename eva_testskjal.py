@@ -4,16 +4,22 @@ from logic.destinationLL import DestinationLL
 from model.past_voyage_model import PastVoyage
 from logic.past_voyageLL import PastVoyageLL
 from logic.scheduleLL import ScheduleLL
+from logic.airplaneLL import AirplaneLL
+
+airplanell = AirplaneLL()
+
+print(airplanell.get_all_airplane_types())
 
 
+"""
 schedule_stuff = ScheduleLL()
 
-print(schedule_stuff.employee_working("2023-11-04"))
+print(schedule_stuff.schedule_employee_by_week("2706838569", "2023", "45"))
+"""
 
 
 """
 employee_ll = EmployeeLL()
-
 
 
 employee = Employee(
