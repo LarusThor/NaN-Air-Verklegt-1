@@ -9,7 +9,7 @@ from logic.airplaneLL import AirplaneLL
 
 destination_test = DestinationLL()
 
-print(destination_test.get_most_popular_destination())
+print(destination_test.get_destination_list())
 
 
 """
