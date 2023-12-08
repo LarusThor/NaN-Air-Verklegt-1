@@ -15,10 +15,10 @@ class UpcomingVoyageIO:
             lines = f.readlines()
             for line in lines[1:]:
                 line = line.strip()
-                id, flight_nr, dep_from, arr_at, departure, arrival, captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5 = line.split(",")
+                id, flight_nr, dep_from, arr_at, departure, arrival, aircraft_id, captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5 = line.split(",")
                 
-                upcoming_flight = UpcomingVoyage(id, flight_nr, dep_from, arr_at, datetime.strptime(departure, "%Y-%m-%d %H:%M:%S"), datetime.strptime(arrival, "%Y-%m-%d %H:%M:%S"), captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5)
-                upcoming_flights_dict[flight_nr] = upcoming_flight
+                upcoming_flight = UpcomingVoyage(id, flight_nr, dep_from, arr_at, datetime.strptime(departure, "%Y-%m-%d %H:%M:%S"), datetime.strptime(arrival, "%Y-%m-%d %H:%M:%S"),aircraft_id, captain, copilot, fsm, fa1, fa2, fa3, fa4, fa5)
+                upcoming_flights_dict[id] = upcoming_flight
 
         return upcoming_flights_dict
     
