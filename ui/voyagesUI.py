@@ -80,7 +80,7 @@ class VoyagesUI:
             # year, month, day = map(int, date)
             weeks = str(flight_values.departure.isocalendar().week)
             if weeks == week_nr:
-                print(f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure:^22}{flight_values.arrival:^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}", end="\n")
+                print(f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}", end="\n")
                 voyage_counter += 1
                 if voyage_counter == 2:
                     voyage_counter = 0
