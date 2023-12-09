@@ -30,6 +30,7 @@ class AirplaneUI:
     def pilots_by_licanse(self) -> None: # if nr 1 from AIRPLANE_TYPES_AND_LICENSE_OPTIONS is chosen
         self.menus.display_options(PILOTS_BY_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
+        return action
     
 
     def types(self) -> str:

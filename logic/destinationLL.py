@@ -1,5 +1,6 @@
 from data.data_wrapper import DataWrapper
 from logic.voyageLL import VoyageLL
+from model.destination_model import Destination
 
 class DestinationLL():
     def __init__(self) -> None:
@@ -41,7 +42,7 @@ class DestinationLL():
         return most_popular, destination_dict
    
 
-    def change_destination_contact(self): #breyta í klasaritinu
+    def change_destination_contact(self, destination: Destination): #breyta í klasaritinu
         """ Changes the contact for a destination. """
         pass
         #name
