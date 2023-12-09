@@ -1,4 +1,5 @@
 from data.data_wrapper import DataWrapper
+from itertools import chain
 
 class AirplaneLL():
     def __init__(self) -> None:
@@ -6,7 +7,7 @@ class AirplaneLL():
         self.airplane_list = self.data_wrapper.get_airplanes()
         self.airplane_types = self.data_wrapper.get_airplane_types()
         self.past_voyage_list = self.data_wrapper.get_past_flights()
-        self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
+        self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights() #TODO: tengja frekar við hinn logic?
 
     def get_most_used_plane(self):
         """ Returns the most used plane. """
@@ -35,14 +36,16 @@ class AirplaneLL():
    
     def get_airplane_usage(self):
         """ Returns the total number of voyages for a specific plane. """
-        #TODO: laga, erum ekki að fá allan listan, bara 22 ferðir
+        #TODO: laga, erum ekki að fá allan listan, bara 52 ferðir
         airplane_list = []
         airplane_dict = {}
-        voyage_list = {}
-        voyage_list.update(self.upcoming_voyage_list)
-        voyage_list.update(self.past_voyage_list)
 
-        for voyage in voyage_list.values():
+        all_voyages = list(chain(
+            self.upcoming_voyage_list.values(), 
+            self.past_voyage_list.values()
+        ))
+
+        for voyage in all_voyages:
             if voyage.aircraft_id != "N/A":
                 airplane_list.append(voyage.aircraft_id)
 
