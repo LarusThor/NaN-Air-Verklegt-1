@@ -47,6 +47,7 @@ class VoyagesUI:
     # save_prompt = input("Would you like to save this new airplane, (y)es or (n)o? ").lower()
     # airplane = Airplane(name,type,manufacturer,model,number_of_seats)
     # self.logic_wrapper.add_airplane(airplane)
+    
 
     def add_voyage(self) -> None:
         print("New voyage: ")
