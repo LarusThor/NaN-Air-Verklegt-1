@@ -16,5 +16,11 @@ class UpcomingVoyageLL:
     def add_upcoming_voyage(self, upcoming_voyage):
         self.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
+    def aircraft_availability():
+        pass
+
+    def staff_availability():
+        pass
+
 
 #flightnr
