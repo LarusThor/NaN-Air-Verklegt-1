@@ -33,7 +33,7 @@ class DestinationIO():
             fieldnames = ['id','destination', 'emergency_contact_name', 'emergency_contact_number', 'airport_name', 'distance_from_iceland']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-            writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergencyContact, 'emergency_contact_number': destination.emergencyNumber, 'airport_name': destination.airportName, 'distance_from_iceland': destination.distanceFromIceland})
+            writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland})
         
     def update_destination(self, updated_destination):
         dest_list = self.read_all_destinations()
@@ -49,7 +49,7 @@ class DestinationIO():
             writer.writeheader()
             
             for destination in dest_list:
-                writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergencyContact, 'emergency_contact_number': destination.emergencyNumber, 'airport_name': destination.airportName, 'distance_from_iceland': destination.distanceFromIceland})
+                writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland})
         
 
     def write_destination(self, destination: list[Destination]):
@@ -57,10 +57,10 @@ class DestinationIO():
         
 #destination_id -> destinations.csv -> id
 #destination -> destinations.csv -> destination
-#emergencyContact -> destinations.csv -> emergency_contact_name
-#emergencyNumber -> destinations.csv -> emergency_contact_number
+#emergency_contact_name -> destinations.csv -> emergency_contact_name
+#emergency_contact_number -> destinations.csv -> emergency_contact_number
 #airportName -> destinations.csv -> airport_name
-#distanceFromIceland -> destinations.csv -> distance_from_iceland
+#distance_from_iceland -> destinations.csv -> distance_from_iceland
 
-'''destination_id, destination, emergencyContact, emergencyNumber, 
-                 airportName, distanceFromIceland'''
+'''destination_id, destination, emergency_contact_name, emergency_contact_number, 
+                 airportName, distance_from_iceland'''

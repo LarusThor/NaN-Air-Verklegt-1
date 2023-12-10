@@ -20,7 +20,7 @@ class DestinationLL():
         return destination_list
 
     
-    def add_destination(self, destination):
+    def add_destination(self, destination: Destination) -> None:
         """Takes in a customer object and forwards it to the data layer"""
         dest = self.data_wrapper
         dest.add_destinations(destination)

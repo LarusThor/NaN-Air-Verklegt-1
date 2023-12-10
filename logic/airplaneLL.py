@@ -65,6 +65,8 @@ class AirplaneLL():
         self.data_wrapper.add_airplane(airplane)
 
     def pilots_by_license(self):
+        """ Returns a dictionary where the key is the airplane type and the value is a list of
+          all licenced pilots for that airplane type. """
         pilots_by_license = dict()
         pilots = self.pilots
 
