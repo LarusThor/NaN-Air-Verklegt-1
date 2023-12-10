@@ -87,9 +87,9 @@ class AirplaneLL():
 
         for plane in self.airplane_list.values():
             insignia = plane.plane_insignia
-            if insignia in airplane_insignia_by_type_dict:
-                airplane_insignia_by_type_dict[plane.plane_type_id].append(plane.plane_insignia)
+            plane_type = plane.plane_type_id
+            if plane_type in airplane_insignia_by_type_dict:
+                airplane_insignia_by_type_dict[plane_type].append(insignia)
             else:
-               airplane_insignia_by_type_dict[plane.plane_type_id] =[plane.plane_insignia]
-
+                airplane_insignia_by_type_dict[plane_type] = [insignia]
         return airplane_insignia_by_type_dict

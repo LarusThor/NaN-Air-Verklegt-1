@@ -1,12 +1,12 @@
-from logic.employeeLL import EmployeeLL
-from model.employee_model import Employee
-from logic.destinationLL import DestinationLL
-from model.past_voyage_model import PastVoyage
-from logic.past_voyageLL import PastVoyageLL
+#from logic.employeeLL import EmployeeLL
+#from model.employee_model import Employee
+#from logic.destinationLL import DestinationLL
+#from model.past_voyage_model import PastVoyage
+#from logic.past_voyageLL import PastVoyageLL
 #from logic.scheduleLL import ScheduleLL
 from logic.airplaneLL import AirplaneLL
-from model.destination_model import Destination
-from datetime import date, datetime
+#from model.destination_model import Destination
+#from datetime import date, datetime
 
 
 
