@@ -22,6 +22,7 @@ class AirplaneIO:
                    capacity=int(capacity)
                 )
                 airplane_dict[plane_insignia] = aircraft
+        return airplane_dict
 
     def airplane_types(self) -> list[AirplaneType]:
         airplane_types = []

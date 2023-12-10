@@ -83,10 +83,10 @@ class AirplaneLL():
     
     def airplane_insignia_by_type(self):
         """ Dictionary which sorts airplanes in use by their types """
-        airplanes_by_type_dict = dict()
+        airplane_insignia_by_type_dict = dict()
 
-        for plane_insignia,plane_type_id,manufacturer,model,capacity in self.airplane_list:
+        for plane_insignia, plane_type_id, manufacturer, model, capacity in self.airplane_list.items():
             if model in plane_type_id:
-                airplanes_by_type_dict[plane_type_id].append(plane_insignia)
+                airplane_insignia_by_type_dict[plane_type_id].append(plane_insignia)
 
-        return airplanes_by_type_dict
+        return airplane_insignia_by_type_dict
