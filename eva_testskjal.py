@@ -3,17 +3,25 @@ from model.employee_model import Employee
 from logic.destinationLL import DestinationLL
 from model.past_voyage_model import PastVoyage
 from logic.past_voyageLL import PastVoyageLL
-from logic.scheduleLL import ScheduleLL
+#from logic.scheduleLL import ScheduleLL
 from logic.airplaneLL import AirplaneLL
-from logic.logic_wrapper import LogicWrapper
 from model.destination_model import Destination
 from datetime import date, datetime
 
-logic = LogicWrapper()
-sched = ScheduleLL(logic)
+
+
+
+
+air = AirplaneLL()
+
+print(air.airplane_insignia_by_type())
+
+
+
+"""
 
 print(sched.employee_schedule_by_week("1309797899", "2023", "45"))
-
+"""
 
 
 

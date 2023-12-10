@@ -1,15 +1,15 @@
 from data.data_wrapper import DataWrapper
 from dataclasses import asdict
 from model.upcoming_voyage_model import UpcomingVoyage
-from logic.logic_wrapper import LogicWrapper
+from logic.airplaneLL import AirplaneLL
 
 class UpcomingVoyageLL:
     def __init__(self) -> None:
         self.data_wrapper = DataWrapper()
-        self.logic_wrapper = LogicWrapper()
+        self.airplane = AirplaneLL()
 
         self.upcoming_flights_dict = self.data_wrapper.get_upcoming_flights()
-        self.airplane_insignias_sorted = self.logic_wrapper.airplane_insignia_by_types()
+        self.airplane_insignias_sorted = self.airplane.airplane_insignia_by_type()
 
 
     def get_upcoming_voyages(self):
