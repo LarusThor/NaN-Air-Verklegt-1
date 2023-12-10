@@ -63,6 +63,9 @@ class LogicWrapper():
         """Takes in a customer object and forwards it to the data layer. """
         return self.destination.add_destination(destination)
     
+    def add_destination(self, destination):
+        """ Takes in a customer object and forwards it to the data layer. """
+        return self.destination.add_destination(destination)
 
     #Airplanes:
     def airplane_types(self):
@@ -72,10 +75,8 @@ class LogicWrapper():
     def add_airplane(self, airplane):
         return self.airplane.add_airplane(airplane)
     
-    def add_destination(self, destination):
-        """ Takes in a customer object and forwards it to the data layer. """
-        return self.destination.add_destination(destination)
-    
+    def pilots_by_license(self):
+        return self.airplane.pilots_by_license()
 
     #Upcoming voyages:
     def upcoming_voyages(self):
