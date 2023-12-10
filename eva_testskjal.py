@@ -5,13 +5,27 @@ from model.past_voyage_model import PastVoyage
 from logic.past_voyageLL import PastVoyageLL
 from logic.scheduleLL import ScheduleLL
 from logic.airplaneLL import AirplaneLL
+from logic.logic_wrapper import LogicWrapper
+from model.destination_model import Destination
 
 
-test = AirplaneLL()
-sched_ll = ScheduleLL()
+destinations = DestinationLL()
 
-print(test.get_airplane_usage())
+employee_ll = EmployeeLL()
 
+
+dsti = Destination(
+    destination_id = "test",
+    destination = "test",
+    emergency_contact_name = "test",
+    emergency_contact_number = "test",
+    airport_name = "test",
+    distance_from_iceland = "test"
+)
+
+destinations.add_destination(dsti)
+
+ 
 
 
 
