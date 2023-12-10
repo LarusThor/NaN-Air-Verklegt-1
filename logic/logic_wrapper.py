@@ -78,8 +78,8 @@ class LogicWrapper():
     def pilots_by_license(self):
         return self.airplane.pilots_by_license()
 
-    def airplane_insignia_by_types(self):
-        return self.airplane.airplane_insignia_by_type()
+    # def airplane_insignia_by_types(self):
+    #     return self.airplane.airplane_insignia_by_type()
 
     #Upcoming voyages:
     def upcoming_voyages(self):
