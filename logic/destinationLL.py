@@ -10,7 +10,7 @@ class DestinationLL():
         self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
    
    
-    def get_destination_list(self):
+    def get_destination_list(self) -> list:
         """ Returns a list of destinations within the system. """
         destination_list = []
         destinations = self.data_wrapper.get_all_destinations()
@@ -26,7 +26,7 @@ class DestinationLL():
         dest.add_destinations(destination)
    
 
-    def get_most_popular_destination(self): #reyna að stytta nafn
+    def get_most_popular_destination(self) -> dict: #reyna að stytta nafn
         """ Returns the most popular destination. """
         destination_list = []
         destination_dict = {}
@@ -39,10 +39,11 @@ class DestinationLL():
             counter = destination_list.count(destination)
             destination_dict[destination] = counter
         most_popular = max(set(destination_list), key=destination_list.count)
+
         return most_popular, destination_dict
    
 
-    def change_destination_contact(self, destination: Destination): #breyta í klasaritinu
+    def change_destination_contact(self, destination: Destination) -> None: #breyta í klasaritinu
         """ Changes the contact name and number for a destination. """
         return self.data_wrapper.change_destination_info(destination)
         #name
