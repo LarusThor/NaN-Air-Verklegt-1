@@ -6,3 +6,4 @@
 #hafa skýrsluna í samræmi við kóða
 #low fi testing hækka einkun
 #hafa feedback
+# Change names of all python files to snake_case

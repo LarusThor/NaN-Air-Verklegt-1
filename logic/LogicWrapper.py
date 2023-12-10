@@ -10,11 +10,11 @@ from logic.past_voyageLL import PastVoyageLL
 
 class LogicWrapper():
     def __init__(self) -> None:
-        self.DataWrapper = DataWrapper()
+        self.data_wrapper = DataWrapper()
         self.employee = EmployeeLL() 
         self.airplane = AirplaneLL()
         self.destination = DestinationLL()
-        self.schedule = ScheduleLL()
+        self.schedule = ScheduleLL(self)
         self.voyage = VoyageLL()
         self.list_upcoming_voyage = UpcomingVoyageLL()
         self.list_past_voyages = PastVoyageLL()
@@ -37,9 +37,13 @@ class LogicWrapper():
          """ Adds employee to the system. """
          return self.employee.add_employee(employee)
     
-    def employee_info(self, employee):
-        """ Returns information about a specific employee. """
-        return self.employee.get_employee(employee)
+    def employee_info(self, employee_social_id: str):
+        """ Returns information about a specific employee. 
+        
+        Args:
+            employee_social_id: The social ID of the employee
+        """
+        return self.employee.get_employee(employee_social_id)
     
     def change_employee_info(self, employee):
         """ doc """

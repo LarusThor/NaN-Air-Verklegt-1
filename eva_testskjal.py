@@ -8,8 +8,12 @@ from logic.airplaneLL import AirplaneLL
 
 
 test = AirplaneLL()
+sched_ll = ScheduleLL()
 
 print(test.get_airplane_usage())
+
+
+
 
 
 """

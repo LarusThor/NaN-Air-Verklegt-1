@@ -37,7 +37,6 @@ class EmployeeLL:
         
         return flight_attendant_list
 
-
     def get_employee(self, social_id: str) -> Employee:
         """Returns information about a chosen employee."""
         return self.employee_dict[social_id]
