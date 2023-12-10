@@ -6,26 +6,31 @@ DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination"
 
 class DestinationsUI:
     def __init__(self) -> None:
-        logic_wrapper = LogicWrapper()
+        self.logic_wrapper = LogicWrapper()
         self.menus = Menu()     
-        self.destinations_list = logic_wrapper.destination_list()   
+        self.destinations_list = self.logic_wrapper.destination_list()   
 
 
     def destinations(self) -> str:
+        """ TODO: add docstring """
         self.menus.display_options(DESTINATIONS_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
 
     def get_all_destinations(self) -> None:
+        """ TODO: add docstring """
         print(self.destinations_list)  
 
 
     def get_most_popular_destination(self):
-        pass
+        """ TODO: add docstring """
+        popular = self.logic_wrapper.popular_destination()
+        print(popular)
 
 
     def add_destination(self) -> None:
+        """ TODO: add docstring """
         print("New destination")
         country = input("Enter the country: ")
         airport = input("Enter the airport: ")
@@ -49,7 +54,8 @@ class DestinationsUI:
             print("Destionation not saved.")
     
     
-    def get_destination_info(self): #define
+    def change_destination_info(self): #define
+        """ TODO: add docstring """
         print("What destination would you like to get the information about?")
 
         

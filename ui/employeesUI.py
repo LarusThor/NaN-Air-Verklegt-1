@@ -18,12 +18,14 @@ class EmployeeUI:
 
 
     def employees_options(self) -> str:
+        """ TODO: add docstring """
         self.menus.display_options(EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
 
     def list_employees_options(self) -> str:
+        """ TODO: add docstring """
         self.menus.display_options(LIST_EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
@@ -44,6 +46,7 @@ class EmployeeUI:
 
 
     def get_pilots(self) -> None:
+        """ TODO: add docstring """
         print()
         print("All pilots:")
         print("-"*15)
@@ -51,6 +54,7 @@ class EmployeeUI:
     
 
     def get_flight_attendants(self) -> None:
+        """ TODO: add docstring """
         print()
         print("All flight attendants:")
         print("-"*15)
@@ -58,6 +62,7 @@ class EmployeeUI:
     
 
     def get_all_employees(self) -> None:
+        """ TODO: add docstring """
         print()
         print("All employees:")
         print("-"*15)
@@ -65,28 +70,33 @@ class EmployeeUI:
 
 
     def get_most_experienced(self):
+        """ TODO: add docstring """
         pass
 
 
     def get_employee(self):
+        """ TODO: add docstring """
         social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
         print(employee)
 
 
     def employee_info_options(self) -> str:
+        """ TODO: add docstring """
         self.menus.display_options(EMPLOYEE_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())   
         return action 
 
 
     def get_info(self, employee):
+        """ TODO: add docstring """
         social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
         print(employee)
 
 
     def change_info_options(self):
+        """ TODO: add docstring """
         #TODO: robert hjálp
         employee = Employee(
             social_id="broseph",
@@ -103,18 +113,22 @@ class EmployeeUI:
 
 
     def change_home_address(self):
+        """ TODO: add docstring """
         pass
 
 
     def change_phone_number(self):
+        """ TODO: add docstring """
         pass
     
 
     def change_email(self):
+        """ TODO: add docstring """
         pass
 
 
     def add_employee(self): #define
+        """ TODO: add docstring """
         #TODO: rosa ljótt getum við stytt eða fegrað?
         print("Fill out the following informaation about the new employee:")
         name = input("Name: ")

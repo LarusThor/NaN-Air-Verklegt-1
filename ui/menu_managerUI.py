@@ -8,6 +8,7 @@ class Menu():
         self.logic_wrapper = LogicWrapper()
 
     def main_menu(self) -> None:
+        """ TODO: add docstring """
     # Get terminal size
         terminal_size = os.get_terminal_size()
         terminal_width = terminal_size.columns
@@ -32,6 +33,7 @@ class Menu():
         print("\n" * empty_lines_below)
 
     def display_options(self, list_of_options) -> None:
+        """ TODO: add docstring """
     # Get terminal size
         terminal_size = os.get_terminal_size()
         terminal_width = terminal_size.columns

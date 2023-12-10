@@ -67,6 +67,9 @@ class LogicWrapper():
         """ Takes in a customer object and forwards it to the data layer. """
         return self.destination.add_destination(destination)
 
+    def popular_destination(self):
+        return self.destination.get_most_popular_destination()
+
     #Airplanes:
     def airplane_types(self):
         """ Returns all airplane types within the system. """

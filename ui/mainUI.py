@@ -30,11 +30,13 @@ class Main:
         self.logic_wrapper = LogicWrapper()
 
     def input_prompt(self) -> None:
+        """ TODO: add docstring """
         while True:
             self.menus.main_menu()
             action = str(input("Enter your action: ").lower())
 
             def airplane() -> None:
+                """ TODO: add docstring """
                 action = self.airplane_ui.airplane()
 
                 if action == "m" or action == "b":
@@ -59,6 +61,7 @@ class Main:
                         self.airplane_ui.flown_furthest_airplane()
 
             def destinations() -> None:
+                """ TODO: add docstring """
                 action = self.destinations_ui.destinations()
                 if action == "1":
                     action = self.destinations_ui.get_all_destinations()
@@ -73,6 +76,7 @@ class Main:
                     self.destinations_ui.get_destination_info()
 
             def employees() -> None:
+                """ TODO: add docstring """
                 action = self.employee_ui.employees_options()
 
                 if action == "m" or action == "b":
@@ -121,6 +125,7 @@ class Main:
                     self.employee_ui.add_employee()
 
             def schedule() -> None:
+                """ TODO: add docstring """
                 action = self.schedule_ui.schedule_options()
 
                 if action == "1":
@@ -136,6 +141,7 @@ class Main:
                     self.schedule_ui.get_schedule_for_employee(employee)
 
             def voyages() -> None:
+                """ TODO: add docstring """
                 action = self.voyages_ui.voyages_options()
 
                 if action == "1":
@@ -170,6 +176,7 @@ class Main:
                     self.voyages_ui.staff_voyage()
 
             def flight_information() -> None:
+                """ TODO: add docstring """
                 action = self.flight_info.flight_info_options()
 
                 if action == "1":
