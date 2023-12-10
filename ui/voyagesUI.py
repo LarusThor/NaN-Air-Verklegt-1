@@ -1,5 +1,5 @@
 from ui.menu_managerUI import Menu
-from logic.LogicWrapper import LogicWrapper
+from logic.logic_wrapper import LogicWrapper
 from datetime import datetime
 from model.upcoming_voyage_model import UpcomingVoyage
 

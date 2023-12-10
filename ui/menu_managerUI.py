@@ -1,4 +1,4 @@
-from logic.LogicWrapper import LogicWrapper
+from logic.logic_wrapper import LogicWrapper
 import os
 OUTLINE = "-"*50
 MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Schedule", "5. Voyages", "6. Flight information"]

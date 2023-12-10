@@ -1,5 +1,5 @@
 from ui.menu_managerUI import Menu
-from logic.LogicWrapper import LogicWrapper
+from logic.logic_wrapper import LogicWrapper
 from model.employee_model import Employee
 
 EMPLOYEES_OPTIONS = ["1. List employees - Alphabetical", "2. Employee information", "3. Add employee"]

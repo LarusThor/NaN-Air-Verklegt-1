@@ -1,5 +1,6 @@
 from data.data_wrapper import DataWrapper
 from itertools import chain
+from employeeLL import EmployeeLL
 
 class AirplaneLL():
     def __init__(self) -> None:
@@ -60,3 +61,6 @@ class AirplaneLL():
     def add_airplane(self, airplane):
         """ Adds airplane to the system. """
         self.data_wrapper.add_airplane(airplane)
+
+    def pilots_by_license(self):
+        pass

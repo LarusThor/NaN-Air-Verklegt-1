@@ -1,4 +1,4 @@
-from logic.LogicWrapper import LogicWrapper
+from logic.logic_wrapper import LogicWrapper
 from ui.menu_managerUI import Menu
 from ui.airplaneUI import AirplaneUI
 from ui.destinationsUI import DestinationsUI
