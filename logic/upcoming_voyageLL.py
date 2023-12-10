@@ -9,7 +9,7 @@ class UpcomingVoyageLL:
         self.airplane = AirplaneLL()
 
         self.upcoming_flights_dict = self.data_wrapper.get_upcoming_flights()
-        self.airplane_insignias_sorted = self.airplane.airplane_insignia_by_type()
+        # self.airplane_insignias_sorted = self.airplane.airplane_insignia_by_type()
 
 
     def get_upcoming_voyages(self):
