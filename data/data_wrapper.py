@@ -5,6 +5,7 @@ from data.scheduleIO import ScheduleIO
 from data.voyageIO import VoyageIO
 from data.past_voyageIO import PastVoyageIO
 from data.upcoming_voyageIO import UpcomingVoyageIO
+from model.destination_model import Destination
 
 class DataWrapper:
     def __init__(self):
@@ -38,7 +39,11 @@ class DataWrapper:
     
     def add_destinations(self, destination):
         return self.destinationIO.add_destination(destination)
-    
+   
+    def change_destination_info(self, destination: Destination):
+        return self.destinationIO.update_destination(destination)
+
+
     #past_flights
     def get_past_flights(self):
         return self.past_flightIO.read_past_flights()

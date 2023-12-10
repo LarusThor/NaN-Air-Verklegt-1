@@ -43,7 +43,7 @@ class DestinationLL():
    
 
     def change_destination_contact(self, destination: Destination): #breyta í klasaritinu
-        """ Changes the contact for a destination. """
-        pass
+        """ Changes the contact name and number for a destination. """
+        return self.data_wrapper.change_destination_info(destination)
         #name
         #number
