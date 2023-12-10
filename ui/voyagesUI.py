@@ -58,10 +58,10 @@ class VoyagesUI:
         flight_number = input("Enter flight number: ")
         departure_location = input("Enter 3 letter keyword for departure location: ")
         arrival_location = input("Enter 3 letter keyword for arrival location: ")
-        departure_date = input("Enter departure date; day/month/year: ")
-        departure_time = input("Enter departure time: ")
-        return_flight_date = input("Enter return flight date; day/month/year: ")
-        return_flight_time = input("Enter return flight time: ")
+        departure_date = input(f"Enter departure date from {departure_location}; year-month-day: ")
+        departure_time = input(f"Enter departure time from {departure_location}: ")
+        return_flight_date = input(f"Enter departure date from {arrival_location}; year-month-day: ")
+        return_flight_time = input(f"Enter departure time from {arrival_location}: ")
         aircraft_id = input("Enter a valid aircraft: ")
         # captain = input("Enter captain's social id: ")
         # copilot = input("Enter captain's social id: ")
@@ -89,8 +89,10 @@ class VoyagesUI:
         unstaffed = "N/A"
         the_last_id = int(the_last_id)
         the_last_id += 1
+        
 
-        print("New voyage: ")
+        print("New voyage: ") #TODO laga þetta heheheh
+        print("~" * 20)
         print("Flight id: ", the_last_id)
         print("Flight Number: ", flight_number)
         print("Departure Location: ", departure_location)
@@ -98,14 +100,17 @@ class VoyagesUI:
         print("Departure date and time: ", departure_date_time)
         print("Arrival date and time: ", arrival_date_time)
         
-        save_prompt = "Would you like to save this new voyage, (y)es or (n)o? "
+        save_prompt = input("Would you like to save this new voyage, (y)es or (n)o? ")
         if save_prompt == "y":
             print("New voyage has been saved!")
+            upcoming_flight1 = UpcomingVoyage(the_last_id,flight_number, departure_location, arrival_location, departure_date_time, (departure_date + " " + departure_time), aircraft_id, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed)
+            upcoming_flight2 = UpcomingVoyage((the_last_id + 1),flight_number, arrival_location, departure_location, arrival_date_time, arrival_date_time, aircraft_id, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed)
+            self.logic_wrapper.add_upcoming_voyages(upcoming_flight1)
+            self.logic_wrapper.add_upcoming_voyages(upcoming_flight2)
+
         elif save_prompt == "n":
             print("New voyage was not saved.")
         
-        upcoming_voyage = UpcomingVoyage(the_last_id,flight_number, departure_location, arrival_location, departure_date_time, arrival_date_time, aircraft_id, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed)
-        self.logic_wrapper.add_upcoming_voyages(upcoming_voyage)
 
     def manager_staffs_voyage(self):
         pass
