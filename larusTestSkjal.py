@@ -22,6 +22,8 @@ class AirplaneLL():
 
             return airplanes_by_type_dict
 
+
 d = AirplaneLL()
 
 print(d.airplane_insignia_by_type())
+    
