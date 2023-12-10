@@ -1,14 +1,16 @@
 from data.data_wrapper import DataWrapper
 from itertools import chain
-from employeeLL import EmployeeLL
+from logic.employeeLL import EmployeeLL
 
 class AirplaneLL():
     def __init__(self) -> None:
         self.data_wrapper = DataWrapper()
+        self.emlployees = EmployeeLL()
         self.airplane_list = self.data_wrapper.get_airplanes()
         self.airplane_types = self.data_wrapper.get_airplane_types()
         self.past_voyage_list = self.data_wrapper.get_past_flights()
         self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights() #TODO: tengja frekar við hinn logic?
+        self.pilots = self.emlployees.get_all_pilots()
 
     def get_most_used_plane(self):
         """ Returns the most used plane. """
@@ -63,4 +65,16 @@ class AirplaneLL():
         self.data_wrapper.add_airplane(airplane)
 
     def pilots_by_license(self):
-        pass
+        pilots_by_license = dict()
+        pilots = self.pilots
+
+        for pilot in pilots:
+            license_key = pilot.licence
+            pilot_name = pilot.name
+
+            if license_key in pilots_by_license:
+                pilots_by_license[license_key].append(pilot_name)
+            else:
+                pilots_by_license[license_key] = [pilot_name]
+
+        print(pilots_by_license)

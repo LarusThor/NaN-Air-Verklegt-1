@@ -5,13 +5,16 @@ from model.past_voyage_model import PastVoyage
 from logic.past_voyageLL import PastVoyageLL
 from logic.scheduleLL import ScheduleLL
 from logic.airplaneLL import AirplaneLL
+from logic.logic_wrapper import LogicWrapper
 
 
 test = AirplaneLL()
-sched_ll = ScheduleLL()
 
-print(test.get_airplane_usage())
 
+print(test.pilots_by_license())
+
+
+ 
 
 
 
