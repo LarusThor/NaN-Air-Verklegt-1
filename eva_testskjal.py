@@ -7,25 +7,12 @@ from logic.scheduleLL import ScheduleLL
 from logic.airplaneLL import AirplaneLL
 from logic.logic_wrapper import LogicWrapper
 from model.destination_model import Destination
+from datetime import date, datetime
 
+logic = LogicWrapper()
+sched = ScheduleLL(logic)
 
-destinations = DestinationLL()
-
-employee_ll = EmployeeLL()
-
-
-dsti = Destination(
-    destination_id = "test",
-    destination = "test",
-    emergency_contact_name = "test",
-    emergency_contact_number = "test",
-    airport_name = "test",
-    distance_from_iceland = "test"
-)
-
-destinations.add_destination(dsti)
-
- 
+print(sched.employee_schedule_by_week("1309797899", "2023", "45"))
 
 
 

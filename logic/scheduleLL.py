@@ -18,7 +18,7 @@ class ScheduleLL():
 
     def employee_schedule_by_week(self, employee, year, week_nr) -> str:
         """ Returns employee schedule """
-        employee_list = []
+        flights = []
         voyage_list = self.past_voyage_list
         voyage_list.update(self.upcoming_voyage_list)
         for flight in voyage_list.values():
@@ -27,21 +27,22 @@ class ScheduleLL():
             
             if employee in workers and weeks == week_nr:
                 if year in flight.departure.strftime('%Y-%m-%d %H:%M:%S'):
-                    employee_list.append(flight.flight_nr)
+                    flights.append(f"{flight.flight_nr} to {flight.arr_at}")
 
-        if employee_list:
-            return f"{employee} is scheduled for these flights: {employee_list} in week 4"
+        name = self.logic_wrapper.employee_info(employee)
+        if flights:
+            return f"{name.name} is scheduled for these flights: {flights} in week {week_nr}!"
         else:
-            return f"{employee} is not scheduled for any flights in week {week_nr}"
+            return f"{name.name} is not scheduled for any flights in week {week_nr}!"
         
         
-    def employee_working(self, date: datetime) -> list:
+    def employee_working(self, date_working: date) -> list:
         """ Returns a list of all employees working on a specific day. """    
         #TODO: simplify
         workers_on_day = []
         voyage_list = self.past_voyage_list
-        voyage_list.update(self.upcoming_voyage_lsit)
-        a_date = datetime.strptime(date, "%Y-%m-%d").date()
+        voyage_list.update(self.upcoming_voyage_list)
+        #a_date = datetime.strptime(date, "%Y-%m-%d").date()
 
         for flight in voyage_list.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
@@ -49,14 +50,10 @@ class ScheduleLL():
             arrival_date = flight.arrival.date()
             dates = [departure_date, arrival_date]
             
-            if a_date in dates:
-                
-                for worker in workers:
-                    #TODO: tengja við að finna employee frá social id
-                    pass
+            if date_working in dates:
                 workers_on_day.append([flight.flight_nr, workers])
         
-        return workers_on_day
+        return [self.logic_wrapper.employee_info(s_id) for s_id in workers_on_day]
     
 
     def employee_not_working(self, date_not_working: date) -> set[Employee]:
