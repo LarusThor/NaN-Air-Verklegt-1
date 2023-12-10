@@ -1,21 +1,18 @@
-#from logic.employeeLL import EmployeeLL
-#from model.employee_model import Employee
-#from logic.destinationLL import DestinationLL
-#from model.past_voyage_model import PastVoyage
-#from logic.past_voyageLL import PastVoyageLL
-#from logic.scheduleLL import ScheduleLL
-from logic.airplaneLL import AirplaneLL
-#from model.destination_model import Destination
-#from datetime import date, datetime
+from logic.employeeLL import EmployeeLL
+from model.employee_model import Employee
+from logic.destinationLL import DestinationLL
+# from model.past_voyage_model import PastVoyage
+# from logic.past_voyageLL import PastVoyageLL
+from logic.scheduleLL import ScheduleLL
+# from logic.airplaneLL import AirplaneLL
+from model.destination_model import Destination
+from logic.logic_wrapper import LogicWrapper
+from datetime import date, datetime
 
+l_wrapper = LogicWrapper()
+dt = date(year=2023,month=12,day=20)
 
-
-
-
-air = AirplaneLL()
-
-print(air.airplane_insignia_by_type())
-
+print(l_wrapper.schedule.employee_working(dt))
 
 
 """

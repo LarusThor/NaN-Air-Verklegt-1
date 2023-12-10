@@ -9,7 +9,7 @@ class UpcomingVoyageIO:
     def __init__(self):
         pass
 
-    def read_upcoming_flights(self):
+    def read_upcoming_flights(self) -> dict[str, UpcomingVoyage]:
         upcoming_flights_dict = {}
         with open("files/upcoming_flights.csv", "r", newline='', encoding="utf-8") as f:
             lines = f.readlines()

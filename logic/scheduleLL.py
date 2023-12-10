@@ -36,24 +36,23 @@ class ScheduleLL():
             return f"{name.name} is not scheduled for any flights in week {week_nr}!"
         
         
-    def employee_working(self, date_working: date) -> list:
+    def employee_working(self, date_working: date) -> list[Employee]:
         """ Returns a list of all employees working on a specific day. """    
         #TODO: simplify
         workers_on_day = []
-        voyage_list = self.past_voyage_list
-        voyage_list.update(self.upcoming_voyage_list)
+        voyage_list = list(self.past_voyage_list.values()) + list(self.upcoming_voyage_list.values())
         #a_date = datetime.strptime(date, "%Y-%m-%d").date()
 
-        for flight in voyage_list.values():
+        for flight in voyage_list:
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
             departure_date = flight.departure.date()
             arrival_date = flight.arrival.date()
             dates = [departure_date, arrival_date]
             
             if date_working in dates:
-                workers_on_day.append([flight.flight_nr, workers])
+                workers_on_day.extend(workers)
         
-        return [self.logic_wrapper.employee_info(s_id) for s_id in workers_on_day]
+        return [self.logic_wrapper.employee_info(s_id) for s_id in workers_on_day if s_id != 'N/A']
     
 
     def employee_not_working(self, date_not_working: date) -> set[Employee]:
@@ -65,11 +64,11 @@ class ScheduleLL():
         #TODO: simplify, tengja betur við þá sem eru að virka
         all_workers = set()
         all_workers.update(self.employee_dict)
-        workers_on_day = set()
-        voyage_list = self.past_voyage_list
-        voyage_list.update(self.upcoming_voyage_list)
 
-        for flight in voyage_list.values():
+        workers_on_day = set()
+        voyage_list = list(self.past_voyage_list.values() + list(self.upcoming_voyage_list.values()))
+
+        for flight in voyage_list:
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
             departure_date = flight.departure.date()
             arrival_date = flight.arrival.date()

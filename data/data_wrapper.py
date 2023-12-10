@@ -6,6 +6,8 @@ from data.voyageIO import VoyageIO
 from data.past_voyageIO import PastVoyageIO
 from data.upcoming_voyageIO import UpcomingVoyageIO
 from model.destination_model import Destination
+from model.past_voyage_model import PastVoyage
+from model.upcoming_voyage_model import UpcomingVoyage
 
 class DataWrapper:
     def __init__(self):
@@ -45,14 +47,14 @@ class DataWrapper:
 
 
     #past_flights
-    def get_past_flights(self):
+    def get_past_flights(self)-> dict[str, PastVoyage]:
         return self.past_flightIO.read_past_flights()
 
     def add_past_flights(self, past_flight):
         return self.past_flightIO.add_past_voyage(past_flight)
     
     #upcoming_flights
-    def get_upcoming_flights(self):
+    def get_upcoming_flights(self) -> dict[str, UpcomingVoyage]:
         return self.upcoming_flightIO.read_upcoming_flights()
     
     def add_upcoming_flights(self, upcoming_flight):

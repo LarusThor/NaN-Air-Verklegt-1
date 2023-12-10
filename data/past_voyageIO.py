@@ -8,7 +8,7 @@ class PastVoyageIO:
     def __init__(self):
         pass
 
-    def read_past_flights(self):
+    def read_past_flights(self) -> dict[str, PastVoyage]:
         past_flights_dict = {}
         with open("files/past_flights.csv", "r", newline='', encoding="utf-8") as f:
             lines = f.readlines()

@@ -96,7 +96,9 @@ class LogicWrapper():
     #Past voyages:
 
     def past_voyages(self):
-        """ doc """
+        """ doc 
+        TODO: Typehint
+        """
         return self.list_past_voyages.get_past_voyages()
     
 
