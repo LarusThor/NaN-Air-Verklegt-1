@@ -29,13 +29,19 @@ class ScheduleUI:
         action = str(input("Enter your action: ").lower())
         return action
 
-    def who_was_working(self, date):
+    def who_was_working(self) -> None:
         """ TODO: add docstring """
-        pass
+        employee = input("Enter employee's social ID: ")
+        year = input("Enter the year: ")
+        week = input("Enter week number: ")
+        print(self.logic_wrapper.employee_working(employee, year, week))
 
-    def get_how_was_not_working(self, date):
+    def get_how_was_not_working(self):
         """ TODO: add docstring """
-        pass
+        employee = input("Enter employee's social ID: ")
+        year = input("Enter the year: ")
+        week = input("Enter week number: ")
+        print(self.logic_wrapper.employee_working(employee, year, week))
 
     def get_employee(self) -> str:
         """ TODO: add docstring """
