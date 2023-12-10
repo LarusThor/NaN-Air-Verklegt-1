@@ -104,7 +104,7 @@ class VoyagesUI:
             print("New voyage was not saved.")
         
         upcoming_voyage = UpcomingVoyage(the_last_id,flight_number, departure_location, arrival_location, departure_date_time, arrival_date_time, aircraft_id, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed)
-        return self.logic_wrapper.add_upcoming_voyages(upcoming_voyage)
+        self.logic_wrapper.add_upcoming_voyages(upcoming_voyage)
 
     def manager_staffs_voyage(self):
         pass
