@@ -1,5 +1,4 @@
 from data.data_wrapper import DataWrapper
-from logic.voyageLL import VoyageLL
 from model.destination_model import Destination
 
 class DestinationLL():
@@ -51,3 +50,5 @@ class DestinationLL():
         return self.data_wrapper.change_destination_info(destination)
         #name
         #number
+
+    

@@ -1,6 +1,5 @@
 from data.data_wrapper import DataWrapper
 from itertools import chain
-from logic.employeeLL import EmployeeLL
 
 class AirplaneLL():
     def __init__(self, logic_wrapper) -> None:

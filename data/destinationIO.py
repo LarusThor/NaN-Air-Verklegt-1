@@ -6,18 +6,30 @@ class DestinationIO():
         pass
 
 
-    def read_all_destinations2(self):
-        self.destination_list = []
-        with open('files/destinations.csv', newline='', encoding="utf-8") as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                self.destination_list.append(row)
-        destination_names = []  # New list to store destination names
-        for destination in self.destination_list:
-            for key, value in destination.items():
-                if key == 'destination':
-                    destination_names.append(value)
-        return destination_names
+    # def read_all_destinations2(self):
+    #     self.destination_list = []
+    #     with open('files/destinations.csv', newline='', encoding="utf-8") as csvfile:
+    #         reader = csv.DictReader(csvfile)
+    #         for row in reader:
+    #             self.destination_list.append(row)
+    #     destination_names = []  # New list to store destination names
+    #     for destination in self.destination_list:
+    #         for key, value in destination.items():
+    #             if key == 'destination':
+    #                 destination_names.append(value)
+    #     return destination_names
+
+    def read_destinations_info(self):
+        destinations_overview = {}
+        with open("files/destinations.csv", "r") as f:
+            lines = f.readlines()
+            for line in lines[1:]:
+                line = line.strip()
+                id,destination,emergency_contact_name,emergency_contact_number,airport_name,distance_from_iceland, estimated_flight_time = line.split(",")
+                destination = Destination(id,destination,emergency_contact_name,emergency_contact_number,airport_name,distance_from_iceland, estimated_flight_time)
+                destinations_overview[id] = destination
+
+        return destinations_overview
     
     def read_all_destinations(self):
         dest_list = []

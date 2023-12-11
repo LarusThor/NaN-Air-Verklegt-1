@@ -1,7 +1,6 @@
 from data.data_wrapper import DataWrapper
 from dataclasses import asdict
 from model.upcoming_voyage_model import UpcomingVoyage
-from logic.airplaneLL import AirplaneLL
 from datetime import datetime
 
 class UpcomingVoyageLL:
@@ -24,17 +23,31 @@ class UpcomingVoyageLL:
     def add_upcoming_voyage(self, upcoming_voyage):
         self.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
-    def calculate_flight_time(self, departure_time, arrival_time):
-        start = datetime.strptime({departure_time}, "%H:%M:%S") 
-        end = datetime.strptime({arrival_time}, "%H:%M:%S") 
+    def calculate_flight_time(self, arr_at, return_flight_time):
+        #Need to implement addition of time from destinations dictionary
+        arrival_time_flight_duration = self.data_wrapper.get_all_destinations_info()
+        estimated_flight_time = (arrival_time_flight_duration.keys(arr_at))[-1]
+        return_flight_time = return_flight_time.split(":")
+        flight_time_to_calculate = int(return_flight_time[0])
+        arrival_flight_time = flight_time_to_calculate + estimated_flight_time
+        return_flight_time[0] = arrival_flight_time
+        # estimated_flight_time = list(arrival_time_flight_duration[arr_at])
+        # int(estimated_flight_time[-1]) #þá er þetta t.d. 4
 
-        time_difference = end - start
-        seconds = time_difference.total_seconds()
 
-        minutes, seconds = divmod(seconds, 60)
-        hours, minutes = divmod(minutes, 60)
 
-        return(hours, minutes, seconds)
+        
+        return 
+        # start = datetime.strptime({departure_time}, "%H:%M:%S") 
+        # end = datetime.strptime({arrival_time}, "%H:%M:%S")
+
+        # time_difference = end - start
+        # seconds = time_difference.total_seconds()
+
+        # minutes, seconds = divmod(seconds, 60)
+        # hours, minutes = divmod(minutes, 60)
+
+        # return(hours, minutes, seconds)
 
 
     def valid_pilot(self, aircraft_id, pilot):
