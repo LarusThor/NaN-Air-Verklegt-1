@@ -2,6 +2,7 @@ from data.data_wrapper import DataWrapper
 from dataclasses import asdict
 from model.upcoming_voyage_model import UpcomingVoyage
 from logic.airplaneLL import AirplaneLL
+from datetime import datetime
 
 class UpcomingVoyageLL:
     def __init__(self) -> None:
@@ -22,6 +23,20 @@ class UpcomingVoyageLL:
     def add_upcoming_voyage(self, upcoming_voyage):
         self.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
+    def calculate_flight_time(self, departure_time, arrival_time):
+        start = datetime.strptime({departure_time}, "%H:%M:%S") 
+        end = datetime.strptime({arrival_time}, "%H:%M:%S") 
+
+        time_difference = end - start
+        seconds = time_difference.total_seconds()
+
+        minutes, seconds = divmod(seconds, 60)
+        hours, minutes = divmod(minutes, 60)
+
+        return(hours, minutes, seconds)
+
+       
+
     def valid_pilot(self, aircraft_id, pilot):
         license_check = self.planes_by_type.keys(aircraft_id)
         if license_check in self.pilots_by_license.keys() and pilot in self.pilots_by_license.values(license_check):
@@ -32,6 +47,7 @@ class UpcomingVoyageLL:
 
     def staff_availability():
         pass
+
 
 
 #flightnr

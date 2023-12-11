@@ -73,6 +73,7 @@ class EmployeeLL:
         #TODO: laga listann af voyages: fáum bara fyrstu 10
         flights_list = []
         total_hours = 0
+        employee_dict = self.data_wrapper.get_all_staff_members()
         past_voyage_dict = self.data_wrapper.get_past_flights()
         
         for flight in past_voyage_dict.values():
