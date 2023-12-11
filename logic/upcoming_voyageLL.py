@@ -23,16 +23,32 @@ class UpcomingVoyageLL:
     def add_upcoming_voyage(self, upcoming_voyage):
         self.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
-    def calculate_flight_time(self, arr_at, return_flight_time):
+    def calculate_flight_time(self, arr_at, departure_date_time):
         #Need to implement addition of time from destinations dictionary
-        arrival_time_flight_duration = self.data_wrapper.get_all_destinations_info()
-        estimated_flight_time = (arrival_time_flight_duration.keys(arr_at))[-1]
-        return_flight_time = return_flight_time.split(":")
-        flight_time_to_calculate = int(return_flight_time[0])
-        arrival_flight_time = flight_time_to_calculate + estimated_flight_time
-        return_flight_time[0] = arrival_flight_time
-        # estimated_flight_time = list(arrival_time_flight_duration[arr_at])
+        destinations_info = self.data_wrapper.get_all_destinations_info()
+        estimated_flight_time_overview = list(destinations_info[arr_at]) #list af vlaues
+        estimated_flight_time = int(estimated_flight_time_overview[-1]) #03:00:00 viljum
+        hour_duration, min_duration, sec_duration = estimated_flight_time.split(":")
+        departure_date, departure_time = departure_date_time.split()
+        hour, minute, sec = departure_time.split(":")
+        year, month, day = departure_date.split("-")
+        original_date_time = datetime.datetime(year, month, day, hour, minute, sec)
+        
+        min_added = int(hour_duration) * 60 + min_duration
+        time_change = datetime.timedelta(minute=min_added)
+        arrival_time = original_date_time + time_change
+
+        return arrival_time
+
+
+        # estimated_flight_time_elements = estimated_flight_time.split(":")
+        # total_hours = hour + estimated_flight_time
+        # flight_time_to_calculate = int(departure_date_time[0])
+        # arrival_flight_time = flight_time_to_calculate + estimated_flight_time
+        # departure_date_time[0] = arrival_flight_time
+        
         # int(estimated_flight_time[-1]) #þá er þetta t.d. 4
+
 
 
 
