@@ -3,8 +3,9 @@ from dataclasses import asdict
 from model.past_voyage_model import PastVoyage
 
 class PastVoyageLL:
-    def __init__(self):
+    def __init__(self, logic_wrapper):
         self.data_wrapper = DataWrapper()
+        self.logic = logic_wrapper
 
     def get_past_voyages(self):
         """ TODO: add docstring"""
