@@ -9,15 +9,20 @@ from model.destination_model import Destination
 from logic.logic_wrapper import LogicWrapper
 from datetime import date, datetime
 
+
 l_wrapper = LogicWrapper()
+#print(l_wrapper.employee_info("1309797899"))
+
 dt = date(year=2023,month=10,day=20)
 dtt = date(year=2023,month=12,day=20)
-
 empl = l_wrapper.employee_info("1309797899")
-
 #print(empl)
-
 print(l_wrapper.get_total_hours_worked(empl, dt, dtt))
+
+"""
+
+"""
+
 
 """
 

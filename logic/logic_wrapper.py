@@ -53,9 +53,9 @@ class LogicWrapper():
         """ doc """
         return self.employee.change_employee_info(employee)
     
-    def total_hours_worked(self, employee):
+    def total_hours_worked(self, employee: Employee, start: datetime, end: datetime):
         """ doc """
-        return self.employee.get_total_hours_worked(employee)
+        return self.employee.get_total_hours_worked(employee, start, end)
 
 
     #Destinations:
@@ -115,7 +115,7 @@ class LogicWrapper():
         """ doc 
         TODO: Typehint
         """
-        return self.data_wrapper.get_past_flights()
+        return self.past_voyages.get_past_voyages()
     
 
     #schedule
