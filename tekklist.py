@@ -8,3 +8,4 @@
 #hafa feedback
 # Change names of all python files to snake_case
 #breyta N/A í None í model klösunum
+#eins gæsalappir allsstaðar

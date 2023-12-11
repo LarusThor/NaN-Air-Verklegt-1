@@ -98,4 +98,6 @@ class EmployeeLL:
             flights_list.append(f"{flight.flight_nr}: {employee.name} worked {work_hours} hours")
             total_hours += work_hours
 
+        print(employee)
+
         return employee.name, flights_list, total_hours
