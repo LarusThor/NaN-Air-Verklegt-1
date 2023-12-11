@@ -70,33 +70,11 @@ class VoyagesUI:
         return_flight_time = input(f"Enter departure time from {arrival_location}: ")
         aircraft_id = input("Enter a valid aircraft: ")
 
-        # captain = input("Enter captain's social id: ")
-        # copilot = input("Enter captain's social id: ")
-        # flight_service_manager = input("Enter captain's social id: ")
-        # add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-        # flight_attendants = [add_flight_attendant]
-        # while add_flight_attendant:
-        #     if len(flight_attendants) < 5:
-        #         add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-        #         flight_attendants.append(add_flight_attendant)
-
-        # if len(flight_attendants) < 5:
-        #     empty_flight_attendant_slots = 5 - len(flight_attendants)
-        #     for slots in empty_flight_attendant_slots:
-        #         flight_attendants.append("N/A")
-                
-        # flight_attendant_1 = flight_attendants[0]
-        # flight_attendant_2 = flight_attendants[1]
-        # flight_attendant_3 = flight_attendants[2]
-        # flight_attendant_4 = flight_attendants[3]
-        # flight_attendant_5 = flight_attendants[4]
-
-
         # TODO: use datetime module
         departure_date_time = departure_date + " " + departure_time
         arrival_date_time = return_flight_date + " " + return_flight_time
 
-        unstaffed = "N/A"
+        # unstaffed = "N/A"
         the_last_id = int(the_last_id)
         the_last_id += 1
         
@@ -118,14 +96,22 @@ class VoyagesUI:
                 id=the_last_id,
                 flight_nr=flight_number,
                 dep_from=departure_location,
-                arrival_location=arrival_location,
-                arr_at=departure_date_time, 
-                departure=(departure_date + " " + departure_time), 
+                arr_at=arrival_location,
+                departure=departure_date_time, 
+                arrival=(departure_date + " " + departure_time), 
                 aircraft_id=aircraft_id
             )
 
             # TODO: make this one like the above one :p
-            upcoming_flight2 = UpcomingVoyage((the_last_id + 1),flight_number, arrival_location, departure_location, arrival_date_time, arrival_date_time, aircraft_id, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed, unstaffed)
+            upcoming_flight2 = UpcomingVoyage(
+                id=(the_last_id + 1),
+                flight_nr=flight_number,
+                dep_from=arrival_location,
+                arr_at=departure_location,
+                departure=arrival_date_time,
+                arrival=arrival_date_time, #
+                aircraft_id=aircraft_id
+            )
 
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight1)
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight2)
@@ -137,26 +123,30 @@ class VoyagesUI:
     def manager_staffs_voyage(self):
         """TODO: add docstring"""
         pass
-        # captain = input("Enter captain's social id: ")
-        # copilot = input("Enter captain's social id: ")
-        # flight_service_manager = input("Enter captain's social id: ")
-        # add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-        # flight_attendants = [add_flight_attendant]
-        # while add_flight_attendant:
-        #     if len(flight_attendants) < 5:
-        #         add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-        #         flight_attendants.append(add_flight_attendant)
+        captain = input("Enter captain's social id: ")
+        aircraft_id = input("Enter a valid aircraft: ")
+        if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
+            captain = captain
+            print("Valid aircraft for pilot")
+        copilot = input("Enter captain's social id: ")
+        flight_service_manager = input("Enter captain's social id: ")
+        add_flight_attendant = input("Enter social id of an additional flight attendant: ")
+        flight_attendants = [add_flight_attendant]
+        while add_flight_attendant:
+            if len(flight_attendants) < 5:
+                add_flight_attendant = input("Enter social id of an additional flight attendant: ")
+                flight_attendants.append(add_flight_attendant)
 
-        # if len(flight_attendants) < 5:
-        #     empty_flight_attendant_slots = 5 - len(flight_attendants)
-        #     for slots in empty_flight_attendant_slots:
-        #         flight_attendants.append("N/A")
+        if len(flight_attendants) < 5:
+            empty_flight_attendant_slots = 5 - len(flight_attendants)
+            for slots in empty_flight_attendant_slots:
+                flight_attendants.append("N/A")
                 
-        # flight_attendant_1 = flight_attendants[0]
-        # flight_attendant_2 = flight_attendants[1]
-        # flight_attendant_3 = flight_attendants[2]
-        # flight_attendant_4 = flight_attendants[3]
-        # flight_attendant_5 = flight_attendants[4]
+        flight_attendant_1 = flight_attendants[0]
+        flight_attendant_2 = flight_attendants[1]
+        flight_attendant_3 = flight_attendants[2]
+        flight_attendant_4 = flight_attendants[3]
+        flight_attendant_5 = flight_attendants[4]
 
     def list_voyage_options(self) -> str:
         """TODO: add docstring"""

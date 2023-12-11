@@ -96,6 +96,8 @@ class LogicWrapper():
     def add_upcoming_voyages(self, upcoming_voyage):
         return self.list_upcoming_voyage.add_upcoming_voyage(upcoming_voyage)
 
+    def check_pilot_qualifications(self, aircraft_id, pilot):
+        return self.list_upcoming_voyage.valid_pilot(aircraft_id, pilot)
 
     #Past voyages:
 
