@@ -69,7 +69,7 @@ class EmployeeLL:
         self.data_wrapper.write_employees(list(employee_dict.values()))
 
 
-    def get_total_hours_worked(self, employee: Employee, start: datetime, end: datetime):
+    def get_total_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
         """Returns total hours an employee has worked."""
         #TODO: laga listann af voyages: fáum bara fyrstu 10
         flights_list = []
@@ -96,7 +96,7 @@ class EmployeeLL:
 
             work_hours = (arrival - departure).total_seconds() / 3600
             
-            flights_list.append(f"{flight.flight_nr}: {employee.name} worked {work_hours} hours")
+            flights_list.append(flight.flight_nr)
             total_hours += work_hours
 
-        return employee.name, flights_list, total_hours
+        return flights_list, total_hours

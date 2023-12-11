@@ -57,7 +57,7 @@ class DestinationLL():
         destinations = self.destination_info()
         distance = dict()
         for destination in destinations:
-            distance[destination.destination_id] = destination.distance_from_iceland 
+            distance[destination.destination_id] = int(destination.distance_from_iceland) 
         return distance
 
     

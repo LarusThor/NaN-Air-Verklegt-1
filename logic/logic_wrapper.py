@@ -147,11 +147,6 @@ class LogicWrapper():
         """ doc """
         return self.schedule.employee_not_working(date)
 
-    def get_total_hours_worked(self, employee: Employee, start: datetime, end: datetime):
-        self.schedule.employee_schedule_by_week(employee, start, end)
-
-
-    
 
     #validation
     def validate_name(self, name: str) -> bool:

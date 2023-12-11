@@ -11,6 +11,7 @@ class PastVoyage:
     departure: datetime
     arrival: datetime
     aircraft_id: str
+    seats_sold: str 
     captain: str = UNSTAFFED
     copilot: str = UNSTAFFED
     fsm: str = UNSTAFFED
@@ -19,6 +20,5 @@ class PastVoyage:
     fa3: str = UNSTAFFED
     fa4: str = UNSTAFFED
     fa5: str = UNSTAFFED
-    seats_sold: str = 0
 
 #flight_nr,dep_from,arr_at,departure,arrival,aircraft_id,captain,copilot,fsm,fa1,fa2, seats_sold

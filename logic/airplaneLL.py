@@ -1,5 +1,6 @@
 from data.data_wrapper import DataWrapper
 from itertools import chain
+from collections import defaultdict 
 
 class AirplaneLL():
     def __init__(self, logic_wrapper) -> None:
@@ -10,39 +11,38 @@ class AirplaneLL():
         #self.airplane_types = self.data_wrapper.get_airplane_types()
         #self.past_voyage_list = self.data_wrapper.get_past_flights()
         #self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights() #TODO: tengja frekar við hinn logic?
-        #self.pilots = self.emlployees.get_all_pilots()
+        #self.pilots = self.emlplo67y76yyuiyees.get_all_pilots()
    
-    def get_furthest_flown_plane(self):
+    def get_furthest_flown_plane(self) -> tuple[str, int]:
         """ Returns the plane that has flown the furthest"""
         past_voyage_list = self.data_wrapper.get_past_flights() #TODO: tékka hvort það sé hægt að tengja í logic wrapper frekar
         destination_distance = self.logic.distance_from_iceland()
         print(destination_distance)
-        distance_dict = dict()
 
+        distance_dict = defaultdict(int)
 
         for voyage in past_voyage_list.values():
-            print(voyage.arr_at)
-            #distance_dict[voyage.destination] = 9
 
-        return distance_dict
+            destination = voyage.arr_at
+            dep_from = voyage.dep_from
 
+            distance = (
+                destination_distance[destination] 
+                + destination_distance[dep_from]
+            )
 
-        #for destination in destination_distance.items():
-            #print(destination)
-        # airplane_list = []
-        # airplane_dict = {}
+            distance_dict[voyage.aircraft_id] += distance
 
+        furthest_flown_plane = None
+        furthest_distance = -1
 
-        # for voyage in all_voyages:
-        #     if voyage.aircraft_id != "N/A":
-        #         airplane_list.append(voyage.aircraft_id)
+        for plane, distance in distance_dict.items():
+            if distance > furthest_distance:
+                furthest_flown_plane = plane
+                furthest_distance = distance
 
-        # for destination in airplane_list:
-        #     counter = (airplane_list.count(destination))//2
-        #     airplane_dict[destination] = counter
-        # most_popular = max(set(airplane_list), key=airplane_list.count)
-        # #TODO: finna út hvernig ég raða listan í stærðarröð út frá dicts
-        # return most_popular, airplane_dict
+        return furthest_flown_plane, furthest_distance
+
    
     def get_all_airplane_types(self):
         """ Returns a list of all the airplane types in the system. """
