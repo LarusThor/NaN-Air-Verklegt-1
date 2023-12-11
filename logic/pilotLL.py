@@ -1,6 +1,7 @@
 #import wrapper
+#TODO: eyða þessu skjali
 
-from employeeLL import EmployeeLL
+
 
 class PilotLL(EmployeeLL):
     def __init__(self) -> None:

@@ -1,7 +1,6 @@
 from data.data_wrapper import DataWrapper
 from dataclasses import asdict
 from model.upcoming_voyage_model import UpcomingVoyage
-from logic.airplaneLL import AirplaneLL
 from datetime import datetime
 
 class UpcomingVoyageLL:
