@@ -63,6 +63,8 @@ class VoyagesUI:
         the_last_id = int(the_last_id)
         the_last_id += 1
         
+        last_flight_number = int(flight_number[-1])
+        
 
         print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
         print("~" * 20)
