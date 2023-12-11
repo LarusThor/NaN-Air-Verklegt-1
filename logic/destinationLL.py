@@ -19,7 +19,9 @@ class DestinationLL():
 
         return destination_list
 
-    
+    def destination_info(self):
+        return self.data_wrapper.destination_info()
+
     def add_destination(self, destination: Destination) -> None:
         """Takes in a customer object and forwards it to the data layer"""
         dest = self.data_wrapper
@@ -50,5 +52,12 @@ class DestinationLL():
         return self.data_wrapper.change_destination_info(destination)
         #name
         #number
+
+    def distance_from_iceland(self):
+        destinations = self.destination_info()
+        distance = dict()
+        for destination in destinations:
+            distance[destination.destination_id] = destination.distance_from_iceland 
+        return distance
 
     

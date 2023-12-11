@@ -10,12 +10,11 @@ from logic.logic_wrapper import LogicWrapper
 from datetime import date, datetime
 from ui.employeesUI import EmployeeUI
 from data.data_wrapper import  DataWrapper
+from logic.airplaneLL import AirplaneLL
 
 
-
-da = LogicWrapper()
-
-print(da.destination_list())
+logic = LogicWrapper()
+print(logic.furthest_flown())
 
 
 # emp = EmployeeUI()

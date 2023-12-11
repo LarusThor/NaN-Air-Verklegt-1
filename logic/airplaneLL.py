@@ -11,18 +11,38 @@ class AirplaneLL():
         #self.past_voyage_list = self.data_wrapper.get_past_flights()
         #self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights() #TODO: tengja frekar við hinn logic?
         #self.pilots = self.emlployees.get_all_pilots()
-
-    def get_most_used_plane(self):
-        """ Returns the most used plane. """
-        pass
    
     def get_furthest_flown_plane(self):
         """ Returns the plane that has flown the furthest"""
-        pass
-   
-    def get_plane_gone_on_most_voyages(self): #laga nafn omg
-        """ Returns the plane that has gone on the most voyages. """
-        pass
+        past_voyage_list = self.data_wrapper.get_past_flights() #TODO: tékka hvort það sé hægt að tengja í logic wrapper frekar
+        destination_distance = self.logic.distance_from_iceland()
+        print(destination_distance)
+        distance_dict = dict()
+
+
+        for voyage in past_voyage_list.values():
+            print(voyage.arr_at)
+            #distance_dict[voyage.destination] = 9
+
+        return distance_dict
+
+
+        #for destination in destination_distance.items():
+            #print(destination)
+        # airplane_list = []
+        # airplane_dict = {}
+
+
+        # for voyage in all_voyages:
+        #     if voyage.aircraft_id != "N/A":
+        #         airplane_list.append(voyage.aircraft_id)
+
+        # for destination in airplane_list:
+        #     counter = (airplane_list.count(destination))//2
+        #     airplane_dict[destination] = counter
+        # most_popular = max(set(airplane_list), key=airplane_list.count)
+        # #TODO: finna út hvernig ég raða listan í stærðarröð út frá dicts
+        # return most_popular, airplane_dict
    
     def get_all_airplane_types(self):
         """ Returns a list of all the airplane types in the system. """

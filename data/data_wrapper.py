@@ -16,6 +16,7 @@ class DataWrapper:
         self.airplaneIO = AirplaneIO()
         self.past_flightIO = PastVoyageIO()
         self.upcoming_flightIO = UpcomingVoyageIO()
+        self.destination = DestinationIO()
 
     #Employee:
     def get_all_staff_members(self):
@@ -48,6 +49,8 @@ class DataWrapper:
     def change_destination_info(self, destination: Destination):
         return self.destinationIO.update_destination(destination)
 
+    def destination_info(self):
+        return self.destination.read_all_destinations()
 
     #past_flights
     def get_past_flights(self)-> dict[str, PastVoyage]:
