@@ -130,8 +130,11 @@ class EmployeeUI:
     def add_employee(self): #define
         """ TODO: add docstring """
         #TODO: rosa ljótt getum við stytt eða fegrað?
+        validation = self.logic_wrapper.validation
         print("Fill out the following informaation about the new employee:")
-        name = input("Name: ")
+        name = input("Name: ").title()
+        valid = validation.validate_name(name)
+        print(valid)
         social_id = input("Social ID: ")
         phone_number = input("Phone number: ")
         email = input("Email: ")

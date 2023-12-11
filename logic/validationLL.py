@@ -7,7 +7,10 @@ class ValidationLL():
         pass
 
     def validate_name(self, name: str) -> bool:
-        pass
+        if name.isalpha():
+            return True
+        else:
+            return False
 
     def validate_social_ID(self, socialID: str) -> bool:
         pass

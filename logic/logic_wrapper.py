@@ -10,7 +10,7 @@ from datetime import datetime
 from model.employee_model import Employee
 from model.past_voyage_model import PastVoyage
 from model.upcoming_voyage_model import UpcomingVoyage
-#from logic.validationLL import ValidationLL
+from logic.validationLL import ValidationLL
 
 class LogicWrapper():
     def __init__(self) -> None:
@@ -22,6 +22,7 @@ class LogicWrapper():
         self.voyage = VoyageLL()
         self.list_upcoming_voyage = UpcomingVoyageLL()
         self.list_past_voyages = PastVoyageLL()
+        self.validation = ValidationLL()
 
 
     #Employee:
@@ -136,3 +137,34 @@ class LogicWrapper():
 
     def get_total_hours_worked(self, employee: Employee, start: datetime, end: datetime):
         self.schedule.employee_schedule_by_week(employee, start, end)
+
+
+    
+
+    #validation
+    def validate_name(self, name: str) -> bool:
+        self.validation.validate_name(name)
+
+    def validate_social_ID(self, socialID: str) -> bool:
+        self.validation.validate_social_ID(socialID)
+
+    def validate_flight(self, flight: str) -> bool:
+        self.validation.validate_flight(flight)
+
+    def validate_address(self, address: str) -> bool:
+        self.validation.validate_address(address)
+
+    def validate_phone_number(self, number: str) -> bool:
+        self.validation.validate_number(number)
+
+    def validate_email(self, email: str) -> bool:
+        self.validation.validate_email(email)
+
+    def validate_flight_nr(self, flight_nr: str) -> bool:
+        self.validation.validate_flight_nr(flight_nr)
+
+    def validate_voyage(self, voyage: str) -> bool:
+        self.validation.validate_voyage(voyage)
+
+    def date_validation(self, departure: datetime) -> bool:
+        self.validation.date_validation(departure)
