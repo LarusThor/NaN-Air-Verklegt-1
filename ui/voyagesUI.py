@@ -66,7 +66,7 @@ class VoyagesUI:
         the_last_id += 1
         
 
-        print("New voyage: ") #TODO laga þetta heheheh
+        print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
         print("~" * 20)
         print("Flight id: ", the_last_id)
         print("Flight Number: ", flight_number)
@@ -98,6 +98,7 @@ class VoyagesUI:
         elif save_prompt == "n":
             print("New voyage was not saved.")
         
+
 
     def manager_staffs_voyage(self):
         """TODO: add docstring"""
@@ -183,6 +184,7 @@ class VoyagesUI:
                     if voyage_counter == 2:
                         voyage_counter = 0
                         print("-" * 130)
+
 
     def get_past_voyage_by_date(self, date) -> str:
         """TODO: add docstring"""
