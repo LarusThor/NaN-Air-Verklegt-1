@@ -46,7 +46,7 @@ class VoyagesUI:
         find_last_id = list(self.logic_wrapper.upcoming_voyages().keys())
 
         print("New voyage: ")
-        print("()" * 20)
+        print("-=" * 20)
         flight_number = input("Enter flight number: ")
         departure_location = input("Enter 3 letter keyword for departure location: ")
         arrival_location = input("Enter 3 letter keyword for arrival location: ")
