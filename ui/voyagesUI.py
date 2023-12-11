@@ -13,6 +13,7 @@ VOYAGES_OPTIONS = [
     "3. Staff a voyage",
     "4. cancel a voyage",
 ]
+
 LIST_VOYAGES_OPTIONS = ["1. List of voyages by day", "2. List of voyages by week"]
 PAST_OR_PRESENT_VOYAGES = ["1. List of upcoming voyages", "2. List of past voyages"]
 VOYAGE_HEADER = "{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format(
@@ -32,6 +33,7 @@ class VoyagesUI:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
 
+
     def voyages_options(self) -> str:
         self.menus.display_options(VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
@@ -44,7 +46,6 @@ class VoyagesUI:
 
         find_last_id = list(self.logic_wrapper.upcoming_voyages().keys())
 
-        the_last_id = find_last_id[-1]
         flight_number = input("Enter flight number: ")
         departure_location = input("Enter 3 letter keyword for departure location: ")
         arrival_location = input("Enter 3 letter keyword for arrival location: ")
@@ -60,6 +61,7 @@ class VoyagesUI:
         arrival_date_time = return_flight_date + " " + return_flight_time
 
         unstaffed = "N/A"
+        the_last_id = find_last_id[-1]
         the_last_id = int(the_last_id)
         the_last_id += 1
         
