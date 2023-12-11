@@ -52,6 +52,7 @@ class VoyagesUI:
         arrival_location = input("Enter 3 letter keyword for arrival location: ")
         departure_date = input(f"Enter departure date from {departure_location}; year-month-day: ")
         departure_time = input(f"Enter departure time from {departure_location}: ")
+        arrival_time = input(f"Enter arrival time for {arrival_location}: ")
         return_flight_date = input(f"Enter departure date from {arrival_location}; year-month-day: ")
         return_flight_time = input(f"Enter departure time from {arrival_location}: ")
         aircraft_id = input("Enter a valid aircraft: ")
@@ -66,6 +67,8 @@ class VoyagesUI:
         new_flight_number = int(flight_number[-2:]) + 1 #TODO commenta
         back_flight_number = flight_number[:-2] + str(new_flight_number)
 
+        calculated_return_flight_time = self.logic_wrapper.flight_time(departure_time, return_flight_time).split()
+        calculated_return_flight = departure_date_time
 
         print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
         print("~" * 20)
