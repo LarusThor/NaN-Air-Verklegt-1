@@ -13,6 +13,7 @@ VOYAGES_OPTIONS = [
     "3. Staff a voyage",
     "4. cancel a voyage",
 ]
+
 LIST_VOYAGES_OPTIONS = ["1. List of voyages by day", "2. List of voyages by week"]
 PAST_OR_PRESENT_VOYAGES = ["1. List of upcoming voyages", "2. List of past voyages"]
 VOYAGE_HEADER = "{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format(
@@ -32,35 +33,19 @@ class VoyagesUI:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
 
+
     def voyages_options(self) -> str:
         self.menus.display_options(VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
-    # name = input("Enter airplane name: ")
-    # type = input("Enter airplane type: ")
-    # manufacturer = input("Enter airplane manufacturer: ")
-    # model = input("Enter a Model: ")
-    # number_of_seats = input("Enter the number of seats in the airplane: ")
-    # print("New airplane: ")
-    # print("Name:", name)
-    # print("Type:", type)
-    # print("Manufacturer:", manufacturer)
-    # print("Model:", model)
-    # print("Number of seats:", number_of_seats)
-    # save_prompt = input("Would you like to save this new airplane, (y)es or (n)o? ").lower()
-    # airplane = Airplane(name,type,manufacturer,model,number_of_seats)
-    # self.logic_wrapper.add_airplane(airplane)
-    
 
     def add_voyage(self) -> None:
         """ TODO: add docstring. """
         print("New voyage: ")
 
         find_last_id = list(self.logic_wrapper.upcoming_voyages().keys())
-        # flight_id = list(find_last_id.keys())
 
-        the_last_id = find_last_id[-1]
         flight_number = input("Enter flight number: ")
         departure_location = input("Enter 3 letter keyword for departure location: ")
         arrival_location = input("Enter 3 letter keyword for arrival location: ")
@@ -70,38 +55,18 @@ class VoyagesUI:
         return_flight_time = input(f"Enter departure time from {arrival_location}: ")
         aircraft_id = input("Enter a valid aircraft: ")
 
-        # captain = input("Enter captain's social id: ")
-        # copilot = input("Enter captain's social id: ")
-        # flight_service_manager = input("Enter captain's social id: ")
-        # add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-        # flight_attendants = [add_flight_attendant]
-        # while add_flight_attendant:
-        #     if len(flight_attendants) < 5:
-        #         add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-        #         flight_attendants.append(add_flight_attendant)
 
-        # if len(flight_attendants) < 5:
-        #     empty_flight_attendant_slots = 5 - len(flight_attendants)
-        #     for slots in empty_flight_attendant_slots:
-        #         flight_attendants.append("N/A")
-                
-        # flight_attendant_1 = flight_attendants[0]
-        # flight_attendant_2 = flight_attendants[1]
-        # flight_attendant_3 = flight_attendants[2]
-        # flight_attendant_4 = flight_attendants[3]
-        # flight_attendant_5 = flight_attendants[4]
-
-
-        # TODO: use datetime module
+        # TODO: add comment
         departure_date_time = departure_date + " " + departure_time
         arrival_date_time = return_flight_date + " " + return_flight_time
 
         unstaffed = "N/A"
+        the_last_id = find_last_id[-1]
         the_last_id = int(the_last_id)
         the_last_id += 1
         
 
-        print("New voyage: ") #TODO laga þetta heheheh
+        print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
         print("~" * 20)
         print("Flight id: ", the_last_id)
         print("Flight Number: ", flight_number)
@@ -133,6 +98,7 @@ class VoyagesUI:
         elif save_prompt == "n":
             print("New voyage was not saved.")
         
+
 
     def manager_staffs_voyage(self):
         """TODO: add docstring"""
@@ -218,6 +184,7 @@ class VoyagesUI:
                     if voyage_counter == 2:
                         voyage_counter = 0
                         print("-" * 130)
+
 
     def get_past_voyage_by_date(self, date) -> str:
         """TODO: add docstring"""
