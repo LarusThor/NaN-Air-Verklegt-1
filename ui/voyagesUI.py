@@ -42,10 +42,11 @@ class VoyagesUI:
 
     def add_voyage(self) -> None:
         """ TODO: add docstring. """
-        print("New voyage: ")
 
         find_last_id = list(self.logic_wrapper.upcoming_voyages().keys())
 
+        print("New voyage: ")
+        print("=" + "-=" * 20)
         flight_number = input("Enter flight number: ")
         departure_location = input("Enter 3 letter keyword for departure location: ")
         arrival_location = input("Enter 3 letter keyword for arrival location: ")
@@ -59,12 +60,12 @@ class VoyagesUI:
         departure_date_time = departure_date + " " + departure_time
         arrival_date_time = return_flight_date + " " + return_flight_time
 
-        # unstaffed = "N/A"
         the_last_id = int(the_last_id)
         the_last_id += 1
         
-        last_flight_number = int(flight_number[-1])
-        
+        new_flight_number = int(flight_number[-2:]) + 1 #TODO commenta
+        back_flight_number = flight_number[:-2] + str(new_flight_number)
+
 
         print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
         print("~" * 20)
@@ -92,7 +93,7 @@ class VoyagesUI:
             # TODO: make this one like the above one :p
             upcoming_flight2 = UpcomingVoyage(
                 id=(the_last_id + 1),
-                flight_nr=flight_number,
+                flight_nr=back_flight_number,
                 dep_from=arrival_location,
                 arr_at=departure_location,
                 departure=arrival_date_time,
