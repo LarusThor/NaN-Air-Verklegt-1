@@ -1,6 +1,4 @@
 from data.data_wrapper import DataWrapper
-from dataclasses import asdict
-from model.past_voyage_model import PastVoyage
 
 class PastVoyageLL:
     def __init__(self, logic_wrapper):
