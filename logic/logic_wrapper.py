@@ -6,6 +6,10 @@ from logic.scheduleLL import ScheduleLL
 from logic.voyageLL import VoyageLL
 from logic.upcoming_voyageLL import UpcomingVoyageLL
 from logic.past_voyageLL import PastVoyageLL
+from datetime import datetime
+from model.employee_model import Employee
+from model.past_voyage_model import PastVoyage
+from model.upcoming_voyage_model import UpcomingVoyage
 #from logic.validationLL import ValidationLL
 
 class LogicWrapper():
@@ -95,11 +99,23 @@ class LogicWrapper():
 
     #Past voyages:
 
+    def get_all_voyages(self) -> list[PastVoyage | UpcomingVoyage]:
+        """All voyages, past and upcoming.
+
+        Returns:
+            voyages: A list of all voyages.
+        """
+        
+        return  (
+            list(self.list_upcoming_voyage.get_upcoming_voyages().values()) 
+            + list(self.list_past_voyages.get_past_voyages().values())
+        )
+
     def past_voyages(self):
         """ doc 
         TODO: Typehint
         """
-        return self.list_past_voyages.get_past_voyages()
+        return self.data_wrapper.get_past_flights()
     
 
     #schedule
@@ -115,3 +131,6 @@ class LogicWrapper():
     def employee_not_working(self, date):
         """ doc """
         return self.schedule.employee_not_working(date)
+
+    def get_total_hours_worked(self, employee: Employee, start: datetime, end: datetime):
+        self.schedule.employee_schedule_by_week(employee, start, end)

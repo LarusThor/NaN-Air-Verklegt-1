@@ -1,27 +1,28 @@
 from data.data_wrapper import DataWrapper
-from model.schedule_model import Schedule
-from model.past_voyage_model import PastVoyage
-from logic.past_voyageLL import PastVoyageLL
-from model.upcoming_voyage_model import UpcomingVoyage
-from logic.upcoming_voyageLL import UpcomingVoyage
 from datetime import datetime, date
 from model.employee_model import Employee
 
 class ScheduleLL():
     def __init__(self, logic_wrapper) -> None:
-        self.data_wrapper = DataWrapper()
-        self.logic_wrapper = logic_wrapper
-        self.employee_dict = self.data_wrapper.get_all_staff_members()
-        self.past_voyage_list = self.data_wrapper.get_past_flights() #TODO: tengja frekar við hinn logic?
-        self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
+        """Instantiate a ScheduleLL object.
+
+        Args:
+            logic_wrapper: The logic wrapper object that contains all logic layer objects.
+        """
+        self.logic = logic_wrapper
+
+        # TODO: don't store these - instead, fetch them every time they are needed
+        # Reason: They don't update when updates are made from other LL classes
+        #self.employee_dict = self.logic.data_wrapper.get_all_staff_members()
+        #self.past_voyage_list = self.logic.past_voyages() #TODO: tengja frekar við hinn logic?
+        #self.upcoming_voyage_list = self.logic.upcoming_voyages()#TODO: tengja frekar við hinn logic?
 
 
     def employee_schedule_by_week(self, employee, year, week_nr) -> str:
-        """ Returns employee schedule """
+        """ Returns employee schedule for a chosen week. """
         flights = []
-        voyage_list = self.past_voyage_list
-        voyage_list.update(self.upcoming_voyage_list)
-        for flight in voyage_list.values():
+        voyage_list = self.logic.get_all_voyages()
+        for flight in voyage_list:
             weeks = str(flight.departure.isocalendar().week)
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
             
@@ -29,7 +30,7 @@ class ScheduleLL():
                 if year in flight.departure.strftime('%Y-%m-%d %H:%M:%S'):
                     flights.append(f"{flight.flight_nr} to {flight.arr_at}")
 
-        name = self.logic_wrapper.employee_info(employee)
+        name = self.logic.employee_info(employee)
         if flights:
             return f"{name.name} is scheduled for these flights: {flights} in week {week_nr}!"
         else:
@@ -39,8 +40,10 @@ class ScheduleLL():
     def employee_working(self, date_working: date) -> list[Employee]:
         """ Returns a list of all employees working on a specific day. """    
         #TODO: simplify
+        past_voyage_list = self.logic.past_voyages()
+        upcoming_voyage_list = self.logic.upcoming_voyages()
         workers_on_day = []
-        voyage_list = list(self.past_voyage_list.values()) + list(self.upcoming_voyage_list.values())
+        voyage_list = list(past_voyage_list.values()) + list(upcoming_voyage_list.values())
         #a_date = datetime.strptime(date, "%Y-%m-%d").date()
 
         for flight in voyage_list:
@@ -52,7 +55,7 @@ class ScheduleLL():
             if date_working in dates:
                 workers_on_day.extend(workers)
         
-        return [self.logic_wrapper.employee_info(s_id) for s_id in workers_on_day if s_id != 'N/A']
+        return [self.logicr.employee_info(s_id) for s_id in workers_on_day if s_id != 'N/A'] #TODO: laga na bull very ugley
     
 
     def employee_not_working(self, date_not_working: date) -> set[Employee]:
@@ -62,11 +65,14 @@ class ScheduleLL():
             date: The date the employees are not working
         """
         #TODO: simplify, tengja betur við þá sem eru að virka
+        employee_dict = self.logic.data_wrapper.get_all_staff_members()
+        past_voyage_list = self.logic.past_voyages()
+        upcoming_voyage_list = self.logic.upcoming_voyages()
         all_workers = set()
-        all_workers.update(self.employee_dict)
+        all_workers.update(employee_dict)
 
         workers_on_day = set()
-        voyage_list = list(self.past_voyage_list.values() + list(self.upcoming_voyage_list.values()))
+        voyage_list = list(past_voyage_list.values() + list(upcoming_voyage_list.values()))
 
         for flight in voyage_list:
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
@@ -77,4 +83,4 @@ class ScheduleLL():
                 workers_on_day.update(workers)
 
         worker_ids =  all_workers-workers_on_day
-        return [self.logic_wrapper.employee_info(s_id) for s_id in worker_ids]
+        return [self.logic.employee_info(s_id) for s_id in worker_ids]

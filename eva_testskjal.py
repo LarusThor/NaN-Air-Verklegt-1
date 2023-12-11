@@ -10,10 +10,11 @@ from logic.logic_wrapper import LogicWrapper
 from datetime import date, datetime
 
 l_wrapper = LogicWrapper()
-dt = date(year=2023,month=12,day=20)
+dt = date(year=2023,month=10,day=20)
+dtt = date(year=2023,month=12,day=20)
 
-print(l_wrapper.schedule.employee_working(dt))
 
+print(l_wrapper.get_total_hours_worked("1309797899", dt, dtt))
 
 """
 
