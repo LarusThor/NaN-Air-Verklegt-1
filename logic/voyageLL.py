@@ -1,8 +1,9 @@
 from data.data_wrapper import DataWrapper
 
 class VoyageLL():
-    def __init__(self) -> None:
+    def __init__(self, logic_wrapper) -> None:
         #self.data_wrapper = data_connection
+        self.logic = logic_wrapper
         pass
 
 

@@ -3,14 +3,15 @@ from itertools import chain
 from logic.employeeLL import EmployeeLL
 
 class AirplaneLL():
-    def __init__(self) -> None:
+    def __init__(self, logic_wrapper) -> None:
         self.data_wrapper = DataWrapper()
-        self.emlployees = EmployeeLL()
-        self.airplane_list = self.data_wrapper.get_airplanes()
-        self.airplane_types = self.data_wrapper.get_airplane_types()
-        self.past_voyage_list = self.data_wrapper.get_past_flights()
-        self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights() #TODO: tengja frekar við hinn logic?
-        self.pilots = self.emlployees.get_all_pilots()
+        self.logic = logic_wrapper
+        #self.emlployees = EmployeeLL()
+        #self.airplane_list = self.data_wxrapper.get_airplanes()
+        #self.airplane_types = self.data_wrapper.get_airplane_types()
+        #self.past_voyage_list = self.data_wrapper.get_past_flights()
+        #self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights() #TODO: tengja frekar við hinn logic?
+        #self.pilots = self.emlployees.get_all_pilots()
 
     def get_most_used_plane(self):
         """ Returns the most used plane. """
@@ -26,7 +27,7 @@ class AirplaneLL():
    
     def get_all_airplane_types(self):
         """ Returns a list of all the airplane types in the system. """
-        airplane_types = self.airplane_types
+        airplane_types = self.data_wrapper.get_airplane_types()
         type_set = set()
         for plane in airplane_types:
             type_set.update([plane.plane_type_id])
@@ -40,12 +41,14 @@ class AirplaneLL():
     def get_airplane_usage(self):
         """ Returns the total number of voyages for a specific plane. """
         #TODO: laga, erum ekki að fá allan listan, bara 52 ferðir
+        past_voyage_list = self.data_wrapper.get_past_flights()
+        upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()
         airplane_list = []
         airplane_dict = {}
 
         all_voyages = list(chain(
-            self.upcoming_voyage_list.values(), 
-            self.past_voyage_list.values()
+            upcoming_voyage_list.values(), 
+            past_voyage_list.values()
         ))
 
         for voyage in all_voyages:
@@ -68,7 +71,7 @@ class AirplaneLL():
         """ Returns a dictionary where the key is the airplane type and the value is a list of
           all licenced pilots for that airplane type. """
         pilots_by_license = dict()
-        pilots = self.pilots
+        pilots = self.emlployees.get_all_pilots()
 
         for pilot in pilots:
             license_key = pilot.licence
@@ -83,9 +86,10 @@ class AirplaneLL():
     
     def airplane_insignia_by_type(self):
         """ Dictionary which sorts airplanes in use by their types """
+        airplane_list = self.data_wrapper.get_airplanes()
         airplane_insignia_by_type_dict = dict()
 
-        for plane in self.airplane_list.values():
+        for plane in airplane_list.values():
             insignia = plane.plane_insignia
             plane_type = plane.plane_type_id
             if plane_type in airplane_insignia_by_type_dict:
