@@ -64,6 +64,10 @@ class VoyagesUI:
         the_last_id = int(the_last_id)
         the_last_id += 1
         
+        
+        new_flight_number = int(flight_number[-2:]) + 1 #TODO commenta
+        back_flight_number = flight_number[:-2] + str(new_flight_number)
+
 
         print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
         print("~" * 20)
@@ -91,7 +95,7 @@ class VoyagesUI:
             # TODO: make this one like the above one :p
             upcoming_flight2 = UpcomingVoyage(
                 id=(the_last_id + 1),
-                flight_nr=flight_number,
+                flight_nr=back_flight_number,
                 dep_from=arrival_location,
                 arr_at=departure_location,
                 departure=arrival_date_time,
