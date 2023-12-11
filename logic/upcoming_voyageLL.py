@@ -1,7 +1,8 @@
 from data.data_wrapper import DataWrapper
 from dataclasses import asdict
 from model.upcoming_voyage_model import UpcomingVoyage
-from datetime import datetime
+from model.destination_model import Destination
+from datetime import datetime, timedelta
 
 class UpcomingVoyageLL:
     def __init__(self, logic_wrapper) -> None:
@@ -24,36 +25,22 @@ class UpcomingVoyageLL:
         self.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
     def calculate_flight_time(self, arr_at, departure_date_time):
-        #Need to implement addition of time from destinations dictionary
         destinations_info = self.data_wrapper.get_all_destinations_info()
-        estimated_flight_time_overview = list(destinations_info[arr_at]) #list af vlaues
-        estimated_flight_time = int(estimated_flight_time_overview[-1]) #03:00:00 viljum
+        estimated_flight_time_overview = list(destinations_info.values())
+        destination_values = destinations_info[arr_at]
+        estimated_flight_time = destination_values.estimated_flight_time
         hour_duration, min_duration, sec_duration = estimated_flight_time.split(":")
         departure_date, departure_time = departure_date_time.split()
         hour, minute, sec = departure_time.split(":")
         year, month, day = departure_date.split("-")
-        original_date_time = datetime.datetime(year, month, day, hour, minute, sec)
+        original_date_time = datetime(*map(int,[year, month, day, hour, minute, sec]))
         
-        min_added = int(hour_duration) * 60 + min_duration
-        time_change = datetime.timedelta(minute=min_added)
+        min_added = int(hour_duration) * 60 + int(min_duration)
+        time_change = timedelta(minutes=min_added)
         arrival_time = original_date_time + time_change
 
         return arrival_time
 
-
-        # estimated_flight_time_elements = estimated_flight_time.split(":")
-        # total_hours = hour + estimated_flight_time
-        # flight_time_to_calculate = int(departure_date_time[0])
-        # arrival_flight_time = flight_time_to_calculate + estimated_flight_time
-        # departure_date_time[0] = arrival_flight_time
-        
-        # int(estimated_flight_time[-1]) #þá er þetta t.d. 4
-
-
-
-
-        
-        return 
         # start = datetime.strptime({departure_time}, "%H:%M:%S") 
         # end = datetime.strptime({arrival_time}, "%H:%M:%S")
 

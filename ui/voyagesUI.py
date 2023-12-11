@@ -75,8 +75,8 @@ class VoyagesUI:
         else:
             back_flight_number = flight_number[:-2] + str(new_flight_number)
 
-        calculated_return_flight_time = self.logic_wrapper.flight_time(departure_time, return_flight_time).split()
-        calculated_return_flight = departure_date_time
+        calculated_arrival_flight_time = self.logic_wrapper.flight_time(arrival_location, departure_date_time)
+        calculated_return_flight_time = self.logic_wrapper.flight_time(arrival_location, arrival_date_time )
 
         print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
         print("~" * 20)
@@ -97,7 +97,7 @@ class VoyagesUI:
                 dep_from=departure_location,
                 arr_at=arrival_location,
                 departure=departure_date_time, 
-                arrival=(departure_date + " " + departure_time), 
+                arrival=calculated_arrival_flight_time, 
                 aircraft_id=aircraft_id
             )
 
@@ -108,7 +108,7 @@ class VoyagesUI:
                 dep_from=arrival_location,
                 arr_at=departure_location,
                 departure=arrival_date_time,
-                arrival=arrival_date_time, #
+                arrival=calculated_return_flight_time, #
                 aircraft_id=aircraft_id
             )
 

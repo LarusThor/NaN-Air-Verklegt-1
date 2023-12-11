@@ -100,8 +100,8 @@ class LogicWrapper():
     def check_pilot_qualifications(self, aircraft_id, pilot):
         return self.list_upcoming_voyage.valid_pilot(aircraft_id, pilot)
     
-    def flight_time(self, departure_time, arrival_time):
-        return self.list_upcoming_voyage.calculate_flight_time(departure_time, arrival_time)
+    def flight_time(self, arr_at, departure_date_time):
+        return self.list_upcoming_voyage.calculate_flight_time(arr_at, departure_date_time)
 
     #Past voyages:
 
