@@ -15,13 +15,13 @@ from logic.validationLL import ValidationLL
 class LogicWrapper():
     def __init__(self) -> None:
         self.data_wrapper = DataWrapper()
-        self.employee = EmployeeLL() 
-        self.airplane = AirplaneLL()
-        self.destination = DestinationLL()
+        self.employee = EmployeeLL(self) 
+        self.airplane = AirplaneLL(self)
+        self.destination = DestinationLL(self)
         self.schedule = ScheduleLL(self)
-        self.voyage = VoyageLL()
-        self.list_upcoming_voyage = UpcomingVoyageLL()
-        self.list_past_voyages = PastVoyageLL()
+        self.voyage = VoyageLL(self)
+        self.list_upcoming_voyage = UpcomingVoyageLL(self)
+        self.list_past_voyages = PastVoyageLL(self)
         self.validation = ValidationLL()
 
 
@@ -99,6 +99,9 @@ class LogicWrapper():
 
     def check_pilot_qualifications(self, aircraft_id, pilot):
         return self.list_upcoming_voyage.valid_pilot(aircraft_id, pilot)
+    
+    def flight_time(self, departure_time, arrival_time):
+        return self.list_upcoming_voyage.calculate_flight_time(departure_time, arrival_time)
 
     #Past voyages:
 

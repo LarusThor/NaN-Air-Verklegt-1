@@ -130,17 +130,37 @@ class EmployeeUI:
     def add_employee(self): #define
         """ TODO: add docstring """
         #TODO: rosa ljótt getum við stytt eða fegrað?
+        #TODO: skipta í fleir föll??
         validation = self.logic_wrapper.validation
         print("Fill out the following informaation about the new employee:")
-        name = input("Name: ").title()
-        valid = validation.validate_name(name)
-        print(valid)
-        social_id = input("Social ID: ")
-        phone_number = input("Phone number: ")
-        email = input("Email: ")
-        home_address = input("Home adress: ")
-
         
+        name = input("Name: ").title()
+        while not validation.validate_name(name):
+            print("ERROR: Invalid name \nName has to be a string of length > 5. ")
+            name = input("Name: ").title()
+            continue
+        
+        social_id = input("Social ID: ")
+        while not validation.validate_social_ID(social_id):
+            print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
+            social_id = input("Social ID: ")
+ 
+        phone_number = input("Phone number: ")
+        while not validation.validate_number(phone_number):
+            print("ERROR: Invalid phone number \n Phone number should be 8 digits. ")
+            phone_number = input("Phone number: ")
+
+        email = input("Email: ")
+        while not validation.validate_email(email):
+            print("ERROR: Invalid email \n Email should include @ and a top level domain e.g. (.com/.org/.is)")
+            email = input("Email: ")
+
+        home_address = input("Home adress: ")
+        while not validation.validate_address(home_address):
+            print("ERROR: Invalid address \n Address should be a string and number")
+            home_address = input("Home adress: ")
+
+
         roles = ["Pilot","Cabincrew"]
         print("Role:\n1. Pilot\n2. Cabincrew")
         role = input()

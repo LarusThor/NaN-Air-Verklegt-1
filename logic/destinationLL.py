@@ -3,9 +3,10 @@ from logic.voyageLL import VoyageLL
 from model.destination_model import Destination
 
 class DestinationLL():
-    def __init__(self) -> None:
+    def __init__(self, logic_wrapper) -> None:
         #self.data_wrapper = data_connection
         self.data_wrapper = DataWrapper()
+        self.logic = logic_wrapper
         #self.past_voyage_list = self.data_wrapper.get_past_flights()
         #self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
    

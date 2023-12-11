@@ -46,12 +46,13 @@ class VoyagesUI:
         find_last_id = list(self.logic_wrapper.upcoming_voyages().keys())
 
         print("New voyage: ")
-        print("()" * 20)
+        print("=" + "-=" * 20)
         flight_number = input("Enter flight number: ")
         departure_location = input("Enter 3 letter keyword for departure location: ")
         arrival_location = input("Enter 3 letter keyword for arrival location: ")
         departure_date = input(f"Enter departure date from {departure_location}; year-month-day: ")
         departure_time = input(f"Enter departure time from {departure_location}: ")
+        arrival_time = input(f"Enter arrival time for {arrival_location}: ")
         return_flight_date = input(f"Enter departure date from {arrival_location}; year-month-day: ")
         return_flight_time = input(f"Enter departure time from {arrival_location}: ")
         aircraft_id = input("Enter a valid aircraft: ")
@@ -60,10 +61,18 @@ class VoyagesUI:
         departure_date_time = departure_date + " " + departure_time
         arrival_date_time = return_flight_date + " " + return_flight_time
 
-        # unstaffed = "N/A"
+        the_last_id = find_last_id[-1]
         the_last_id = int(the_last_id)
         the_last_id += 1
         
+        new_flight_number = int(flight_number[-2:]) + 1 #TODO commenta
+        if new_flight_number >= 100:
+            back_flight_number = flight_number[:-3] + str(new_flight_number)
+        else:
+            back_flight_number = flight_number[:-2] + str(new_flight_number)
+
+        calculated_return_flight_time = self.logic_wrapper.flight_time(departure_time, return_flight_time).split()
+        calculated_return_flight = departure_date_time
 
         print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
         print("~" * 20)
@@ -91,7 +100,7 @@ class VoyagesUI:
             # TODO: make this one like the above one :p
             upcoming_flight2 = UpcomingVoyage(
                 id=(the_last_id + 1),
-                flight_nr=flight_number,
+                flight_nr=back_flight_number,
                 dep_from=arrival_location,
                 arr_at=departure_location,
                 departure=arrival_date_time,

@@ -4,8 +4,9 @@ from model.past_voyage_model import PastVoyage
 from datetime import datetime, date
 
 class EmployeeLL:
-    def __init__(self) -> None:
+    def __init__(self, logic_wrapper) -> None:
         self.data_wrapper = DataWrapper()
+        self.logic = logic_wrapper
 
         # TODO: Do not read and store these here, instead read them again every time you use them :P
         #self.employee_dict = self.data_wrapper.get_all_staff_members()
