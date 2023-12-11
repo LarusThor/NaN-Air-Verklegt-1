@@ -36,7 +36,6 @@ class UpcomingVoyageLL:
 
         return(hours, minutes, seconds)
 
-       
 
     def valid_pilot(self, aircraft_id, pilot):
         pilots_by_license = self.airplane.pilots_by_license()

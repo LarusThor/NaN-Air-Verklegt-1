@@ -8,6 +8,7 @@ class Destination:
     emergency_contact_number: str
     airport_name: str
     distance_from_iceland: str
+    estimated_flight_time: str
         
     
 #destination_id -> destinations.csv -> id
