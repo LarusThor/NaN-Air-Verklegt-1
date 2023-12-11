@@ -36,6 +36,9 @@ class DataWrapper:
     
 
     #destinations
+    def get_all_destinations_info(self):
+        return self.destinationIO.read_destinations_info()
+
     def get_all_destinations(self):
         return self.destinationIO.read_all_destinations()
     
