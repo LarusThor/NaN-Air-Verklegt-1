@@ -60,10 +60,8 @@ class VoyagesUI:
         departure_date_time = departure_date + " " + departure_time
         arrival_date_time = return_flight_date + " " + return_flight_time
 
-        # unstaffed = "N/A"
         the_last_id = int(the_last_id)
         the_last_id += 1
-        
         
         new_flight_number = int(flight_number[-2:]) + 1 #TODO commenta
         back_flight_number = flight_number[:-2] + str(new_flight_number)
