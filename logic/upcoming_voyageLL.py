@@ -27,7 +27,7 @@ class UpcomingVoyageLL:
         #Need to implement addition of time from destinations dictionary
         arrival_time_flight_duration = self.data_wrapper.get_all_destinations_info()
         estimated_flight_time = (arrival_time_flight_duration.keys(arr_at))[-1]
-        return_flight_time = return_flight_time.split()
+        return_flight_time = return_flight_time.split(":")
         flight_time_to_calculate = int(return_flight_time[0])
         arrival_flight_time = flight_time_to_calculate + estimated_flight_time
         return_flight_time[0] = arrival_flight_time
