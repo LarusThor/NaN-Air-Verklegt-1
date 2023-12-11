@@ -5,7 +5,9 @@
 #commenta flókin kóða
 #hafa skýrsluna í samræmi við kóða
 #low fi testing hækka einkun
-#hafa feedback
-# Change names of all python files to snake_case
+#Hafa feedback
+#change names of all python files to snake_case
 #breyta N/A í None í model klösunum
-#eins gæsalappir allsstaðar
+#láta main ekki prentast strax
+#get how was not working
+#i í dest

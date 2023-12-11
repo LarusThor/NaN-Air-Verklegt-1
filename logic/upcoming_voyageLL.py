@@ -8,7 +8,9 @@ class UpcomingVoyageLL:
         self.data_wrapper = DataWrapper()
         self.airplane = AirplaneLL()
 
-        #self.upcoming_flights_dict = self.data_wrapper.get_upcoming_flights()
+        self.upcoming_flights_dict = self.data_wrapper.get_upcoming_flights()
+        self.pilots_by_license = self.airplane.pilots_by_license()
+        self.planes_by_type = self.airplane.airplane_insignia_by_type()
         # self.airplane_insignias_sorted = self.airplane.airplane_insignia_by_type()
 
 
@@ -19,6 +21,11 @@ class UpcomingVoyageLL:
 
     def add_upcoming_voyage(self, upcoming_voyage):
         self.data_wrapper.add_upcoming_flights(upcoming_voyage)
+
+    def valid_pilot(self, aircraft_id, pilot):
+        license_check = self.planes_by_type.keys(aircraft_id)
+        if license_check in self.pilots_by_license.keys() and pilot in self.pilots_by_license.values(license_check):
+            return True
 
     def aircraft_availability():
         pass
