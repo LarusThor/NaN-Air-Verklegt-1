@@ -75,6 +75,12 @@ class LogicWrapper():
     def popular_destination(self):
         return self.destination.get_most_popular_destination()
 
+    def destination_info(self):
+        return self.destination.destination_info()
+    
+    def distance_from_iceland(self):
+        return self.destination.distance_from_iceland()
+    
     #Airplanes:
     def airplane_types(self):
         """ Returns all airplane types within the system. """
@@ -85,6 +91,9 @@ class LogicWrapper():
     
     def pilots_by_license(self):
         return self.airplane.pilots_by_license()
+    
+    def furthest_flown(self):
+        return self.airplane.get_furthest_flown_plane()
 
     # def airplane_insignia_by_types(self):
     #     return self.airplane.airplane_insignia_by_type()
@@ -138,11 +147,6 @@ class LogicWrapper():
         """ doc """
         return self.schedule.employee_not_working(date)
 
-    def get_total_hours_worked(self, employee: Employee, start: datetime, end: datetime):
-        self.schedule.employee_schedule_by_week(employee, start, end)
-
-
-    
 
     #validation
     def validate_name(self, name: str) -> bool:
