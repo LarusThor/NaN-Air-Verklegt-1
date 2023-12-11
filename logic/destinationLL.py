@@ -6,8 +6,8 @@ class DestinationLL():
     def __init__(self) -> None:
         #self.data_wrapper = data_connection
         self.data_wrapper = DataWrapper()
-        self.past_voyage_list = self.data_wrapper.get_past_flights()
-        self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
+        #self.past_voyage_list = self.data_wrapper.get_past_flights()
+        #self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
    
    
     def get_destination_list(self) -> list:
@@ -30,8 +30,10 @@ class DestinationLL():
         """ Returns the most popular destination. """
         destination_list = []
         destination_dict = {}
-        voyage_list = self.past_voyage_list
-        voyage_list.update(self.upcoming_voyage_list)
+        past_voyage_list = self.data_wrapper.get_past_flights()
+        upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()
+        voyage_list = past_voyage_list
+        voyage_list.update(upcoming_voyage_list)
         for voyage in voyage_list.values():
             destination_list.append(voyage.dep_from)
 
