@@ -33,7 +33,7 @@ class ScheduleLL():
     def employee_working(self, date_working: date) -> list[Employee]:
         """ Returns a list of all employees working on a specific day. """    
         #TODO: simplify
-        past_voyage_list = self.logic.past_voyages()
+        past_voyage_list = self.logic.get_past_voyages()
         upcoming_voyage_list = self.logic.upcoming_voyages()
         workers_on_day = []
         voyage_list = list(past_voyage_list.values()) + list(upcoming_voyage_list.values())
@@ -48,7 +48,7 @@ class ScheduleLL():
             if date_working in dates:
                 workers_on_day.extend(workers)
         
-        return [self.logicr.employee_info(s_id) for s_id in workers_on_day if s_id != 'N/A'] #TODO: laga na bull very ugley
+        return [self.logic.employee_info(s_id) for s_id in workers_on_day if s_id != 'N/A'] #TODO: laga na bull very ugley
     
 
     def employee_not_working(self, date_not_working: date) -> set[Employee]:
