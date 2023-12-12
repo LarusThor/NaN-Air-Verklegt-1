@@ -17,8 +17,7 @@ class AirplaneLL():
         """ Returns the plane that has flown the furthest"""
         past_voyage_list = self.data_wrapper.get_past_flights() #TODO: tékka hvort það sé hægt að tengja í logic wrapper frekar
         destination_distance = self.logic.distance_from_iceland()
-        print(destination_distance)
-
+        
         distance_dict = defaultdict(int)
 
         for voyage in past_voyage_list.values():
