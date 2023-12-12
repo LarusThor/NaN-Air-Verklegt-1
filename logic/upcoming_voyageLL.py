@@ -4,16 +4,21 @@ from model.upcoming_voyage_model import UpcomingVoyage
 from model.destination_model import Destination
 from datetime import datetime, timedelta
 
+
 class UpcomingVoyageLL:
     def __init__(self, logic_wrapper) -> None:
         self.data_wrapper = DataWrapper()
         self.logic = logic_wrapper
+        # self.airplane = AirplaneLL()
 
+        # self.upcoming_flights_dict = self.data_wrapper.get_upcoming_flights()
+        # self.pilots_by_license = self.airplane.pilots_by_license()
+        # self.planes_by_type = self.airplane.airplane_insignia_by_type()
+        # self.airplane_insignias_sorted = self.airplane.airplane_insignia_by_type()
 
     def get_upcoming_voyages(self):
         upcoming_flights_dict = self.data_wrapper.get_upcoming_flights()
         return upcoming_flights_dict
-
 
     def add_upcoming_voyage(self, upcoming_voyage):
         self.data_wrapper.add_upcoming_flights(upcoming_voyage)
@@ -28,22 +33,46 @@ class UpcomingVoyageLL:
         departure_date, departure_time = departure_date_time.split()
         hour, minute, sec = departure_time.split(":")
         year, month, day = departure_date.split("-")
-        original_date_time = datetime(*map(int,[year, month, day, hour, minute, sec]))
-        
+        original_date_time = datetime(*map(int, [year, month, day, hour, minute, sec]))
+
         min_added = int(hour_duration) * 60 + int(min_duration)
         time_change = timedelta(minutes=min_added)
         arrival_time = original_date_time + time_change
 
         return arrival_time
 
+        # start = datetime.strptime({departure_time}, "%H:%M:%S")
+        # end = datetime.strptime({arrival_time}, "%H:%M:%S")
 
-    def valid_pilot(self, aircraft_id, pilot):
-        pilots_by_license = self.logic.pilots_by_license()
-        planes_by_type = self.logic.airplane_insignia_by_types()
+        # time_difference = end - start
+        # seconds = time_difference.total_seconds()
 
-        license_check = planes_by_type[aircraft_id]
-        if license_check in pilots_by_license.keys() and pilot in pilots_by_license.values(license_check):
-            return True
+        # minutes, seconds = divmod(seconds, 60)
+        # hours, minutes = divmod(minutes, 60)
+
+        # return(hours, minutes, seconds)
+
+    def valid_pilot(self, aircraft_id, pilot):  # TF-XUP, 34928348392
+        pilots_by_license = self.logic.pilots_by_license()  # {Fokkerf100: jón, kalli}
+        planes_by_type = (
+            self.logic.airplane_insignia_by_types()
+        )  # {Fokkerf100: TF-XZ, TF-XUP}
+        employee_dict = (
+            self.data_wrapper.get_all_staff_members()
+        )  # {293919999: Jón, Pilot...}
+        for employee, value in employee_dict.items():  # 36585298, [(djxhfj)]
+            if employee == pilot and employee_dict.role == "Pilot":
+                # pilot_info = list(employee_dict) # ["74284353454", "jon", "pilot", ... ]
+                pilot_name = employee_dict.name  # Jón Jóns.
+
+        for key, value in planes_by_type.items():  # Fokkerf100, (jón, kalli)
+            if aircraft_id in planes_by_type[key]:
+                license_check = key
+                if (
+                    license_check in pilots_by_license
+                    and pilot_name in pilots_by_license
+                ):
+                    return True
 
     def aircraft_availability():
         pass
@@ -51,3 +80,6 @@ class UpcomingVoyageLL:
 
     def staff_availability():
         pass
+
+
+# flightnr
