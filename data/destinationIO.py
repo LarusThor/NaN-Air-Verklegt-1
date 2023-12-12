@@ -31,7 +31,7 @@ class DestinationIO():
             fieldnames = ['id','destination', 'emergency_contact_name', 'emergency_contact_number', 'airport_name', 'distance_from_iceland','estimated_flight_time']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-            writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergencyContact, 'emergency_contact_number': destination.emergencyNumber, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distanceFromIceland, 'estimated_flight_time': destination.estimated_flight_time})
+            writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland, 'estimated_flight_time': destination.estimated_flight_time})
         
 
     def update_destination(self, updated_destination) -> None:
