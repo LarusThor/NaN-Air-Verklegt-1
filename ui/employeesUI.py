@@ -18,7 +18,6 @@ class EmployeeUI:
         self.validation = self.logic_wrapper.validation
         
 
-
     def employees_options(self) -> str:
         """Prints the first options the user can choose from when they choose employee. Returns the action input"""
         self.menus.display_options(EMPLOYEES_OPTIONS)
@@ -86,6 +85,7 @@ class EmployeeUI:
         employee = self.employee_info(social_id)
         return employee
 
+
     def employee_info_options(self) -> str:
         """Prints out the options that come up when the user chooses to get the employees information.
         And gets the action input from the user"""
@@ -136,11 +136,10 @@ class EmployeeUI:
         self.logic_wrapper.change_employee_info(employee)
 
 
-
-
     def change_home_address(self):
         """ TODO: add docstring """
         pass
+
 
     def change_phone_number(self):
         """ TODO: add docstring """
@@ -195,7 +194,7 @@ class EmployeeUI:
         print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
         rank = input()
         while rank != "1" and rank != "2" and rank != "3" and rank != "4":
-            print("Invalid input! You can choose 1, 2, 3, or 4")
+            print("Invalid input! You can choose 1, 2, 3, or 4")#TODO: ætti frekar að vera í validation
             rank = input("Rank: ")
         if rank == "1" or rank == "2":
             licences = ["NAFokker100","NAFokkerF28","NABAE146"]
@@ -251,12 +250,13 @@ class EmployeeUI:
                 print()
                 self.logic_wrapper.add_employee(employee)   
 
+
         elif save_prompt == "n":
             print()
             print("New employee not saved.")
             print()
             print("(M)enu  (R)epeat")
-            action = str(input("Enter your action: ").lower())#validate
+            action = str(input("Enter your action: ").lower())#TODO: validate
             if action == "m":
                 None
             elif action == "r":
