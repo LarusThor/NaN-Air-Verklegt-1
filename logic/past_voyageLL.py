@@ -11,3 +11,4 @@ class PastVoyageLL:
         past_voyages_dict = self.data_wrapper.get_past_flights()
         
         return past_voyages_dict
+    
