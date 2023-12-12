@@ -96,9 +96,11 @@ class LogicWrapper():
         """ returns a dictionary of destinations and their distance from iceland in km. """
         return self.destination.distance_from_iceland()
     
+
     def update_destination_info(self, destination):
         return self.destination.change_destination_info(destination)
     
+
     def update_contact_info(self, destination):
         return self.destination.update_contact_info(destination)
     
@@ -127,6 +129,7 @@ class LogicWrapper():
     def airplane_insignia_by_types(self) -> dict:
         return self.airplane.airplane_insignia_by_type()
     
+
     def airplane_usage(self):
         return self.airplane.get_airplane_usage()
 
@@ -151,6 +154,7 @@ class LogicWrapper():
         """ Returns calculated flight time for each destination. """
         return self.list_upcoming_voyage.calculate_flight_time(arr_at, departure_date_time)
     
+
     def add_staff_to_voyage(self, added_staff):
         return self.list_upcoming_voyage.add_staff_for_voyage(added_staff)
 
@@ -196,8 +200,10 @@ class LogicWrapper():
     def flight_fully_booked(self):
         return self.flight_information.flight_fully_booked()
 
+
     def capacity(self):
         return self.flight_information.capacity()
+
 
     #validation
     def validate_name(self, name: str) -> bool:
@@ -243,3 +249,4 @@ class LogicWrapper():
     def date_validation(self, date: datetime) -> bool:
         """ validates date. """
         self.validation.date_validation(date)
+        

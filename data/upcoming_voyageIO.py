@@ -46,34 +46,38 @@ class UpcomingVoyageIO:
                 'fa2': upcoming_voyage.fa2, 
                 'fa3': upcoming_voyage.fa3, 
                 'fa4':upcoming_voyage.fa4, 
-                'fa5':upcoming_voyage.fa5
+                'fa5':upcoming_voyage.fa5,
+                'seats_sold':upcoming_voyage.seats_sold
                 })
             
             
     def add_staff_to_voyage(self, added_staff_to_voyage) -> None:
         voyage_list = self.read_upcoming_flights()
 
-        for voyage_name, voyage_info in enumerate(voyage_list):
-            if voyage_info.id == added_staff_to_voyage.id:
+        for voyage_name, voyage_info in voyage_list.items():
+            if voyage_name == added_staff_to_voyage.id:
                 voyage_list[voyage_name] = added_staff_to_voyage
-                break
+                
         
-        with open('files/destinations.csv', 'w+', newline='', encoding="utf-8") as csvfile:
+        with open('files/upcoming_flights.csv', 'w+', newline='', encoding="utf-8") as csvfile:
             fieldnames = ['id','flight_nr', 'dep_from', 'arr_at', 'departure', 'arrival', 'aircraft_id', 'captain','copilot','fsm','fa1','fa2','fa3','fa4','fa5',"seats_sold"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             
             for voyage in voyage_list:
-                writer.writerow({'flight_nr': voyage.flight_nr, 
-                     'dep_from': voyage.dep_from, 
-                     'arr_at': voyage.arr_at, 
-                     'departure': voyage.departure, 
-                     'arrival': voyage.arrival, 
-                     'captain': voyage.captain, 
-                     'copilot': voyage.copilot, 
-                     'fsm': voyage.fsm, 
-                     'fa1': voyage.fa1, 
-                     'fa2': voyage.fa2, 
-                     'fa3': voyage.fa3, 
-                     'fa4':voyage.fa4, 
-                     'fa5':voyage.fa5})
+                writer.writerow({'id': voyage.id,
+                    'flight_nr': voyage.flight_nr, 
+                    'dep_from': voyage.dep_from, 
+                    'arr_at': voyage.arr_at, 
+                    'departure': voyage.departure, 
+                    'arrival': voyage.arrival, 
+                    'captain': voyage.captain, 
+                    'copilot': voyage.copilot, 
+                    'fsm': voyage.fsm, 
+                    'fa1': voyage.fa1, 
+                    'fa2': voyage.fa2, 
+                    'fa3': voyage.fa3, 
+                    'fa4':voyage.fa4, 
+                    'fa5':voyage.fa5,
+                    'seats_sold':voyage.seats_sold
+                     })
