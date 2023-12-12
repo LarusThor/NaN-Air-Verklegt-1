@@ -48,7 +48,15 @@ class Main:
                         match action:
                             case "1":
                                 action = self.airplane_ui.pilots_by_licanse()
-                                # vantar meira
+                                
+                                match action:
+                                    case "1":
+                                        pass
+                                    case "2":
+                                        self.airplane_ui.list_pilots_by_licanse()
+                                    case "3":
+                                        pass
+
                             case "2":
                                 self.airplane_ui.types()
 
