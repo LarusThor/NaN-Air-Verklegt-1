@@ -52,13 +52,14 @@ class DestinationIO():
             
             for destination in dest_list:
                 writer.writerow(
-                    {'id': destination.destination_id, 
-                     'destination': destination.destination, 
-                     'emergency_contact_name': destination.emergency_contact_name, 
-                     'emergency_contact_number': destination.emergency_contact_number, 
-                     'airport_name': destination.airport_name, 
-                     'distance_from_iceland': destination.distance_from_iceland, 
-                     'estimated_flight_time':destination.estimated_flight_time
+                    {
+                    'id': destination.destination_id, 
+                    'destination': destination.destination, 
+                    'emergency_contact_name': destination.emergency_contact_name, 
+                    'emergency_contact_number': destination.emergency_contact_number, 
+                    'airport_name': destination.airport_name, 
+                    'distance_from_iceland': destination.distance_from_iceland, 
+                    'estimated_flight_time':destination.estimated_flight_time
                      })
         
 

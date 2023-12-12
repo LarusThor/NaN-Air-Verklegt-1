@@ -8,12 +8,6 @@ class UpcomingVoyageLL:
     def __init__(self, logic_wrapper) -> None:
         self.data_wrapper = DataWrapper()
         self.logic = logic_wrapper
-        #self.airplane = AirplaneLL()
-
-        #self.upcoming_flights_dict = self.data_wrapper.get_upcoming_flights()
-        #self.pilots_by_license = self.airplane.pilots_by_license()
-        #self.planes_by_type = self.airplane.airplane_insignia_by_type()
-        # self.airplane_insignias_sorted = self.airplane.airplane_insignia_by_type()
 
 
     def get_upcoming_voyages(self):
@@ -23,6 +17,7 @@ class UpcomingVoyageLL:
 
     def add_upcoming_voyage(self, upcoming_voyage):
         self.data_wrapper.add_upcoming_flights(upcoming_voyage)
+
 
     def calculate_flight_time(self, arr_at, departure_date_time):
         destinations_info = self.data_wrapper.get_all_destinations_info()
@@ -41,17 +36,6 @@ class UpcomingVoyageLL:
 
         return arrival_time
 
-        # start = datetime.strptime({departure_time}, "%H:%M:%S") 
-        # end = datetime.strptime({arrival_time}, "%H:%M:%S")
-
-        # time_difference = end - start
-        # seconds = time_difference.total_seconds()
-
-        # minutes, seconds = divmod(seconds, 60)
-        # hours, minutes = divmod(minutes, 60)
-
-        # return(hours, minutes, seconds)
-
 
     def valid_pilot(self, aircraft_id, pilot):
         pilots_by_license = self.logic.pilots_by_license()
@@ -64,9 +48,6 @@ class UpcomingVoyageLL:
     def aircraft_availability():
         pass
 
+
     def staff_availability():
         pass
-
-
-
-#flightnr

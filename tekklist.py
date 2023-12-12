@@ -15,3 +15,4 @@
 # 3-2-1 ekki biðja um social ID tvisvar
 #eyða schedule IO??
 #eyða voyage IO
+#tengja data í gegnum 
