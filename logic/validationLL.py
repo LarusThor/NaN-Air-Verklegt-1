@@ -3,8 +3,11 @@ from datetime import datetime
 
 class ValidationLL():
     def __init__(self) -> None:
-        self.data_wrapper = DataWrapper()
-        pass
+        """Instantiate a ValidationLL object.
+
+        Args:
+            logic_wrapper: The logic wrapper object that contains all logic layer objects.
+        """
 
 
     def validate_name(self, name: str) -> bool:
