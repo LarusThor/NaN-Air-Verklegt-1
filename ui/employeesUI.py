@@ -149,7 +149,7 @@ class EmployeeUI:
         
         name = input("Name: ").title()
         while not validation.validate_name(name):
-            print("ERROR: Invalid name \nName has to be a string of length > 5. ")
+            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
             name = input("Name: ").title()
             continue
         
@@ -160,7 +160,7 @@ class EmployeeUI:
  
         phone_number = input("Phone number: ")
         while not validation.validate_number(phone_number):
-            print("ERROR: Invalid phone number \n Phone number should be 8 digits. ")
+            print("ERROR: Invalid phone number \n Phone number should be 7 digits. ")
             phone_number = input("Phone number: ")
 
         email = input("Email: ")
@@ -170,7 +170,7 @@ class EmployeeUI:
 
         home_address = input("Home adress: ")
         while not validation.validate_address(home_address):
-            print("ERROR: Invalid address \n Address should be a string and number")
+            print("ERROR: Invalid address \n Address should be a string")
             home_address = input("Home adress: ")
 
 
