@@ -6,8 +6,8 @@ from datetime import datetime, timedelta
 
 class UpcomingVoyageLL:
     def __init__(self, logic_wrapper) -> None:
-        self.logic = logic_wrapper
         self.data_wrapper = DataWrapper()
+        self.logic = logic_wrapper
         #self.airplane = AirplaneLL()
 
         #self.upcoming_flights_dict = self.data_wrapper.get_upcoming_flights()
@@ -55,7 +55,7 @@ class UpcomingVoyageLL:
 
     def valid_pilot(self, aircraft_id, pilot):
         pilots_by_license = self.logic.pilots_by_license()
-        planes_by_type = self.logic .airplane_insignia_by_type()
+        planes_by_type = self.logic.airplane_insignia_by_types()
 
         license_check = planes_by_type[aircraft_id]
         if license_check in pilots_by_license.keys() and pilot in pilots_by_license.values(license_check):

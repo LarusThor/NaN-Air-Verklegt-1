@@ -1,22 +1,9 @@
-from logic.employeeLL import EmployeeLL
-from model.employee_model import Employee
-from logic.destinationLL import DestinationLL
-# from model.past_voyage_model import PastVoyage
-# from logic.past_voyageLL import PastVoyageLL
-from logic.scheduleLL import ScheduleLL
-# from logic.airplaneLL import AirplaneLL
-from model.destination_model import Destination
 from logic.logic_wrapper import LogicWrapper
-from datetime import date, datetime
-from ui.employeesUI import EmployeeUI
-from data.data_wrapper import  DataWrapper
-from logic.airplaneLL import AirplaneLL
-from ui.employeesUI import EmployeeUI
 
 
 logic = LogicWrapper()
-
 print(logic.pilots_by_license())
+
 
 
 

@@ -19,7 +19,7 @@ class DestinationIO():
     #                 destination_names.append(value)
     #     return destination_names
 
-    def read_destinations_info(self):
+    def read_destinations_info(self) -> dict:
         destinations_overview = {}
         with open("files/destinations.csv", "r") as f:
             lines = f.readlines()
