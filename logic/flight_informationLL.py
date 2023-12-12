@@ -27,3 +27,6 @@ class FlightInformation:
             booked[voyage.flight_nr] = booking_status
             
         return booked
+
+    def flight_status_by_time(self):
+        pass
