@@ -116,7 +116,7 @@ class Main:
 
                     # Employee info :
                     case "2":
-                        employee_name = self.employee_ui.get_employee()
+                        # employee_name = self.employee_ui.get_employee()
                         action = self.employee_ui.employee_info_options()
 
                         match action:
@@ -125,7 +125,7 @@ class Main:
                                 pass
 
                             case "1":
-                                self.employee_ui.get_info(employee_name)
+                                self.employee_ui.get_info()
 
                             case "2":
                                 action = self.employee_ui.change_info_options()
