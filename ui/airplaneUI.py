@@ -14,6 +14,7 @@ class AirplaneUI:
         self.menus = Menu()
         self.airplane_types = self.logic_wrapper.airplane_types()
         self.pilots_license = self.logic_wrapper.pilots_by_license()
+        self.flown_furthest = self.logic_wrapper.furthest_flown()
 
 
     def airplane(self) -> str:
@@ -81,5 +82,5 @@ class AirplaneUI:
         pass
 
 
-    def flown_furthest_airplane():
-        pass
+    def flown_furthest_airplane(self):
+        print(self.flown_furthest)

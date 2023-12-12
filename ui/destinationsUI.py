@@ -29,7 +29,14 @@ class DestinationsUI:
     def get_most_popular_destination(self):
         """ TODO: add docstring """
         popular = self.logic_wrapper.popular_destination()
-        print(popular)
+        print()
+        print("The most popular destination:")
+        print("-"*30)
+        print(popular[0])
+        print()
+        print("(H)ome  (B)ack")
+        action = input("Enter your action: ")
+        return action
 
 
     def add_destination(self) -> None:
