@@ -13,6 +13,7 @@ class AirplaneUI:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
         self.airplane_types = self.logic_wrapper.airplane_types()
+        self.pilots_license = self.logic_wrapper.pilots_by_license()
 
 
     def airplane(self) -> str:
@@ -32,6 +33,8 @@ class AirplaneUI:
         action = str(input("Enter your action: ").lower())
         return action
     
+    def list_pilots_by_licanse(self):
+        print(self.pilots_license)
 
     def types(self) -> str:
         for item in self.airplane_types:
