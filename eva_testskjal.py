@@ -1,13 +1,13 @@
 from logic.logic_wrapper import LogicWrapper
 from ui.employeesUI import EmployeeUI
+from logic.flight_informationLL import FlightInformation
 
 # logic = LogicWrapper()
 # print(logic.pilot_list())
 
+logic = LogicWrapper()
 
-emp = EmployeeUI()
-
-print(emp.get_pilots())
+print(logic.flight_fully_booked())
 
 
 
