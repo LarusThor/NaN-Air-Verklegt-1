@@ -217,7 +217,7 @@ class VoyagesUI:
         print("=" * 130)
         print(VOYAGE_HEADER)
         print("=" * 130)
-        for flight_values in self.logic_wrapper.past_voyages().values():
+        for flight_values in self.logic_wrapper.get_past_voyages().values():
             if date in flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):
                 print(
                     f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}",
@@ -245,7 +245,7 @@ class VoyagesUI:
         print("=" * 130)
 
         # TODO Comment this code
-        for flight_values in self.logic_wrapper.past_voyages().values():
+        for flight_values in self.logic_wrapper.get_past_voyages().values():
             weeks = str(flight_values.departure.isocalendar().week)
             if year in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
                 if weeks == week_nr:

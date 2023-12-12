@@ -6,8 +6,6 @@ class DestinationLL():
         #self.data_wrapper = data_connection
         self.data_wrapper = DataWrapper()
         self.logic = logic_wrapper
-        #self.past_voyage_list = self.data_wrapper.get_past_flights()
-        #self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()#TODO: tengja frekar við hinn logic?
    
    
     def get_destination_list(self) -> list:
@@ -19,8 +17,10 @@ class DestinationLL():
 
         return destination_list
 
-    def destination_info(self):
+
+    def destination_info(self) -> list:
         return self.data_wrapper.destination_info()
+
 
     def add_destination(self, destination: Destination) -> None:
         """Takes in a customer object and forwards it to the data layer"""
@@ -28,7 +28,7 @@ class DestinationLL():
         dest.add_destinations(destination)
    
 
-    def get_most_popular_destination(self) -> dict: #reyna að stytta nafn
+    def get_most_popular_destination(self) -> dict: #TODO: eyna að stytta nafn
         """ Returns the most popular destination. """
         destination_list = []
         destination_dict = {}
@@ -53,11 +53,12 @@ class DestinationLL():
         #name
         #number
 
+
     def distance_from_iceland(self):
         destinations = self.destination_info()
         distance = dict()
         for destination in destinations:
             distance[destination.destination_id] = int(destination.distance_from_iceland) 
+        
         return distance
-
-    
+  

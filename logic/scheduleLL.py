@@ -11,12 +11,6 @@ class ScheduleLL():
         """
         self.logic = logic_wrapper
 
-        # TODO: don't store these - instead, fetch them every time they are needed
-        # Reason: They don't update when updates are made from other LL classes
-        #self.employee_dict = self.logic.data_wrapper.get_all_staff_members()
-        #self.past_voyage_list = self.logic.past_voyages() #TODO: tengja frekar við hinn logic?
-        #self.upcoming_voyage_list = self.logic.upcoming_voyages()#TODO: tengja frekar við hinn logic?
-
 
     def employee_schedule_by_week(self, employee, year, week_nr) -> str:
         """ Returns employee schedule for a chosen week. """
@@ -84,3 +78,4 @@ class ScheduleLL():
 
         worker_ids =  all_workers-workers_on_day
         return [self.logic.employee_info(s_id) for s_id in worker_ids]
+    
