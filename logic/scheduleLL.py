@@ -1,4 +1,3 @@
-from data.data_wrapper import DataWrapper
 from datetime import datetime, date
 from model.employee_model import Employee
 
@@ -78,4 +77,4 @@ class ScheduleLL():
 
         worker_ids =  all_workers-workers_on_day
         return [self.logic.employee_info(s_id) for s_id in worker_ids]
-    
+  

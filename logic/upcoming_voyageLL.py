@@ -1,15 +1,10 @@
-from data.data_wrapper import DataWrapper
 from dataclasses import asdict
-from model.upcoming_voyage_model import UpcomingVoyage
-from model.destination_model import Destination
 from datetime import datetime, timedelta
 
 
 class UpcomingVoyageLL:
     def __init__(self, logic_wrapper) -> None:
-        self.data_wrapper = DataWrapper()
         self.logic = logic_wrapper
-        # self.airplane = AirplaneLL()
 
 
     def get_upcoming_voyages(self):
@@ -18,11 +13,11 @@ class UpcomingVoyageLL:
 
 
     def add_upcoming_voyage(self, upcoming_voyage):
-        self.data_wrapper.add_upcoming_flights(upcoming_voyage)
+        self.logic.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
 
     def calculate_flight_time(self, arr_at, departure_date_time):
-        destinations_info = self.data_wrapper.get_all_destinations_info()
+        destinations_info = self.logic.data_wrapper.get_all_destinations_info()
         estimated_flight_time_overview = list(destinations_info.values())
         destination_values = destinations_info[arr_at]
         estimated_flight_time = destination_values.estimated_flight_time
@@ -42,7 +37,7 @@ class UpcomingVoyageLL:
     def valid_pilot(self, aircraft_id, pilot):  # TF-XUP, 34928348392
         pilots_by_license = self.logic.pilots_by_license()  # {Fokkerf100: jón, kalli}
         planes_by_type = (self.logic.airplane_insignia_by_types())  # {Fokkerf100: TF-XZ, TF-XUP}
-        employee_dict = (self.data_wrapper.get_all_staff_members())  # {293919999: Jón, Pilot...}
+        employee_dict = (self.logic.data_wrapper.get_all_staff_members())  # {293919999: Jón, Pilot...}
         for employee, value in employee_dict.items():  # 36585298, [(djxhfj)]
             if employee == pilot and value.role == "Pilot":
                 # pilot_info = list(employee_dict) # ["74284353454", "jon", "pilot", ... ]
@@ -56,7 +51,7 @@ class UpcomingVoyageLL:
                     return True
 
     def add_staff_for_voyage(self, staff_to_add):
-        return self.data_wrapper.add_staff(staff_to_add)
+        return self.logic.data_wrapper.add_staff(staff_to_add)
 
     def aircraft_availability():
         pass
