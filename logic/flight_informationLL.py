@@ -1,5 +1,3 @@
-from data.data_wrapper import DataWrapper
-
 class FlightInformation:
     def __init__(self, logic_wrapper):
         self.logic = logic_wrapper
@@ -29,5 +27,3 @@ class FlightInformation:
             booked[voyage.flight_nr] = booking_status
             
         return booked
-
-        #return upcoming_voyages

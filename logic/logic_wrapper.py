@@ -129,6 +129,9 @@ class LogicWrapper():
 
     def airplane_insignia_by_types(self) -> dict:
         return self.airplane.airplane_insignia_by_type()
+    
+    def airplane_usage(self):
+        return self.airplane.get_airplane_usage()
 
 
     #Upcoming voyages:

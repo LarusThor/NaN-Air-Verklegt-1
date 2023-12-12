@@ -26,7 +26,7 @@ class PastVoyageIO:
         """ Adds a past voyage to the system. """
         file_path = Path('files/past_flights.csv')
 
-        fieldnames = ['flight_nr', 'dep_from', 'arr_at', 'departure', 'arrival', 'captain','copilot','fsm','fa1','fa2','fa3','fa4','fa5']
+        fieldnames = ['flight_nr', 'dep_from', 'arr_at', 'departure', 'arrival', 'captain','copilot','fsm','fa1','fa2','fa3','fa4','fa5', "seats_sold"]
 
         with open(file_path, 'w', newline='', encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -47,5 +47,6 @@ class PastVoyageIO:
                      'fa2': upcoming_flight.fa2, 
                      'fa3': upcoming_flight.fa3, 
                      'fa4':upcoming_flight.fa4, 
-                     'fa5':upcoming_flight.fa5
+                     'fa5':upcoming_flight.fa5,
+                     "seats_sold":upcoming_flight.seats_sold
                      })
