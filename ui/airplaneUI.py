@@ -34,7 +34,16 @@ class AirplaneUI:
         return action
     
     def list_pilots_by_licanse(self):
-        print(self.pilots_license)
+        print("-"*25)
+        print("{:<14} | {}".format("Airplane type", "Pilots"))
+        print("-"*25)
+        for keys, values in self.pilots_license.items():
+            print("{:<14} | {}".format(keys, ", ".join(sorted(values))))
+
+        print()
+        print("(H)ome  (B)ack")
+        action = input("Enter your action: ")
+        return action
 
     def types(self) -> str:
         for item in self.airplane_types:
