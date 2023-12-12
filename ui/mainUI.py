@@ -219,5 +219,4 @@ class Main:
                 "5": voyages,
                 "6": flight_information,
             }
-
             options[action]()
