@@ -20,5 +20,3 @@ class UpcomingVoyage:
     fa3: str = UNSTAFFED
     fa4: str = UNSTAFFED
     fa5: str = UNSTAFFED
-
-#flight_nr,dep_from,arr_at,departure,arrival
