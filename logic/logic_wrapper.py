@@ -74,12 +74,7 @@ class LogicWrapper():
         """ Returns a list of all destinations within the system. """
         return self.destination.get_destination_list()
     
-
-    def add_destination(self, destination) -> None:
-        """Takes in a customer object and forwards it to the data layer. """
-        return self.destination.add_destination(destination)
     
-
     def add_destination(self, destination) -> None:
         """ Takes in a customer object and forwards it to the data layer. """
         return self.destination.add_destination(destination)
