@@ -118,13 +118,13 @@ class VoyagesUI:
 
     def manager_staffs_voyage(self):
         """TODO: add docstring"""
-        pass
         captain = input("Enter captain's social id: ")
         aircraft_id = input("Enter a valid aircraft: ")
         if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
             captain = captain
-            print("Valid aircraft for pilot")
-        copilot = input("Enter captain's social id: ")
+        copilot = input("Enter copilot's social id: ")
+        if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
+            copilot = copilot
         flight_service_manager = input("Enter captain's social id: ")
         add_flight_attendant = input("Enter social id of an additional flight attendant: ")
         flight_attendants = [add_flight_attendant]
@@ -133,16 +133,17 @@ class VoyagesUI:
                 add_flight_attendant = input("Enter social id of an additional flight attendant: ")
                 flight_attendants.append(add_flight_attendant)
 
-        if len(flight_attendants) < 5:
-            empty_flight_attendant_slots = 5 - len(flight_attendants)
-            for slots in empty_flight_attendant_slots:
-                flight_attendants.append("N/A")
+
+        # if len(flight_attendants) < 5:
+        #     empty_flight_attendant_slots = 5 - len(flight_attendants)
+        #     for slots in empty_flight_attendant_slots:
+        #         flight_attendants.append("N/A")
                 
-        flight_attendant_1 = flight_attendants[0]
-        flight_attendant_2 = flight_attendants[1]
-        flight_attendant_3 = flight_attendants[2]
-        flight_attendant_4 = flight_attendants[3]
-        flight_attendant_5 = flight_attendants[4]
+        # flight_attendant_1 = flight_attendants[0]
+        # flight_attendant_2 = flight_attendants[1]
+        # flight_attendant_3 = flight_attendants[2]
+        # flight_attendant_4 = flight_attendants[3]
+        # flight_attendant_5 = flight_attendants[4]
 
     def list_voyage_options(self) -> str:
         """TODO: add docstring"""
