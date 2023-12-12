@@ -7,7 +7,11 @@ class DestinationLL():
    
     def get_destination_list(self):
         """ Returns a list of destinations within the system. """
-        return self.data_wrapper.get_all_destinations()
+        destinations = []
+        dest_list = self.data_wrapper.get_all_destinations()
+        for destination in dest_list:
+            destinations.append(destination.destination)
+        return destinations
     
     def add_destination(self, destination):
         """Takes in a customer object and forwards it to the data layer"""

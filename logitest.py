@@ -1,17 +1,15 @@
 from data.destinationIO import DestinationIO
 from model.destination_model import Destination
+from logic.destinationLL import DestinationLL
 
 dest = Destination(
-destination_id = "KEF",
-destination = "luigiboys",
-airport_name = "luigiboys",
-distance_from_iceland = "luigiboys",
+destination_id = "LWK",
 emergency_contact_name = "luigiboys",
 emergency_contact_number = "luigiboys")
 
 
 d = DestinationIO()
 
-
-d.update_destination(dest)
+dest_lidt = d.update_contacts(dest)
+print(dest_lidt)
 
