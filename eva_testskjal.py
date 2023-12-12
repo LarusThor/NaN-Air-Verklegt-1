@@ -7,7 +7,7 @@ from logic.flight_informationLL import FlightInformation
 
 logic = LogicWrapper()
 
-print(logic.flight_fully_booked())
+print(logic.upcoming_voyages())
 
 
 
