@@ -140,6 +140,9 @@ class LogicWrapper():
     def flight_time(self, arr_at, departure_date_time: datetime) -> datetime:
         """ Returns calculated flight time for each destination. """
         return self.list_upcoming_voyage.calculate_flight_time(arr_at, departure_date_time)
+    
+    def add_staff_to_voyage(self, added_staff):
+        return self.list_upcoming_voyage.add_staff_for_voyage(added_staff)
 
 
     #Past voyages:

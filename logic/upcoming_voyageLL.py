@@ -68,6 +68,9 @@ class UpcomingVoyageLL:
                 #license_check in pilots_by_license.keys() and pilot_name in pilots_by_license.values():
                     return True
 
+    def add_staff_for_voyage(self, staff_to_add):
+        return self.data_wrapper.add_staff(staff_to_add)
+
     def aircraft_availability():
         pass
 
