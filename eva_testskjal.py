@@ -1,11 +1,13 @@
 from logic.logic_wrapper import LogicWrapper
+from ui.employeesUI import EmployeeUI
+
+# logic = LogicWrapper()
+# print(logic.pilot_list())
 
 
-logic = LogicWrapper()
-print(logic.pilots_by_license())
+emp = EmployeeUI()
 
-
-
+print(emp.get_pilots())
 
 
 
