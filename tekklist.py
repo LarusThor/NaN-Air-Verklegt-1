@@ -17,3 +17,4 @@
 #eyða voyage IO
 #tengja data í gegnum 
 #endurnýta betur í UI
+#aldur má ekki vera mínus tala

@@ -152,10 +152,10 @@ class Main:
                     case "1":
                         date = self.schedule_ui.get_schedule_by_day()
                         action = self.schedule_ui.schedule_for_a_day_options()
-                       
+
                         match action:
                             case "1":
-                                self.schedule_ui.get_how_was_working(date)
+                                self.schedule_ui.who_was_working(date)
                             case "2":
                                 self.schedule_ui.get_how_was_not_working(date)
 

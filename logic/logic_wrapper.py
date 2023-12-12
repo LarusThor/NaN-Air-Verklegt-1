@@ -158,6 +158,14 @@ class LogicWrapper():
 
 
     #Past voyages:
+
+    def get_past_voyages(self) -> dict:
+        """ doc 
+        TODO: Typehint
+        """
+        return self.past_voyages.get_past_voyages()
+
+    
     def get_all_voyages(self) -> list[PastVoyage | UpcomingVoyage]:
         """All voyages, past and upcoming.
 
@@ -166,17 +174,9 @@ class LogicWrapper():
         """
         
         return  (
-            list(self.list_upcoming_voyage.get_upcoming_voyages().values()) 
-            + list(self.list_past_voyages.get_past_voyages().values())
+            self.upcoming_voyages()| 
+            self.get_past_voyages()
         )
-
-
-    def get_past_voyages(self) -> dict:
-        """ doc 
-        TODO: Typehint
-        """
-        return self.past_voyages.get_past_voyages()
-    
 
     #schedule
     def employee_schedule_by_week(self, employee:str, year:str, week:str) -> str:
@@ -247,4 +247,3 @@ class LogicWrapper():
     def date_validation(self, date: datetime) -> bool:
         """ validates date. """
         self.validation.date_validation(date)
-        
