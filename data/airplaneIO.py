@@ -23,7 +23,9 @@ class AirplaneIO:
                    capacity=int(capacity)
                 )
                 airplane_dict[plane_insignia] = aircraft
+        
         return airplane_dict
+
 
     def airplane_types(self) -> list[AirplaneType]:
         """ Reads a csv file about airplane types and returns a list of airplane type models. """
@@ -41,6 +43,7 @@ class AirplaneIO:
                     in zip(header_names, values)
                 }
                 airplane_types.append(AirplaneType(**args))
+        
         return airplane_types
 
 
@@ -52,9 +55,10 @@ class AirplaneIO:
             fieldnames = ['plane_insignia','plane_type_id','manufacturer','model','capacity']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-            writer.writerow({'plane_insignia': aircraft.plane_insignia, 'plane_type_id': aircraft.plane_type_id, 'manufacturer': aircraft.manufacturer, 'model': aircraft.model, 'capacity': aircraft.capacity})
-
-            
-            
-            
-    
+            writer.writerow(
+                {'plane_insignia': aircraft.plane_insignia, 
+                 'plane_type_id': aircraft.plane_type_id, 
+                 'manufacturer': aircraft.manufacturer, 
+                 'model': aircraft.model, 
+                 'capacity': aircraft.capacity
+                 })

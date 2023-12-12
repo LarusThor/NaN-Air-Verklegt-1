@@ -6,19 +6,6 @@ class DestinationIO():
         pass
 
 
-    # def read_all_destinations2(self):
-    #     self.destination_list = []
-    #     with open('files/destinations.csv', newline='', encoding="utf-8") as csvfile:
-    #         reader = csv.DictReader(csvfile)
-    #         for row in reader:
-    #             self.destination_list.append(row)
-    #     destination_names = []  # New list to store destination names
-    #     for destination in self.destination_list:
-    #         for key, value in destination.items():
-    #             if key == 'destination':
-    #                 destination_names.append(value)
-    #     return destination_names
-
     def read_destinations_info(self) -> dict:
         destinations_overview = {}
         with open("files/destinations.csv", "r") as f:
@@ -31,6 +18,7 @@ class DestinationIO():
 
         return destinations_overview
     
+
     def read_all_destinations(self) -> list:
         dest_list = []
         with open('files/destinations.csv', 'r', newline='', encoding="utf-8") as csvfile:
@@ -40,6 +28,7 @@ class DestinationIO():
             #id,destination,emergency_contact_name,emergency_contact_number,airport_name,distance_from_iceland, estimated_flight_time
             return dest_list
 
+
     def add_destination(self, destination) -> None:
         with open('files/destinations.csv', 'a', newline='', encoding="utf-8") as csvfile:
             fieldnames = ['id','destination', 'emergency_contact_name', 'emergency_contact_number', 'airport_name', 'distance_from_iceland','estimated_flight_time']
@@ -47,6 +36,7 @@ class DestinationIO():
 
             writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland, 'estimated_flight_time': destination.estimated_flight_time})
         
+
     def update_destination(self, updated_destination) -> None:
         dest_list = self.read_all_destinations()
 
@@ -61,18 +51,17 @@ class DestinationIO():
             writer.writeheader()
             
             for destination in dest_list:
-                writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland, 'estimated_flight_time':destination.estimated_flight_time})
+                writer.writerow(
+                    {'id': destination.destination_id, 
+                     'destination': destination.destination, 
+                     'emergency_contact_name': destination.emergency_contact_name, 
+                     'emergency_contact_number': destination.emergency_contact_number, 
+                     'airport_name': destination.airport_name, 
+                     'distance_from_iceland': destination.distance_from_iceland, 
+                     'estimated_flight_time':destination.estimated_flight_time
+                     })
         
 
     def write_destination(self, destination: list[Destination]):
         pass
         
-#destination_id -> destinations.csv -> id
-#destination -> destinations.csv -> destination
-#emergency_contact_name -> destinations.csv -> emergency_contact_name
-#emergency_contact_number -> destinations.csv -> emergency_contact_number
-#airportName -> destinations.csv -> airport_name
-#distance_from_iceland -> destinations.csv -> distance_from_iceland
-
-'''destination_id, destination, emergency_contact_name, emergency_contact_number, 
-                 airportName, distance_from_iceland'''

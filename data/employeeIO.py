@@ -32,4 +32,16 @@ class EmployeeIO:
             writer.writeheader()
 
             for employee in employees:
-                writer.writerow({'social_id': employee.social_id, 'name': employee.name, 'role': employee.role, 'rank': employee.rank, 'licence': employee.licence, 'address': employee.home_address, 'phone_nr': employee.phonenumber, 'email': employee.email, 'landline': employee.landline})
+                writer.writerow(
+                    {
+                    'social_id': employee.social_id, 
+                     'name': employee.name, 
+                     'role': employee.role, 
+                     'rank': employee.rank, 
+                     'licence': employee.licence, 
+                     'address': employee.home_address, 
+                     'phone_nr': employee.phonenumber, 
+                     'email': employee.email, 
+                     'landline': employee.landline
+                     })
+                

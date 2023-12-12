@@ -12,3 +12,5 @@
 #get how was not working
 #i í dest
 # 1-1-1-2 (H)ome/menu?
+#eyða schedule IO??
+#eyða voyage IO
