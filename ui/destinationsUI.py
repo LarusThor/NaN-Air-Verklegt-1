@@ -9,7 +9,7 @@ class DestinationsUI:
     def __init__(self) -> None:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()     
-        self.destinations_list = self.logic_wrapper.destination_list() 
+        self.destinations_list = self.logic_wrapper.only_destinations() 
 
 
     def destinations(self) -> str:
@@ -24,7 +24,8 @@ class DestinationsUI:
         print()
         print("All destinations:")
         print("-"*15)
-        self.print_destination(self.destinations_list)  
+        self.print_destination(self.destinations_list)
+
 
 
     def get_most_popular_destination(self):
@@ -95,6 +96,26 @@ class DestinationsUI:
             distance_from_iceland = distance_from_iceland, 
             estimated_flight_time = estimated_flight_time)
             self.logic_wrapper.update_destination_info(dest)
+
+    def change_contact_info(self):
+        id = input("what destination do you want to change ID: ")
+        contact_name = input("Enter the name of the contact person:")
+        contact_number = input("Enter the number of the contact number: ")
+
+        all_dests = LogicWrapper().destination_list()
+
+        counter = 0
+        for destination in all_dests:
+            if destination.destination_id == id:
+                break
+            else:
+                counter += 1
+
+        dest = all_dests[counter]
+        dest.emergency_contact_name = contact_name
+        dest.emergency_contact_number = contact_number
+
+        self.logic_wrapper.update_contact_info(dest)
 
 
 
