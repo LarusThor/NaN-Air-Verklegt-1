@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Destination:
     destination_id: str

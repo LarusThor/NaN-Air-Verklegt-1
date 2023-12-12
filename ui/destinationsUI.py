@@ -103,6 +103,7 @@ class DestinationsUI:
 
         self.logic_wrapper.update_destination_info(dest)
 
+
     def print_destination(self, destination_list) -> None:
         """function used to print out a list"""
         destination_list.sort()
