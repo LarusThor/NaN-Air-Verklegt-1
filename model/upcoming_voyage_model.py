@@ -1,19 +1,22 @@
 from dataclasses import dataclass
+from datetime import datetime
 
+
+UNSTAFFED = 'N/A'
 @dataclass
 class UpcomingVoyage:
+    id: str
     flight_nr: str
     dep_from: str
     arr_at: str
-    departure: str
-    arrival: str
-    captain: str
-    copilot: str
-    fsm: str
-    fa1:str
-    fa2: str
-    fa3: str
-    fa4: str
-    fa5: str
-
-#flight_nr,dep_from,arr_at,departure,arrival
+    departure: datetime
+    arrival: datetime
+    aircraft_id: str
+    captain: str = UNSTAFFED
+    copilot: str = UNSTAFFED
+    fsm: str = UNSTAFFED
+    fa1:str = UNSTAFFED
+    fa2: str = UNSTAFFED
+    fa3: str = UNSTAFFED
+    fa4: str = UNSTAFFED
+    fa5: str = UNSTAFFED

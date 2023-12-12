@@ -1,5 +1,5 @@
 from ui.menu_managerUI import Menu
-from logic.LogicWrapper import LogicWrapper
+from logic.logic_wrapper import LogicWrapper
 
 FLIGHT_INFORMATION_OPTIONS = ["1. Booking status for specific voyage", "2. Booking status for a specific date"]
 
@@ -8,24 +8,33 @@ class FlightInfoUI:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
 
+
     def flight_info_options(self) -> str:
+        """ TODO: add docstring """
         self.menus.display_options(FLIGHT_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
+
     def get_voyage(self) -> str:
+        """ TODO: add docstring """
         flight_number = input("Enter flight number: ")
         return flight_number
          
 
     def get_date(self) -> str:
+        """ TODO: add docstring """
         date = input("Enter date; day/month/year: ") 
         return date 
          
+
     def get_flight_status_by_voyage(self, voyage): #define
+        """ TODO: add docstring """
         pass
 
+
     def get_flight_status_by_date(self, date): #define
+        """ TODO: add docstring """
         pass
          
          

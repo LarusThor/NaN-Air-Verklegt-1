@@ -1,7 +1,115 @@
-from logic.employeeLL import EmployeeLL
-from model.employee_model import Employee
+from logic.logic_wrapper import LogicWrapper
 
 
+logic = LogicWrapper()
+print(logic.pilots_by_license())
+
+
+
+
+
+
+
+
+
+# logic = LogicWrapper()
+
+# dt = datetime(year=2023,month=10,day=20)
+# dtt = datetime(year=2023,month=12,day=20)
+
+# empl = Employee(
+#     social_id="2706838569",
+#     name="Gerard Norris",
+#     role="Pilot",
+#     rank="Captain",
+#     licence="NAFokkerF100",
+#     email="bruck@comcast.net",
+#     phonenumber="8998801",
+#     home_address="Fellsmúli 4",
+#     landline="7854878"
+# )
+
+# print(logic.total_hours_worked(empl, dt, dtt))
+# emp = EmployeeUI()
+
+
+# #print(emp.get_employee())
+
+# l_wrapper = LogicWrapper()
+
+# #print(empl)
+# print(l_wrapper.get_total_hours_worked(empl, dt, dtt))
+
+"""
+"""
+
+"""
+
+"""
+
+
+"""
+
+print(sched.employee_schedule_by_week("1309797899", "2023", "45"))
+"""
+
+
+
+"""
+schedule_stuff = ScheduleLL()
+
+print(schedule_stuff.schedule_employee_by_week("2706838569", "2023", "45"))
+"""
+
+
+"""
+employee_ll = EmployeeLL()
+
+
+employee = Employee(
+    social_id="2706838569",
+    name="Gerard Norris",
+    role="Pilot",
+    rank="Captain",
+    licence="NAFokkerF100",
+    email="bruck@comcast.net",
+    phonenumber="8998801",
+    home_address="Fellsmúli 4",
+    landline="7854878"
+)
+
+
+voyage = PastVoyage(
+    flight_nr= "NA031",
+    dep_from= "KEF",
+    arr_at= "LYR",
+    departure="2023-11-16 06:21:00",
+    arrival= "2023-11-16 10:21:00",
+    aircraft_id= "TF-EPG",
+    captain= "3009907461",
+    copilot= "2410876598",
+    fsm ="1405853585",
+    fa1 ="409907212",
+    fa2 ="505942924",
+    fa3 =  "N/A",
+    fa4 = "N/A",
+    fa5 = "N/A",
+    seats_sold = "N/A"
+
+)
+
+print(employee_ll.get_total_hours_worked(employee))
+
+"""
+
+
+"""
+dest_ll = DestinationLL()
+
+print(dest_ll.get_most_popular_destination())
+"""
+
+"""
 emp_ll = EmployeeLL()
 
 employee = Employee(
@@ -17,3 +125,4 @@ employee = Employee(
 )
 
 emp_ll.change_employee_info(employee)
+"""
