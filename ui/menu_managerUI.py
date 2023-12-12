@@ -94,6 +94,8 @@ class Menu():
         # for item in info:
         print(title)
         print(info)
+        print()
+        print("(H)ome  (B)ack")
 
         # Print empty lines below the menu
         print("\n" * empty_lines_below)
