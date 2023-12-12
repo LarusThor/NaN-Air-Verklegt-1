@@ -2,7 +2,7 @@ from logic.logic_wrapper import LogicWrapper
 
 
 logic = LogicWrapper()
-print(logic.pilots_by_license())
+print(logic.pilot_list())
 
 
 
