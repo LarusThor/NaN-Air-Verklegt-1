@@ -1,7 +1,6 @@
 import csv
 from model.airplane_model import Airplane
 from model.airplane_type_model import AirplaneType
-from pathlib import Path
 
 class AirplaneIO:
     def __init__(self):
