@@ -15,21 +15,19 @@ class EmployeeUI:
         self.pilot_list = self.logic_wrapper.pilot_list()
         self.flight_attendant_list = self.logic_wrapper.flight_attendant_list()
         self.employee_info = self.logic_wrapper.employee_info
-        self.validation = self.logic_wrapper.validation
-        
 
 
     def employees_options(self) -> str:
-        """Prints the first options the user can choose from when they choose employee. Returns the action input"""
+        """ TODO: add docstring """
         self.menus.display_options(EMPLOYEES_OPTIONS)
-        action = str(input("Enter your action: ").lower())#validate
+        action = str(input("Enter your action: ").lower())
         return action
     
 
     def list_employees_options(self) -> str:
-        """Prints out the options for witch tipe of employee list the user wants to see. Returns the action input"""
+        """Prints out the options for witch tipe of employee list the user wants to see. Returns for the action input"""
         self.menus.display_options(LIST_EMPLOYEES_OPTIONS)
-        action = str(input("Enter your action: ").lower())#validate
+        action = str(input("Enter your action: ").lower())
         return action
 
 
@@ -40,10 +38,7 @@ class EmployeeUI:
             print(person)
         print()
         print("(M)enu  (R)epeat")
-        action = str(input("Enter your action: ").lower())#validate
-        while not self.validation.validate_print_crew(action):
-            print("ERROR: Invalid")
-            action = input("Enter you action:") 
+        action = str(input("Enter your action: ").lower())
         if action == "m":
             None
         elif action == "r":
@@ -82,7 +77,7 @@ class EmployeeUI:
 
     def get_employee(self):
         """Gets a social id number and returns that employee"""
-        social_id = str(input("Enter employee social ID: ")).strip()#validate
+        social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
         return employee
 
@@ -90,14 +85,13 @@ class EmployeeUI:
         """Prints out the options that come up when the user chooses to get the employees information.
         And gets the action input from the user"""
         self.menus.display_options(EMPLOYEE_INFORMATION_OPTIONS)
-        action = str(input("Enter your action: ").lower())#validate   
+        action = str(input("Enter your action: ").lower())   
         return action 
 
 
     def get_info(self):
         """Takes the social id of an employee and prints out their information"""
-        social_id = str(input("Enter employee social ID: ")).strip()#validate
-        
+        social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
         print()
         print("Employee's information:")
@@ -113,7 +107,7 @@ class EmployeeUI:
         print("{:<14}".format("Landline:"), employee.landline)
         print()
         print("(H)ome  (B)ack")
-        action = input("Enter your action: ")#validate
+        action = input("Enter your action: ")
 
 
     def change_info_options(self):
@@ -133,10 +127,10 @@ class EmployeeUI:
         self.logic_wrapper.change_employee_info(employee)
 
 
-
-
     def change_home_address(self):
+        """ TODO: add docstring """
         pass
+
 
     def change_phone_number(self):
         """ TODO: add docstring """
@@ -152,33 +146,34 @@ class EmployeeUI:
         """ TODO: add docstring """
         #TODO: rosa ljótt getum við stytt eða fegrað?
         #TODO: skipta í fleir föll??
-        
+        validation = self.logic_wrapper.validation
         print("Fill out the following informaation about the new employee:")
         
         name = input("Name: ").title()
-        while not self.validation.validate_name(name):
-            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
+        while not validation.validate_name(name):
+            print("ERROR: Invalid name \nName has to be a string of length > 5. ")
             name = input("Name: ").title()
+            continue
         
         social_id = input("Social ID: ")
-        while not self.validation.validate_social_ID(social_id):
+        while not validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
             social_id = input("Social ID: ")
  
         phone_number = input("Phone number: ")
-        while not self.validation.validate_number(phone_number):
-            print("ERROR: Invalid phone number \n Phone number should be 7 digits. ")
+        while not validation.validate_number(phone_number):
+            print("ERROR: Invalid phone number \n Phone number should be 8 digits. ")
             phone_number = input("Phone number: ")
 
         email = input("Email: ")
-        while not self.validation.validate_email(email):
+        while not validation.validate_email(email):
             print("ERROR: Invalid email \n Email should include @ and a top level domain e.g. (.com/.org/.is)")
             email = input("Email: ")
 
         home_address = input("Home adress: ")
-        while not self.validation.validate_address(home_address):
-            print("ERROR: Invalid address \n Address should be a string")
-            home_address = input("Home address: ")
+        while not validation.validate_address(home_address):
+            print("ERROR: Invalid address \n Address should be a string and number")
+            home_address = input("Home adress: ")
 
 
         roles = ["Pilot","Cabincrew"]
@@ -201,7 +196,7 @@ class EmployeeUI:
             licence = "N/A"
         optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
         if optional_landline == "y":
-            landline = input("Landline number: ")#validate
+            landline = input("Landline number: ")
         else:
             landline = None
 
@@ -252,7 +247,7 @@ class EmployeeUI:
             print("New employee not saved.")
             print()
             print("(M)enu  (R)epeat")
-            action = str(input("Enter your action: ").lower())#validate
+            action = str(input("Enter your action: ").lower())
             if action == "m":
                 None
             elif action == "r":
