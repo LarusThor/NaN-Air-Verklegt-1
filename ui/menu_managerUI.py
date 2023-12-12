@@ -89,14 +89,14 @@ class Menu():
 
         padding = (terminal_width) // 150
         # print(" Main Menu:")
-        # print(" " * padding + OUTLINE)
+        print(" " * padding + OUTLINE)
         # Print menu items centered in the terminal
         # for item in info:
         print(title)
         print(info)
 
         # Print empty lines below the menu
-        # print("\n" * empty_lines_below)
+        print("\n" * empty_lines_below)
         action = input("Enter your action :")
 
 

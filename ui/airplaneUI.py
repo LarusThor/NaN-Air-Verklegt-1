@@ -83,14 +83,15 @@ class AirplaneUI:
 
 
     def most_used_airplane(self):
-        print()
-        print("The mose used airplane is:")
-        print("-"*20)
-        print(self.airplane_usage[0])
-        print()
-        print("(H)ome  (B)ack")
-        action = input("Enter your action: ")
-        return action
+        # print()
+        # print("The mose used airplane is:")
+        # print("-"*20)
+        # print(self.airplane_usage[0])
+        # print()
+        # print("(H)ome  (B)ack")
+        # action = input("Enter your action: ")
+        self.menus.print_the_info("The mose used airplane is:", self.airplane_usage[0])
+        # return action
 
 
     def flown_furthest_airplane(self):
