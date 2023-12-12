@@ -69,6 +69,8 @@ class LogicWrapper():
     def destination_info_list(self):
         return self.destination.get_destination_info_list()
 
+    def only_destinations(self):
+        return self.destination.get_only_destinations()
 
     def destination_list(self) -> list:
         """ Returns a list of all destinations within the system. """

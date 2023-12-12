@@ -50,22 +50,3 @@ class DestinationIO():
             
             for destination in dest_list:
                 writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland, 'estimated_flight_time': destination.estimated_flight_time})
-
-
-    def update_contacts(self, updated_destination: Destination) -> None:
-        """ Updates the contact information for a destination. """
-        dest_list = self.read_all_destinations()
-
-        for i, dest in enumerate(dest_list):
-            if dest.destination_id == updated_destination.destination_id:
-                dest_list[i].emergency_contact_name = updated_destination.emergency_contact_name
-                dest_list[i].emergency_contact_number = updated_destination.emergency_contact_number
-                break
-        
-        with open('files/destinations.csv', 'w+', newline='', encoding="utf-8") as csvfile:
-            fieldnames = ['id','destination', 'emergency_contact_name', 'emergency_contact_number', 'airport_name', 'distance_from_iceland', 'estimated_flight_time']
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-            
-            for destination in dest_list:
-                writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland, 'estimated_flight_time': destination.estimated_flight_time})
