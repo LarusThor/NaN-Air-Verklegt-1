@@ -20,7 +20,10 @@ class DestinationsUI:
 
     def get_all_destinations(self) -> None:
         """ TODO: add docstring """
-        print(self.destinations_list)  
+        print()
+        print("All destinations:")
+        print("-"*15)
+        self.print_destination(self.destinations_list)  
 
 
     def get_most_popular_destination(self):
@@ -61,5 +64,18 @@ class DestinationsUI:
     def change_destination_info(self): #define
         """ TODO: add docstring """
         print("What destination would you like to get the information about?")
+
+    def print_destination(self, destination_list) -> None:
+        """function used to print out a list"""
+        destination_list.sort()
+        for destination in destination_list:
+            print(destination)
+        print()
+        print("(M)enu  (R)epeat")
+        action = str(input("Enter your action: ").lower())
+        if action == "m":
+            None
+        elif action == "r":
+            None
 
         
