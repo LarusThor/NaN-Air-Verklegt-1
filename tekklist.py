@@ -16,4 +16,3 @@
 #eyða schedule IO??
 #eyða voyage IO
 #tengja data í gegnum 
-#gera number i validate address

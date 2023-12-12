@@ -1,5 +1,5 @@
 id,destination,emergency_contact_name,emergency_contact_number,airport_name,distance_from_iceland,estimated_flight_time
-LYR,Longyearbyean, Sara Jackman, 8978654, Svalbard Airport, 2018,
-GOH,Nuuk, Oliver Pierce, 8787432, Nuuk International Airport, 1405,
-KUS,Kulusuk, Phil Spencer, 8978658, Kulusuk Airport, 712,
-LWK,Tingwall,luigiboys,luigiboys, Tingwall Airport, 1186,
+LYR,Longyearbyean, Sara Jackman, 8978654, Svalbard Airport, 2018, 03:00:00
+GOH,Nuuk, Oliver Pierce, 8787432, Nuuk International Airport, 1405, 03:00:00
+KUS,Kulusuk, Phil Spencer, 8978658, Kulusuk Airport, 712, 02:00:00
+LWK,Tingwall,luigiboys,luigiboys, Tingwall Airport, 1186, 02:00:00
