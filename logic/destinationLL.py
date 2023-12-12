@@ -1,4 +1,3 @@
-from data.data_wrapper import DataWrapper
 from model.destination_model import Destination
 
 class DestinationLL():

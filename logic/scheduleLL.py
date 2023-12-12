@@ -1,4 +1,4 @@
-from datetime import datetime, date
+from datetime import date
 from model.employee_model import Employee
 
 class ScheduleLL():
