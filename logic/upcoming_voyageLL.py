@@ -41,24 +41,18 @@ class UpcomingVoyageLL:
 
     def valid_pilot(self, aircraft_id, pilot):  # TF-XUP, 34928348392
         pilots_by_license = self.logic.pilots_by_license()  # {Fokkerf100: jón, kalli}
-        planes_by_type = (
-            self.logic.airplane_insignia_by_types()
-        )  # {Fokkerf100: TF-XZ, TF-XUP}
-        employee_dict = (
-            self.data_wrapper.get_all_staff_members()
-        )  # {293919999: Jón, Pilot...}
+        planes_by_type = (self.logic.airplane_insignia_by_types())  # {Fokkerf100: TF-XZ, TF-XUP}
+        employee_dict = (self.data_wrapper.get_all_staff_members())  # {293919999: Jón, Pilot...}
         for employee, value in employee_dict.items():  # 36585298, [(djxhfj)]
-            if employee == pilot and employee_dict.role == "Pilot":
+            if employee == pilot and value.role == "Pilot":
                 # pilot_info = list(employee_dict) # ["74284353454", "jon", "pilot", ... ]
-                pilot_name = employee_dict.name  # Jón Jóns.
+                pilot_name = value.name  # Jón Jóns.
 
         for key, value in planes_by_type.items():  # Fokkerf100, (jón, kalli)
             if aircraft_id in planes_by_type[key]:
                 license_check = key
-                if (
-                    license_check in pilots_by_license
-                    and pilot_name in pilots_by_license
-                ):
+                if pilot_name in pilots_by_license[license_check]:
+                #license_check in pilots_by_license.keys() and pilot_name in pilots_by_license.values():
                     return True
 
 

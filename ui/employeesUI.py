@@ -18,21 +18,21 @@ class EmployeeUI:
 
 
     def employees_options(self) -> str:
-        """ TODO: add docstring """
+        """Prints the first options the user can choose from when they choose employee. Returns the action input"""
         self.menus.display_options(EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
 
     def list_employees_options(self) -> str:
-        """ TODO: add docstring """
+        """Prints out the options for witch tipe of employee list the user wants to see. Returns the action input"""
         self.menus.display_options(LIST_EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
 
     def print_crew(self, crew_list) -> None:
-        """function used to print out a list"""
+        """Used to print out a list"""
         crew_list.sort()
         for person in crew_list:
             print(person)
@@ -46,7 +46,7 @@ class EmployeeUI:
 
 
     def get_pilots(self) -> None:
-        """ TODO: add docstring """
+        """Prints out a list of all the pilots"""
         print()
         print("All pilots:")
         print("-"*15)
@@ -55,7 +55,7 @@ class EmployeeUI:
     
 
     def get_flight_attendants(self) -> None:
-        """ TODO: add docstring """
+        """Prints out a list of all the flight attendants"""
         print()
         print("All flight attendants:")
         print("-"*15)
@@ -63,7 +63,7 @@ class EmployeeUI:
     
 
     def get_all_employees(self) -> None:
-        """ TODO: add docstring """
+        """Prints out a list of all the employees"""
         print()
         print("All employees:")
         print("-"*15)
@@ -76,12 +76,14 @@ class EmployeeUI:
 
 
     def get_employee(self):
-        """ TODO: add docstring """
+        """Gets a social id number and returns that employee"""
         social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
+        return employee
 
     def employee_info_options(self) -> str:
-        """ TODO: add docstring """
+        """Prints out the options that come up when the user chooses to get the employees information.
+        And gets the action input from the user"""
         self.menus.display_options(EMPLOYEE_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())   
         return action 
