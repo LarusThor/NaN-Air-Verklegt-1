@@ -11,6 +11,9 @@ class DestinationLL():
 
     def get_destination_list(self) -> list:
         """ Returns a list of destinations within the system. """
+        return self.logic.data_wrapper.get_all_destinations()
+    
+    def get_only_destinations(self)-> list:
         destinations = []
         dest_list = self.logic.data_wrapper.get_all_destinations()
         for destination in dest_list:
@@ -25,7 +28,7 @@ class DestinationLL():
         dest.add_destinations(destination)
    
 
-    def get_most_popular_destination(self) -> tuple[str, dict]:
+    def get_most_popular_destination(self) -> tuple[str, dict]: #TODO: eyna að stytta nafn
         """ Returns the most popular destination. """
         destination_list = []
         destination_dict = {}
@@ -50,7 +53,6 @@ class DestinationLL():
 
 
     def distance_from_iceland(self) -> dict:
-        """ Returns a dictionary with destinations and their distance from Iceland. """
         destinations = self.logic.data_wrapper.get_all_destinations_info()
         distance = dict()
         for destination_id, destination_info in destinations.items():

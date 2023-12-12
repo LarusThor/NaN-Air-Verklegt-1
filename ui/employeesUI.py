@@ -96,9 +96,12 @@ class EmployeeUI:
 
     def get_info(self):
         """Takes the social id of an employee and prints out their information"""
-        social_id = str(input("Enter employee social ID: ")).strip()#validate
-        
+        social_id = str(input("Enter employee social ID: ")).strip()
+        while not self.validation.validate_social_ID(social_id):
+            print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
+            social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
+        #spyrja um ef það er skrifað 10 digits en ekki retti employee
         print()
         print("Employee's information:")
         print("-"*30)
@@ -136,6 +139,7 @@ class EmployeeUI:
 
 
     def change_home_address(self):
+        """ TODO: add docstring """
         pass
 
     def change_phone_number(self):
