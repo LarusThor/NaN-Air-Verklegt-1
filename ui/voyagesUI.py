@@ -132,42 +132,61 @@ class VoyagesUI:
             if voyage_flight_number in voyages_info.flight_nr and voyage_date in voyages_info.departure:
                 
                 if voyage_date in voyages_info.departure:
-                    aircraft_id = input("Enter a valid aircraft: ")
-                    captain = input("Enter captain's social id: ")
+                    aircraft_id = "TF-EPG" #input("Enter a valid aircraft: ")
+                    captain = "2706838569" #input("Enter captain's social id: ")
 
                     if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
                         captain = captain
-                    copilot = input("Enter copilot's social id: ")
+                    copilot = "2410876598" #input("Enter copilot's social id: ")
                     if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
                         copilot = copilot
                         
-                    flight_service_manager = input("Enter flight service manager's social id: ")
+                    flight_service_manager = "1600904199"#input("Enter flight service manager's social id: ")
+                    flight_attendants = []
                     add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                    flight_attendants = [add_flight_attendant]
+                    if add_flight_attendant == "":
+                        for i in range(5):
+                            flight_attendants.append("N/A")
+                    else:
+                        flight_attendants = [add_flight_attendant]
                     while add_flight_attendant:
                         if len(flight_attendants) < 5:
                             add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                            flight_attendants.append(add_flight_attendant)
+                            if add_flight_attendant == "": #[2q75645]
+                                unstaffed = 5 - len(flight_attendants)
+                                for flight_attendant in range(unstaffed):
+                                    flight_attendants.append("N/A")
 
-                        print("Would you like to save this crew: ") 
-                        print("~" * 20)
-                        print("Captain: ", captain)
-                        print("Copilot: ", copilot)
-                        print("Flight Service Manager: ", flight_service_manager)
-                        for flight_attendant in flight_attendants:
-                            print("Flight Attendant:", flight_attendant)
+                            else:
+                                flight_attendants.append(add_flight_attendant)
+
+                    print("Would you like to save this crew: ") 
+                    print("~" * 20)
+                    print("Captain: ", captain)
+                    print("Copilot: ", copilot)
+                    print("Flight Service Manager: ", flight_service_manager)
+                    for flight_attendant in flight_attendants:
+                        print("Flight Attendant:", flight_attendant)
+                            
         
-        save_prompt = input("Would you like to save this voyage, (y)es or (n)o? ")
+        save_prompt = input(f"Would you like to add this staff to the voyage {voyage_flight_number}, (y)es or (n)o? ")
         if save_prompt == "y":
-            print("Voyage has been saved!")
+            print("Voyage has been staffed!")
 
         upcoming_voyage_staff = UpcomingVoyage(
-            Captain=captain,
-            Copilot=copilot,
+            id=voyages_info.id,
+            flight_nr=voyages_info.flight_nr,
+            dep_from=voyages_info.dep_from,
+            arr_at=voyages_info.arr_at,
+            departure=voyages_info.departure,
+            arrival=voyages_info.arr_at,
+            aircraft_id=voyages_info.aircraft_id,
+            captain=captain,
+            copilot=copilot,
             fsm=flight_service_manager,
             fa1=flight_attendants[0],
             fa2=flight_attendants[1],
-            fa3=flight_attendants[2], #
+            fa3=flight_attendants[2], 
             fa4=flight_attendants[3],
             fa5=flight_attendants[4]
         )
