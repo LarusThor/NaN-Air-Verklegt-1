@@ -85,7 +85,9 @@ class Main:
                         self.destinations_ui.add_destination()
 
                     case "4":
-                        self.destinations_ui.get_destination_info()
+                        self.destinations_ui.change_destination_info()
+                    
+                        
 
             def employees() -> None:
                 """ TODO: add docstring """

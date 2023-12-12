@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
+
 UNSTAFFED = 'N/A'
 @dataclass
 class PastVoyage:
@@ -11,7 +12,6 @@ class PastVoyage:
     departure: datetime
     arrival: datetime
     aircraft_id: str
-    seats_sold: str 
     captain: str = UNSTAFFED
     copilot: str = UNSTAFFED
     fsm: str = UNSTAFFED
@@ -20,3 +20,4 @@ class PastVoyage:
     fa3: str = UNSTAFFED
     fa4: str = UNSTAFFED
     fa5: str = UNSTAFFED
+    seats_sold: str = 0 

@@ -10,7 +10,7 @@ from model.employee_model import Employee
 from model.past_voyage_model import PastVoyage
 from model.upcoming_voyage_model import UpcomingVoyage
 from logic.validationLL import ValidationLL
-from logic.flight_informationLL import FlightInformation
+from logic.flight_informationLL import FlightInformationLL
 
 class LogicWrapper():
     def __init__(self) -> None:
@@ -22,7 +22,7 @@ class LogicWrapper():
         self.list_upcoming_voyage = UpcomingVoyageLL(self)
         self.past_voyages = PastVoyageLL(self)
         self.validation = ValidationLL()
-        self.flight_information = FlightInformation(self)
+        self.flight_information = FlightInformationLL(self)
 
 
     #Employee:
@@ -74,12 +74,7 @@ class LogicWrapper():
         """ Returns a list of all destinations within the system. """
         return self.destination.get_destination_list()
     
-
-    def add_destination(self, destination) -> None:
-        """Takes in a customer object and forwards it to the data layer. """
-        return self.destination.add_destination(destination)
     
-
     def add_destination(self, destination) -> None:
         """ Takes in a customer object and forwards it to the data layer. """
         return self.destination.add_destination(destination)
@@ -129,6 +124,9 @@ class LogicWrapper():
 
     def airplane_insignia_by_types(self) -> dict:
         return self.airplane.airplane_insignia_by_type()
+    
+    def airplane_usage(self):
+        return self.airplane.get_airplane_usage()
 
 
     #Upcoming voyages:

@@ -1,11 +1,12 @@
 from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
 from model.airplane_model import Airplane
- 
+
+
 AIRPLANE_OPTIONS = ["1. Airplane types and license", "2. Add new airplane", "3. Airplane usage"]
 AIRPLANE_TYPES_AND_LICENSE_OPTIONS = ["1. Pilots by license", "2. List all airplane types"]
 PILOTS_BY_LICENSE_OPTIONS = ["1. Licensed pilots for a specific airplane type", "2. All pilots listed by license", "3. Number of licensed pilots for each airplane type"]
-AIRPLANE_USAGE = ["1. Get most used airplane", "2. Get airplane which flown furthest"]
+AIRPLANE_USAGE = ["1. Get most used airplane", "2. Get airplane that has flown the furthest"]
 
 
 class AirplaneUI:
@@ -15,6 +16,7 @@ class AirplaneUI:
         self.airplane_types = self.logic_wrapper.airplane_types()
         self.pilots_license = self.logic_wrapper.pilots_by_license()
         self.flown_furthest = self.logic_wrapper.furthest_flown()
+        self.airplane_usage = self.logic_wrapper.airplane_usage()
 
 
     def airplane(self) -> str:
@@ -34,6 +36,7 @@ class AirplaneUI:
         action = str(input("Enter your action: ").lower())
         return action
     
+
     def list_pilots_by_licanse(self):
         print("-"*25)
         print("{:<14} | {}".format("Airplane type", "Pilots"))
@@ -45,6 +48,7 @@ class AirplaneUI:
         print("(H)ome  (B)ack")
         action = input("Enter your action: ")
         return action
+
 
     def types(self) -> str:
         for item in self.airplane_types:
@@ -78,9 +82,21 @@ class AirplaneUI:
         return action
 
 
-    def most_used_airplane():
-        pass
+    def most_used_airplane(self):
+        print()
+        print("The mose used airplane is:")
+        print("-"*20)
+        print(self.airplane_usage[0])
+        print()
+        print("(H)ome  (B)ack")
+        action = input("Enter your action: ")
+        return action
 
 
     def flown_furthest_airplane(self):
-        print(self.flown_furthest)
+        print()
+        print("The airplane that has flown the furthest is: ")
+        print("Airplane name:", self.flown_furthest[0], "- Distance:", self.flown_furthest[1], "km.")
+        print()
+        print("(H)ome  (B)ack")
+        action = input("Enter your action: ")

@@ -1,16 +1,19 @@
-from data.data_wrapper import DataWrapper
 from itertools import chain
 from collections import defaultdict 
 
 class AirplaneLL():
     def __init__(self, logic_wrapper) -> None:
-        self.data_wrapper = DataWrapper()
+        """Instantiate a AirplaneLL object.
+
+        Args:
+            logic_wrapper: The logic wrapper object that contains all logic layer objects.
+        """
         self.logic = logic_wrapper
 
 
     def get_furthest_flown_plane(self) -> tuple[str, int]:
         """ Returns the plane that has flown the furthest"""
-        past_voyage_list = self.data_wrapper.get_past_flights() #TODO: tékka hvort það sé hægt að tengja í logic wrapper frekar
+        past_voyage_list = self.logic.data_wrapper.get_past_flights()
         destination_distance = self.logic.distance_from_iceland()
         
         distance_dict = defaultdict(int)
@@ -40,7 +43,7 @@ class AirplaneLL():
    
     def get_all_airplane_types(self) -> set:
         """ Returns a list of all the airplane types in the system. """
-        airplane_types = self.data_wrapper.get_airplane_types()
+        airplane_types = self.logic.data_wrapper.get_airplane_types()
         type_set = set()
         for plane in airplane_types:
             type_set.update([plane.plane_type_id])
@@ -55,8 +58,8 @@ class AirplaneLL():
 
     def get_airplane_usage(self) -> tuple[str, dict]:
         """ Returns the total number of voyages for a specific plane. """
-        past_voyage_list = self.data_wrapper.get_past_flights()
-        upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()
+        past_voyage_list = self.logic.data_wrapper.get_past_flights()
+        upcoming_voyage_list = self.logic.data_wrapper.get_upcoming_flights()
         airplane_list = []
         airplane_dict = {}
 
@@ -80,7 +83,8 @@ class AirplaneLL():
     
     def add_airplane(self, airplane) -> None:
         """ Adds airplane to the system. """
-        self.data_wrapper.add_airplane(airplane)
+        self.logic.data_wrapper.add_airplane(airplane)
+        
 
 
     def pilots_by_license(self) -> dict:
@@ -103,7 +107,7 @@ class AirplaneLL():
 
     def airplane_insignia_by_type(self) -> dict:
         """ Dictionary which sorts airplanes in use by their types """
-        airplane_list = self.data_wrapper.get_airplanes()
+        airplane_list = self.logic.data_wrapper.get_airplanes()
         airplane_insignia_by_type_dict = dict()
 
         for plane in airplane_list.values():

@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class AirplaneType:
     plane_type_id: str
