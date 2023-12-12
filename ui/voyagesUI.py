@@ -1,7 +1,3 @@
-# TODO: Remove all the commented code
-# TODO: Add typehints
-# TODO: add input validation
-
 from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
 from datetime import datetime
