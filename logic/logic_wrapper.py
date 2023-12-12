@@ -10,6 +10,7 @@ from model.employee_model import Employee
 from model.past_voyage_model import PastVoyage
 from model.upcoming_voyage_model import UpcomingVoyage
 from logic.validationLL import ValidationLL
+from logic.flight_informationLL import FlightInformation
 
 class LogicWrapper():
     def __init__(self) -> None:
@@ -21,6 +22,7 @@ class LogicWrapper():
         self.list_upcoming_voyage = UpcomingVoyageLL(self)
         self.past_voyages = PastVoyageLL(self)
         self.validation = ValidationLL()
+        self.flight_information = FlightInformation(self)
 
 
     #Employee:
@@ -144,6 +146,9 @@ class LogicWrapper():
     def flight_time(self, arr_at, departure_date_time: datetime) -> datetime:
         """ Returns calculated flight time for each destination. """
         return self.list_upcoming_voyage.calculate_flight_time(arr_at, departure_date_time)
+    
+    def add_staff_to_voyage(self, added_staff):
+        return self.list_upcoming_voyage.add_staff_for_voyage(added_staff)
 
 
     #Past voyages:
@@ -182,6 +187,13 @@ class LogicWrapper():
         """ Returns a set of employees not working on a specific date. """
         return self.schedule.employee_not_working(date)
 
+
+    #flight information
+    def flight_fully_booked(self):
+        return self.flight_information.flight_fully_booked()
+
+    def capacity(self):
+        return self.flight_information.capacity()
 
     #validation
     def validate_name(self, name: str) -> bool:

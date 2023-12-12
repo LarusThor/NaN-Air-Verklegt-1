@@ -20,3 +20,4 @@ class UpcomingVoyage:
     fa3: str = UNSTAFFED
     fa4: str = UNSTAFFED
     fa5: str = UNSTAFFED
+    seats_sold: int = 0

@@ -9,8 +9,8 @@ class ValidationLL():
 
     def validate_name(self, name: str) -> bool:
         """ Validates name input. """
-        #TODO: laga svo að hann leyfi bil
-        if name.isalpha() and len(name) >= 5:
+        #TODO:
+        if len(name) >= 3:
             return True
         else:
             return False
@@ -19,28 +19,16 @@ class ValidationLL():
     def validate_social_ID(self, socialID: str) -> bool:
         """ Validates social ID input. """
         try:
-            social_id = int(socialID)
-            if len(social_id) == 10:
+            if len(socialID) == 10:
                 return True
         except Exception:
             return False
-
-        
-    def validate_flight(self, flight: str) -> bool:
-        """ TODO: add docstring """
-        pass
-
-
-    def validate_address(self, address: str) -> bool:
-        """ TODO: add docstring """
-        pass
 
 
     def validate_number(self, number: str) -> bool:
         """ TODO: add docstring """
         try:
-            phone_number = int(number)
-            if len(phone_number) == 8:
+            if len(number) == 7:
                 return True
         except Exception:
             return False
@@ -52,6 +40,20 @@ class ValidationLL():
             return True
         else:
             return False
+    
+    
+    def validate_address(self, address: str) -> bool:
+        """ TODO: add docstring """
+        try: 
+            if len(address) >= 3:
+                return True
+        except Exception:
+            return False
+        
+        
+    def validate_flight(self, flight: str) -> bool:
+        """ TODO: add docstring """
+        pass
 
 
     def validate_flight_nr(self, flight_nr: str) -> bool:
