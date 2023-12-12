@@ -12,7 +12,6 @@ class UpcomingVoyage:
     departure: datetime
     arrival: datetime
     aircraft_id: str
-    seats_sold: int
     captain: str = UNSTAFFED
     copilot: str = UNSTAFFED
     fsm: str = UNSTAFFED
@@ -21,3 +20,4 @@ class UpcomingVoyage:
     fa3: str = UNSTAFFED
     fa4: str = UNSTAFFED
     fa5: str = UNSTAFFED
+    seats_sold: int = 0

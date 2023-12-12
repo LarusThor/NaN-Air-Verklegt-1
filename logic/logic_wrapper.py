@@ -186,6 +186,8 @@ class LogicWrapper():
     def flight_fully_booked(self):
         return self.flight_information.flight_fully_booked()
 
+    def capacity(self):
+        return self.flight_information.capacity()
 
     #validation
     def validate_name(self, name: str) -> bool:

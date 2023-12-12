@@ -16,7 +16,3 @@
 #eyða schedule IO??
 #eyða voyage IO
 #tengja data í gegnum 
-#typehint í destination IO
-# TODO: Remove all the commented code
-# TODO: Add typehints
-# TODO: add input validation
