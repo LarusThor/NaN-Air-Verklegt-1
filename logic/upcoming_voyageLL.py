@@ -23,6 +23,7 @@ class UpcomingVoyageLL:
     def add_upcoming_voyage(self, upcoming_voyage):
         self.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
+
     def calculate_flight_time(self, arr_at, departure_date_time):
         destinations_info = self.data_wrapper.get_all_destinations_info()
         estimated_flight_time_overview = list(destinations_info.values())
@@ -75,6 +76,7 @@ class UpcomingVoyageLL:
 
     def aircraft_availability():
         pass
+
 
     def staff_availability():
         pass

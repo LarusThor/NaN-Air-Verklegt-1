@@ -1,21 +1,17 @@
 from data.data_wrapper import DataWrapper
 from model.employee_model import Employee
-from model.past_voyage_model import PastVoyage
-from datetime import datetime, date
+from datetime import datetime
 
 class EmployeeLL:
     def __init__(self, logic_wrapper) -> None:
         self.data_wrapper = DataWrapper()
         self.logic = logic_wrapper
 
-        # TODO: Do not read and store these here, instead read them again every time you use them :P
-        #self.employee_dict = self.data_wrapper.get_all_staff_members()
-        #self.past_voyage_dict = self.data_wrapper.get_past_flights()
-        # self.voyage_list = self.data_wrapper.read_past_flights()#TODO: tengja frekar við hinn logic?
 
     def get_employee_dict(self) -> list[str]:
         """ Returns a list of all employees within the system. """
         employee_dict = self.data_wrapper.get_all_staff_members()
+        
         return [employee.name for employee in employee_dict.values()]
 
 
@@ -41,13 +37,15 @@ class EmployeeLL:
         
         return flight_attendant_list
 
+
     def get_employee(self, social_id: str) -> Employee:
         """Returns information about a chosen employee."""
         employee_dict = self.data_wrapper.get_all_staff_members()
+        
         return employee_dict[social_id]
 
 
-    def change_employee_info(self, employee: Employee):
+    def change_employee_info(self, employee: Employee) -> None:
         """Lets user change employee information."""
         # TODO: cannot change name
         employee_dict = self.data_wrapper.get_all_staff_members()

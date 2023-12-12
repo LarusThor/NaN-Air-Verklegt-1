@@ -50,7 +50,8 @@ class EmployeeUI:
         print()
         print("All pilots:")
         print("-"*15)
-        self.print_crew(self.pilot_list)
+        for pilot in self.pilot_list:
+            print(pilot.name)
     
 
     def get_flight_attendants(self) -> None:
@@ -78,8 +79,6 @@ class EmployeeUI:
         """ TODO: add docstring """
         social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
-        print(employee)
-
 
     def employee_info_options(self) -> str:
         """ TODO: add docstring """
@@ -88,11 +87,25 @@ class EmployeeUI:
         return action 
 
 
-    def get_info(self, employee):
-        """ TODO: add docstring """
+    def get_info(self):
+        """Takes the social id of an employee and prints out their information"""
         social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
-        print(employee)
+        print()
+        print("Employee's information:")
+        print("-"*30)
+        print("{:<14}".format("Name:"), employee.name)
+        print("{:<14}".format("Social ID:"), employee.social_id)
+        print("{:<14}".format("Role:"), employee.role)
+        print("{:<14}".format("Rank:"), employee.rank)
+        print("{:<14}".format("Licence:"), employee.licence)
+        print("{:<14}".format("Email:"), employee.email)
+        print("{:<14}".format("Phone number:"), employee.phonenumber)
+        print("{:<14}".format("Home address:"), employee.home_address)
+        print("{:<14}".format("Landline:"), employee.landline)
+        print()
+        print("(H)ome  (B)ack")
+        action = input("Enter your action: ")
 
 
     def change_info_options(self):

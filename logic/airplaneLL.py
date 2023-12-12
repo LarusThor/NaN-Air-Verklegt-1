@@ -6,13 +6,8 @@ class AirplaneLL():
     def __init__(self, logic_wrapper) -> None:
         self.data_wrapper = DataWrapper()
         self.logic = logic_wrapper
-        #self.emlployees = EmployeeLL()
-        #self.airplane_list = self.data_wxrapper.get_airplanes()
-        #self.airplane_types = self.data_wrapper.get_airplane_types()
-        #self.past_voyage_list = self.data_wrapper.get_past_flights()
-        #self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights() #TODO: tengja frekar við hinn logic?
-        #self.pilots = self.emlplo67y76yyuiyees.get_all_pilots()
-   
+
+
     def get_furthest_flown_plane(self) -> tuple[str, int]:
         """ Returns the plane that has flown the furthest"""
         past_voyage_list = self.data_wrapper.get_past_flights() #TODO: tékka hvort það sé hægt að tengja í logic wrapper frekar
@@ -43,7 +38,7 @@ class AirplaneLL():
         return furthest_flown_plane, furthest_distance
 
    
-    def get_all_airplane_types(self):
+    def get_all_airplane_types(self) -> set:
         """ Returns a list of all the airplane types in the system. """
         airplane_types = self.data_wrapper.get_airplane_types()
         type_set = set()
@@ -52,13 +47,14 @@ class AirplaneLL():
 
         return type_set
 
+
     def get_airplane_status_by_date_time(self): #laga þetta nafn líka
         """ Returns the status of a plane on a given day and time. """
         pass
    
-    def get_airplane_usage(self):
+
+    def get_airplane_usage(self) -> tuple[str, dict]:
         """ Returns the total number of voyages for a specific plane. """
-        #TODO: laga, erum ekki að fá allan listan, bara 52 ferðir
         past_voyage_list = self.data_wrapper.get_past_flights()
         upcoming_voyage_list = self.data_wrapper.get_upcoming_flights()
         airplane_list = []
@@ -78,14 +74,16 @@ class AirplaneLL():
             airplane_dict[destination] = counter
         most_popular = max(set(airplane_list), key=airplane_list.count)
         #TODO: finna út hvernig ég raða listan í stærðarröð út frá dicts
+        
         return most_popular, airplane_dict
           
     
-    def add_airplane(self, airplane):
+    def add_airplane(self, airplane) -> None:
         """ Adds airplane to the system. """
         self.data_wrapper.add_airplane(airplane)
 
-    def pilots_by_license(self):
+
+    def pilots_by_license(self) -> dict:
         """ Returns a dictionary where the key is the airplane type and the value is a list of
           all licenced pilots for that airplane type. """
         pilots_by_license = dict()
@@ -102,7 +100,8 @@ class AirplaneLL():
 
         return pilots_by_license
     
-    def airplane_insignia_by_type(self):
+
+    def airplane_insignia_by_type(self) -> dict:
         """ Dictionary which sorts airplanes in use by their types """
         airplane_list = self.data_wrapper.get_airplanes()
         airplane_insignia_by_type_dict = dict()
@@ -114,4 +113,5 @@ class AirplaneLL():
                 airplane_insignia_by_type_dict[plane_type].append(insignia)
             else:
                 airplane_insignia_by_type_dict[plane_type] = [insignia]
+        
         return airplane_insignia_by_type_dict
