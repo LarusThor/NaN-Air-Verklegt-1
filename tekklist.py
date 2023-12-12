@@ -17,3 +17,5 @@
 #eyða voyage IO
 #tengja data í gegnum 
 #endurnýta betur í UI
+#aldur má ekki vera mínus tala
+#Lárus og Fönn gera voyages by week/day fall in logic svo hægt sé að nota

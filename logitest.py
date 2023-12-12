@@ -1,8 +1,8 @@
 from data.destinationIO import DestinationIO
 from model.destination_model import Destination
-from logic.destinationLL import DestinationLL
+from logic.logic_wrapper import LogicWrapper
 
-all_dests = DestinationIO().read_all_destinations()
+all_dests = LogicWrapper().destination_list()
 
 
 id = input()
@@ -47,3 +47,10 @@ print(dest_lidt)
         dest.estimated_flight_time = estimated_flight_time
 
         self.logic_wrapper.update_destination_info(dest)'''
+
+'''destinations = []
+        dest_list = self.logic.data_wrapper.get_all_destinations()
+        for destination in dest_list:
+            destinations.append(destination.destination)
+        
+        return destinations'''

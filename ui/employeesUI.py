@@ -15,7 +15,8 @@ class EmployeeUI:
         self.pilot_list = self.logic_wrapper.pilot_list()
         self.flight_attendant_list = self.logic_wrapper.flight_attendant_list()
         self.employee_info = self.logic_wrapper.employee_info
-
+        self.validation = self.logic_wrapper.validation
+        
 
     def employees_options(self) -> str:
         """ TODO: add docstring """
@@ -81,6 +82,7 @@ class EmployeeUI:
         employee = self.employee_info(social_id)
         return employee
 
+
     def employee_info_options(self) -> str:
         """Prints out the options that come up when the user chooses to get the employees information.
         And gets the action input from the user"""
@@ -92,7 +94,11 @@ class EmployeeUI:
     def get_info(self):
         """Takes the social id of an employee and prints out their information"""
         social_id = str(input("Enter employee social ID: ")).strip()
+        while not self.validation.validate_social_ID(social_id):
+            print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
+            social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
+        #spyrja um ef það er skrifað 10 digits en ekki retti employee
         print()
         print("Employee's information:")
         print("-"*30)
@@ -186,7 +192,7 @@ class EmployeeUI:
         print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
         rank = input()
         while rank != "1" and rank != "2" and rank != "3" and rank != "4":
-            print("Invalid input! You can choose 1, 2, 3, or 4")
+            print("Invalid input! You can choose 1, 2, 3, or 4")#TODO: ætti frekar að vera í validation
             rank = input("Rank: ")
         if rank == "1" or rank == "2":
             licences = ["NAFokker100","NAFokkerF28","NABAE146"]
@@ -242,12 +248,13 @@ class EmployeeUI:
                 print()
                 self.logic_wrapper.add_employee(employee)   
 
+
         elif save_prompt == "n":
             print()
             print("New employee not saved.")
             print()
             print("(M)enu  (R)epeat")
-            action = str(input("Enter your action: ").lower())
+            action = str(input("Enter your action: ").lower())#TODO: validate
             if action == "m":
                 None
             elif action == "r":

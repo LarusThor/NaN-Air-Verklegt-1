@@ -70,7 +70,7 @@ class DataWrapper:
 
     def update_contacts(self, destination: Destination) -> None:
         """ Updates information about destination contact. """
-        return self.destinationIO.update_contacts(destination)
+        return self.destinationIO.update_destination(destination)
 
 
     #past_flights
