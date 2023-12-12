@@ -38,25 +38,19 @@ class AirplaneUI:
     
 
     def list_pilots_by_licanse(self):
-        print("-"*25)
-        print("{:<14} | {}".format("Airplane type", "Pilots"))
-        print("-"*25)
+        result = ""
+        title = "{:<14} | {}".format("Airplane type", "Pilots")
         for keys, values in self.pilots_license.items():
-            print("{:<14} | {}".format(keys, ", ".join(sorted(values))))
-
-        print()
-        print("(H)ome  (B)ack")
-        action = input("Enter your action: ")
-        return action
+            result += "{:<14} | {} \n".format(keys, ", ".join(sorted(values)))
+        self.menus.print_the_info(title, result)
 
 
     def types(self) -> str:
+        title = "Airplane types: "
+        result = ""
         for item in self.airplane_types:
-            print(item)
-        print()
-        print("(M)enu  (R)epeat")
-        action = str(input("Enter your action: ").lower())
-        return action
+            result += item + "\n"
+        self.menus.print_the_info(title, result)
 
 
     def add_airplane(self): #define
@@ -83,20 +77,10 @@ class AirplaneUI:
 
 
     def most_used_airplane(self):
-        print()
-        print("The mose used airplane is:")
-        print("-"*20)
-        print(self.airplane_usage[0])
-        print()
-        print("(H)ome  (B)ack")
-        action = input("Enter your action: ")
-        return action
+        self.menus.print_the_info("The mose used airplane is:", self.airplane_usage[0])
 
 
     def flown_furthest_airplane(self):
-        print()
-        print("The airplane that has flown the furthest is: ")
-        print("Airplane name:", self.flown_furthest[0], "- Distance:", self.flown_furthest[1], "km.")
-        print()
-        print("(H)ome  (B)ack")
-        action = input("Enter your action: ")
+        title = "The airplane that has flown the furthest:"
+        result = f"Airplane name: {self.flown_furthest[0]} - Distance: {self.flown_furthest[1]}km."
+        self.menus.print_the_info(title, result)

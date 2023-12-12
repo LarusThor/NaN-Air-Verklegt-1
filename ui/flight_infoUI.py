@@ -9,6 +9,7 @@ class FlightInfoUI:
         self.menus = Menu()
         self.flight_booking = self.logic_wrapper.flight_fully_booked()
 
+
     def flight_info_options(self) -> str:
         """ TODO: add docstring """
         self.menus.display_options(FLIGHT_INFORMATION_OPTIONS)
@@ -36,22 +37,16 @@ class FlightInfoUI:
             voyage = input("Enter flight number: ")
             status = self.flight_booking.get(voyage)
 
-        print()
-        print("-"*30)
+        title = "Flight status:"
         try:
             int(status)
-            print(voyage, f"has {status} seats left.")
+            result = f"{voyage} has {status} seats left."
+            self.menus.print_the_info(title, result)
         except:
-            print(voyage, "is fully booked.")
+            result = f"{voyage} is fully booked."
+            self.menus.print_the_info(title, result)
 
-        print("-"*30)
-        print()
-        print("(H)ome  (B)ack")
-        action = input("Enter in your action: ")
-        return action
         
-
-
     def get_flight_status_by_date(self, date): #define
         """ TODO: add docstring """
         pass

@@ -15,7 +15,7 @@ class ScheduleLL():
         """ Returns employee schedule for a chosen week. """
         flights = []
         voyage_list = self.logic.get_all_voyages()
-        for flight in voyage_list:
+        for flight in voyage_list.values():
             weeks = str(flight.departure.isocalendar().week)
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
             
@@ -59,15 +59,15 @@ class ScheduleLL():
         """
         #TODO: simplify, tengja betur við þá sem eru að virka
         employee_dict = self.logic.data_wrapper.get_all_staff_members()
-        past_voyage_list = self.logic.past_voyages()
+        past_voyage_list = self.logic.get_past_voyages()
         upcoming_voyage_list = self.logic.upcoming_voyages()
         all_workers = set()
         all_workers.update(employee_dict)
 
         workers_on_day = set()
-        voyage_list = list(past_voyage_list.values() + list(upcoming_voyage_list.values()))
+        voyage_list = past_voyage_list | upcoming_voyage_list
 
-        for flight in voyage_list:
+        for flight in voyage_list.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
             departure_date = flight.departure.date()
             arrival_date = flight.arrival.date()

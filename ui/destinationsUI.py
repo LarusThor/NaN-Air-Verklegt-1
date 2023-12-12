@@ -2,14 +2,14 @@ from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
 from model.destination_model import Destination
 
-DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Change destination information"]
+DESTINATIONS_OPTIONS = ["1. List all destinations", "2. Most popular destination", "3. Add new destination", "4. Change destination information"]
 
 
 class DestinationsUI:
     def __init__(self) -> None:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()     
-        self.destinations_list = self.logic_wrapper.destination_list() 
+        self.destinations_list = self.logic_wrapper.only_destinations() 
 
 
     def destinations(self) -> str:
@@ -21,23 +21,19 @@ class DestinationsUI:
 
     def get_all_destinations(self) -> None:
         """ TODO: add docstring """
-        print()
-        print("All destinations:")
-        print("-"*15)
-        self.print_destination(self.destinations_list)  
+        title = "All destinations:"
+        result = ""
+        destinations = sorted(self.destinations_list)
+        for place in destinations:
+            result += place + "\n"
+        self.menus.print_the_info(title, result)
 
 
     def get_most_popular_destination(self):
         """ TODO: add docstring """
         popular = self.logic_wrapper.popular_destination()
-        print()
-        print("The most popular destination:")
-        print("-"*30)
-        print(popular[0])
-        print()
-        print("(H)ome  (B)ack")
-        action = input("Enter your action: ")
-        return action
+        title = "The most popular destination:"
+        self.menus.print_the_info(title, popular[0])
 
 
     def add_destination(self) -> None:
@@ -96,20 +92,25 @@ class DestinationsUI:
             estimated_flight_time = estimated_flight_time)
             self.logic_wrapper.update_destination_info(dest)
 
+    def change_contact_info(self):
+        id = input("what destination do you want to change ID: ")
+        contact_name = input("Enter the name of the contact person:")
+        contact_number = input("Enter the number of the contact number: ")
 
+        all_dests = LogicWrapper().destination_list()
 
-    def print_destination(self, destination_list) -> None:
-        """function used to print out a list"""
-        destination_list.sort()
-        for destination in destination_list:
-            print(destination)
-        print()
-        print("(M)enu  (R)epeat")
-        action = str(input("Enter your action: ").lower())
-        if action == "m":
-            None
-        elif action == "r":
-            None
+        counter = 0
+        for destination in all_dests:
+            if destination.destination_id == id:
+                break
+            else:
+                counter += 1
+
+        dest = all_dests[counter]
+        dest.emergency_contact_name = contact_name
+        dest.emergency_contact_number = contact_number
+
+        self.logic_wrapper.update_contact_info(dest)
 
 
     '''destination_id: str
