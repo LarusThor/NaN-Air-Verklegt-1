@@ -2,15 +2,9 @@ from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
 from model.destination_model import Destination
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Destination information"]
-=======
-DESTINATIONS_OPTIONS = ["1. List all destinations", "2. Most popular destination", "3. Add new destination", "4. Change destination information"]
->>>>>>> b0ffa6e201a6deb170bf88ca7c8ded288bcad5ff
-=======
-DESTINATIONS_OPTIONS = ["1. List all destinations", "2. Most popular destination", "3. Add new destination", "4. Change destination information"]
->>>>>>> b0ffa6e201a6deb170bf88ca7c8ded288bcad5ff
+
 
 
 class DestinationsUI:
@@ -121,9 +115,6 @@ class DestinationsUI:
         self.logic_wrapper.update_contact_info(dest)
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
     def print_destination(self, destination_list) -> None:
         """function used to print out a list"""
         destination_list.sort()
@@ -137,11 +128,6 @@ class DestinationsUI:
         elif action == "r":
             None
 
-
-=======
->>>>>>> b0ffa6e201a6deb170bf88ca7c8ded288bcad5ff
-=======
->>>>>>> b0ffa6e201a6deb170bf88ca7c8ded288bcad5ff
     '''destination_id: str
     destination: str
     emergency_contact_name: str
