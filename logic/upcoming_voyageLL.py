@@ -3,19 +3,27 @@ from datetime import datetime, timedelta
 
 class UpcomingVoyageLL:
     def __init__(self, logic_wrapper) -> None:
+        """Instantiate a UpcomingVoyageLL object.
+
+        Args:
+            logic_wrapper: The logic wrapper object that contains all logic layer objects.
+        """
         self.logic = logic_wrapper
 
 
-    def get_upcoming_voyages(self):
+    def get_upcoming_voyages(self) -> dict:
+        """ Returns a dictionary of all upcoming flights. """
         upcoming_flights_dict = self.logic.data_wrapper.get_upcoming_flights()
         return upcoming_flights_dict
 
 
-    def add_upcoming_voyage(self, upcoming_voyage):
+    def add_upcoming_voyage(self, upcoming_voyage) -> None:
+        """ Adds an upcoming voyage to the system. """
         self.logic.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
 
-    def calculate_flight_time(self, arr_at, departure_date_time):
+    def calculate_flight_time(self, arr_at, departure_date_time) -> datetime:
+        """ Calculates the flight time. """
         destinations_info = self.logic.data_wrapper.get_all_destinations_info()
         estimated_flight_time_overview = list(destinations_info.values())
         destination_values = destinations_info[arr_at]
@@ -33,7 +41,8 @@ class UpcomingVoyageLL:
         return arrival_time
 
 
-    def valid_pilot(self, aircraft_id, pilot):  # TF-XUP, 34928348392
+    def valid_pilot(self, aircraft_id, pilot) -> bool:  # TF-XUP, 34928348392
+        """ Checks if pilot is valid to fly the voyage. """
         pilots_by_license = self.logic.pilots_by_license()  # {Fokkerf100: jón, kalli}
         planes_by_type = (self.logic.airplane_insignia_by_types())  # {Fokkerf100: TF-XZ, TF-XUP}
         employee_dict = (self.logic.data_wrapper.get_all_staff_members())  # {293919999: Jón, Pilot...}
@@ -49,7 +58,8 @@ class UpcomingVoyageLL:
                 #license_check in pilots_by_license.keys() and pilot_name in pilots_by_license.values():
                     return True
 
-    def add_staff_for_voyage(self, staff_to_add):
+    def add_staff_for_voyage(self, staff_to_add) -> None:
+        """ Adds staff to a voyage. """
         return self.logic.data_wrapper.add_staff(staff_to_add)
 
     def aircraft_availability():

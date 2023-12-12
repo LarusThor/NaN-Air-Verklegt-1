@@ -4,10 +4,6 @@ from model.past_voyage_model import PastVoyage
 from datetime import datetime
 
 class PastVoyageIO:
-    def __init__(self):
-        pass
-
-
     def read_past_flights(self) -> dict[str, PastVoyage]:
         """ Returns a dictionary of all past flights from csv file. """
         past_flights_dict = {}

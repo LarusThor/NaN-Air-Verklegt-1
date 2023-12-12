@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-# TODO: convert to snake_case
 
 @dataclass
 class Airplane:

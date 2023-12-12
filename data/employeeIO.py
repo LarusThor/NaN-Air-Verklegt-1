@@ -3,10 +3,6 @@ from model.employee_model import Employee
 from pathlib import Path
 
 class EmployeeIO:
-    def __init__(self):
-        pass
-
-
     def read_employee(self) -> dict:
         """ Returns employee information form csv file and returns employee dict. """
         employee_dict = {}
