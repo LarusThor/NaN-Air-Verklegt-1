@@ -3,7 +3,6 @@ from logic.airplaneLL import AirplaneLL
 from logic.destinationLL import DestinationLL
 from logic.employeeLL import EmployeeLL
 from logic.scheduleLL import ScheduleLL
-from logic.voyageLL import VoyageLL
 from logic.upcoming_voyageLL import UpcomingVoyageLL
 from logic.past_voyageLL import PastVoyageLL
 from datetime import datetime, date
