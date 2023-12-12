@@ -90,7 +90,7 @@ class AirplaneLL():
         """ Returns a dictionary where the key is the airplane type and the value is a list of
           all licenced pilots for that airplane type. """
         pilots_by_license = dict()
-        pilots = self.emlployees.get_all_pilots()
+        pilots = self.logic.pilot_list()
 
         for pilot in pilots:
             license_key = pilot.licence

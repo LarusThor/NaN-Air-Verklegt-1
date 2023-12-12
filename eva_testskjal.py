@@ -11,26 +11,38 @@ from datetime import date, datetime
 from ui.employeesUI import EmployeeUI
 from data.data_wrapper import  DataWrapper
 from logic.airplaneLL import AirplaneLL
+from ui.employeesUI import EmployeeUI
 
 
 logic = LogicWrapper()
 
-dt = datetime(year=2023,month=10,day=20)
-dtt = datetime(year=2023,month=12,day=20)
+print(logic.pilots_by_license())
 
-empl = Employee(
-    social_id="2706838569",
-    name="Gerard Norris",
-    role="Pilot",
-    rank="Captain",
-    licence="NAFokkerF100",
-    email="bruck@comcast.net",
-    phonenumber="8998801",
-    home_address="Fellsmúli 4",
-    landline="7854878"
-)
 
-print(logic.total_hours_worked(empl, dt, dtt))
+
+
+
+
+
+
+# logic = LogicWrapper()
+
+# dt = datetime(year=2023,month=10,day=20)
+# dtt = datetime(year=2023,month=12,day=20)
+
+# empl = Employee(
+#     social_id="2706838569",
+#     name="Gerard Norris",
+#     role="Pilot",
+#     rank="Captain",
+#     licence="NAFokkerF100",
+#     email="bruck@comcast.net",
+#     phonenumber="8998801",
+#     home_address="Fellsmúli 4",
+#     landline="7854878"
+# )
+
+# print(logic.total_hours_worked(empl, dt, dtt))
 # emp = EmployeeUI()
 
 
