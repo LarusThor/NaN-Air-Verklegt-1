@@ -58,6 +58,9 @@ class DataWrapper:
 
     def destination_info(self) -> list:
         return self.destination.read_all_destinations()
+    
+    def update_contacts(self, destination: Destination):
+        return self.destinationIO.update_contacts(destination)
 
     #past_flights
     def get_past_flights(self)-> dict[str, PastVoyage]:

@@ -99,6 +99,12 @@ class LogicWrapper():
         """ returns a dictionary of destinations and their distance from iceland in km. """
         return self.destination.distance_from_iceland()
     
+    def update_destination_info(self, destination):
+        return self.destination.change_destination_info(destination)
+    
+    def update_contact_info(self, destination):
+        return self.destination.update_contact_info(destination)
+    
 
     #Airplanes:
     def airplane_types(self) -> set:
