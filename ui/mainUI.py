@@ -85,8 +85,11 @@ class Main:
                         self.destinations_ui.add_destination()
 
                     case "4":
-                        self.destinations_ui.change_destination_info()                 
-                        
+                        action = self.destinations_ui.get_all_destinations()
+                        match action:
+                            case "1":
+                                self.destinations_ui.change_destination_info()
+                            
 
             def employees() -> None:
                 """ TODO: add docstring """
@@ -151,10 +154,10 @@ class Main:
                     case "1":
                         date = self.schedule_ui.get_schedule_by_day()
                         action = self.schedule_ui.schedule_for_a_day_options()
-                       
+
                         match action:
                             case "1":
-                                self.schedule_ui.get_how_was_working(date)
+                                self.schedule_ui.who_was_working(date)
                             case "2":
                                 self.schedule_ui.get_how_was_not_working(date)
 

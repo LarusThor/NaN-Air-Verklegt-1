@@ -46,3 +46,5 @@ class PastVoyageIO:
                      'fa5':upcoming_flight.fa5,
                      "seats_sold":upcoming_flight.seats_sold
                      })
+                
+    

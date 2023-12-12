@@ -124,74 +124,77 @@ class VoyagesUI:
         date = input("Enter year date; year-month-day: ")
         return date
 
-    def manager_staffs_voyage(self, voyage_flight_number, voyage_date):
+    def manager_staffs_voyage(self, voyage_flight_number, voyage_date: str):
         """TODO: add docstring"""
+        # TODO: accept voyage_date as date object
         voyage_flight_number_info = self.logic_wrapper.upcoming_voyages().values()
         for voyages_info in voyage_flight_number_info:
-            voyages_info.departure = voyages_info.departure.strftime("%Y-%m-%d")
-            if voyage_flight_number in voyages_info.flight_nr and voyage_date in voyages_info.departure:
+            # TODO: just get this as a variable, dont reassign the attribute
+            departure_date = voyages_info.departure.strftime("%Y-%m-%d")
+            if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
                 
-                if voyage_date in voyages_info.departure:
-                    aircraft_id = "TF-EPG" #input("Enter a valid aircraft: ")
-                    captain = "2706838569" #input("Enter captain's social id: ")
+                aircraft_id = "TF-EPG" #input("Enter a valid aircraft: ")
+                captain = "2706838569" #input("Enter captain's social id: ")
 
-                    if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
-                        captain = captain
-                    copilot = "2410876598" #input("Enter copilot's social id: ")
-                    if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
-                        copilot = copilot
+                if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain):
+                    pass
+                copilot = "2410876598" #input("Enter copilot's social id: ")
+                if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain):
+                    pass                    
+                flight_service_manager = "1600904199"#input("Enter flight service manager's social id: ")
+                flight_attendants = []
+                add_flight_attendant = input("Enter social id of an additional flight attendant: ")
+
+                if add_flight_attendant == "":
+                    for i in range(5):
+                        flight_attendants.append("N/A")
+                else:
+                    flight_attendants = [add_flight_attendant]
+                while add_flight_attendant:
+                    if len(flight_attendants) < 5:
+                        add_flight_attendant = input("Enter social id of an additional flight attendant: ")
+                        if add_flight_attendant == "": #[2q75645]
+                            unstaffed = 5 - len(flight_attendants)
+                            for flight_attendant in range(unstaffed):
+                                flight_attendants.append("N/A")
+
+                        else:
+                            flight_attendants.append(add_flight_attendant)
+
+                assert len(flight_attendants) == 5
+
+                print("Would you like to save this crew: ") 
+                print("~" * 20)
+                print("Captain: ", captain)
+                print("Copilot: ", copilot)
+                print("Flight Service Manager: ", flight_service_manager)
+                for flight_attendant in flight_attendants:
+                    print("Flight Attendant:", flight_attendant)
                         
-                    flight_service_manager = "1600904199"#input("Enter flight service manager's social id: ")
-                    flight_attendants = []
-                    add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                    if add_flight_attendant == "":
-                        for i in range(5):
-                            flight_attendants.append("N/A")
-                    else:
-                        flight_attendants = [add_flight_attendant]
-                    while add_flight_attendant:
-                        if len(flight_attendants) < 5:
-                            add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                            if add_flight_attendant == "": #[2q75645]
-                                unstaffed = 5 - len(flight_attendants)
-                                for flight_attendant in range(unstaffed):
-                                    flight_attendants.append("N/A")
+    
+                save_prompt = input(f"Would you like to add this staff to the voyage {voyage_flight_number}, (y)es or (n)o? ")
+                if save_prompt == "y":
 
-                            else:
-                                flight_attendants.append(add_flight_attendant)
-
-                    print("Would you like to save this crew: ") 
-                    print("~" * 20)
-                    print("Captain: ", captain)
-                    print("Copilot: ", copilot)
-                    print("Flight Service Manager: ", flight_service_manager)
-                    for flight_attendant in flight_attendants:
-                        print("Flight Attendant:", flight_attendant)
-                            
-        
-        save_prompt = input(f"Would you like to add this staff to the voyage {voyage_flight_number}, (y)es or (n)o? ")
-        if save_prompt == "y":
-            print("Voyage has been staffed!")
-
-        upcoming_voyage_staff = UpcomingVoyage(
-            id=voyages_info.id,
-            flight_nr=voyages_info.flight_nr,
-            dep_from=voyages_info.dep_from,
-            arr_at=voyages_info.arr_at,
-            departure=voyages_info.departure,
-            arrival=voyages_info.arr_at,
-            aircraft_id=voyages_info.aircraft_id,
-            captain=captain,
-            copilot=copilot,
-            fsm=flight_service_manager,
-            fa1=flight_attendants[0],
-            fa2=flight_attendants[1],
-            fa3=flight_attendants[2], 
-            fa4=flight_attendants[3],
-            fa5=flight_attendants[4]
-        )
-
-        self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff)
+                    upcoming_voyage_staff = UpcomingVoyage(
+                        id=voyages_info.id,
+                        flight_nr=voyages_info.flight_nr,
+                        dep_from=voyages_info.dep_from,
+                        arr_at=voyages_info.arr_at,
+                        departure=voyages_info.departure,
+                        arrival=voyages_info.arrival,
+                        aircraft_id=voyages_info.aircraft_id,
+                        captain=captain,
+                        copilot=copilot,
+                        fsm=flight_service_manager,
+                        fa1=flight_attendants[0],
+                        fa2=flight_attendants[1],
+                        fa3=flight_attendants[2], 
+                        fa4=flight_attendants[3],
+                        fa5=flight_attendants[4]
+                    )
+                    print(upcoming_voyage_staff)
+                    self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff)
+                    print("Voyage has been staffed!")
 
         # if len(flight_attendants) < 5:
         #     empty_flight_attendant_slots = 5 - len(flight_attendants)
