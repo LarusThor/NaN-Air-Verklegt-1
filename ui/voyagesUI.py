@@ -126,30 +126,36 @@ class VoyagesUI:
 
     def manager_staffs_voyage(self, voyage_flight_number, voyage_date):
         """TODO: add docstring"""
-        if voyage_flight_number in self.logic_wrapper.upcoming_voyages():
-            if voyage_date in self.logic_wrapper.upcoming_voyages():
-                captain = input("Enter captain's social id: ")
-                aircraft_id = input("Enter a valid aircraft: ")
-                if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
-                    captain = captain
-                copilot = input("Enter copilot's social id: ")
-                if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
-                    copilot = copilot
-                flight_service_manager = input("Enter captain's social id: ")
-                add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                flight_attendants = [add_flight_attendant]
-                while add_flight_attendant:
-                    if len(flight_attendants) < 5:
-                        add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                        flight_attendants.append(add_flight_attendant)
+        voyage_flight_number_info = self.logic_wrapper.upcoming_voyages().values()
+        for voyages_info in voyage_flight_number_info:
+            voyages_info.departure = voyages_info.departure.strftime("%Y-%m-%d")
+            if voyage_flight_number in voyages_info.flight_nr and voyage_date in voyages_info.departure:
+                
+                if voyage_date in voyages_info.departure:
+                    aircraft_id = input("Enter a valid aircraft: ")
+                    captain = input("Enter captain's social id: ")
 
-                print("Would you like to save this crew: ") 
-                print("~" * 20)
-                print("Captain: ", captain)
-                print("Copilot: ", copilot)
-                print("Flight Service Manager: ", flight_service_manager)
-                for flight_attendant in flight_attendants:
-                    print("Flight Attendant:", flight_attendant)
+                    if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
+                        captain = captain
+                    copilot = input("Enter copilot's social id: ")
+                    if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain) == True:
+                        copilot = copilot
+                        
+                    flight_service_manager = input("Enter flight service manager's social id: ")
+                    add_flight_attendant = input("Enter social id of an additional flight attendant: ")
+                    flight_attendants = [add_flight_attendant]
+                    while add_flight_attendant:
+                        if len(flight_attendants) < 5:
+                            add_flight_attendant = input("Enter social id of an additional flight attendant: ")
+                            flight_attendants.append(add_flight_attendant)
+
+                        print("Would you like to save this crew: ") 
+                        print("~" * 20)
+                        print("Captain: ", captain)
+                        print("Copilot: ", copilot)
+                        print("Flight Service Manager: ", flight_service_manager)
+                        for flight_attendant in flight_attendants:
+                            print("Flight Attendant:", flight_attendant)
         
         save_prompt = input("Would you like to save this voyage, (y)es or (n)o? ")
         if save_prompt == "y":
