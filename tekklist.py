@@ -16,3 +16,4 @@
 #eyða schedule IO??
 #eyða voyage IO
 #tengja data í gegnum 
+#endurnýta betur í UI
