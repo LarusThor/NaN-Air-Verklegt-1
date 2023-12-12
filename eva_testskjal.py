@@ -4,8 +4,7 @@ from logic.flight_informationLL import FlightInformation
 from data.data_wrapper import DataWrapper
 from data.upcoming_voyageIO import UpcomingVoyageIO
 
-# logic = LogicWrapper()
+logic = LogicWrapper()
 # print(logic.pilot_list())
 
-voyage = UpcomingVoyageIO()
-print(voyage.read_upcoming_flights().values())
+print(logic.flight_fully_booked())
