@@ -22,7 +22,7 @@ class EmployeeLL:
 
         for employee_data in employee_dict.values():
             if employee_data.role == "Pilot":
-                pilot_list.append(employee_data)
+                pilot_list.append(employee_data.name)
         
         return pilot_list
     
