@@ -50,6 +50,8 @@ class EmployeeUI:
         print()
         print("All pilots:")
         print("-"*15)
+        # for pilot in self.pilot_list.values():
+            # print(pilot.name)
         self.print_crew(self.pilot_list)
     
 
