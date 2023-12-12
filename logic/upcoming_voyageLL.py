@@ -54,10 +54,10 @@ class UpcomingVoyageLL:
 
 
     def valid_pilot(self, aircraft_id, pilot):
-        pilots_by_license = self.airplane.pilots_by_license()
-        planes_by_type = self.airplane.airplane_insignia_by_type()
+        pilots_by_license = self.logic.pilots_by_license()
+        planes_by_type = self.logic .airplane_insignia_by_type()
 
-        license_check = planes_by_type.keys(aircraft_id)
+        license_check = planes_by_type[aircraft_id]
         if license_check in pilots_by_license.keys() and pilot in pilots_by_license.values(license_check):
             return True
 

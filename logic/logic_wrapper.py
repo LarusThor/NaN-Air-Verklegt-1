@@ -101,8 +101,8 @@ class LogicWrapper():
         """ Returns the plane that has flown the furthest. """
         return self.airplane.get_furthest_flown_plane()
 
-    # def airplane_insignia_by_types(self):
-    #     return self.airplane.airplane_insignia_by_type()
+    def airplane_insignia_by_types(self):
+        return self.airplane.airplane_insignia_by_type()
 
     #Upcoming voyages:
     def upcoming_voyages(self):

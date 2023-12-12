@@ -194,7 +194,7 @@ class Main:
                                         self.voyages_ui.get_past_voyage_by_week(year, week)
 
                     case "3":
-                        self.voyages_ui.staff_voyage()
+                        self.voyages_ui.manager_staffs_voyage()
 
                     case "4":
                         self.voyages_ui.staff_voyage()
