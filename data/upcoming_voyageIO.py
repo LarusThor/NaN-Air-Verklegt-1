@@ -5,10 +5,6 @@ from datetime import datetime
 
 
 class UpcomingVoyageIO:
-    def __init__(self):
-        pass
-
-
     def read_upcoming_flights(self) -> dict[str, UpcomingVoyage]:
         """ Returns a dictionary of all upcoming fligths from the csv file. """
         upcoming_flights_dict = {}
@@ -53,6 +49,7 @@ class UpcomingVoyageIO:
                 'fa5':upcoming_voyage.fa5,
                 'seats_sold':upcoming_voyage.seats_sold
                 })
+            
             
     def add_staff_to_voyage(self, added_staff_to_voyage) -> None:
         voyage_list = self.read_upcoming_flights()

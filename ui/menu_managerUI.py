@@ -69,3 +69,34 @@ class Menu():
         # Print empty lines below the menu
         print("\n" * empty_lines_below)
 
+    def get_next_action(self):
+        print()
+        print("(H)ome  (B)ack")
+        action = input("Enter in your action: ")
+        return action
+    
+    def print_the_info(self, title, info):
+        terminal_size = os.get_terminal_size()
+        terminal_width = terminal_size.columns
+        terminal_height = terminal_size.lines
+
+        # Calculate the number of empty lines above and below the menu
+        empty_lines_above = (terminal_height - 6) // 2
+        empty_lines_below = terminal_height - 6 - empty_lines_above - 2
+
+        # Print empty lines above the menu
+        print("\n" * empty_lines_above)
+
+        padding = (terminal_width) // 150
+        # print(" Main Menu:")
+        # print(" " * padding + OUTLINE)
+        # Print menu items centered in the terminal
+        # for item in info:
+        print(title)
+        print(info)
+
+        # Print empty lines below the menu
+        # print("\n" * empty_lines_below)
+        action = input("Enter your action :")
+
+

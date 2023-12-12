@@ -49,49 +49,58 @@ class DataWrapper:
 
 
     def get_all_destinations(self) -> list: 
-        """ TODO: add doc. """
+        """ Returns a lsit of all destinations. """
         return self.destinationIO.read_all_destinations()
     
 
     def add_destinations(self, destination) -> None:
-        """"""
+        """ Adds a destination to the system. """
         return self.destinationIO.add_destination(destination)
    
 
     def change_destination_info(self, destination: Destination) -> None:
+        """ Changes destination info in the system. """
         return self.destinationIO.update_destination(destination)
 
 
     def destination_info(self) -> list:
+        """ Returns a dictionary with all destination info. """
         return self.destination.read_all_destinations()
     
 
     def update_contacts(self, destination: Destination) -> None:
+        """ Updates information about destination contact. """
         return self.destinationIO.update_contacts(destination)
 
 
     #past_flights
     def get_past_flights(self)-> dict[str, PastVoyage]:
+        """ Returns a dictionary with all past flights. """
         return self.past_flightIO.read_past_flights()
 
 
     def add_past_flights(self, past_flight) -> None:
+        """ Adds a past flight into the system. """
         return self.past_flightIO.add_past_voyage(past_flight)
     
 
     #upcoming_flights
     def get_upcoming_flights(self) -> dict[str, UpcomingVoyage]:
+        """ Returns a dictionary about all upcoming flights in the system. """
         return self.upcoming_flightIO.read_upcoming_flights()
     
 
     def add_upcoming_flights(self, upcoming_flight) -> None:
+        """ Adds an upcoming flight to the system. """
         return self.upcoming_flightIO.add_upcoming_voyage(upcoming_flight)
     
 
     def add_staff(self, staff_to_voyage) -> None:
+        """ Adds staff to a voyage. """
         return self.upcoming_flightIO.add_staff_to_voyage(staff_to_voyage)
     
 
     def add_airplane(self, airplane) -> None:
+        """ Adds an airplane into the system. """
         return self.airplaneIO.add_aircraft(airplane)
     

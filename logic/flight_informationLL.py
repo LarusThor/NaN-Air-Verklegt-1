@@ -1,5 +1,10 @@
-class FlightInformation:
+class FlightInformationLL:
     def __init__(self, logic_wrapper):
+        """Instantiate a FlightInformationLL object.
+
+        Args:
+            logic_wrapper: The logic wrapper object that contains all logic layer objects.
+        """
         self.logic = logic_wrapper
 
     def capacity(self):
@@ -27,3 +32,6 @@ class FlightInformation:
             booked[voyage.flight_nr] = booking_status
             
         return booked
+
+    def flight_status_by_time(self):
+        pass

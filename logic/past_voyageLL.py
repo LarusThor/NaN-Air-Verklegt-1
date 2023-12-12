@@ -1,5 +1,10 @@
 class PastVoyageLL:
     def __init__(self, logic_wrapper):
+        """Instantiate a PastVoyageLL object.
+
+        Args:
+            logic_wrapper: The logic wrapper object that contains all logic layer objects.
+        """
         self.logic = logic_wrapper
 
 

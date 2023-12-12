@@ -2,10 +2,8 @@ import csv
 from model.destination_model import Destination
 
 class DestinationIO():
-    def __init__(self):
-        pass
-   
     def read_destinations_info(self) -> dict:
+        """ Returns a dictionary off all destinations. """
         destinations_overview = {}
         with open("files/destinations.csv", "r") as f:
             lines = f.readlines()
@@ -15,6 +13,7 @@ class DestinationIO():
                 destination = Destination(id,destination,emergency_contact_name,emergency_contact_number,airport_name,distance_from_iceland, estimated_flight_time)
                 destinations_overview[id] = destination
         return destinations_overview
+
 
     def read_all_destinations(self) -> list:
         dest_list = []
@@ -26,15 +25,17 @@ class DestinationIO():
             return dest_list
 
 
-    def add_destination(self, destination) -> None:
+    def add_destination(self, destination: Destination) -> None:
+        """ Adds a destination to the system. """
         with open('files/destinations.csv', 'a', newline='', encoding="utf-8") as csvfile:
             fieldnames = ['id','destination', 'emergency_contact_name', 'emergency_contact_number', 'airport_name', 'distance_from_iceland','estimated_flight_time']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-            writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergencyContact, 'emergency_contact_number': destination.emergencyNumber, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distanceFromIceland, 'estimated_flight_time': destination.estimated_flight_time})
+            writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland, 'estimated_flight_time': destination.estimated_flight_time})
         
 
-    def update_destination(self, updated_destination) -> None:
+    def update_destination(self, updated_destination: Destination) -> None:
+        """ Updates information about a destination in the system. """
         dest_list = self.read_all_destinations()
 
         for i, dest in enumerate(dest_list):
@@ -50,7 +51,9 @@ class DestinationIO():
             for destination in dest_list:
                 writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland, 'estimated_flight_time': destination.estimated_flight_time})
 
-    def update_contacts(self, updated_destination):
+
+    def update_contacts(self, updated_destination: Destination) -> None:
+        """ Updates the contact information for a destination. """
         dest_list = self.read_all_destinations()
 
         for i, dest in enumerate(dest_list):
@@ -66,6 +69,3 @@ class DestinationIO():
             
             for destination in dest_list:
                 writer.writerow({'id': destination.destination_id, 'destination': destination.destination, 'emergency_contact_name': destination.emergency_contact_name, 'emergency_contact_number': destination.emergency_contact_number, 'airport_name': destination.airport_name, 'distance_from_iceland': destination.distance_from_iceland, 'estimated_flight_time': destination.estimated_flight_time})
-
-'''destination_id, destination, emergencyContact, emergencyNumber, 
-                 airportName, distanceFromIceland'''

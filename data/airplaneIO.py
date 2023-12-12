@@ -3,9 +3,6 @@ from model.airplane_model import Airplane
 from model.airplane_type_model import AirplaneType
 
 class AirplaneIO:
-    def __init__(self):
-        pass  
-    
     def aircraft_info(self) -> dict:
         """ Reads a csv file about the aircrafts and returns an aircraft dictionary. """
         airplane_dict = {}

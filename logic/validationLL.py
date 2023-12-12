@@ -3,8 +3,11 @@ from datetime import datetime
 
 class ValidationLL():
     def __init__(self) -> None:
-        self.data_wrapper = DataWrapper()
-        pass
+        """Instantiate a ValidationLL object.
+
+        Args:
+            logic_wrapper: The logic wrapper object that contains all logic layer objects.
+        """
 
 
     def validate_name(self, name: str) -> bool:
@@ -21,7 +24,7 @@ class ValidationLL():
         try:
             if len(socialID) == 10:
                 return True
-        except Exception:
+        except Exception:# chacha error todo value error eða keky error
             return False
 
 
@@ -49,6 +52,20 @@ class ValidationLL():
                 return True
         except Exception:
             return False
+        
+    def validate_print_crew(self, list_crew: str) -> bool:
+        
+        if "m" in list_crew and "r" in list_crew:
+            return True
+        else:
+            return False
+    
+        
+       
+        
+        
+        
+    
         
         
     def validate_flight(self, flight: str) -> bool:
