@@ -12,6 +12,7 @@ class UpcomingVoyage:
     departure: datetime
     arrival: datetime
     aircraft_id: str
+    seats_sold: int
     captain: str = UNSTAFFED
     copilot: str = UNSTAFFED
     fsm: str = UNSTAFFED
