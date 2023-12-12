@@ -7,7 +7,9 @@ class DestinationLL():
         self.data_wrapper = DataWrapper()
         self.logic = logic_wrapper
    
-   
+    def get_destination_info_list(self):
+        return self.data_wrapper.get_all_destinations_info()
+
     def get_destination_list(self) -> list:
         """ Returns a list of destinations within the system. """
         destinations = []
@@ -49,10 +51,10 @@ class DestinationLL():
 
 
     def distance_from_iceland(self):
-        destinations = self.destination_info()
+        destinations = self.data_wrapper.get_all_destinations_info()
         distance = dict()
-        for destination in destinations:
-            distance[destination.destination_id] = int(destination.distance_from_iceland) 
+        for destination_id, destination_info in destinations.items():
+            distance[destination_id] = int(destination_info.distance_from_iceland) 
         
         return distance
   
