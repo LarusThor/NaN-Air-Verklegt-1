@@ -1,16 +1,14 @@
-from data.data_wrapper import DataWrapper
 from model.employee_model import Employee
 from datetime import datetime
 
 class EmployeeLL:
     def __init__(self, logic_wrapper) -> None:
-        self.data_wrapper = DataWrapper()
         self.logic = logic_wrapper
 
 
     def get_employee_dict(self) -> list[str]:
         """ Returns a list of all employees within the system. """
-        employee_dict = self.data_wrapper.get_all_staff_members()
+        employee_dict = self.logic.data_wrapper.get_all_staff_members()
         
         return [employee.name for employee in employee_dict.values()]
 
@@ -18,7 +16,7 @@ class EmployeeLL:
     def get_all_pilots(self) -> list[str]:
         """ Returns a list of all pilots. """
         pilot_list = []
-        employee_dict = self.data_wrapper.get_all_staff_members()
+        employee_dict = self.logic.data_wrapper.get_all_staff_members()
 
         for employee_data in employee_dict.values():
             if employee_data.role == "Pilot":
@@ -30,7 +28,7 @@ class EmployeeLL:
     def get_flight_attendants(self) -> list[str] :
         """ Returns a list of all flight attendants. """
         flight_attendant_list = []
-        employee_dict = self.data_wrapper.get_all_staff_members()
+        employee_dict = self.logic.data_wrapper.get_all_staff_members()
         for employee_data in employee_dict.values():
             if employee_data.role == "Cabincrew":
                 flight_attendant_list.append(employee_data.name)
@@ -40,7 +38,7 @@ class EmployeeLL:
 
     def get_employee(self, social_id: str) -> Employee:
         """Returns information about a chosen employee."""
-        employee_dict = self.data_wrapper.get_all_staff_members()
+        employee_dict = self.logic.data_wrapper.get_all_staff_members()
         
         return employee_dict[social_id]
 
@@ -48,23 +46,23 @@ class EmployeeLL:
     def change_employee_info(self, employee: Employee) -> None:
         """Lets user change employee information."""
         # TODO: cannot change name
-        employee_dict = self.data_wrapper.get_all_staff_members()
+        employee_dict = self.logic.data_wrapper.get_all_staff_members()
 
         assert employee.social_id in employee_dict, "Employee does not exist!"
 
         employee_dict[employee.social_id] = employee
 
-        self.data_wrapper.write_employees(list(employee_dict.values()))
+        self.logic.data_wrapper.write_employees(list(employee_dict.values()))
 
 
     def add_employee(self, employee: Employee) -> None:
         """Adds employee to the system."""
-        employee_dict = self.data_wrapper.get_all_staff_members()
+        employee_dict = self.logic.data_wrapper.get_all_staff_members()
 
         assert employee.social_id not in employee_dict, "Employee with same social_id already exists!"
 
         employee_dict[employee.social_id] = employee
-        self.data_wrapper.write_employees(list(employee_dict.values()))
+        self.logic.data_wrapper.write_employees(list(employee_dict.values()))
 
 
     def get_total_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
@@ -72,7 +70,7 @@ class EmployeeLL:
         #TODO: laga listann af voyages: fáum bara fyrstu 10
         flights_list = []
         total_hours = 0
-        past_voyage_dict = self.data_wrapper.get_past_flights()
+        past_voyage_dict = self.logic.data_wrapper.get_past_flights()
         
         for flight in past_voyage_dict.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
