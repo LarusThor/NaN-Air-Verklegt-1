@@ -12,3 +12,4 @@
 #get how was not working
 #i í dest
 # 1-1-1-2 (H)ome/menu?
+# 3-2-1 ekki biðja um social ID tvisvar
