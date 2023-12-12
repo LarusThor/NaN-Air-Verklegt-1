@@ -7,7 +7,7 @@ class AirplaneIO:
     def __init__(self):
         pass  
     
-    def aircraft_info(self):
+    def aircraft_info(self) -> dict:
         """ Reads a csv file about the aircrafts and returns an aircraft dictionary. """
         airplane_dict = {}
         with open("files/aircraft.csv", "r", newline='', encoding="utf-8") as f:
@@ -45,7 +45,7 @@ class AirplaneIO:
 
 
 
-    def add_aircraft(self, aircraft):
+    def add_aircraft(self, aircraft) -> None:
         """ Adds an airplane to the system by writing it into the csv file about aircrafts. """
         print("saving_files")
         with open('files/aircraft.csv', 'a', newline='', encoding="utf-8") as csvfile:

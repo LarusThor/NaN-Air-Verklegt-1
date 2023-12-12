@@ -43,7 +43,7 @@ class AirplaneLL():
         return furthest_flown_plane, furthest_distance
 
    
-    def get_all_airplane_types(self):
+    def get_all_airplane_types(self) -> set:
         """ Returns a list of all the airplane types in the system. """
         airplane_types = self.data_wrapper.get_airplane_types()
         type_set = set()
@@ -56,7 +56,7 @@ class AirplaneLL():
         """ Returns the status of a plane on a given day and time. """
         pass
    
-    def get_airplane_usage(self):
+    def get_airplane_usage(self) -> tuple[str, dict]:
         """ Returns the total number of voyages for a specific plane. """
         #TODO: laga, erum ekki að fá allan listan, bara 52 ferðir
         past_voyage_list = self.data_wrapper.get_past_flights()
@@ -81,11 +81,11 @@ class AirplaneLL():
         return most_popular, airplane_dict
           
     
-    def add_airplane(self, airplane):
+    def add_airplane(self, airplane) -> None:
         """ Adds airplane to the system. """
         self.data_wrapper.add_airplane(airplane)
 
-    def pilots_by_license(self):
+    def pilots_by_license(self) -> dict:
         """ Returns a dictionary where the key is the airplane type and the value is a list of
           all licenced pilots for that airplane type. """
         pilots_by_license = dict()
@@ -102,7 +102,7 @@ class AirplaneLL():
 
         return pilots_by_license
     
-    def airplane_insignia_by_type(self):
+    def airplane_insignia_by_type(self) -> dict:
         """ Dictionary which sorts airplanes in use by their types """
         airplane_list = self.data_wrapper.get_airplanes()
         airplane_insignia_by_type_dict = dict()
