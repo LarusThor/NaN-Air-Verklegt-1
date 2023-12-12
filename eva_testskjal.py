@@ -7,4 +7,4 @@ from data.upcoming_voyageIO import UpcomingVoyageIO
 logic = LogicWrapper()
 # print(logic.pilot_list())
 
-print(logic.flight_fully_booked())
+print(logic.destination_info_list())
