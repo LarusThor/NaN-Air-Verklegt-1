@@ -41,8 +41,8 @@ class DestinationLL():
         return most_popular, destination_dict
    
 
-    def change_destination_contact(self, destination: Destination) -> None: #breyta í klasaritinu
-        """ Changes the contact name and number for a destination. """
+    def change_destination_info(self, destination: Destination) -> None: #breyta í klasaritinu
+        ''' Changes destination info '''
         return self.data_wrapper.change_destination_info(destination)
         #name
         #number
@@ -55,4 +55,8 @@ class DestinationLL():
             distance[destination.destination_id] = int(destination.distance_from_iceland) 
         
         return distance
+    
+    def update_contact_info(self, destination: Destination):
+        """ Changes the contact name and number for a destination. """
+        return self.data_wrapper.update_contacts(destination)
   
