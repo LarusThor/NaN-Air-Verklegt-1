@@ -18,7 +18,6 @@ class LogicWrapper():
         self.airplane = AirplaneLL(self)
         self.destination = DestinationLL(self)
         self.schedule = ScheduleLL(self)
-        self.voyage = VoyageLL(self)
         self.list_upcoming_voyage = UpcomingVoyageLL(self)
         self.past_voyages = PastVoyageLL(self)
         self.validation = ValidationLL()
