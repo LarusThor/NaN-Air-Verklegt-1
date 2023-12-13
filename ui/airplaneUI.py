@@ -103,12 +103,9 @@ class AirplaneUI:
             model = input("Enter a Model: ")
             
         number_of_seats = input("Enter the number of seats in the airplane: ")
-<<<<<<< HEAD
         while not self.validation.validate_number_of_seats(number_of_seats):
             print("ERROR: Invalid number of seats \nIt should be and number and under 110 and over 84")
             number_of_seats = input("Enter the number of seats in the airplane: ")
-=======
->>>>>>> 057a2820c858bd4364de6b50e3d307e98a74c499
         
         title = "New airplane:"
         result = f"Name: {name}\nType: {type}\nManufacturer: {manufacturer}\nModel: {model}\nNumber of seats: {number_of_seats}"
