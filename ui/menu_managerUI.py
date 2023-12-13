@@ -1,4 +1,3 @@
-from logic.logic_wrapper import LogicWrapper
 from logic.validationLL import ValidationLL
 import os
 OUTLINE = "-"*50
@@ -7,7 +6,6 @@ MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Sched
 class Menu():
     def init(self) -> None:
         """ TODO: add docstring """
-        self.logic_wrapper = LogicWrapper()
         self.validator = ValidationLL()
 
     def main_menu(self) -> None:
@@ -76,16 +74,7 @@ class Menu():
         """ TODO: add docstring """
         print("Enter (h) for Home or (q) for quit") # TODO has to validated
         action = input("Enter in your action: ").lower()
-        action_validated = self.validator(action)
-        while action_validated == False:
-            action = input("Enter in your action: ").lower()
         
-        match action:
-            case "b":
-                pass
-            case "q":
-                quit()
-
     
     def print_the_info(self, title, info):
         """ TODO: add docstring """
