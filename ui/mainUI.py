@@ -52,7 +52,7 @@ class Main:
                                 
                                 match action:
                                     case "1":
-                                        pass
+                                        self.airplane_ui.get_pilots_for_a_specific_type()
                                     case "2":
                                         self.airplane_ui.list_pilots_by_licanse()
                                     case "3":
