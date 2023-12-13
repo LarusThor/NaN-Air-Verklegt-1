@@ -18,7 +18,7 @@ class FlightInformationLL:
 
     def flight_fully_booked(self):
         capacity = self.capacity()
-        booked = dict()
+        booked = list()
         upcoming_voyages = self.logic.upcoming_voyages()
         for voyage in upcoming_voyages.values():
           if voyage.aircraft_id != "N/A":
@@ -26,7 +26,6 @@ class FlightInformationLL:
                 booking_status = "Booked"
             else:
                 booking_status = capacity[voyage.aircraft_id] - int(voyage.seats_sold)
-            booked[voyage.flight_nr] = booking_status
-            
+            booked.append((voyage, booking_status))
         return booked
     
