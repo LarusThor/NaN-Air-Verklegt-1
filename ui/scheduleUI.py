@@ -102,5 +102,5 @@ class ScheduleUI:
         for voyage, destination in voyages:
             result += f"{voyage} to {destination} \n"
 
-        self.menus.print_the_info(title,result)       
+        self.menus.print_the_info(title, result)
         
