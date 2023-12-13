@@ -46,7 +46,6 @@ class AirplaneIO:
 
     def add_aircraft(self, aircraft) -> None:
         """ Adds an airplane to the system by writing it into the csv file about aircrafts. """
-        print("saving_files")
         with open('files/aircraft.csv', 'a', newline='', encoding="utf-8") as csvfile:
             fieldnames = ['plane_insignia','plane_type_id','manufacturer','model','capacity']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)

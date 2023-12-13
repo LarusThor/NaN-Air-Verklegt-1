@@ -86,10 +86,8 @@ class Main:
                         self.destinations_ui.add_destination()
 
                     case "4":
-                        action = self.destinations_ui.get_all_destinations()
-                        match action:
-                            case "1":
-                                self.destinations_ui.change_destination_info()
+                        self.destinations_ui.change_contact_info()
+
                             
 
             def employees() -> None:

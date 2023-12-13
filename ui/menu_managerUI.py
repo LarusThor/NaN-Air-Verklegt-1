@@ -104,5 +104,3 @@ class Menu():
         print(info)
         print()
         self.get_next_action()
-
-
