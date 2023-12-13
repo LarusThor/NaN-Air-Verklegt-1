@@ -1,6 +1,7 @@
 from itertools import chain
 from collections import defaultdict 
 from datetime import datetime
+from model.airplane_model import Airplane
 
 class AirplaneLL():
     def __init__(self, logic_wrapper) -> None:
