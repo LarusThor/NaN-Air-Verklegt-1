@@ -31,28 +31,10 @@ class UpcomingVoyageIO:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
             writer.writerow(asdict(upcoming_voyage))
-                # {
-                # 'id': upcoming_voyage.id, 
-                # 'flight_nr': upcoming_voyage.flight_nr, 
-                # 'dep_from': upcoming_voyage.dep_from, 
-                # 'arr_at': upcoming_voyage.arr_at, 
-                # 'departure': upcoming_voyage.departure, 
-                # 'arrival': upcoming_voyage.arrival, 
-                # 'aircraft_id': upcoming_voyage.aircraft_id,
-                # 'captain': upcoming_voyage.captain, 
-                # 'copilot': upcoming_voyage.copilot, 
-                # "seats_sold": upcoming_voyage.seats_sold,
-                # 'fsm': upcoming_voyage.fsm, 
-                # 'fa1': upcoming_voyage.fa1, 
-                # 'fa2': upcoming_voyage.fa2, 
-                # 'fa3': upcoming_voyage.fa3, 
-                # 'fa4':upcoming_voyage.fa4, 
-                # 'fa5':upcoming_voyage.fa5,
-                # 'seats_sold':upcoming_voyage.seats_sold
-                # })
             
 
     def add_staff_to_voyage(self, added_staff_to_voyage: UpcomingVoyage) -> None:
+        """ Updates voyage information to add staff to the voyage in the system. """
         voyage_list = self.read_upcoming_flights()
 
         for voyage_id, voyage in voyage_list.items():

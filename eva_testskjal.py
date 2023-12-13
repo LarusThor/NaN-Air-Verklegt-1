@@ -5,7 +5,7 @@ from logic.logic_wrapper import LogicWrapper
 
 
 logic = LogicWrapper()
-dt = date(2023,11,2)
+dt = date(2023, 11, 2)
 
 print(logic.employee_working(dt))
 
@@ -16,4 +16,3 @@ print(logic.employee_working(dt))
 # dt = date(2023, 11, 2)
 
 # print(sc.who_was_working(dt))
-

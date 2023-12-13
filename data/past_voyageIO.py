@@ -2,6 +2,7 @@ import csv
 from pathlib import Path
 from model.past_voyage_model import PastVoyage
 from datetime import datetime
+from dataclasses import asdict
 
 class PastVoyageIO:
     def read_past_flights(self) -> dict[str, PastVoyage]:
@@ -16,35 +17,3 @@ class PastVoyageIO:
                 past_flights_dict[id] = past_flight
 
         return past_flights_dict
-    
-
-    def add_past_voyage(self, past_flights) -> None:
-        """ Adds a past voyage to the system. """
-        file_path = Path('files/past_flights.csv')
-
-        fieldnames = ['flight_nr', 'dep_from', 'arr_at', 'departure', 'arrival', 'captain','copilot','fsm','fa1','fa2','fa3','fa4','fa5', "seats_sold"]
-
-        with open(file_path, 'w', newline='', encoding="utf-8") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-
-            for upcoming_flight in past_flights:
-                writer.writerow(
-                    {
-                    'flight_nr': upcoming_flight.flight_nr, 
-                     'dep_from': upcoming_flight.dep_from, 
-                     'arr_at': upcoming_flight.arr_at, 
-                     'departure': upcoming_flight.departure, 
-                     'arrival': upcoming_flight.arrival, 
-                     'captain': upcoming_flight.captain, 
-                     'copilot': upcoming_flight.copilot, 
-                     'fsm': upcoming_flight.fsm, 
-                     'fa1': upcoming_flight.fa1, 
-                     'fa2': upcoming_flight.fa2, 
-                     'fa3': upcoming_flight.fa3, 
-                     'fa4':upcoming_flight.fa4, 
-                     'fa5':upcoming_flight.fa5,
-                     "seats_sold":upcoming_flight.seats_sold
-                     })
-                
-    

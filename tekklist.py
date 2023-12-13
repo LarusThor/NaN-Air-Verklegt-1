@@ -19,3 +19,7 @@
 #endurnýta betur í UI
 #aldur má ekki vera mínus tala
 #Lárus og Fönn gera voyages by week/day fall in logic svo hægt sé að nota
+#getum við eytt add past voyage ??
+#tékka ÖÖÖÖLL föll og hvort við séum að nota þau einhversstaðar
+#gá hvort við getum notað bara annað fallið í destination IO og reworka 
+# takka létt low fi test 
