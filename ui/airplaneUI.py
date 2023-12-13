@@ -21,7 +21,7 @@ class AirplaneUI:
         self.validation = self.logic_wrapper.validation
 
 
-    def airplane(self) -> str:
+    def airplane(self) -> str: #1
         """ TODO: add docstring """
         self.menus.display_options(AIRPLANE_OPTIONS)
         action = str(input("Enter your action: ").lower())
@@ -60,6 +60,14 @@ class AirplaneUI:
         title = "{:<14} | {}".format("Airplane type", "Pilots")
         for keys, values in self.pilots_license.items():
             result += "{:<14} | {} \n".format(keys, ", ".join(sorted(values)))
+        self.menus.print_the_info(title, result)
+
+    def get_number_of_pilots_for_airplanes(self): # 1-1-1-3
+        """"TODO docstring"""
+        title = "Number of pilots that are qualified for each airplane type:"
+        result = ""
+        for key, value in self.pilots_license.items():
+            result += f"{key}: \n  {len(value)} licensed pilots.\n"
         self.menus.print_the_info(title, result)
 
 
@@ -119,7 +127,9 @@ class AirplaneUI:
 
     def most_used_airplane(self): # 1-3-1
         """ TODO: add docstring """
-        self.menus.print_the_info("The mose used airplane is:", self.airplane_usage[0])
+        title = "The mose used airplane is:"
+        result = f"{self.airplane_usage[0]} - {self.airplane_usage[1][self.airplane_usage[0]]} voyages"
+        self.menus.print_the_info(title, result)
 
 
     def flown_furthest_airplane(self): # 1-3-2
