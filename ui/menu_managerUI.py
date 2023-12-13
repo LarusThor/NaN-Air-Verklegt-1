@@ -87,17 +87,19 @@ class Menu():
         terminal_height = terminal_size.lines
 
         # Calculate the number of empty lines above and below the menu
-        empty_lines_above = (terminal_height - 6) // 2
-        empty_lines_below = terminal_height - 6 - empty_lines_above - 2
+        info_list = info.split("\n")
+        empty_lines_above = (terminal_height - len(info_list)) // 2
+        empty_lines_below = terminal_height - len(info_list) - empty_lines_above - 4
 
         # Print empty lines above the menu
         print("\n" * empty_lines_above)
 
         padding = (terminal_width) // 150
         print(title)
-        print(" " * padding + OUTLINE)
-        print(" " * padding + info)
-        print(" " * padding + OUTLINE)
+        print("" * padding + OUTLINE)
+        for item in info_list:
+            print(" " * padding + item)
+        print("\n" * empty_lines_below)
         self.get_next_action()
 
 
