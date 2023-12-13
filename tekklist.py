@@ -29,3 +29,4 @@
 # skoða validation í airplaneUI-add_airplane, getum ekki skrifað inn hvaða týpur eru í boði vegna þess að hvað gerist ef að það er bætt við týpu, þá mun hún ekki koma upp
 #EVA!!!!!, þarf að vera hægt að skoða total work hours fyrir ákveðinn employee, UI leyfir það ekki, vantar the option, input:4-2
 #EVA!! Þarf að biðja um flight number og date, flight num er ekki nóg til að finna flugið, krafa 12, input:6-1 
+# schedule þegar að maður er að skoða þá sem að voru að vinna á ákveðnum degi þá koma nöfnin hjá sumum oftar en einu sinni, laga það
