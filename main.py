@@ -1,6 +1,5 @@
 from ui.mainUI import Main
 
-test = Main()
+run_main = Main()
 
-test.input_prompt()
-
+run_main.input_prompt()

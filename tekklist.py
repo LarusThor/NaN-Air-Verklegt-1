@@ -5,4 +5,21 @@
 #commenta flókin kóða
 #hafa skýrsluna í samræmi við kóða
 #low fi testing hækka einkun
-#hafa feedback
+#Hafa feedback
+#change names of all python files to snake_case
+#breyta N/A í None í model klösunum
+#láta main ekki prentast strax
+#get how was not working
+#i í dest
+# 1-1-1-2 (H)ome/menu?
+# 3-2-1 ekki biðja um social ID tvisvar
+#eyða schedule IO??
+#eyða voyage IO
+#tengja data í gegnum 
+#endurnýta betur í UI
+#aldur má ekki vera mínus tala
+#Lárus og Fönn gera voyages by week/day fall in logic svo hægt sé að nota
+#getum við eytt add past voyage ??
+#tékka ÖÖÖÖLL föll og hvort við séum að nota þau einhversstaðar
+#gá hvort við getum notað bara annað fallið í destination IO og reworka 
+# takka létt low fi test 

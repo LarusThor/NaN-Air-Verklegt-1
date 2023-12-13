@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class Voyage:
     destination: str
@@ -15,13 +16,3 @@ class Voyage:
     available_seats: str
     status: str
     booking_status: str
-        
-
-#destination -> upcoming_flights.csv -> arr_at
-#departureDate -> upcoming_flights.csv -> departure
-#departureTimeFromIceland -> upcoming_flights.csv -> departure
-#arrivalDate -> upcoming_flights.csv -> arrival
-#arrivalTime -> upcoming_flights.csv -> arrival
-#flightNumberArrival -> upcoming_flights.csv -> flight_nr
-#flightNumberDeparture -> upcoming_flights.csv -> flight_nr
-#seatSales -> past_flights.csv -> seats_sold

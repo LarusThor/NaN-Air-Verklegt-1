@@ -1,5 +1,5 @@
 from ui.menu_managerUI import Menu
-from logic.LogicWrapper import LogicWrapper
+from logic.logic_wrapper import LogicWrapper
 from model.employee_model import Employee
 
 EMPLOYEES_OPTIONS = ["1. List employees - Alphabetical", "2. Employee information", "3. Add employee"]
@@ -9,25 +9,32 @@ CHANGE_EMPLOYEE_INFO_OPTIONS = ["1. Edit home address", "2. Edit phone number", 
 
 class EmployeeUI:
     def __init__(self) -> None:
+        """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
         self.all_employees_list = self.logic_wrapper.employee_list()
         self.pilot_list = self.logic_wrapper.pilot_list()
         self.flight_attendant_list = self.logic_wrapper.flight_attendant_list()
         self.employee_info = self.logic_wrapper.employee_info
+        self.validation = self.logic_wrapper.validation
+        
 
     def employees_options(self) -> str:
+        """ TODO: add docstring """
         self.menus.display_options(EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
+
     def list_employees_options(self) -> str:
+        """Prints out the options for witch tipe of employee list the user wants to see. Returns for the action input"""
         self.menus.display_options(LIST_EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
+
     def print_crew(self, crew_list) -> None:
-        """function used to print out a list"""
+        """Used to print out a list"""
         crew_list.sort()
         for person in crew_list:
             print(person)
@@ -39,43 +46,82 @@ class EmployeeUI:
         elif action == "r":
             None
 
+
     def get_pilots(self) -> None:
-        print()
-        print("All pilots:")
-        print("-"*15)
-        self.print_crew(self.pilot_list)
+        """Prints out a list of all the pilots"""
+        title = "All pilots:"
+        result = ""
+        for pilot in self.pilot_list:
+            result += pilot.name + "\n"
+        self.menus.print_the_info(title, result)
+
     
+
     def get_flight_attendants(self) -> None:
-        print()
-        print("All flight attendants:")
-        print("-"*15)
-        self.print_crew(self.flight_attendant_list)
+        """Prints out a list of all the flight attendants"""
+        title = "All flight attendants:"
+        result = ""
+        for person in self.flight_attendant_list:
+            result += person + "\n"
+        self.menus.print_the_info(title, result)
     
+
     def get_all_employees(self) -> None:
-        print()
-        print("All employees:")
-        print("-"*15)
-        self.print_crew(self.all_employees_list)
+        """Prints out a list of all the employees"""
+        title = "All employees:"
+        result = ""
+        for person in self.all_employees_list:
+            result += person + "\n"
+        self.menus.print_the_info(title, result)
+
 
     def get_most_experienced(self):
+        """ TODO: add docstring """
         pass
 
+
     def get_employee(self):
+        """Gets a social id number and returns that employee"""
         social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
-        print(employee)
+        return employee
+
 
     def employee_info_options(self) -> str:
+        """Prints out the options that come up when the user chooses to get the employees information.
+        And gets the action input from the user"""
         self.menus.display_options(EMPLOYEE_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())   
         return action 
 
-    def get_info(self, employee):
+
+    def get_info(self):
+        """Takes the social id of an employee and prints out their information"""
         social_id = str(input("Enter employee social ID: ")).strip()
+        while not self.validation.validate_social_ID(social_id):
+            print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
+            social_id = str(input("Enter employee social ID: ")).strip()
         employee = self.employee_info(social_id)
-        print(employee)
+        #spyrja um ef það er skrifað 10 digits en ekki retti employee
+        print()
+        print("Employee's information:")
+        print("-"*30)
+        print("{:<14}".format("Name:"), employee.name)
+        print("{:<14}".format("Social ID:"), employee.social_id)
+        print("{:<14}".format("Role:"), employee.role)
+        print("{:<14}".format("Rank:"), employee.rank)
+        print("{:<14}".format("Licence:"), employee.licence)
+        print("{:<14}".format("Email:"), employee.email)
+        print("{:<14}".format("Phone number:"), employee.phonenumber)
+        print("{:<14}".format("Home address:"), employee.home_address)
+        print("{:<14}".format("Landline:"), employee.landline)
+        print()
+        print("(H)ome  (B)ack")
+        action = input("Enter your action: ")
+
 
     def change_info_options(self):
+        """ TODO: add docstring """
         #TODO: robert hjálp
         employee = Employee(
             social_id="broseph",
@@ -90,24 +136,56 @@ class EmployeeUI:
              )
         self.logic_wrapper.change_employee_info(employee)
 
+
     def change_home_address(self):
+        """ TODO: add docstring """
         pass
+
 
     def change_phone_number(self):
+        """ TODO: add docstring """
         pass
     
+
     def change_email(self):
+        """ TODO: add docstring """
         pass
 
-    def add_employee(self): #define
-        print("Fill out the following informaation about the new employee:")
-        name = input("Name: ")
-        social_id = input("Social ID: ")
-        phone_number = input("Phone number: ")
-        email = input("Email: ")
-        home_address = input("Home adress: ")
 
+    def add_employee(self): #define
+        """ TODO: add docstring """
+        #TODO: rosa ljótt getum við stytt eða fegrað?
+        #TODO: skipta í fleir föll??
+        validation = self.logic_wrapper.validation
+        print("Fill out the following informaation about the new employee:")
         
+        name = input("Name: ").title()
+        while not validation.validate_name(name):
+            print("ERROR: Invalid name \nName has to be a string of length > 5. ")
+            name = input("Name: ").title()
+            continue
+        
+        social_id = input("Social ID: ")
+        while not validation.validate_social_ID(social_id):
+            print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
+            social_id = input("Social ID: ")
+ 
+        phone_number = input("Phone number: ")
+        while not validation.validate_number(phone_number):
+            print("ERROR: Invalid phone number \n Phone number should be 8 digits. ")
+            phone_number = input("Phone number: ")
+
+        email = input("Email: ")
+        while not validation.validate_email(email):
+            print("ERROR: Invalid email \n Email should include @ and a top level domain e.g. (.com/.org/.is)")
+            email = input("Email: ")
+
+        home_address = input("Home adress: ")
+        while not validation.validate_address(home_address):
+            print("ERROR: Invalid address \n Address should be a string and number")
+            home_address = input("Home adress: ")
+
+
         roles = ["Pilot","Cabincrew"]
         print("Role:\n1. Pilot\n2. Cabincrew")
         role = input()
@@ -118,7 +196,7 @@ class EmployeeUI:
         print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
         rank = input()
         while rank != "1" and rank != "2" and rank != "3" and rank != "4":
-            print("Invalid input! You can choose 1, 2, 3, or 4")
+            print("Invalid input! You can choose 1, 2, 3, or 4")#TODO: ætti frekar að vera í validation
             rank = input("Rank: ")
         if rank == "1" or rank == "2":
             licences = ["NAFokker100","NAFokkerF28","NABAE146"]
@@ -174,12 +252,13 @@ class EmployeeUI:
                 print()
                 self.logic_wrapper.add_employee(employee)   
 
+
         elif save_prompt == "n":
             print()
             print("New employee not saved.")
             print()
             print("(M)enu  (R)epeat")
-            action = str(input("Enter your action: ").lower())
+            action = str(input("Enter your action: ").lower())#TODO: validate
             if action == "m":
                 None
             elif action == "r":

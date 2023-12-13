@@ -1,12 +1,16 @@
-from data.data_wrapper import DataWrapper
-from dataclasses import asdict
-from model.past_voyage_model import PastVoyage
-
 class PastVoyageLL:
-    def __init__(self):
-        self.data_wrapper = DataWrapper()
+    def __init__(self, logic_wrapper):
+        """Instantiate a PastVoyageLL object.
 
-        self.past_voyages_dict = self.data_wrapper.get_past_flights()
+        Args:
+            logic_wrapper: The logic wrapper object that contains all logic layer objects.
+        """
+        self.logic = logic_wrapper
 
-    def get_past_voyages(self):
-        return self.past_voyages_dict
+
+    def get_past_voyages(self) -> dict:
+        """ TODO: add docstring"""
+        past_voyages_dict = self.logic.data_wrapper.get_past_flights()
+        
+        return past_voyages_dict
+    
