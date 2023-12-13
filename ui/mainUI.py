@@ -86,9 +86,18 @@ class Main:
                         self.destinations_ui.add_destination()
 
                     case "4":
-                        self.destinations_ui.change_destination_info()
+                        action = self.destinations_ui.select_info()
 
-                            
+                        match action:
+                            case "1":
+                                self.destinations_ui.change_destination_info()
+
+                            case "2":
+                                self.destinations_ui.change_contact_info()
+
+                            case "3":
+                                self.destinations_ui.change_airport_info()
+                                
 
             def employees() -> None:
                 """ TODO: add docstring """
@@ -162,7 +171,11 @@ class Main:
 
                     case "2":
                         employee = self.schedule_ui.get_employee()
-                        self.schedule_ui.get_schedule_for_employee(employee)
+                        action = self.schedule_ui.schedule_for_employee_options()
+                        
+                        match action:
+                            case "1":
+                                self.schedule_ui.get_schedule_for_employee(employee)
 
             def voyages() -> None:
                 """ TODO: add docstring """

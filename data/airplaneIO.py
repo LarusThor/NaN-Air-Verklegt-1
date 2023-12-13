@@ -6,7 +6,7 @@ class AirplaneIO:
     def aircraft_info(self) -> dict:
         """ Reads a csv file about the aircrafts and returns an aircraft dictionary. """
         airplane_dict = {}
-        with open("files/aircraft.csv", "r", newline='', encoding="utf-8") as f:
+        with open("files/aircraft.csv", "r", newline="", encoding="utf-8") as f:
             lines = f.readlines()
             for line in lines[1:]:
                 line = line.strip()
@@ -27,12 +27,12 @@ class AirplaneIO:
         """ Reads a csv file about airplane types and returns a list of airplane type models. """
         airplane_types = []
 
-        with open("files/aircraft_type.csv", "r", newline='', encoding="utf-8") as f:
+        with open("files/aircraft_type.csv", "r", newline="", encoding="utf-8") as f:
             lines = f.readlines()
-            header_names = lines[0].strip().split(',')
+            header_names = lines[0].strip().split(",")
             for line in lines[1:]:
                 line = line.strip()
-                values = line.split(',')
+                values = line.split(",")
                 args = {
                     argname: value 
                     for argname, value 
@@ -46,14 +46,14 @@ class AirplaneIO:
 
     def add_aircraft(self, aircraft) -> None:
         """ Adds an airplane to the system by writing it into the csv file about aircrafts. """
-        with open('files/aircraft.csv', 'a', newline='', encoding="utf-8") as csvfile:
-            fieldnames = ['plane_insignia','plane_type_id','manufacturer','model','capacity']
+        with open("files/aircraft.csv", "a", newline="", encoding="utf-8") as csvfile:
+            fieldnames = ["plane_insignia", "plane_type_id", "manufacturer", "model", "capacity"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
             writer.writerow(
-                {'plane_insignia': aircraft.plane_insignia, 
-                 'plane_type_id': aircraft.plane_type_id, 
-                 'manufacturer': aircraft.manufacturer, 
-                 'model': aircraft.model, 
-                 'capacity': aircraft.capacity
+                {"plane_insignia": aircraft.plane_insignia, 
+                 "plane_type_id": aircraft.plane_type_id, 
+                 "manufacturer": aircraft.manufacturer, 
+                 "model": aircraft.model, 
+                 "capacity": aircraft.capacity
                  })

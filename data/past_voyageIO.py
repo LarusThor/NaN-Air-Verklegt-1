@@ -8,7 +8,7 @@ class PastVoyageIO:
     def read_past_flights(self) -> dict[str, PastVoyage]:
         """ Returns a dictionary of all past flights from csv file. """
         past_flights_dict = {}
-        with open("files/past_flights.csv", "r", newline='', encoding="utf-8") as f:
+        with open("files/past_flights.csv", "r", newline="", encoding="utf-8") as f:
             lines = f.readlines()
             for line in lines[1:]:
                 line = line.strip()
