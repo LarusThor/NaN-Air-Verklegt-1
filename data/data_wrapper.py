@@ -7,6 +7,8 @@ from model.destination_model import Destination
 from model.past_voyage_model import PastVoyage
 from model.upcoming_voyage_model import UpcomingVoyage
 from model.airplane_type_model import AirplaneType
+from model.employee_model import Employee
+from model.airplane_model import Airplane
 
 class DataWrapper:
     def __init__(self):
@@ -95,12 +97,12 @@ class DataWrapper:
         return self.upcoming_flightIO.add_upcoming_voyage(upcoming_flight)
     
 
-    def add_staff(self, staff_to_voyage) -> None:
+    def add_staff(self, staff_to_voyage: Employee) -> None:
         """ Adds staff to a voyage. """
         return self.upcoming_flightIO.add_staff_to_voyage(staff_to_voyage)
     
 
-    def add_airplane(self, airplane) -> None:
+    def add_airplane(self, airplane: Airplane) -> None:
         """ Adds an airplane into the system. """
         return self.airplaneIO.add_aircraft(airplane)
     
