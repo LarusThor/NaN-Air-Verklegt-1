@@ -133,6 +133,7 @@ class VoyagesUI:
         captain_check = False
         copilot_check = False
         flight_service_manager_check = False
+        flight_attendant_check = False
 
         return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
         voyage_flight_number_info = self.logic_wrapper.upcoming_voyages().values()
@@ -185,26 +186,55 @@ class VoyagesUI:
                                 print(f"Flight service manager {flight_service_manager} not available on between {voyages_info.departure} and {return_flight_arrival}")
                                 flight_service_manager_check = False
                     else:
-                        print(f"{flight_service_manager} is not a Flight ervice manager")  
+                        print(f"{flight_service_manager} is not a Flight service manager")  
 
                 flight_attendants = []
-                add_flight_attendant = input("Enter social id of an additional flight attendant: ")
+                
+                while not flight_attendant_check:
+                    add_flight_attendant = input("Enter social id of an additional flight attendant: ")
+                    
+                    
+                    if add_flight_attendant == "":
+                        for i in range(5):
+                            flight_attendants.append("N/A")
+                    
+                    else:
+                            if employee_information[add_flight_attendant].rank == "Flight Attendant":
+                                if self.logic_wrapper.staff_availability_check(add_flight_attendant, voyages_info.departure, return_flight_arrival) == 0:
+                                    flight_attendants = [add_flight_attendant]
+                                    flight_attendant_check = True
+                                else:
+                                    print(f"Flight Attendant {flight_service_manager} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                                    flight_attendant_check = False
 
-                if add_flight_attendant == "":
-                    for i in range(5):
-                        flight_attendants.append("N/A")
-                else:
-                    flight_attendants = [add_flight_attendant]
+                            else:
+                                print(f"{add_flight_attendant} is not a Flight Attendant")
+                                flight_attendant_check = False
+    
+
                 while add_flight_attendant:
+                    flight_attendant_check = False
                     if len(flight_attendants) < 5:
-                        add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                        if add_flight_attendant == "": 
-                            unstaffed = 5 - len(flight_attendants)
-                            for flight_attendant in range(unstaffed):
-                                flight_attendants.append("N/A")
+                        while not flight_attendant_check:
+                            add_flight_attendant = input("Enter social id of an additional flight attendant: ")
+                            if add_flight_attendant == "": 
+                                unstaffed = 5 - len(flight_attendants)
+                                for flight_attendant in range(unstaffed):
+                                    flight_attendants.append("N/A")
 
-                        else:
-                            flight_attendants.append(add_flight_attendant)
+                            else:
+                                if employee_information[add_flight_attendant].rank == "Flight Attendant":
+                                    if self.logic_wrapper.staff_availability_check(add_flight_attendant, voyages_info.departure, return_flight_arrival) == 0:
+                                        flight_attendants.append(add_flight_attendant)
+                                        flight_attendant_check = True
+
+                                    else:
+                                        print(f"Flight Attendant {flight_service_manager} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                                        flight_attendant_check = False
+
+                                else:
+                                    print(f"{add_flight_attendant} is not a Flight Attendant")
+                                    flight_attendant_check = False
 
                 assert len(flight_attendants) == 5
 
