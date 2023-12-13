@@ -3,7 +3,7 @@ from logic.logic_wrapper import LogicWrapper
 from model.destination_model import Destination
 
 
-DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Destination information"]
+DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Change destination information"]
 
 
 
