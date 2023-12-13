@@ -12,12 +12,12 @@ class EmployeeUI:
         """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
-        self.all_employees_list = self.logic_wrapper.employee_list()
+        #self.all_employees_list = self.logic_wrapper.employee_list()
         self.pilot_list = self.logic_wrapper.pilot_list()
         self.flight_attendant_list = self.logic_wrapper.flight_attendant_list()
-        self.employee_info = self.logic_wrapper.employee_info
+        #self.employee_info = self.logic_wrapper.employee_info
         self.validation = self.logic_wrapper.validation
-        
+
 
     def employees_options(self) -> str:
         """ TODO: add docstring """
@@ -68,22 +68,19 @@ class EmployeeUI:
 
     def get_all_employees(self) -> None:
         """Prints out a list of all the employees"""
+        employees = self.logic_wrapper.employee_list()
         title = "All employees:"
         result = ""
-        for person in self.all_employees_list:
+        for person in employees:
             result += person + "\n"
         self.menus.print_the_info(title, result)
 
 
-    def get_most_experienced(self):
-        """ TODO: add docstring """
-        pass
-
-
     def get_employee(self):
         """Gets a social id number and returns that employee"""
+        employee_info = self.logic_wrapper.employee_info
         social_id = str(input("Enter employee social ID: ")).strip()
-        employee = self.employee_info(social_id)
+        employee = employee_info(social_id)
         return employee
 
 
@@ -97,12 +94,13 @@ class EmployeeUI:
 
     def get_info(self):
         """Takes the social id of an employee and prints out their information"""
+        employee_info = self.logic_wrapper.employee_info
         social_id = str(input("Enter employee social ID: ")).strip()
         while not self.validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
             social_id = str(input("Enter employee social ID: ")).strip()
-        employee = self.employee_info(social_id)
-        #spyrja um ef það er skrifað 10 digits en ekki retti employee
+        employee = employee_info(social_id)
+        #TODO: spyrja um ef það er skrifað 10 digits en ekki retti employee
         print()
         print("Employee's information:")
         print("-"*30)
@@ -120,36 +118,165 @@ class EmployeeUI:
         action = input("Enter your action: ")
 
 
+
     def change_info_options(self):
-        """ TODO: add docstring """
-        #TODO: robert hjálp
-        employee = Employee(
-            social_id="broseph",
-            name="44",
-            role="test_role",
-            rank="test_rank",
-            licence="f",
-            email="f@f.f",
-            phonenumber="0.5",
-            home_address="bruh street 69",
-            landline="??"
-             )
-        self.logic_wrapper.change_employee_info(employee)
-
-
-    def change_home_address(self):
-        """ TODO: add docstring """
-        pass
-
-
-    def change_phone_number(self):
-        """ TODO: add docstring """
-        pass
+        """ Changes employees information. 
+        Not name or social ID """
+        social_id = self.get_social_id()
+        employee = self.logic_wrapper.employee_info(social_id)
+        print(employee.social_id)
+        
+        #setting up variables so we can change or not change them
+        social_id=employee.social_id
+        name=employee.name
+        role=employee.role
+        rank=employee.rank
+        licence=employee.licence
+        email=employee.email
+        phonenumber=employee.phonenumber
+        home_address=employee.home_address
+        landline=employee.landline
     
 
-    def change_email(self):
-        """ TODO: add docstring """
-        pass
+        #options to change
+        options = f"""
+            1: Change role
+            2: Change rank and license
+            3: Change email
+            4: Change mobile number
+            5. Change address
+            6. Change landline
+
+            Any other to quit
+
+        """
+
+
+
+        action = input(f"Select an option: {options} \n" ).lower().strip()
+        while action != "d":
+            match action:
+                case "1":
+                    role = self.choose_role()
+
+                case "2":
+                    rank, licence = self.choose_rank_and_licence()
+
+                case "3":
+                    email = self.get_email()
+
+                case "4":
+                    phonenumber = self.get_phone_nr()
+
+                case "5":
+                    home_address = self.get_address()
+
+                case "6":
+                    landline = self.get_phone_nr()
+
+                case _:
+                    break
+
+
+
+            action = input(f"Select an option: {options} \n" ).lower().strip()
+        
+        employee = Employee(
+            social_id = social_id,
+            name=name, 
+            role=role,
+            rank=rank,
+            licence=licence,
+            email=email,
+            phonenumber=phonenumber,
+            home_address=home_address,
+            landline=landline,
+            )
+        
+        print(employee)
+
+        self.logic_wrapper.change_employee_info(employee)
+
+    def choose_role(self):
+        roles = {
+            "1": "Pilot",
+            "2": "Cabincrew"
+            }
+        
+        print("Role:\n1. Pilot\n2. Cabincrew")
+        role_choice = input()
+        
+        while role_choice != "1" and role_choice != "2":
+            print("Invalid input! You can choose 1, 2")
+            role_choice = input("Role: ")
+        role = roles[role_choice]
+        
+        return role
+    
+
+    def get_phone_nr(self):
+        phone_number = input("Phone number: ")
+        while not self.validation.validate_number(phone_number):
+            print("ERROR: Invalid phone number \n Phone number should be 8 digits. ")
+            phone_number = input("Phone number: ")
+        return phone_number
+    
+
+    def get_email(self):
+        email = input("Email: ")
+        while not self.validation.validate_email(email):
+            print("ERROR: Invalid email \n Email should include @ and a top level domain e.g. (.com/.org/.is)")
+            email = input("Email: ")
+        return email
+    
+    def get_address(self):
+        home_address = input("Home adress: ")
+        while not self.validation.validate_address(home_address):
+            print("ERROR: Invalid address \n Address should be a string and number")
+            home_address = input("Home adress: ")
+        return home_address
+    
+    def choose_rank_and_licence(self):
+        ranks = { #TODO: laga þetta er harðkóðað
+            "1": "Captain", 
+            "2": "Copilot", 
+            "3": "Flight Service Manager", 
+            "4": "Flight Attendant"
+            }
+        
+        print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
+        rank_choice = input().strip()
+
+        while rank_choice != "1" and rank_choice != "2" and rank_choice != "3" and rank_choice != "4":
+            print("Invalid input! You can choose 1, 2, 3, or 4")#TODO: ætti frekar að vera í validation
+            rank = input("Rank: ")
+        
+        rank = ranks[rank_choice]
+
+        if rank_choice == "1" or rank_choice == "2":
+            licences = { #TODO: laga þetta er harðkóðað
+                "1" : "NAFokker100",
+                "2" : "NAFokkerF28",
+                "3" : "NABAE146"
+                }
+            
+            print("Licenses:\n1. NAFokker100\n2. NAFokkerF28\n3. NABAE146",)
+            licence_choice = input()
+            licence = licences[licence_choice]
+        else:
+            licence = "N/A"
+
+        return rank, licence
+    
+    def get_social_id(self):
+        social_id = input("Social ID: ")
+        while not self.validation.validate_social_ID(social_id):
+            print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
+            social_id = input("Social ID: ")
+
+        return social_id
+
+
 
 
     def add_employee(self): #define
@@ -165,50 +292,23 @@ class EmployeeUI:
             name = input("Name: ").title()
             continue
         
-        social_id = input("Social ID: ")
-        while not validation.validate_social_ID(social_id):
-            print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
-            social_id = input("Social ID: ")
+        social_id = self.get_social_id()
  
-        phone_number = input("Phone number: ")
-        while not validation.validate_number(phone_number):
-            print("ERROR: Invalid phone number \n Phone number should be 8 digits. ")
-            phone_number = input("Phone number: ")
+        phone_number = self.get_phone_nr()
 
-        email = input("Email: ")
-        while not validation.validate_email(email):
-            print("ERROR: Invalid email \n Email should include @ and a top level domain e.g. (.com/.org/.is)")
-            email = input("Email: ")
+        email = self.get_email()
 
-        home_address = input("Home adress: ")
-        while not validation.validate_address(home_address):
-            print("ERROR: Invalid address \n Address should be a string and number")
-            home_address = input("Home adress: ")
+        home_address = self.get_address()
 
+        role = self.choose_role()
+     
+        rank, license = self.choose_rank_and_licence()
 
-        roles = ["Pilot","Cabincrew"]
-        print("Role:\n1. Pilot\n2. Cabincrew")
-        role = input()
-        while role != "1" and role != "2":
-            print("Invalid input! You can choose 1, 2")
-            role = input("Role: ")
-        ranks = ["Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]
-        print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
-        rank = input()
-        while rank != "1" and rank != "2" and rank != "3" and rank != "4":
-            print("Invalid input! You can choose 1, 2, 3, or 4")#TODO: ætti frekar að vera í validation
-            rank = input("Rank: ")
-        if rank == "1" or rank == "2":
-            licences = ["NAFokker100","NAFokkerF28","NABAE146"]
-            print("Licenses:\n1. NAFokker100\n2. NAFokkerF28\n3. NABAE146",)
-            licence = input()
-        else:
-            licence = "N/A"
         optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
         if optional_landline == "y":
             landline = input("Landline number: ")
         else:
-            landline = None
+            landline = "N/A"
 
         print("New employee:")
         print("Name:", name)
@@ -216,9 +316,9 @@ class EmployeeUI:
         print("Phone number:", phone_number)
         print("Email:", email)
         print("Home adress:", home_address)
-        print("Role:", roles[int(role) - 1])
-        print("Rank:", ranks[int(rank) - 1])
-        print("License:", licences[int(licence) - 1])
+        print("Role:", role)
+        print("Rank:", rank)
+        print("License:", license)
         print("Landline number:", landline)
 
         # TODO
@@ -228,7 +328,7 @@ class EmployeeUI:
             phonenumber=phone_number,
             role=role, 
             rank=rank,
-            licence=licence,
+            licence=license,
             email=email,
             home_address=home_address,
             landline=landline
