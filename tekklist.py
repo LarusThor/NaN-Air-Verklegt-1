@@ -22,3 +22,4 @@
 #getum við eytt add past voyage ??
 #tékka ÖÖÖÖLL föll og hvort við séum að nota þau einhversstaðar
 #gá hvort við getum notað bara annað fallið í destination IO og reworka 
+# takka létt low fi test 
