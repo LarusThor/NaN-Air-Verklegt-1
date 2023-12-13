@@ -17,7 +17,7 @@ class EmployeeIO:
         return employee_dict
 
 
-    def write_employees(self, employees: list[Employee]):
+    def write_employees(self, employees: list[Employee]) -> None:
         """ Updates crew csv file. """
         file_path = Path("files/crew.csv")
 
