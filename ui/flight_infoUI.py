@@ -26,7 +26,7 @@ class FlightInfoUI:
 
     def get_date(self) -> str:
         """ TODO: add docstring """
-        date = input("Enter date; day/month/year: ") 
+        date = input("Enter date; year-month-day: ")
         return date 
          
 

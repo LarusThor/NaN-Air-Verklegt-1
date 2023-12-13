@@ -140,11 +140,11 @@ class DestinationsUI:
 
             self.logic_wrapper.update_contact_info(dest)
 
-    '''destination_id: str
+    """destination_id: str
     destination: str
     emergency_contact_name: str
     emergency_contact_number: str
     airport_name: str
     distance_from_iceland: str
     estimated_flight_time: str
-'''
+"""

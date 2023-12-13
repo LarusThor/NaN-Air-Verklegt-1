@@ -20,7 +20,7 @@ class ScheduleLL():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
             
             if employee in workers and weeks == week_nr:
-                if year in flight.departure.strftime('%Y-%m-%d %H:%M:%S'):
+                if year in flight.departure.strftime("%Y-%m-%d %H:%M:%S"):
                     flights.append(f"{flight.flight_nr} to {flight.arr_at}")
 
         name = self.logic.employee_info(employee)
@@ -48,7 +48,7 @@ class ScheduleLL():
             if date_working in dates:
                 workers_on_day.extend(workers)
         
-        return [self.logic.employee_info(s_id) for s_id in workers_on_day if s_id != 'N/A'] #TODO: laga na bull very ugley
+        return [self.logic.employee_info(s_id) for s_id in workers_on_day if s_id != "N/A"] #TODO: laga na bull very ugley
     
 
     def employee_not_working(self, date_not_working: date) -> set[Employee]:
