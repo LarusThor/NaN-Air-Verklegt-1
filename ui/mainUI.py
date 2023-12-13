@@ -86,10 +86,8 @@ class Main:
                         self.destinations_ui.add_destination()
 
                     case "4":
-                        action = self.destinations_ui.get_all_destinations()
-                        match action:
-                            case "1":
-                                self.destinations_ui.change_destination_info()
+                        self.destinations_ui.change_destination_info()
+
                             
 
             def employees() -> None:
@@ -202,8 +200,9 @@ class Main:
                         voyage_number = self.voyages_ui.get_voyage_flight_number()
                         voyage_date = self.voyages_ui.get_voyage_date()
                         self.voyages_ui.manager_staffs_voyage(voyage_number, voyage_date)
-                        return_voyage_number, return_voyage_date = self.logic_wrapper.voyage_info_for_return_flight(voyage_number, voyage_date)
-                        self.voyages_ui.manager_staffs_voyage(return_voyage_number, return_voyage_date)
+                        # return_voyage_number, return_voyage_date = self.logic_wrapper.voyage_info_for_return_flight(voyage_number, voyage_date)
+                        # return_voyage_date = return_voyage_date.strftime("%Y-%m-%d")
+                        # self.voyages_ui.manager_staffs_voyage(return_voyage_number, return_voyage_date)
 
                     case "4":
                         self.voyages_ui.staff_voyage()

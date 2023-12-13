@@ -9,18 +9,14 @@ CHANGE_EMPLOYEE_INFO_OPTIONS = ["1. Edit home address", "2. Edit phone number", 
 
 class EmployeeUI:
     def __init__(self) -> None:
-        """ TODO: add docstring """
+        """Instantiate a EmployeeUI object."""
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
-        #self.all_employees_list = self.logic_wrapper.employee_list()
-        self.pilot_list = self.logic_wrapper.pilot_list()
-        self.flight_attendant_list = self.logic_wrapper.flight_attendant_list()
-        #self.employee_info = self.logic_wrapper.employee_info
         self.validation = self.logic_wrapper.validation
 
 
     def employees_options(self) -> str:
-        """ TODO: add docstring """
+        """ Displays options for information and actions about employees. """
         self.menus.display_options(EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
@@ -47,9 +43,10 @@ class EmployeeUI:
 
     def get_pilots(self) -> None:
         """Prints out a list of all the pilots"""
+        pilot_list = self.logic_wrapper.pilot_list()
         title = "All pilots:"
         result = ""
-        for pilot in self.pilot_list:
+        for pilot in pilot_list:
             result += pilot.name + "\n"
         self.menus.print_the_info(title, result)
 
@@ -57,9 +54,10 @@ class EmployeeUI:
 
     def get_flight_attendants(self) -> None:
         """Prints out a list of all the flight attendants"""
+        flight_attendant_list = self.logic_wrapper.flight_attendant_list()
         title = "All flight attendants:"
         result = ""
-        for person in self.flight_attendant_list:
+        for person in flight_attendant_list:
             result += person + "\n"
         self.menus.print_the_info(title, result)
     
@@ -84,7 +82,8 @@ class EmployeeUI:
 
     def employee_info_options(self) -> str:
         """Prints out the options that come up when the user chooses to get the employees information.
-        And gets the action input from the user"""
+        And gets the action input from the user
+        """
         self.menus.display_options(EMPLOYEE_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())   
         return action 
@@ -113,13 +112,14 @@ class EmployeeUI:
         print("{:<14}".format("Landline:"), employee.landline)
         print()
         print("(H)ome  (B)ack")
-        action = input("Enter your action: ")
+        action = input("Enter your action: ") #TODO: er ekki tengt í neitt
 
 
 
     def change_info_options(self):
         """ Changes employees information. 
-        Not name or social ID """
+        Not name or social ID 
+        """
         social_id = self.get_social_id()
         employee = self.logic_wrapper.employee_info(social_id)
         print(employee.social_id)
@@ -134,7 +134,6 @@ class EmployeeUI:
         phonenumber=employee.phonenumber
         home_address=employee.home_address
         landline=employee.landline
-    
 
         #options to change
         options = f"""
@@ -148,8 +147,6 @@ class EmployeeUI:
             Any other to quit
 
         """
-
-
 
         action = input(f"Select an option: {options} \n" ).lower().strip()
         while action != "d":
@@ -175,8 +172,6 @@ class EmployeeUI:
                 case _:
                     break
 
-
-
             action = input(f"Select an option: {options} \n" ).lower().strip()
         
         employee = Employee(
@@ -195,7 +190,9 @@ class EmployeeUI:
 
         self.logic_wrapper.change_employee_info(employee)
 
+
     def choose_role(self):
+        """User chooses a role for employee."""
         roles = {
             "1": "Pilot",
             "2": "Cabincrew"
@@ -213,6 +210,7 @@ class EmployeeUI:
     
 
     def get_phone_nr(self):
+        """User inputs a phone number for employee."""
         phone_number = input("Phone number: ")
         while not self.validation.validate_number(phone_number):
             print("ERROR: Invalid phone number \n Phone number should be 7 digits. ")
@@ -221,20 +219,25 @@ class EmployeeUI:
     
 
     def get_email(self):
+        """User inputs email for employee"""
         email = input("Email: ")
         while not self.validation.validate_email(email):
             print("ERROR: Invalid email \n Email should include @ and a top level domain e.g. (.com/.org/.is)")
             email = input("Email: ")
         return email
     
+
     def get_address(self):
+        """User inputs an address for employee."""
         home_address = input("Home adress: ")
         while not self.validation.validate_address(home_address):
             print("ERROR: Invalid address \n Address should be a string")
             home_address = input("Home adress: ")
         return home_address
     
+
     def choose_rank_and_licence(self):
+        """User chooses rank and licence for employee."""
         ranks = { #TODO: laga þetta er harðkóðað
             "1": "Captain", 
             "2": "Copilot", 
@@ -266,7 +269,9 @@ class EmployeeUI:
 
         return rank, licence
     
+
     def get_social_id(self):
+        """Gets a social id number from the user"""
         social_id = input("Social ID: ")
         while not self.validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
@@ -276,9 +281,7 @@ class EmployeeUI:
 
 
     def add_employee(self): #define
-        """ TODO: add docstring """
-        #TODO: rosa ljótt getum við stytt eða fegrað?
-        #TODO: skipta í fleir föll??
+        """Allows user to add an employee to the system."""
         validation = self.logic_wrapper.validation
         print("Fill out the following informaation about the new employee:")
         
@@ -301,7 +304,7 @@ class EmployeeUI:
 
         optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
         if optional_landline == "y":
-            landline = input("Landline number: ")
+            landline = self.get_phone_nr()
         else:
             landline = "N/A"
 

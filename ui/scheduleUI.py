@@ -8,20 +8,19 @@ SCHEDULE_FOR_A_DAY_OPTIONS = ["1. See who was working", "2. See who was not work
 
 class ScheduleUI:
     def __init__(self) -> None:
-        """ TODO: add docstring """
         self.menus = Menu()
         self.logic_wrapper = LogicWrapper()
 
 
     def schedule_options(self) -> str:
-        """ TODO: add docstring """
+        """Shows the options the user can choose from when they choose schedule from the main menu"""
         self.menus.display_options(SCHEDULE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
 
     def get_schedule_by_day(self) -> str:
-        """ TODO: add docstring """
+        """TODO: add docsting"""
         date_input = input("Input date (year/month/day): ").strip()
         date_format = "%Y/%m/%d"
         a_date = datetime.strptime(date_input, date_format)
@@ -61,8 +60,8 @@ class ScheduleUI:
 
     def get_schedule_for_employee(self, employee):
         """ TODO: add docstring """
-        year = int(input("Enter year: "))
-        week = int(input("Enter week: "))
+        year = input("Enter year: ")
+        week = input("Enter week: ")
         print(self.logic_wrapper.employee_schedule_by_week(employee, year, week))
 
         

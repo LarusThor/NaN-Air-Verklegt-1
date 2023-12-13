@@ -3,11 +3,7 @@ from datetime import datetime
 
 class ValidationLL():
     def __init__(self) -> None:
-        """Instantiate a ValidationLL object.
-
-        Args:
-            logic_wrapper: The logic wrapper object that contains all logic layer objects.
-        """
+        """Instantiate a ValidationLL object."""
 
     #employee
     def validate_name(self, name: str) -> bool:

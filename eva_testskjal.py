@@ -3,10 +3,14 @@ from ui.scheduleUI import ScheduleUI
 from datetime import date,datetime
 from logic.logic_wrapper import LogicWrapper
 
+#kemur aldrei upp að þau séu að vinna í vikunni
+
 
 logic = LogicWrapper()
 
-print(logic.employee_info("1234567899"))
+employee = logic.employee_info("2410876598")
+
+print(logic.employee_schedule_by_week(employee.social_id, "2023", "44"))
 
 # ma = Main()
 # sc = ScheduleUI()
