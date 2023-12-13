@@ -213,6 +213,8 @@ class VoyagesUI:
     
 
                 while add_flight_attendant:
+                    if len(flight_attendants) == 5:
+                        add_flight_attendant = ""
                     flight_attendant_check = False
                     if len(flight_attendants) < 5:
                         while not flight_attendant_check:
