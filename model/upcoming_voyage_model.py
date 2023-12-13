@@ -5,7 +5,7 @@ from datetime import datetime
 UNSTAFFED = 'N/A'
 @dataclass
 class UpcomingVoyage:
-    id: str
+    id: int
     flight_nr: str
     dep_from: str
     arr_at: str
