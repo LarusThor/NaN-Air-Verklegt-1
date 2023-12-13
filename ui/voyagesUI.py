@@ -112,6 +112,7 @@ class VoyagesUI:
 
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight1)
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight2)
+            print("saving_files")
 
         elif save_prompt == "n":
             print("New voyage was not saved.")

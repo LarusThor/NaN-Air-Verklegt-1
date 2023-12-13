@@ -23,7 +23,6 @@ class UpcomingVoyageIO:
 
     def add_upcoming_voyage(self, upcoming_voyage) -> None:
         """ Adds an upcoming voyage to the system. """
-        print("saving_files")
         file_path = Path('files/upcoming_flights.csv')
 
         with open(file_path, 'a', newline='', encoding="utf-8") as csvfile:
