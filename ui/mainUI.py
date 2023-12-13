@@ -170,14 +170,14 @@ class Main:
                                 self.schedule_ui.get_how_was_not_working(date)
 
                     case "2":
-                        employee = self.schedule_ui.get_employee()
                         action = self.schedule_ui.schedule_for_employee_options()
                         
                         match action:
                             case "1":
+                                employee = self.schedule_ui.get_employee()
                                 self.schedule_ui.get_schedule_for_employee(employee)
                             case "2":
-                                self.schedule_ui.get_total_hours_worked(employee)
+                                self.schedule_ui.get_total_hours_worked()
 
             def voyages() -> None:
                 """ TODO: add docstring """
