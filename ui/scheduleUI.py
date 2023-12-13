@@ -85,14 +85,14 @@ class ScheduleUI:
 
 
         print(f"Choose what dates to see {employee.name}'s work schedule for.")
-        print("Start of time period. ")
+        print("\nStart of time period. ")
         start_date = self.get_datetime()
-        print("End of time period. ")
+        print("\nEnd of time period. ")
         end_date = self.get_datetime()
 
 
         voyages, hours = self.logic_wrapper.total_hours_worked(employee, start_date, end_date)
-        print(f"{employee.name} worked {hours} hours within {start_date.date()} - {end_date.date()}")
+        print(f"\n{employee.name} worked {hours} hours within {start_date.date()} - {end_date.date()}")
         print(f"Voyages worked by {employee.name}: ")
         for voyage, destination in voyages:
             print(f"{voyage} to {destination}")
