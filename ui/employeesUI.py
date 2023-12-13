@@ -29,7 +29,7 @@ class EmployeeUI:
         return action
 
 
-    def print_crew(self, crew_list) -> None:
+    def print_crew(self, crew_list: list) -> None:
         """Used to print out a list"""
         crew_list.sort()
         for person in crew_list:
@@ -72,7 +72,7 @@ class EmployeeUI:
         self.menus.print_the_info(title, result)
 
 
-    def get_employee(self):
+    def get_employee(self) -> Employee:
         """Gets a social id number and returns that employee"""
         employee_info = self.logic_wrapper.employee_info
         social_id = str(input("Enter employee social ID: ")).strip()
@@ -89,7 +89,7 @@ class EmployeeUI:
         return action 
 
 
-    def get_info(self):
+    def get_info(self) -> None:
         """Takes the social id of an employee and prints out their information"""
         employee_info = self.logic_wrapper.employee_info
         social_id = str(input("Enter employee social ID: ")).strip()
@@ -116,7 +116,7 @@ class EmployeeUI:
 
 
 
-    def change_info_options(self):
+    def change_info_options(self) -> None:
         """ Changes employees information. 
         Not name or social ID 
         """
@@ -191,7 +191,7 @@ class EmployeeUI:
         self.logic_wrapper.change_employee_info(employee)
 
 
-    def choose_role(self):
+    def choose_role(self) -> str:
         """User chooses a role for employee."""
         roles = {
             "1": "Pilot",
@@ -209,7 +209,7 @@ class EmployeeUI:
         return role
     
 
-    def get_phone_nr(self):
+    def get_phone_nr(self) -> str:
         """User inputs a phone number for employee."""
         phone_number = input("Phone number: ")
         while not self.validation.validate_number(phone_number):
@@ -218,7 +218,7 @@ class EmployeeUI:
         return phone_number
     
 
-    def get_email(self):
+    def get_email(self) -> str:
         """User inputs email for employee"""
         email = input("Email: ")
         while not self.validation.validate_email(email):
@@ -227,7 +227,7 @@ class EmployeeUI:
         return email
     
 
-    def get_address(self):
+    def get_address(self) -> str:
         """User inputs an address for employee."""
         home_address = input("Home adress: ")
         while not self.validation.validate_address(home_address):
@@ -236,7 +236,7 @@ class EmployeeUI:
         return home_address
     
 
-    def choose_rank_and_licence(self):
+    def choose_rank_and_licence(self) -> None:
         """User chooses rank and licence for employee."""
         airplane_types = self.logic_wrapper.airplane_types()
         ranks = { #TODO: laga þetta er harðkóðað
@@ -271,7 +271,7 @@ class EmployeeUI:
         return rank, licence
     
 
-    def get_social_id(self):
+    def get_social_id(self) -> str:
         """Gets a social id number from the user"""
         social_id = input("Social ID: ")
         while not self.validation.validate_social_ID(social_id):
@@ -281,7 +281,7 @@ class EmployeeUI:
         return social_id
 
 
-    def add_employee(self): #define
+    def add_employee(self) -> None:
         """Allows user to add an employee to the system."""
         validation = self.logic_wrapper.validation
         print("Fill out the following informaation about the new employee:")
@@ -363,3 +363,10 @@ class EmployeeUI:
             elif action == "r":
                 print()
                 self.logic_wrapper.add_employee(employee)
+
+    def get_most_experienced(self) -> None: #TODO ef að það er fleiri en ein manneskja
+        most_exper = self.logic_wrapper.get_most_experienced_employee()
+        name, voyages = most_exper[0][0], most_exper[0][1]
+        title = "The most experienced employee:"
+        result = f"{name} has gone on {int(voyages)} voyages."
+        self.menus.print_the_info(title, result)

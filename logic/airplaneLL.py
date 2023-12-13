@@ -1,5 +1,7 @@
 from itertools import chain
 from collections import defaultdict 
+from datetime import datetime
+from model.airplane_model import Airplane
 
 class AirplaneLL():
     def __init__(self, logic_wrapper) -> None:
@@ -10,6 +12,8 @@ class AirplaneLL():
         """
         self.logic = logic_wrapper
 
+    def get_airplanes_info_overview(self):
+        return self.logic.get_airplanes()
 
     def get_furthest_flown_plane(self) -> tuple[str, int]:
         """ Returns the plane that has flown the furthest"""
@@ -81,7 +85,7 @@ class AirplaneLL():
         return most_popular, airplane_dict
           
     
-    def add_airplane(self, airplane) -> None:
+    def add_airplane(self, airplane: Airplane) -> None:
         """ Adds airplane to the system. """
         self.logic.data_wrapper.add_airplane(airplane)
         
@@ -103,6 +107,38 @@ class AirplaneLL():
                 pilots_by_license[license_key] = [pilot_name]
 
         return pilots_by_license
+    
+    def get_total_future_hours_for_airplane(self, plane_insignia: str, start: datetime, end: datetime) -> tuple[list[str], float]:
+        """Returns total hours an employee has worked."""
+        #TODO: laga listann af voyages: fáum bara fyrstu 10
+        total_hours_flown = 0
+        upcoming_voyage_dict = self.logic.upcoming_voyages()
+        airplane = self.logic.get_airplanes_info_overview()
+
+        for flight in upcoming_voyage_dict.values():
+            workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
+
+            if airplane.plane_insignia not in workers:
+                continue
+            
+            arrival = flight.arrival
+            departure = flight.departure
+
+            if arrival > end or departure < start:
+                continue
+
+            if arrival > end:
+                arrival = end
+
+            if departure < start:
+                departure = start
+
+            flown_hours = (arrival - departure).total_seconds() / 3600
+            
+            total_hours_flown += flown_hours
+
+        return total_hours_flown
+    
     
 
     def airplane_insignia_by_type(self) -> dict:

@@ -11,6 +11,8 @@ from model.past_voyage_model import PastVoyage
 from model.upcoming_voyage_model import UpcomingVoyage
 from logic.validationLL import ValidationLL
 from logic.flight_informationLL import FlightInformationLL
+from model.destination_model import Destination
+from model.airplane_model import Airplane
 
 class LogicWrapper():
     def __init__(self) -> None:
@@ -26,6 +28,10 @@ class LogicWrapper():
 
 
     #Employee:
+    def show_employee_info(self):
+        return self.employee.employee_info_overview()
+
+
     def employee_list(self)  -> list[str]:
         """ Returns a list of all employees. """
         return self.employee.get_employee_dict()
@@ -41,7 +47,7 @@ class LogicWrapper():
         return self.employee.get_flight_attendants()
 
 
-    def add_employee(self, employee) -> None:
+    def add_employee(self, employee: Employee) -> None:
          """ Adds employee to the system. """
          return self.employee.add_employee(employee)
     
@@ -68,13 +74,15 @@ class LogicWrapper():
     def get_total_future_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
         """Returns hours to be worked by an employee for a specific time frame."""
         return self.employee.get_total_future_hours_worked(employee, start, end)
-    
+
+    def get_most_experienced_employee(self) -> list[tuple]:
+        return self.employee.get_most_experienced_employee()
 
     #Destinations:
-    def destination_info_list(self):
+    def destination_info_list(self) -> dict:
         return self.destination.get_destination_info_list()
 
-    def only_destinations(self):
+    def only_destinations(self) -> list:
         return self.destination.get_only_destinations()
 
     def destination_list(self) -> list:
@@ -82,7 +90,7 @@ class LogicWrapper():
         return self.destination.get_destination_list()
     
     
-    def add_destination(self, destination) -> None:
+    def add_destination(self, destination: Destination) -> None:
         """ Takes in a customer object and forwards it to the data layer. """
         return self.destination.add_destination(destination)
 
@@ -102,21 +110,24 @@ class LogicWrapper():
         return self.destination.distance_from_iceland()
     
 
-    def update_destination_info(self, destination):
+    def update_destination_info(self, destination: Destination) -> None:
         return self.destination.change_destination_info(destination)
     
 
-    def update_contact_info(self, destination):
+    def update_contact_info(self, destination: Destination) -> None:
         return self.destination.update_contact_info(destination)
     
 
     #Airplanes:
+    def get_airplanes_info_overview(self):
+        return self.airplane.get_airplanes_info_overview()
+
     def airplane_types(self) -> set:
         """ Returns all airplane types within the system. """
         return self.airplane.get_all_airplane_types()
     
 
-    def add_airplane(self, airplane) -> None:
+    def add_airplane(self, airplane: Airplane) -> None:
         """ Adds airplane to the system. """
         return self.airplane.add_airplane(airplane)
     
@@ -135,8 +146,12 @@ class LogicWrapper():
         return self.airplane.airplane_insignia_by_type()
     
 
-    def airplane_usage(self):
+    def airplane_usage(self) -> tuple[str, dict]:
         return self.airplane.get_airplane_usage()
+    
+    
+    def get_total_future_hours_for_airplane(self, plane_insignia: str, start: datetime, end: datetime):
+        return self.airplane.get_total_future_hours_for_airplane(plane_insignia, start, end)
 
 
     #Upcoming voyages:
@@ -145,12 +160,12 @@ class LogicWrapper():
         return self.list_upcoming_voyage.get_upcoming_voyages()
     
 
-    def add_upcoming_voyages(self, upcoming_voyage) -> None:
+    def add_upcoming_voyages(self, upcoming_voyage: UpcomingVoyage) -> None:
         """ Adds a new voyage to the system. """
         return self.list_upcoming_voyage.add_upcoming_voyage(upcoming_voyage)
 
 
-    def check_pilot_qualifications(self, aircraft_id, pilot) -> bool:
+    def check_pilot_qualifications(self, aircraft_id: str, pilot) -> bool:
         """ Verifies a pilots qualifications. """
         return self.list_upcoming_voyage.valid_pilot(aircraft_id, pilot)
     
@@ -160,11 +175,11 @@ class LogicWrapper():
         return self.list_upcoming_voyage.calculate_flight_time(arr_at, departure_date_time)
     
 
-    def add_staff_to_voyage(self, added_staff):
+    def add_staff_to_voyage(self, added_staff) -> None:
         return self.list_upcoming_voyage.add_staff_for_voyage(added_staff)
 
 
-    def voyage_info_for_return_flight(self, voyage_flight_number, voyage_date):
+    def voyage_info_for_return_flight(self, voyage_flight_number, voyage_date) -> tuple:
         return self.list_upcoming_voyage.detect_voyage_info_return_flight(voyage_flight_number, voyage_date)
     
     

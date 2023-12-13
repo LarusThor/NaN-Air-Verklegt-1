@@ -24,13 +24,19 @@ class FlightInfoUI:
         return flight_number
          
 
-    def get_flight_status(self): #define
+    def get_flight_status(self) -> None: #define
         """ Returns a list of upcoming voyages and their booking status. """
         flights = self.logic_wrapper.flight_fully_booked()
-
-        print("Flight status: \n")
+        title = f"Flight status: \n{'-'*70}\n{'Departure date':<16} {'Flight number':<15} {'Flight destination':<20} {'Flight status':<15}"
+        result = ""
         for flight, status in flights:
+            date =str(flight.departure.date())
             if status == "Booked":
-                print(f"{flight.departure.date()} - {flight.flight_nr} to {flight.arr_at} = {status}")
+                booked = "Fully booked!"
+                result += f"{date:^16} {flight.flight_nr:^15} {flight.arr_at:^20} {booked}\n"
+                
             else:
-                print(f"{flight.departure.date()} - {flight.flight_nr} to {flight.arr_at} = {status} seats left.")
+                result += f"{date:^16} {flight.flight_nr:^15} {flight.arr_at:^20} {status:<3} seats left\n"
+
+
+        self.menus.print_the_info(title, result)

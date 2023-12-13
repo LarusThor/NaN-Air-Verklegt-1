@@ -11,7 +11,7 @@ from model.employee_model import Employee
 from model.airplane_model import Airplane
 
 class DataWrapper:
-    def __init__(self):
+    def __init__(self) -> None:
         self.employeeIO = EmployeeIO()
         self.destinationIO = DestinationIO()
         self.airplaneIO = AirplaneIO()
@@ -28,7 +28,7 @@ class DataWrapper:
         return self.employeeIO.read_employee()
     
 
-    def write_employees(self, employees) -> None:
+    def write_employees(self, employees: list[Employee]) -> None:
         """ Both adds a new employee to the system, and allows to change employees information. """
         return self.employeeIO.write_employees(employees)
     
@@ -55,7 +55,7 @@ class DataWrapper:
         return self.destinationIO.read_all_destinations()
     
 
-    def add_destinations(self, destination) -> None:
+    def add_destinations(self, destination: Destination) -> None:
         """ Adds a destination to the system. """
         return self.destinationIO.add_destination(destination)
    
@@ -81,7 +81,7 @@ class DataWrapper:
         return self.past_flightIO.read_past_flights()
 
 
-    def add_past_flights(self, past_flight) -> None:
+    def add_past_flights(self, past_flight: PastVoyage) -> None:
         """ Adds a past flight into the system. """
         return self.past_flightIO.add_past_voyage(past_flight)
     
@@ -92,7 +92,7 @@ class DataWrapper:
         return self.upcoming_flightIO.read_upcoming_flights()
     
 
-    def add_upcoming_flights(self, upcoming_flight) -> None:
+    def add_upcoming_flights(self, upcoming_flight: UpcomingVoyage) -> None:
         """ Adds an upcoming flight to the system. """
         return self.upcoming_flightIO.add_upcoming_voyage(upcoming_flight)
     

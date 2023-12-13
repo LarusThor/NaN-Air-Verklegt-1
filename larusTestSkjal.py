@@ -12,7 +12,7 @@ class AirplaneLL():
         self.upcoming_voyage_list = self.data_wrapper.get_upcoming_flights() #TODO: tengja frekar við hinn logic?
         self.pilots = self.emlployees.get_all_pilots()
 
-    def airplane_insignia_by_type(self):
+    def airplane_insignia_by_type(self) -> dict:
             """ Dictionary which sorts airplanes in use by their types """
             airplanes_by_type_dict = dict()
 

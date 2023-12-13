@@ -28,7 +28,7 @@ class AirplaneUI:
         return action
     
 
-    def get_pilots_for_a_specific_type(self): # 1-1-1-1
+    def get_pilots_for_a_specific_type(self) -> None: # 1-1-1-1
         airplane_type = input("Enter an airplane type: ")# TODO has to be validated
         while not self.validation.validate_aircraft_by_specific_type(airplane_type):
             print("ERROR: Invalid airplane type \nPlease write a airplane type. ")
@@ -54,7 +54,7 @@ class AirplaneUI:
         return action
     
 
-    def list_pilots_by_licanse(self): # 1-1-1-2
+    def list_pilots_by_licanse(self) -> None: # 1-1-1-2
         """ TODO: add docstring """
         result = ""
         title = "{:<14} | {}".format("Airplane type", "Pilots")
@@ -62,7 +62,7 @@ class AirplaneUI:
             result += "{:<14} | {} \n".format(keys, ", ".join(sorted(values)))
         self.menus.print_the_info(title, result)
 
-    def get_number_of_pilots_for_airplanes(self): # 1-1-1-3
+    def get_number_of_pilots_for_airplanes(self) -> None: # 1-1-1-3
         """"TODO docstring"""
         title = "Number of pilots that are qualified for each airplane type:"
         result = ""
@@ -130,14 +130,14 @@ class AirplaneUI:
         return action
 
 
-    def most_used_airplane(self): # 1-3-1
+    def most_used_airplane(self) -> None: # 1-3-1
         """ TODO: add docstring """
         title = "The mose used airplane is:"
         result = f"{self.airplane_usage[0]} - {self.airplane_usage[1][self.airplane_usage[0]]} voyages"
         self.menus.print_the_info(title, result)
 
 
-    def flown_furthest_airplane(self): # 1-3-2
+    def flown_furthest_airplane(self) -> None: # 1-3-2
         """ TODO: add docstring """
         title = "The airplane that has flown the furthest:"
         result = f"Airplane name: {self.flown_furthest[0]} - Distance: {self.flown_furthest[1]}km."

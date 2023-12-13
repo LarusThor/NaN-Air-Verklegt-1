@@ -31,3 +31,6 @@
 #EVA!! Þarf að biðja um flight number og date, flight num er ekki nóg til að finna flugið, krafa 12, input:6-1 
 #EVA, þarf að vera hægt að skoða total work hours fyrir ákveðinn employee, UI leyfir það ekki, vantar the option 
 #get most experinced virkar ekki
+#breyta svo að föllin í UI heita ekki get heldur print - erum ekki að ná í neitti
+#eyða employee info overview fallinu í logic wrapper
+# employee dict heitir óvart list
