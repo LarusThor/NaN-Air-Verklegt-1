@@ -86,7 +86,7 @@ class Main:
                         self.destinations_ui.add_destination()
 
                     case "4":
-                        self.destinations_ui.change_contact_info()
+                        self.destinations_ui.change_destination_info()
 
                             
 
