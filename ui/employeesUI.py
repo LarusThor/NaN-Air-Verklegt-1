@@ -363,3 +363,12 @@ class EmployeeUI:
             elif action == "r":
                 print()
                 self.logic_wrapper.add_employee(employee)
+
+    def get_most_experienced(self): #TODO ef að það er fleiri en ein manneskja
+        most_exper = self.logic_wrapper.get_most_experienced_employee()
+        name, voyages = most_exper[0][0], most_exper[0][1]
+        title = "The most experienced employee:"
+        result = f"{name} has gone on {int(voyages)} voyages."
+        self.menus.print_the_info(title, result)
+
+
