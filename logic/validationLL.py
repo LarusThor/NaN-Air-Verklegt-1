@@ -5,14 +5,6 @@ class ValidationLL():
     def __init__(self) -> None:
         """Instantiate a ValidationLL object."""
 
-    # menu manager
-    def get_next_action(self, action):
-        """Takes the input from the user from the get_next_action function in the Menu class. Checks if it b or q.
-        Return true if it is b or q and false if it is something else."""
-        if action == "b" or action == "q":
-            return True
-        else:
-            return False
 
     #employee
     def validate_name(self, name: str) -> bool:
