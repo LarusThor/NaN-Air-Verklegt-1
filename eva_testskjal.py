@@ -7,14 +7,23 @@ from ui.flight_infoUI import FlightInfoUI
 
 #kemur aldrei upp að þau séu að vinna í vikunni
 
-
-
-sc = ScheduleUI()
-fi = FlightInfoUI()
 logic = LogicWrapper()
+airplane_types = logic.airplane_types()
+licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
+print(licences)
+
+print("Licenses:")
+for index, license in licences.items():
+    print(f"{index}. {license}")
+    #print(f"{license.keys()}. {licence.values()}")
 
 
-print(fi.get_flight_status_by_voyage())
+# sc = ScheduleUI()
+# fi = FlightInfoUI()
+
+# print(logic.airplane_types())
+
+#print(fi.get_flight_status_by_voyage())
 #print(fi.get_flight_status_by_voyage())
 
 # ma = Main()
