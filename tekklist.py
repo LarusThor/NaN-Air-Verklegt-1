@@ -24,3 +24,4 @@
 #gá hvort við getum notað bara annað fallið í destination IO og reworka 
 # takka létt low fi test 
 # skoða concistency eins og í hvernig notendur eiga að skrá inn dates
+#EVA!!!!!!!!!!! emplyees sem eru working, segja hvaða flug þau eru working
