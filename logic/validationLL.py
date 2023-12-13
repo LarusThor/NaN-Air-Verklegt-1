@@ -20,7 +20,7 @@ class ValidationLL():
         try:
             if len(socialID) == 10:
                 return True
-        except :# chacha error todo value error eða keky error
+        except :# chacha error todo value error eða key error
             return False
 
 
@@ -42,7 +42,6 @@ class ValidationLL():
     
     
     def validate_address(self, address: str) -> bool:
-        """ TODO: add docstring """
         try: 
             if len(address) >= 3:
                 return True
@@ -70,24 +69,22 @@ class ValidationLL():
             return False
         
     def validate_manafacturer_name(self,manufacturer_name: str) -> bool:
-        if "Fokker" in manufacturer_name and "BAE" in manufacturer_name:
+        if "Fokker" in manufacturer_name or "BAE" in manufacturer_name:
             #virkar ekki fyrir Fokker og BAe
             return True
         else:
             return False
         
     def validate_model_name(self,model_name) -> bool:
-        if "F100" in model_name and "F28" in model_name and "146" in model_name:
+        if "F100" in model_name or "F28" in model_name or "146" in model_name:
             return True
         else:
             return False
         
-    def validate_number_of_seats(self, number_of_seats: str) -> bool:
-        """ TODO: add docstring """
-        try: 
-            if len(number_of_seats) <= 110 and len(number_of_seats) >= 84:
-                return True
-        except:
+    def validate_number_of_seats(self, number_of_seats) -> bool:
+        if len(number_of_seats) <= 110 and len(number_of_seats) >= 84:
+            return True
+        else:
             return False
         
         
