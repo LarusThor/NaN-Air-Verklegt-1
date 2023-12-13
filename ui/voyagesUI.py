@@ -135,7 +135,7 @@ class VoyagesUI:
             departure_date = voyages_info.departure.strftime("%Y-%m-%d")
             if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
                 
-                aircraft_id = input("Enter a valid aircraft: ")
+                aircraft_id = "TF-EPG" #er a valid aircraft: ")
                 captain = input("Enter captain's social id: ")
 
                 if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain):
