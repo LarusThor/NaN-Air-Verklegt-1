@@ -16,7 +16,7 @@ MAIN_MENU_OPTIONS = [
     "3. Employees",
     "4. Schedule",
     "5. Voyages",
-    "6. Flight information",
+    "6. Flight status",
 ]
 
 
@@ -289,17 +289,12 @@ class Main:
                     case "4":
                         self.voyages_ui.staff_voyage()
 
-            def flight_information() -> None:
-                """TODO: add docstring"""
-                action = self.flight_info.flight_info_options()
-                match action:
-                    case "1":
-                        voyage = self.flight_info.get_voyage()
-                        self.flight_info.get_flight_status_by_voyage(voyage)
+            def flight_status() -> None:
+                """If the user chooses to see the flight information. This function calls a function in the flight information UI
+                 and will print out a table that shows the flight status."""
+                
+                self.flight_info.get_flight_status()
 
-                    case "2":
-                        date = self.flight_info.get_date()
-                        self.flight_info.get_flight_status_by_date(date)
 
             options = {
                 "1": airplane,
@@ -307,6 +302,6 @@ class Main:
                 "3": employees,
                 "4": schedule,
                 "5": voyages,
-                "6": flight_information,
+                "6": flight_status,
             }
             options[action]()

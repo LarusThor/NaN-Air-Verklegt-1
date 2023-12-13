@@ -238,6 +238,7 @@ class EmployeeUI:
 
     def choose_rank_and_licence(self):
         """User chooses rank and licence for employee."""
+        airplane_types = self.logic_wrapper.airplane_types()
         ranks = { #TODO: laga þetta er harðkóðað
             "1": "Captain", 
             "2": "Copilot", 
@@ -255,13 +256,13 @@ class EmployeeUI:
         rank = ranks[rank_choice]
 
         if rank_choice == "1" or rank_choice == "2":
-            licences = { #TODO: laga þetta er harðkóðað
-                "1" : "NAFokker100",
-                "2" : "NAFokkerF28",
-                "3" : "NABAE146"
-                }
+            # A dictionary of all the airplane types, updates if new airplane type is added
+            licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
+
+            print("Licenses:")
+            for index, license in licences.items():
+                print(f"{index}. {licence}")
             
-            print("Licenses:\n1. NAFokker100\n2. NAFokkerF28\n3. NABAE146",)
             licence_choice = input()
             licence = licences[licence_choice]
         else:
