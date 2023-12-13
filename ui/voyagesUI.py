@@ -136,7 +136,7 @@ class VoyagesUI:
             departure_date = voyages_info.departure.strftime("%Y-%m-%d")
             if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
                 aircraft_id = input("Enter a valid aircraft: ")
-                captain = input("Enter captain's social id: ")
+                captain = input("Enter captain social id: ")
 
                 if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain):
                     pass
@@ -263,7 +263,7 @@ class VoyagesUI:
         print(VOYAGE_HEADER)
         print("=" * 130)
         for flight_values in self.logic_wrapper.upcoming_voyages().values():
-            if date in flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):
+            if date in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
                 print(
                     f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}",
                     end="\n",
@@ -282,7 +282,7 @@ class VoyagesUI:
         print("=" * 130)
         for flight_values in self.logic_wrapper.upcoming_voyages().values():
             weeks = str(flight_values.departure.isocalendar().week)
-            if year in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
+            if year in flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):
                 if weeks == week_nr:
                     print(
                         f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}",
@@ -302,7 +302,7 @@ class VoyagesUI:
         print(VOYAGE_HEADER)
         print("=" * 130)
         for flight_values in self.logic_wrapper.get_past_voyages().values():
-            if date in flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):
+            if date in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
                 print(
                     f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}",
                     end="\n",
@@ -339,7 +339,7 @@ class VoyagesUI:
                     )
                     voyage_counter += 1
 
-                    # Comment this - what's happening here
+                    # Comment this - what"s happening here
                     if voyage_counter == 2:
                         voyage_counter = 0
                         print("-" * 130)

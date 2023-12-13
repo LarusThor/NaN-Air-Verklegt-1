@@ -122,11 +122,11 @@ class DestinationsUI:
             if value.destination_id == id:
                 print(f"ID: {value.destination_id}\nDestination: {value.destination}\nEmergency contact name: {value.emergency_contact_name}\nEmergency contact number: {value.emergency_contact_number}\nAirport name: {value.airport_name}\nDistance from iceland: {value.distance_from_iceland}\nEstimated flight time: {value.estimated_flight_time}")
 
-    '''destination_id: str
+    """destination_id: str
     destination: str
     emergency_contact_name: str
     emergency_contact_number: str
     airport_name: str
     distance_from_iceland: str
     estimated_flight_time: str
-'''
+"""

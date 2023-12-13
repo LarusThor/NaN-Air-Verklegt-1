@@ -9,7 +9,7 @@ class UpcomingVoyageIO:
     def read_upcoming_flights(self) -> dict[str, UpcomingVoyage]:
         """ Returns a dictionary of all upcoming fligths from the csv file. """
         upcoming_flights_dict = {}
-        with open("files/upcoming_flights.csv", "r", newline='', encoding="utf-8") as f:
+        with open("files/upcoming_flights.csv", "r", newline="", encoding="utf-8") as f:
             lines = f.readlines()
             for line in lines[1:]:
                 line = line.strip()
@@ -23,10 +23,10 @@ class UpcomingVoyageIO:
 
     def add_upcoming_voyage(self, upcoming_voyage) -> None:
         """ Adds an upcoming voyage to the system. """
-        file_path = Path('files/upcoming_flights.csv')
+        file_path = Path("files/upcoming_flights.csv")
 
-        with open(file_path, 'a', newline='', encoding="utf-8") as csvfile:
-            fieldnames = ['id','flight_nr', 'dep_from', 'arr_at', 'departure', 'arrival', 'aircraft_id', 'captain','copilot','fsm','fa1','fa2','fa3','fa4','fa5',"seats_sold"]
+        with open(file_path, "a", newline="", encoding="utf-8") as csvfile:
+            fieldnames = ["id","flight_nr", "dep_from", "arr_at", "departure", "arrival", "aircraft_id", "captain","copilot","fsm","fa1","fa2","fa3","fa4","fa5","seats_sold"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
             writer.writerow(asdict(upcoming_voyage))
@@ -44,30 +44,10 @@ class UpcomingVoyageIO:
         else:
             raise ValueError("Voyage does not exist")
         
-        with open('files/upcoming_flights.csv', 'w', newline='', encoding="utf-8") as csvfile:
-            fieldnames = ['id','flight_nr', 'dep_from', 'arr_at', 'departure', 'arrival', 'aircraft_id', 'captain','copilot','fsm','fa1','fa2','fa3','fa4','fa5',"seats_sold"]
+        with open("files/upcoming_flights.csv", "w", newline="", encoding="utf-8") as csvfile:
+            fieldnames = ["id", "flight_nr", "dep_from", "arr_at", "departure", "arrival", "aircraft_id", "captain", "copilot", "fsm", "fa1", "fa2", "fa3", "fa4", "fa5", "seats_sold"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             
             for voyage in voyage_list.values():
                 writer.writerow(asdict(voyage))
-                    #         ({'id': voyage.id,
-                    # 'flight_nr': voyage.flight_nr, 
-                    # 'dep_from': voyage.dep_from, 
-                    # 'arr_at': voyage.arr_at, 
-                    # 'departure': voyage.departure, 
-                    # 'arrival': voyage.arrival, 
-                    # 'captain': voyage.captain, 
-                    # 'copilot': voyage.copilot,
-                    # 'aircraft_id': 
-                    # 'fsm': voyage.fsm, 
-                    # 'fa1': voyage.fa1, 
-                    # 'fa2': voyage.fa2, 
-                    # 'fa3': voyage.fa3, 
-                    # 'fa4':voyage.fa4, 
-                    # 'fa5':voyage.fa5,
-                    # 'seats_sold':voyage.seats_sold
-                    #  })
-    
-   
-    

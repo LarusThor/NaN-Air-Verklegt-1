@@ -99,7 +99,7 @@ class EmployeeUI:
         employee = employee_info(social_id)
         #TODO: spyrja um ef það er skrifað 10 digits en ekki retti employee
         print()
-        print("Employee's information:")
+        print("Employee information:")
         print("-"*30)
         print("{:<14}".format("Name:"), employee.name)
         print("{:<14}".format("Social ID:"), employee.social_id)
