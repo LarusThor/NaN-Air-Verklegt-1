@@ -134,7 +134,6 @@ class VoyagesUI:
             # TODO: just get this as a variable, dont reassign the attribute
             departure_date = voyages_info.departure.strftime("%Y-%m-%d")
             if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
-                
                 aircraft_id = input("Enter a valid aircraft: ")
                 captain = input("Enter captain's social id: ")
 
@@ -173,7 +172,8 @@ class VoyagesUI:
                 for flight_attendant in flight_attendants:
                     print("Flight Attendant:", flight_attendant)
                         
-    
+                return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
+
                 save_prompt = input(f"Would you like to add this staff to the voyage {voyage_flight_number}, (y)es or (n)o? ")
                 if save_prompt == "y":
 
@@ -197,27 +197,27 @@ class VoyagesUI:
                     
 
                     #TODO: Change return flight staff aswell
-                    # upcoming_voyage_staff_return_flight = UpcomingVoyage(
+                    upcoming_voyage_staff_return_flight = UpcomingVoyage(
 
-                    #     id=(int(voyages_info.id) + 1),
-                    #     flight_nr=voyages_info.flight_nr,
-                    #     dep_from=voyages_info.dep_from,
-                    #     arr_at=voyages_info.arr_at,
-                    #     departure=voyages_info.departure,
-                    #     arrival=voyages_info.arrival,
-                    #     aircraft_id=voyages_info.aircraft_id,
-                    #     captain=captain,
-                    #     copilot=copilot,
-                    #     fsm=flight_service_manager,
-                    #     fa1=flight_attendants[0],
-                    #     fa2=flight_attendants[1],
-                    #     fa3=flight_attendants[2], 
-                    #     fa4=flight_attendants[3],
-                    #     fa5=flight_attendants[4]
-                    #)
+                        id=return_flight_id,
+                        flight_nr=return_flight_number,
+                        dep_from=return_flight_dep_from,
+                        arr_at=return_flight_arr_at,
+                        departure=return_flight_date_departure,
+                        arrival=return_flight_arrival,
+                        aircraft_id=voyages_info.aircraft_id,
+                        captain=captain,
+                        copilot=copilot,
+                        fsm=flight_service_manager,
+                        fa1=flight_attendants[0],
+                        fa2=flight_attendants[1],
+                        fa3=flight_attendants[2], 
+                        fa4=flight_attendants[3],
+                        fa5=flight_attendants[4]
+                    )
 
                     self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_first_flight)
-                    # self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_return_flight)
+                    self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_return_flight)
                     print("Voyage has been staffed!")
 
         # if len(flight_attendants) < 5:
