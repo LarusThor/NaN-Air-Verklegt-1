@@ -31,7 +31,6 @@ class FlightInfoUI:
         result = ""
         for flight, status in flights:
             date =str(flight.departure.date())
-            print(type(date))
             if status == "Booked":
                 booked = "Fully booked!"
                 result += f"{date:^16} {flight.flight_nr:^15} {flight.arr_at:^20} {booked}\n"
