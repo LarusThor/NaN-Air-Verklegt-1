@@ -9,7 +9,7 @@ class ValidationLL():
             logic_wrapper: The logic wrapper object that contains all logic layer objects.
         """
 
-
+    #employee
     def validate_name(self, name: str) -> bool:
         """ Validates name input. """
         #TODO:
@@ -24,7 +24,7 @@ class ValidationLL():
         try:
             if len(socialID) == 10:
                 return True
-        except Exception:# chacha error todo value error eða keky error
+        except :# chacha error todo value error eða keky error
             return False
 
 
@@ -33,7 +33,7 @@ class ValidationLL():
         try:
             if len(number) == 7:
                 return True
-        except Exception:
+        except :
             return False
 
 
@@ -50,7 +50,7 @@ class ValidationLL():
         try: 
             if len(address) >= 3:
                 return True
-        except Exception:
+        except :
             return False
         
     def validate_print_crew(self, list_crew: str) -> bool:
@@ -58,6 +58,40 @@ class ValidationLL():
         if "m" in list_crew and "r" in list_crew:
             return True
         else:
+            return False
+        
+    #airplanes   
+    def validate_aircraft_by_specific_type(self,aircraft_specific_type) -> bool:
+        if "NA" in aircraft_specific_type:
+            return True
+        else:
+            return False
+        
+    def validate_airplane_name(self,aircraft_name) -> bool:
+        if "TF" in aircraft_name and "-" in aircraft_name:
+            return True
+        else:
+            return False
+        
+    def validate_manafacturer_name(self,manufacturer_name) -> bool:
+        if "Fokker" in manufacturer_name and "BAE" in manufacturer_name:
+            #virkar ekki fyrir Fokker og BAe
+            return True
+        else:
+            return False
+        
+    def validate_model_name(self,model_name) -> bool:
+        if "F100" in model_name and "F28" in model_name and "146" in model_name:
+            return True
+        else:
+            return False
+        
+    def validate_number_of_seats(self, number_of_seats: str) -> bool:
+        """ TODO: add docstring """
+        try: 
+            if len(number_of_seats) <= 110:
+                return True
+        except:
             return False
         
     

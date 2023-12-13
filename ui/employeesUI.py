@@ -160,29 +160,28 @@ class EmployeeUI:
         print("Fill out the following informaation about the new employee:")
         
         name = input("Name: ").title()
-        while not validation.validate_name(name):
-            print("ERROR: Invalid name \nName has to be a string of length > 5. ")
+        while not self.validation.validate_name(name):
+            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
             name = input("Name: ").title()
-            continue
         
         social_id = input("Social ID: ")
-        while not validation.validate_social_ID(social_id):
+        while not self.validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
             social_id = input("Social ID: ")
  
         phone_number = input("Phone number: ")
-        while not validation.validate_number(phone_number):
-            print("ERROR: Invalid phone number \n Phone number should be 8 digits. ")
+        while not self.validation.validate_number(phone_number):
+            print("ERROR: Invalid phone number \n Phone number should be 7 digits. ")
             phone_number = input("Phone number: ")
 
         email = input("Email: ")
-        while not validation.validate_email(email):
+        while not self.validation.validate_email(email):
             print("ERROR: Invalid email \n Email should include @ and a top level domain e.g. (.com/.org/.is)")
             email = input("Email: ")
 
         home_address = input("Home adress: ")
-        while not validation.validate_address(home_address):
-            print("ERROR: Invalid address \n Address should be a string and number")
+        while not self.validation.validate_address(home_address):
+            print("ERROR: Invalid address \n Address should be a string")
             home_address = input("Home adress: ")
 
 
