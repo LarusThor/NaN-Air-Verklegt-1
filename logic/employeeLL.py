@@ -136,3 +136,27 @@ class EmployeeLL:
             total_hours += work_hours
 
         return total_hours
+    
+
+    def get_most_experienced_employee(self) -> list[tuple]:
+        """ Returns the employee that's gone on the most voyages. """
+        voyage_counts = dict()
+        max_list = list()
+        voyage_list = self.logic.get_all_voyages()
+        for voyage in voyage_list.values():
+            workers = [voyage.captain, voyage.copilot, voyage.fsm, voyage.fa1, voyage.fa2, voyage.fa3, voyage.fa4, voyage.fa5]
+            for worker in workers:
+                if worker != "N/A":
+                    if worker in voyage_counts:
+                        voyage_counts[worker] += 0.5
+                    else:
+                        voyage_counts[worker] = 0.5
+        
+        max_value = max(voyage_counts.values())
+
+        for employee, count in voyage_counts.items():
+            if count == max_value:
+                max_list.append((employee, count))
+   
+
+        return(max_list)
