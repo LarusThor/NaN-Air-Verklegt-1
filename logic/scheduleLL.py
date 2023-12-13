@@ -29,27 +29,48 @@ class ScheduleLL():
         else:
             return f"{name.name} is not scheduled for any flights in week {week_nr}!"
         
+
+    # def employee_working(self, date_working: date) -> list[Employee]:
+    #     """ Returns a list of all employees working on a specific day. """    
+    #     #TODO: simplify
+    #     past_voyage_list = self.logic.get_past_voyages()
+    #     upcoming_voyage_list = self.logic.upcoming_voyages()
+    #     workers_on_day = []
+    #     voyage_list = list(past_voyage_list.values()) + list(upcoming_voyage_list.values())
+    #     #a_date = datetime.strptime(date, "%Y-%m-%d").date()
+
+    #     for flight in voyage_list:
+    #         workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
+    #         departure_date = flight.departure.date()
+    #         arrival_date = flight.arrival.date()
+    #         dates = [departure_date, arrival_date]
+            
+    #         if date_working in dates:
+    #             workers_on_day.extend(workers)
         
+    #     return [self.logic.employee_info(s_id) for s_id in workers_on_day if s_id != 'N/A'] #TODO: laga na bull very ugley
+
     def employee_working(self, date_working: date) -> list[Employee]:
-        """ Returns a list of all employees working on a specific day. """    
-        #TODO: simplify
+
+        employee_dict = self.logic.data_wrapper.get_all_staff_members()
         past_voyage_list = self.logic.get_past_voyages()
         upcoming_voyage_list = self.logic.upcoming_voyages()
-        workers_on_day = []
-        voyage_list = list(past_voyage_list.values()) + list(upcoming_voyage_list.values())
-        #a_date = datetime.strptime(date, "%Y-%m-%d").date()
+        all_workers = set()
+        all_workers.update(employee_dict)
 
-        for flight in voyage_list:
+        workers_on_day = set()
+        voyage_list = past_voyage_list | upcoming_voyage_list
+
+        for flight in voyage_list.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
             departure_date = flight.departure.date()
             arrival_date = flight.arrival.date()
             dates = [departure_date, arrival_date]
-            
             if date_working in dates:
-                workers_on_day.extend(workers)
-        
-        return [self.logic.employee_info(s_id) for s_id in workers_on_day if s_id != "N/A"] #TODO: laga na bull very ugley
-    
+                workers_on_day.update(workers)
+
+        return [self.logic.employee_info(s_id) for s_id in workers_on_day if s_id != 'N/A']
+  
 
     def employee_not_working(self, date_not_working: date) -> set[Employee]:
         """Returns a list of all eployees not working on a specific day. 

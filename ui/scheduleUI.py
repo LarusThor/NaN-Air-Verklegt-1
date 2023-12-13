@@ -13,7 +13,6 @@ class ScheduleUI:
         self.logic_wrapper = LogicWrapper()
         # self.employee_schedule_by_week = self.logic_wrapper.employee_schedule_by_week()
 
-
     def schedule_options(self) -> str:
         """Shows the options the user can choose from when they choose schedule from the main menu"""
         self.menus.display_options("Schedule:", SCHEDULE_OPTIONS)
@@ -33,14 +32,12 @@ class ScheduleUI:
         action = str(input("Enter your action: ").lower())
         return action
 
-
     def get_schedule_by_day(self) -> str:
         """TODO: add docsting"""
-        date_input = input("Input date (year/month/day): ").strip()
-        date_format = "%Y/%m/%d"
+        date_input = input("Input date (year-month-day): ").strip()
+        date_format = "%Y-%m-%d"
         a_date = datetime.strptime(date_input, date_format)
         return a_date.date()
-
 
     def who_was_working(self, date_working) -> None:
         """ TODO: add docstring """
@@ -63,15 +60,13 @@ class ScheduleUI:
         
         self.menus.print_the_info(title, result)
 
-
     def get_employee(self) -> str:
-        """ TODO: add docstring """
+        """TODO: add docstring"""
         employee = input("Enter the employees social ID: ")
         return employee
-    
 
     def get_schedule_for_employee(self, employee):
-        """ TODO: add docstring """
+        """TODO: add docstring"""
         year = input("Enter year: ")
         week = input("Enter week: ")
         print(self.logic_wrapper.employee_schedule_by_week(employee, year, week))

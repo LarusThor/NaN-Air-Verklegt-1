@@ -55,9 +55,9 @@ class Menu():
         print("\n" * empty_lines_above)
 
         padding = (terminal_width) // 150
+        print(title)
         print(" " * padding + OUTLINE)
         # Print menu items centered in the terminal
-
         for item in list_of_options:
             print(" " * padding + item)
 
