@@ -25,3 +25,4 @@
 # takka létt low fi test 
 # skoða concistency eins og í hvernig notendur eiga að skrá inn dates
 #EVA!!!!!!!!!!! emplyees sem eru working, segja hvaða flug þau eru working
+#Í weekly schedule, kemur ekki rétt, alltaf bara að það sé ekkert schedule
