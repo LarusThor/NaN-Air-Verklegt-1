@@ -39,17 +39,20 @@ class Main:
             action = str(input("Enter your action: ").lower())
 
             def airplane() -> None:
-                """ TODO: add docstring """
                 action1 = ""
                 action2 = ""
                 action3 = ""
+                action4 = ""
                 while (action1 != 'b'):
+                    action2= ""
+                    action4= ""
                     action1 = self.airplane_ui.airplane()
                     match action1:
                         case "q":
                             quit(0)
                         case "1":  # airplane types and license
                             while( action2 != 'b' ):
+                                action3 = ""
                                 action2 = self.airplane_ui.airplane_types_and_licanse()
                                 match action2:
                                     case "q":
@@ -89,21 +92,25 @@ class Main:
                         #case action1=1
                         case "2":  # add new airplane
                             self.airplane_ui.add_airplane()
+                        
                         #case action1=2
+                        
                         case "3":  # airplane usage
-                            action = self.airplane_ui.airplane_usage_options()
-                            match action:
-                                case "q":
-                                    quit(0)
-                                case "1":
-                                    self.airplane_ui.most_used_airplane()
-                                case "2":
-                                    self.airplane_ui.flown_furthest_airplane()
-                                case "b":
-                                    continue
-                                case _:
-                                    print("Input was invalid, try again ")
-                                    time.sleep(3)
+                            while(action4 != "b"):
+                                action1= ""
+                                action4 = self.airplane_ui.airplane_usage_options()
+                                match action4:
+                                    case "q":
+                                        quit(0)
+                                    case "1":
+                                        self.airplane_ui.most_used_airplane()
+                                    case "2":
+                                        self.airplane_ui.flown_furthest_airplane()
+                                    case "b":
+                                        continue
+                                    case _:
+                                        print("Input was invalid, try again ")
+                                        time.sleep(3)
                         case "b":
                             continue
                         case _:
@@ -132,6 +139,8 @@ class Main:
                         case "4":
                             while (action5 != "b"):
                                 action5 = self.destinations_ui.select_info()
+                                action4 = ""
+                                
                                 match action5:
                                     case "q":
                                         quit(0)
@@ -159,84 +168,145 @@ class Main:
                                 
 
             def employees() -> None:
-                """TODO: add docstring"""
-                action = self.employee_ui.employees_options()
-
-                match action:
-                    case "m", "b":
-                        pass
-
+                action6 = ""
+                action7 = ""
+                action8 = ""
+                action9 = ""
+                while (action6 != "b"):
+                    action6 = self.employee_ui.employees_options()
+                    match action6:
+                        case "q":
+                            quit(0)
                     # list employees :
-                    case "1":
-                        action = self.employee_ui.list_employees_options()
-
-                        match action:
-                            case "m":
-                                pass
-                            # elif action == "b":
-                            #     employees()
-                            case "1":
-                                self.employee_ui.get_pilots()
-                                # EmployeesUI.print_crew(self.pilots_list)
-                            case "2":
-                                self.employee_ui.get_flight_attendants()
-                            case "3":
-                                self.employee_ui.get_all_employees()
-                            case "4":
-                                self.employee_ui.get_most_experienced()
+                        case "1":
+                            while(action7 != "b"):
+                                action6 =""
+                                action7 = self.employee_ui.list_employees_options()
+                                match action7:
+                                    case "q":
+                                        quit(0)
+                                    # elif action == "b":
+                                    #employees()
+                                    case "1":
+                                        self.employee_ui.get_pilots()
+                                    # EmployeesUI.print_crew(self.pilots_list)
+                                    case "2":
+                                        self.employee_ui.get_flight_attendants()
+                                    case "3":
+                                        self.employee_ui.get_all_employees()
+                                    case "4":
+                                        self.employee_ui.get_most_experienced()
+                                    case "b":
+                                        continue
+                                    case _:
+                                        print("Input was invalid, try again ")
+                                        time.sleep(3)
 
                     # Employee info :
-                    case "2":
-                        # employee_name = self.employee_ui.get_employee()
-                        action = self.employee_ui.employee_info_options()
+                        case "2":
+                            while(action8 != "b"):
+                                action6 = ""
+                            # employee_name = self.employee_ui.get_employee()
+                                action8 = self.employee_ui.employee_info_options()
 
-                        match action:
-                            case "m":
-                                # TODO: ???
-                                pass
+                                match action8:
+                                    case "q":
+                                        quit(0)
 
-                            case "1":
-                                self.employee_ui.get_info()
-
-                            case "2":
-                                action = self.employee_ui.change_info_options()
-
-                                match action:
                                     case "1":
-                                        self.employee_ui.change_home_address()
-                                    case "2":
-                                        self.employee_ui.change_phone_number()
-                                    case "3":
-                                        self.employee_ui.change_email()
+                                        self.employee_ui.get_info()
+                                    
 
-                    # Add employee :
-                    case "3":
-                        self.employee_ui.add_employee()
+                                    case "2":
+                                        while(action9 != "b"):
+                                            action8 = ""
+                                            action9 = self.employee_ui.change_info_options()
+
+                                            match action9:
+                                                case "q":
+                                                    quit(0)
+                                                case "1":
+                                                    self.employee_ui.change_home_address()
+                                                case "2":
+                                                    self.employee_ui.change_phone_number()
+                                                case "3":
+                                                    self.employee_ui.change_email()
+                                                case "b":
+                                                    continue
+                                                case _:
+                                                    print("Input was invalid, try again ")
+                                                    time.sleep(3)
+                                    case "b":
+                                        continue
+                                    case _:
+                                        print("Input was invalid, try again ")
+                                        time.sleep(3)
+                                        
+                        # Add employee :
+                        case "3":
+                            self.employee_ui.add_employee()
+                        
+                        
+                        
 
             def schedule() -> None:
-                """TODO: add docstring"""
-                action = self.schedule_ui.schedule_options()
+                action10= ""
+                action11 = ""
+                action12 = ""
+                while(action10 != "b"):
+                    action12 =""
+                    action10 = self.schedule_ui.schedule_options()
 
-                match action:
-                    case "1":
-                        date = self.schedule_ui.get_schedule_by_day()
-                        action = self.schedule_ui.schedule_for_a_day_options()
+                    match action10:
+                        case "q":
+                            quit(0)
+                        case "1":
+                            while(action11 != "b"):
+                                action10=""
+                                action11=""
+                                date = self.schedule_ui.get_schedule_by_day()
+                                action11 = self.schedule_ui.schedule_for_a_day_options()
 
-                        match action:
-                            case "1":
-                                self.schedule_ui.who_was_working(date)
-                            case "2":
-                                self.schedule_ui.get_who_was_not_working(date)
+                                match action11:
+                                    case "q":
+                                        quit(0)
+                                    case "1":
+                                        self.schedule_ui.who_was_working(date)
+                                    case "2":
+                                        self.schedule_ui.get_who_was_not_working(date)
+                                    case "b":
+                                        continue
+                                    case _:
+                                        print("Input was invalid, try again ")
+                                        time.sleep(3)
+                                
 
-                    case "2":
-                        action = self.schedule_ui.schedule_for_employee_options()
-                        
-                        match action:
-                            case "1":
-                                employee = self.schedule_ui.get_employee()
-                                self.schedule_ui.get_schedule_for_employee(employee)
-                            case "2":
-                                self.schedule_ui.get_total_hours_worked()
+                        case "2":
+                            while(action12 != "b"):
+                                action11=""
+                                action10=""
+                                action12 = self.schedule_ui.schedule_for_employee_options()
+                                match action12:
+                                    case "q":
+                                        quit(0)
+                                    case "1":
+                                        employee = self.schedule_ui.get_employee()
+                                        self.schedule_ui.get_schedule_for_employee(employee)
+                                    case "2":
+                                        self.schedule_ui.get_total_hours_worked()
+                                    case "b":
+                                        continue
+                                    case _:
+                                        print("Input was invalid, try again ")
+                                        time.sleep(3)
+                        case "b":
+                            continue
+                        case _:
+                            print("Input was invalid, try again ")
+                            time.sleep(3)
+                                    
+                                
+                                
 
             def voyages() -> None:
                 """TODO: add docstring"""
@@ -288,6 +358,7 @@ class Main:
 
                     case "4":
                         self.voyages_ui.staff_voyage()
+                        
 
             def flight_status() -> None:
                 """If the user chooses to see the flight information. This function calls a function in the flight information UI
