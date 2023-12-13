@@ -309,56 +309,94 @@ class Main:
                                 
 
             def voyages() -> None:
-                """TODO: add docstring"""
-                action = self.voyages_ui.voyages_options()
+                action13=""
+                action14=""
+                action15=""
+                action16=""
+                while(action13 != "b"):
+                    action14=""
+                    action15=""
+                    action16=""
+                    action = self.voyages_ui.voyages_options()
+                    match action:
+                        case "q":
+                            quit(0)
+                        case "1":
+                            self.voyages_ui.add_voyage()
 
-                match action:
-                    case "1":
-                        self.voyages_ui.add_voyage()
-
-                    case "2":
-                        action = self.voyages_ui.voyage_past_or_present_options()
-
-                        match action:
-                            case "1":
-                                action = self.voyages_ui.list_voyage_options()
-                                match action:
+                        case "2":
+                            while(action14 != "b"):
+                                action13=""
+                                action14 = self.voyages_ui.voyage_past_or_present_options()
+                                match action14:
+                                    case "q":
+                                        quit(0)
                                     case "1":
-                                        date = self.voyages_ui.get_date()
-                                        self.voyages_ui.get_upcoming_voyage_by_date(
-                                            date
-                                        )
+                                        while(action15 != "b"):
+                                            action = self.voyages_ui.list_voyage_options()
+                                            match action15:
+                                                case "q":
+                                                    quit(0)
+                                                case "1":
+                                                    date = self.voyages_ui.get_date()
+                                                    self.voyages_ui.get_upcoming_voyage_by_date(
+                                                        date
+                                                    )
+                                                case "2":
+                                                    year, week = self.voyages_ui.get_week()
+                                                    self.voyages_ui.get_upcoming_voyage_by_week(
+                                                        year, week
+                                                    )
+                                                case "b":
+                                                    continue
+                                                case _:
+                                                    print("Input was invalid, try again ")
+                                                    time.sleep(3)    
+
                                     case "2":
-                                        year, week = self.voyages_ui.get_week()
-                                        self.voyages_ui.get_upcoming_voyage_by_week(
-                                            year, week
-                                        )
+                                        while(action16 != "b"):
+                                            action = self.voyages_ui.list_voyage_options()
+                                            match action:
+                                                case "q":
+                                                    quit(0)
+                                                case "1":
+                                                    date = self.voyages_ui.get_date()
+                                                    self.voyages_ui.get_past_voyage_by_date(date)
+                                                case "2":
+                                                    year, week = self.voyages_ui.get_week()
+                                                    self.voyages_ui.get_past_voyage_by_week(
+                                                        year, week
+                                                    )
+                                                case "b":
+                                                    continue
+                                                case _:
+                                                    print("Input was invalid, try again ")
+                                                    time.sleep(3)
+                                                    
+                                                    
+                                    case "b":
+                                        continue
+                                    case _:
+                                        print("Input was invalid, try again ")
+                                        time.sleep(3)
+                        case "3":
+                            voyage_number = self.voyages_ui.get_voyage_flight_number()
+                            voyage_date = self.voyages_ui.get_voyage_date()
+                            self.voyages_ui.manager_staffs_voyage(
+                                voyage_number, voyage_date
+                            )
+                            # return_voyage_number, return_voyage_date = self.logic_wrapper.voyage_info_for_return_flight(voyage_number, voyage_date)
+                            # return_voyage_date = return_voyage_date.strftime("%Y-%m-%d")
+                            # self.voyages_ui.manager_staffs_voyage(return_voyage_number, return_voyage_date)
 
-                            case "2":
-                                action = self.voyages_ui.list_voyage_options()
-                                match action:
-                                    case "1":
-                                        date = self.voyages_ui.get_date()
-                                        self.voyages_ui.get_past_voyage_by_date(date)
-                                    case "2":
-                                        year, week = self.voyages_ui.get_week()
-                                        self.voyages_ui.get_past_voyage_by_week(
-                                            year, week
-                                        )
-
-                    case "3":
-                        voyage_number = self.voyages_ui.get_voyage_flight_number()
-                        voyage_date = self.voyages_ui.get_voyage_date()
-                        self.voyages_ui.manager_staffs_voyage(
-                            voyage_number, voyage_date
-                        )
-                        # return_voyage_number, return_voyage_date = self.logic_wrapper.voyage_info_for_return_flight(voyage_number, voyage_date)
-                        # return_voyage_date = return_voyage_date.strftime("%Y-%m-%d")
-                        # self.voyages_ui.manager_staffs_voyage(return_voyage_number, return_voyage_date)
-
-                    case "4":
-                        self.voyages_ui.staff_voyage()
-                        
+                        case "4":
+                            self.voyages_ui.staff_voyage()
+                            
+                        case "b":
+                            continue
+                        case _:
+                            print("Input was invalid, try again ")
+                            time.sleep(3)
 
             def flight_status() -> None:
                 """If the user chooses to see the flight information. This function calls a function in the flight information UI
