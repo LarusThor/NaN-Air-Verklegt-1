@@ -21,7 +21,7 @@ class UpcomingVoyageIO:
         return upcoming_flights_dict
     
 
-    def add_upcoming_voyage(self, upcoming_voyage) -> None:
+    def add_upcoming_voyage(self, upcoming_voyage: UpcomingVoyage) -> None:
         """ Adds an upcoming voyage to the system. """
         file_path = Path("files/upcoming_flights.csv")
 

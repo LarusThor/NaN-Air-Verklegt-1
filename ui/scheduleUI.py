@@ -19,7 +19,7 @@ class ScheduleUI:
         action = str(input("Enter your action: ").lower())
         return action
 
-    def schedule_for_employee_options(self):
+    def schedule_for_employee_options(self) -> str:
         """Shows the options the user can choose from when they enter in the employee social id"""
         self.menus.display_options("Schedule for employee:", SCHEDULE_FOR_EMPLOYEE)
         action = str(input("Enter your action: ").lower())
@@ -39,7 +39,7 @@ class ScheduleUI:
         a_date = datetime.strptime(date_input, date_format)
         return a_date.date()
 
-    def who_was_working(self, date_working) -> None:
+    def who_was_working(self, date_working: date) -> None:
         """ TODO: add docstring """
         title = f"The people that were working on {date_working}:"
         result = ""
@@ -50,7 +50,7 @@ class ScheduleUI:
         self.menus.print_the_info(title, result)
 
 
-    def get_how_was_not_working(self, date_not_working):
+    def get_how_was_not_working(self, date_not_working: date) -> None:
         """Gets the people that where not working on a specific date"""
         title = f"The people that were not working on {date_not_working}:"
         result = ""
@@ -65,7 +65,7 @@ class ScheduleUI:
         employee = input("Enter the employees social ID: ")
         return employee
 
-    def get_schedule_for_employee(self, employee):
+    def get_schedule_for_employee(self, employee: str) -> None:
         """TODO: add docstring"""
         year = input("Enter year: ")
         week = input("Enter week: ")
@@ -74,14 +74,14 @@ class ScheduleUI:
         self.menus.print_the_info(title, result)
 
     
-    def get_datetime(self):
+    def get_datetime(self) -> date:
         date_input = input("Input date (year-month-day): ").strip()
         date_format = "%Y-%m-%d"
         a_date = datetime.strptime(date_input, date_format)
         return a_date
 
 
-    def get_total_hours_worked(self):
+    def get_total_hours_worked(self) -> None:
         print("See total hours an employee has worked! ")
         social_id = input("Enter social ID: ").strip()
         employee = self.logic_wrapper.employee_info(social_id)

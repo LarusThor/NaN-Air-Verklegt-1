@@ -10,6 +10,8 @@ from ui.flight_infoUI import FlightInfoUI
 logic = LogicWrapper()
 
 print(logic.get_most_experienced_employee())
+
+
 # airplane_types = logic.airplane_types()
 # licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
 # print(licences)

@@ -84,7 +84,7 @@ class AirplaneLL():
         return most_popular, airplane_dict
           
     
-    def add_airplane(self, airplane) -> None:
+    def add_airplane(self, airplane: Airplane) -> None:
         """ Adds airplane to the system. """
         self.logic.data_wrapper.add_airplane(airplane)
         
