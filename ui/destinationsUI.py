@@ -27,8 +27,8 @@ class DestinationsUI:
         title = "All destinations:"
         result = ""
         destinations = sorted(self.destinations_list)
-        for place in destinations:
-            result += place + "\n"
+        for destination in list(enumerate(destinations, start=1)):
+            result += f"{destination[0]}: {destination[1]} \n"
         self.menus.print_the_info(title, result)
 
 
