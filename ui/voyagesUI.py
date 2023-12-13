@@ -26,11 +26,13 @@ VOYAGE_HEADER = "{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format(
 
 class VoyagesUI:
     def __init__(self) -> None:
+        """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
 
 
     def voyages_options(self) -> str:
+        """ TODO: add docstring """
         self.menus.display_options(VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action

@@ -9,6 +9,7 @@ DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination"
 
 class DestinationsUI:
     def __init__(self) -> None:
+        """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()     
         self.destinations_list = self.logic_wrapper.only_destinations() 
@@ -95,6 +96,7 @@ class DestinationsUI:
             self.logic_wrapper.update_destination_info(dest)
 
     def change_contact_info(self):
+        """ TODO: add docstring """
         id = input("what destination do you want to change ID: ")
         contact_name = input("Enter the name of the contact person:")
         contact_number = input("Enter the number of the contact number: ")

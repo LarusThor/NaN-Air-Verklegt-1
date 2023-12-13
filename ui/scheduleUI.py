@@ -8,6 +8,7 @@ SCHEDULE_FOR_A_DAY_OPTIONS = ["1. See who was working", "2. See who was not work
 
 class ScheduleUI:
     def __init__(self) -> None:
+        """ TODO: add docstring """
         self.menus = Menu()
         self.logic_wrapper = LogicWrapper()
 

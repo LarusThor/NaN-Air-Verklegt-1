@@ -20,6 +20,7 @@ MAIN_MENU_OPTIONS = [
 
 class Main:
     def __init__(self) -> None:
+        """ TODO: add docstring """
         self.menus = Menu()
         self.airplane_ui = AirplaneUI()
         self.destinations_ui = DestinationsUI()
