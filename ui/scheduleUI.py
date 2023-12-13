@@ -11,6 +11,7 @@ class ScheduleUI:
     def __init__(self) -> None:
         self.menus = Menu()
         self.logic_wrapper = LogicWrapper()
+        # self.employee_schedule_by_week = self.logic_wrapper.employee_schedule_by_week()
 
 
     def schedule_options(self) -> str:
@@ -52,6 +53,7 @@ class ScheduleUI:
         self.menus.print_the_info(title, result)
 
 
+
     def get_how_was_not_working(self, date_not_working):
         """Gets the people that where not working on a specific date"""
         title = f"The people that were not working on {date_not_working}:"
@@ -74,5 +76,8 @@ class ScheduleUI:
         year = input("Enter year: ")
         week = input("Enter week: ")
         print(self.logic_wrapper.employee_schedule_by_week(employee, year, week))
+    
+    def get_total_hours_worked(self):
+        pass
 
         
