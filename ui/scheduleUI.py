@@ -16,20 +16,20 @@ class ScheduleUI:
 
     def schedule_options(self) -> str:
         """Shows the options the user can choose from when they choose schedule from the main menu"""
-        self.menus.display_options(SCHEDULE_OPTIONS)
+        self.menus.display_options("Schedule:", SCHEDULE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
     def schedule_for_employee_options(self):
         """Shows the options the user can choose from when they enter in the employee social id"""
-        self.menus.display_options(SCHEDULE_FOR_EMPLOYEE)
+        self.menus.display_options("Schedule for employee:", SCHEDULE_FOR_EMPLOYEE)
         action = str(input("Enter your action: ").lower())
         return action
 
 
     def schedule_for_a_day_options(self) -> str:
         """ TODO: add docstring """
-        self.menus.display_options(SCHEDULE_FOR_A_DAY_OPTIONS)
+        self.menus.display_options("Schedule for a specific day:", SCHEDULE_FOR_A_DAY_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
