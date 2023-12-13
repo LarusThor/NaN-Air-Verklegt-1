@@ -61,8 +61,8 @@ class ScheduleUI:
 
     def get_schedule_for_employee(self, employee):
         """ TODO: add docstring """
-        year = int(input("Enter year: "))
-        week = int(input("Enter week: "))
+        year = input("Enter year: ")
+        week = input("Enter week: ")
         print(self.logic_wrapper.employee_schedule_by_week(employee, year, week))
 
         
