@@ -47,7 +47,7 @@ class LogicWrapper():
         return self.employee.get_flight_attendants()
 
 
-    def add_employee(self, employee) -> None:
+    def add_employee(self, employee: Employee) -> None:
          """ Adds employee to the system. """
          return self.employee.add_employee(employee)
     
@@ -158,7 +158,7 @@ class LogicWrapper():
         return self.list_upcoming_voyage.add_upcoming_voyage(upcoming_voyage)
 
 
-    def check_pilot_qualifications(self, aircraft_id, pilot) -> bool:
+    def check_pilot_qualifications(self, aircraft_id: str, pilot) -> bool:
         """ Verifies a pilots qualifications. """
         return self.list_upcoming_voyage.valid_pilot(aircraft_id, pilot)
     

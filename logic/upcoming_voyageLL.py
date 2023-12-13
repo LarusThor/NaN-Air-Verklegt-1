@@ -44,7 +44,7 @@ class UpcomingVoyageLL:
         return arrival_time
 
 
-    def valid_pilot(self, aircraft_id, pilot) -> bool:  # TF-XUP, 34928348392
+    def valid_pilot(self, aircraft_id: str, pilot) -> bool:  # TF-XUP, 34928348392
         """ Checks if pilot is valid to fly the voyage. """
         pilots_by_license = self.logic.pilots_by_license()  # {Fokkerf100: jón, kalli}
         planes_by_type = (self.logic.airplane_insignia_by_types())  # {Fokkerf100: TF-XZ, TF-XUP}
