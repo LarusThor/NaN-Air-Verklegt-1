@@ -156,7 +156,8 @@ class EmployeeLL:
 
         for employee, count in voyage_counts.items():
             if count == max_value:
-                max_list.append((employee, count))
+                employee = self.logic.employee_info(employee)
+                max_list.append((employee.name, count))
    
 
         return(max_list)
