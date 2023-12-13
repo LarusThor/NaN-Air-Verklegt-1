@@ -94,7 +94,7 @@ class AirplaneUI:
             
         manufacturer = input("Enter airplane manufacturer: ")
         while not self.validation.validate_manafacturer_name(manufacturer):
-            print("ERROR: Invalid name \nAircraft are  \nFokker \nBAE. ")
+            print("ERROR: Invalid name \nAircraft are  \nFokker \nBAE ")
             manufacturer = input("Enter an manafacturer type: ")
             
         model = input("Enter a Model: ")
@@ -103,6 +103,9 @@ class AirplaneUI:
             model = input("Enter a Model: ")
             
         number_of_seats = input("Enter the number of seats in the airplane: ")
+        while not self.validation.validate_number_of_seats(number_of_seats):
+            print("ERROR: Invalid number of seats \nIt should be and number and under 110 and over 84")
+            number_of_seats = input("Enter the number of seats in the airplane: ")
         
         title = "New airplane:"
         result = f"Name: {name}\nType: {type}\nManufacturer: {manufacturer}\nModel: {model}\nNumber of seats: {number_of_seats}"

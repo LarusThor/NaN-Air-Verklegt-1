@@ -73,7 +73,7 @@ class ValidationLL():
         else:
             return False
         
-    def validate_manafacturer_name(self,manufacturer_name) -> bool:
+    def validate_manafacturer_name(self,manufacturer_name: str) -> bool:
         if "Fokker" in manufacturer_name and "BAE" in manufacturer_name:
             #virkar ekki fyrir Fokker og BAe
             return True
@@ -89,11 +89,15 @@ class ValidationLL():
     def validate_number_of_seats(self, number_of_seats: str) -> bool:
         """ TODO: add docstring """
         try: 
-            if len(number_of_seats) <= 110:
+            if len(number_of_seats) <= 110 and len(number_of_seats) >= 84:
                 return True
         except:
             return False
         
+        
+        
+    def validate_save_new(self,str) -> bool:
+        pass
     
         
        
