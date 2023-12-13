@@ -26,6 +26,10 @@ class LogicWrapper():
 
 
     #Employee:
+    def show_employee_info(self):
+        return self.employee.employee_info_overview()
+
+
     def employee_list(self)  -> list[str]:
         """ Returns a list of all employees. """
         return self.employee.get_employee_dict()
