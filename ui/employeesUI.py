@@ -35,11 +35,9 @@ class EmployeeUI:
         for person in crew_list:
             print(person)
         print()
-        print("(M)enu  (R)epeat")
+        print("(M)enu")
         action = str(input("Enter your action: ").lower())
         if action == "m":
-            None
-        elif action == "r":
             None
 
 
@@ -215,7 +213,7 @@ class EmployeeUI:
         """User inputs a phone number for employee."""
         phone_number = input("Phone number: ")
         while not self.validation.validate_number(phone_number):
-            print("ERROR: Invalid phone number \n Phone number should be 8 digits. ")
+            print("ERROR: Invalid phone number \n Phone number should be 7 digits. ")
             phone_number = input("Phone number: ")
         return phone_number
     
@@ -233,7 +231,7 @@ class EmployeeUI:
         """User inputs an address for employee."""
         home_address = input("Home adress: ")
         while not self.validation.validate_address(home_address):
-            print("ERROR: Invalid address \n Address should be a string and number")
+            print("ERROR: Invalid address \n Address should be a string")
             home_address = input("Home adress: ")
         return home_address
     
