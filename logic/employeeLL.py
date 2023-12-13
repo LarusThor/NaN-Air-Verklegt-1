@@ -75,8 +75,8 @@ class EmployeeLL:
         #TODO: laga listann af voyages: fáum bara fyrstu 10
         flights_list = []
         total_hours = 0
-        past_voyage_dict = self.logic.data_wrapper.get_past_flights()
-        
+        past_voyage_dict = self.logic.get_past_voyages()
+
         for flight in past_voyage_dict.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
 
@@ -97,7 +97,7 @@ class EmployeeLL:
 
             work_hours = (arrival - departure).total_seconds() / 3600
             
-            flights_list.append(flight.flight_nr)
+            flights_list.append((flight.flight_nr, flight.arr_at))
             total_hours += work_hours
 
         return flights_list, total_hours

@@ -69,14 +69,38 @@ class ScheduleUI:
         """TODO: add docstring"""
         year = input("Enter year: ")
         week = input("Enter week: ")
-        print(self.logic_wrapper.employee_schedule_by_week(employee, year, week))
-    
-    def get_total_hours_worked(self):
-        social_id = input("Enter social ID: ")
-        employee = self.logic_wrapper.employee_info(social_id)
-        start_date = datetime(2022,11,4)
-        end_date = datetime(2023,12,24)
-        print(start_date)
-        self.logic_wrapper.total_hours_worked(employee, start_date, end_date)
+        title = "Week schedule: "
+        result = self.logic_wrapper.employee_schedule_by_week(employee, year, week)
+        self.menus.print_the_info(title, result)
 
+    
+    def get_datetime(self):
+        date_input = input("Input date (year-month-day): ").strip()
+        date_format = "%Y-%m-%d"
+        a_date = datetime.strptime(date_input, date_format)
+        return a_date
+
+
+    def get_total_hours_worked(self):
+        print("See total hours an employee has worked! ")
+        social_id = input("Enter social ID: ").strip()
+        employee = self.logic_wrapper.employee_info(social_id)
+
+
+        print(f"Choose what dates to see {employee.name}'s work schedule for.")
+        print("\nStart of time period. ")
+        start_date = self.get_datetime()
+        print("\nEnd of time period. ")
+        end_date = self.get_datetime()
+
+        voyages, hours = self.logic_wrapper.total_hours_worked(employee, start_date, end_date)
+        # print(f"{employee.name} worked {hours} hours within {start_date.date()} - {end_date.date()}")
+        # print(f"Voyages worked by {employee.name}: ")
+
+        title = f"{employee.name} worked {hours} hours within {start_date.date()} - {end_date.date()}"
+        result = ""
+        for voyage, destination in voyages:
+            result += f"{voyage} to {destination} \n"
+
+        self.menus.print_the_info(title,result)       
         
