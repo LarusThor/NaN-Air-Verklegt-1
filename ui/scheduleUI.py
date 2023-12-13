@@ -11,6 +11,7 @@ class ScheduleUI:
     def __init__(self) -> None:
         self.menus = Menu()
         self.logic_wrapper = LogicWrapper()
+        # self.employee_schedule_by_week = self.logic_wrapper.employee_schedule_by_week()
 
 
     def schedule_options(self) -> str:
@@ -74,5 +75,8 @@ class ScheduleUI:
         year = input("Enter year: ")
         week = input("Enter week: ")
         print(self.logic_wrapper.employee_schedule_by_week(employee, year, week))
+    
+    def get_total_hours_worked(self):
+        pass
 
         

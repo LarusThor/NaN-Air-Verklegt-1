@@ -176,6 +176,8 @@ class Main:
                         match action:
                             case "1":
                                 self.schedule_ui.get_schedule_for_employee(employee)
+                            case "2":
+                                self.schedule_ui.get_total_hours_worked(employee)
 
             def voyages() -> None:
                 """ TODO: add docstring """
