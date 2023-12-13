@@ -49,27 +49,30 @@ class EmployeeUI:
 
     def get_pilots(self) -> None:
         """Prints out a list of all the pilots"""
-        print()
-        print("All pilots:")
-        print("-"*15)
+        title = "All pilots:"
+        result = ""
         for pilot in self.pilot_list:
-            print(pilot.name)
+            result += pilot.name + "\n"
+        self.menus.print_the_info(title, result)
+
     
 
     def get_flight_attendants(self) -> None:
         """Prints out a list of all the flight attendants"""
-        print()
-        print("All flight attendants:")
-        print("-"*15)
-        self.print_crew(self.flight_attendant_list)
+        title = "All flight attendants:"
+        result = ""
+        for person in self.flight_attendant_list:
+            result += person + "\n"
+        self.menus.print_the_info(title, result)
     
 
     def get_all_employees(self) -> None:
         """Prints out a list of all the employees"""
-        print()
-        print("All employees:")
-        print("-"*15)
-        self.print_crew(self.all_employees_list)
+        title = "All employees:"
+        result = ""
+        for person in self.all_employees_list:
+            result += person + "\n"
+        self.menus.print_the_info(title, result)
 
 
     def get_most_experienced(self):

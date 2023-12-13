@@ -72,7 +72,6 @@ class Menu():
 
     def get_next_action(self):
         """ TODO: add docstring """
-        print()
         print("(H)ome  (B)ack")
         action = input("Enter in your action: ")
         return action
