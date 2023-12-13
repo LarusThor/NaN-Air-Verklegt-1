@@ -10,3 +10,4 @@ run_main.input_prompt()
 #validate employee rank og licence
 #meikar ekki sens i add ariplane að hafa model og plane type 
 #og spes sæti fyrir hvaða flugvel sem er verið að velja
+#villa i ef þu ert alveg komin inn i forritð þa virkar ekki B = back

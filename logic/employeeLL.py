@@ -10,6 +10,10 @@ class EmployeeLL:
         """
         self.logic = logic_wrapper
 
+    
+    def employee_info_overview(self):
+        return self.logic.data_wrapper.get_all_staff_members()
+
 
     def get_employee_dict(self) -> list[str]:
         """ Returns a list of all employees within the system. """

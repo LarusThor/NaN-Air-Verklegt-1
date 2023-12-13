@@ -16,7 +16,7 @@ MAIN_MENU_OPTIONS = [
     "3. Employees",
     "4. Schedule",
     "5. Voyages",
-    "6. Flight information",
+    "6. Flight status",
 ]
 
 
@@ -113,29 +113,50 @@ class Main:
 
             def destinations() -> None:
                 """TODO: add docstring"""
-                action = self.destinations_ui.destinations()
-                match action:
-                    case "1":
-                        action = self.destinations_ui.get_all_destinations()
+                action4 = ""
+                action5 = ""
+                while ( action4 != "b"):
+                    action4 = self.destinations_ui.destinations()
+                    match action4:
+                        case "q":
+                            quit(0)
+                        case "1":
+                            action4 = self.destinations_ui.get_all_destinations()
 
-                    case "2":
-                        self.destinations_ui.get_most_popular_destination()
+                        case "2":
+                            self.destinations_ui.get_most_popular_destination()
 
-                    case "3":
-                        self.destinations_ui.add_destination()
+                        case "3":
+                            self.destinations_ui.add_destination()
 
-                    case "4":
-                        action = self.destinations_ui.select_info()
+                        case "4":
+                            while (action5 != "b"):
+                                action5 = self.destinations_ui.select_info()
+                                match action5:
+                                    case "q":
+                                        quit(0)
+                                    case "1":
+                                        self.destinations_ui.change_destination_info()
 
-                        match action:
-                            case "1":
-                                self.destinations_ui.change_destination_info()
+                                    case "2":
+                                        self.destinations_ui.change_contact_info()
 
-                            case "2":
-                                self.destinations_ui.change_contact_info()
-
-                            case "3":
-                                self.destinations_ui.change_airport_info()
+                                    case "3":
+                                        self.destinations_ui.change_airport_info()
+                                    
+                                    case "b":
+                                        continue
+                                    case _:
+                                        print("Input was invalid, try again ")
+                                        time.sleep(3)
+                        case "b":
+                            continue
+                        case _:
+                            print("Input was invalid, try again ")
+                            time.sleep(3)
+                                
+                                
+                                
 
             def employees() -> None:
                 """TODO: add docstring"""
@@ -268,17 +289,12 @@ class Main:
                     case "4":
                         self.voyages_ui.staff_voyage()
 
-            def flight_information() -> None:
-                """TODO: add docstring"""
-                action = self.flight_info.flight_info_options()
-                match action:
-                    case "1":
-                        voyage = self.flight_info.get_voyage()
-                        self.flight_info.get_flight_status_by_voyage(voyage)
+            def flight_status() -> None:
+                """If the user chooses to see the flight information. This function calls a function in the flight information UI
+                 and will print out a table that shows the flight status."""
+                
+                self.flight_info.get_flight_status()
 
-                    case "2":
-                        date = self.flight_info.get_date()
-                        self.flight_info.get_flight_status_by_date(date)
 
             options = {
                 "1": airplane,
@@ -286,6 +302,6 @@ class Main:
                 "3": employees,
                 "4": schedule,
                 "5": voyages,
-                "6": flight_information,
+                "6": flight_status,
             }
             options[action]()
