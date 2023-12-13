@@ -18,6 +18,7 @@ class AirplaneUI:
         self.pilots_license = self.logic_wrapper.pilots_by_license()
         self.flown_furthest = self.logic_wrapper.furthest_flown()
         self.airplane_usage = self.logic_wrapper.airplane_usage()
+        self.validation = self.logic_wrapper.validation
 
 
     def airplane(self) -> str:
@@ -28,7 +29,10 @@ class AirplaneUI:
     
 
     def get_pilots_for_a_specific_type(self): # 1-1-1-1
-        airplane_type = input("Enter an airplane type: ") # TODO has to be validated
+        airplane_type = input("Enter an airplane type: ")# TODO has to be validated
+        while not self.validation.validate_aircraft_by_specific_type(airplane_type):
+            print("ERROR: Invalid airplane type \nPlease write a airplane type. ")
+            airplane_type = str(input("Enter an airplane type: "))
         title = f"Pilots qualified to fly {airplane_type}:"
         result = ""
         for person in self.pilots_license.get(airplane_type):
@@ -71,10 +75,30 @@ class AirplaneUI:
     def add_airplane(self) -> None: #define
         """ TODO: add docstring """
         name = input("Enter airplane name: ")
+        while not self.validation.validate_airplane_name(name):
+            print("ERROR: Invalid name \nNames of planes \nTF-EPG \nTF-UVR \nTF-XZR \nTF-XZM \nTF-IZE \nTF-PGK \nTF-TYQ \nTF-LNQ \nTF-XUP")
+            name = input("Enter an Name: ")
+            
         type = input("Enter airplane type: ")
+        while not self.validation.validate_aircraft_by_specific_type(type):
+            print("ERROR: Invalid airplane type \nPlane types are \nNAFokkerF100 \nNAFokkerF28 \nNABAE146. ")
+            type = str(input("Enter an airplane type: "))
+            
         manufacturer = input("Enter airplane manufacturer: ")
+        while not self.validation.validate_manafacturer_name(manufacturer):
+            print("ERROR: Invalid name \nAircraft are  \nFokker \nBAE. ")
+            manufacturer = input("Enter an manafacturer type: ")
+            
         model = input("Enter a Model: ")
+        while not self.validation.validate_model_name(model):
+            print("ERROR: Invalid model \nModels are \nF100\nF28\n146")
+            model = input("Enter a Model: ")
+            
         number_of_seats = input("Enter the number of seats in the airplane: ")
+        while not self.validation.validate_number_of_seats(number_of_seats):
+            print("ERROR: Invalid number of seats \nIt should be and number and under 110")
+            number_of_seats = input("Enter the number of seats in the airplane: ")
+        
         print("New airplane: ")
         print("Name:", name)
         print("Type:", type)
