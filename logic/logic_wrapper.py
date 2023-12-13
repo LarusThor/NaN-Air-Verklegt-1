@@ -158,8 +158,9 @@ class LogicWrapper():
     def add_staff_to_voyage(self, added_staff):
         return self.list_upcoming_voyage.add_staff_for_voyage(added_staff)
 
-    def voyage_info_for_return_flight(self):
-        return self.list_upcoming_voyage.detect_voyage_info_return_flight()
+
+    def voyage_info_for_return_flight(self, voyage_flight_number, voyage_date):
+        return self.list_upcoming_voyage.detect_voyage_info_return_flight(voyage_flight_number, voyage_date)
 
 
     #Past voyages:

@@ -52,7 +52,7 @@ class Main:
                                 
                                 match action:
                                     case "1":
-                                        self.airplane_ui.get_pilots_for_a_specific_type()
+                                        pass
                                     case "2":
                                         self.airplane_ui.list_pilots_by_licanse()
                                     case "3":
@@ -202,6 +202,8 @@ class Main:
                         voyage_number = self.voyages_ui.get_voyage_flight_number()
                         voyage_date = self.voyages_ui.get_voyage_date()
                         self.voyages_ui.manager_staffs_voyage(voyage_number, voyage_date)
+                        return_voyage_number, return_voyage_date = self.logic_wrapper.voyage_info_for_return_flight(voyage_number, voyage_date)
+                        self.voyages_ui.manager_staffs_voyage(return_voyage_number, return_voyage_date)
 
                     case "4":
                         self.voyages_ui.staff_voyage()
