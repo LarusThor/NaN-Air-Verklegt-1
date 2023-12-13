@@ -8,13 +8,15 @@ from ui.flight_infoUI import FlightInfoUI
 #kemur aldrei upp að þau séu að vinna í vikunni
 
 logic = LogicWrapper()
-airplane_types = logic.airplane_types()
-licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
-print(licences)
 
-print("Licenses:")
-for index, license in licences.items():
-    print(f"{index}. {license}")
+print(logic.get_most_experienced_employee())
+# airplane_types = logic.airplane_types()
+# licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
+# print(licences)
+
+# print("Licenses:")
+# for index, license in licences.items():
+#     print(f"{index}. {license}")
     #print(f"{license.keys()}. {licence.values()}")
 
 

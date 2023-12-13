@@ -68,7 +68,9 @@ class LogicWrapper():
     def get_total_future_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
         """Returns hours to be worked by an employee for a specific time frame."""
         return self.employee.get_total_future_hours_worked(employee, start, end)
-    
+
+    def get_most_experienced_employee(self):
+        return self.employee.get_most_experienced_employee()
 
     #Destinations:
     def destination_info_list(self):
