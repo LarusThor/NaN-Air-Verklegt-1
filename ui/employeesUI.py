@@ -273,6 +273,7 @@ class EmployeeUI:
     
 
     def get_social_id(self):
+        """Gets a social id number from the user"""
         social_id = input("Social ID: ")
         while not self.validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
