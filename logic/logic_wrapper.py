@@ -117,6 +117,9 @@ class LogicWrapper():
     
 
     #Airplanes:
+    def get_airplanes_info_overview(self):
+        return self.airplane.get_airplanes_info_overview()
+
     def airplane_types(self) -> set:
         """ Returns all airplane types within the system. """
         return self.airplane.get_all_airplane_types()
@@ -143,6 +146,10 @@ class LogicWrapper():
 
     def airplane_usage(self):
         return self.airplane.get_airplane_usage()
+    
+    
+    def get_total_future_hours_for_airplane(self, plane_insignia: str, start: datetime, end: datetime):
+        return self.airplane.get_total_future_hours_for_airplane(plane_insignia, start, end)
 
 
     #Upcoming voyages:

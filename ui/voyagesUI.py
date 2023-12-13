@@ -53,7 +53,6 @@ class VoyagesUI:
         # arrival_time = input(f"Enter arrival time for {arrival_location}: ")
         return_flight_date = input(f"Enter departure date from {arrival_location}; year-month-day: ")
         return_flight_time = input(f"Enter departure time from {arrival_location}: ")
-        aircraft_id = input("Enter a valid aircraft: ")
 
         # TODO: use datetime module
         departure_date_time = departure_date + " " + departure_time
@@ -96,7 +95,6 @@ class VoyagesUI:
                 arr_at=arrival_location,
                 departure=departure_date_time, 
                 arrival=calculated_arrival_flight_time, 
-                aircraft_id=aircraft_id
             )
 
             # TODO: make this one like the above one :p
@@ -107,7 +105,6 @@ class VoyagesUI:
                 arr_at=departure_location,
                 departure=arrival_date_time,
                 arrival=calculated_return_flight_time, #
-                aircraft_id=aircraft_id
             )
 
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight1)
@@ -130,6 +127,7 @@ class VoyagesUI:
     def manager_staffs_voyage(self, voyage_flight_number, voyage_date: str):
         """TODO: add docstring"""
         # TODO: accept voyage_date as date object
+        aircraft_check = False
         captain_check = False
         copilot_check = False
         flight_service_manager_check = False
@@ -142,7 +140,14 @@ class VoyagesUI:
             # TODO: just get this as a variable, dont reassign the attribute
             departure_date = voyages_info.departure.strftime("%Y-%m-%d")
             if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
-                aircraft_id = input("Enter a valid aircraft: ")
+                while not aircraft_check:
+                    aircraft_id = input("Enter a valid aircraft: ")
+                    if self.logic_wrapper.get_total_future_hours_for_airplane(aircraft_id, voyages_info.departure, return_flight_arrival) == 0:
+                        aircraft_check = True
+                    else:
+                        print(f"Airplane {aircraft_id} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                        aircraft_check = False
+
                 while not captain_check:
                     captain = input("Enter captain social id: ")
                     if employee_information[captain].rank == "Captain":
@@ -223,6 +228,7 @@ class VoyagesUI:
                                 unstaffed = 5 - len(flight_attendants)
                                 for flight_attendant in range(unstaffed):
                                     flight_attendants.append("N/A")
+                                    flight_attendant_check = True
 
                             else:
                                 if employee_information[add_flight_attendant].rank == "Flight Attendant":
@@ -261,7 +267,7 @@ class VoyagesUI:
                         arr_at=voyages_info.arr_at,
                         departure=voyages_info.departure,
                         arrival=voyages_info.arrival,
-                        aircraft_id=voyages_info.aircraft_id,
+                        aircraft_id=aircraft_id,
                         captain=captain,
                         copilot=copilot,
                         fsm=flight_service_manager,
@@ -282,7 +288,7 @@ class VoyagesUI:
                         arr_at=return_flight_arr_at,
                         departure=return_flight_date_departure,
                         arrival=return_flight_arrival,
-                        aircraft_id=voyages_info.aircraft_id,
+                        aircraft_id=aircraft_id,
                         captain=captain,
                         copilot=copilot,
                         fsm=flight_service_manager,

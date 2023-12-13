@@ -79,9 +79,9 @@ class UpcomingVoyageLL:
         return self.logic.data_wrapper.add_staff(staff_to_add)
     
 
-    def aircraft_availability():
-        pass
-
+    def aircraft_availability(self, plane_insignia: str, start: datetime, end: datetime):
+        total_hours_flown = self.logic.get_total_future_hours_for_airplane(plane_insignia, start, end)
+        return total_hours_flown
 
     def staff_availability(self, captain, departure, return_flight_arrival):
         total_hours_worked = self.logic.get_total_future_hours_worked(captain, departure, return_flight_arrival)
