@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 
 
-UNSTAFFED = 'N/A'
+UNSTAFFED = "N/A"
 @dataclass
 class UpcomingVoyage:
     id: int

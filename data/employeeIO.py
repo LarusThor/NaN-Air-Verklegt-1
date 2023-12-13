@@ -19,25 +19,25 @@ class EmployeeIO:
 
     def write_employees(self, employees: list[Employee]):
         """ Updates crew csv file. """
-        file_path = Path('files/crew.csv')
+        file_path = Path("files/crew.csv")
 
-        fieldnames = ['social_id', 'name', 'role', 'rank', 'licence', 'address', 'phone_nr', 'email', 'landline']
+        fieldnames = ["social_id", "name", "role", "rank", "licence", "address", "phone_nr", "email", "landline"]
 
-        with open(file_path, 'w', newline='', encoding="utf-8") as csvfile:
+        with open(file_path, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
 
             for employee in employees:
                 writer.writerow(
                     {
-                    'social_id': employee.social_id, 
-                     'name': employee.name, 
-                     'role': employee.role, 
-                     'rank': employee.rank, 
-                     'licence': employee.licence, 
-                     'address': employee.home_address, 
-                     'phone_nr': employee.phonenumber, 
-                     'email': employee.email, 
-                     'landline': employee.landline
+                    "social_id": employee.social_id, 
+                     "name": employee.name, 
+                     "role": employee.role, 
+                     "rank": employee.rank, 
+                     "licence": employee.licence, 
+                     "address": employee.home_address, 
+                     "phone_nr": employee.phonenumber, 
+                     "email": employee.email, 
+                     "landline": employee.landline
                      })
                 

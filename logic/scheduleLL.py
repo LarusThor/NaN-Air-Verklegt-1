@@ -20,7 +20,7 @@ class ScheduleLL():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
             
             if employee in workers and weeks == week_nr:
-                if year in flight.departure.strftime('%Y-%m-%d %H:%M:%S'):
+                if year in flight.departure.strftime("%Y-%m-%d %H:%M:%S"):
                     flights.append(f"{flight.flight_nr} to {flight.arr_at}")
 
         name = self.logic.employee_info(employee)

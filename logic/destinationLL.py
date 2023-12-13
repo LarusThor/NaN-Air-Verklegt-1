@@ -48,7 +48,7 @@ class DestinationLL():
    
 
     def change_destination_info(self, destination: Destination) -> None: #breyta í klasaritinu
-        ''' Changes destination info '''
+        """ Changes destination info """
         return self.logic.data_wrapper.change_destination_info(destination)
 
 

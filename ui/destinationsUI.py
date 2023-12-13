@@ -17,7 +17,7 @@ class DestinationsUI:
 
     def destinations(self) -> str:
         """ TODO: add docstring """
-        self.menus.display_options(DESTINATIONS_OPTIONS)
+        self.menus.display_options("Destinations:", DESTINATIONS_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
@@ -74,7 +74,7 @@ class DestinationsUI:
             print("Destionation not saved.")
     
     def select_info(self):
-        self.menus.display_options(CHANGE_OPTIONS)
+        self.menus.display_options("Change destinations:", CHANGE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
@@ -140,11 +140,11 @@ class DestinationsUI:
 
             self.logic_wrapper.update_contact_info(dest)
 
-    '''destination_id: str
+    """destination_id: str
     destination: str
     emergency_contact_name: str
     emergency_contact_number: str
     airport_name: str
     distance_from_iceland: str
     estimated_flight_time: str
-'''
+"""
