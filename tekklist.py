@@ -24,4 +24,4 @@
 #gá hvort við getum notað bara annað fallið í destination IO og reworka 
 # takka létt low fi test 
 # skoða concistency eins og í hvernig notendur eiga að skrá inn dates
-# skoða validation í airplaneUI-add_airplane, getum ekki skrifað inn hvaða týpur eru í boði vegna þess að hvað gerist ef að það er bætt við týpu, þá mun hún ekki koma upp
+#EVA!!!!!!!!!!! emplyees sem eru working, segja hvaða flug þau eru working
