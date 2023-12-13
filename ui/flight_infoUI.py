@@ -1,7 +1,7 @@
 from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
 
-FLIGHT_INFORMATION_OPTIONS = ["1. Booking status for specific voyage", "2. Booking status for a specific date"]
+FLIGHT_STATUS_OPTIONS = ["1. Booking status for specific voyage", "2. Booking status for a specific date"]
 
 class FlightInfoUI:
     def __init__(self) -> None:
@@ -13,7 +13,7 @@ class FlightInfoUI:
 
     def flight_info_options(self) -> str:
         """ TODO: add docstring """
-        self.menus.display_options("Flight information:", FLIGHT_INFORMATION_OPTIONS)
+        self.menus.display_options("Flight information:", FLIGHT_STATUS_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
