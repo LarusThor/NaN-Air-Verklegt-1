@@ -162,7 +162,11 @@ class Main:
 
                     case "2":
                         employee = self.schedule_ui.get_employee()
-                        self.schedule_ui.get_schedule_for_employee(employee)
+                        action = self.schedule_ui.schedule_for_employee_options()
+                        
+                        match action:
+                            case "1":
+                                self.schedule_ui.get_schedule_for_employee(employee)
 
             def voyages() -> None:
                 """ TODO: add docstring """

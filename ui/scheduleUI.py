@@ -3,6 +3,7 @@ from logic.logic_wrapper import LogicWrapper
 from datetime import date, datetime
 
 SCHEDULE_OPTIONS = ["1. Schedule for a specific day", "2. Schedule for specific employee"]
+SCHEDULE_FOR_EMPLOYEE = ["1. View their weekly schedule", "2. View their total work hours over a specific time"]
 SCHEDULE_FOR_A_DAY_OPTIONS = ["1. See who was working", "2. See who was not working"]
 
 
@@ -18,14 +19,12 @@ class ScheduleUI:
         action = str(input("Enter your action: ").lower())
         return action
 
+    def schedule_for_employee_options(self):
+        """Shows the options the user can choose from when they enter in the employee social id"""
+        self.menus.display_options(SCHEDULE_FOR_EMPLOYEE)
+        action = str(input("Enter your action: ").lower())
+        return action
 
-    def get_schedule_by_day(self) -> str:
-        """TODO: add docsting"""
-        date_input = input("Input date (year/month/day): ").strip()
-        date_format = "%Y/%m/%d"
-        a_date = datetime.strptime(date_input, date_format)
-        return a_date.date()
-    
 
     def schedule_for_a_day_options(self) -> str:
         """ TODO: add docstring """
@@ -34,22 +33,34 @@ class ScheduleUI:
         return action
 
 
+    def get_schedule_by_day(self) -> str:
+        """TODO: add docsting"""
+        date_input = input("Input date (year/month/day): ").strip()
+        date_format = "%Y/%m/%d"
+        a_date = datetime.strptime(date_input, date_format)
+        return a_date.date()
+
+
     def who_was_working(self, date_working) -> None:
         """ TODO: add docstring """
-        #TODO: make pretty :))
-        #TODO: prentast ekki út
+        title = f"The people that were working on {date_working}:"
+        result = ""
         employees = self.logic_wrapper.employee_working(date_working)
         for employee in employees:
-            print(employee.name)
+            result += employee.name + "\n"
+
+        self.menus.print_the_info(title, result)
 
 
     def get_how_was_not_working(self, date_not_working):
-        """ TODO: add docstring """
-        #TODO: make pretty
-
+        """Gets the people that where not working on a specific date"""
+        title = f"The people that were not working on {date_not_working}:"
+        result = ""
         employees = self.logic_wrapper.employee_not_working(date_not_working)
         for employee in employees:
-            print(employee.name)
+            result += employee.name + "\n"
+        
+        self.menus.print_the_info(title, result)
 
 
     def get_employee(self) -> str:
