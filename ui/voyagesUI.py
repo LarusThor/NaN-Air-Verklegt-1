@@ -339,60 +339,55 @@ class VoyagesUI:
 
     def get_upcoming_voyage_by_date(self, date: date) -> str:
         """TODO: add docstring"""
-
+        title = f"Upcoming voyages on {date}:"
+        result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"
         voyage_counter = 0
-        print("=" * 130)
-        print(VOYAGE_HEADER)
-        print("=" * 130)
         for flight_values in self.logic_wrapper.upcoming_voyages().values():
             if date in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
-                print(
-                    f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}",
-                    end="\n",
-                )
+                result += f"{flight_values.flight_nr:^13}{flight_values.dep_from:^10}{flight_values.arr_at:^7}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^15}{flight_values.copilot:^16}{flight_values.fsm:^24}\n"
                 voyage_counter += 1
                 if voyage_counter == 2:
                     voyage_counter = 0
-                    print("-" * 130)
+                    result += "-" * 130 + "\n"
+        
+        self.menus.print_the_info(title, result)
 
     def get_upcoming_voyage_by_week(self, year: str, week_nr: str) -> None:
-        """
-        TODO: add docstring"""
+        """TODO: add docstring"""
+        title = f"Upcoming voyages on week {week_nr}:"
+        result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"
         voyage_counter = 0
-        print("=" * 130)
-        print(VOYAGE_HEADER)
-        print("=" * 130)
+
         for flight_values in self.logic_wrapper.upcoming_voyages().values():
             weeks = str(flight_values.departure.isocalendar().week)
             if year in flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):
                 if weeks == week_nr:
-                    print(
-                        f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}",
-                        end="\n",
-                    )
+                    result += f"{flight_values.flight_nr:^13}{flight_values.dep_from:^10}{flight_values.arr_at:^7}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^15}{flight_values.copilot:^16}{flight_values.fsm:^24}\n"
                     voyage_counter += 1
                     if voyage_counter == 2:
                         voyage_counter = 0
-                        print("-" * 130)
+                        result += "-" * 130 + "\n"
+        
+        self.menus.print_the_info(title, result)
 
 
     def get_past_voyage_by_date(self, date: date) -> str:
         """TODO: add docstring"""
 
+        title = f"Past voyages on {date}:"
+        result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"
         voyage_counter = 0
-        print("=" * 130)
-        print(VOYAGE_HEADER)
-        print("=" * 130)
+
         for flight_values in self.logic_wrapper.get_past_voyages().values():
             if date in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
-                print(
-                    f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}",
-                    end="\n",
-                )
+                result += f"{flight_values.flight_nr:^13}{flight_values.dep_from:^10}{flight_values.arr_at:^7}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^15}{flight_values.copilot:^16}{flight_values.fsm:^24}\n"
                 voyage_counter += 1
                 if voyage_counter == 2:
                     voyage_counter = 0
-                    print("-" * 130)
+                    result += "-" * 130 + "\n"
+    
+        self.menus.print_the_info(title, result)
+
 
     def get_past_voyage_by_week(self, year:str,  week_nr:str) -> None:
         """
@@ -405,10 +400,9 @@ class VoyagesUI:
             week_nr: ??
 
         """
+        title = f"Past voyages on week {week_nr}:"
+        result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"
         voyage_counter = 0
-        print("=" * 130)
-        print(VOYAGE_HEADER)
-        print("=" * 130)
 
         # TODO Comment this code
         for flight_values in self.logic_wrapper.get_past_voyages().values():
@@ -416,15 +410,14 @@ class VoyagesUI:
             if year in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
                 if weeks == week_nr:
                     # TODO: this line is too long check if we can split it without affecting output, make clean :)
-                    print(
-                        f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}"
-                    )
+                    result += f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}\n"
                     voyage_counter += 1
-
                     # Comment this - what"s happening here
                     if voyage_counter == 2:
                         voyage_counter = 0
-                        print("-" * 130)
+                        result += "-" * 130 + "\n"
+        
+        self.menus.print_the_info(title, result)
 
     def staff_voyage(self) -> None:
         """Adds staff to voyage in the system."""
