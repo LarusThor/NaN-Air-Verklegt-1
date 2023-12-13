@@ -87,9 +87,23 @@ class Main:
 
                     case "4":
                         action = self.destinations_ui.get_all_destinations()
+                        
                         match action:
                             case "1":
-                                self.destinations_ui.change_destination_info()
+                                self.destinations_ui.information_for_destination("KEF")
+
+                            case "2":
+                                self.destinations_ui.information_for_destination("KUS")
+
+                            case "3":
+                                self.destinations_ui.information_for_destination("LYR")
+
+                            case "4":
+                                self.destinations_ui.information_for_destination("GOH")
+                                
+                            case "5":
+                                self.destinations_ui.information_for_destination("LWK")
+
                             
 
             def employees() -> None:

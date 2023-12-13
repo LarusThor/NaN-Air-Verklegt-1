@@ -116,19 +116,11 @@ class DestinationsUI:
 
         self.logic_wrapper.update_contact_info(dest)
 
-
-    def print_destination(self, destination_list) -> None:
-        """function used to print out a list"""
-        destination_list.sort()
-        for destination in list(enumerate(destination_list)):
-            print(f'{destination[0]}: {destination[1]}')
-        print()
-        print("(M)enu  (R)epeat")
-        action = str(input("Enter your action: ").lower())
-        if action == "m":
-            None
-        elif action == "r":
-            None
+    def information_for_destination(self, id):
+        dest_info = self.logic_wrapper.destination_info_list()
+        for key, value in dest_info.items():
+            if value.destination_id == id:
+                print(f"ID: {value.destination_id}\nDestination: {value.destination}\nEmergency contact name: {value.emergency_contact_name}\nEmergency contact number: {value.emergency_contact_number}\nAirport name: {value.airport_name}\nDistance from iceland: {value.distance_from_iceland}\nEstimated flight time: {value.estimated_flight_time}")
 
     '''destination_id: str
     destination: str

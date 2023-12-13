@@ -2,7 +2,7 @@ from data.destinationIO import DestinationIO
 from model.destination_model import Destination
 from logic.logic_wrapper import LogicWrapper
 
-all_dests = LogicWrapper().destination_list()
+'''all_dests = LogicWrapper().destination_list()
 
 
 id = input()
@@ -17,18 +17,28 @@ print(counter)
 
 dest = all_dests[counter]
 dest.emergency_contact_name = input()
-dest.emergency_contact_number = input()
+dest.emergency_contact_number = input()'''
 
 # dest = Destination(
 # destination_id = "LWK",
 # emergency_contact_name = "luigiboys",
 # emergency_contact_number = "luigiboys")
 
+a = LogicWrapper()
+#d = DestinationIO()
 
-d = DestinationIO()
+dest_info = a.destination_info_list()
+for key, value in dest_info.items():
+    if value.destination_id == 'LYR':
+        print(f"ID: {value.destination_id}\nDestination: {value.destination}\nEmergency contact name: {value.emergency_contact_name}\nEmergency contact number: {value.emergency_contact_number}\nAirport name: {value.airport_name}\nDistance from iceland: {value.distance_from_iceland}\nEstimated flight time: {value.estimated_flight_time}")
 
-dest_lidt = d.update_destination(dest)
-print(dest_lidt)
+
+#dest_lidt = d.update_destination(dest)
+#print(dest_lidt)
+
+
+
+
 
 '''        all_dests = self.logic_wrapper.destination_list()
         counter = 0
