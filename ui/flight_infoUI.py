@@ -33,10 +33,11 @@ class FlightInfoUI:
             date =str(flight.departure.date())
             print(type(date))
             if status == "Booked":
-                result += f"{date:^16} {flight.flight_nr:^15} {flight.arr_at:^20} {status:^15}\n"
+                booked = "Fully booked!"
+                result += f"{date:^16} {flight.flight_nr:^15} {flight.arr_at:^20} {booked}\n"
                 
             else:
-                result += f"{date:^16} {flight.flight_nr:^15} {flight.arr_at:^20} {status:^15} seats left.\n"
+                result += f"{date:^16} {flight.flight_nr:^15} {flight.arr_at:^20} {status:<3} seats left\n"
 
 
         self.menus.print_the_info(title, result)

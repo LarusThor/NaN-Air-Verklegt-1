@@ -370,5 +370,3 @@ class EmployeeUI:
         title = "The most experienced employee:"
         result = f"{name} has gone on {int(voyages)} voyages."
         self.menus.print_the_info(title, result)
-
-
