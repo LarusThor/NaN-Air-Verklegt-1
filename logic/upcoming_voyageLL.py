@@ -57,6 +57,17 @@ class UpcomingVoyageLL:
                 if pilot_name in pilots_by_license[license_check]:
                 #license_check in pilots_by_license.keys() and pilot_name in pilots_by_license.values():
                     return True
+                
+    def detect_voyage_info_return_flight(self, voyage_flight_number, voyage_date: str):
+        flight_info = self.logic.data_wrapper.get_all_destinations_info()
+        for key, values in flight_info.items():
+            if values.voyage_flight_number in flight_info[key] and values.voyage_date in flight_info[key]:
+                id_of_flight = key
+        return_flight_id = id_of_flight + 1
+        return_flight_values = flight_info[return_flight_id] 
+        return_flight_number = return_flight_values.flight_nr
+        return_flight_date = return_flight_values.departure
+        return return_flight_number, return_flight_date
 
     def add_staff_for_voyage(self, staff_to_add) -> None:
         """ Adds staff to a voyage. """
