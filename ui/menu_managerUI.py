@@ -72,10 +72,7 @@ class Menu():
         # Print empty lines below the menu
         print("\n" * empty_lines_below)
 
-
-
-
-    def get_next_action(self):
+    def get_next_action(self) -> None: #TODO þetta fall skilar engu, erum við að nota það?
         """ TODO: add docstring """
         print("Enter (h) for Home or (q) for quit") # TODO has to validated
         action = input("Enter in your action: ").lower()
@@ -83,7 +80,7 @@ class Menu():
 
 
     
-    def print_the_info(self, title, info):
+    def print_the_info(self, title, info) -> None:
         """ TODO: add docstring """
         terminal_size = os.get_terminal_size()
         terminal_width = terminal_size.columns

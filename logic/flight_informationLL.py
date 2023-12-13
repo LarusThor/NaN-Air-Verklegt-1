@@ -1,5 +1,5 @@
 class FlightInformationLL:
-    def __init__(self, logic_wrapper):
+    def __init__(self, logic_wrapper) -> None:
         """Instantiate a FlightInformationLL object.
 
         Args:
@@ -7,7 +7,7 @@ class FlightInformationLL:
         """
         self.logic = logic_wrapper
 
-    def capacity(self):
+    def capacity(self) -> dict:
         capacity = dict()
         airplanes = self.logic.data_wrapper.get_airplanes()
         for keys, plane in airplanes.items():
@@ -16,7 +16,7 @@ class FlightInformationLL:
         return capacity
       
 
-    def flight_fully_booked(self):
+    def flight_fully_booked(self) -> list:
         capacity = self.capacity()
         booked = list()
         upcoming_voyages = self.logic.upcoming_voyages()

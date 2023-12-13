@@ -1,4 +1,7 @@
 from datetime import datetime, timedelta
+from model.employee_model import Employee
+from datetime import date
+from model.upcoming_voyage_model import UpcomingVoyage
 
 
 class UpcomingVoyageLL:
@@ -17,12 +20,12 @@ class UpcomingVoyageLL:
         return upcoming_flights_dict
 
 
-    def add_upcoming_voyage(self, upcoming_voyage) -> None:
+    def add_upcoming_voyage(self, upcoming_voyage: UpcomingVoyage) -> None:
         """ Adds an upcoming voyage to the system. """
         self.logic.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
 
-    def calculate_flight_time(self, arr_at, departure_date_time) -> datetime:
+    def calculate_flight_time(self, arr_at: str, departure_date_time) -> datetime:
         """ Calculates the flight time. """
         destinations_info = self.logic.data_wrapper.get_all_destinations_info()
         # estimated_flight_time_overview = list(destinations_info.values())
@@ -41,7 +44,7 @@ class UpcomingVoyageLL:
         return arrival_time
 
 
-    def valid_pilot(self, aircraft_id, pilot) -> bool:  # TF-XUP, 34928348392
+    def valid_pilot(self, aircraft_id: str, pilot) -> bool:  # TF-XUP, 34928348392
         """ Checks if pilot is valid to fly the voyage. """
         pilots_by_license = self.logic.pilots_by_license()  # {Fokkerf100: jón, kalli}
         planes_by_type = (self.logic.airplane_insignia_by_types())  # {Fokkerf100: TF-XZ, TF-XUP}
@@ -83,6 +86,7 @@ class UpcomingVoyageLL:
         pass
 
 
-    def staff_availability(self, captain, departure, return_flight_arrival):
+    def staff_availability(self, captain: Employee, departure: date, return_flight_arrival: date) -> int:
+        """ Checks wether an employee is scheduled to work during a specified time period. """
         total_hours_worked = self.logic.get_total_future_hours_worked(captain, departure, return_flight_arrival)
         return total_hours_worked

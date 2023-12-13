@@ -32,7 +32,7 @@ class DestinationsUI:
         self.menus.print_the_info(title, result)
 
 
-    def get_most_popular_destination(self):
+    def get_most_popular_destination(self) -> None:
         """ TODO: add docstring """
         popular = self.logic_wrapper.popular_destination()
         title = "The most popular destination:"
@@ -73,13 +73,13 @@ class DestinationsUI:
         elif save_prompt == "n":
             print("Destionation not saved.")
     
-    def select_info(self):
+    def select_info(self) -> str:
         self.menus.display_options("Change destinations:", CHANGE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
 
-    def change_destination_info(self): #define
+    def change_destination_info(self) -> None: #define
         """ TODO: add docstring """
         id = input("what destination do you want to change ID: ")
         country = input("Enter the country: ")
@@ -100,7 +100,7 @@ class DestinationsUI:
             estimated_flight_time = estimated_flight_time)
             self.logic_wrapper.update_destination_info(dest)
 
-    def change_contact_info(self):
+    def change_contact_info(self) -> None:
         """ TODO: add docstring """
         id = input("what destination do you want to change ID: ")
         contact_name = input("Enter the name of the contact person:")
@@ -121,7 +121,7 @@ class DestinationsUI:
 
         self.logic_wrapper.update_contact_info(dest)
 
-    def change_airport_info(self):
+    def change_airport_info(self) -> None:
             """ TODO: add docstring """
             id = input("what destination do you want to change ID: ")
             airport = input("Enter new airport name: ")
@@ -139,12 +139,3 @@ class DestinationsUI:
             dest.airport_name = airport
 
             self.logic_wrapper.update_contact_info(dest)
-
-    """destination_id: str
-    destination: str
-    emergency_contact_name: str
-    emergency_contact_number: str
-    airport_name: str
-    distance_from_iceland: str
-    estimated_flight_time: str
-"""

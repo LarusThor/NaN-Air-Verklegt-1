@@ -11,7 +11,7 @@ class ScheduleLL():
         self.logic = logic_wrapper
 
 
-    def employee_schedule_by_week(self, employee, year, week_nr) -> str:
+    def employee_schedule_by_week(self, employee: str, year: str, week_nr: str) -> str:
         """ Returns employee schedule for a chosen week. """
         flights = []
         voyage_list = self.logic.get_all_voyages()
