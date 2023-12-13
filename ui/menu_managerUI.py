@@ -33,7 +33,7 @@ class Menu():
         # Print empty lines below the menu
         print("\n" * empty_lines_below)
 
-    def display_options(self, list_of_options: list[str]) -> None:
+    def display_options(self, title: str, list_of_options: list[str]) -> None:
         """ Display menu options
 
         TODO: Do not require prepended numbers for the options - automatically insert them
