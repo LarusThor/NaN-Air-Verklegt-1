@@ -24,7 +24,7 @@ class FlightInfoUI:
         return flight_number
          
 
-    def get_flight_status_by_voyage(self): #define
+    def get_flight_status(self): #define
         """ Returns a list of upcoming voyages and their booking status. """
         flights = self.logic_wrapper.flight_fully_booked()
 

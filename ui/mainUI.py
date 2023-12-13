@@ -269,16 +269,11 @@ class Main:
                         self.voyages_ui.staff_voyage()
 
             def flight_information() -> None:
-                """TODO: add docstring"""
-                action = self.flight_info.flight_info_options()
-                match action:
-                    case "1":
-                        voyage = self.flight_info.get_voyage()
-                        self.flight_info.get_flight_status_by_voyage(voyage)
+                """If the user chooses to see the flight information. This function calls a function in the flight information UI
+                 and will print out a table that shows the flight status."""
+                
+                self.flight_info.get_flight_status()
 
-                    case "2":
-                        date = self.flight_info.get_date()
-                        self.flight_info.get_flight_status_by_date(date)
 
             options = {
                 "1": airplane,
