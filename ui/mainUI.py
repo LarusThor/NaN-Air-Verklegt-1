@@ -56,7 +56,7 @@ class Main:
                                     case "2":
                                         self.airplane_ui.list_pilots_by_licanse()
                                     case "3":
-                                        pass
+                                        self.airplane_ui.get_number_of_pilots_for_airplanes()
 
                             case "2":
                                 self.airplane_ui.types()

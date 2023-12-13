@@ -62,7 +62,11 @@ class AirplaneUI:
 
     def get_number_of_pilots_for_airplanes(self): # 1-1-1-3
         """"TODO docstring"""
-        print(self.airplane_insignia_by_types)
+        title = "Number of pilots that are qualified for each airplane type:"
+        result = ""
+        for key, value in self.pilots_license.items():
+            result += f"{key}: \n  {len(value)} licensed pilots.\n"
+        self.menus.print_the_info(title, result)
 
 
     def types(self) -> str: # 1-1-2
