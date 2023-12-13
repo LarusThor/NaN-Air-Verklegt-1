@@ -25,7 +25,7 @@ class UpcomingVoyageLL:
     def calculate_flight_time(self, arr_at, departure_date_time) -> datetime:
         """ Calculates the flight time. """
         destinations_info = self.logic.data_wrapper.get_all_destinations_info()
-        estimated_flight_time_overview = list(destinations_info.values())
+        # estimated_flight_time_overview = list(destinations_info.values())
         destination_values = destinations_info[arr_at]
         estimated_flight_time = destination_values.estimated_flight_time
         hour_duration, min_duration, sec_duration = estimated_flight_time.split(":")
@@ -77,6 +77,7 @@ class UpcomingVoyageLL:
     def add_staff_for_voyage(self, staff_to_add) -> None:
         """ Adds staff to a voyage. """
         return self.logic.data_wrapper.add_staff(staff_to_add)
+    
 
     def aircraft_availability():
         pass

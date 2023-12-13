@@ -130,6 +130,7 @@ class VoyagesUI:
     def manager_staffs_voyage(self, voyage_flight_number, voyage_date: str):
         """TODO: add docstring"""
         # TODO: accept voyage_date as date object
+        return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
         voyage_flight_number_info = self.logic_wrapper.upcoming_voyages().values()
         for voyages_info in voyage_flight_number_info:
             # TODO: just get this as a variable, dont reassign the attribute
@@ -137,7 +138,9 @@ class VoyagesUI:
             if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
                 aircraft_id = input("Enter a valid aircraft: ")
                 captain = input("Enter captain social id: ")
-
+                flights_list, total_hours_worked = self.logic_wrapper.total_hours_worked(captain, voyages_info.departure, return_flight_arrival)
+                if total_hours_worked != 0:
+                    print("NEi")
                 if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain):
                     pass
                 copilot = input("Enter copilot's social id: ")
@@ -173,7 +176,8 @@ class VoyagesUI:
                 for flight_attendant in flight_attendants:
                     print("Flight Attendant:", flight_attendant)
                         
-                return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
+                # return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
+
 
                 save_prompt = input(f"Would you like to add this staff to the voyage {voyage_flight_number}, (y)es or (n)o? ")
                 if save_prompt == "y":
