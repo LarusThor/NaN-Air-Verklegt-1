@@ -24,32 +24,13 @@ class FlightInfoUI:
         return flight_number
          
 
-    def get_date(self) -> str:
-        """ TODO: add docstring """
-        date = input("Enter date; year-month-day: ")
-        return date 
-         
+    def get_flight_status_by_voyage(self): #define
+        """ Returns a list of upcoming voyages and their booking status. """
+        flights = self.logic_wrapper.flight_fully_booked()
 
-    def get_flight_status_by_voyage(self, voyage): #define
-        """ TODO: add docstring """
-        status = self.flight_booking.get(voyage)
-        while status == None:
-            print("There is no flight number", voyage)
-            voyage = input("Enter flight number: ")
-            status = self.flight_booking.get(voyage)
-
-        title = "Flight status:"
-        try:
-            int(status)
-            result = f"{voyage} has {status} seats left."
-            self.menus.print_the_info(title, result)
-        except:
-            result = f"{voyage} is fully booked."
-            self.menus.print_the_info(title, result)
-
-        
-    def get_flight_status_by_date(self, date): #define
-        """ TODO: add docstring """
-        pass
-         
-         
+        print("Flight status: \n")
+        for flight, status in flights:
+            if status == "Booked":
+                print(f"{flight.departure.date()} - {flight.flight_nr} to {flight.arr_at} = {status}")
+            else:
+                print(f"{flight.departure.date()} - {flight.flight_nr} to {flight.arr_at} = {status} seats left.")
