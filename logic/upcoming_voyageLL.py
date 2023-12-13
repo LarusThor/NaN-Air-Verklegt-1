@@ -60,7 +60,6 @@ class UpcomingVoyageLL:
                 
     def detect_voyage_info_return_flight(self, voyage_flight_number, voyage_date: str):
         flight_info = self.logic.upcoming_voyages()
-        print(flight_info)
         for key, item in flight_info.items():
             # for id_key, some in key: #1, (UPcomingVoyage(id=1, flight=Na021))
             if voyage_flight_number == item.flight_nr and voyage_date in item.departure.strftime("%Y-%m-%d %H:%M:%S"):
