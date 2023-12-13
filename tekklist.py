@@ -26,3 +26,4 @@
 # skoða concistency eins og í hvernig notendur eiga að skrá inn dates
 #EVA!!!!!!!!!!! emplyees sem eru working, segja hvaða flug þau eru working
 #Í weekly schedule, kemur ekki rétt, alltaf bara að það sé ekkert schedule
+# skoða validation í airplaneUI-add_airplane, getum ekki skrifað inn hvaða týpur eru í boði vegna þess að hvað gerist ef að það er bætt við týpu, þá mun hún ekki koma upp
