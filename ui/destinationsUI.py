@@ -4,7 +4,7 @@ from model.destination_model import Destination
 
 
 DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Change destination information"]
-
+CHANGE_OPTIONS = ["1. everyting", "2. contact information", "3. airport"]
 
 
 class DestinationsUI:
@@ -73,7 +73,12 @@ class DestinationsUI:
         elif save_prompt == "n":
             print("Destionation not saved.")
     
-    
+    def select_info(self):
+        self.menus.display_options(CHANGE_OPTIONS)
+        action = str(input("Enter your action: ").lower())
+        return action
+
+
     def change_destination_info(self): #define
         """ TODO: add docstring """
         id = input("what destination do you want to change ID: ")
@@ -116,11 +121,24 @@ class DestinationsUI:
 
         self.logic_wrapper.update_contact_info(dest)
 
-    def information_for_destination(self, id):
-        dest_info = self.logic_wrapper.destination_info_list()
-        for key, value in dest_info.items():
-            if value.destination_id == id:
-                print(f"ID: {value.destination_id}\nDestination: {value.destination}\nEmergency contact name: {value.emergency_contact_name}\nEmergency contact number: {value.emergency_contact_number}\nAirport name: {value.airport_name}\nDistance from iceland: {value.distance_from_iceland}\nEstimated flight time: {value.estimated_flight_time}")
+    def change_airport_info(self):
+            """ TODO: add docstring """
+            id = input("what destination do you want to change ID: ")
+            airport = input("Enter new airport name: ")
+
+            all_dests = LogicWrapper().destination_list()
+
+            counter = 0
+            for destination in all_dests:
+                if destination.destination_id == id:
+                    break
+                else:
+                    counter += 1
+
+            dest = all_dests[counter]
+            dest.airport_name = airport
+
+            self.logic_wrapper.update_contact_info(dest)
 
     '''destination_id: str
     destination: str

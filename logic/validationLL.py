@@ -95,6 +95,9 @@ class ValidationLL():
     def validate_save_new(self,str) -> bool:
         pass
     
+    def validate_home_and_quit(self,str) -> bool:
+        pass
+    
         
        
         
