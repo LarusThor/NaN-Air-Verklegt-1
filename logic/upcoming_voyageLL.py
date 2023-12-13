@@ -59,16 +59,21 @@ class UpcomingVoyageLL:
                     return True
                 
     def detect_voyage_info_return_flight(self, voyage_flight_number, voyage_date: str):
-        flight_info = self.logic.upcoming_voyages().items()
-        for key in flight_info:
-            for id_key, some in key: #1, (UPcomingVOyage(id=1, flight=Na021))
-                if voyage_flight_number in flight_info[key] and voyage_date in flight_info[key]:
-                    id_of_flight = key
-        return_flight_id = id_of_flight + 1
-        return_flight_values = flight_info[return_flight_id] 
+        flight_info = self.logic.upcoming_voyages()
+        print(flight_info)
+        for key, item in flight_info.items():
+            # for id_key, some in key: #1, (UPcomingVoyage(id=1, flight=Na021))
+            if voyage_flight_number == item.flight_nr and voyage_date in item.departure.strftime("%Y-%m-%d %H:%M:%S"):
+                id_of_flight = key
+        return_flight_id = int(id_of_flight) + 1
+        return_flight_values = flight_info[str(return_flight_id)] 
+        return_flight_id = return_flight_values.id
         return_flight_number = return_flight_values.flight_nr
-        return_flight_date = return_flight_values.departure
-        return return_flight_number, return_flight_date
+        return_flight_dep_from = return_flight_values.dep_from
+        return_flight_arr_at = return_flight_values.arr_at
+        return_flight_date_departure = return_flight_values.departure
+        return_flight_arrival = return_flight_values.arrival
+        return return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival 
 
     def add_staff_for_voyage(self, staff_to_add) -> None:
         """ Adds staff to a voyage. """
