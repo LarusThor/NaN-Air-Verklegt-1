@@ -72,6 +72,11 @@ class ScheduleUI:
         print(self.logic_wrapper.employee_schedule_by_week(employee, year, week))
     
     def get_total_hours_worked(self):
-        pass
+        social_id = input("Enter social ID: ")
+        employee = self.logic_wrapper.employee_info(social_id)
+        start_date = datetime(2022,11,4)
+        end_date = datetime(2023,12,24)
+        print(start_date)
+        self.logic_wrapper.total_hours_worked(employee, start_date, end_date)
 
         
