@@ -65,7 +65,7 @@ class ScheduleUI:
         employee = input("Enter the employees social ID: ")
         return employee
 
-    def get_schedule_for_employee(self, employee):
+    def get_schedule_for_employee(self, employee: str):
         """TODO: add docstring"""
         year = input("Enter year: ")
         week = input("Enter week: ")
@@ -74,14 +74,14 @@ class ScheduleUI:
         self.menus.print_the_info(title, result)
 
     
-    def get_datetime(self):
+    def get_datetime(self) -> date:
         date_input = input("Input date (year-month-day): ").strip()
         date_format = "%Y-%m-%d"
         a_date = datetime.strptime(date_input, date_format)
         return a_date
 
 
-    def get_total_hours_worked(self):
+    def get_total_hours_worked(self) -> None:
         print("See total hours an employee has worked! ")
         social_id = input("Enter social ID: ").strip()
         employee = self.logic_wrapper.employee_info(social_id)

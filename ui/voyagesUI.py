@@ -1,6 +1,6 @@
 from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
-from datetime import datetime
+from datetime import datetime, date
 from model.upcoming_voyage_model import UpcomingVoyage
 
 VOYAGES_OPTIONS = [
@@ -127,7 +127,7 @@ class VoyagesUI:
         date = input("Enter year date; year-month-day: ")
         return date
 
-    def manager_staffs_voyage(self, voyage_flight_number, voyage_date: str):
+    def manager_staffs_voyage(self, voyage_flight_number: str, voyage_date: str) -> None:
         """TODO: add docstring"""
         # TODO: accept voyage_date as date object
         captain_check = False
@@ -329,7 +329,7 @@ class VoyagesUI:
         week = input("Enter week number (1-52): ")
         return year, week
 
-    def get_upcoming_voyage_by_date(self, date) -> str:
+    def get_upcoming_voyage_by_date(self, date: date) -> str:
         """TODO: add docstring"""
 
         voyage_counter = 0
@@ -347,7 +347,7 @@ class VoyagesUI:
                     voyage_counter = 0
                     print("-" * 130)
 
-    def get_upcoming_voyage_by_week(self, year, week_nr):
+    def get_upcoming_voyage_by_week(self, year: str, week_nr: str) -> None:
         """
         TODO: add docstring"""
         voyage_counter = 0
@@ -368,7 +368,7 @@ class VoyagesUI:
                         print("-" * 130)
 
 
-    def get_past_voyage_by_date(self, date) -> str:
+    def get_past_voyage_by_date(self, date: date) -> str:
         """TODO: add docstring"""
 
         voyage_counter = 0
@@ -386,7 +386,7 @@ class VoyagesUI:
                     voyage_counter = 0
                     print("-" * 130)
 
-    def get_past_voyage_by_week(self, year, week_nr):
+    def get_past_voyage_by_week(self, year:str,  week_nr:str) -> None:
         """
         TODO: add docstring
         TODO: add typehints
@@ -419,7 +419,7 @@ class VoyagesUI:
                         print("-" * 130)
 
     def staff_voyage(self) -> None:
-        """TODO: add docstring"""
+        """Adds staff to voyage in the system."""
 
         flight_number = input("Enter a flight number: ")
         captain = input("Enter captain's social ID: ")
@@ -427,8 +427,8 @@ class VoyagesUI:
         head_flight_crew = input("Enter head flight attendant's social ID: ")
         # TODO add an option for more flight attendants
 
-    def cancel_voyage(self):  # define
-        """TODO: add docstring"""
+    def cancel_voyage(self) -> None:  # define
+        """Cancels a voyage in teh system."""
 
         flight_number = input("Enter flight number: ")
         save_prompt = input(
