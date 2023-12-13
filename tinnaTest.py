@@ -1,3 +1,3 @@
-from ui.mainUI import main
+from ui.mainUI import Main
 
-main()
+Main()
