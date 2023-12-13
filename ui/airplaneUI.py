@@ -25,23 +25,32 @@ class AirplaneUI:
         self.menus.display_options(AIRPLANE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
+    
+
+    def get_pilots_for_a_specific_type(self): # 1-1-1-1
+        airplane_type = input("Enter an airplane type: ") # TODO has to be validated
+        title = f"Pilots qualified to fly {airplane_type}:"
+        result = ""
+        for person in self.pilots_license.get(airplane_type):
+            result += person + "\n"
+        self.menus.print_the_info(title, result)
 
 
-    def airplane_types_and_licanse(self) -> str: #if nr 1 from AIRPLANE_OPTIONS is chosen
+    def airplane_types_and_licanse(self) -> str: # 1-1
         """ TODO: add docstring """
         self.menus.display_options(AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
 
-    def pilots_by_licanse(self) -> None: # if nr 1 from AIRPLANE_TYPES_AND_LICENSE_OPTIONS is chosen
+    def pilots_by_licanse(self) -> None: # 1-1-1
         """ TODO: add docstring """
         self.menus.display_options(PILOTS_BY_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
 
-    def list_pilots_by_licanse(self):
+    def list_pilots_by_licanse(self): # 1-1-1-2
         """ TODO: add docstring """
         result = ""
         title = "{:<14} | {}".format("Airplane type", "Pilots")
@@ -50,7 +59,7 @@ class AirplaneUI:
         self.menus.print_the_info(title, result)
 
 
-    def types(self) -> str:
+    def types(self) -> str: # 1-1-2
         """ TODO: add docstring """
         title = "Airplane types: "
         result = ""
@@ -77,19 +86,19 @@ class AirplaneUI:
         self.logic_wrapper.add_airplane(airplane)
         
 
-    def airplane_usage_options(self) -> str:
+    def airplane_usage_options(self) -> str: # 1-3
         """ TODO: add docstring """
         self.menus.display_options(AIRPLANE_USAGE)
         action = str(input("Enter your action: ").lower())
         return action
 
 
-    def most_used_airplane(self):
+    def most_used_airplane(self): # 1-3-1
         """ TODO: add docstring """
         self.menus.print_the_info("The mose used airplane is:", self.airplane_usage[0])
 
 
-    def flown_furthest_airplane(self):
+    def flown_furthest_airplane(self): # 1-3-2
         """ TODO: add docstring """
         title = "The airplane that has flown the furthest:"
         result = f"Airplane name: {self.flown_furthest[0]} - Distance: {self.flown_furthest[1]}km."

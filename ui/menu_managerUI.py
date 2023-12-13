@@ -72,8 +72,7 @@ class Menu():
 
     def get_next_action(self):
         """ TODO: add docstring """
-        print()
-        print("(H)ome  (B)ack")
+        print("Enter (h) for Home or (q) for quit") # TODO has to validated
         action = input("Enter in your action: ")
         return action
     

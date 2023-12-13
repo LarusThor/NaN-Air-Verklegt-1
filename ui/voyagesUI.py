@@ -135,15 +135,15 @@ class VoyagesUI:
             departure_date = voyages_info.departure.strftime("%Y-%m-%d")
             if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
                 
-                aircraft_id = "TF-EPG" #input("Enter a valid aircraft: ")
-                captain = "2706838569" #input("Enter captain's social id: ")
+                aircraft_id = "TF-EPG" #er a valid aircraft: ")
+                captain = input("Enter captain's social id: ")
 
                 if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain):
                     pass
-                copilot = "2410876598" #input("Enter copilot's social id: ")
+                copilot = input("Enter copilot's social id: ")
                 if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain):
                     pass                    
-                flight_service_manager = "1600904199"#input("Enter flight service manager's social id: ")
+                flight_service_manager = input("Enter flight service manager's social id: ")
                 flight_attendants = []
                 add_flight_attendant = input("Enter social id of an additional flight attendant: ")
 
@@ -155,7 +155,7 @@ class VoyagesUI:
                 while add_flight_attendant:
                     if len(flight_attendants) < 5:
                         add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                        if add_flight_attendant == "": #[2q75645]
+                        if add_flight_attendant == "": 
                             unstaffed = 5 - len(flight_attendants)
                             for flight_attendant in range(unstaffed):
                                 flight_attendants.append("N/A")
@@ -177,7 +177,7 @@ class VoyagesUI:
                 save_prompt = input(f"Would you like to add this staff to the voyage {voyage_flight_number}, (y)es or (n)o? ")
                 if save_prompt == "y":
 
-                    upcoming_voyage_staff = UpcomingVoyage(
+                    upcoming_voyage_staff_first_flight = UpcomingVoyage(
                         id=voyages_info.id,
                         flight_nr=voyages_info.flight_nr,
                         dep_from=voyages_info.dep_from,
@@ -194,8 +194,30 @@ class VoyagesUI:
                         fa4=flight_attendants[3],
                         fa5=flight_attendants[4]
                     )
-                    print(upcoming_voyage_staff)
-                    self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff)
+                    print(upcoming_voyage_staff_first_flight)
+
+                    #TODO: Change return flight staff aswell
+                    # upcoming_voyage_staff_return_flight = UpcomingVoyage(
+
+                    #     id=(int(voyages_info.id) + 1),
+                    #     flight_nr=voyages_info.flight_nr,
+                    #     dep_from=voyages_info.dep_from,
+                    #     arr_at=voyages_info.arr_at,
+                    #     departure=voyages_info.departure,
+                    #     arrival=voyages_info.arrival,
+                    #     aircraft_id=voyages_info.aircraft_id,
+                    #     captain=captain,
+                    #     copilot=copilot,
+                    #     fsm=flight_service_manager,
+                    #     fa1=flight_attendants[0],
+                    #     fa2=flight_attendants[1],
+                    #     fa3=flight_attendants[2], 
+                    #     fa4=flight_attendants[3],
+                    #     fa5=flight_attendants[4]
+                    #)
+
+                    self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_first_flight)
+                    # self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_return_flight)
                     print("Voyage has been staffed!")
 
         # if len(flight_attendants) < 5:
