@@ -23,15 +23,11 @@ class FlightInformationLL:
         upcoming_voyages = self.logic.upcoming_voyages()
         for voyage in upcoming_voyages.values():
           if voyage.aircraft_id != "N/A":
-            #print(capacity[voyage.aircraft_id])
             if capacity[voyage.aircraft_id] <= int(voyage.seats_sold):
                 booking_status = "Booked"
-                #booked[voyage.id] = booking_status
             else:
                 booking_status = capacity[voyage.aircraft_id] - int(voyage.seats_sold)
             booked[voyage.flight_nr] = booking_status
             
         return booked
-
-    def flight_status_by_time(self):
-        pass
+    
