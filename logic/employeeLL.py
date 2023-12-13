@@ -82,7 +82,7 @@ class EmployeeLL:
 
             if employee.social_id not in workers:
                 continue
-
+            
             arrival = flight.arrival
             departure = flight.departure
 
@@ -101,3 +101,34 @@ class EmployeeLL:
             total_hours += work_hours
 
         return flights_list, total_hours
+    
+    def get_total_future_hours_worked(self, social_id: str, start: datetime, end: datetime) -> tuple[list[str], float]:
+        """Returns total hours an employee has worked."""
+        #TODO: laga listann af voyages: fáum bara fyrstu 10
+        total_hours = 0
+        upcoming_voyage_dict = self.logic.upcoming_voyages()
+        employee = self.logic.employee_info(social_id)
+
+        for flight in upcoming_voyage_dict.values():
+            workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
+
+            if employee.social_id not in workers:
+                continue
+            
+            arrival = flight.arrival
+            departure = flight.departure
+
+            if arrival > end or departure < start:
+                continue
+
+            if arrival > end:
+                arrival = end
+
+            if departure < start:
+                departure = start
+
+            work_hours = (arrival - departure).total_seconds() / 3600
+            
+            total_hours += work_hours
+
+        return total_hours

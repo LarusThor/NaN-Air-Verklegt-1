@@ -63,7 +63,12 @@ class LogicWrapper():
     def total_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
         """ Returns hours worked by an employee for a specific time frame. """
         return self.employee.get_total_hours_worked(employee, start, end)
-
+    
+    
+    def get_total_future_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
+        """Returns hours to be worked by an employee for a specific time frame."""
+        return self.employee.get_total_future_hours_worked(employee, start, end)
+    
 
     #Destinations:
     def destination_info_list(self):
@@ -161,6 +166,10 @@ class LogicWrapper():
 
     def voyage_info_for_return_flight(self, voyage_flight_number, voyage_date):
         return self.list_upcoming_voyage.detect_voyage_info_return_flight(voyage_flight_number, voyage_date)
+    
+    
+    def staff_availability_check(self,captain, departure, return_flight_arrival):
+        return self.list_upcoming_voyage.staff_availability(captain, departure, return_flight_arrival)
 
 
     #Past voyages:

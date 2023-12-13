@@ -83,5 +83,6 @@ class UpcomingVoyageLL:
         pass
 
 
-    def staff_availability():
-        pass
+    def staff_availability(self, captain, departure, return_flight_arrival):
+        total_hours_worked = self.logic.get_total_future_hours_worked(captain, departure, return_flight_arrival)
+        return total_hours_worked
