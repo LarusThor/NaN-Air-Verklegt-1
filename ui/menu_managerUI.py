@@ -65,7 +65,7 @@ class Menu():
         #     print(" " * padding + f"{i + 1}" +  item) 
 
         print(" " * padding + OUTLINE)
-        print("(M)enu  (B)ack")
+        print("Enter (h) for Home or (q) for quit")
 
         # Print empty lines below the menu
         print("\n" * empty_lines_below)
@@ -73,8 +73,13 @@ class Menu():
     def get_next_action(self):
         """ TODO: add docstring """
         print("Enter (h) for Home or (q) for quit") # TODO has to validated
-        action = input("Enter in your action: ")
-        return action
+        action = input("Enter in your action: ").lower()
+        match action:
+            case "h":
+                None
+            case "q":
+                quit()
+
     
     def print_the_info(self, title, info):
         """ TODO: add docstring """

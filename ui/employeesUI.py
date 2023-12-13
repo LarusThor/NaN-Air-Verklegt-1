@@ -277,8 +277,6 @@ class EmployeeUI:
         return social_id
 
 
-
-
     def add_employee(self): #define
         """ TODO: add docstring """
         #TODO: rosa ljótt getum við stytt eða fegrað?
@@ -287,10 +285,9 @@ class EmployeeUI:
         print("Fill out the following informaation about the new employee:")
         
         name = input("Name: ").title()
-        while not validation.validate_name(name):
-            print("ERROR: Invalid name \nName has to be a string of length > 5. ")
+        while not self.validation.validate_name(name):
+            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
             name = input("Name: ").title()
-            continue
         
         social_id = self.get_social_id()
  
