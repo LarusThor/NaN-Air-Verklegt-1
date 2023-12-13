@@ -103,19 +103,27 @@ class AirplaneUI:
             model = input("Enter a Model: ")
             
         number_of_seats = input("Enter the number of seats in the airplane: ")
+<<<<<<< HEAD
         while not self.validation.validate_number_of_seats(number_of_seats):
             print("ERROR: Invalid number of seats \nIt should be and number and under 110 and over 84")
             number_of_seats = input("Enter the number of seats in the airplane: ")
+=======
+>>>>>>> 057a2820c858bd4364de6b50e3d307e98a74c499
         
-        print("New airplane: ")
-        print("Name:", name)
-        print("Type:", type)
-        print("Manufacturer:", manufacturer)
-        print("Model:", model)
-        print("Number of seats:", number_of_seats)
+        title = "New airplane:"
+        result = f"Name: {name}\nType: {type}\nManufacturer: {manufacturer}\nModel: {model}\nNumber of seats: {number_of_seats}"
+        
+        # print("Name:", name)
+        # print("Type:", type)
+        # print("Manufacturer:", manufacturer)
+        # print("Model:", model)
+        # print("Number of seats:", number_of_seats)
         save_prompt = input("Would you like to save this new airplane, (y)es or (n)o? ").lower()
-        airplane = Airplane(name,type,manufacturer,model,number_of_seats)
-        self.logic_wrapper.add_airplane(airplane)
+        if save_prompt == "y":
+            airplane = Airplane(name,type,manufacturer,model,number_of_seats)
+            self.logic_wrapper.add_airplane(airplane)
+        else:
+            None
         
 
     def airplane_usage_options(self) -> str: # 1-3

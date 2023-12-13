@@ -55,7 +55,7 @@ class LogicWrapper():
         return self.employee.get_employee(employee_social_id)
     
 
-    def change_employee_info(self, employee) -> None:
+    def change_employee_info(self, employee: Employee) -> None:
         """ doc """
         return self.employee.change_employee_info(employee)
     
