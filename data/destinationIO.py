@@ -21,7 +21,6 @@ class DestinationIO():
             reader = csv.DictReader(csvfile)
             for row in reader:
                 dest_list.append(Destination(row["id"], row["destination"], row["emergency_contact_name"], row["emergency_contact_number"], row["airport_name"], row["distance_from_iceland"], row['estimated_flight_time']))
-            #id,destination,emergency_contact_name,emergency_contact_number,airport_name,distance_from_iceland, estimated_flight_time
             return dest_list
 
 
