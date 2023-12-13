@@ -33,7 +33,7 @@ class VoyagesUI:
 
     def voyages_options(self) -> str:
         """ TODO: add docstring """
-        self.menus.display_options(VOYAGES_OPTIONS)
+        self.menus.display_options("Voyages:", VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
@@ -234,13 +234,13 @@ class VoyagesUI:
 
     def list_voyage_options(self) -> str:
         """TODO: add docstring"""
-        self.menus.display_options(LIST_VOYAGES_OPTIONS)
+        self.menus.display_options("List voyages", LIST_VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
     def voyage_past_or_present_options(self) -> str:
         """TODO: add docstring"""
-        self.menus.display_options(PAST_OR_PRESENT_VOYAGES)
+        self.menus.display_options("List voyages:", PAST_OR_PRESENT_VOYAGES)
         action = str(input("Enter your action: ").lower())
         return action
 
