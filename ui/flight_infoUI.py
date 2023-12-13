@@ -24,14 +24,8 @@ class FlightInfoUI:
         return flight_number
          
 
-    def get_date(self) -> str:
-        """ TODO: add docstring """
-        date = input("Enter date; year-month-day: ")
-        return date 
-         
-
     def get_flight_status_by_voyage(self): #define
-        """ TODO: add docstring """
+        """ Returns a list of upcoming voyages and their booking status. """
         flights = self.logic_wrapper.flight_fully_booked()
 
         print("Flight status: \n")
