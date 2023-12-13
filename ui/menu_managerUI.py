@@ -1,4 +1,5 @@
 from logic.logic_wrapper import LogicWrapper
+from logic.validationLL import ValidationLL
 import os
 OUTLINE = "-"*50
 MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Schedule", "5. Voyages", "6. Flight information"]
@@ -7,6 +8,7 @@ class Menu():
     def init(self) -> None:
         """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
+        self.validator = ValidationLL()
 
     def main_menu(self) -> None:
         """ TODO: add docstring """
@@ -33,7 +35,7 @@ class Menu():
         # Print empty lines below the menu
         print("\n" * empty_lines_below)
 
-    def display_options(self, list_of_options: list[str]) -> None:
+    def display_options(self, title: str, list_of_options: list[str]) -> None:
         """ Display menu options
 
         TODO: Do not require prepended numbers for the options - automatically insert them
@@ -55,9 +57,9 @@ class Menu():
         print("\n" * empty_lines_above)
 
         padding = (terminal_width) // 150
+        print(title)
         print(" " * padding + OUTLINE)
         # Print menu items centered in the terminal
-
         for item in list_of_options:
             print(" " * padding + item)
 
@@ -74,9 +76,13 @@ class Menu():
         """ TODO: add docstring """
         print("Enter (h) for Home or (q) for quit") # TODO has to validated
         action = input("Enter in your action: ").lower()
+        action_validated = self.validator(action)
+        while action_validated == False:
+            action = input("Enter in your action: ").lower()
+        
         match action:
-            case "h":
-                None
+            case "b":
+                pass
             case "q":
                 quit()
 

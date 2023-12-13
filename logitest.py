@@ -2,7 +2,7 @@ from data.destinationIO import DestinationIO
 from model.destination_model import Destination
 from logic.logic_wrapper import LogicWrapper
 
-'''all_dests = LogicWrapper().destination_list()
+"""all_dests = LogicWrapper().destination_list()
 
 
 id = input()
@@ -17,7 +17,7 @@ print(counter)
 
 dest = all_dests[counter]
 dest.emergency_contact_name = input()
-dest.emergency_contact_number = input()'''
+dest.emergency_contact_number = input()"""
 
 # dest = Destination(
 # destination_id = "LWK",
@@ -29,7 +29,7 @@ a = LogicWrapper()
 
 dest_info = a.destination_info_list()
 for key, value in dest_info.items():
-    if value.destination_id == 'LYR':
+    if value.destination_id == "LYR":
         print(f"ID: {value.destination_id}\nDestination: {value.destination}\nEmergency contact name: {value.emergency_contact_name}\nEmergency contact number: {value.emergency_contact_number}\nAirport name: {value.airport_name}\nDistance from iceland: {value.distance_from_iceland}\nEstimated flight time: {value.estimated_flight_time}")
 
 
@@ -40,7 +40,7 @@ for key, value in dest_info.items():
 
 
 
-'''        all_dests = self.logic_wrapper.destination_list()
+"""        all_dests = self.logic_wrapper.destination_list()
         counter = 0
         for destination in all_dests:
             if destination.destination_id == id:
@@ -56,11 +56,11 @@ for key, value in dest_info.items():
         dest.distance_from_iceland = distance_from_iceland
         dest.estimated_flight_time = estimated_flight_time
 
-        self.logic_wrapper.update_destination_info(dest)'''
+        self.logic_wrapper.update_destination_info(dest)"""
 
-'''destinations = []
+"""destinations = []
         dest_list = self.logic.data_wrapper.get_all_destinations()
         for destination in dest_list:
             destinations.append(destination.destination)
         
-        return destinations'''
+        return destinations"""

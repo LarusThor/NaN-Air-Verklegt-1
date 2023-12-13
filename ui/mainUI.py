@@ -22,7 +22,7 @@ MAIN_MENU_OPTIONS = [
 
 class Main:
     def __init__(self) -> None:
-        """ TODO: add docstring """
+        """TODO: add docstring"""
         self.menus = Menu()
         self.airplane_ui = AirplaneUI()
         self.destinations_ui = DestinationsUI()
@@ -33,7 +33,7 @@ class Main:
         self.logic_wrapper = LogicWrapper()
 
     def input_prompt(self) -> None:
-        """ TODO: add docstring """
+        """TODO: add docstring"""
         while True:
             self.menus.main_menu()
             action = str(input("Enter your action: ").lower())
@@ -112,7 +112,7 @@ class Main:
 
 
             def destinations() -> None:
-                """ TODO: add docstring """
+                """TODO: add docstring"""
                 action = self.destinations_ui.destinations()
                 match action:
                     case "1":
@@ -125,12 +125,20 @@ class Main:
                         self.destinations_ui.add_destination()
 
                     case "4":
-                        self.destinations_ui.change_destination_info()
+                        action = self.destinations_ui.select_info()
 
-                            
+                        match action:
+                            case "1":
+                                self.destinations_ui.change_destination_info()
+
+                            case "2":
+                                self.destinations_ui.change_contact_info()
+
+                            case "3":
+                                self.destinations_ui.change_airport_info()
 
             def employees() -> None:
-                """ TODO: add docstring """
+                """TODO: add docstring"""
                 action = self.employee_ui.employees_options()
 
                 match action:
@@ -140,7 +148,7 @@ class Main:
                     # list employees :
                     case "1":
                         action = self.employee_ui.list_employees_options()
-                        
+
                         match action:
                             case "m":
                                 pass
@@ -171,7 +179,7 @@ class Main:
 
                             case "2":
                                 action = self.employee_ui.change_info_options()
-                                
+
                                 match action:
                                     case "1":
                                         self.employee_ui.change_home_address()
@@ -185,7 +193,7 @@ class Main:
                         self.employee_ui.add_employee()
 
             def schedule() -> None:
-                """ TODO: add docstring """
+                """TODO: add docstring"""
                 action = self.schedule_ui.schedule_options()
 
                 match action:
@@ -197,14 +205,20 @@ class Main:
                             case "1":
                                 self.schedule_ui.who_was_working(date)
                             case "2":
-                                self.schedule_ui.get_how_was_not_working(date)
+                                self.schedule_ui.get_who_was_not_working(date)
 
                     case "2":
-                        employee = self.schedule_ui.get_employee()
-                        self.schedule_ui.get_schedule_for_employee(employee)
+                        action = self.schedule_ui.schedule_for_employee_options()
+                        
+                        match action:
+                            case "1":
+                                employee = self.schedule_ui.get_employee()
+                                self.schedule_ui.get_schedule_for_employee(employee)
+                            case "2":
+                                self.schedule_ui.get_total_hours_worked()
 
             def voyages() -> None:
-                """ TODO: add docstring """
+                """TODO: add docstring"""
                 action = self.voyages_ui.voyages_options()
 
                 match action:
@@ -213,18 +227,22 @@ class Main:
 
                     case "2":
                         action = self.voyages_ui.voyage_past_or_present_options()
-                            
+
                         match action:
                             case "1":
                                 action = self.voyages_ui.list_voyage_options()
                                 match action:
                                     case "1":
                                         date = self.voyages_ui.get_date()
-                                        self.voyages_ui.get_upcoming_voyage_by_date(date)
+                                        self.voyages_ui.get_upcoming_voyage_by_date(
+                                            date
+                                        )
                                     case "2":
                                         year, week = self.voyages_ui.get_week()
-                                        self.voyages_ui.get_upcoming_voyage_by_week(year, week)
-                                            
+                                        self.voyages_ui.get_upcoming_voyage_by_week(
+                                            year, week
+                                        )
+
                             case "2":
                                 action = self.voyages_ui.list_voyage_options()
                                 match action:
@@ -233,12 +251,16 @@ class Main:
                                         self.voyages_ui.get_past_voyage_by_date(date)
                                     case "2":
                                         year, week = self.voyages_ui.get_week()
-                                        self.voyages_ui.get_past_voyage_by_week(year, week)
+                                        self.voyages_ui.get_past_voyage_by_week(
+                                            year, week
+                                        )
 
                     case "3":
                         voyage_number = self.voyages_ui.get_voyage_flight_number()
                         voyage_date = self.voyages_ui.get_voyage_date()
-                        self.voyages_ui.manager_staffs_voyage(voyage_number, voyage_date)
+                        self.voyages_ui.manager_staffs_voyage(
+                            voyage_number, voyage_date
+                        )
                         # return_voyage_number, return_voyage_date = self.logic_wrapper.voyage_info_for_return_flight(voyage_number, voyage_date)
                         # return_voyage_date = return_voyage_date.strftime("%Y-%m-%d")
                         # self.voyages_ui.manager_staffs_voyage(return_voyage_number, return_voyage_date)
@@ -247,7 +269,7 @@ class Main:
                         self.voyages_ui.staff_voyage()
 
             def flight_information() -> None:
-                """ TODO: add docstring """
+                """TODO: add docstring"""
                 action = self.flight_info.flight_info_options()
                 match action:
                     case "1":

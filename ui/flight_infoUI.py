@@ -13,7 +13,7 @@ class FlightInfoUI:
 
     def flight_info_options(self) -> str:
         """ TODO: add docstring """
-        self.menus.display_options(FLIGHT_INFORMATION_OPTIONS)
+        self.menus.display_options("Flight information:", FLIGHT_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
@@ -26,7 +26,7 @@ class FlightInfoUI:
 
     def get_date(self) -> str:
         """ TODO: add docstring """
-        date = input("Enter date; day/month/year: ") 
+        date = input("Enter date; year-month-day: ")
         return date 
          
 

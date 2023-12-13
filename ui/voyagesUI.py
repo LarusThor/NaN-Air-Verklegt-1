@@ -33,7 +33,7 @@ class VoyagesUI:
 
     def voyages_options(self) -> str:
         """ TODO: add docstring """
-        self.menus.display_options(VOYAGES_OPTIONS)
+        self.menus.display_options("Voyages:", VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
@@ -130,14 +130,17 @@ class VoyagesUI:
     def manager_staffs_voyage(self, voyage_flight_number, voyage_date: str):
         """TODO: add docstring"""
         # TODO: accept voyage_date as date object
+        return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
         voyage_flight_number_info = self.logic_wrapper.upcoming_voyages().values()
         for voyages_info in voyage_flight_number_info:
             # TODO: just get this as a variable, dont reassign the attribute
             departure_date = voyages_info.departure.strftime("%Y-%m-%d")
             if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
                 aircraft_id = input("Enter a valid aircraft: ")
-                captain = input("Enter captain's social id: ")
-
+                captain = input("Enter captain social id: ")
+                flights_list, total_hours_worked = self.logic_wrapper.total_hours_worked(captain, voyages_info.departure, return_flight_arrival)
+                if total_hours_worked != 0:
+                    print("NEi")
                 if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain):
                     pass
                 copilot = input("Enter copilot's social id: ")
@@ -173,7 +176,8 @@ class VoyagesUI:
                 for flight_attendant in flight_attendants:
                     print("Flight Attendant:", flight_attendant)
                         
-                return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
+                # return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
+
 
                 save_prompt = input(f"Would you like to add this staff to the voyage {voyage_flight_number}, (y)es or (n)o? ")
                 if save_prompt == "y":
@@ -234,13 +238,13 @@ class VoyagesUI:
 
     def list_voyage_options(self) -> str:
         """TODO: add docstring"""
-        self.menus.display_options(LIST_VOYAGES_OPTIONS)
+        self.menus.display_options("List voyages", LIST_VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
     def voyage_past_or_present_options(self) -> str:
         """TODO: add docstring"""
-        self.menus.display_options(PAST_OR_PRESENT_VOYAGES)
+        self.menus.display_options("List voyages:", PAST_OR_PRESENT_VOYAGES)
         action = str(input("Enter your action: ").lower())
         return action
 
@@ -263,7 +267,7 @@ class VoyagesUI:
         print(VOYAGE_HEADER)
         print("=" * 130)
         for flight_values in self.logic_wrapper.upcoming_voyages().values():
-            if date in flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):
+            if date in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
                 print(
                     f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}",
                     end="\n",
@@ -282,7 +286,7 @@ class VoyagesUI:
         print("=" * 130)
         for flight_values in self.logic_wrapper.upcoming_voyages().values():
             weeks = str(flight_values.departure.isocalendar().week)
-            if year in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
+            if year in flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):
                 if weeks == week_nr:
                     print(
                         f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}",
@@ -302,7 +306,7 @@ class VoyagesUI:
         print(VOYAGE_HEADER)
         print("=" * 130)
         for flight_values in self.logic_wrapper.get_past_voyages().values():
-            if date in flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):
+            if date in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
                 print(
                     f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}",
                     end="\n",
@@ -339,7 +343,7 @@ class VoyagesUI:
                     )
                     voyage_counter += 1
 
-                    # Comment this - what's happening here
+                    # Comment this - what"s happening here
                     if voyage_counter == 2:
                         voyage_counter = 0
                         print("-" * 130)

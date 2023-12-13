@@ -17,14 +17,14 @@ class EmployeeUI:
 
     def employees_options(self) -> str:
         """ Displays options for information and actions about employees. """
-        self.menus.display_options(EMPLOYEES_OPTIONS)
+        self.menus.display_options("Employee:", EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
 
     def list_employees_options(self) -> str:
         """Prints out the options for witch tipe of employee list the user wants to see. Returns for the action input"""
-        self.menus.display_options(LIST_EMPLOYEES_OPTIONS)
+        self.menus.display_options("List employees:", LIST_EMPLOYEES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
@@ -84,7 +84,7 @@ class EmployeeUI:
         """Prints out the options that come up when the user chooses to get the employees information.
         And gets the action input from the user
         """
-        self.menus.display_options(EMPLOYEE_INFORMATION_OPTIONS)
+        self.menus.display_options("Employee information:", EMPLOYEE_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())   
         return action 
 
@@ -99,7 +99,7 @@ class EmployeeUI:
         employee = employee_info(social_id)
         #TODO: spyrja um ef það er skrifað 10 digits en ekki retti employee
         print()
-        print("Employee's information:")
+        print("Employee information:")
         print("-"*30)
         print("{:<14}".format("Name:"), employee.name)
         print("{:<14}".format("Social ID:"), employee.social_id)
