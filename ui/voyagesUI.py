@@ -135,7 +135,7 @@ class VoyagesUI:
             departure_date = voyages_info.departure.strftime("%Y-%m-%d")
             if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
                 
-                aircraft_id = "TF-EPG" #er a valid aircraft: ")
+                aircraft_id = input("Enter a valid aircraft: ")
                 captain = input("Enter captain's social id: ")
 
                 if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain):
@@ -194,7 +194,7 @@ class VoyagesUI:
                         fa4=flight_attendants[3],
                         fa5=flight_attendants[4]
                     )
-                    print(upcoming_voyage_staff_first_flight)
+                    
 
                     #TODO: Change return flight staff aswell
                     # upcoming_voyage_staff_return_flight = UpcomingVoyage(
@@ -366,4 +366,5 @@ class VoyagesUI:
             print("Voyage has been canceled!")
 
         elif save_prompt == "n":
+            print("Voyage was not canceled.")
             print("Voyage was not canceled.")

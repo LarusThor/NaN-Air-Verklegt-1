@@ -59,10 +59,11 @@ class UpcomingVoyageLL:
                     return True
                 
     def detect_voyage_info_return_flight(self, voyage_flight_number, voyage_date: str):
-        flight_info = self.logic.data_wrapper.get_all_destinations_info()
-        for key, values in flight_info.items():
-            if values.voyage_flight_number in flight_info[key] and values.voyage_date in flight_info[key]:
-                id_of_flight = key
+        flight_info = self.logic.upcoming_voyages().items() 
+        for key in flight_info:
+            for id_key, some in key: #1, (UPcomingVOyage(id=1, flight=Na021))
+                if voyage_flight_number in flight_info[key] and voyage_date in flight_info[key]:
+                    id_of_flight = key
         return_flight_id = id_of_flight + 1
         return_flight_values = flight_info[return_flight_id] 
         return_flight_number = return_flight_values.flight_nr
