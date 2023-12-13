@@ -5,6 +5,7 @@ MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Sched
 
 class Menu():
     def init(self) -> None:
+        """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
 
     def main_menu(self) -> None:
@@ -70,12 +71,14 @@ class Menu():
         print("\n" * empty_lines_below)
 
     def get_next_action(self):
+        """ TODO: add docstring """
         print()
         print("(H)ome  (B)ack")
         action = input("Enter in your action: ")
         return action
     
     def print_the_info(self, title, info):
+        """ TODO: add docstring """
         terminal_size = os.get_terminal_size()
         terminal_width = terminal_size.columns
         terminal_height = terminal_size.lines

@@ -5,6 +5,7 @@ FLIGHT_INFORMATION_OPTIONS = ["1. Booking status for specific voyage", "2. Booki
 
 class FlightInfoUI:
     def __init__(self) -> None:
+        """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
         self.flight_booking = self.logic_wrapper.flight_fully_booked()

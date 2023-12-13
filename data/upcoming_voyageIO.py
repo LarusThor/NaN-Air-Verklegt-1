@@ -2,6 +2,7 @@ import csv
 from pathlib import Path
 from model.upcoming_voyage_model import UpcomingVoyage
 from datetime import datetime
+from dataclasses import asdict
 
 
 class UpcomingVoyageIO:
@@ -29,55 +30,63 @@ class UpcomingVoyageIO:
             fieldnames = ['id','flight_nr', 'dep_from', 'arr_at', 'departure', 'arrival', 'aircraft_id', 'captain','copilot','fsm','fa1','fa2','fa3','fa4','fa5',"seats_sold"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-            writer.writerow(
-                {
-                'id': upcoming_voyage.id, 
-                'flight_nr': upcoming_voyage.flight_nr, 
-                'dep_from': upcoming_voyage.dep_from, 
-                'arr_at': upcoming_voyage.arr_at, 
-                'departure': upcoming_voyage.departure, 
-                'arrival': upcoming_voyage.arrival, 
-                'aircraft_id': upcoming_voyage.aircraft_id,
-                'captain': upcoming_voyage.captain, 
-                'copilot': upcoming_voyage.copilot, 
-                "seats_sold": upcoming_voyage.seats_sold,
-                'fsm': upcoming_voyage.fsm, 
-                'fa1': upcoming_voyage.fa1, 
-                'fa2': upcoming_voyage.fa2, 
-                'fa3': upcoming_voyage.fa3, 
-                'fa4':upcoming_voyage.fa4, 
-                'fa5':upcoming_voyage.fa5,
-                'seats_sold':upcoming_voyage.seats_sold
-                })
+            writer.writerow(asdict(upcoming_voyage))
+                # {
+                # 'id': upcoming_voyage.id, 
+                # 'flight_nr': upcoming_voyage.flight_nr, 
+                # 'dep_from': upcoming_voyage.dep_from, 
+                # 'arr_at': upcoming_voyage.arr_at, 
+                # 'departure': upcoming_voyage.departure, 
+                # 'arrival': upcoming_voyage.arrival, 
+                # 'aircraft_id': upcoming_voyage.aircraft_id,
+                # 'captain': upcoming_voyage.captain, 
+                # 'copilot': upcoming_voyage.copilot, 
+                # "seats_sold": upcoming_voyage.seats_sold,
+                # 'fsm': upcoming_voyage.fsm, 
+                # 'fa1': upcoming_voyage.fa1, 
+                # 'fa2': upcoming_voyage.fa2, 
+                # 'fa3': upcoming_voyage.fa3, 
+                # 'fa4':upcoming_voyage.fa4, 
+                # 'fa5':upcoming_voyage.fa5,
+                # 'seats_sold':upcoming_voyage.seats_sold
+                # })
             
-            
-    def add_staff_to_voyage(self, added_staff_to_voyage) -> None:
+
+    def add_staff_to_voyage(self, added_staff_to_voyage: UpcomingVoyage) -> None:
         voyage_list = self.read_upcoming_flights()
 
-        for voyage_name, voyage_info in voyage_list.items():
-            if voyage_name == added_staff_to_voyage.id:
-                voyage_list[voyage_name] = added_staff_to_voyage
-                
+        for voyage_id, voyage in voyage_list.items():
+            #if voyage_name == added_staff_to_voyage.id:
+            if voyage_id == added_staff_to_voyage.id:    
+                voyage_list[voyage_id] = added_staff_to_voyage
+                break
+        else:
+            raise ValueError("Voyage does not exist")
         
-        with open('files/upcoming_flights.csv', 'w+', newline='', encoding="utf-8") as csvfile:
+        with open('files/upcoming_flights.csv', 'w', newline='', encoding="utf-8") as csvfile:
             fieldnames = ['id','flight_nr', 'dep_from', 'arr_at', 'departure', 'arrival', 'aircraft_id', 'captain','copilot','fsm','fa1','fa2','fa3','fa4','fa5',"seats_sold"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             
-            for voyage in voyage_list:
-                writer.writerow({'id': voyage.id,
-                    'flight_nr': voyage.flight_nr, 
-                    'dep_from': voyage.dep_from, 
-                    'arr_at': voyage.arr_at, 
-                    'departure': voyage.departure, 
-                    'arrival': voyage.arrival, 
-                    'captain': voyage.captain, 
-                    'copilot': voyage.copilot, 
-                    'fsm': voyage.fsm, 
-                    'fa1': voyage.fa1, 
-                    'fa2': voyage.fa2, 
-                    'fa3': voyage.fa3, 
-                    'fa4':voyage.fa4, 
-                    'fa5':voyage.fa5,
-                    'seats_sold':voyage.seats_sold
-                     })
+            for voyage in voyage_list.values():
+                writer.writerow(asdict(voyage))
+                    #         ({'id': voyage.id,
+                    # 'flight_nr': voyage.flight_nr, 
+                    # 'dep_from': voyage.dep_from, 
+                    # 'arr_at': voyage.arr_at, 
+                    # 'departure': voyage.departure, 
+                    # 'arrival': voyage.arrival, 
+                    # 'captain': voyage.captain, 
+                    # 'copilot': voyage.copilot,
+                    # 'aircraft_id': 
+                    # 'fsm': voyage.fsm, 
+                    # 'fa1': voyage.fa1, 
+                    # 'fa2': voyage.fa2, 
+                    # 'fa3': voyage.fa3, 
+                    # 'fa4':voyage.fa4, 
+                    # 'fa5':voyage.fa5,
+                    # 'seats_sold':voyage.seats_sold
+                    #  })
+    
+   
+    

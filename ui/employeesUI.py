@@ -9,6 +9,7 @@ CHANGE_EMPLOYEE_INFO_OPTIONS = ["1. Edit home address", "2. Edit phone number", 
 
 class EmployeeUI:
     def __init__(self) -> None:
+        """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
         self.all_employees_list = self.logic_wrapper.employee_list()

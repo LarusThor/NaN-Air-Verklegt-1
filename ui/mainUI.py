@@ -20,6 +20,7 @@ MAIN_MENU_OPTIONS = [
 
 class Main:
     def __init__(self) -> None:
+        """ TODO: add docstring """
         self.menus = Menu()
         self.airplane_ui = AirplaneUI()
         self.destinations_ui = DestinationsUI()
@@ -85,8 +86,11 @@ class Main:
                         self.destinations_ui.add_destination()
 
                     case "4":
-                        self.destinations_ui.change_destination_info()                 
-                        
+                        action = self.destinations_ui.get_all_destinations()
+                        match action:
+                            case "1":
+                                self.destinations_ui.change_destination_info()
+                            
 
             def employees() -> None:
                 """ TODO: add docstring """
