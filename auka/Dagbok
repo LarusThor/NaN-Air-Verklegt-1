@@ -96,6 +96,7 @@ Við skilgreindum föllin betur og bættum við data klösum fyrir past flights 
 
 Dagur 9.
 Markmið Dagsins:
+Fundarstjóri: Fönn Harðard.
 Í dag ætlum við að láta main runna á ný. Ætlum líka að halda áfram með voyage og reyna að komast eins langt og við getum með það.
 Þurfum að aflúsa smá og laga attributeError í UI.  
 
@@ -119,18 +120,22 @@ Hvað var náð að klárast
 Við náðum að vinna í voyage hlutanum og bæta logic layerið.
 
 Dagur 12.
-Markmið Dagsins: Er að klára eins margar kröfur og við getum og na að klara að tangja UI hlutan og byrja að gera allt fallegt og sja ef allt virkar
+Markmið Dagsins:
+Fundarstjóri: Bjarki már
+Erum að klára eins margar kröfur og við getum, og na að klara að tangja UI hlutan og byrja að gera allt fallegt og sja ef allt virkar.
 
 
-Hvað var náð að klárast:
-Það er klárað allar A kröfur i dag 
-B kröfur eru næstum bunar, bara UI eftir a sumun
-C kröfur: eftir nokkrar í UI og Nokkrar i Logic
-Byrjað a validation og klarað mest i employee
+Það sem náðist að klára í dag:
+Allar A kröfur eru komnar. 
+B kröfur eru næstum búnar, bara UI eftir a sumum
+C kröfur: eftir nokkrar í UI og Nokkrar í Logic
+Byrjað á validation og klarað mest i employee.
 
 Dagur 13.
-Markmið Dagsins:
-
+Markmið Dagsins: 
+Fundarstjóri: Fönn H
+Klára allar grunn tengingar í UI, passa að allar kröfurnar séu að virka og þurfum að testa kóðann vel.
+Allar kröfurnar sem við ætlum að klára eru að mestu tilbúnar, en það þarfa að fullkomna UI.
 
 Hvað var náð að klárast
 
