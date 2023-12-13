@@ -17,7 +17,7 @@ class DestinationsUI:
 
     def destinations(self) -> str:
         """ TODO: add docstring """
-        self.menus.display_options(DESTINATIONS_OPTIONS)
+        self.menus.display_options("Destinations:", DESTINATIONS_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
@@ -74,7 +74,7 @@ class DestinationsUI:
             print("Destionation not saved.")
     
     def select_info(self):
-        self.menus.display_options(CHANGE_OPTIONS)
+        self.menus.display_options("Change destinations:", CHANGE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 

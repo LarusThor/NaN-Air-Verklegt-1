@@ -23,7 +23,7 @@ class AirplaneUI:
 
     def airplane(self) -> str: #1
         """ TODO: add docstring """
-        self.menus.display_options(AIRPLANE_OPTIONS)
+        self.menus.display_options("Airplane:", AIRPLANE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
@@ -42,14 +42,14 @@ class AirplaneUI:
 
     def airplane_types_and_licanse(self) -> str: # 1-1
         """ TODO: add docstring """
-        self.menus.display_options(AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
+        self.menus.display_options("Airplane types and license:", AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
 
     def pilots_by_licanse(self) -> None: # 1-1-1
         """ TODO: add docstring """
-        self.menus.display_options(PILOTS_BY_LICENSE_OPTIONS)
+        self.menus.display_options("Pilots by license:", PILOTS_BY_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
@@ -125,7 +125,7 @@ class AirplaneUI:
 
     def airplane_usage_options(self) -> str: # 1-3
         """ TODO: add docstring """
-        self.menus.display_options(AIRPLANE_USAGE)
+        self.menus.display_options("Airplane usage:", AIRPLANE_USAGE)
         action = str(input("Enter your action: ").lower())
         return action
 
