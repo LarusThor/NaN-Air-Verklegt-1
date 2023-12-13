@@ -7,6 +7,8 @@ from ui.scheduleUI import ScheduleUI
 from ui.voyagesUI import VoyagesUI
 from ui.flight_infoUI import FlightInfoUI
 
+import time
+
 # the menu
 MAIN_MENU_OPTIONS = [
     "1. Airplane",
@@ -37,40 +39,77 @@ class Main:
             action = str(input("Enter your action: ").lower())
 
             def airplane() -> None:
-                """TODO: add docstring"""
-                action = self.airplane_ui.airplane()
-
-                match action:
-                    case "m", "b":
-                        None
-
-                    case "1":  # airplane types and license
-                        action = self.airplane_ui.airplane_types_and_licanse()
-                        match action:
-                            case "1":
-                                action = self.airplane_ui.pilots_by_licanse()
-
-                                match action:
+                """ TODO: add docstring """
+                action1 = ""
+                action2 = ""
+                action3 = ""
+                while (action1 != 'b'):
+                    action1 = self.airplane_ui.airplane()
+                    match action1:
+                        case "q":
+                            quit(0)
+                        case "1":  # airplane types and license
+                            while( action2 != 'b' ):
+                                action2 = self.airplane_ui.airplane_types_and_licanse()
+                                match action2:
+                                    case "q":
+                                        quit(0)
                                     case "1":
-                                        pass
+                                        while( action3 != 'b'):
+                                            action3 = self.airplane_ui.pilots_by_licanse()
+                                            match action3:
+                                                case "q":
+                                                    quit(0)
+                                                case "1":
+                                                    self.airplane_ui.get_pilots_for_a_specific_type()
+                                                case "2":
+                                                    self.airplane_ui.list_pilots_by_licanse()
+                                                case "3":
+                                                    self.airplane_ui.get_number_of_pilots_for_airplanes()
+                                                case "b":
+                                                    continue
+                                                case _:
+                                                    print("Input was invalid, try again ")
+                                                    time.sleep(3)
+                                            #end match action 3
+                                        #end w-action3
+                                    #end case action2=1
                                     case "2":
-                                        self.airplane_ui.list_pilots_by_licanse()
-                                    case "3":
-                                        self.airplane_ui.get_number_of_pilots_for_airplanes()
+                                        self.airplane_ui.types()
+                                        
+                                    case "b":
+                                        continue
+                                    case _:
+                                        print("Input was invalid, try again ")
+                                        time.sleep(3)
+                                    #end case action2=2
+                                    
+                                #end match a2
+                            #end w-a2
+                        #case action1=1
+                        case "2":  # add new airplane
+                            self.airplane_ui.add_airplane()
+                        #case action1=2
+                        case "3":  # airplane usage
+                            action = self.airplane_ui.airplane_usage_options()
+                            match action:
+                                case "q":
+                                    quit(0)
+                                case "1":
+                                    self.airplane_ui.most_used_airplane()
+                                case "2":
+                                    self.airplane_ui.flown_furthest_airplane()
+                                case "b":
+                                    continue
+                                case _:
+                                    print("Input was invalid, try again ")
+                                    time.sleep(3)
+                        case "b":
+                            continue
+                        case _:
+                            print("Input was invalid, try again ")
+                            time.sleep(3)
 
-                            case "2":
-                                self.airplane_ui.types()
-
-                    case "2":  # add new airplane
-                        self.airplane_ui.add_airplane()
-
-                    case "3":  # airplane usage
-                        action = self.airplane_ui.airplane_usage_options()
-                        match action:
-                            case "1":
-                                self.airplane_ui.most_used_airplane()
-                            case "2":
-                                self.airplane_ui.flown_furthest_airplane()
 
             def destinations() -> None:
                 """TODO: add docstring"""
