@@ -99,8 +99,11 @@ class AirplaneUI:
         title = "Airplane types: "
         result = ""
 
-        for item in self.logic_wrapper.airplane_types():
-            result += item + "\n"
+        for flight_type_tuple in self.logic_wrapper.airplane_types(): 
+            flight_type_list = []
+            for flight_type in flight_type_tuple:
+                flight_type_list.append(flight_type)
+            result += f"{flight_type_list[0]}\n"
 
         self.menus.print_the_info(title, result)
 
