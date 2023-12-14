@@ -50,16 +50,16 @@ class AirplaneUI:
         for index, plane in enumerate(pilots_by_license.keys()):
              print(f"{index + 1}. {plane}")
         
-
         airplane_choice = int(input("Enter an airplane choice: "))
+        while not self.validation.validate_choice(airplane_choice, len(planes)):
+            print("Invalid choice \nTry again.")
+            airplane_choice = int(input("Enter an airplane choice: "))
 
         title = f"\nAll pilots qualified to fly {planes[airplane_choice]}:"
         result = ""
-        # print(f"\nAll pilots qualified to fly {planes[airplane_choice]}:") 
         pilots = pilots_by_license[planes[airplane_choice]]
 
         for pilot in pilots:
-            # print(pilot)
             result += pilot + "\n"
         
         action = self.menus.print_the_info(title, result)
