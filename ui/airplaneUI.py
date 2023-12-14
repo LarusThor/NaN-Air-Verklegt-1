@@ -101,43 +101,35 @@ class AirplaneUI:
 
     def add_airplane(self) -> None: #define
         """ TODO: add docstring """
+        #TODO: 
+        airplane_types = self.logic_wrapper.airplane_types()
 
-        name = input("Enter airplane name: ")
-        while not self.validation.validate_airplane_name(name):
-            print("ERROR: Invalid name \nNames of planes \nTF-EPG \nTF-UVR \nTF-XZR \nTF-XZM \nTF-IZE \nTF-PGK \nTF-TYQ \nTF-LNQ \nTF-XUP")
-            name = input("Enter an Name: ")
-            
-        type = input("Enter airplane type: ")
-        while not self.validation.validate_aircraft_by_specific_type(type):
-            print("ERROR: Invalid airplane type \nPlane types are \nNAFokkerF100 \nNAFokkerF28 \nNABAE146. ")
-            type = str(input("Enter an airplane type: "))
-            
-        manufacturer = input("Enter airplane manufacturer: ")
-        while not self.validation.validate_manafacturer_name(manufacturer):
-            print("ERROR: Invalid name \nAircraft are  \nFokker \nBAE ")
-            manufacturer = input("Enter an manafacturer type: ")
-            
-        model = input("Enter a Model: ")
-        while not self.validation.validate_model_name(model):
-            print("ERROR: Invalid model \nModels are \nF100\nF28\n146")
-            model = input("Enter a Model: ")
-            
-        number_of_seats = input("Enter the number of seats in the airplane: ")
-        while not self.validation.validate_number_of_seats(number_of_seats):
-            print("ERROR: Invalid number of seats \nIt should be and number and under 110 and over 84")
-            number_of_seats = input("Enter the number of seats in the airplane: ")
-        
-        title = "New airplane:"
-        result = f"Name: {name}\nType: {type}\nManufacturer: {manufacturer}\nModel: {model}\nNumber of seats: {number_of_seats}"
-        
-        # print("Name:", name)
-        # print("Type:", type)
-        # print("Manufacturer:", manufacturer)
-        # print("Model:", model)
-        # print("Number of seats:", number_of_seats)
-        save_prompt = input("Would you like to save this new airplane, (y)es or (n)o? ").lower()
+        print((airplane_types))
+
+        print("Adding a new airplane to the system: ")
+        print("Examples of airplane names:  TF-EPG, TF-UVR, TF-XZR")
+
+    
+        name = input("Enter an Name: ") #TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
+
+        planes = {(i+1): plane for i, plane in enumerate(airplane_types)}
+
+        for index, plane in enumerate(airplane_types):
+             print(f"{index + 1}. {plane[0]}")
+
+        type_choice =  int(input("Enter airplane type: "))
+        plane_type = planes[type_choice][0]
+        manufacturer = planes[type_choice][1]
+        model = planes[type_choice][2] 
+        number_of_seats = planes[type_choice][3]  
+
+   
+        result = f"\nName: {name}\nType: {plane_type}\nManufacturer: {manufacturer}\nModel: {model}\nNumber of seats: {number_of_seats}"
+        print(result)
+       
+        save_prompt = input("\nWould you like to save this new airplane, (y)es or (n)o? ").lower()
         if save_prompt == "y":
-            airplane = Airplane(name,type,manufacturer,model,number_of_seats)
+            airplane = Airplane(name,plane_type,manufacturer,model,number_of_seats)
             self.logic_wrapper.add_airplane(airplane)
         else:
             None
