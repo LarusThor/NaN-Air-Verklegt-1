@@ -51,7 +51,7 @@ class DataWrapper:
 
 
     def get_all_destinations(self) -> list: 
-        """ Returns a lsit of all destinations. """
+        """ Returns a list of all destinations. """
         return self.destinationIO.read_all_destinations()
     
 

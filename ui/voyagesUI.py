@@ -50,16 +50,12 @@ class VoyagesUI:
         arrival_location = input("Enter 3 letter keyword for arrival location: ")
         departure_date = input(f"Enter departure date from {departure_location}; year-month-day: ")
         departure_time = input(f"Enter departure time from {departure_location}: ")
-        # arrival_time = input(f"Enter arrival time for {arrival_location}: ")
         return_flight_date = input(f"Enter departure date from {arrival_location}; year-month-day: ")
         return_flight_time = input(f"Enter departure time from {arrival_location}: ")
 
         # TODO: use datetime module
         departure_date_time = departure_date + " " + departure_time
         arrival_date_time = return_flight_date + " " + return_flight_time
-
-        # arrival_time = calculate_flight_time(departure_date_time)
-        # retrun_flight_arrival = calculate_flight_time(arrival_date_time)
         
 
         the_last_id = find_last_id[-1]
