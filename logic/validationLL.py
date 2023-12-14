@@ -61,7 +61,23 @@ class ValidationLL():
         
         
     def validate_airplane_name(self,aircraft_name) -> bool:
-        return "TF" in aircraft_name and "-" in aircraft_name
+        if aircraft_name[0:2] == "TF":
+            if aircraft_name[2] == "-":
+                if type(aircraft_name[3:6]) == str:
+                    return True
+        else:
+            return False
+        
+        # return "TF" in aircraft_name and "-" in aircraft_name
+    
+    #Airplane types and license, Pilots by license
+        #Licensed pilots for a specific airplane type (ofkokfsd) = ValueError
+    #Add new airplane
+        #Enter an Name: kfokofksdf == works
+    
+    
+
+
         
 
 #nota þessa i koðanum til að laga
