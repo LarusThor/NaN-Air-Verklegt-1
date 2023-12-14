@@ -332,7 +332,7 @@ class Main:
                                         quit(0)
                                     case "1":
                                         while(action15 != "b"):
-                                            action = self.voyages_ui.list_voyage_options()
+                                            action15 = self.voyages_ui.list_voyage_options()
                                             match action15:
                                                 case "q":
                                                     quit(0)
@@ -354,8 +354,8 @@ class Main:
 
                                     case "2":
                                         while(action16 != "b"):
-                                            action = self.voyages_ui.list_voyage_options()
-                                            match action:
+                                            action16 = self.voyages_ui.list_voyage_options()
+                                            match action16:
                                                 case "q":
                                                     quit(0)
                                                 case "1":
