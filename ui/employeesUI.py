@@ -52,6 +52,7 @@ class EmployeeUI:
         self.menus.print_the_info(title, result)
 
 
+
     def get_flight_attendants(self) -> None:
         """Gets the flight attendants from the logic wrapper. Calls a function in the menu_manager that takes care of 
         printing the flight attendants and the title out."""
@@ -64,6 +65,7 @@ class EmployeeUI:
             result += person + "\n"
 
         self.menus.print_the_info(title, result)
+
     
 
     def get_all_employees(self) -> None:
@@ -145,8 +147,8 @@ class EmployeeUI:
             2: Change rank and license
             3: Change email
             4: Change mobile number
-            5. Change address
-            6. Change landline
+            5: Change address
+            6: Change landline
 
             Any other to quit
 
