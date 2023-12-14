@@ -12,7 +12,20 @@ from ui.destinationsUI import DestinationsUI
 logic = LogicWrapper()
 de = DestinationsUI()
 
-de.change_destination_info()
+dd = datetime(2024, 1, 5, 7, 5, 0)
+
+dest_str = "03:00:00"
+
+
+dest = logic.destination_list()[1]
+
+
+print(logic.flight_time(dest, dd))
+
+
+
+
+
 #print(logic.airplane_types())
 
 #print(logic.get_most_experienced_employee())
