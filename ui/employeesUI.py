@@ -216,12 +216,14 @@ class EmployeeUI:
         if save_prompt == "y":
             self.logic_wrapper.change_employee_info(employee)
             title = "New information saved!"
-            self.menus.print_the_info(title)
+            user_input = self.menus.print_the_info(title)
  
 
         elif save_prompt == "n":
             title = "Updated information not saved."
-            self.menus.print_the_info(title)
+            user_input = self.menus.print_the_info(title)
+        
+        return user_input
  
 
 

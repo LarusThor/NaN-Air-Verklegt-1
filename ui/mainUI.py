@@ -172,12 +172,9 @@ class Main:
                                     match action7:
                                         case "q":
                                             quit(0)
-                                        # elif action == "b":
-                                        #employees()
+                                        
                                         case "1":
                                             action10 = self.employee_ui.get_pilots()
-                                            
-                                        # EmployeesUI.print_crew(self.pilots_list)
                                         case "2":
                                             action10 = self.employee_ui.get_flight_attendants()
                                         case "3":
@@ -194,7 +191,6 @@ class Main:
                         case "2":
                             action8 = ""
                             while(action8 != "b"):
-# employee_name = self.employee_ui.get_employee()
                                 action8 = self.employee_ui.employee_info_options()
                                 action11 = action8
                                 while(action11 != "b"):
@@ -207,26 +203,8 @@ class Main:
                                         
 
                                         case "2": #TODO laga back og quit TINNA
-                                            while(action9 != "b"):
-                                                action8 = ""
-                                                action9 = self.employee_ui.change_info_options()
+                                            action11 = self.employee_ui.change_info_options()
 
-                                                # match action9:
-                                                #     case "q":
-                                                #         quit(0)
-                                                #     # case "1":
-                                                #         # self.employee_ui.change_home_address()
-                                                #     # case "2":
-                                                #         # self.employee_ui.change_phone_number()
-                                                #     # case "3":
-                                                #         # self.employee_ui.change_email()
-                                                #     case "b":
-                                                #         continue
-                                        #             case _:
-                                        #                 print("Input was invalid, try again ")
-                                        #                 time.sleep(INVALID_INPUT_SLEEP)
-                                        case "b":
-                                            continue
                                         case _:
                                             print("Input was invalid, try again ")
                                             time.sleep(INVALID_INPUT_SLEEP)
