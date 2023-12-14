@@ -110,7 +110,7 @@ class AirplaneUI:
         print("Examples of airplane names:  TF-EPG, TF-UVR, TF-XZR")
 
     
-        name = input("Enter an Name: ") #TODO: validate
+        name = input("Enter an Name: ") #TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
 
         planes = {(i+1): plane for i, plane in enumerate(airplane_types)}
 
