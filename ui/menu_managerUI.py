@@ -126,9 +126,9 @@ class Menu():
         print("-"*terminal_width)
 
 
-    def get_next_action(self) -> None: #TODO þetta fall skilar engu, erum við að nota það?
+    def get_next_action(self) -> str:
         """ TODO: add docstring """
-        print("Enter (b) for back or (q) for quit") # TODO has to validated
+        print("Enter (b) for back or (q) for quit")
         action = input("Enter in your action: ").lower()
         return action
         

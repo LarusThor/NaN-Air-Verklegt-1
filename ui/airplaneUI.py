@@ -107,8 +107,7 @@ class AirplaneUI:
 
 
     def add_airplane(self) -> None: #define
-        """ TODO: add docstring """
-        #TODO: 
+        """ TODO: add docstring """ 
         airplane_types = self.logic_wrapper.airplane_types()
 
         print((airplane_types))
