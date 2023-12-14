@@ -47,7 +47,8 @@ class ScheduleUI:
         for employee, destination in employees:
             result += f"{employee.name} going to {destination}\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
     def get_who_was_not_working(self, date_not_working: date) -> None:
@@ -58,7 +59,8 @@ class ScheduleUI:
         for employee in employees:
             result += employee.name + "\n"
         
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
     def get_employee(self) -> str:
         """TODO: add docstring"""
@@ -72,7 +74,8 @@ class ScheduleUI:
         title = "Week schedule: "
         result = self.logic_wrapper.employee_schedule_by_week(employee, year, week)
         
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
     
     def get_datetime(self) -> date:
@@ -95,8 +98,6 @@ class ScheduleUI:
         end_date = self.get_datetime()
 
         voyages, hours = self.logic_wrapper.total_hours_worked(employee, start_date, end_date)
-        # print(f"{employee.name} worked {hours} hours within {start_date.date()} - {end_date.date()}")
-        # print(f"Voyages worked by {employee.name}: ")
         hours_int = int(hours)
         title = f"{employee.name} worked {hours_int} hours within {start_date.date()} - {end_date.date()}"
         result = ""
@@ -107,5 +108,6 @@ class ScheduleUI:
                 result += f"Flight{voyage}: From {prev_destination} to {destination} \n"
             prev_destination = destination
     
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
         
