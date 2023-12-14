@@ -1,6 +1,6 @@
 class FlightInformationLL:
     def __init__(self, logic_wrapper) -> None:
-        """Instantiate a FlightInformationLL object.
+        """ Instantiate a FlightInformationLL object.
 
         Args:
             logic_wrapper: The logic wrapper object that contains all logic layer objects.
