@@ -1,8 +1,6 @@
 from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
 from model.destination_model import Destination
-from copy import deepcopy
-
 
 DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Change destination information"]
 CHANGE_OPTIONS = ["1. Everyting", "2. Contact information", "3. Airport"]
@@ -104,7 +102,6 @@ class DestinationsUI:
         destination_choice = int(input("Choose destination: "))
         destination_info = destination_list[destination_choice - 1]
 
-        updated_destination = deepcopy(destination_info)
 
         print(f"Options to change for {destination_info.destination}")
         options = f"""
@@ -121,37 +118,37 @@ class DestinationsUI:
         while action != "q":
             match action:
                 case "1":
-                    updated_destination.airport_name = input("Enter new airport name: ").title()
+                    destination_info.airport_name = input("Enter new airport name: ").title()
                     action = input("Choose action: ")
 
                 case "2":
-                    updated_destination.emergency_contact_name = input("Enter the name for the new emergency contact: ")
+                    destination_info.emergency_contact_name = input("Enter the name for the new emergency contact: ")
                     action = input("Choose action: ")
 
                 case "3":
-                    updated_destination.emergency_contact_number = input("Enter a new number for the contact: ").title()
+                    destination_info.emergency_contact_number = input("Enter a new number for the contact: ").title()
                     action = input("Choose action: ")
 
                 case "4":
                     print("So you've got fast planes now? ")
-                    updated_destination.estimated_flight_time = input("How fast can they fly to the destiantion? ")
+                    destination_info.estimated_flight_time = input("How fast can they fly to the destiantion? ")
                     action = input("Choose action: ")
 
                 case _:
                     break
         
-        print(f"{updated_destination.destination_id}\n"
-                f"Destination: {updated_destination.destination}\n"
-                f"Emergency contact name: {updated_destination.emergency_contact_name}\n"
-                f"Emergency contact number: {updated_destination.emergency_contact_number}\n"
-                f"Airport name: {updated_destination.airport_name}\n"
-                f"Distance from Iceland: {updated_destination.distance_from_iceland}km\n"
-                f"Estimated fligth time: {updated_destination.estimated_flight_time}\n")
+        print(f"{destination_info.destination_id}\n"
+                f"Destination: {destination_info.destination}\n"
+                f"Emergency contact name: {destination_info.emergency_contact_name}\n"
+                f"Emergency contact number: {destination_info.emergency_contact_number}\n"
+                f"Airport name: {destination_info.airport_name}\n"
+                f"Distance from Iceland: {destination_info.distance_from_iceland}km\n"
+                f"Estimated fligth time: {destination_info.estimated_flight_time}\n")
         
         save_prompt = input("Would you like to save this new destionation, (y)es or (n)o? ").lower()
         
         if save_prompt == "y":
-            self.logic_wrapper.update_destination_info(updated_destination)
+            self.logic_wrapper.update_destination_info(destination_info)
             self.menus.print_the_info("Changes have been saved!")
         elif save_prompt == "n":
             self.menus.print_the_info("Changes were not saved.")
