@@ -5,7 +5,7 @@ from data.data_wrapper import DataWrapper
 employee_ll_instance = EmployeeLL()
 
 # Call the get_employee_list method
-employees = employee_ll_instance.get_employee_dict()
+employees = employee_ll_instance.get_employee_list()
 
 # Print the result
 print("Employee List:")

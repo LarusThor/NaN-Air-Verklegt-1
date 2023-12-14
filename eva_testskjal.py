@@ -11,11 +11,19 @@ from ui.destinationsUI import DestinationsUI
 
 logic = LogicWrapper()
 de = DestinationsUI()
-sc = ScheduleUI()
 
-dd = date(2023, 11, 6)
+dd = datetime(2024, 1, 5, 7, 5, 0)
 
-print(sc.who_was_working(dd))
+dest_str = "03:00:00"
+
+
+dest = logic.destination_list()[1]
+
+
+print(logic.flight_time(dest, dd))
+
+
+
 
 
 #print(logic.airplane_types())
