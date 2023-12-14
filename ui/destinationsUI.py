@@ -91,12 +91,13 @@ class DestinationsUI:
 
     def change_destination_info(self) -> None: #define
         """ TODO: add docstring """
+        #TODO: validate
         destination_list = self.logic_wrapper.destination_list()
         destinations = {(i+1): destination for i, destination in enumerate(destination_list)}
 
         print("\nChanging destination information")
         print("Choose a destination to change\n")
-        
+
         for index, destination in destinations.items():
             print(f"{index}. {destination.destination}")
 
@@ -174,7 +175,7 @@ class DestinationsUI:
             self.menus.print_the_info("Changes were not saved.")
 
 
-    def change_contact_info(self) -> None:
+    def change_contact_info(self) -> None:#TODO: eyða
         """ TODO: add docstring """
         print("\nChanging the contact information: ")
         id = input("Enter the ID of the destination you would like to change: ")
@@ -199,7 +200,7 @@ class DestinationsUI:
         self.menus.print_the_info("Changes have been saved!")
         
 
-    def change_airport_info(self) -> None:
+    def change_airport_info(self) -> None:#TODO: eyða
         """ TODO: add docstring """
         print("\nChanging the airport: ")
         id = input("Enter the ID of the destination you would like to change: ")
