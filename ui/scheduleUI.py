@@ -45,7 +45,8 @@ class ScheduleUI:
         employees = self.logic_wrapper.employee_working(date_working)
 
         for employee, destination in employees:
-            result += f"{employee.name} going to {destination}\n"
+            if destination != "KEF":
+                result += f"{employee.name} --> {destination}\n"
 
         self.menus.print_the_info(title, result)
 
