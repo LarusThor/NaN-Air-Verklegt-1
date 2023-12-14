@@ -11,7 +11,6 @@ class ScheduleUI:
     def __init__(self) -> None:
         self.menus = Menu()
         self.logic_wrapper = LogicWrapper()
-        # self.employee_schedule_by_week = self.logic_wrapper.employee_schedule_by_week()
 
     def schedule_options(self) -> str:
         """Shows the options the user can choose from when they choose schedule from the main menu"""

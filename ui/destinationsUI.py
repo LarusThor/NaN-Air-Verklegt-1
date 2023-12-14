@@ -90,7 +90,8 @@ class DestinationsUI:
 
     def change_destination_info(self) -> None: #define
         """ TODO: add docstring """
-        id = input("what destination do you want to change ID: ")
+        print("\nChanging the destination information: ")
+        id = input("Enter the ID of the destination you would like to change: ")
         country = input("Enter the country: ")
         airport = input("Enter the airport: ")
         distance_from_iceland = input("Enter the distance form Iceland: ")
@@ -99,7 +100,6 @@ class DestinationsUI:
         estimated_flight_time = input("Enter the estimated flight time: ")
         save_prompt = input("Would you like to save this new destionation, (y)es or (n)o? ").lower()
         if save_prompt == "y":
-            print("Changes saved!")
             dest = Destination(destination_id = id, 
             destination = country, 
             emergency_contact_name = contact_name, 
@@ -108,14 +108,16 @@ class DestinationsUI:
             distance_from_iceland = distance_from_iceland, 
             estimated_flight_time = estimated_flight_time)
             self.logic_wrapper.update_destination_info(dest)
+            self.menus.print_the_info("Changes have been saved!")
         elif save_prompt == "n":
-            print("Changes not saved.")
+            self.menus.print_the_info("Changes were not saved.")
 
 
     def change_contact_info(self) -> None:
         """ TODO: add docstring """
-        id = input("what destination do you want to change ID: ")
-        contact_name = input("Enter the name of the contact person:")
+        print("\nChanging the contact information: ")
+        id = input("Enter the ID of the destination you would like to change: ")
+        contact_name = input("Enter the name of the contact person: ")
         contact_number = input("Enter the number of the contact number: ")
 
         all_dests = LogicWrapper().destination_list()
@@ -133,10 +135,13 @@ class DestinationsUI:
 
         self.logic_wrapper.update_contact_info(dest)
         
+        self.menus.print_the_info("Changes have been saved!")
+        
 
     def change_airport_info(self) -> None:
             """ TODO: add docstring """
-            id = input("what destination do you want to change ID: ")
+            print("\nChanging the airport: ")
+            id = input("Enter the ID of the destination you would like to change: ")
             airport = input("Enter new airport name: ")
 
             all_dests = LogicWrapper().destination_list()
@@ -152,3 +157,5 @@ class DestinationsUI:
             dest.airport_name = airport
 
             self.logic_wrapper.update_contact_info(dest)
+
+            self.menus.print_the_info("Changes have been saved!")
