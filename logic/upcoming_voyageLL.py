@@ -91,3 +91,54 @@ class UpcomingVoyageLL:
         """ Checks wether an employee is scheduled to work during a specified time period. """
         total_hours_worked = self.logic.get_total_future_hours_worked(captain, departure, return_flight_arrival)
         return total_hours_worked
+
+    
+    def captain_availability(self, captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival):
+        available_for_date = True
+        valid_license = True
+        valid_rank = True
+        employee_information = self.logic.show_employee_info()
+        if employee_information[captain].rank == "Captain":
+            if self.logic.check_pilot_qualifications(plane_insignia, captain):
+                if self.logic.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
+                    available_for_date = True  
+                    valid_license = True 
+                    valid_rank = True
+                else:
+                    available_for_date = False
+            else:
+                valid_license = False
+        else:
+            valid_rank = False
+        return valid_rank, available_for_date, valid_license
+    
+
+    def copilot_availability(self, copilot, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival):
+        employee_information = self.logic.show_employee_info()
+        if employee_information[copilot].rank == "Copilot":
+            if self.logic.check_pilot_qualifications(plane_insignia, copilot):
+                if self.logic.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
+                    available_for_date = True  
+                    valid_license = True 
+                    valid_rank = True
+                else:
+                    available_for_date = False
+            else:
+                valid_license = False
+        else:
+            valid_rank = False
+        return valid_rank, available_for_date, valid_license
+        
+    
+    def flight_service_manager_availability(self, flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival):
+        employee_information = self.logic.show_employee_info()
+        if employee_information[flight_service_manager].rank == "Flight Service Manager":
+            if self.logic.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
+                available_for_date = True  
+                valid_rank = True
+            else:
+                available_for_date = False
+        else:
+            valid_rank = False
+        return valid_rank, available_for_date
+          

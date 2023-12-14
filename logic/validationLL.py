@@ -45,38 +45,24 @@ class ValidationLL():
         
     #airplanes   
     def validate_aircraft_by_specific_type(self, aircraft_specific_type) -> bool:
-        if "N/A" in aircraft_specific_type:
-            return True
-        else:
-            return False
+        return "N/A" in aircraft_specific_type
         
     def validate_airplane_name(self,aircraft_name) -> bool:
-        if "TF" in aircraft_name and "-" in aircraft_name:
-            return True
-        else:
-            return False
+        return "TF" in aircraft_name and "-" in aircraft_name
         
 
 #nota þessa i koðanum til að laga
         
     def validate_manafacturer_name(self,manufacturer_name: str) -> bool:
-        if "Fokker" in manufacturer_name or "BAE" in manufacturer_name:
-            #virkar ekki fyrir Fokker og BAe
-            return True
-        else:
-            return False
+        return "Fokker" in manufacturer_name or "BAE" in manufacturer_name
+
         
     def validate_model_name(self,model_name) -> bool:
-        if "F100" in model_name or "F28" in model_name or "146" in model_name:
-            return True
-        else:
-            return False
+        return "F100" in model_name or "F28" in model_name or "146" in model_name
+    
         
     def validate_number_of_seats(self, number_of_seats) -> bool:
-        if len(number_of_seats) <= 110 and len(number_of_seats) >= 84:
-            return True
-        else:
-            return False
+        return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
         
         
         

@@ -154,47 +154,73 @@ class VoyagesUI:
                 while not captain_check:
                     captain = input("Enter captain social id: ")
                     employee = self.logic_wrapper.employee_info(captain)
-                    if employee_information[captain].rank == "Captain":
-                        if self.logic_wrapper.check_pilot_qualifications(plane_insignia, captain):
-                            if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
-                                captain_check = True
-                            else:
-                                print(f"Captain {captain} not available on between {voyages_info.departure} and {return_flight_arrival}")
-                                captain_check = False
-                        else:
-                            print(f"Captain {captain} does not have the license to fligh {plane_insignia}")
-                            captain = False
-                    else:
+                    valid_rank, available_for_date, valid_license = self.logic_wrapper.captain_availability(captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
+                    if available_for_date == False:
+                        print(f"Captain {captain} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                    elif valid_license == False:
+                        print(f"Captain {captain} does not have the license to fligh {plane_insignia}")
+                    elif valid_rank == False:
                         print(f"{captain} is not a captain")
+                    if valid_rank == True and available_for_date == True and valid_license == True:
+                        captain_check = True
+                    # if employee_information[captain].rank == "Captain":
+                    #     if self.logic_wrapper.check_pilot_qualifications(plane_insignia, captain):
+                    #         if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
+                    #             captain_check = True
+                    #         else:
+                    #             print(f"Captain {captain} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                    #             captain_check = False
+                    #     else:
+                    #         print(f"Captain {captain} does not have the license to fligh {plane_insignia}")
+                    #         captain = False
+                    # else:
+                    #     print(f"{captain} is not a captain")
+
                         
                     
                 while not copilot_check:
                     copilot = input("Enter copilot's social id: ")
                     employee = self.logic_wrapper.employee_info(copilot)
-                    if employee_information[copilot].rank == "Copilot":
-                        if self.logic_wrapper.check_pilot_qualifications(plane_insignia, copilot):
-                            if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
-                                copilot_check = True
-                            else:
-                                print(f"Copilot {copilot} not available on between {voyages_info.departure} and {return_flight_arrival}")
-                                copilot_check = False
-                        else:
-                            print(f"Copilot {copilot} does not have the license to fligh {plane_insignia}")
-                            copilot_check = False
-                    else:
+                    valid_rank, available_for_date, valid_license = self.logic_wrapper.copilot_availability(copilot, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
+                    if available_for_date == False:
+                        print(f"Copilot {copilot} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                    elif valid_license == False:
+                        print(f"Copilot {copilot} does not have the license to fligh {plane_insignia}")
+                    elif valid_rank == False:
                         print(f"{copilot} is not a copilot")
+                    if valid_rank == True and available_for_date == True and valid_license == True:
+                        copilot_check = True
+                    # if employee_information[copilot].rank == "Copilot":
+                    #     if self.logic_wrapper.check_pilot_qualifications(plane_insignia, copilot):
+                    #         if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
+                    #             copilot_check = True
+                    #         else:
+                    #             print(f"Copilot {copilot} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                    #             copilot_check = False
+                    #     else:
+                    #         print(f"Copilot {copilot} does not have the license to fligh {plane_insignia}")
+                    #         copilot_check = False
+                    # else:
+                    #     print(f"{copilot} is not a copilot")
                         
                 while not flight_service_manager_check:               
                     flight_service_manager = input("Enter Flight service manager's social id: ")
                     employee = self.logic_wrapper.employee_info(flight_service_manager)
-                    if employee_information[flight_service_manager].rank == "Flight Service Manager":
-                            if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
-                                flight_service_manager_check = True
-                            else:
-                                print(f"Flight service manager {flight_service_manager} not available on between {voyages_info.departure} and {return_flight_arrival}")
-                                flight_service_manager_check = False
-                    else:
-                        print(f"{flight_service_manager} is not a Flight service manager")  
+                    available_for_date, valid_rank = self.logic_wrapper.flight_service_manager_availability(flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival)
+                    if available_for_date == False:
+                        print(f"Flight service manager {copilot} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                    elif valid_rank == False:
+                        print(f"{copilot} is not a flight service manager")
+                    if valid_rank == True and available_for_date == True:
+                        flight_service_manager_check = True
+                    # if employee_information[flight_service_manager].rank == "Flight Service Manager":
+                    #         if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
+                    #             flight_service_manager_check = True
+                    #         else:
+                    #             print(f"Flight service manager {flight_service_manager} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                    #             flight_service_manager_check = False
+                    # else:
+                    #     print(f"{flight_service_manager} is not a Flight service manager")  
 
                 flight_attendants = []
                 
@@ -413,7 +439,7 @@ class VoyagesUI:
                         result += "-" * 130 + "\n"
         
         self.menus.print_the_info(title, result)
-        
+
 
     def cancel_voyage(self) -> None:  # define
         """Cancels a voyage in teh system."""
