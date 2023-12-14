@@ -265,10 +265,10 @@ class EmployeeUI:
 
     def get_address(self) -> str:
         """User inputs an address for employee."""
-        home_address = input("Home adress: ")
+        home_address = input("Home address: ")
         while not self.validation.validate_address(home_address):
             print("ERROR: Invalid address \n Address should be a string and above >3")
-            home_address = input("Home adress: ")
+            home_address = input("Home address: ")
         return home_address
     
 
