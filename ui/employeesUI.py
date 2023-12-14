@@ -265,7 +265,7 @@ class EmployeeUI:
 
             print("Licenses:")
             for index, license in licences.items():
-                print(f"{index}. {licence}")
+                print(f"{index}. {license}")
             
             licence_choice = input()
             licence = licences[licence_choice]
@@ -344,33 +344,21 @@ class EmployeeUI:
 
         if save_prompt == "y":
             self.logic_wrapper.add_employee(employee)
-            print()
-            print("New employee saved!")
-            print()
-            print("(M)enu  (R)epeat")
-            action = str(input("Enter your action: ").lower())
-            if action == "m":
-                None
-            elif action == "r":
-                print()
-                self.logic_wrapper.add_employee(employee)   
-
+            title = "New employee saved!"
+            self.menus.print_the_info(title)
+ 
 
         elif save_prompt == "n":
-            print()
-            print("New employee not saved.")
-            print()
-            print("(M)enu  (R)epeat")
-            action = str(input("Enter your action: ").lower())#TODO: validate
-            if action == "m":
-                None
-            elif action == "r":
-                print()
-                self.logic_wrapper.add_employee(employee)
+            title = "New employee not saved."
+            self.menus.print_the_info(title)
+
+
 
     def get_most_experienced(self) -> None: #TODO ef að það er fleiri en ein manneskja
         most_exper = self.logic_wrapper.get_most_experienced_employee()
+
         name, voyages = most_exper[0][0], most_exper[0][1]
         title = "The most experienced employee:"
         result = f"{name} has gone on {int(voyages)} voyages."
+
         self.menus.print_the_info(title, result)
