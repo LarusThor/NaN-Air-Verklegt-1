@@ -9,6 +9,8 @@ from ui.flight_infoUI import FlightInfoUI
 
 import time
 
+INVALID_INPUT_SLEEP = 2
+BACK = "b"
 # the menu
 MAIN_MENU_OPTIONS = [
     "1. Airplane",
@@ -43,7 +45,7 @@ class Main:
                 action2 = ""
                 action3 = ""
                 action4 = ""
-                while (action1 != 'b'):
+                while (action1 != BACK):
                     action2= ""
                     action4= ""
                     action1 = self.airplane_ui.airplane_options()
@@ -51,7 +53,7 @@ class Main:
                         case "q":
                             quit(0)
                         case "1":  # airplane types and license
-                            while( action2 != 'b' ):
+                            while( action2 != BACK):
                                 action3 = ""
                                 action2 = self.airplane_ui.airplane_types_and_licence()
                                 match action2:
@@ -73,7 +75,7 @@ class Main:
                                                     continue
                                                 case _:
                                                     print("Input was invalid, try again ")
-                                                    time.sleep(3)
+                                                    time.sleep(INVALID_INPUT_SLEEP)
                                             #end match action 3
                                         #end w-action3
                                     #end case action2=1
@@ -84,7 +86,7 @@ class Main:
                                         continue
                                     case _:
                                         print("Input was invalid, try again ")
-                                        time.sleep(3)
+                                        time.sleep(INVALID_INPUT_SLEEP)
                                     #end case action2=2
                                     
                                 #end match a2
@@ -110,12 +112,12 @@ class Main:
                                         continue
                                     case _:
                                         print("Input was invalid, try again ")
-                                        time.sleep(3)
+                                        time.sleep(INVALID_INPUT_SLEEP)
                         case "b":
                             continue
                         case _:
                             print("Input was invalid, try again ")
-                            time.sleep(3)
+                            time.sleep(INVALID_INPUT_SLEEP)
 
 
             def destinations() -> None:
@@ -143,7 +145,7 @@ class Main:
                             continue
                         case _:
                             print("Input was invalid, try again ")
-                            time.sleep(3)
+                            time.sleep(INVALID_INPUT_SLEEP)
                                 
                                 
 
@@ -186,7 +188,7 @@ class Main:
                                         continue
                                     case _:
                                         print("Input was invalid, try again ")
-                                        time.sleep(3)
+                                        time.sleep(INVALID_INPUT_SLEEP)
 
                     # Employee info :
                         case "2":
@@ -221,12 +223,12 @@ class Main:
                                                     continue
                                                 case _:
                                                     print("Input was invalid, try again ")
-                                                    time.sleep(3)
+                                                    time.sleep(INVALID_INPUT_SLEEP)
                                     case "b":
                                         continue
                                     case _:
                                         print("Input was invalid, try again ")
-                                        time.sleep(3)
+                                        time.sleep(INVALID_INPUT_SLEEP)
                                         
                         # Add employee :
                         case "3":
@@ -264,7 +266,7 @@ class Main:
                                         continue
                                     case _:
                                         print("Input was invalid, try again ")
-                                        time.sleep(3)
+                                        time.sleep(INVALID_INPUT_SLEEP)
                                 
 
                         case "2":
@@ -284,12 +286,12 @@ class Main:
                                         continue
                                     case _:
                                         print("Input was invalid, try again ")
-                                        time.sleep(3)
+                                        time.sleep(INVALID_INPUT_SLEEP)
                         case "b":
                             continue
                         case _:
                             print("Input was invalid, try again ")
-                            time.sleep(3)
+                            time.sleep(INVALID_INPUT_SLEEP)
                                     
                                 
                                 
@@ -337,7 +339,7 @@ class Main:
                                                     continue
                                                 case _:
                                                     print("Input was invalid, try again ")
-                                                    time.sleep(3)    
+                                                    time.sleep(INVALID_INPUT_SLEEP)    
 
                                     case "2":
                                         while(action16 != "b"):
@@ -357,14 +359,14 @@ class Main:
                                                     continue
                                                 case _:
                                                     print("Input was invalid, try again ")
-                                                    time.sleep(3)
+                                                    time.sleep(INVALID_INPUT_SLEEP)
                                                     
                                                     
                                     case "b":
                                         continue
                                     case _:
                                         print("Input was invalid, try again ")
-                                        time.sleep(3)
+                                        time.sleep(INVALID_INPUT_SLEEP)
                         case "3":
                             voyage_number = self.voyages_ui.get_voyage_flight_number()
                             voyage_date = self.voyages_ui.get_voyage_date()
@@ -382,7 +384,7 @@ class Main:
                             continue
                         case _:
                             print("Input was invalid, try again ")
-                            time.sleep(3)
+                            time.sleep(INVALID_INPUT_SLEEP)
 
             def flight_status() -> None:
                 """If the user chooses to see the flight information. This function calls a function in the flight information UI
