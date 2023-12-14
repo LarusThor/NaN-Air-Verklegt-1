@@ -46,14 +46,8 @@ class VoyagesUI:
         print("New voyage: ")
         print("=" + "-=" * 20)
 
-        #TODO: HARÐÐKÓÐAÐ FOR TESTINGGGGG
-        flight_number = "NA081"
-        departure_date = "2024-01-05"
-        departure_time = "07:05:00"
-        return_flight_date = "2024:01:06"
-        return_flight_time = "12:30:00"
 
-        #flight_number = input("Enter flight number: ")#TODO: validate - format og lengd
+        flight_number = input("Enter flight number: ")#TODO: validate - format og lengd
         departure_location = "Kef" # TODO: laga
         
         print("Choose an arrival destination")
@@ -64,17 +58,24 @@ class VoyagesUI:
         arrival_location = destination_list[action -1]
 
 
-        # departure_date = input(f"Enter departure date from {departure_location}; year-month-day: ") #TODO: validate
-        # departure_time = input(f"Enter departure time from {departure_location}: ") #TODO: bæta við formatti hvernig þið viljið tímann og validate
+        departure_date = input(f"Enter departure date from {departure_location}; year-month-day: ") #TODO: validate
+        departure_time = input(f"Enter departure time from {departure_location}: ") #TODO: bæta við formatti hvernig þið viljið tímann og validate
 
-        # return_flight_date = input(f"Enter departure date from {arrival_location.destination}; year-month-day: ")#TODO: validate
-        # return_flight_time = input(f"Enter departure time from {arrival_location.destination}: ")#TODO: validate
+        return_flight_date = input(f"Enter departure date from {arrival_location.destination}; year-month-day: ")#TODO: validate
+        return_flight_time = input(f"Enter departure time from {arrival_location.destination}: ")#TODO: validate
 
 
         # TODO: use datetime module
+        #Calculate arrical time from departure time
+        date_format = "%Y-%m-%d %H:%M:%S"
         departure_date_time = departure_date + " " + departure_time
         arrival_date_time = return_flight_date + " " + return_flight_time
-        
+        departure_date_time = datetime.strptime(departure_date_time, date_format)
+        arrival_date_time = datetime.strptime(arrival_date_time, date_format) 
+    
+        calculated_arrival_flight_time = self.logic_wrapper.flight_time(arrival_location, departure_date_time)
+        calculated_return_flight_time = self.logic_wrapper.flight_time(arrival_location, arrival_date_time )
+
 
         the_last_id = find_last_id[-1]
         the_last_id = int(the_last_id)
@@ -86,18 +87,18 @@ class VoyagesUI:
         else:
             back_flight_number = flight_number[:-2] + str(new_flight_number)
 
-        calculated_arrival_flight_time = self.logic_wrapper.flight_time(arrival_location, departure_date_time)
-        calculated_return_flight_time = self.logic_wrapper.flight_time(arrival_location.location, arrival_date_time )
 
         print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
         print("~" * 20)
         print("Flight id: ", the_last_id)
         print("Flight Number: ", flight_number)
         print("Departure Location: ", departure_location)
-        print("Arrival Location: ", arrival_location)
+        print("Arrival Location: ", arrival_location.destination_id)
         print("Departure date and time: ", departure_date_time)
         print("Arrival date and time: ", arrival_date_time)
-        
+
+
+
         save_prompt = input("Would you like to save this new voyage, (y)es or (n)o? ")
         if save_prompt == "y":
 
@@ -105,7 +106,7 @@ class VoyagesUI:
                 id=the_last_id,
                 flight_nr=flight_number,
                 dep_from=departure_location,
-                arr_at=arrival_location,
+                arr_at=arrival_location.destination_id,
                 departure=departure_date_time, 
                 arrival=calculated_arrival_flight_time, 
             )
@@ -114,12 +115,14 @@ class VoyagesUI:
             upcoming_flight2 = UpcomingVoyage(
                 id=(the_last_id + 1),
                 flight_nr=back_flight_number,
-                dep_from=arrival_location,
+                dep_from=arrival_location.destination_id,
                 arr_at=departure_location,
                 departure=arrival_date_time,
                 arrival=calculated_return_flight_time, #
             )
 
+            print("VOYAGE 1: ", upcoming_flight1) 
+            print("VOYAGE 2", upcoming_flight2)
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight1)
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight2)
             print("saving_files")
