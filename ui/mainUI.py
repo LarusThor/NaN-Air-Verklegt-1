@@ -45,74 +45,98 @@ class Main:
                 action2 = ""
                 action3 = ""
                 action4 = ""
+                action15 = ""
                 while (action1 != BACK):
-                    action2= ""
-                    action4= ""
                     action1 = self.airplane_ui.airplane_options()
+                    action2 = ""
+                    action3 = ""
+                    action4 = ""
+                    action15 = ""
+                    
                     match action1:
                         case "q":
                             quit(0)
+
                         case "1":  # airplane types and license
-                            while( action2 != BACK):
-                                action3 = ""
+                            while(action2 != BACK):
+                                action1 = ""
                                 action2 = self.airplane_ui.airplane_types_and_licence()
-                                match action2:
-                                    case "q":
-                                        quit(0)
-                                    case "1":
-                                        while( action3 != 'b'):
-                                            action3 = self.airplane_ui.pilots_by_licanse()
-                                            match action3:
-                                                case "q":
-                                                    quit(0)
-                                                case "1":
-                                                    self.airplane_ui.get_pilots_for_a_specific_type()
-                                                case "2":
-                                                    self.airplane_ui.list_pilots_by_licanse()
-                                                case "3":
-                                                    self.airplane_ui.get_number_of_pilots_for_airplanes()
-                                                case "b":
-                                                    continue
-                                                case _:
-                                                    print("Input was invalid, try again ")
-                                                    time.sleep(INVALID_INPUT_SLEEP)
-                                            #end match action 3
-                                        #end w-action3
-                                    #end case action2=1
-                                    case "2":
-                                        self.airplane_ui.types()
+                                action3 = action2
+                                while (action3 != BACK):
+                                    if action3 == "q":
+                                        quit()
+                                    match action2:
+                                        case "q":
+                                            quit(0)
+
+                                        case "1":
+                                            while(action4 != BACK):
+                                                action2 = ""
+                                                action4 = self.airplane_ui.pilots_by_licanse()
+                                                action12 = action4
+                                                while(action12 != BACK):
+                                                    if action12 == "q":
+                                                        quit()
+                                                    match action4:
+                                                        case "q":
+                                                            quit(0)
+                                                        case "1":
+                                                            action12 = self.airplane_ui.get_pilots_for_a_specific_type()
+                                                        case "2":
+                                                            action12 = self.airplane_ui.list_pilots_by_licanse()
+                                                        case "3":
+                                                            action12 = self.airplane_ui.get_number_of_pilots_for_airplanes()
+                                                        case "b":
+                                                            continue
+                                                        case _:
+                                                            print("Input was invalid, try again ")
+                                                            time.sleep(INVALID_INPUT_SLEEP)
+                                                #end match action 3
+                                            #end w-action3
+                                        #end case action2=1
+                                        case "2":
+                                            action3 = self.airplane_ui.types()
+                                            if action3 == "q":
+                                                quit()
+                                            
+                                        case "b":
+                                            continue
+                                        case _:
+                                            print("Input was invalid, try again ")
+                                            time.sleep(INVALID_INPUT_SLEEP)
+                                        #end case action2=2
                                         
-                                    case "b":
-                                        continue
-                                    case _:
-                                        print("Input was invalid, try again ")
-                                        time.sleep(INVALID_INPUT_SLEEP)
-                                    #end case action2=2
-                                    
-                                #end match a2
-                            #end w-a2
-                        #case action1=1
+                                    #end match a2
+                                #end w-a2
+                            #case action1=1
+
                         case "2":  # add new airplane
-                            self.airplane_ui.add_airplane()
+                            action2 = self.airplane_ui.add_airplane()
+                            if action2 == "q":
+                                quit()
                         
                         #case action1=2
                         
                         case "3":  # airplane usage
-                            while(action4 != "b"):
-                                action1= ""
-                                action4 = self.airplane_ui.airplane_usage_options()
-                                match action4:
-                                    case "q":
-                                        quit(0)
-                                    case "1":
-                                        self.airplane_ui.most_used_airplane()
-                                    case "2":
-                                        self.airplane_ui.flown_furthest_airplane()
-                                    case "b":
-                                        continue
-                                    case _:
-                                        print("Input was invalid, try again ")
-                                        time.sleep(INVALID_INPUT_SLEEP)
+                            while(action15 != "b"):
+                                action15 = ""
+                                action15 = self.airplane_ui.airplane_usage_options()
+                                action14 = action15.lower()
+
+                                while(action14 != BACK):
+                                    
+                                    match action14:
+                                        case "q":
+                                            quit(0)
+                                        case "1":
+                                            action14 = self.airplane_ui.most_used_airplane() 
+                                        case "2":
+                                            action14 = self.airplane_ui.flown_furthest_airplane()
+                                        case "b":
+                                            continue
+                                        case _:
+                                            print("Input was invalid, try again ")
+                                            time.sleep(INVALID_INPUT_SLEEP)
                         case "b":
                             continue
                         case _:
@@ -123,8 +147,9 @@ class Main:
             def destinations() -> None:
                 action4 = ""
                 action5 = ""
-                while ( action4 != "b"):
+                while (action4 != "b"):
                     action4 = self.destinations_ui.destinations()
+                    
                     match action4:
                         case "q":
                             quit(0)
