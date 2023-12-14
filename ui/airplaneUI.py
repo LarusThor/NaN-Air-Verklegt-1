@@ -21,11 +21,10 @@ class AirplaneUI:
         """ TODO: add docstring """
         self.menus.display_options("Airplane:", AIRPLANE_OPTIONS)
         action = str(input("Enter your action: ").lower())
-        #while self.validation.validate_action(action, )
         return action
     
 
-    def airplane_types_and_licanse(self) -> str: # 1-1
+    def airplane_types_and_licence(self) -> str: # 1-1
         """ TODO: add docstring """
         self.menus.display_options("Airplane types and license:", AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
         action = str(input("Enter your action: ").lower())
@@ -42,28 +41,24 @@ class AirplaneUI:
     def get_pilots_for_a_specific_type(self) -> None: # 1-1-1-1
         """Asks the user to enter in an airplane type. Checks if the input is valid. Goes through the airplane types 
         and gets the pilots that are qualified to fly that airplane type. Then calls a function in the menu_manager to print it out."""
+        pilots_by_license = self.logic_wrapper.pilots_by_license()
+        planes = {(i+1): plane for i, plane in enumerate(pilots_by_license.keys())}
+
+        
+        print("Choose plane: \n")
+
+        for index, plane in enumerate(pilots_by_license.keys()):
+             print(f"{index + 1}. {plane}")
         
 
-        airplane_type = input("Enter an airplane type: ")
+        airplane_choice = int(input("Enter an airplane choice: "))
+        print(f"\nAll pilots qualified to fly {planes[airplane_choice]}:") 
+        pilots = pilots_by_license[planes[airplane_choice]]
 
-        while not self.validation.validate_aircraft_by_specific_type(airplane_type): #validating the input, returns true or false
-            print("\nERROR: Invalid airplane type.")
+        for pilot in pilots:
+            print(pilot)
+
             
-            print("You can choose from:")
-            for value in self.logic_wrapper.airplane_types():
-                    print(value)
-
-            airplane_type = str(input("\nEnter an airplane type: "))
-
-        title = f"Pilots qualified to fly {airplane_type}:"
-        result = ""
-
-        for pilot in self.logic_wrapper.pilots_by_license().get(airplane_type): # gets the pilots that are qualified to fly the airplane type
-            result += pilot + "\n"
-
-        self.menus.print_the_info(title, result) # calling a function to print everything out
-
-    
 
     def list_pilots_by_licanse(self) -> None: # 1-1-1-2
         """Goes through the pilots and license from the logic wrapper and adds it to the result string. 

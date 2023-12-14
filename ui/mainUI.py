@@ -22,7 +22,6 @@ MAIN_MENU_OPTIONS = [
 
 class Main:
     def __init__(self) -> None:
-        """TODO: add docstring"""
         self.menus = Menu()
         self.airplane_ui = AirplaneUI()
         self.destinations_ui = DestinationsUI()
@@ -34,12 +33,12 @@ class Main:
         self.validation = self.logic_wrapper.validation
 
     def input_prompt(self) -> None:
-        """TODO: add docstring"""
-        while True: #TODO: meigum við nota while True??
+        while True:
             self.menus.main_menu()
             
 
             def airplane() -> None:
+                """TODO: add docstring og kommenta þennan kóða hann er svoldið flókinn :"""
                 action1 = ""
                 action2 = ""
                 action3 = ""
@@ -54,7 +53,7 @@ class Main:
                         case "1":  # airplane types and license
                             while( action2 != 'b' ):
                                 action3 = ""
-                                action2 = self.airplane_ui.airplane_types_and_licanse()
+                                action2 = self.airplane_ui.airplane_types_and_licence()
                                 match action2:
                                     case "q":
                                         quit(0)
@@ -120,7 +119,6 @@ class Main:
 
 
             def destinations() -> None:
-                """TODO: add docstring"""
                 action4 = ""
                 action5 = ""
                 while ( action4 != "b"):

@@ -4,16 +4,20 @@ from datetime import date,datetime
 from logic.logic_wrapper import LogicWrapper
 from ui.scheduleUI import ScheduleUI
 from ui.flight_infoUI import FlightInfoUI
+from ui.airplaneUI import AirplaneUI
 
 #kemur aldrei upp að þau séu að vinna í vikunni
 
 logic = LogicWrapper()
+ai = AirplaneUI()
 
-print(logic.get_most_experienced_employee())
+ai.get_pilots_for_a_specific_type()
+
+#print(logic.get_most_experienced_employee())
 
 
 # airplane_types = logic.airplane_types()
-# licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
+# licences = {(i+1): licence for i, licence in (airplane_types)}
 # print(licences)
 
 # print("Licenses:")

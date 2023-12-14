@@ -86,7 +86,6 @@ class VoyagesUI:
         
         save_prompt = input("Would you like to save this new voyage, (y)es or (n)o? ")
         if save_prompt == "y":
-            print("New voyage has been saved!")
 
             upcoming_flight1 = UpcomingVoyage(
                 id=the_last_id,
@@ -110,6 +109,7 @@ class VoyagesUI:
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight1)
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight2)
             print("saving_files")
+            print("New voyage has been saved!")
 
         elif save_prompt == "n":
             print("New voyage was not saved.")
@@ -136,11 +136,11 @@ class VoyagesUI:
         return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
         voyage_flight_number_info = self.logic_wrapper.upcoming_voyages().values()
         employee_information = self.logic_wrapper.show_employee_info()
+
         for voyages_info in voyage_flight_number_info:
             # TODO: just get this as a variable, dont reassign the attribute
             departure_date = voyages_info.departure.strftime("%Y-%m-%d")
             if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
-                # while not aircraft_check:
                 while not aircraft_check:
                     plane_insignia = input("Enter a valid aircraft: ")
                     aircraft = self.logic_wrapper.get_airplanes_info_overview(plane_insignia)
@@ -149,6 +149,7 @@ class VoyagesUI:
                     else:
                         print(f"Airplane {plane_insignia} not available on between {voyages_info.departure} and {return_flight_arrival}")
                         aircraft_check = False
+
 
                 while not captain_check:
                     captain = input("Enter captain social id: ")
@@ -167,9 +168,6 @@ class VoyagesUI:
                         print(f"{captain} is not a captain")
                         
                     
-                    # flights_list, total_hours_worked = self.logic_wrapper.get_total_future_hours_worked(captain, voyages_info.departure, return_flight_arrival)
-                    # if total_hours_worked != 0:
-                    #     print("NEi")
                 while not copilot_check:
                     copilot = input("Enter copilot's social id: ")
                     employee = self.logic_wrapper.employee_info(copilot)
@@ -229,26 +227,30 @@ class VoyagesUI:
                     if len(flight_attendants) < 5:
                         while not flight_attendant_check:
                             add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                            employee = self.logic_wrapper.employee_info(copilot)
-                            if add_flight_attendant == "": 
-                                unstaffed = 5 - len(flight_attendants)
-                                for flight_attendant in range(unstaffed):
-                                    flight_attendants.append("N/A")
-                                    flight_attendant_check = True
-
-                            else:
-                                if employee_information[add_flight_attendant].rank == "Flight Attendant":
-                                    if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
-                                        flight_attendants.append(add_flight_attendant)
+                            if add_flight_attendant not in flight_attendants:
+                                employee = self.logic_wrapper.employee_info(copilot)
+                                if add_flight_attendant == "": 
+                                    unstaffed = 5 - len(flight_attendants)
+                                    for flight_attendant in range(unstaffed):
+                                        flight_attendants.append("N/A")
                                         flight_attendant_check = True
 
-                                    else:
-                                        print(f"Flight Attendant {flight_service_manager} not available on between {voyages_info.departure} and {return_flight_arrival}")
-                                        flight_attendant_check = False
-
                                 else:
-                                    print(f"{add_flight_attendant} is not a Flight Attendant")
-                                    flight_attendant_check = False
+                                    if employee_information[add_flight_attendant].rank == "Flight Attendant":
+                                        if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
+                                            flight_attendants.append(add_flight_attendant)
+                                            flight_attendant_check = True
+
+                                        else:
+                                            print(f"Flight Attendant {flight_service_manager} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                                            flight_attendant_check = False
+
+                                    else:
+                                        print(f"{add_flight_attendant} is not a Flight Attendant")
+                                        flight_attendant_check = False
+                            else:
+                                print("Employee already assigned, please try again.")
+                                flight_attendant_check = False
 
                 assert len(flight_attendants) == 5
 
@@ -260,7 +262,6 @@ class VoyagesUI:
                 for flight_attendant in flight_attendants:
                     print("Flight Attendant:", flight_attendant)
                         
-                # return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
 
 
                 save_prompt = input(f"Would you like to add this staff to the voyage {voyage_flight_number}, (y)es or (n)o? ")
@@ -285,7 +286,6 @@ class VoyagesUI:
                     )
                     
 
-                    #TODO: Change return flight staff aswell
                     upcoming_voyage_staff_return_flight = UpcomingVoyage(
 
                         id=return_flight_id,
@@ -308,17 +308,6 @@ class VoyagesUI:
                     self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_first_flight)
                     self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_return_flight)
                     print("Voyage has been staffed!")
-
-        # if len(flight_attendants) < 5:
-        #     empty_flight_attendant_slots = 5 - len(flight_attendants)
-        #     for slots in empty_flight_attendant_slots:
-        #         flight_attendants.append("N/A")
-                
-        # flight_attendant_1 = flight_attendants[0]
-        # flight_attendant_2 = flight_attendants[1]
-        # flight_attendant_3 = flight_attendants[2]
-        # flight_attendant_4 = flight_attendants[3]
-        # flight_attendant_5 = flight_attendants[4]
 
     def list_voyage_options(self) -> str:
         """TODO: add docstring"""
@@ -424,15 +413,7 @@ class VoyagesUI:
                         result += "-" * 130 + "\n"
         
         self.menus.print_the_info(title, result)
-
-    def staff_voyage(self) -> None:
-        """Adds staff to voyage in the system."""
-
-        flight_number = input("Enter a flight number: ")
-        captain = input("Enter captain's social ID: ")
-        pilot = input("Enter pilot's social ID: ")
-        head_flight_crew = input("Enter head flight attendant's social ID: ")
-        # TODO add an option for more flight attendants
+        
 
     def cancel_voyage(self) -> None:  # define
         """Cancels a voyage in teh system."""
