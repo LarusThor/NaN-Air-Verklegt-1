@@ -14,10 +14,6 @@ class AirplaneUI:
         """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
-        self.airplane_types = self.logic_wrapper.airplane_types()
-        self.pilots_license = self.logic_wrapper.pilots_by_license()
-        self.flown_furthest = self.logic_wrapper.furthest_flown()
-        self.airplane_usage = self.logic_wrapper.airplane_usage()
         self.validation = self.logic_wrapper.validation
 
 
@@ -61,7 +57,7 @@ class AirplaneUI:
         title = f"Pilots qualified to fly {airplane_type}:"
         result = ""
 
-        for pilot in self.pilots_license.get(airplane_type): # gets the pilots that are qualified to fly the airplane type
+        for pilot in self.logic_wrapper.pilots_by_license().get(airplane_type): # gets the pilots that are qualified to fly the airplane type
             result += pilot + "\n"
 
         self.menus.print_the_info(title, result) # calling a function to print everything out
@@ -75,7 +71,7 @@ class AirplaneUI:
         title = "{:<14} | {}".format("Airplane type", "Pilots")
         result = ""
 
-        for keys, values in self.pilots_license.items():
+        for keys, values in self.logic_wrapper.pilots_by_license().items():
             result += "{:<14} | {} \n".format(keys, ", ".join(sorted(values)))
 
         self.menus.print_the_info(title, result)
@@ -88,7 +84,7 @@ class AirplaneUI:
         title = "Number of pilots that are qualified for each airplane type:"
         result = ""
 
-        for key, value in self.pilots_license.items():
+        for key, value in self.logic_wrapper.pilots_by_license().items():
             result += f"{key}: \n  {len(value)} licensed pilots.\n"
 
         self.menus.print_the_info(title, result)
@@ -100,7 +96,7 @@ class AirplaneUI:
         title = "Airplane types: "
         result = ""
 
-        for item in self.airplane_types:
+        for item in self.logic_wrapper.airplane_types():
             result += item + "\n"
 
         self.menus.print_the_info(title, result)
@@ -163,7 +159,7 @@ class AirplaneUI:
         """Calls a function in the menu_manager that takes care of printing the title and the result of the most used airplane."""
 
         title = "The mose used airplane is:"
-        result = f"{self.airplane_usage[0]} - {self.airplane_usage[1][self.airplane_usage[0]]} voyages"
+        result = f"{self.logic_wrapper.airplane_usage()[0]} - {self.logic_wrapper.airplane_usage()[1][self.logic_wrapper.airplane_usage()[0]]} voyages"
 
         self.menus.print_the_info(title, result)
 
@@ -172,6 +168,6 @@ class AirplaneUI:
         """Calls a function in the menu_manager that takes care of printing the title and the result of the furthest flown airplane."""
 
         title = "The airplane that has flown the furthest:"
-        result = f"Airplane name: {self.flown_furthest[0]} - Distance: {self.flown_furthest[1]}km."
+        result = f"Airplane name: {self.logic_wrapper.furthest_flown()[0]} - Distance: {self.logic_wrapper.furthest_flown()[1]}km."
 
         self.menus.print_the_info(title, result)

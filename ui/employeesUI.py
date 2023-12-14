@@ -29,44 +29,6 @@ class EmployeeUI:
         return action
 
 
-    def get_pilots(self) -> None:
-        """Prints out a list of all the pilots"""
-        pilot_list = self.logic_wrapper.pilot_list()
-        title = "All pilots:"
-        result = ""
-        for pilot in pilot_list:
-            result += pilot.name + "\n"
-        self.menus.print_the_info(title, result)
-
-
-    def get_flight_attendants(self) -> None:
-        """Prints out a list of all the flight attendants"""
-        flight_attendant_list = self.logic_wrapper.flight_attendant_list()
-        title = "All flight attendants:"
-        result = ""
-        for person in flight_attendant_list:
-            result += person + "\n"
-        self.menus.print_the_info(title, result)
-    
-
-    def get_all_employees(self) -> None:
-        """Prints out a list of all the employees"""
-        employees = self.logic_wrapper.employee_list()
-        title = "All employees:"
-        result = ""
-        for person in employees:
-            result += person + "\n"
-        self.menus.print_the_info(title, result)
-
-
-    def get_employee(self) -> Employee:
-        """Gets a social id number and returns that employee"""
-        employee_info = self.logic_wrapper.employee_info
-        social_id = str(input("Enter employee social ID: ")).strip()
-        employee = employee_info(social_id)
-        return employee
-
-
     def employee_info_options(self) -> str:
         """Prints out the options that come up when the user chooses to get the employees information.
         And gets the action input from the user
@@ -74,6 +36,60 @@ class EmployeeUI:
         self.menus.display_options("Employee information:", EMPLOYEE_INFORMATION_OPTIONS)
         action = str(input("Enter your action: ").lower())   
         return action 
+    
+
+    def get_pilots(self) -> None:
+        """Gets the pilots from the logic wrapper. Calls a function in the menu_manager that takes care of 
+        printing the pilots and the title out."""
+
+        pilot_list = self.logic_wrapper.pilot_list()
+        title = "All pilots:"
+        result = ""
+
+        for pilot in pilot_list:
+            result += pilot.name + "\n"
+
+        self.menus.print_the_info(title, result)
+
+
+    def get_flight_attendants(self) -> None:
+        """Gets the flight attendants from the logic wrapper. Calls a function in the menu_manager that takes care of 
+        printing the flight attendants and the title out."""
+
+        flight_attendant_list = self.logic_wrapper.flight_attendant_list()
+        title = "All flight attendants:"
+        result = ""
+
+        for person in flight_attendant_list:
+            result += person + "\n"
+
+        self.menus.print_the_info(title, result)
+    
+
+    def get_all_employees(self) -> None:
+        """Gets all the employees from the logic wrapper. Calls a function in the menu_manager that takes care of 
+        printing all the employees and the title out."""
+        employees = self.logic_wrapper.employee_list()
+        title = "All employees:"
+        result = ""
+
+        for person in employees:
+            result += person + "\n"
+
+        self.menus.print_the_info(title, result)
+
+
+    def get_employee(self) -> Employee:
+        """Gets a social id number from a user and gets that employee from the logic wrapper."""
+
+        employee_info = self.logic_wrapper.employee_info
+        social_id = str(input("Enter employee social ID: ")).strip()
+
+        employee = employee_info(social_id)
+
+        return employee
+
+
 
 
     def get_info(self) -> None:
