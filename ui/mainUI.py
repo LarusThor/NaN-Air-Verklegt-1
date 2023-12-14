@@ -22,7 +22,6 @@ MAIN_MENU_OPTIONS = [
 
 class Main:
     def __init__(self) -> None:
-        """TODO: add docstring"""
         self.menus = Menu()
         self.airplane_ui = AirplaneUI()
         self.destinations_ui = DestinationsUI()
@@ -33,7 +32,6 @@ class Main:
         self.logic_wrapper = LogicWrapper()
 
     def input_prompt(self) -> None:
-        """TODO: add docstring"""
         while True:
             self.menus.main_menu()
             action = str(input("Enter your action: ").lower())
@@ -119,7 +117,6 @@ class Main:
 
 
             def destinations() -> None:
-                """TODO: add docstring"""
                 action4 = ""
                 action5 = ""
                 while ( action4 != "b"):
