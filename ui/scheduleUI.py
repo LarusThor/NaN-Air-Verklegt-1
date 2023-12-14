@@ -99,7 +99,11 @@ class ScheduleUI:
         title = f"{employee.name} worked {hours_int} hours within {start_date.date()} - {end_date.date()}"
         result = ""
         for voyage, destination in voyages:
-            result += f"{voyage} to {destination} \n"
-
+            if destination != "KEF":
+                result += f"Flight{voyage}: From KEF to {destination} \n"
+            else:
+                result += f"Flight{voyage}: From {prev_destination} to {destination} \n"
+            prev_destination = destination
+    
         self.menus.print_the_info(title, result)
         
