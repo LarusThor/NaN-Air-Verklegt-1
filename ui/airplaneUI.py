@@ -43,7 +43,7 @@ class AirplaneUI:
         and gets the pilots that are qualified to fly that airplane type. Then calls a function in the menu_manager to print it out."""
         pilots_by_license = self.logic_wrapper.pilots_by_license()
         planes = {(i+1): plane for i, plane in enumerate(pilots_by_license.keys())}
-        print(planes)
+
         
         print("Choose plane: \n")
 
