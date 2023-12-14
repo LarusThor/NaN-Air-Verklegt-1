@@ -235,7 +235,7 @@ class EmployeeUI:
             }
         
         print("Role:\n1. Pilot\n2. Cabincrew")
-        role_choice = input()
+        role_choice = input("Choose role: ")
         
         while role_choice != "1" and role_choice != "2":
             print("Invalid input! You can choose 1, 2")
