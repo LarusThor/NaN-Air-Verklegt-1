@@ -69,7 +69,7 @@ class ValidationLL():
         return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
         
               
-    def validate_save_new(self,str) -> bool:
+    def validate_save_new(self, str) -> bool:
         pass
     
     

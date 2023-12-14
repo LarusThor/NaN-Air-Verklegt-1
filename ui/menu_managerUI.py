@@ -133,7 +133,7 @@ class Menu():
         return action
         
     
-    def print_the_info(self, title, info="") -> None:
+    def print_the_info(self, title: str, info:str ="") -> None:
         """ TODO: add docstring """
         terminal_size = os.get_terminal_size()
         terminal_width = terminal_size.columns

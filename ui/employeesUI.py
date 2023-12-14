@@ -272,7 +272,7 @@ class EmployeeUI:
         return home_address
     
 
-    def choose_rank_and_licence(self, role) -> None:
+    def choose_rank_and_licence(self, role: str) -> str | str:
         """User chooses rank and licence for employee."""
         airplane_types = self.logic_wrapper.airplane_types()
     
