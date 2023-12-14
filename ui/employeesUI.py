@@ -49,7 +49,8 @@ class EmployeeUI:
         for pilot in pilot_list:
             result += pilot.name + "\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
 
@@ -64,7 +65,8 @@ class EmployeeUI:
         for person in flight_attendant_list:
             result += person + "\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
     
 
@@ -78,7 +80,8 @@ class EmployeeUI:
         for person in employees:
             result += person + "\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
     def get_employee(self) -> Employee:
@@ -119,7 +122,8 @@ class EmployeeUI:
         result += "{:<14} {}".format("Home address:", employee.home_address) + "\n"
         result += "{:<14} {}".format("Landline:", employee.landline) + "\n"
 
-        self.menus.print_the_info(title, result)
+        action = self.menus.print_the_info(title, result)
+        return action
 
 
     def change_info_options(self) -> None:
@@ -153,9 +157,10 @@ class EmployeeUI:
             Any other to quit
 
         """
+        action = "N/A" #TODO: spyrja hvað við ættum actually að hafa hérna
 
-        action = input(f"Select an option: {options} \n" ).lower().strip()
         while action != "d":
+            action = input(f"Select an option: {options} \n" ).lower().strip()
             match action:
                 case "1":
                     role = self.choose_role()
@@ -174,11 +179,10 @@ class EmployeeUI:
 
                 case "6":
                     landline = self.get_phone_nr()
-
+                
                 case _:
                     break
-
-            action = input(f"Select an option: {options} \n" ).lower().strip()
+            
         
         employee = Employee(
             social_id = social_id,
@@ -192,9 +196,35 @@ class EmployeeUI:
             landline=landline,
             )
         
-        print(employee)
+        #print(employee)
+        print(f"Updated information for {employee.name}")
+        print(f"Social_id: {employee.social_id}\n"
+                f"Role: {employee.role}\n"
+                f"Rank: {employee.rank}\n"
+                f"License: {employee.licence}\n"
+                f"Email: {employee.email}\n"
+                f"Mobile number: {employee.phonenumber}\n"
+                f"Address: {employee.home_address}\n"
+                f"Landline: {employee.landline}\n"
+              )
+       
+        save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
+        while save_prompt != "y" and save_prompt != "n":
+            print("Invalid input!")
+            save_prompt = input("Enter Y for yes or N for no:").lower()
 
-        self.logic_wrapper.change_employee_info(employee)
+        if save_prompt == "y":
+            self.logic_wrapper.change_employee_info(employee)
+            title = "New information saved!"
+            user_input = self.menus.print_the_info(title)
+ 
+
+        elif save_prompt == "n":
+            title = "Updated information not saved."
+            user_input = self.menus.print_the_info(title)
+        
+        return user_input
+ 
 
 
     def choose_role(self) -> str:
@@ -242,38 +272,48 @@ class EmployeeUI:
         return home_address
     
 
-    def choose_rank_and_licence(self) -> None:
+    def choose_rank_and_licence(self, role) -> None:
         """User chooses rank and licence for employee."""
         airplane_types = self.logic_wrapper.airplane_types()
-        ranks = { #TODO: laga þetta er harðkóðað
+    
+        if role == "Pilot": 
+            ranks = { #TODO: laga þetta er harðkóðað
             "1": "Captain", 
-            "2": "Copilot", 
-            "3": "Flight Service Manager", 
-            "4": "Flight Attendant"
+            "2": "Copilot"
             }
-        
-        print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
-        rank_choice = input().strip()
-
-        while rank_choice != "1" and rank_choice != "2" and rank_choice != "3" and rank_choice != "4":
-            print("Invalid input! You can choose 1, 2, 3, or 4")#TODO: ætti frekar að vera í validation
-            rank = input("Rank: ")
-        
-        rank = ranks[rank_choice]
-
-        if rank_choice == "1" or rank_choice == "2":
-            # A dictionary of all the airplane types, updates if new airplane type is added
-            licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
-
-            print("Licenses:")
-            for index, license in licences.items():
-                print(f"{index}. {license}")
+            print("Rank:\n1. Captain\n2. Copilot")
+            rank_choice = input().strip()
             
-            licence_choice = int(input())
-            licence = licences[licence_choice]
-        else:
+            while rank_choice != "1" and rank_choice != "2":
+                print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
+                rank_choice = input("Rank: ")
+            if rank_choice == "1" or rank_choice == "2":
+                # A dictionary of all the airplane types, updates if new airplane type is added
+                licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
+
+                print("Licenses:")
+                for index, license in licences.items():
+                    print(f"{index}. {license}")
+                
+                licence_choice = int(input())
+                licence = licences[licence_choice]
+            else:
+                licence = "N/A"
+
+        elif role == "Cabincrew":
+            ranks = { #TODO: laga þetta er harðkóðað
+            "1": "Flight Service Manager", 
+            "2": "Flight Attendant"
+            }
+            print("Rank:\n1. Flight Service Manager\n2. Flight Attendant")
+            rank_choice = input().strip()
+
+            while rank_choice != "1" and rank_choice != "2":
+                print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
+                rank_choice = input("Rank: ")
             licence = "N/A"
 
+        rank = ranks[rank_choice]
         return rank, licence
     
 
@@ -307,7 +347,7 @@ class EmployeeUI:
 
         role = self.choose_role()
      
-        rank, license = self.choose_rank_and_licence()
+        rank, license = self.choose_rank_and_licence(role)
 
         optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
         if optional_landline == "y":
@@ -347,12 +387,15 @@ class EmployeeUI:
         if save_prompt == "y":
             self.logic_wrapper.add_employee(employee)
             title = "New employee saved!"
-            self.menus.print_the_info(title)
+            action = self.menus.print_the_info(title)
+            return action
  
 
         elif save_prompt == "n":
             title = "New employee not saved."
-            self.menus.print_the_info(title)
+            action = self.menus.print_the_info(title)
+            return action
+
 
 
 
@@ -363,4 +406,5 @@ class EmployeeUI:
         title = "The most experienced employee:"
         result = f"{name} has gone on {int(voyages)} voyages."
 
-        self.menus.print_the_info(title, result)
+        action = self.menus.print_the_info(title, result)
+        return action

@@ -130,7 +130,7 @@ class Menu():
         """ TODO: add docstring """
         print("Enter (b) for back or (q) for quit") # TODO has to validated
         action = input("Enter in your action: ").lower()
-
+        return action
         
     
     def print_the_info(self, title, info="") -> None:
@@ -153,4 +153,5 @@ class Menu():
         for item in info_list:
             print(item)
         print("\n" * empty_lines_below)
-        self.get_next_action()
+        action = self.get_next_action()
+        return action

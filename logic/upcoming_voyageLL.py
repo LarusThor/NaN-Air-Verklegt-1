@@ -3,6 +3,7 @@ from model.employee_model import Employee
 from datetime import date
 from model.upcoming_voyage_model import UpcomingVoyage
 from model.airplane_model import Airplane
+from model.destination_model import Destination
 
 
 class UpcomingVoyageLL:
@@ -26,12 +27,12 @@ class UpcomingVoyageLL:
         self.logic.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
 
-    def calculate_flight_time(self, arr_at: str, departure_date_time) -> datetime:
+    def calculate_flight_time(self, arr_at: Destination, departure_date_time) -> datetime: #TODO: calculate arrival time
         """ Calculates the flight time. """
         destinations_info = self.logic.data_wrapper.get_all_destinations_info()
         # estimated_flight_time_overview = list(destinations_info.values())
-        destination_values = destinations_info[arr_at]
-        estimated_flight_time = destination_values.estimated_flight_time
+   #     destination_values = destinations_info[arr_at]
+        estimated_flight_time = arr_at.estimated_flight_time
         hour_duration, min_duration, sec_duration = estimated_flight_time.split(":")
         departure_date, departure_time = departure_date_time.split()
         hour, minute, sec = departure_time.split(":")
