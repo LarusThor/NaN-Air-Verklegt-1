@@ -285,8 +285,8 @@ class EmployeeUI:
             rank_choice = input().strip()
             
             while rank_choice != "1" and rank_choice != "2":
-                print("Invalid input! You can choose 1, 2, 3, or 4")#TODO: ætti frekar að vera í validation
-                rank = input("Rank: ")
+                print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
+                rank_choice = input("Rank: ")
             if rank_choice == "1" or rank_choice == "2":
                 # A dictionary of all the airplane types, updates if new airplane type is added
                 licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
@@ -309,8 +309,8 @@ class EmployeeUI:
             rank_choice = input().strip()
 
             while rank_choice != "1" and rank_choice != "2":
-                print("Invalid input! You can choose 1, 2, 3, or 4")#TODO: ætti frekar að vera í validation
-                rank = input("Rank: ")
+                print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
+                rank_choice = input("Rank: ")
             licence = "N/A"
 
         rank = ranks[rank_choice]
