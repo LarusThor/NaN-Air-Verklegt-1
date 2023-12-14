@@ -5,7 +5,7 @@ class DestinationLL():
         self.logic = logic_wrapper
    
 
-    def get_destination_info_list(self) -> dict:
+    def get_destination_info(self) -> dict:
         return self.logic.data_wrapper.get_all_destinations_info()
 
 
