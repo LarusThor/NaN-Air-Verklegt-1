@@ -298,7 +298,7 @@ class EmployeeUI:
                         tuple_list.append(item)
                     print(f"{index}. {tuple_list[0]}")
                 
-                licence_choice = int(input())
+                licence_choice = int(input("Choose license: "))
                 licence = licences[licence_choice]
             else:
                 licence = "N/A"
