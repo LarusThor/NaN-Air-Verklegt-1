@@ -50,16 +50,16 @@ class AirplaneUI:
         for index, plane in enumerate(pilots_by_license.keys()):
              print(f"{index + 1}. {plane}")
         
-
         airplane_choice = int(input("Enter an airplane choice: "))
+        while not self.validation.validate_choice(airplane_choice, len(planes)):
+            print("Invalid choice \nTry again.")
+            airplane_choice = int(input("Enter an airplane choice: "))
 
         title = f"\nAll pilots qualified to fly {planes[airplane_choice]}:"
         result = ""
-        # print(f"\nAll pilots qualified to fly {planes[airplane_choice]}:") 
         pilots = pilots_by_license[planes[airplane_choice]]
 
         for pilot in pilots:
-            # print(pilot)
             result += pilot + "\n"
         
         user_input = self.menus.print_the_info(title, result)
@@ -101,8 +101,11 @@ class AirplaneUI:
         title = "Airplane types: "
         result = ""
 
-        for item in self.logic_wrapper.airplane_types():
-            result += f"{item[0]}\n"
+        for flight_type_tuple in self.logic_wrapper.airplane_types(): 
+            flight_type_list = []
+            for flight_type in flight_type_tuple:
+                flight_type_list.append(flight_type)
+            result += f"{flight_type_list[0]}\n"
 
         user_input = self.menus.print_the_info(title, result)
         return user_input
@@ -110,8 +113,7 @@ class AirplaneUI:
 
 
     def add_airplane(self) -> None: #define
-        """ TODO: add docstring """
-        #TODO: 
+        """ TODO: add docstring """ 
         airplane_types = self.logic_wrapper.airplane_types()
 
 
