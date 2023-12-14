@@ -2,9 +2,7 @@ from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
 from model.destination_model import Destination
 
-
 DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Change destination information"]
-CHANGE_OPTIONS = ["1. Everyting", "2. Contact information", "3. Airport"]
 
 
 class DestinationsUI:
@@ -21,12 +19,6 @@ class DestinationsUI:
 
         return action
 
-    
-    def select_info(self) -> str:
-        self.menus.display_options("What information would you like to change?", CHANGE_OPTIONS)
-        action = str(input("Enter your action: ").lower())
-
-        return action
 
 
     def get_all_destinations(self) -> None:
@@ -89,30 +81,20 @@ class DestinationsUI:
 
 
 
-    def change_destination_info(self) -> None: #define
+    def change_destination_info(self) -> None: 
         """ TODO: add docstring """
         #TODO: validate
         destination_list = self.logic_wrapper.destination_list()
-        destinations = {(i+1): destination for i, destination in enumerate(destination_list)}
 
         print("\nChanging destination information")
-        print("Choose a destination to change\n")
+        print("=" * 33)
+        print("Choose a destination to change:\n")
 
-        for index, destination in destinations.items():
-            print(f"{index}. {destination.destination}")
+        for index, destination in enumerate(destination_list):
+            print(f"{index + 1}. {destination.destination}")
 
         destination_choice = int(input("Choose destination: "))
-        destination_info = destinations[destination_choice]
-
-
-        #setting up variables to use later
-        destination_id = destination_info.destination_id
-        destination = destination_info.destination
-        contact = destination_info.emergency_contact_name
-        emergency_contact_number = destination_info.emergency_contact_number
-        airport_name = destination_info.airport_name
-        distance_from_iceland = destination_info.distance_from_iceland
-        estimated_flight_time = destination_info.estimated_flight_time
+        destination_info = destination_list[destination_choice - 1]
 
 
         print(f"Options to change for {destination_info.destination}")
@@ -130,94 +112,37 @@ class DestinationsUI:
         while action != "q":
             match action:
                 case "1":
-                    airport_name = input("Enter new airport name: ").title()
+                    destination_info.airport_name = input("Enter new airport name: ").title()
                     action = input("Choose action: ")
 
                 case "2":
-                    contact = input("Enter the name for the new emergency contact: ")
+                    destination_info.emergency_contact_name = input("Enter the name for the new emergency contact: ")
                     action = input("Choose action: ")
 
                 case "3":
-                    emergency_contact_number = input("Enter a new number for the contact: ").title()
+                    destination_info.emergency_contact_number = input("Enter a new number for the contact: ").title()
                     action = input("Choose action: ")
 
                 case "4":
                     print("So you've got fast planes now? ")
-                    estimated_flight_time = input("How fast can they fly to the destiantion? ")
+                    destination_info.estimated_flight_time = input("How fast can they fly to the destiantion? ")
                     action = input("Choose action: ")
 
                 case _:
                     break
-
-
-        dest = Destination(destination_id = destination_id, 
-            destination = destination, 
-            emergency_contact_name = contact, 
-            emergency_contact_number = emergency_contact_number, 
-            airport_name = airport_name, 
-            distance_from_iceland = distance_from_iceland, 
-            estimated_flight_time = estimated_flight_time)
         
-        print(f"{dest.destination_id}\n"
-                f"Destination: {dest.destination}\n"
-                f"Emergency contact name: {dest.emergency_contact_name}\n"
-                f"Emergency contact number: {dest.emergency_contact_number}\n"
-                f"Airport name: {dest.airport_name}\n"
-                f"Distance from Iceland: {dest.distance_from_iceland}km\n"
-                f"Estimated fligth time: {dest.estimated_flight_time}\n")
+        print(f"{destination_info.destination_id}\n"
+                f"Destination: {destination_info.destination}\n"
+                f"Emergency contact name: {destination_info.emergency_contact_name}\n"
+                f"Emergency contact number: {destination_info.emergency_contact_number}\n"
+                f"Airport name: {destination_info.airport_name}\n"
+                f"Distance from Iceland: {destination_info.distance_from_iceland}km\n"
+                f"Estimated fligth time: {destination_info.estimated_flight_time}\n")
         
         save_prompt = input("Would you like to save this new destionation, (y)es or (n)o? ").lower()
         
         if save_prompt == "y":
-            self.logic_wrapper.update_destination_info(dest)
+            self.logic_wrapper.update_destination_info(destination_info)
             self.menus.print_the_info("Changes have been saved!")
         elif save_prompt == "n":
             self.menus.print_the_info("Changes were not saved.")
-
-
-    # def change_contact_info(self) -> None:#TODO: eyða
-    #     """ TODO: add docstring """
-    #     print("\nChanging the contact information: ")
-    #     id = input("Enter the ID of the destination you would like to change: ")
-    #     contact_name = input("Enter the name of the contact person: ")
-    #     contact_number = input("Enter the number of the contact number: ")
-
-    #     all_dests = LogicWrapper().destination_list()
-
-    #     counter = 0
-    #     for destination in all_dests:
-    #         if destination.destination_id == id:
-    #             break
-    #         else:
-    #             counter += 1
-
-    #     dest = all_dests[counter]
-    #     dest.emergency_contact_name = contact_name
-    #     dest.emergency_contact_number = contact_number
-
-    #     self.logic_wrapper.update_contact_info(dest)
-        
-    #     self.menus.print_the_info("Changes have been saved!")
-        
-
-    # def change_airport_info(self) -> None:#TODO: eyða
-    #     """ TODO: add docstring """
-    #     print("\nChanging the airport: ")
-    #     id = input("Enter the ID of the destination you would like to change: ")
-    #     airport = input("Enter new airport name: ")
-
-    #     all_dests = LogicWrapper().destination_list()
-
-    #     counter = 0
-    #     for destination in all_dests:
-    #         if destination.destination_id == id:
-    #             break
-    #         else:
-    #             counter += 1
-
-    #     dest = all_dests[counter]
-    #     dest.airport_name = airport
-
-    #     self.logic_wrapper.update_contact_info(dest)
-
-    #     self.menus.print_the_info("Changes have been saved!")
