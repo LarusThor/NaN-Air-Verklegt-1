@@ -11,7 +11,7 @@ class ValidationLL():
         """ Validates numerical action input. """
         if action.isnumeric():
             action = int(action)
-            if action > 0 and action < option:
+            if action > 0 and action <= option:
                 return True
         else: 
             return False
