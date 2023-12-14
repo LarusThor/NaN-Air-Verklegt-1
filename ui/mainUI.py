@@ -40,19 +40,22 @@ class Main:
             
 
             def airplane() -> None:
-                """TODO: add docstring og kommenta þennan kóða hann er svoldið flókinn :"""
-                action1 = ""
+                """TODO: in this code we are in airplanes and starting loops 
+                    with the feature of backing out and quiting
+                    we are storing the user inputs in a action variables 
+                    and making sure the user puts the right input in:"""
+                action1 = "" # initialize a varible and stores the users input
                 action2 = ""
                 action3 = ""
                 action4 = ""
-                while (action1 != BACK):
+                while (action1 != BACK):# start a loop that runs until action is equal to BACK
                     action2= ""
                     action4= ""
-                    action1 = self.airplane_ui.airplane_options()
+                    action1 = self.airplane_ui.airplane_options()# get the user input from the airplane options menu using the airplane_ui attribute of the class
                     match action1:
-                        case "q":
+                        case "q":# quit feature for the system
                             quit(0)
-                        case "1":  # airplane types and license
+                        case "1": 
                             while( action2 != BACK):
                                 action3 = ""
                                 action2 = self.airplane_ui.airplane_types_and_licence()
@@ -84,9 +87,9 @@ class Main:
                                         
                                     case "b":
                                         continue
-                                    case _:
-                                        print("Input was invalid, try again ")
-                                        time.sleep(INVALID_INPUT_SLEEP)
+                                    case _:#if action is anything else
+                                        print("Input was invalid, try again ")#prints an error message
+                                        time.sleep(INVALID_INPUT_SLEEP)#waits for certain amount of time
                                     #end case action2=2
                                     
                                 #end match a2
@@ -121,7 +124,11 @@ class Main:
 
 
             def destinations() -> None:
-                action4 = ""
+                """TODO: in this code we are in destination and starting loops 
+                    with the feature of backing out and quiting
+                    we are storing the user inputs in a action variables 
+                    and making sure the user puts the right input in:"""
+                action4 = ""# initialize a varible and stores the users input
                 action5 = ""
                 while ( action4 != "b"):
                     action4 = self.destinations_ui.destinations()
@@ -150,10 +157,13 @@ class Main:
                                 
 
             def employees() -> None:
-                action6 = ""
+                """TODO: in this code we are in employee and starting loops 
+                    with the feature of backing out and quiting
+                    we are storing the user inputs in a action variables 
+                    and making sure the user puts the right input in:"""
+                action6 = ""# initialize a varible and stores the users input
                 action7 = ""
                 action8 = ""
-                action9 = ""
                 action10 = ""
                 while (action6 != "b"):
                     action6 = self.employee_ui.employees_options()
@@ -219,7 +229,11 @@ class Main:
                         
 
             def schedule() -> None:
-                action10= ""
+                """TODO: in this code we are in schedule and starting loops 
+                    with the feature of backing out and quiting
+                    we are storing the user inputs in a action variables 
+                    and making sure the user puts the right input in:"""
+                action10 = ""# initialize a varible and stores the users input
                 action11 = ""
                 action12 = ""
                 while(action10 != "b"):
@@ -252,8 +266,8 @@ class Main:
 
                         case "2":
                             while(action12 != "b"):
-                                action11=""
-                                action10=""
+                                action11 =""# initialize a varible and stores the users input
+                                action10 =""
                                 action12 = self.schedule_ui.schedule_for_employee_options()
                                 match action12:
                                     case "q":
@@ -278,6 +292,10 @@ class Main:
                                 
 
             def voyages() -> None:
+                """TODO: in this code we are in voyages and starting loops 
+                    with the feature of backing out and quiting
+                    we are storing the user inputs in a action variables 
+                    and making sure the user puts the right input in:"""
                 action13=""
                 action14=""
                 action15=""

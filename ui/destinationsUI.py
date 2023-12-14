@@ -47,14 +47,23 @@ class DestinationsUI:
 
     def add_destination(self) -> None:
         """ TODO: add docstring """
+        self.validation = self.logic_wrapper.validation
         print("New destination")
+        
         id = input("Enter the ID: ")
+        
         country = input("Enter the country: ")
+        
         airport = input("Enter the airport: ")
+        
         distance_from_iceland = input("Enter the distance form Iceland: ")
+        
         contact_name = input("Enter the name of the contact person:")
+        
         contact_number = input("Enter the number of the contact number: ")
+        
         estimated_flight_time = input("Enter the estimated flight time: ")
+        
         
         print("New destination:")
         print("=" + "-=" * 20)
@@ -65,6 +74,7 @@ class DestinationsUI:
         print("Estimated flight time: ", estimated_flight_time)
         print("Contact name: ", contact_name)
         print("Contact number: ", contact_number)
+        
         save_prompt = input("Would you like to save this new destionation, (y)es or (n)o? ").lower()
         if save_prompt == "y":
             print("Destination saved!")

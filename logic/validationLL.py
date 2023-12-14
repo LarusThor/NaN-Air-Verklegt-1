@@ -91,3 +91,8 @@ class ValidationLL():
     def date_validation(self, departure: datetime) -> bool:
         """ TODO: add docstring """
         pass
+
+#destination
+
+    def validate_all_destinations(self,all_destinations) -> bool:
+        return 
