@@ -139,32 +139,13 @@ class Main:
 
                         case "4":
                             while (action5 != "b"):
-                                action5 = self.destinations_ui.select_info()
-                                action4 = ""
-                                
-                                match action5:
-                                    case "q":
-                                        quit(0)
-                                    case "1":
-                                        self.destinations_ui.change_destination_info()
+                                action5 = self.destinations_ui.change_destination_info()
 
-                                    # case "2":
-                                    #     self.destinations_ui.change_contact_info()
-
-                                    # case "3":
-                                    #     self.destinations_ui.change_airport_info()
-                                    
-                                    case "b":
-                                        continue
-                                    case _:
-                                        print("Input was invalid, try again ")
-                                        time.sleep(INVALID_INPUT_SLEEP)
                         case "b":
                             continue
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
-                                
                                 
                                 
 
