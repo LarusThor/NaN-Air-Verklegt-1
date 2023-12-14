@@ -76,6 +76,7 @@ class Menu():
         """ TODO: add docstring """
         print("Enter (h) for Home or (q) for quit") # TODO has to validated
         action = input("Enter in your action: ").lower()
+
         
 
 

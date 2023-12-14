@@ -119,8 +119,8 @@ class LogicWrapper():
     
 
     #Airplanes:
-    def get_airplanes_info_overview(self):
-        return self.airplane.get_airplanes_info_overview()
+    def get_airplanes_info_overview(self, airplane_insignia: str):
+        return self.airplane.get_airplanes_info_overview(airplane_insignia)
 
     def airplane_types(self) -> set:
         """ Returns all airplane types within the system. """
@@ -185,6 +185,10 @@ class LogicWrapper():
     
     def staff_availability_check(self,captain, departure, return_flight_arrival):
         return self.list_upcoming_voyage.staff_availability(captain, departure, return_flight_arrival)
+    
+
+    def aircraft_availability(self, aircraft_id, departure, return_flight_arrival):
+        return self.list_upcoming_voyage.aircraft_availability(aircraft_id, departure, return_flight_arrival)
 
 
     #Past voyages:

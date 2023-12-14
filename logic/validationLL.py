@@ -35,7 +35,6 @@ class ValidationLL():
         except :# chacha error todo value error eða key error
             return False
 
-
     def validate_number(self, number: str) -> bool:
         """ TODO: add docstring """
         try:
