@@ -27,13 +27,14 @@ class ValidationLL():
 
     def validate_social_ID(self, socialID: str) -> bool: 
         """ Validates social ID input. """
-        year = socialID[4:6] #123456-7890
-        month = socialID[2:4]
-        day = socialID[0:2]
+        year = int(socialID[4:6]) #123456-7890
+        year += 1000
+        month = int(socialID[2:4])
+        day = int(socialID[0:2])
         try:
             date = datetime(year, month, day)
             if type(date) == datetime:
-                return len(socialID) ==10 and all((digit.isdigit()for digit in socialID))
+                return len(socialID) == 10 and all((digit.isdigit()for digit in socialID))
         except ValueError:
             return False
         
