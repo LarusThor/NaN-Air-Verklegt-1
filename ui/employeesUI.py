@@ -216,12 +216,14 @@ class EmployeeUI:
         if save_prompt == "y":
             self.logic_wrapper.change_employee_info(employee)
             title = "New information saved!"
-            self.menus.print_the_info(title)
+            user_input = self.menus.print_the_info(title)
  
 
         elif save_prompt == "n":
             title = "Updated information not saved."
-            self.menus.print_the_info(title)
+            user_input = self.menus.print_the_info(title)
+        
+        return user_input
  
 
 
@@ -270,38 +272,51 @@ class EmployeeUI:
         return home_address
     
 
-    def choose_rank_and_licence(self) -> None: #TODO: laga validation bug
+    def choose_rank_and_licence(self, role) -> None:
         """User chooses rank and licence for employee."""
         airplane_types = self.logic_wrapper.airplane_types()
-        ranks = { #TODO: laga þetta er harðkóðað
+    
+        if role == "Pilot": 
+            ranks = { #TODO: laga þetta er harðkóðað
             "1": "Captain", 
-            "2": "Copilot", 
-            "3": "Flight Service Manager", 
-            "4": "Flight Attendant"
+            "2": "Copilot"
             }
-        
-        print("Rank:\n1. Captain\n2. Copilot\n3. Flight Service Manager\n4. Flight Attendant")
-        rank_choice = input().strip()
-
-        while rank_choice != "1" and rank_choice != "2" and rank_choice != "3" and rank_choice != "4":
-            print("Invalid input! You can choose 1, 2, 3, or 4")
-            rank = input("Rank: ")
-        
-        rank = ranks[rank_choice]
-
-        if rank_choice == "1" or rank_choice == "2":
-            # A dictionary of all the airplane types, updates if new airplane type is added
-            licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
-
-            print("Licenses:")
-            for index, license in licences.items():
-                print(f"{index}. {license}")
+            print("Rank:\n1. Captain\n2. Copilot")
+            rank_choice = input().strip()
             
-            licence_choice = int(input())
-            licence = licences[licence_choice]
-        else:
+            while rank_choice != "1" and rank_choice != "2":
+                print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
+                rank_choice = input("Rank: ")
+            if rank_choice == "1" or rank_choice == "2":
+                # A dictionary of all the airplane types, updates if new airplane type is added
+                licences = {(i+1): licence for i, licence in enumerate(airplane_types)}
+
+                print("Licenses:")
+                for index, license in licences.items():
+                    tuple_list = []
+                    for item in license:
+                        tuple_list.append(item)
+                    print(f"{index}. {tuple_list[0]}")
+                
+                licence_choice = int(input())
+                licence = licences[licence_choice]
+            else:
+                licence = "N/A"
+
+        elif role == "Cabincrew":
+            ranks = { #TODO: laga þetta er harðkóðað
+            "1": "Flight Service Manager", 
+            "2": "Flight Attendant"
+            }
+            print("Rank:\n1. Flight Service Manager\n2. Flight Attendant")
+            rank_choice = input().strip()
+
+            while rank_choice != "1" and rank_choice != "2":
+                print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
+                rank_choice = input("Rank: ")
             licence = "N/A"
 
+        rank = ranks[rank_choice]
         return rank, licence
     
 
@@ -335,7 +350,10 @@ class EmployeeUI:
 
         role = self.choose_role()
      
-        rank, license = self.choose_rank_and_licence()
+        rank, license = self.choose_rank_and_licence(role)
+        license_list = []
+        for item in license:
+            license_list.append(item)
 
         optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
         if optional_landline == "y":
@@ -351,7 +369,7 @@ class EmployeeUI:
         print("Home adress:", home_address)
         print("Role:", role)
         print("Rank:", rank)
-        print("License:", license)
+        print("License:", license_list[0])
         print("Landline number:", landline)
 
         # TODO
