@@ -22,7 +22,6 @@ MAIN_MENU_OPTIONS = [
 
 class Main:
     def __init__(self) -> None:
-        """TODO: add docstring"""
         self.menus = Menu()
         self.airplane_ui = AirplaneUI()
         self.destinations_ui = DestinationsUI()
@@ -34,8 +33,7 @@ class Main:
         self.validation = self.logic_wrapper.validation
 
     def input_prompt(self) -> None:
-        """TODO: add docstring"""
-        while True: #TODO: meigum við nota while True??
+        while True:
             self.menus.main_menu()
             
 
@@ -121,7 +119,6 @@ class Main:
 
 
             def destinations() -> None:
-                """TODO: add docstring"""
                 action4 = ""
                 action5 = ""
                 while ( action4 != "b"):

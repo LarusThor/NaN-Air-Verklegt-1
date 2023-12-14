@@ -49,7 +49,7 @@ class ScheduleUI:
         self.menus.print_the_info(title, result)
 
 
-    def get_how_was_not_working(self, date_not_working: date) -> None:
+    def get_who_was_not_working(self, date_not_working: date) -> None:
         """Gets the people that where not working on a specific date"""
         title = f"The people that were not working on {date_not_working}:"
         result = ""

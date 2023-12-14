@@ -59,7 +59,7 @@ class ValidationLL():
         except :
             return False
         
-    def validate_print_crew(self, list_crew: str) -> bool:
+    def validate_print_crew(self, list_crew: str) -> bool:#skoða
         
         if "m" in list_crew and "r" in list_crew:
             return True
