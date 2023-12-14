@@ -211,7 +211,7 @@ class EmployeeUI:
         save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
         while save_prompt != "y" and save_prompt != "n":
             print("Invalid input!")
-            save_prompt = input("Enter Y for yes or N for no:").lower()
+            save_prompt = input("Enter Y for yes or N for no: ").lower()
 
         if save_prompt == "y":
             self.logic_wrapper.change_employee_info(employee)
@@ -282,7 +282,7 @@ class EmployeeUI:
             "2": "Copilot"
             }
             print("Rank:\n1. Captain\n2. Copilot")
-            rank_choice = input("\n Choose a rank: ").strip()
+            rank_choice = input("\nChoose a rank: ").strip()
             
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
@@ -309,7 +309,7 @@ class EmployeeUI:
             "2": "Flight Attendant"
             }
             print("Rank:\n1. Flight Service Manager\n2. Flight Attendant")
-            rank_choice = input("Choose a rank: ").strip()
+            rank_choice = input("\nChoose a rank: ").strip()
 
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
@@ -388,7 +388,7 @@ class EmployeeUI:
         save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
         while save_prompt != "y" and save_prompt != "n":
             print("Invalid input!")
-            save_prompt = input("Enter Y for yes or N for no:").lower()
+            save_prompt = input("Enter Y for yes or N for no: ").lower()
 
         if save_prompt == "y":
             self.logic_wrapper.add_employee(employee)
