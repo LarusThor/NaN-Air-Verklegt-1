@@ -40,19 +40,36 @@ class VoyagesUI:
 
     def add_voyage(self) -> None:
         """ TODO: add docstring. """
-
+        destination_list = self.logic_wrapper.destination_list()
         find_last_id = list(self.logic_wrapper.upcoming_voyages().keys())
 
         print("New voyage: ")
         print("=" + "-=" * 20)
-        flight_number = input("Enter flight number: ")
-        departure_location = input("Enter 3 letter keyword for departure location: ")
-        arrival_location = input("Enter 3 letter keyword for arrival location: ")
-        departure_date = input(f"Enter departure date from {departure_location}; year-month-day: ")
-        departure_time = input(f"Enter departure time from {departure_location}: ")
-        # arrival_time = input(f"Enter arrival time for {arrival_location}: ")
-        return_flight_date = input(f"Enter departure date from {arrival_location}; year-month-day: ")
-        return_flight_time = input(f"Enter departure time from {arrival_location}: ")
+
+        #TODO: HARÐÐKÓÐAÐ FOR TESTINGGGGG
+        flight_number = "NA081"
+        departure_date = "2024-01-05"
+        departure_time = "07:05:00"
+        return_flight_date = "2024:01:06"
+        return_flight_time = "12:30:00"
+
+        #flight_number = input("Enter flight number: ")#TODO: validate - format og lengd
+        departure_location = "Kef" # TODO: laga
+        
+        print("Choose an arrival destination")
+        for index, destination in enumerate(destination_list):
+            print(f"{index + 1}. {destination.destination}")
+        
+        action = int(input("Enter choice: "))
+        arrival_location = destination_list[action -1]
+
+
+        # departure_date = input(f"Enter departure date from {departure_location}; year-month-day: ") #TODO: validate
+        # departure_time = input(f"Enter departure time from {departure_location}: ") #TODO: bæta við formatti hvernig þið viljið tímann og validate
+
+        # return_flight_date = input(f"Enter departure date from {arrival_location.destination}; year-month-day: ")#TODO: validate
+        # return_flight_time = input(f"Enter departure time from {arrival_location.destination}: ")#TODO: validate
+
 
         # TODO: use datetime module
         departure_date_time = departure_date + " " + departure_time
@@ -73,7 +90,7 @@ class VoyagesUI:
             back_flight_number = flight_number[:-2] + str(new_flight_number)
 
         calculated_arrival_flight_time = self.logic_wrapper.flight_time(arrival_location, departure_date_time)
-        calculated_return_flight_time = self.logic_wrapper.flight_time(arrival_location, arrival_date_time )
+        calculated_return_flight_time = self.logic_wrapper.flight_time(arrival_location.location, arrival_date_time )
 
         print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
         print("~" * 20)

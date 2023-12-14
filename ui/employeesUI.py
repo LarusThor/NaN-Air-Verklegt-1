@@ -153,9 +153,10 @@ class EmployeeUI:
             Any other to quit
 
         """
+        action = "N/A" #TODO: spyrja hvað við ættum actually að hafa hérna
 
-        action = input(f"Select an option: {options} \n" ).lower().strip()
         while action != "d":
+            action = input(f"Select an option: {options} \n" ).lower().strip()
             match action:
                 case "1":
                     role = self.choose_role()
@@ -174,11 +175,10 @@ class EmployeeUI:
 
                 case "6":
                     landline = self.get_phone_nr()
-
+                
                 case _:
                     break
-
-            action = input(f"Select an option: {options} \n" ).lower().strip()
+            
         
         employee = Employee(
             social_id = social_id,
@@ -192,9 +192,33 @@ class EmployeeUI:
             landline=landline,
             )
         
-        print(employee)
+        #print(employee)
+        print(f"Updated information for {employee.name}")
+        print(f"Social_id: {employee.social_id}\n"
+                f"Role: {employee.role}\n"
+                f"Rank: {employee.rank}\n"
+                f"License: {employee.licence}\n"
+                f"Email: {employee.email}\n"
+                f"Mobile number: {employee.phonenumber}\n"
+                f"Address: {employee.home_address}\n"
+                f"Landline: {employee.landline}\n"
+              )
+       
+        save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
+        while save_prompt != "y" and save_prompt != "n":
+            print("Invalid input!")
+            save_prompt = input("Enter Y for yes or N for no:").lower()
 
-        self.logic_wrapper.change_employee_info(employee)
+        if save_prompt == "y":
+            self.logic_wrapper.change_employee_info(employee)
+            title = "New information saved!"
+            self.menus.print_the_info(title)
+ 
+
+        elif save_prompt == "n":
+            title = "Updated information not saved."
+            self.menus.print_the_info(title)
+ 
 
 
     def choose_role(self) -> str:
@@ -242,7 +266,7 @@ class EmployeeUI:
         return home_address
     
 
-    def choose_rank_and_licence(self) -> None:
+    def choose_rank_and_licence(self) -> None: #TODO: laga validation bug
         """User chooses rank and licence for employee."""
         airplane_types = self.logic_wrapper.airplane_types()
         ranks = { #TODO: laga þetta er harðkóðað
@@ -256,7 +280,7 @@ class EmployeeUI:
         rank_choice = input().strip()
 
         while rank_choice != "1" and rank_choice != "2" and rank_choice != "3" and rank_choice != "4":
-            print("Invalid input! You can choose 1, 2, 3, or 4")#TODO: ætti frekar að vera í validation
+            print("Invalid input! You can choose 1, 2, 3, or 4")
             rank = input("Rank: ")
         
         rank = ranks[rank_choice]
