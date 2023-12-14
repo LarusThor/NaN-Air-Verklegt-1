@@ -190,7 +190,10 @@ class Main:
                                     # elif action == "b":
                                     #employees()
                                     case "1":
-                                        self.employee_ui.get_pilots()
+                                        action7 = self.employee_ui.get_pilots()
+                                        print(action7)
+                                        if action7 == "q":
+                                            quit(0)
                                     # EmployeesUI.print_crew(self.pilots_list)
                                     case "2":
                                         self.employee_ui.get_flight_attendants()
