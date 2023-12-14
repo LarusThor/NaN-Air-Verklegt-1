@@ -59,9 +59,9 @@ class AirplaneLL():
         return type_set
 
 
-    def get_airplane_status_by_date_time(self): #laga þetta nafn líka
-        """ Returns the status of a plane on a given day and time. """
-        pass
+    # def get_airplane_status_by_date_time(self): #laga þetta nafn líka
+    #     """ Returns the status of a plane on a given day and time. """
+    #     pass
    
 
     def get_airplane_usage(self) -> tuple[str, dict]:

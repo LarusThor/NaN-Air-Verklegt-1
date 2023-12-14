@@ -35,3 +35,4 @@
 # employee dict heitir óvart list
 # COMMENTA ALLT; model, data, logic, ui. Bæði comment og docstring(docstring þurfa að segja hvað fallið tekur inn hvað það gerir og hvað það skilar)
 #laga destination file eftir loga <33
+#executible file

@@ -11,8 +11,13 @@ from ui.destinationsUI import DestinationsUI
 
 logic = LogicWrapper()
 de = DestinationsUI()
+sc = ScheduleUI()
 
-de.change_destination_info()
+dd = date(2023, 11, 6)
+
+print(sc.who_was_working(dd))
+
+
 #print(logic.airplane_types())
 
 #print(logic.get_most_experienced_employee())

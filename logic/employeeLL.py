@@ -11,7 +11,7 @@ class EmployeeLL:
         self.logic = logic_wrapper
 
     
-    def employee_info_overview(self):
+    def employee_info_overview(self): #TODO eyða 
         """ Returns a dictionary containing information about the systems staff members. """
         return self.logic.data_wrapper.get_all_staff_members()
 
@@ -55,7 +55,6 @@ class EmployeeLL:
 
     def change_employee_info(self, employee: Employee) -> None:
         """ Let's user change employee information."""
-        # TODO: cannot change name
         employee_dict = self.logic.data_wrapper.get_all_staff_members()
 
         assert employee.social_id in employee_dict, "Employee does not exist!"
