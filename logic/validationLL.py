@@ -6,7 +6,7 @@ class ValidationLL():
         """Instantiate a ValidationLL object."""
         
 
-    def validate_action(self, action: int, option: int) -> bool:
+    def validate_choice(self, action: int, option: int) -> bool:
         """ Validates numerical action input. """
         if action.isnumeric():
             action = int(action)

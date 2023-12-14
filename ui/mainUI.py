@@ -388,7 +388,7 @@ class Main:
             }
 
             action = str(input("Enter your action: ").lower())
-            while not self.validation.validate_action(action, len(options)):
+            while not self.validation.validate_choice(action, len(options)):
                 print("Invalid action! \nTry again.")
                 action = str(input("Enter your action: ").lower())
 
