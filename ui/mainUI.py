@@ -146,11 +146,11 @@ class Main:
                                     case "1":
                                         self.destinations_ui.change_destination_info()
 
-                                    case "2":
-                                        self.destinations_ui.change_contact_info()
+                                    # case "2":
+                                    #     self.destinations_ui.change_contact_info()
 
-                                    case "3":
-                                        self.destinations_ui.change_airport_info()
+                                    # case "3":
+                                    #     self.destinations_ui.change_airport_info()
                                     
                                     case "b":
                                         continue
