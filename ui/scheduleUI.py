@@ -43,7 +43,7 @@ class ScheduleUI:
         title = f"The people that were working on {date_working}:"
         result = ""
         employees = self.logic_wrapper.employee_working(date_working)
-        print(employees)
+
         for employee, destination in employees:
             result += f"{employee.name} going to {destination}\n"
 
