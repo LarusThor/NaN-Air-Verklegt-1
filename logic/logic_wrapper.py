@@ -159,7 +159,7 @@ class LogicWrapper():
         return self.airplane.get_airplane_usage()
     
     
-    def get_total_future_hours_for_airplane(self, plane_insignia: str, start: datetime, end: datetime):
+    def get_total_future_hours_for_airplane(self, plane_insignia: str, start: datetime, end: datetime) -> float:
         return self.airplane.get_total_future_hours_for_airplane(plane_insignia, start, end)
 
 
@@ -188,7 +188,7 @@ class LogicWrapper():
         return self.list_upcoming_voyage.add_staff_for_voyage(added_staff)
 
 
-    def voyage_info_for_return_flight(self, voyage_flight_number, voyage_date) -> tuple:
+    def voyage_info_for_return_flight(self, voyage_flight_number: str, voyage_date: str) -> UpcomingVoyage:
         return self.list_upcoming_voyage.detect_voyage_info_return_flight(voyage_flight_number, voyage_date)
     
     
@@ -196,7 +196,7 @@ class LogicWrapper():
         return self.list_upcoming_voyage.staff_availability(captain, departure, return_flight_arrival)
     
 
-    def aircraft_availability(self, aircraft_id, departure, return_flight_arrival):
+    def aircraft_availability(self, aircraft_id, departure, return_flight_arrival) -> float:
         return self.list_upcoming_voyage.aircraft_availability(aircraft_id, departure, return_flight_arrival)
     
 
@@ -211,6 +211,8 @@ class LogicWrapper():
     def flight_service_manager_availability(self, flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival):
         return self.list_upcoming_voyage.flight_service_manager_availability(flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival)
 
+    def get_upcoming_voyage_by_flight_nr_and_date(self, flight_nr: str, departure_date: str) -> UpcomingVoyage:
+        return self.list_upcoming_voyages.get_upcoming_voyage_by_flight_nr_and_date(flight_nr, departure_date)
 
     #Past voyages:
 
