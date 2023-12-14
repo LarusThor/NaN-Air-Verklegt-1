@@ -15,8 +15,10 @@ class FlightInfoUI:
         prints out the title and the information.
         """
         flights = self.logic_wrapper.flight_fully_booked()
+        
         title = f"Flight status: \n{'='*70}\n{'Departure date':<16} {'Flight number':<15} {'Flight destination':<20} {'Flight status':<15}"
         result = ""
+
         for flight, status in flights:
             date = str(flight.departure.date())
             if status == "Booked":

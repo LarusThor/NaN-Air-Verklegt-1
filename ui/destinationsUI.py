@@ -12,7 +12,6 @@ class DestinationsUI:
         """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()     
-        self.destinations_list = self.logic_wrapper.only_destinations() 
 
 
     def destinations(self) -> str:
@@ -37,7 +36,7 @@ class DestinationsUI:
         title = "All destinations:"
         result = ""
 
-        destinations = sorted(self.destinations_list)
+        destinations = sorted(self.logic_wrapper.only_destinations())
         for destination in list(enumerate(destinations, start=1)):
             result += f"{destination[0]}: {destination[1]}\n"
 
