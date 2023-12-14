@@ -277,7 +277,7 @@ class EmployeeUI:
         airplane_types = self.logic_wrapper.airplane_types()
     
         if role == "Pilot": 
-            ranks = { #TODO: laga þetta er harðkóðað
+            ranks = { 
             "1": "Captain", 
             "2": "Copilot"
             }
@@ -304,7 +304,7 @@ class EmployeeUI:
                 licence = "N/A"
 
         elif role == "Cabincrew":
-            ranks = { #TODO: laga þetta er harðkóðað
+            ranks = { 
             "1": "Flight Service Manager", 
             "2": "Flight Attendant"
             }
@@ -374,7 +374,7 @@ class EmployeeUI:
         print("License:", license_list[0])
         print("Landline number:", landline)
 
-        # TODO
+        
         employee = Employee(
             name=name, 
             social_id=social_id, 
