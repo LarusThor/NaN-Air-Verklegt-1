@@ -175,49 +175,49 @@ class DestinationsUI:
             self.menus.print_the_info("Changes were not saved.")
 
 
-    def change_contact_info(self) -> None:#TODO: eyða
-        """ TODO: add docstring """
-        print("\nChanging the contact information: ")
-        id = input("Enter the ID of the destination you would like to change: ")
-        contact_name = input("Enter the name of the contact person: ")
-        contact_number = input("Enter the number of the contact number: ")
+    # def change_contact_info(self) -> None:#TODO: eyða
+    #     """ TODO: add docstring """
+    #     print("\nChanging the contact information: ")
+    #     id = input("Enter the ID of the destination you would like to change: ")
+    #     contact_name = input("Enter the name of the contact person: ")
+    #     contact_number = input("Enter the number of the contact number: ")
 
-        all_dests = LogicWrapper().destination_list()
+    #     all_dests = LogicWrapper().destination_list()
 
-        counter = 0
-        for destination in all_dests:
-            if destination.destination_id == id:
-                break
-            else:
-                counter += 1
+    #     counter = 0
+    #     for destination in all_dests:
+    #         if destination.destination_id == id:
+    #             break
+    #         else:
+    #             counter += 1
 
-        dest = all_dests[counter]
-        dest.emergency_contact_name = contact_name
-        dest.emergency_contact_number = contact_number
+    #     dest = all_dests[counter]
+    #     dest.emergency_contact_name = contact_name
+    #     dest.emergency_contact_number = contact_number
 
-        self.logic_wrapper.update_contact_info(dest)
+    #     self.logic_wrapper.update_contact_info(dest)
         
-        self.menus.print_the_info("Changes have been saved!")
+    #     self.menus.print_the_info("Changes have been saved!")
         
 
-    def change_airport_info(self) -> None:#TODO: eyða
-        """ TODO: add docstring """
-        print("\nChanging the airport: ")
-        id = input("Enter the ID of the destination you would like to change: ")
-        airport = input("Enter new airport name: ")
+    # def change_airport_info(self) -> None:#TODO: eyða
+    #     """ TODO: add docstring """
+    #     print("\nChanging the airport: ")
+    #     id = input("Enter the ID of the destination you would like to change: ")
+    #     airport = input("Enter new airport name: ")
 
-        all_dests = LogicWrapper().destination_list()
+    #     all_dests = LogicWrapper().destination_list()
 
-        counter = 0
-        for destination in all_dests:
-            if destination.destination_id == id:
-                break
-            else:
-                counter += 1
+    #     counter = 0
+    #     for destination in all_dests:
+    #         if destination.destination_id == id:
+    #             break
+    #         else:
+    #             counter += 1
 
-        dest = all_dests[counter]
-        dest.airport_name = airport
+    #     dest = all_dests[counter]
+    #     dest.airport_name = airport
 
-        self.logic_wrapper.update_contact_info(dest)
+    #     self.logic_wrapper.update_contact_info(dest)
 
-        self.menus.print_the_info("Changes have been saved!")
+    #     self.menus.print_the_info("Changes have been saved!")
