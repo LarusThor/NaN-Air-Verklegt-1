@@ -265,9 +265,9 @@ class EmployeeUI:
 
             print("Licenses:")
             for index, license in licences.items():
-                print(f"{index}. {licence}")
+                print(f"{index}. {license}")
             
-            licence_choice = input()
+            licence_choice = int(input())
             licence = licences[licence_choice]
         else:
             licence = "N/A"
