@@ -308,6 +308,8 @@ class EmployeeUI:
             "1": "Flight Service Manager", 
             "2": "Flight Attendant"
             }
+            print("Please pick a rank:")
+            print("-" * 20)
             print("Rank:\n1. Flight Service Manager\n2. Flight Attendant")
             rank_choice = input().strip()
 
