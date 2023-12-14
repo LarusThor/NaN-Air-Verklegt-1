@@ -11,14 +11,14 @@ TITLE5="_  /|  /    / /_/ /     _  /|  /   _/_____/     _  ___ |      _  /    _ 
 TITLE6="/_/ |_/     \__,_/      /_/ |_/                 /_/  |_|      /_/     /_/     "
 
 
-TITLE9 ="          _____                                        "                                                  
-TITLE10="        __\ _~-\____                                   "
-TITLE11="=  = ==(___NaN-Air__)                                  "
-TITLE12="           \_____\___________________,-~~~~~~~`-.._    "
-TITLE13="          /     o O o o o o O O o o o o o o O o  |\_   "
-TITLE14="          `~-.__        ___..----..                   )"
-TITLE15="                `---~~\___________/------------`````   "   
-TITLE16="                 =  ===(_________)                     "
+TITLE9 ="          _____                                                 __________       "                                                  
+TITLE10="        __\ _~-\____                                           |          |      "
+TITLE11="=  = ==(___NaN-Air__)                                          |          |      "
+TITLE12="           \_____\___________________,-~~~~~~~`-.._            |          |      "
+TITLE13="          /     o O o o o o O O o o o o o o O o  |\_           |          |      "
+TITLE14="          `~-.__        ___..----..                   )        |          |      "
+TITLE15="                `---~~\___________/------------`````           |          |      "   
+TITLE16="                 =  ===(_________)                             |__________|      "
 
 
 class Menu():
@@ -128,14 +128,8 @@ class Menu():
 
     def get_next_action(self) -> None: #TODO þetta fall skilar engu, erum við að nota það?
         """ TODO: add docstring """
-<<<<<<< HEAD
-        print("Enter (b) for Back or (q) for quit") # TODO has to validated
-        input("Enter in your action: ").lower()
-            
-=======
         print("Enter (b) for back or (q) for quit") # TODO has to validated
         action = input("Enter in your action: ").lower()
->>>>>>> a41da5e9cc9bcc4ab98f57d58ace22abcd68dbdf
 
         
     
