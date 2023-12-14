@@ -11,6 +11,7 @@ import time
 
 INVALID_INPUT_SLEEP = 2
 BACK = "b"
+QUIT = "q"
 # the menu
 MAIN_MENU_OPTIONS = [
     "1. Airplane",
@@ -24,6 +25,7 @@ MAIN_MENU_OPTIONS = [
 
 class Main:
     def __init__(self) -> None:
+        """TODO: add docstring"""
         self.menus = Menu()
         self.airplane_ui = AirplaneUI()
         self.destinations_ui = DestinationsUI()
@@ -35,6 +37,7 @@ class Main:
         self.validation = self.logic_wrapper.validation
 
     def input_prompt(self) -> None:
+        """ TODO: add docstring"""
         while True:
             self.menus.main_menu()
             
@@ -60,7 +63,7 @@ class Main:
                                     case "q":
                                         quit(0)
                                     case "1":
-                                        while( action3 != 'b'):
+                                        while( action3 != BACK):
                                             action3 = self.airplane_ui.pilots_by_licanse()
                                             match action3:
                                                 case "q":
@@ -98,7 +101,7 @@ class Main:
                         #case action1=2
                         
                         case "3":  # airplane usage
-                            while(action4 != "b"):
+                            while(action4 != BACK):
                                 action1= ""
                                 action4 = self.airplane_ui.airplane_usage_options()
                                 match action4:
@@ -121,9 +124,10 @@ class Main:
 
 
             def destinations() -> None:
+                """TODO: add docstring"""
                 action4 = ""
                 action5 = ""
-                while ( action4 != "b"):
+                while ( action4 != BACK):
                     action4 = self.destinations_ui.destinations()
                     match action4:
                         case "q":
@@ -150,23 +154,24 @@ class Main:
                                 
 
             def employees() -> None:
+                """ TODO: add docstring"""
                 action6 = ""
                 action7 = ""
                 action8 = ""
                 action9 = ""
                 action10 = ""
-                while (action6 != "b"):
+                while (action6 != BACK):
                     action6 = self.employee_ui.employees_options()
                     match action6:
                         case "q":
                             quit(0)
                     # list employees :
                         case "1":
-                            while(action7 != "b"):
+                            while(action7 != BACK):
                                 action6 =""
                                 action7 = self.employee_ui.list_employees_options()
                                 action10 = action7
-                                while(action10 != "b"):
+                                while(action10 != BACK):
                                     if action10 == "q":
                                         quit()
                                     match action7:
@@ -190,7 +195,7 @@ class Main:
                     # Employee info :
                         case "2":
                             action8 = ""
-                            while(action8 != "b"):
+                            while(action8 != BACK):
                                 action8 = self.employee_ui.employee_info_options()
                                 action11 = action8
                                 while(action11 != "b"):
@@ -219,10 +224,11 @@ class Main:
                         
 
             def schedule() -> None:
+                """TODO: add docstring"""
                 action10= ""
                 action11 = ""
                 action12 = ""
-                while(action10 != "b"):
+                while(action10 != BACK):
                     action12 =""
                     action10 = self.schedule_ui.schedule_options()
 
@@ -230,7 +236,7 @@ class Main:
                         case "q":
                             quit(0)
                         case "1":
-                            while(action11 != "b"):
+                            while(action11 != BACK):
                                 action10=""
                                 action11=""
                                 date = self.schedule_ui.get_schedule_by_day()
@@ -251,7 +257,7 @@ class Main:
                                 
 
                         case "2":
-                            while(action12 != "b"):
+                            while(action12 != BACK):
                                 action11=""
                                 action10=""
                                 action12 = self.schedule_ui.schedule_for_employee_options()
@@ -278,11 +284,12 @@ class Main:
                                 
 
             def voyages() -> None:
+                """TODO: add docstring"""
                 action13=""
                 action14=""
                 action15=""
                 action16=""
-                while(action13 != "b"):
+                while(action13 != BACK):
                     action14=""
                     action15=""
                     action16=""
@@ -294,14 +301,14 @@ class Main:
                             self.voyages_ui.add_voyage()
 
                         case "2":
-                            while(action14 != "b"):
+                            while(action14 != BACK):
                                 action13=""
                                 action14 = self.voyages_ui.voyage_past_or_present_options()
                                 match action14:
                                     case "q":
                                         quit(0)
                                     case "1":
-                                        while(action15 != "b"):
+                                        while(action15 != BACK):
                                             action15 = self.voyages_ui.list_voyage_options()
                                             match action15:
                                                 case "q":
@@ -323,7 +330,7 @@ class Main:
                                                     time.sleep(INVALID_INPUT_SLEEP)    
 
                                     case "2":
-                                        while(action16 != "b"):
+                                        while(action16 != BACK):
                                             action16 = self.voyages_ui.list_voyage_options()
                                             match action16:
                                                 case "q":
@@ -354,10 +361,7 @@ class Main:
                             self.voyages_ui.manager_staffs_voyage(
                                 voyage_number, voyage_date
                             )
-                            # return_voyage_number, return_voyage_date = self.logic_wrapper.voyage_info_for_return_flight(voyage_number, voyage_date)
-                            # return_voyage_date = return_voyage_date.strftime("%Y-%m-%d")
-                            # self.voyages_ui.manager_staffs_voyage(return_voyage_number, return_voyage_date)
-
+     
                         case "4":
                             self.voyages_ui.staff_voyage()
                             

@@ -59,7 +59,7 @@ class UpcomingVoyageLL:
                 #license_check in pilots_by_license.keys() and pilot_name in pilots_by_license.values():
                     return True
                 
-    def detect_voyage_info_return_flight(self, voyage_flight_number: str, voyage_date: str):
+    def detect_voyage_info_return_flight(self, voyage_flight_number: str, voyage_date: str): #TODO: typehint, mögulega skila sem lista
         flight_info = self.logic.upcoming_voyages()
         for key, item in flight_info.items():
             # for id_key, some in key: #1, (UPcomingVoyage(id=1, flight=Na021))
@@ -75,7 +75,7 @@ class UpcomingVoyageLL:
         return_flight_arrival = return_flight_values.arrival
         return return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival 
 
-    def add_staff_for_voyage(self, staff_to_add) -> None:
+    def add_staff_for_voyage(self, staff_to_add: str) -> None:
         """ Adds staff to a voyage. """
         return self.logic.data_wrapper.add_staff(staff_to_add)
     
