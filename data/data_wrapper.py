@@ -81,9 +81,9 @@ class DataWrapper:
         return self.past_flightIO.read_past_flights()
 
 
-    def add_past_flights(self, past_flight: PastVoyage) -> None:
-        """ Adds a past flight into the system. """
-        return self.past_flightIO.add_past_voyage(past_flight)
+    #def add_past_flights(self, past_flight: PastVoyage) -> None:
+    #    """ Adds a past flight into the system. """
+    #    return self.past_flightIO.add_past_voyage(past_flight)
     
 
     #upcoming_flights
