@@ -25,6 +25,7 @@ class AirplaneUI:
         """ TODO: add docstring """
         self.menus.display_options("Airplane:", AIRPLANE_OPTIONS)
         action = str(input("Enter your action: ").lower())
+        #while self.validation.validate_action(action, )
         return action
     
 
