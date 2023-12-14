@@ -8,10 +8,9 @@ class ValidationLL():
 
     def validate_choice(self, action: int, option: int) -> bool:
         """ Validates numerical action input. """
-        if action.isnumeric():
-            action = int(action)
-            if action > 0 and action <= option:
-                return True
+        action = int(action)
+        if action > 0 and action <= option:
+            return True
         else: 
             return False
 
