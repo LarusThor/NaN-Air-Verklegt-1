@@ -43,7 +43,8 @@ class DestinationsUI:
         popular = self.logic_wrapper.popular_destination()
         title = "The most popular destination:"
 
-        self.menus.print_the_info(title, popular[0])
+        user_input = self.menus.print_the_info(title, popular[0])
+        return user_input
 
 
     def add_destination(self) -> None:
@@ -68,7 +69,6 @@ class DestinationsUI:
         print("Contact number: ", contact_number)
         save_prompt = input("Would you like to save this new destionation, (y)es or (n)o? ").lower()
         if save_prompt == "y":
-            print("Destination saved!")
             dest = Destination(destination_id = id, 
             destination = country, 
             emergency_contact_name = contact_name, 
@@ -77,8 +77,11 @@ class DestinationsUI:
             distance_from_iceland = distance_from_iceland, 
             estimated_flight_time = estimated_flight_time)
             self.logic_wrapper.add_destination(dest)
+            user_input = self.menus.print_the_info("Destination saved!")
+            return user_input
         elif save_prompt == "n":
-            print("Destionation not saved.")
+            user_input = self.menus.print_the_info("Destionation not saved.")
+            return user_input
 
 
 
@@ -144,6 +147,8 @@ class DestinationsUI:
         
         if save_prompt == "y":
             self.logic_wrapper.update_destination_info(destination_info)
-            self.menus.print_the_info("Changes have been saved!")
+            user_input = self.menus.print_the_info("Changes have been saved!")
+            return user_input
         elif save_prompt == "n":
-            self.menus.print_the_info("Changes were not saved.")
+            user_input = self.menus.print_the_info("Changes were not saved.")
+            return user_input

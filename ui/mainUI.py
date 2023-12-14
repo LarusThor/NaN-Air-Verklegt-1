@@ -153,29 +153,32 @@ class Main:
                 action5 = ""
                 while ( action4 != BACK):
                     action4 = self.destinations_ui.destinations()
+                    action5 = ""
                     
-                    # while(action5 != BACK):
-                    match action4:
-                        case "q":
-                            quit(0)
-                        case "1":
-                            action4 = self.destinations_ui.get_all_destinations()
+                    while(action5 != BACK):
+                        if action5 == "q":
+                            quit()
+                        match action4:
+                            case "q":
+                                quit(0)
+                            case "1":
+                                action5 = self.destinations_ui.get_all_destinations()
 
-                        case "2":
-                            self.destinations_ui.get_most_popular_destination()
+                            case "2":
+                                action5 = self.destinations_ui.get_most_popular_destination()
 
-                        case "3":
-                            self.destinations_ui.add_destination()
+                            case "3":
+                                action5 = self.destinations_ui.add_destination()
 
-                        case "4":
-                            while (action5 != "b"):
+                            case "4":
+                                # while (action5 != "b"):
                                 action5 = self.destinations_ui.change_destination_info()
 
-                        case "b":
-                            continue
-                        case _:
-                            print("Input was invalid, try again ")
-                            time.sleep(INVALID_INPUT_SLEEP)
+                            case "b":
+                                continue
+                            case _:
+                                print("Input was invalid, try again ")
+                                time.sleep(INVALID_INPUT_SLEEP)
                                 
                                 
 
