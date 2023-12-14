@@ -115,7 +115,6 @@ class AirplaneLL():
     def get_total_future_hours_for_airplane(self, airplane: Airplane, start: datetime, end: datetime) -> tuple[list[str], float]:
         """ Takes an instance of the model class Airplane, start time, and end as datetime and 
         returns total hours an employee has worked."""
-        #TODO: laga listann af voyages: fáum bara fyrstu 10
         total_hours_flown = 0
         upcoming_voyage_dict = self.logic.upcoming_voyages()
 
