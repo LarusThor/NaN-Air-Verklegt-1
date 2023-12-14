@@ -14,31 +14,15 @@ class AirplaneUI:
         """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
-        self.airplane_types = self.logic_wrapper.airplane_types()
-        self.pilots_license = self.logic_wrapper.pilots_by_license()
-        self.flown_furthest = self.logic_wrapper.furthest_flown()
-        self.airplane_usage = self.logic_wrapper.airplane_usage()
         self.validation = self.logic_wrapper.validation
 
 
-    def airplane(self) -> str: #1
+    def airplane_options(self) -> str: #1
         """ TODO: add docstring """
         self.menus.display_options("Airplane:", AIRPLANE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
-
-    def get_pilots_for_a_specific_type(self) -> None: # 1-1-1-1
-        airplane_type = input("Enter an airplane type: ")# TODO has to be validated
-        while not self.validation.validate_aircraft_by_specific_type(airplane_type):
-            print("ERROR: Invalid airplane type \nPlease write a airplane type. ")
-            airplane_type = str(input("Enter an airplane type: "))
-        title = f"Pilots qualified to fly {airplane_type}:"
-        result = ""
-        for person in self.pilots_license.get(airplane_type):
-            result += person + "\n"
-        self.menus.print_the_info(title, result)
-
 
     def airplane_types_and_licanse(self) -> str: # 1-1
         """ TODO: add docstring """
@@ -54,34 +38,74 @@ class AirplaneUI:
         return action
     
 
-    def list_pilots_by_licanse(self) -> None: # 1-1-1-2
-        """ TODO: add docstring """
+    def get_pilots_for_a_specific_type(self) -> None: # 1-1-1-1
+        """Asks the user to enter in an airplane type. Checks if the input is valid. Goes through the airplane types 
+        and gets the pilots that are qualified to fly that airplane type. Then calls a function in the menu_manager to print it out."""
+        
+
+        airplane_type = input("Enter an airplane type: ")
+
+        while not self.validation.validate_aircraft_by_specific_type(airplane_type): #validating the input, returns true or false
+            print("\nERROR: Invalid airplane type.")
+            
+            print("You can choose from:")
+            for value in self.logic_wrapper.airplane_types():
+                    print(value)
+
+            airplane_type = str(input("\nEnter an airplane type: "))
+
+        title = f"Pilots qualified to fly {airplane_type}:"
         result = ""
+
+        for pilot in self.logic_wrapper.pilots_by_license().get(airplane_type): # gets the pilots that are qualified to fly the airplane type
+            result += pilot + "\n"
+
+        self.menus.print_the_info(title, result) # calling a function to print everything out
+
+    
+
+    def list_pilots_by_licanse(self) -> None: # 1-1-1-2
+        """Goes through the pilots and license from the logic wrapper and adds it to the result string. 
+        Then calls the function in the menu_manager that takes care of printing tha information out."""
+        
         title = "{:<14} | {}".format("Airplane type", "Pilots")
-        for keys, values in self.pilots_license.items():
+        result = ""
+
+        for keys, values in self.logic_wrapper.pilots_by_license().items():
             result += "{:<14} | {} \n".format(keys, ", ".join(sorted(values)))
+
         self.menus.print_the_info(title, result)
 
+
     def get_number_of_pilots_for_airplanes(self) -> None: # 1-1-1-3
-        """"TODO docstring"""
+        """"Gets the number of pilots that arae qualifid to fly the airplanes. 
+        Calls a function in the menu_manager that takes care of printing the information out."""
+
         title = "Number of pilots that are qualified for each airplane type:"
         result = ""
-        for key, value in self.pilots_license.items():
+
+        for key, value in self.logic_wrapper.pilots_by_license().items():
             result += f"{key}: \n  {len(value)} licensed pilots.\n"
+
         self.menus.print_the_info(title, result)
 
 
     def types(self) -> str: # 1-1-2
-        """ TODO: add docstring """
+        """Gets all of the airplane types and calls a function to print the information out."""
+
         title = "Airplane types: "
         result = ""
-        for item in self.airplane_types:
+
+        for item in self.logic_wrapper.airplane_types():
             result += item + "\n"
+
         self.menus.print_the_info(title, result)
+
 
 
     def add_airplane(self) -> None: #define
         """ TODO: add docstring """
+
         name = input("Enter airplane name: ")
         while not self.validation.validate_airplane_name(name):
             print("ERROR: Invalid name \nNames of planes \nTF-EPG \nTF-UVR \nTF-XZR \nTF-XZM \nTF-IZE \nTF-PGK \nTF-TYQ \nTF-LNQ \nTF-XUP")
@@ -124,21 +148,26 @@ class AirplaneUI:
         
 
     def airplane_usage_options(self) -> str: # 1-3
-        """ TODO: add docstring """
+        """Calls a function in the menu_manager that prints out the options. Then asks the user for their action and returns the input"""
+        
         self.menus.display_options("Airplane usage:", AIRPLANE_USAGE)
         action = str(input("Enter your action: ").lower())
         return action
 
 
     def most_used_airplane(self) -> None: # 1-3-1
-        """ TODO: add docstring """
+        """Calls a function in the menu_manager that takes care of printing the title and the result of the most used airplane."""
+
         title = "The mose used airplane is:"
-        result = f"{self.airplane_usage[0]} - {self.airplane_usage[1][self.airplane_usage[0]]} voyages"
+        result = f"{self.logic_wrapper.airplane_usage()[0]} - {self.logic_wrapper.airplane_usage()[1][self.logic_wrapper.airplane_usage()[0]]} voyages"
+
         self.menus.print_the_info(title, result)
 
 
     def flown_furthest_airplane(self) -> None: # 1-3-2
-        """ TODO: add docstring """
+        """Calls a function in the menu_manager that takes care of printing the title and the result of the furthest flown airplane."""
+
         title = "The airplane that has flown the furthest:"
-        result = f"Airplane name: {self.flown_furthest[0]} - Distance: {self.flown_furthest[1]}km."
+        result = f"Airplane name: {self.logic_wrapper.furthest_flown()[0]} - Distance: {self.logic_wrapper.furthest_flown()[1]}km."
+
         self.menus.print_the_info(title, result)

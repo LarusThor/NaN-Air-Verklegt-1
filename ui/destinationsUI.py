@@ -19,23 +19,38 @@ class DestinationsUI:
         """ TODO: add docstring """
         self.menus.display_options("Destinations:", DESTINATIONS_OPTIONS)
         action = str(input("Enter your action: ").lower())
+
+        return action
+
+    
+    def select_info(self) -> str:
+        self.menus.display_options("What information would you like to change?", CHANGE_OPTIONS)
+        action = str(input("Enter your action: ").lower())
+
         return action
 
 
     def get_all_destinations(self) -> None:
-        """ TODO: add docstring """
+        """Will get all the destinations from the logic wrapper and turn them into a one string. 
+        Then calls a function in the menu_manager that will take care of printing everything out."""
+
         title = "All destinations:"
         result = ""
+
         destinations = sorted(self.destinations_list)
         for destination in list(enumerate(destinations, start=1)):
-            result += f"{destination[0]}: {destination[1]} \n"
+            result += f"{destination[0]}: {destination[1]}\n"
+
         self.menus.print_the_info(title, result)
 
 
     def get_most_popular_destination(self) -> None:
-        """ TODO: add docstring """
+        """Gets the most popular destination from the logic wrapper and sends the title and the 
+        result(the most popular destination) to a function in the menu_manager that takes care of printing it out."""
+
         popular = self.logic_wrapper.popular_destination()
         title = "The most popular destination:"
+
         self.menus.print_the_info(title, popular[0])
 
 
@@ -72,11 +87,6 @@ class DestinationsUI:
             self.logic_wrapper.add_destination(dest)
         elif save_prompt == "n":
             print("Destionation not saved.")
-    
-    def select_info(self) -> str:
-        self.menus.display_options("What information would you like to change?", CHANGE_OPTIONS)
-        action = str(input("Enter your action: ").lower())
-        return action
 
 
     def change_destination_info(self) -> None: #define
@@ -90,7 +100,7 @@ class DestinationsUI:
         estimated_flight_time = input("Enter the estimated flight time: ")
         save_prompt = input("Would you like to save this new destionation, (y)es or (n)o? ").lower()
         if save_prompt == "y":
-            print("Destination saved!")
+            print("Changes saved!")
             dest = Destination(destination_id = id, 
             destination = country, 
             emergency_contact_name = contact_name, 
@@ -99,6 +109,9 @@ class DestinationsUI:
             distance_from_iceland = distance_from_iceland, 
             estimated_flight_time = estimated_flight_time)
             self.logic_wrapper.update_destination_info(dest)
+        elif save_prompt == "n":
+            print("Changes not saved.")
+
 
     def change_contact_info(self) -> None:
         """ TODO: add docstring """
@@ -120,6 +133,7 @@ class DestinationsUI:
         dest.emergency_contact_number = contact_number
 
         self.logic_wrapper.update_contact_info(dest)
+        
 
     def change_airport_info(self) -> None:
             """ TODO: add docstring """
