@@ -147,8 +147,8 @@ class EmployeeUI:
             2: Change rank and license
             3: Change email
             4: Change mobile number
-            5. Change address
-            6. Change landline
+            5: Change address
+            6: Change landline
 
             Any other to quit
 
@@ -286,10 +286,10 @@ class EmployeeUI:
 
         return social_id
 
-
+############################################################################
     def add_employee(self) -> None:
         """Allows user to add an employee to the system."""
-        validation = self.logic_wrapper.validation
+        self.validation = self.logic_wrapper.validation
         print("Fill out the following informaation about the new employee:")
         
         name = input("Name: ").title()

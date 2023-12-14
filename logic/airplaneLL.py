@@ -12,7 +12,7 @@ class AirplaneLL():
         """
         self.logic = logic_wrapper
 
-    def get_airplanes_info_overview(self, plane_insignia):
+    def get_airplanes_info_overview(self, plane_insignia) -> dict:
         airplane_dict = self.logic.data_wrapper.get_airplanes()
 
         return airplane_dict[plane_insignia]
@@ -52,7 +52,7 @@ class AirplaneLL():
         airplane_types = self.logic.data_wrapper.get_airplane_types()
         type_set = set()
         for plane in airplane_types:
-            type_set.update([plane.plane_type_id])
+            type_set.update([(plane.plane_type_id, plane.manufacturer, plane.model, plane.capacity)])
 
         return type_set
 
