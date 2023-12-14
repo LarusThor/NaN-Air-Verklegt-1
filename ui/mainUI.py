@@ -46,7 +46,7 @@ class Main:
                 while (action1 != 'b'):
                     action2= ""
                     action4= ""
-                    action1 = self.airplane_ui.airplane()
+                    action1 = self.airplane_ui.airplane_options()
                     match action1:
                         case "q":
                             quit(0)
