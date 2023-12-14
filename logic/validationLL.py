@@ -27,21 +27,12 @@ class ValidationLL():
 
     def validate_social_ID(self, socialID: str) -> bool: 
         """ Validates social ID input. """
-        year = int(socialID[4:6]) #123456-7890
-        year += 1000
-        month = int(socialID[2:4])
-        day = int(socialID[0:2])
-        try:
-            date = datetime(year, month, day)
-            if type(date) == datetime:
-                return len(socialID) == 10 and all((digit.isdigit()for digit in socialID))
-        except ValueError:
-            return False
-        
+        return len(socialID) == 10 and all((digit.isdigit()for digit in socialID))
+    
         
     def validate_number(self, number: str) -> bool:
         """ TODO: add docstring """
-        return len(number) ==7 and all((digit.isdigit()for digit in number))
+        return len(number) == 7 and all((digit.isdigit()for digit in number))
         
 
     def validate_email(self, email: str) -> bool:
@@ -56,6 +47,12 @@ class ValidationLL():
                 return len(address) >=3 and all((char.isalpha()for char in address[0])) and (digit.isdigit() for digit in address[1])
         if len(address_values) == 1:
             return len(address) >=3 and all((char.isalpha()for char in address [0]))
+        
+    def validate_landline(self, landline: str) -> bool:
+        if landline == "y" or landline == "n":
+            return True
+        else:
+            return False
         
         
     #airplanes   
