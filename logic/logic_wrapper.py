@@ -191,16 +191,16 @@ class LogicWrapper():
         return self.list_upcoming_voyage.aircraft_availability(aircraft_id, departure, return_flight_arrival)
     
 
-    def captain_availability(self, captain, captain_check, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival):
-        return self.list_upcoming_voyage.captain_availability(captain_check, captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
+    def captain_availability(self, captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival):
+        return self.list_upcoming_voyage.captain_availability(captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
 
 
-    def copilot_availability(self, copilot, copilot_check, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival):
-        return self.list_upcoming_voyage.copilot_availability(copilot_check, copilot, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
+    def copilot_availability(self, copilot, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival):
+        return self.list_upcoming_voyage.copilot_availability(copilot, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
     
     
-    def flight_service_manager_availability(self, flight_service_manager, flight_service_manager_check, employee_information, employee, voyages_info, return_flight_arrival):
-        return self.list_upcoming_voyage.flight_service_manager_availability(flight_service_manager, flight_service_manager_check, employee_information, employee, voyages_info, return_flight_arrival)
+    def flight_service_manager_availability(self, flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival):
+        return self.list_upcoming_voyage.flight_service_manager_availability(flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival)
 
 
     #Past voyages:
