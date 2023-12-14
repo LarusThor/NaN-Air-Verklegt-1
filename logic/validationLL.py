@@ -11,7 +11,7 @@ class ValidationLL():
         """ Validates numerical action input. """
         if action.isnumeric():
             action = int(action)
-            if action > 0 and action < option:
+            if action > 0 and action <= option:
                 return True
         else: 
             return False
@@ -20,14 +20,13 @@ class ValidationLL():
     #employee
     def validate_name(self, name: str) -> bool:
         """ Validates name input. """
-        #TODO:
         if len(name) >= 3:
             return True
         else:
             return False
 
 
-    def validate_social_ID(self, socialID: str) -> bool:
+    def validate_social_ID(self, socialID: int) -> bool:
         """ Validates social ID input. """
         try:
             if len(socialID) == 10:
@@ -97,13 +96,21 @@ class ValidationLL():
             return True
         else:
             return False
+        
+        
+        
+        
+        
 
         
     def validate_save_new(self,str) -> bool:
         pass
     
-    def validate_home_and_quit(self,str) -> bool:
-        pass
+    
+    
+    
+    
+    
         
         
     def validate_flight(self, flight: str) -> bool:

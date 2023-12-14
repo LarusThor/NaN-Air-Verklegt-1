@@ -52,7 +52,7 @@ class AirplaneLL():
         airplane_types = self.logic.data_wrapper.get_airplane_types()
         type_set = set()
         for plane in airplane_types:
-            type_set.update([plane.plane_type_id])
+            type_set.update([(plane.plane_type_id, plane.manufacturer, plane.model, plane.capacity)])
 
         return type_set
 

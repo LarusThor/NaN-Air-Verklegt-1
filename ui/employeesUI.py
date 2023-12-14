@@ -284,10 +284,10 @@ class EmployeeUI:
 
         return social_id
 
-
+############################################################################
     def add_employee(self) -> None:
         """Allows user to add an employee to the system."""
-        validation = self.logic_wrapper.validation
+        self.validation = self.logic_wrapper.validation
         print("Fill out the following informaation about the new employee:")
         
         name = input("Name: ").title()

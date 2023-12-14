@@ -203,7 +203,7 @@ class VoyagesUI:
                     employee = self.logic_wrapper.employee_info(add_flight_attendant)
                     
                     if add_flight_attendant == "":
-                        for i in range(5):
+                        for unstaffed_flight_attendant in range(5):
                             flight_attendants.append("N/A")
                     
                     else:

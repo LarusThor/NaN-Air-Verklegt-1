@@ -11,7 +11,8 @@ from ui.airplaneUI import AirplaneUI
 logic = LogicWrapper()
 ai = AirplaneUI()
 
-ai.get_pilots_for_a_specific_type()
+ai.add_airplane()
+#print(logic.airplane_types())
 
 #print(logic.get_most_experienced_employee())
 
