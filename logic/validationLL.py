@@ -19,12 +19,21 @@ class ValidationLL():
     #employee
     def validate_name(self, name: str) -> bool:
         """ Validates name input. """
-        return len(name) >=3 and all((char.isalpha()for char in name))
+        name_values = name.split()
+        return len(name) >=3 and all((char.isalpha()for char in name_values))
         
 
-    def validate_social_ID(self, socialID: str) -> bool:
+    def validate_social_ID(self, socialID: str) -> bool: 
         """ Validates social ID input. """
-        return len(socialID) ==10 and all((digit.isdigit()for digit in socialID))
+        year = socialID[4:6] #123456-7890
+        month = socialID[2:4]
+        day = socialID[0:2]
+        try:
+            date = datetime(year, month, day)
+            if type(date) == datetime:
+                return len(socialID) ==10 and all((digit.isdigit()for digit in socialID))
+        except ValueError:
+            return False
         
         
     def validate_number(self, number: str) -> bool:
@@ -38,8 +47,12 @@ class ValidationLL():
     
     
     def validate_address(self, address: str) -> bool:
-        address = address.split()
-        return len(address) >=3 and all((char.isalpha()for char in address [0]) and digit.isdigit()for digit in address [1])
+        address_values = address.split()
+        if len(address_values) == 2:
+            if address_values[1].isdigit() == True:
+                return len(address) >=3 and all((char.isalpha()for char in address[0])) and (digit.isdigit() for digit in address[1])
+        if len(address_values) == 1:
+            return len(address) >=3 and all((char.isalpha()for char in address [0]))
         
         
     #airplanes   
@@ -61,11 +74,11 @@ class ValidationLL():
         return "F100" in model_name or "F28" in model_name or "146" in model_name
     
         
-    def validate_number_of_seats(self, number_of_seats) -> bool:
-        return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
+    #def validate_number_of_seats(self, number_of_seats) -> bool:
+    #    return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
         
               
-    def validate_save_new(self,str) -> bool:
+    def validate_save_new(self, str) -> bool:
         pass
     
     
