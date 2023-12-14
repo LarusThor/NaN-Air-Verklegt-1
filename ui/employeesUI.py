@@ -90,33 +90,34 @@ class EmployeeUI:
         return employee
 
 
-
-
     def get_info(self) -> None:
         """Takes the social id of an employee and prints out their information"""
+
         employee_info = self.logic_wrapper.employee_info
+
         social_id = str(input("Enter employee social ID: ")).strip()
+
         while not self.validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID \n Social ID should be 10 digits. ")
             social_id = str(input("Enter employee social ID: ")).strip()
+        
         employee = employee_info(social_id)
-        #TODO: spyrja um ef það er skrifað 10 digits en ekki retti employee
-        print()
-        print("Employee information:")
-        print("-"*30)
-        print("{:<14}".format("Name:"), employee.name)
-        print("{:<14}".format("Social ID:"), employee.social_id)
-        print("{:<14}".format("Role:"), employee.role)
-        print("{:<14}".format("Rank:"), employee.rank)
-        print("{:<14}".format("Licence:"), employee.licence)
-        print("{:<14}".format("Email:"), employee.email)
-        print("{:<14}".format("Phone number:"), employee.phonenumber)
-        print("{:<14}".format("Home address:"), employee.home_address)
-        print("{:<14}".format("Landline:"), employee.landline)
-        print()
-        print("(H)ome  (B)ack")
-        action = input("Enter your action: ") #TODO: er ekki tengt í neitt
 
+        #TODO: spyrja um ef það er skrifað 10 digits en ekki retti employee
+
+        title = "Employee information:"
+        result = ""
+        result += "{:<14} {}".format("Name:", employee.name) + "\n"
+        result += "{:<14} {}".format("Social ID:",  employee.social_id) + "\n"
+        result += "{:<14} {}".format("Role:",  employee.role) + "\n"
+        result += "{:<14} {}".format("Rank:",  employee.rank) + "\n"
+        result += "{:<14} {}".format("Licence:",  employee.licence) + "\n"
+        result += "{:<14} {}".format("Email:",  employee.email) + "\n"
+        result += "{:<14} {}".format("Phone number:", employee.phonenumber) + "\n"
+        result += "{:<14} {}".format("Home address:", employee.home_address) + "\n"
+        result += "{:<14} {}".format("Landline:", employee.landline) + "\n"
+
+        self.menus.print_the_info(title, result)
 
 
     def change_info_options(self) -> None:
