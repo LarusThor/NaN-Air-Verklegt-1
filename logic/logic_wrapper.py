@@ -29,6 +29,7 @@ class LogicWrapper():
 
     #Employee:
     def show_employee_info(self):
+        """ Returns information about all employees. """
         return self.employee.employee_info_overview()
 
 
@@ -62,7 +63,7 @@ class LogicWrapper():
     
 
     def change_employee_info(self, employee: Employee) -> None:
-        """ doc """
+        """ Changes specific information about an employee. """
         return self.employee.change_employee_info(employee)
     
 
@@ -72,17 +73,21 @@ class LogicWrapper():
     
     
     def get_total_future_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
-        """Returns hours to be worked by an employee for a specific time frame."""
+        """ Takes a specific instance of an employee from the model class, a start, end date in datetime 
+        and returns hours to be worked by an employee for a specific time frame. """
         return self.employee.get_total_future_hours_worked(employee, start, end)
 
     def get_most_experienced_employee(self) -> list[tuple]:
+        """ Returns the employee who has gone on the most voyages. """
         return self.employee.get_most_experienced_employee()
 
     #Destinations:
-    def destination_info_list(self) -> dict:
-        return self.destination.get_destination_info_list()
+    def destination_info_overview(self) -> dict:
+        """ Returns a list of information about the destinations in the system. """
+        return self.destination.get_destination_info()
 
     def only_destinations(self) -> list:
+        """ Returns a list of destinations. """
         return self.destination.get_only_destinations()
 
     def destination_list(self) -> list:
@@ -111,15 +116,18 @@ class LogicWrapper():
     
 
     def update_destination_info(self, destination: Destination) -> None:
+        """ Updates a specific destination's information. """
         return self.destination.change_destination_info(destination)
     
 
     def update_contact_info(self, destination: Destination) -> None:
+        """ Updates a specific emergency contact information. """
         return self.destination.update_contact_info(destination)
     
 
     #Airplanes:
     def get_airplanes_info_overview(self, airplane_insignia: str):
+        """ Returns information about a specific airplane by its insignia. """
         return self.airplane.get_airplanes_info_overview(airplane_insignia)
 
     def airplane_types(self) -> set:
@@ -143,6 +151,7 @@ class LogicWrapper():
 
 
     def airplane_insignia_by_types(self) -> dict:
+        """ Returns a dictionary by insignia and its values """
         return self.airplane.airplane_insignia_by_type()
     
 

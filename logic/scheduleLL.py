@@ -21,11 +21,19 @@ class ScheduleLL():
             
             if employee in workers and weeks == week_nr:
                 if year in flight.departure.strftime("%Y-%m-%d %H:%M:%S"):
-                    flights.append(f"{flight.flight_nr} to {flight.arr_at}")
+                    flights.append((flight.flight_nr, flight.arr_at))
+        
+        result = ""
+        for voyage, destination in flights:
+            if destination != "KEF":
+                result += f"Flight{voyage}: From KEF to {destination} \n"
+            else:
+                result += f"Flight{voyage}: From {prev_destination} to {destination} \n"
+            prev_destination = destination
 
         name = self.logic.employee_info(employee)
         if flights:
-            return f"{name.name} is scheduled for these flights: {flights} in week {week_nr}!"
+            return f"{name.name} is scheduled for these flights in week {week_nr}:\n{result} "
         else:
             return f"{name.name} is not scheduled for any flights in week {week_nr}!"
         

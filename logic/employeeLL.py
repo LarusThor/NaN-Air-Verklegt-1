@@ -3,7 +3,7 @@ from datetime import datetime
 
 class EmployeeLL:
     def __init__(self, logic_wrapper) -> None:
-        """Instantiate a EmployeeLL object.
+        """ Instantiate an EmployeeLL object.
 
         Args:
             logic_wrapper: The logic wrapper object that contains all logic layer objects.
@@ -12,6 +12,7 @@ class EmployeeLL:
 
     
     def employee_info_overview(self):
+        """ Returns a dictionary containing information about the systems staff members. """
         return self.logic.data_wrapper.get_all_staff_members()
 
 
@@ -46,14 +47,14 @@ class EmployeeLL:
 
 
     def get_employee(self, social_id: str) -> Employee:
-        """Returns information about a chosen employee."""
+        """ Returns information about a chosen employee. """
         employee_dict = self.logic.data_wrapper.get_all_staff_members()
         
         return employee_dict[social_id]
 
 
     def change_employee_info(self, employee: Employee) -> None:
-        """Lets user change employee information."""
+        """ Let's user change employee information."""
         # TODO: cannot change name
         employee_dict = self.logic.data_wrapper.get_all_staff_members()
 
@@ -65,7 +66,7 @@ class EmployeeLL:
 
 
     def add_employee(self, employee: Employee) -> None:
-        """Adds employee to the system."""
+        """ Adds employee to the system."""
         employee_dict = self.logic.data_wrapper.get_all_staff_members()
 
         assert employee.social_id not in employee_dict, "Employee with same social_id already exists!"
@@ -75,7 +76,7 @@ class EmployeeLL:
 
 
     def get_total_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
-        """Returns total hours an employee has worked."""
+        """ Returns total hours an employee has worked. """
         flights_list = []
         total_hours = 0
         past_voyage_dict = self.logic.get_past_voyages()
@@ -109,7 +110,7 @@ class EmployeeLL:
         """Returns total hours an employee has worked."""
         total_hours = 0
         upcoming_voyage_dict = self.logic.upcoming_voyages()
-        
+
         for flight in upcoming_voyage_dict.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
 

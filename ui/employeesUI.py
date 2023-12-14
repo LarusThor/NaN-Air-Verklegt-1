@@ -49,7 +49,8 @@ class EmployeeUI:
         for pilot in pilot_list:
             result += pilot.name + "\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
 
@@ -64,7 +65,8 @@ class EmployeeUI:
         for person in flight_attendant_list:
             result += person + "\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
     
 
@@ -78,7 +80,8 @@ class EmployeeUI:
         for person in employees:
             result += person + "\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
     def get_employee(self) -> Employee:
@@ -119,7 +122,8 @@ class EmployeeUI:
         result += "{:<14} {}".format("Home address:", employee.home_address) + "\n"
         result += "{:<14} {}".format("Landline:", employee.landline) + "\n"
 
-        self.menus.print_the_info(title, result)
+        action = self.menus.print_the_info(title, result)
+        return action
 
 
     def change_info_options(self) -> None:
@@ -371,12 +375,15 @@ class EmployeeUI:
         if save_prompt == "y":
             self.logic_wrapper.add_employee(employee)
             title = "New employee saved!"
-            self.menus.print_the_info(title)
+            action = self.menus.print_the_info(title)
+            return action
  
 
         elif save_prompt == "n":
             title = "New employee not saved."
-            self.menus.print_the_info(title)
+            action = self.menus.print_the_info(title)
+            return action
+
 
 
 
@@ -387,4 +394,5 @@ class EmployeeUI:
         title = "The most experienced employee:"
         result = f"{name} has gone on {int(voyages)} voyages."
 
-        self.menus.print_the_info(title, result)
+        action = self.menus.print_the_info(title, result)
+        return action
