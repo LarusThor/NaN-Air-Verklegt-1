@@ -140,25 +140,28 @@ class VoyagesUI:
             # TODO: just get this as a variable, dont reassign the attribute
             departure_date = voyages_info.departure.strftime("%Y-%m-%d")
             if voyage_flight_number == voyages_info.flight_nr and voyage_date == departure_date:
+                # while not aircraft_check:
                 while not aircraft_check:
-                    aircraft_id = input("Enter a valid aircraft: ")
-                    if self.logic_wrapper.get_total_future_hours_for_airplane(aircraft_id, voyages_info.departure, return_flight_arrival) == 0:
+                    plane_insignia = input("Enter a valid aircraft: ")
+                    aircraft = self.logic_wrapper.get_airplanes_info_overview(plane_insignia)
+                    if self.logic_wrapper.aircraft_availability(aircraft, voyages_info.departure, return_flight_arrival) == 0:
                         aircraft_check = True
                     else:
-                        print(f"Airplane {aircraft_id} not available on between {voyages_info.departure} and {return_flight_arrival}")
+                        print(f"Airplane {plane_insignia} not available on between {voyages_info.departure} and {return_flight_arrival}")
                         aircraft_check = False
 
                 while not captain_check:
                     captain = input("Enter captain social id: ")
+                    employee = self.logic_wrapper.employee_info(captain)
                     if employee_information[captain].rank == "Captain":
-                        if self.logic_wrapper.check_pilot_qualifications(aircraft_id, captain):
-                            if self.logic_wrapper.staff_availability_check(captain, voyages_info.departure, return_flight_arrival) == 0:
+                        if self.logic_wrapper.check_pilot_qualifications(plane_insignia, captain):
+                            if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
                                 captain_check = True
                             else:
                                 print(f"Captain {captain} not available on between {voyages_info.departure} and {return_flight_arrival}")
                                 captain_check = False
                         else:
-                            print(f"Captain {captain} does not have the license to fligh {aircraft_id}")
+                            print(f"Captain {captain} does not have the license to fligh {plane_insignia}")
                             captain = False
                     else:
                         print(f"{captain} is not a captain")
@@ -169,23 +172,25 @@ class VoyagesUI:
                     #     print("NEi")
                 while not copilot_check:
                     copilot = input("Enter copilot's social id: ")
+                    employee = self.logic_wrapper.employee_info(copilot)
                     if employee_information[copilot].rank == "Copilot":
-                        if self.logic_wrapper.check_pilot_qualifications(aircraft_id, copilot):
-                            if self.logic_wrapper.staff_availability_check(copilot, voyages_info.departure, return_flight_arrival) == 0:
+                        if self.logic_wrapper.check_pilot_qualifications(plane_insignia, copilot):
+                            if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
                                 copilot_check = True
                             else:
                                 print(f"Copilot {copilot} not available on between {voyages_info.departure} and {return_flight_arrival}")
                                 copilot_check = False
                         else:
-                            print(f"Copilot {copilot} does not have the license to fligh {aircraft_id}")
+                            print(f"Copilot {copilot} does not have the license to fligh {plane_insignia}")
                             copilot_check = False
                     else:
                         print(f"{copilot} is not a copilot")
                         
                 while not flight_service_manager_check:               
                     flight_service_manager = input("Enter Flight service manager's social id: ")
+                    employee = self.logic_wrapper.employee_info(flight_service_manager)
                     if employee_information[flight_service_manager].rank == "Flight Service Manager":
-                            if self.logic_wrapper.staff_availability_check(flight_service_manager, voyages_info.departure, return_flight_arrival) == 0:
+                            if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
                                 flight_service_manager_check = True
                             else:
                                 print(f"Flight service manager {flight_service_manager} not available on between {voyages_info.departure} and {return_flight_arrival}")
@@ -197,7 +202,7 @@ class VoyagesUI:
                 
                 while not flight_attendant_check:
                     add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                    
+                    employee = self.logic_wrapper.employee_info(add_flight_attendant)
                     
                     if add_flight_attendant == "":
                         for i in range(5):
@@ -205,7 +210,7 @@ class VoyagesUI:
                     
                     else:
                             if employee_information[add_flight_attendant].rank == "Flight Attendant":
-                                if self.logic_wrapper.staff_availability_check(add_flight_attendant, voyages_info.departure, return_flight_arrival) == 0:
+                                if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
                                     flight_attendants = [add_flight_attendant]
                                     flight_attendant_check = True
                                 else:
@@ -224,6 +229,7 @@ class VoyagesUI:
                     if len(flight_attendants) < 5:
                         while not flight_attendant_check:
                             add_flight_attendant = input("Enter social id of an additional flight attendant: ")
+                            employee = self.logic_wrapper.employee_info(copilot)
                             if add_flight_attendant == "": 
                                 unstaffed = 5 - len(flight_attendants)
                                 for flight_attendant in range(unstaffed):
@@ -232,7 +238,7 @@ class VoyagesUI:
 
                             else:
                                 if employee_information[add_flight_attendant].rank == "Flight Attendant":
-                                    if self.logic_wrapper.staff_availability_check(add_flight_attendant, voyages_info.departure, return_flight_arrival) == 0:
+                                    if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
                                         flight_attendants.append(add_flight_attendant)
                                         flight_attendant_check = True
 
@@ -267,7 +273,7 @@ class VoyagesUI:
                         arr_at=voyages_info.arr_at,
                         departure=voyages_info.departure,
                         arrival=voyages_info.arrival,
-                        aircraft_id=aircraft_id,
+                        aircraft_id=plane_insignia,
                         captain=captain,
                         copilot=copilot,
                         fsm=flight_service_manager,
@@ -288,7 +294,7 @@ class VoyagesUI:
                         arr_at=return_flight_arr_at,
                         departure=return_flight_date_departure,
                         arrival=return_flight_arrival,
-                        aircraft_id=aircraft_id,
+                        aircraft_id=plane_insignia,
                         captain=captain,
                         copilot=copilot,
                         fsm=flight_service_manager,
