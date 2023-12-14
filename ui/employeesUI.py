@@ -282,7 +282,7 @@ class EmployeeUI:
             "2": "Copilot"
             }
             print("Rank:\n1. Captain\n2. Copilot")
-            rank_choice = input().strip()
+            rank_choice = input("\n Choose a rank: ").strip()
             
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
@@ -308,10 +308,8 @@ class EmployeeUI:
             "1": "Flight Service Manager", 
             "2": "Flight Attendant"
             }
-            print("Please pick a rank:")
-            print("-" * 20)
             print("Rank:\n1. Flight Service Manager\n2. Flight Attendant")
-            rank_choice = input().strip()
+            rank_choice = input("Choose a rank: ").strip()
 
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
