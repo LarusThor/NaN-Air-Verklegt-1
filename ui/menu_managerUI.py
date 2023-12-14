@@ -1,6 +1,6 @@
 from logic.validationLL import ValidationLL
 import os
-OUTLINE = "-"*70
+OUTLINE = "="*70
 MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Schedule", "5. Voyages", "6. Flight status"]
 
 class Menu():
@@ -96,9 +96,9 @@ class Menu():
 
         padding = (terminal_width) // 150
         print(title)
-        print("" * padding + OUTLINE)
+        print(OUTLINE)
         for item in info_list:
-            print(" " * padding + item)
+            print(item)
         print("\n" * empty_lines_below)
         self.get_next_action()
 

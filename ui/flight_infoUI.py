@@ -7,36 +7,23 @@ class FlightInfoUI:
     def __init__(self) -> None:
         """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()
-        self.menus = Menu()
-        self.flight_booking = self.logic_wrapper.flight_fully_booked()
-
-
-    # def flight_info_options(self) -> str:
-    #     """ Calls the function in the Menu class that displays options"""
-    #     self.menus.display_options("Flight information:", FLIGHT_STATUS_OPTIONS)
-    #     action = str(input("Enter your action: ").lower())
-    #     return action
-    
-
-    # def get_voyage(self) -> str:
-    #     """ TODO: add docstring """
-    #     flight_number = input("Enter flight number: ")
-    #     return flight_number
-         
+        self.menus = Menu()         
 
     def get_flight_status(self) -> None: #define
-        """ Returns a list of upcoming voyages and their booking status. """
+        """ Gets information about the upcoming voyages from the logic wrapper. Makes a title and the results 
+        (which is the information that will be printed out). Calls the function in the menu_manager that takes care of 
+        prints out the title and the information.
+        """
         flights = self.logic_wrapper.flight_fully_booked()
-        title = f"Flight status: \n{'-'*70}\n{'Departure date':<16} {'Flight number':<15} {'Flight destination':<20} {'Flight status':<15}"
+        title = f"Flight status: \n{'='*70}\n{'Departure date':<16} {'Flight number':<15} {'Flight destination':<20} {'Flight status':<15}"
         result = ""
         for flight, status in flights:
-            date =str(flight.departure.date())
+            date = str(flight.departure.date())
             if status == "Booked":
                 booked = "Fully booked!"
-                result += f"{date:^14} {flight.flight_nr:^15} {flight.arr_at:^20} {booked}\n"
-                
+                result += f"{date:^15} {flight.flight_nr:^15} {flight.arr_at:^21} {booked}\n"
             else:
-                result += f"{date:^14} {flight.flight_nr:^15} {flight.arr_at:^20} {status:<3} seats left\n"
+                result += f"{date:^15} {flight.flight_nr:^15} {flight.arr_at:^21} {status:<3} seats left\n"
 
 
         self.menus.print_the_info(title, result)

@@ -29,18 +29,6 @@ class EmployeeUI:
         return action
 
 
-    def print_crew(self, crew_list: list) -> None:
-        """Used to print out a list"""
-        crew_list.sort()
-        for person in crew_list:
-            print(person)
-        print()
-        print("(M)enu")
-        action = str(input("Enter your action: ").lower())
-        if action == "m":
-            None
-
-
     def get_pilots(self) -> None:
         """Prints out a list of all the pilots"""
         pilot_list = self.logic_wrapper.pilot_list()
@@ -50,7 +38,6 @@ class EmployeeUI:
             result += pilot.name + "\n"
         self.menus.print_the_info(title, result)
 
-    
 
     def get_flight_attendants(self) -> None:
         """Prints out a list of all the flight attendants"""
