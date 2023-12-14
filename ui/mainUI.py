@@ -51,12 +51,6 @@ class Main:
                 action2 = ""
                 action3 = ""
                 action4 = ""
-<<<<<<< HEAD
-                while (action1 != BACK):# start a loop that runs until action is equal to BACK
-                    action2= ""
-                    action4= ""
-                    action1 = self.airplane_ui.airplane_options()# get the user input from the airplane options menu using the airplane_ui attribute of the class
-=======
                 action15 = ""
                 while (action1 != BACK):
                     action1 = self.airplane_ui.airplane_options()
@@ -65,16 +59,11 @@ class Main:
                     action4 = ""
                     action15 = ""
                     
->>>>>>> 6183ba204f7b9d32adea1d706330637de9584590
                     match action1:
                         case "q":# quit feature for the system
                             quit(0)
-<<<<<<< HEAD
-                        case "1": 
-=======
 
                         case "1":  # airplane types and license
->>>>>>> 6183ba204f7b9d32adea1d706330637de9584590
                             while( action2 != BACK):
                                 action3 = ""
                                 while (action3 != BACK):
@@ -123,23 +112,10 @@ class Main:
                                             time.sleep(INVALID_INPUT_SLEEP)
                                         #end case action2=2
                                         
-<<<<<<< HEAD
-                                    case "b":
-                                        continue
-                                    case _:#if action is anything else
-                                        print("Input was invalid, try again ")#prints an error message
-                                        time.sleep(INVALID_INPUT_SLEEP)#waits for certain amount of time
-                                    #end case action2=2
-                                    
-                                #end match a2
-                            #end w-a2
-                        #case action1=1
-=======
                                     #end match a2
                                 #end w-a2
                             #case action1=1
 
->>>>>>> 6183ba204f7b9d32adea1d706330637de9584590
                         case "2":  # add new airplane
                             action2 = self.airplane_ui.add_airplane()
                             if action2 == "q":
@@ -175,16 +151,11 @@ class Main:
 
 
             def destinations() -> None:
-<<<<<<< HEAD
                 """TODO: in this code we are in destination and starting loops 
                     with the feature of backing out and quiting
                     we are storing the user inputs in a action variables 
                     and making sure the user puts the right input in:"""
                 action4 = ""# initialize a varible and stores the users input
-=======
-                """TODO: add docstring"""
-                action4 = ""
->>>>>>> 6183ba204f7b9d32adea1d706330637de9584590
                 action5 = ""
                 while ( action4 != BACK):
                     action4 = self.destinations_ui.destinations()
@@ -218,16 +189,11 @@ class Main:
                                 
 
             def employees() -> None:
-<<<<<<< HEAD
                 """TODO: in this code we are in employee and starting loops 
                     with the feature of backing out and quiting
                     we are storing the user inputs in a action variables 
                     and making sure the user puts the right input in:"""
                 action6 = ""# initialize a varible and stores the users input
-=======
-                """ TODO: add docstring"""
-                action6 = ""
->>>>>>> 6183ba204f7b9d32adea1d706330637de9584590
                 action7 = ""
                 action8 = ""
                 action10 = ""
@@ -297,16 +263,11 @@ class Main:
                         
 
             def schedule() -> None:
-<<<<<<< HEAD
                 """TODO: in this code we are in schedule and starting loops 
                     with the feature of backing out and quiting
                     we are storing the user inputs in a action variables 
                     and making sure the user puts the right input in:"""
                 action10 = ""# initialize a varible and stores the users input
-=======
-                """TODO: add docstring"""
-                action10= ""
->>>>>>> 6183ba204f7b9d32adea1d706330637de9584590
                 action11 = ""
                 action12 = ""
                 while(action10 != BACK):
@@ -338,15 +299,9 @@ class Main:
                                 
 
                         case "2":
-<<<<<<< HEAD
-                            while(action12 != "b"):
-                                action11 =""# initialize a varible and stores the users input
-                                action10 =""
-=======
                             while(action12 != BACK):
                                 action11=""
                                 action10=""
->>>>>>> 6183ba204f7b9d32adea1d706330637de9584590
                                 action12 = self.schedule_ui.schedule_for_employee_options()
                                 match action12:
                                     case "q":
@@ -371,14 +326,10 @@ class Main:
                                 
 
             def voyages() -> None:
-<<<<<<< HEAD
                 """TODO: in this code we are in voyages and starting loops 
                     with the feature of backing out and quiting
                     we are storing the user inputs in a action variables 
                     and making sure the user puts the right input in:"""
-=======
-                """TODO: add docstring"""
->>>>>>> 6183ba204f7b9d32adea1d706330637de9584590
                 action13=""
                 action14=""
                 action15=""
