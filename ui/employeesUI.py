@@ -73,7 +73,7 @@ class EmployeeUI:
     def get_all_employees(self) -> None:
         """Gets all the employees from the logic wrapper. Calls a function in the menu_manager that takes care of 
         printing all the employees and the title out."""
-        employees = self.logic_wrapper.employee_list()
+        employees = self.logic_wrapper.employee_dict()
         title = "All employees:"
         result = ""
 
@@ -265,10 +265,10 @@ class EmployeeUI:
 
     def get_address(self) -> str:
         """User inputs an address for employee."""
-        home_address = input("Home adress: ")
+        home_address = input("Home address: ")
         while not self.validation.validate_address(home_address):
             print("ERROR: Invalid address \n Address should be a string and above >3")
-            home_address = input("Home adress: ")
+            home_address = input("Home address: ")
         return home_address
     
 
