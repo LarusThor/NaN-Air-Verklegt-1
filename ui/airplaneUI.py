@@ -52,11 +52,18 @@ class AirplaneUI:
         
 
         airplane_choice = int(input("Enter an airplane choice: "))
-        print(f"\nAll pilots qualified to fly {planes[airplane_choice]}:") 
+
+        title = f"\nAll pilots qualified to fly {planes[airplane_choice]}:"
+        result = ""
+        # print(f"\nAll pilots qualified to fly {planes[airplane_choice]}:") 
         pilots = pilots_by_license[planes[airplane_choice]]
 
         for pilot in pilots:
-            print(pilot)
+            # print(pilot)
+            result += pilot + "\n"
+        
+        action = self.menus.print_the_info(title, result)
+        return action
 
             
 
