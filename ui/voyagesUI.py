@@ -37,6 +37,7 @@ class VoyagesUI:
         action = str(input("Enter your action: ").lower())
         return action
 
+#############################################################################################################################################
 
     def add_voyage(self) -> None:
         """ TODO: add docstring. """
@@ -48,7 +49,7 @@ class VoyagesUI:
 
 
         flight_number = input("Enter flight number: ")#TODO: validate - format og lengd
-        departure_location = "Kef" # TODO: laga
+        departure_location = "Kef" #NaN air always departs from Kef
         
         print("Choose an arrival destination")
         for index, destination in enumerate(destination_list):
@@ -134,10 +135,12 @@ class VoyagesUI:
         flight_number = input("Enter flight number: ")
         return flight_number
 
-    def get_voyage_date(self) -> str:
+    def get_voyage_date(self) -> str: 
         """TODO: add docstring"""
         date = input("Enter year date; year-month-day: ")
         return date
+    
+#############################################################################################################################################
 
     def manager_staffs_voyage(self, voyage_flight_number: str, voyage_date: str) -> None:
         """TODO: add docstring"""
@@ -150,7 +153,7 @@ class VoyagesUI:
 
         return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
         voyage_flight_number_info = self.logic_wrapper.upcoming_voyages().values()
-        employee_information = self.logic_wrapper.show_employee_info()
+        employee_information = self.logic_wrapper.show_employee_info() #TODO: tengja frekar við emoloyee dict
 
         for voyages_info in voyage_flight_number_info:
             # TODO: just get this as a variable, dont reassign the attribute
@@ -319,6 +322,8 @@ class VoyagesUI:
                     self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_return_flight)
                     print("Voyage has been staffed!")
 
+#############################################################################################################################################
+
     def list_voyage_options(self) -> str:
         """TODO: add docstring"""
         self.menus.display_options("List voyages", LIST_VOYAGES_OPTIONS)
@@ -375,6 +380,8 @@ class VoyagesUI:
         
         self.menus.print_the_info(title, result)
 
+#############################################################################################################################################
+
 
     def get_past_voyage_by_date(self, date: date) -> str:
         """TODO: add docstring"""
@@ -426,18 +433,17 @@ class VoyagesUI:
 
 
     def cancel_voyage(self) -> None:  # define
-        """Cancels a voyage in teh system."""
+        """Cancels a voyage in the system."""
 
         flight_number = input("Enter flight number: ")
         save_prompt = input(
             f"Would you like to cancel voyage {flight_number}? (y)es or (n)o"
         )
-        # TODO show th ifo for the voyage
+        # TODO show the ifo for the voyage
 
         if save_prompt == "y":
             # TODO: implement
             print("Voyage has been canceled!")
 
         elif save_prompt == "n":
-            print("Voyage was not canceled.")
             print("Voyage was not canceled.")
