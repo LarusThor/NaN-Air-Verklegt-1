@@ -33,7 +33,7 @@ class LogicWrapper():
         return self.employee.employee_info_overview()
 
 
-    def employee_list(self)  -> list[str]:
+    def employee_dict(self)  -> list[str]:
         """ Returns a list of all employees. """
         return self.employee.get_employee_dict()
     
@@ -259,9 +259,9 @@ class LogicWrapper():
 
 
     #validation
-    def validate_action(self, input: int, length: int) -> bool:
+    def validate_choice(self, input: int, length: int) -> bool:
         """ Validates numerical action input. """
-        self.validation.validate_action(input, length)
+        self.validation.validate_choice(input, length)
 
 
     def validate_name(self, name: str) -> bool:

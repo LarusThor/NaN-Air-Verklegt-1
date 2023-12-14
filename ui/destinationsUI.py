@@ -32,7 +32,8 @@ class DestinationsUI:
         for destination in list(enumerate(destinations, start=1)):
             result += f"{destination[0]}: {destination[1]}\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
     def get_most_popular_destination(self) -> None:
