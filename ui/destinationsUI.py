@@ -3,7 +3,6 @@ from logic.logic_wrapper import LogicWrapper
 from model.destination_model import Destination
 
 DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination", "3. Add new destination", "4. Change destination information"]
-# CHANGE_OPTIONS = ["1. Everyting", "2. Contact information", "3. Airport"]
 
 
 class DestinationsUI:
@@ -20,12 +19,6 @@ class DestinationsUI:
 
         return action
 
-    
-    # def select_info(self) -> str:
-    #     self.menus.display_options("What information would you like to change?", CHANGE_OPTIONS)
-    #     action = str(input("Enter your action: ").lower())
-
-    #     return action
 
 
     def get_all_destinations(self) -> None:
