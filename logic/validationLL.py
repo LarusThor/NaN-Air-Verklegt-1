@@ -38,7 +38,8 @@ class ValidationLL():
     
     
     def validate_address(self, address: str) -> bool:
-        return len(address) >=3 and all((char.isalpha()for char in address))
+        address = address.split()
+        return len(address) >=3 and all((char.isalpha()for char in address [0]) and digit.isdigit()for digit in address [1])
         
         
     #airplanes   
