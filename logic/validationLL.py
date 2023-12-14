@@ -4,8 +4,7 @@ from datetime import datetime
 class ValidationLL():
     def __init__(self) -> None:
         """Instantiate a ValidationLL object."""
-
-
+        
 
     def validate_action(self, action: int, option: int) -> bool:
         """ Validates numerical action input. """
@@ -33,7 +32,6 @@ class ValidationLL():
         return len(number) ==7 and all((digit.isdigit()for digit in number))
         
 
-
     def validate_email(self, email: str) -> bool:
         """ TODO: add docstring """
         return"@" in email and "." in email
@@ -46,6 +44,7 @@ class ValidationLL():
     #airplanes   
     def validate_aircraft_by_specific_type(self, aircraft_specific_type) -> bool:
         return "N/A" in aircraft_specific_type
+        
         
     def validate_airplane_name(self,aircraft_name) -> bool:
         return "TF" in aircraft_name and "-" in aircraft_name
@@ -64,22 +63,11 @@ class ValidationLL():
     def validate_number_of_seats(self, number_of_seats) -> bool:
         return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
         
-        
-        
-        
-        
-
-        
+              
     def validate_save_new(self,str) -> bool:
         pass
     
     
-    
-    
-    
-    
-        
-        
     def validate_flight(self, flight: str) -> bool:
         """ TODO: add docstring """
         pass
