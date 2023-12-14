@@ -40,6 +40,7 @@ class Main:
             
 
             def airplane() -> None:
+                """TODO: add docstring og kommenta þennan kóða hann er svoldið flókinn :"""
                 action1 = ""
                 action2 = ""
                 action3 = ""
@@ -54,7 +55,7 @@ class Main:
                         case "1":  # airplane types and license
                             while( action2 != 'b' ):
                                 action3 = ""
-                                action2 = self.airplane_ui.airplane_types_and_licanse()
+                                action2 = self.airplane_ui.airplane_types_and_licence()
                                 match action2:
                                     case "q":
                                         quit(0)
