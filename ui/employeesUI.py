@@ -73,7 +73,7 @@ class EmployeeUI:
     def get_all_employees(self) -> None:
         """Gets all the employees from the logic wrapper. Calls a function in the menu_manager that takes care of 
         printing all the employees and the title out."""
-        employees = self.logic_wrapper.employee_list()
+        employees = self.logic_wrapper.employee_dict()
         title = "All employees:"
         result = ""
 
