@@ -238,6 +238,11 @@ class LogicWrapper():
 
 
     #validation
+    def validate_action(self, input: int, length: int) -> bool:
+        """ Validates numerical action input. """
+        self.validation.validate_action(input, length)
+
+
     def validate_name(self, name: str) -> bool:
         """ Validates name input. """
         self.validation.validate_name(name)

@@ -31,12 +31,13 @@ class Main:
         self.voyages_ui = VoyagesUI()
         self.flight_info = FlightInfoUI()
         self.logic_wrapper = LogicWrapper()
+        self.validation = self.logic_wrapper.validation
 
     def input_prompt(self) -> None:
         """TODO: add docstring"""
-        while True:
+        while True: #TODO: meigum við nota while True??
             self.menus.main_menu()
-            action = str(input("Enter your action: ").lower())
+            
 
             def airplane() -> None:
                 action1 = ""
@@ -413,4 +414,10 @@ class Main:
                 "5": voyages,
                 "6": flight_status,
             }
+
+            action = str(input("Enter your action: ").lower())
+            while not self.validation.validate_action(action, len(options)):
+                print("Invalid action! \nTry again.")
+                action = str(input("Enter your action: ").lower())
+
             options[action]()
