@@ -95,8 +95,8 @@ class ScheduleUI:
         voyages, hours = self.logic_wrapper.total_hours_worked(employee, start_date, end_date)
         # print(f"{employee.name} worked {hours} hours within {start_date.date()} - {end_date.date()}")
         # print(f"Voyages worked by {employee.name}: ")
-
-        title = f"{employee.name} worked {hours} hours within {start_date.date()} - {end_date.date()}"
+        hours_int = int(hours)
+        title = f"{employee.name} worked {hours_int} hours within {start_date.date()} - {end_date.date()}"
         result = ""
         for voyage, destination in voyages:
             result += f"{voyage} to {destination} \n"
