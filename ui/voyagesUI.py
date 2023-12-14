@@ -154,7 +154,7 @@ class VoyagesUI:
                 while not captain_check:
                     captain = input("Enter captain social id: ")
                     employee = self.logic_wrapper.employee_info(captain)
-                    valid_rank, available_for_date, valid_license = self.logic_wrapper.captain_availability(copilot_check, captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
+                    valid_rank, available_for_date, valid_license = self.logic_wrapper.captain_availability(captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
                     if available_for_date == False:
                         print(f"Captain {captain} not available on between {voyages_info.departure} and {return_flight_arrival}")
                     elif valid_license == False:
@@ -181,7 +181,7 @@ class VoyagesUI:
                 while not copilot_check:
                     copilot = input("Enter copilot's social id: ")
                     employee = self.logic_wrapper.employee_info(copilot)
-                    valid_rank, available_for_date, valid_license = self.logic_wrapper.copilot_availability(copilot_check, copilot, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
+                    valid_rank, available_for_date, valid_license = self.logic_wrapper.copilot_availability(copilot, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
                     if available_for_date == False:
                         print(f"Copilot {copilot} not available on between {voyages_info.departure} and {return_flight_arrival}")
                     elif valid_license == False:
@@ -206,7 +206,7 @@ class VoyagesUI:
                 while not flight_service_manager_check:               
                     flight_service_manager = input("Enter Flight service manager's social id: ")
                     employee = self.logic_wrapper.employee_info(flight_service_manager)
-                    available_for_date, valid_rank = self.logic_wrapper.flight_service_manager_availability(flight_service_manager, flight_service_manager_check, employee_information, employee, voyages_info, return_flight_arrival)
+                    available_for_date, valid_rank = self.logic_wrapper.flight_service_manager_availability(flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival)
                     if available_for_date == False:
                         print(f"Flight service manager {copilot} not available on between {voyages_info.departure} and {return_flight_arrival}")
                     elif valid_rank == False:

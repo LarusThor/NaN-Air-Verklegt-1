@@ -5,13 +5,14 @@ from logic.logic_wrapper import LogicWrapper
 from ui.scheduleUI import ScheduleUI
 from ui.flight_infoUI import FlightInfoUI
 from ui.airplaneUI import AirplaneUI
+from ui.destinationsUI import DestinationsUI
 
 #kemur aldrei upp að þau séu að vinna í vikunni
 
 logic = LogicWrapper()
-ai = AirplaneUI()
+de = DestinationsUI()
 
-ai.add_airplane()
+de.change_destination_info()
 #print(logic.airplane_types())
 
 #print(logic.get_most_experienced_employee())
