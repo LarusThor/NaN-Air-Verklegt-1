@@ -205,6 +205,7 @@ class Main:
                         case "2":
                             while(action8 != "b"):
                                 action6 = ""
+                                action7 = ""
                             # employee_name = self.employee_ui.get_employee()
                                 action8 = self.employee_ui.employee_info_options()
 
