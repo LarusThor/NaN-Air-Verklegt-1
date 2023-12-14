@@ -75,7 +75,8 @@ class Menu():
     def get_next_action(self) -> None: #TODO þetta fall skilar engu, erum við að nota það?
         """ TODO: add docstring """
         print("Enter (b) for Back or (q) for quit") # TODO has to validated
-        action = input("Enter in your action: ").lower()
+        input("Enter in your action: ").lower()
+            
 
         
 
