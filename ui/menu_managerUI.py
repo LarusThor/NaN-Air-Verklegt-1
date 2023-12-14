@@ -147,7 +147,7 @@ class Menu():
         # Print empty lines above the menu
         print("\n" * empty_lines_above)
 
-        padding = (terminal_width) // 150
+        #padding = (terminal_width) // 150
         print(title)
         print(OUTLINE)
         for item in info_list:
