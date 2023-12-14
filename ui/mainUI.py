@@ -172,6 +172,9 @@ class Main:
                 action8 = ""
                 action9 = ""
                 while (action6 != "b"):
+                    action7 = ""
+                    action8 = ""
+                    action9 = ""
                     action6 = self.employee_ui.employees_options()
                     match action6:
                         case "q":
@@ -205,7 +208,6 @@ class Main:
                         case "2":
                             while(action8 != "b"):
                                 action6 = ""
-                                action7 = ""
                             # employee_name = self.employee_ui.get_employee()
                                 action8 = self.employee_ui.employee_info_options()
 
