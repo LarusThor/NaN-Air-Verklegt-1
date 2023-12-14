@@ -40,7 +40,6 @@ class ScheduleLL():
 
     # def employee_working(self, date_working: date) -> list[Employee]:
     #     """ Returns a list of all employees working on a specific day. """    
-    #     #TODO: simplify
     #     past_voyage_list = self.logic.get_past_voyages()
     #     upcoming_voyage_list = self.logic.upcoming_voyages()
     #     workers_on_day = []
@@ -86,7 +85,6 @@ class ScheduleLL():
         Args:
             date: The date the employees are not working
         """
-        #TODO: simplify, tengja betur við þá sem eru að virka
         employee_dict = self.logic.data_wrapper.get_all_staff_members()
         past_voyage_list = self.logic.get_past_voyages()
         upcoming_voyage_list = self.logic.upcoming_voyages()
@@ -105,5 +103,5 @@ class ScheduleLL():
                 workers_on_day.update(workers)
 
         worker_ids =  all_workers-workers_on_day
-        return [self.logic.employee_info(s_id) for s_id in worker_ids]
+        return [self.logic.employee_info(social_id) for social_id in worker_ids]
   
