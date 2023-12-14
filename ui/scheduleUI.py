@@ -46,7 +46,7 @@ class ScheduleUI:
 
         for employee, destination in employees:
             if destination != "KEF":
-                result += f"{employee.name} --> {destination}\n"
+                result += f"{employee.name:<20} --> {destination:>5}\n"
 
         self.menus.print_the_info(title, result)
 
