@@ -293,7 +293,10 @@ class EmployeeUI:
 
                 print("Licenses:")
                 for index, license in licences.items():
-                    print(f"{index}. {license}")
+                    tuple_list = []
+                    for item in license:
+                        tuple_list.append(item)
+                    print(f"{index}. {tuple_list[0]}")
                 
                 licence_choice = int(input())
                 licence = licences[licence_choice]
@@ -348,6 +351,9 @@ class EmployeeUI:
         role = self.choose_role()
      
         rank, license = self.choose_rank_and_licence(role)
+        license_list = []
+        for item in license:
+            license_list.append(item)
 
         optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
         if optional_landline == "y":
@@ -363,7 +369,7 @@ class EmployeeUI:
         print("Home adress:", home_address)
         print("Role:", role)
         print("Rank:", rank)
-        print("License:", license)
+        print("License:", license_list[0])
         print("Landline number:", landline)
 
         # TODO
