@@ -76,7 +76,6 @@ class EmployeeLL:
 
     def get_total_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
         """Returns total hours an employee has worked."""
-        #TODO: laga listann af voyages: fáum bara fyrstu 10
         flights_list = []
         total_hours = 0
         past_voyage_dict = self.logic.get_past_voyages()
@@ -106,13 +105,11 @@ class EmployeeLL:
 
         return flights_list, total_hours
     
-    def get_total_future_hours_worked(self, social_id: str, start: datetime, end: datetime) -> tuple[list[str], float]:
+    def get_total_future_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
         """Returns total hours an employee has worked."""
-        #TODO: laga listann af voyages: fáum bara fyrstu 10
         total_hours = 0
         upcoming_voyage_dict = self.logic.upcoming_voyages()
-        employee = self.logic.employee_info(social_id)
-
+        
         for flight in upcoming_voyage_dict.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]
 

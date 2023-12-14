@@ -12,8 +12,10 @@ class AirplaneLL():
         """
         self.logic = logic_wrapper
 
-    def get_airplanes_info_overview(self):
-        return self.logic.get_airplanes()
+    def get_airplanes_info_overview(self, plane_insignia):
+        airplane_dict = self.logic.data_wrapper.get_airplanes()
+
+        return airplane_dict[plane_insignia]
 
     def get_furthest_flown_plane(self) -> tuple[str, int]:
         """ Returns the plane that has flown the furthest"""
@@ -108,12 +110,11 @@ class AirplaneLL():
 
         return pilots_by_license
     
-    def get_total_future_hours_for_airplane(self, plane_insignia: str, start: datetime, end: datetime) -> tuple[list[str], float]:
+    def get_total_future_hours_for_airplane(self, airplane: Airplane, start: datetime, end: datetime) -> tuple[list[str], float]:
         """Returns total hours an employee has worked."""
         #TODO: laga listann af voyages: fáum bara fyrstu 10
         total_hours_flown = 0
         upcoming_voyage_dict = self.logic.upcoming_voyages()
-        airplane = self.logic.get_airplanes_info_overview()
 
         for flight in upcoming_voyage_dict.values():
             workers = [flight.captain, flight.copilot, flight.fsm, flight.fa1, flight.fa2, flight.fa3, flight.fa4, flight.fa5]

@@ -6,6 +6,17 @@ class ValidationLL():
         """Instantiate a ValidationLL object."""
 
 
+
+    def validate_action(self, action: int, option: int) -> bool:
+        """ Validates numerical action input. """
+        if action.isnumeric():
+            action = int(action)
+            if action > 0 and action < option:
+                return True
+        else: 
+            return False
+
+
     #employee
     def validate_name(self, name: str) -> bool:
         """ Validates name input. """
@@ -23,7 +34,6 @@ class ValidationLL():
                 return True
         except :# chacha error todo value error eða key error
             return False
-
 
     def validate_number(self, number: str) -> bool:
         """ TODO: add docstring """
@@ -57,8 +67,8 @@ class ValidationLL():
             return False
         
     #airplanes   
-    def validate_aircraft_by_specific_type(self,aircraft_specific_type) -> bool:
-        if "NA" in aircraft_specific_type:
+    def validate_aircraft_by_specific_type(self, aircraft_specific_type) -> bool:
+        if "N/A" in aircraft_specific_type:
             return True
         else:
             return False
@@ -87,21 +97,13 @@ class ValidationLL():
             return True
         else:
             return False
-        
-        
+
         
     def validate_save_new(self,str) -> bool:
         pass
     
     def validate_home_and_quit(self,str) -> bool:
         pass
-    
-        
-       
-        
-        
-        
-    
         
         
     def validate_flight(self, flight: str) -> bool:

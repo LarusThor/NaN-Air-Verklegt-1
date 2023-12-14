@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from model.employee_model import Employee
 from datetime import date
 from model.upcoming_voyage_model import UpcomingVoyage
+from model.airplane_model import Airplane
 
 
 class UpcomingVoyageLL:
@@ -82,7 +83,7 @@ class UpcomingVoyageLL:
         return self.logic.data_wrapper.add_staff(staff_to_add)
     
 
-    def aircraft_availability(self, plane_insignia: str, start: datetime, end: datetime):
+    def aircraft_availability(self, plane_insignia: Airplane, start: datetime, end: datetime):
         total_hours_flown = self.logic.get_total_future_hours_for_airplane(plane_insignia, start, end)
         return total_hours_flown
 

@@ -34,3 +34,4 @@
 #breyta svo að föllin í UI heita ekki get heldur print - erum ekki að ná í neitti
 #eyða employee info overview fallinu í logic wrapper
 # employee dict heitir óvart list
+# COMMENTA ALLT; model, data, logic, ui. Bæði comment og docstring(docstring þurfa að segja hvað fallið tekur inn hvað það gerir og hvað það skilar)

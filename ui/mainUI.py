@@ -30,13 +30,15 @@ class Main:
         self.voyages_ui = VoyagesUI()
         self.flight_info = FlightInfoUI()
         self.logic_wrapper = LogicWrapper()
+        self.validation = self.logic_wrapper.validation
 
     def input_prompt(self) -> None:
         while True:
             self.menus.main_menu()
-            action = str(input("Enter your action: ").lower())
+            
 
             def airplane() -> None:
+                """TODO: add docstring og kommenta þennan kóða hann er svoldið flókinn :"""
                 action1 = ""
                 action2 = ""
                 action3 = ""
@@ -44,14 +46,14 @@ class Main:
                 while (action1 != 'b'):
                     action2= ""
                     action4= ""
-                    action1 = self.airplane_ui.airplane()
+                    action1 = self.airplane_ui.airplane_options()
                     match action1:
                         case "q":
                             quit(0)
                         case "1":  # airplane types and license
                             while( action2 != 'b' ):
                                 action3 = ""
-                                action2 = self.airplane_ui.airplane_types_and_licanse()
+                                action2 = self.airplane_ui.airplane_types_and_licence()
                                 match action2:
                                     case "q":
                                         quit(0)
@@ -410,4 +412,10 @@ class Main:
                 "5": voyages,
                 "6": flight_status,
             }
+
+            action = str(input("Enter your action: ").lower())
+            while not self.validation.validate_action(action, len(options)):
+                print("Invalid action! \nTry again.")
+                action = str(input("Enter your action: ").lower())
+
             options[action]()
