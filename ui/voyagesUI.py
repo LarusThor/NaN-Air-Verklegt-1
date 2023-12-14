@@ -58,11 +58,11 @@ class VoyagesUI:
         arrival_location = destination_list[action -1]
 
 
-        departure_date = input(f"Enter departure date from {departure_location}; year-month-day: ") #TODO: validate
-        departure_time = input(f"Enter departure time from {departure_location}: ") #TODO: bæta við formatti hvernig þið viljið tímann og validate
+        departure_date = input(f"Enter departure date from {departure_location}: year-month-day: ") #TODO: validate
+        departure_time = input(f"Enter departure time from {departure_location}: hours:minutes:seconds") #TODO: bæta við formatti hvernig þið viljið tímann og validate
 
-        return_flight_date = input(f"Enter departure date from {arrival_location.destination}; year-month-day: ")#TODO: validate
-        return_flight_time = input(f"Enter departure time from {arrival_location.destination}: ")#TODO: validate
+        return_flight_date = input(f"Enter departure date from {arrival_location.destination}: year-month-day: ")#TODO: validate
+        return_flight_time = input(f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds")#TODO: validate
 
 
         # TODO: use datetime module
@@ -101,6 +101,7 @@ class VoyagesUI:
 
         save_prompt = input("Would you like to save this new voyage, (y)es or (n)o? ")
         if save_prompt == "y":
+            #Two flights to make one voyage
 
             upcoming_flight1 = UpcomingVoyage(
                 id=the_last_id,
@@ -111,7 +112,6 @@ class VoyagesUI:
                 arrival=calculated_arrival_flight_time, 
             )
 
-            # TODO: make this one like the above one :p
             upcoming_flight2 = UpcomingVoyage(
                 id=(the_last_id + 1),
                 flight_nr=back_flight_number,
@@ -121,8 +121,6 @@ class VoyagesUI:
                 arrival=calculated_return_flight_time, #
             )
 
-            print("VOYAGE 1: ", upcoming_flight1) 
-            print("VOYAGE 2", upcoming_flight2)
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight1)
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight2)
             print("saving_files")
