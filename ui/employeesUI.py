@@ -145,8 +145,8 @@ class EmployeeUI:
             2: Change rank and license
             3: Change email
             4: Change mobile number
-            5. Change address
-            6. Change landline
+            5: Change address
+            6: Change landline
 
             Any other to quit
 
