@@ -12,7 +12,7 @@ class AirplaneLL():
         """
         self.logic = logic_wrapper
 
-    def get_airplanes_info_overview(self, plane_insignia):
+    def get_airplanes_info_overview(self, plane_insignia) -> dict:
         airplane_dict = self.logic.data_wrapper.get_airplanes()
 
         return airplane_dict[plane_insignia]
