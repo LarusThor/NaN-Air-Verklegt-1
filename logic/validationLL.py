@@ -169,12 +169,21 @@ class ValidationLL:
 
     def validate_time(self, time) -> bool:
         """Validates time."""
-        if len(time) == 8:
-            if time[0:2].isdigit() == True:
-                if time[3] == ":" and time[5] == ":":
-                    if time[3:5].isdigit() == True:
-                        if time[6:].isdigit() == True:
-                            return True
-        return False
+        try:
+            hour, minute, second = time.split(":")
+            hour_int = int(hour)
+            minute_int = int(minute)
+            second_int = int(second)
+            if hour_int >= 0 and 0 <= minute_int <= 60 and 0 <= second_int <= 60:
+                return True
+        except ValueError:
+            return False
+        #if len(time) == 8:
+        #    if time[0:2].isdigit() == True:
+        #        if time[3] == ":" and time[5] == ":":
+        #            if time[3:5].isdigit() == True:
+        #                if time[6:].isdigit() == True:
+        #                    return True
+        #return False
     
 
