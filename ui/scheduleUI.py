@@ -98,7 +98,6 @@ class ScheduleUI:
             print("ERROR: invalid year.\n year must be a number.")
             year = input("Enter year: ")
         week = input("Enter week: ")
-
         while not self.validation.validate_weeks(week):
             print("ERROR: invalid week number.\nWeek must be from 1-52.")
             week = input("Enter week: ") 
