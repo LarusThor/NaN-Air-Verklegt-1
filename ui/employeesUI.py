@@ -348,25 +348,6 @@ class EmployeeUI:
 
         return social_id
     
-    def get_not_social_id(self) -> str:
-        """Gets a social id number from the user"""
-        employee = self.logic_wrapper.get_employee_dict()
-        social_id = input("Social ID: ")
-        while social_id not in employee.keys():
-            print("There is no employee with this socialID!")
-            social_id = input("Social ID: ")
-        while not self.validation.get_employee_dict(social_id):
-            print("ERROR: Invalid social ID \n Please enter a valid Social ID, should be 10 digits. ")
-            social_id = input("Social ID: ")
-
-        return social_id
-    
-    # def validate_social_id_non_existant(self, social_id: str) -> bool:
-    #     employee = self.logic_wrapper.employees_overview()
-    #     while social_id in employee.keys():
-    #         print("Employee with same social id already exists!")
-    #         return False
-    #     return True
 
 ############################################################################
     def add_employee(self) -> None:
