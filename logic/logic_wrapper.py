@@ -28,6 +28,10 @@ class LogicWrapper():
 
 
     #Employee:
+    def get_employee_dict(self) -> dict:
+        return self.employee.get_employee_dict()
+
+
     def employee_dict(self)  -> list[str]:
         """ Returns a list of all employees. """
         return self.employee.get_employee_dict()

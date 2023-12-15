@@ -79,7 +79,7 @@ class Main:
                                         case "1":
                                             while(action4 != BACK):
                                                 action2 = ""
-                                                action4 = self.airplane_ui.pilots_by_licanse()
+                                                action4 = self.airplane_ui.pilots_by_license()
                                                 action12 = action4
                                                 while(action12 != BACK):
                                                     if action12 == "q":
@@ -90,7 +90,7 @@ class Main:
                                                         case "1":
                                                             action12 = self.airplane_ui.get_pilots_for_a_specific_type()
                                                         case "2":
-                                                            action12 = self.airplane_ui.list_pilots_by_licanse()
+                                                            action12 = self.airplane_ui.list_pilots_by_license()
                                                         case "3":
                                                             action12 = self.airplane_ui.get_number_of_pilots_for_airplanes()
                                                         case "b":
