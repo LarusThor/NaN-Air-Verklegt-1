@@ -45,7 +45,7 @@ class DestinationsUI:
         popular = self.logic_wrapper.popular_destination()
         title = "The most popular destination:"
 
-        user_input = self.menus.print_the_info(title, popular[0])
+        user_input = self.menus.print_the_info(title, popular)
         return user_input
 
     def add_destination(self) -> None:
