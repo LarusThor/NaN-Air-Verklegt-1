@@ -12,6 +12,7 @@ import time
 INVALID_INPUT_SLEEP = 1
 BACK = "b"
 QUIT = "q"
+INVALID_INPUT = "Input was invalid, try again."
 # the menu
 MAIN_MENU_OPTIONS = [
     "1. Airplane",
@@ -150,11 +151,13 @@ class Main:
                             time.sleep(INVALID_INPUT_SLEEP)
 
 
-            def destinations() -> None:
-                """TODO: in this code we are in destination and starting loops with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
-                user_input = self.destinations_ui.destinations_options()
-                
+
+
+
+
+
+
+            def destinations_options_input(user_input):
                 match user_input:
                     case "q":
                         quit(0)
@@ -172,17 +175,36 @@ class Main:
                         user_input = self.destinations_ui.change_destination_info()
 
                     case "b":
-                        return None
+                        return BACK
 
                     case _:
-                        print("Input was invalid, try again. ")
+                        print(INVALID_INPUT)
                         time.sleep(INVALID_INPUT_SLEEP)
+                        return BACK
+                    
+                return user_input
                 
-                if user_input == "b":
-                    destinations()
 
-                elif user_input == "q":
-                    quit()
+            def destinations() -> None:
+                """TODO: in this code we are in destination and starting loops with the feature of backing out and quiting
+                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                
+                user_input1 = ""
+                user_input2 = "b"
+                
+                while user_input1 != BACK and user_input2 == BACK:
+                    user_input1 = self.destinations_ui.destinations_options()
+
+                    user_input2 = destinations_options_input(user_input1)
+
+                    if user_input2 == "q":
+                        quit()
+
+                
+
+
+
+            
                                 
                                 
 
@@ -208,6 +230,7 @@ class Main:
                                 # action6 =""
                                 action7 = self.employee_ui.list_employees_options()
                                 action10 = action7
+
                                 while(action10 != BACK):
                                     if action10 == "q":
                                         quit()
