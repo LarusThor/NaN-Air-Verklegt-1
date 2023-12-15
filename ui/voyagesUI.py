@@ -394,7 +394,7 @@ class VoyagesUI:
     def get_week(self) -> str:
         """TODO: add docstring"""
         year = input("Enter year: ")
-        while not self.validation.validate_year():
+        while not self.validation.validate_year(year):
             print("ERROR: invalid year.\nYear must be a number.")
             year = input("Enter year: ")
         week = input("Enter week number (1-52): ")
@@ -461,26 +461,15 @@ class VoyagesUI:
 
 
     def get_past_voyage_by_week(self, year: str, week_nr: str) -> None:
-        """
-        TODO: add docstring
-        TODO: add typehints
-
-        TODO: Do this: :)
-        Args:
-            year: ???
-            week_nr: ??
-
-        """
+        """Returns past voyages over a specific time"""
         title = f"Past voyages on week {week_nr}:"
         result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"
         voyage_counter = 0
 
-        # TODO Comment this code
         for flight_values in self.logic_wrapper.get_past_voyages().values():
             weeks = str(flight_values.departure.isocalendar().week)
             if year in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
                 if weeks == week_nr:
-                    # TODO: this line is too long check if we can split it without affecting output, make clean :)
                     result += f"{flight_values.flight_nr:^10}{flight_values.dep_from:^11}{flight_values.arr_at:^9}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^17}{flight_values.copilot:^17}{flight_values.fsm:^23}\n"
                     voyage_counter += 1
                     # Comment this - what"s happening here
@@ -490,22 +479,3 @@ class VoyagesUI:
         
         user_input = self.menus.print_the_info(title, result)
         return user_input
-
-        self.menus.print_the_info(title, result)
-
-
-    def cancel_voyage(self) -> None:  # define
-        """Cancels a voyage in the system."""
-
-        flight_number = input("Enter flight number: ") #validate
-        save_prompt = input(
-            f"Would you like to cancel voyage {flight_number}? (y)es or (n)o"
-        )
-        # TODO show the ifo for the voyage
-
-        if save_prompt == "y":
-            # TODO: implement
-            print("Voyage has been canceled!")
-
-        elif save_prompt == "n":
-            print("Voyage was not canceled.")

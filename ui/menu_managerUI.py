@@ -130,7 +130,7 @@ class Menu():
 
 
     def get_next_action(self) -> str:
-        """ TODO: add docstring """
+        """Gets input from user for next action."""
         print("Enter (b) for back or (q) for quit")
         
         action = input("Enter in your action: ").lower()
