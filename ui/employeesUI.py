@@ -209,10 +209,11 @@ class EmployeeUI:
               )
        
         save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
-        while save_prompt != "y" and save_prompt != "n":
+        save_promt_check = self.validation.validate_yes_no(save_prompt)
+        while save_promt_check == False:
             print("Invalid input!")
-            save_prompt = input("Enter Y for yes or N for no: ").lower()
-
+            save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
+            save_promt_check = self.validation.validate_yes_no(save_prompt)
         if save_prompt == "y":
             self.logic_wrapper.change_employee_info(employee)
             title = "New information saved!"
@@ -324,14 +325,18 @@ class EmployeeUI:
         """Gets a social id number from the user"""
         employee = self.logic_wrapper.show_employee_info()
         social_id = input("Social ID: ")
-        while social_id in employee.keys():
-            print("Employee with same social id already exists!")
-            social_id = input("Social ID: ")
         while not self.validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID \nPlease enter a valid Social ID, should be 10 digits. ")
             social_id = input("Social ID: ")
 
         return social_id
+    
+    def validate_social_id_non_existant(self, social_id: str) -> bool:
+        employee = self.logic_wrapper.show_employee_info()
+        while social_id in employee.keys():
+            print("Employee with same social id already exists!")
+            return False
+        return True
 
 ############################################################################
     def add_employee(self) -> None:
@@ -345,6 +350,10 @@ class EmployeeUI:
             name = input("Name: ").title()
         
         social_id = self.get_social_id()
+        social_id_check = self.validate_social_id_non_existant(social_id)
+        while not social_id_check:
+            social_id = self.get_social_id()
+            social_id_check = self.validate_social_id_non_existant(social_id)
  
         phone_number = self.get_phone_nr()
 
@@ -360,11 +369,11 @@ class EmployeeUI:
             license_list.append(item)
 
         optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
-        landline_check = self.validation.validate_landline(optional_landline)
+        landline_check = self.validation.validate_yes_no(optional_landline)
         while landline_check == False:
                 print("Please enter a valid input")
                 optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
-                landline_check = self.validation.validate_landline(optional_landline)
+                landline_check = self.validation.validate_yes_no(optional_landline)
         if optional_landline == "y":
             landline = self.get_phone_nr()
         elif optional_landline == "n":
@@ -395,11 +404,11 @@ class EmployeeUI:
         )
 
         save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
-        save_promt_check = self.validation.validate_landline(save_prompt)
+        save_promt_check = self.validation.validate_yes_no(save_prompt)
         while save_promt_check == False:
                 print("Please enter a valid input")
                 save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
-                save_promt_check = self.validation.validate_landline(save_prompt)
+                save_promt_check = self.validation.validate_yes_no(save_prompt)
         while save_prompt != "y" and save_prompt != "n":
             print("Please enter a valid input")
             save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
