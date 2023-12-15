@@ -36,7 +36,7 @@ class VoyagesUI:
         self.validation = self.logic_wrapper.validation
 
     def voyages_options(self) -> str:
-        """TODO: add docstring"""
+        """Displays user options in voyages."""
         self.menus.display_options("Voyages:", VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
 
@@ -419,7 +419,7 @@ class VoyagesUI:
         return date
 
     def get_week(self) -> str:
-        """TODO: add docstring"""
+        """Gets week from user."""
         year = input("Enter year: ")
         while not self.validation.validate_year(year):
             print("ERROR: invalid year.\nYear must be a number.")
@@ -466,7 +466,7 @@ class VoyagesUI:
         return user_input
 
     def get_past_voyage_by_date(self, date: date) -> str:
-        """TODO: add docstring"""
+        """Gets past voyages on a specific date."""
 
         title = f"Past voyages on {date}:"
         result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"

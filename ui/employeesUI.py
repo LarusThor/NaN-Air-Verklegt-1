@@ -58,13 +58,19 @@ class EmployeeUI:
         """Gets the pilots from the logic wrapper. Calls a function in the menu_manager that takes care of
         printing the pilots and the title out."""
 
-        pilot_list = self.logic_wrapper.pilot_list()
+        pilot_list_model = self.logic_wrapper.pilot_list()
         title = "All pilots:"
+        return_pilot_list = []
         result = ""
 
-        for pilot in pilot_list:
-            result += pilot.name + "\n"
+        for pilot in pilot_list_model:
+            #print(pilot.name)
+            return_pilot_list.append(pilot.name)
+            
 
+        for pilot in sorted(return_pilot_list):
+            result += pilot + "\n"
+            
         user_input = self.menus.print_the_info(title, result)
         return user_input
 
