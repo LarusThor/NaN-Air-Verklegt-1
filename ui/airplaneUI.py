@@ -74,7 +74,7 @@ class AirplaneUI:
         for index, plane in enumerate(pilots_by_license.keys()):
             print(f"{index + 1}. {plane}")
 
-        airplane_choice = int(input("Enter an airplane choice: "))
+        airplane_choice = input("Enter an airplane choice: ")
         while not self.validation.validate_choice(airplane_choice, len(planes)):
             print("Invalid choice \nTry again.")
             airplane_choice = int(input("Enter an airplane choice: "))
@@ -158,8 +158,7 @@ class AirplaneUI:
         result = f"\nName: {name}\nType: {plane_type}\nManufacturer: {manufacturer}\nModel: {model}\nNumber of seats: {number_of_seats}"
         print(result)
 
-        save_prompt = input("\nWould you like to save this new airplane, (y)es or (n)o? ").lower()  # TODO validate input, y or n
-
+        save_prompt = input("\nWould you like to save this new airplane, (y)es or (n)o? ").lower() 
         if save_prompt == "y":
             airplane = Airplane(name, plane_type, manufacturer, model, number_of_seats)
             self.logic_wrapper.add_airplane(airplane)
