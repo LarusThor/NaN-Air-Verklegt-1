@@ -90,9 +90,12 @@ class ValidationLL:
 
     def validate_year(self, year: str) -> bool:
         try:
-            int_year = int(year)
+            year_int = int(year)
+            if year_int >= 0:
+                return True
         except ValueError:
             return False
+    
 
     def validate_save_new(self, str) -> bool:
         pass
