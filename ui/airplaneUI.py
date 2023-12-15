@@ -79,9 +79,9 @@ class AirplaneUI:
             print("Invalid choice \nTry again.")
             airplane_choice = input("Enter an airplane choice: ")
 
-        title = f"\nAll pilots qualified to fly {planes[airplane_choice]}:"
+        title = f"\nAll pilots qualified to fly {planes[int(airplane_choice)]}:"
         result = ""
-        pilots = pilots_by_license[planes[airplane_choice]]
+        pilots = pilots_by_license[planes[int(airplane_choice)]]
 
         for pilot in pilots:
             result += pilot + "\n"

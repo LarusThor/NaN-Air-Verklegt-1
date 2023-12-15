@@ -102,12 +102,12 @@ class DestinationsUI:
             contact_number = input("Enter the number of the contact number: ")
             return contact_number
 
-        estimated_flight_time = input("Enter the estimated flight time: ")
+        estimated_flight_time = input("Enter the estimated flight time: (HH:MM:SS): ").strip()
         while not self.validation.validate_time(estimated_flight_time):
             print(
                 "ERROR: Invalid flight time. \nFlight time should be in the format: 00:00:00. "
             )
-            estimated_flight_time = input("Enter the estimated flight time: ")
+            estimated_flight_time = input("Enter the estimated flight time: (HH:MM:SS): ").strip()
 
         print("New destination:")
         print("=" + "-=" * 20)
