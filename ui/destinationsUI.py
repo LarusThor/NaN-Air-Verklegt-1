@@ -20,7 +20,6 @@ class DestinationsUI:
         return action
 
 
-
     def get_all_destinations(self) -> None:
         """Will get all the destinations from the logic wrapper and turn them into a one string. 
         Then calls a function in the menu_manager that will take care of printing everything out."""
@@ -61,10 +60,10 @@ class DestinationsUI:
             print("ERROR: Invalid name. \nName has to be a string of length < 3. ")
             id = input("Enter the 3 letter ID: ").upper()
         
-        country = input("Enter the country: ").title()
+        country = input("Enter the destination: ").title()
         while not self.validation.validate_destination_id(country):
             print("ERROR: Invalid destination id. \nID has to be a string of length 3. ")
-            country = input("Enter the country: ").title()
+            country = input("Enter the destination: ").title()
         
         airport = input("Enter the airport: ").title()
         airport_exists = True
@@ -97,7 +96,7 @@ class DestinationsUI:
             return contact_number
         
         estimated_flight_time = input("Enter the estimated flight time: ")
-        while not self.validation.validate_flight_time(estimated_flight_time):
+        while not self.validation.validate_time(estimated_flight_time):
             print("ERROR: Invalid flight time. \nFlight time should be in the format: 00:00:00. ")
             estimated_flight_time = input("Enter the estimated flight time: ")
             
@@ -141,7 +140,11 @@ class DestinationsUI:
         for index, destination in enumerate(destination_list):
             print(f"{index + 1}. {destination.destination}")
 
-        destination_choice = int(input("Choose destination: "))
+        destination_choice = input("Choose destination: ")
+        while destination_choice != "1" and destination_choice != "2" and destination_choice != "3" and destination_choice != "4" and destination_choice != "5":
+            print("Invalid input! You can choose 1, 2, 3, 4 and 5")
+            print("-" * 30)
+            destination_choice = input("Destination: ")
         destination_info = destination_list[destination_choice - 1]
 
 
