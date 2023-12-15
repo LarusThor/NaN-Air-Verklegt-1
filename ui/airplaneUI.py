@@ -32,22 +32,34 @@ class AirplaneUI:
 
     def airplane_options(self) -> str:  # 1
         """Displays the options a user can chose in Airplanes."""
+
         self.menus.display_options("Airplane:", AIRPLANE_OPTIONS)
-        action = str(input("Enter your action: ").lower())
+        action = input("Enter your action: ").lower()
+
         return action
 
     def airplane_types_and_licence(self) -> str:  # 1-1
+
         """Lets a user chose options for airplane types and licence."""
-        self.menus.display_options(
-            "Airplane types and license:", AIRPLANE_TYPES_AND_LICENSE_OPTIONS
-        )
-        user_input = str(input("Enter your action: ").lower())
+        self.menus.display_options("Airplane types and license:", AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
+        user_input = input("Enter your action: ").lower()
+
         return user_input
 
     def pilots_by_license(self) -> None:  # 1-1-1
         """Displays user options for pilots by license."""
+        
         self.menus.display_options("Pilots by license:", PILOTS_BY_LICENSE_OPTIONS)
-        user_input = str(input("Enter your action: ").lower())
+        user_input = input("Enter your action: ").lower()
+
+        return user_input
+    
+    def airplane_usage_options(self) -> str:  # 1-3
+        """Calls a function in the menu_manager that prints out the options. Then asks the user for their action and returns the input"""
+
+        self.menus.display_options("Airplane usage:", AIRPLANE_USAGE)
+        user_input = input("Enter your action: ").lower()
+
         return user_input
 
     def get_pilots_for_a_specific_type(self) -> None:  # 1-1-1-1
@@ -127,13 +139,9 @@ class AirplaneUI:
         print("\nAdding a new airplane to the system: ")
         print("Examples of airplane names:  TF-EPG, TF-UVR, TF-XZR")
 
-        name = input(
-            "Enter airplane insignia: "
-        )  # TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
+        name = input("Enter airplane insignia: ")  # TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
         while not self.validation.validate_airplane_name(name):
-            print(
-                "ERROR: Invalid airplane insignia. \nInsignia must start with TF- followed by 3 letters. "
-            )
+            print("ERROR: Invalid airplane insignia. \nInsignia must start with TF- followed by 3 letters. ")
             name = input("Enter airplane insignia: ")
 
         planes = {(i + 1): plane for i, plane in enumerate(airplane_types)}
@@ -150,24 +158,18 @@ class AirplaneUI:
         result = f"\nName: {name}\nType: {plane_type}\nManufacturer: {manufacturer}\nModel: {model}\nNumber of seats: {number_of_seats}"
         print(result)
 
-        save_prompt = input(
-            "\nWould you like to save this new airplane, (y)es or (n)o? "
-        ).lower()  # TODO validate input, y or n
+        save_prompt = input("\nWould you like to save this new airplane, (y)es or (n)o? ").lower()  # TODO validate input, y or n
+
         if save_prompt == "y":
             airplane = Airplane(name, plane_type, manufacturer, model, number_of_seats)
             self.logic_wrapper.add_airplane(airplane)
             user_input = self.menus.print_the_info("New airplane has been saved!")
             return user_input
+        
         elif save_prompt == "n":
             user_input = self.menus.print_the_info("New airplane was not saved")
             return user_input
 
-    def airplane_usage_options(self) -> str:  # 1-3
-        """Calls a function in the menu_manager that prints out the options. Then asks the user for their action and returns the input"""
-
-        self.menus.display_options("Airplane usage:", AIRPLANE_USAGE)
-        user_input = str(input("Enter your action: ").lower())
-        return user_input
 
     def most_used_airplane(self) -> None:  # 1-3-1
         """Calls a function in the menu_manager that takes care of printing the title and the result of the most used airplane."""
