@@ -105,6 +105,7 @@ class ScheduleUI:
 
         title = "Week schedule: "
         result = self.logic_wrapper.employee_schedule_by_week(employee, year, week)
+        
         user_input = self.menus.print_the_info(title, result)
         
         return user_input
