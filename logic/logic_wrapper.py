@@ -254,7 +254,7 @@ class LogicWrapper:
         self.validation.validate_social_ID(socialID)
 
     def validate_flight(self, flight: str) -> bool:
-        """Validates flight. #TODO: skrifa betur, ég skil ekki þennan almennilega."""
+        """Validates flight."""
         self.validation.validate_flight(flight)
 
     def validate_address(self, address: str) -> bool:
@@ -274,12 +274,8 @@ class LogicWrapper:
         self.validation.validate_flight_nr(flight_nr)
 
     def validate_voyage(self, voyage: str) -> bool:
-        """TODO: einhver sem skilur þennan skilgreina."""
+        """Validates voyage."""
         self.validation.validate_voyage(voyage)
-
-    # def date_validation(self, date: datetime) -> bool:
-    #     """validates date."""
-    #     self.validation.date_validation(date)
 
     def validate_date(self, date:str) -> bool:
         """ Validates a date """
