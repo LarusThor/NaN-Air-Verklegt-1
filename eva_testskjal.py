@@ -11,7 +11,7 @@ from ui.employeesUI import EmployeeUI
 emp = EmployeeUI()
 logic = LogicWrapper()
 
-print(emp.get_pilots())
+print(emp.get_all_employees())
 
 
 
