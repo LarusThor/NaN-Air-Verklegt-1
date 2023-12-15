@@ -32,7 +32,7 @@ class ValidationLL:
         
 
     def validate_email(self, email: str) -> bool:
-        """TODO: add docstring"""
+        """Validates emails"""
         return "@" in email and "." in email
 
     def validate_address(self, address: str) -> bool:
@@ -97,26 +97,7 @@ class ValidationLL:
             return False
     
 
-    def validate_save_new(self, str) -> bool:
-        pass
-
-    def validate_flight(self, flight: str) -> bool:
-        """TODO: add docstring"""
-        pass
-
-    def validate_voyage(self, voyage: str) -> bool:
-        """TODO: add docstring"""
-        pass
-
-    def date_validation(self, departure: datetime) -> bool:
-        """TODO: add docstring"""
-        pass
-
     # destination
-
-    def validate_all_destinations(self, all_destinations) -> bool:
-        return
-
     def validate_destination_name(self, destination_name: str) -> bool:
         """Validates name input."""
         name_values = destination_name.split()
