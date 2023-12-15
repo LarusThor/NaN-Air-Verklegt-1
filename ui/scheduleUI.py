@@ -9,6 +9,7 @@ SCHEDULE_FOR_A_DAY_OPTIONS = ["1. See who was working", "2. See who was not work
 
 
 class ScheduleUI:
+    """"Instantiate a ScheduleUI object."""
     def __init__(self) -> None:
         self.menus = Menu()
         self.logic_wrapper = LogicWrapper()
@@ -98,7 +99,6 @@ class ScheduleUI:
             print("ERROR: invalid year.\nYear must be a number.")
             year = input("Enter year: ")
         week = input("Enter week: ")
-
         while not self.validation.validate_weeks(week):
             print("ERROR: invalid week number.\nWeek must be from 1-52.")
             week = input("Enter week: ") 

@@ -27,12 +27,12 @@ class ValidationLL:
         return len(socialID) == 10 and all((digit.isdigit() for digit in socialID))
 
     def validate_number(self, number: str) -> bool:
-        """ TODO: add docstring """
+        """Validates a phone number."""
         return len(number) == 7 and all(digit.isdigit()for digit in number) and int(number) > 1
         
 
     def validate_email(self, email: str) -> bool:
-        """TODO: add docstring"""
+        """Validates emails"""
         return "@" in email and "." in email
 
     def validate_address(self, address: str) -> bool:
@@ -90,30 +90,14 @@ class ValidationLL:
 
     def validate_year(self, year: str) -> bool:
         try:
-            int_year = int(year)
+            year_int = int(year)
+            if year_int >= 0:
+                return True
         except ValueError:
             return False
-
-    def validate_save_new(self, str) -> bool:
-        pass
-
-    def validate_flight(self, flight: str) -> bool:
-        """TODO: add docstring"""
-        pass
-
-    def validate_voyage(self, voyage: str) -> bool:
-        """TODO: add docstring"""
-        pass
-
-    def date_validation(self, departure: datetime) -> bool:
-        """TODO: add docstring"""
-        pass
+    
 
     # destination
-
-    def validate_all_destinations(self, all_destinations) -> bool:
-        return
-
     def validate_destination_name(self, destination_name: str) -> bool:
         """Validates name input."""
         name_values = destination_name.split()
@@ -124,7 +108,7 @@ class ValidationLL:
     def validate_destination_id(self, destination_id: str) -> bool:
         """Validates name input."""
         name_values = destination_id.split()
-        return len(destination_id) >= 3 and all(
+        return len(name_values) == 3 and all(
             (char.isalpha() for char in name_values)
         )
 

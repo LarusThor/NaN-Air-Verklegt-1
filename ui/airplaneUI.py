@@ -11,7 +11,7 @@ AIRPLANE_USAGE = ["1. Get most used airplane", "2. Get airplane that has flown t
 
 class AirplaneUI:
     def __init__(self) -> None:
-        """ TODO: add docstring """
+        """"Instantiate a ArplaneUI object."""
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
         self.validation = self.logic_wrapper.validation
