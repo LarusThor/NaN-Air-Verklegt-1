@@ -121,7 +121,7 @@ class AirplaneUI:
         return user_input
 
     def add_airplane(self) -> None:  # define
-        """TODO: add docstring"""
+        """Adds airplane to the system."""
         airplane_types = self.logic_wrapper.airplane_types()
 
         print("\nAdding a new airplane to the system: ")

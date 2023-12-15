@@ -27,7 +27,6 @@ MAIN_MENU_OPTIONS = [
 class Main:
     """"Instantiate a Main object."""
     def __init__(self) -> None:
-        """TODO: add docstring"""
         self.menus = Menu()
         self.airplane_ui = AirplaneUI()
         self.destinations_ui = DestinationsUI()
@@ -39,7 +38,7 @@ class Main:
         self.validation = self.logic_wrapper.validation
 
     def input_prompt(self) -> None:
-        """ TODO: add docstring"""
+        """Takes care of calling all options based on user input and calling the correct function."""
         while True:
             self.menus.main_menu()
             

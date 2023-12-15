@@ -11,36 +11,4 @@ from ui.employeesUI import EmployeeUI
 emp = EmployeeUI()
 logic = LogicWrapper()
 
-print(emp.choose_rank_and_licence("Pilot"))
-
-
-
-#print(logic.airplane_types())
-
-#print(logic.get_most_experienced_employee())
-
-
-# airplane_types = logic.airplane_types()
-# licences = {(i+1): licence for i, licence in (airplane_types)}
-# print(licences)
-
-# print("Licenses:")
-# for index, license in licences.items():
-#     print(f"{index}. {license}")
-    #print(f"{license.keys()}. {licence.values()}")
-
-
-# sc = ScheduleUI()
-# fi = FlightInfoUI()
-
-# print(logic.airplane_types())
-
-#print(fi.get_flight_status_by_voyage())
-#print(fi.get_flight_status_by_voyage())
-
-# ma = Main()
-# sc = ScheduleUI()
-
-
-
-# print(sc.who_was_working(dt))
+print(emp.get_all_employees())
