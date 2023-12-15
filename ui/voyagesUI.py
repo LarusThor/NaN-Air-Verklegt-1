@@ -76,20 +76,20 @@ class VoyagesUI:
             print("Invalid date entered. ")
             departure_date = input(f"Enter departure date from {departure_location} (YYYY-MM-DD): ")
 
-        departure_time = input(f"Enter departure time from {departure_location}: hours:minutes:seconds: ") 
+        departure_time = input(f"Enter departure time from {departure_location} (HH:MM:SS): ") 
         while not self.validation.validate_time(departure_time):
             print("Invalid time entered. ")
-            departure_time = input(f"Enter departure date from {departure_location}: hours:minutes:seconds: ")
+            departure_time = input(f"Enter departure date from {departure_location} (HH:MM:SS): ")
 
         return_flight_date = input(f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): ")
         while not self.validation.validate_date(return_flight_date):
             print("Invalid date entered. ")
             return_flight_date = input(f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): ")
-        return_flight_time = input(f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds: ")
+        return_flight_time = input(f"Enter departure time from {arrival_location.destination} (HH:MM:SS): ")
 
         while not self.validation.validate_time(return_flight_time):
             print("Invalid time entered. ")
-            return_flight_time = input(f"Enter departure date from {arrival_location.destination}: hours:minutes:seconds: ")
+            return_flight_time = input(f"Enter departure date from {arrival_location.destination} (HH:MM:SS): ")
 
       
         # Calculate arrical time from departure time
