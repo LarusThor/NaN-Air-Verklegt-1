@@ -173,7 +173,7 @@ class AirplaneUI:
     def most_used_airplane(self) -> None:  # 1-3-1
         """Calls a function in the menu_manager that takes care of printing the title and the result of the most used airplane."""
 
-        title = "The mose used airplane is:"
+        title = "The most used airplane is:"
         result = f"{self.logic_wrapper.airplane_usage()[0]} - {self.logic_wrapper.airplane_usage()[1][self.logic_wrapper.airplane_usage()[0]]} voyages"
 
         user_input = self.menus.print_the_info(title, result)
