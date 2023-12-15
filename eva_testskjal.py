@@ -11,7 +11,7 @@ from ui.employeesUI import EmployeeUI
 emp = EmployeeUI()
 logic = LogicWrapper()
 
-print(logic.popular_destination())
+print(emp.get_employee())
 
 
 

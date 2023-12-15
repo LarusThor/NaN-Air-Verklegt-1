@@ -49,6 +49,9 @@ class ScheduleUI:
     def get_schedule_by_day(self) -> str:
         """Gets the date the user wants to see a schedule for."""
         date_input = input("Input date (year-month-day): ").strip()
+        while not self.validation.validate_date(date_input):
+            print("Invalid date entered. ")
+            date_input = input("Input date (year-month-day): ").strip()
         date_format = "%Y-%m-%d"
         a_date = datetime.strptime(date_input, date_format)
 
@@ -114,6 +117,9 @@ class ScheduleUI:
     def get_datetime(self) -> date:
         """Gets a date from the user and converts it into datetime."""
         date_input = input("Input date (year-month-day): ").strip()
+        while not self.validation.validate_date(date_input):
+            print("Invalid date entered. ")
+            date_input = input("Input date (year-month-day): ").strip()
         date_format = "%Y-%m-%d"
         a_date = datetime.strptime(date_input, date_format)
 

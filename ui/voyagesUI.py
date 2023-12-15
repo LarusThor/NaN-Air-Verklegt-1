@@ -70,16 +70,35 @@ class VoyagesUI:
         departure_date = input(
             f"Enter departure date from {departure_location}: year-month-day: "
         )  # TODO: validate
+        while not self.validation.validate_date(departure_date):
+            print("Invalid date entered. ")
+            departure_date = input(
+            f"Enter departure date from {departure_location}: year-month-day: "
+        )
         departure_time = input(
             f"Enter departure time from {departure_location}: hours:minutes:seconds"
         )  # TODO: bæta við formatti hvernig þið viljið tímann og validate
-
+        while not self.validation.validate_time(departure_time):
+            print("Invalid time entered. ")
+            departure_time = input(
+            f"Enter departure date from {departure_location}: hours:minutes:seconds. "
+        )
         return_flight_date = input(
             f"Enter departure date from {arrival_location.destination}: year-month-day: "
         )  # TODO: validate
+        while not self.validation.validate_date(return_flight_date):
+            print("Invalid date entered. ")
+            return_flight_date = input(
+            f"Enter departure date from {arrival_location.destination}: year-month-day: "
+        )
         return_flight_time = input(
-            f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds"
+            f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds."
         )  # TODO: validate
+        while not self.validation.validate_time(return_flight_time):
+            print("Invalid time entered. ")
+            return_flight_time = input(
+            f"Enter departure date from {arrival_location.destination}: hours:minutes:seconds. "
+        )
 
         # TODO: use datetime module
         # Calculate arrical time from departure time
@@ -159,6 +178,9 @@ class VoyagesUI:
     def get_voyage_date(self) -> str:
         """Gets date input from user."""
         date = input("Enter year date; year-month-day: ")
+        while not self.validation.validate_date(date):
+            print("Invalid date entered. ")
+            date = input("Input date (year-month-day): ").strip()
         return date
 
     def __get_flight_attendants(self, available_employees: dict[str, Employee]):
@@ -368,20 +390,23 @@ class VoyagesUI:
             user_input = self.menus.print_the_info("Voyages have been staffed!")
 
     def list_voyage_options(self) -> str:
-        """TODO: add docstring"""
+        """Lists user options in voyages."""
         self.menus.display_options("List voyages", LIST_VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
     def voyage_past_or_present_options(self) -> str:
-        """TODO: add docstring"""
+        """Prints options to see information about future voyages or past voyages."""
         self.menus.display_options("List voyages:", PAST_OR_PRESENT_VOYAGES)
         action = str(input("Enter your action: ").lower())
         return action
 
     def get_date(self) -> str:
-        """TODO: add docstring"""
+        """Gets a date from the user."""
         date = input("Enter date; year-month-day: ")
+        while not self.validation.validate_date(date):
+            print("Invalid date entered. ")
+            date = input("Input date (year-month-day): ").strip()
         return date
 
     def get_week(self) -> str:
@@ -397,7 +422,7 @@ class VoyagesUI:
         return year, week
 
     def get_upcoming_voyage_by_date(self, date: date) -> str:
-        """TODO: add docstring"""
+        """Prints upcoming voyages by day."""
         title = f"Upcoming voyages on {date}:"
         result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"
         voyage_counter = 0
@@ -413,7 +438,7 @@ class VoyagesUI:
         return user_input
 
     def get_upcoming_voyage_by_week(self, year: str, week_nr: str) -> None:
-        """TODO: add docstring"""
+        """Prints upcoming voyages by week"""
         title = f"Upcoming voyages on week {week_nr}:"
         result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"
         voyage_counter = 0
