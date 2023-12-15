@@ -6,18 +6,12 @@ from ui.scheduleUI import ScheduleUI
 from ui.flight_infoUI import FlightInfoUI
 from ui.airplaneUI import AirplaneUI
 from ui.destinationsUI import DestinationsUI
-
+from ui.employeesUI import EmployeeUI
 #kemur aldrei upp að þau séu að vinna í vikunni
+emp = EmployeeUI()
 
-logic = LogicWrapper()
-de = DestinationsUI()
+print(emp.get_most_experienced())
 
-dd = datetime(2023, 11, 6, 0, 0, 0)
-dt = datetime(2023, 11, 7, 0, 0, 0)
-
-print(logic.airplane_insignia_by_types())
-
-print(logic.pilots_by_license())
 
 
 #print(logic.airplane_types())

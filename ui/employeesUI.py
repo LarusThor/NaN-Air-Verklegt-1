@@ -88,7 +88,7 @@ class EmployeeUI:
         """Gets a social id number from a user and gets that employee from the logic wrapper."""
 
         employee_info = self.logic_wrapper.employee_info
-        social_id = str(input("Enter employee social ID: ")).strip()
+        social_id = str(input("Enter employee social ID: ")).strip() #TODO: validate
 
         employee = employee_info(social_id)
 
@@ -100,7 +100,7 @@ class EmployeeUI:
 
         employee_info = self.logic_wrapper.employee_info
 
-        social_id = str(input("Enter employee social ID: ")).strip()
+        social_id = str(input("Enter employee social ID: ")).strip()#TODO: validate
 
         while not self.validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID. \nSocial ID should be 10 digits. ")
@@ -286,7 +286,7 @@ class EmployeeUI:
             rank_choice = input("\nChoose a rank: ").strip()
             
             while rank_choice != "1" and rank_choice != "2":
-                print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
+                print("Invalid input! You can choose 1 or 2")
                 rank_choice = input("Rank: ")
             if rank_choice == "1" or rank_choice == "2":
                 # A dictionary of all the airplane types, updates if new airplane type is added
@@ -313,7 +313,7 @@ class EmployeeUI:
             rank_choice = input("\nChoose a rank: ").strip()
 
             while rank_choice != "1" and rank_choice != "2":
-                print("Invalid input! You can choose 1 or 2")#TODO: ætti frekar að vera í validation
+                print("Invalid input! You can choose 1 or 2")
                 rank_choice = input("Rank: ")
             licence = "N/A"
 
@@ -441,12 +441,14 @@ class EmployeeUI:
 
 
 
-    def get_most_experienced(self) -> None: #TODO ef að það er fleiri en ein manneskja
+    def get_most_experienced(self) -> None:
         most_exper = self.logic_wrapper.get_most_experienced_employee()
-
+        result = ""
         name, voyages = most_exper[0][0], most_exper[0][1]
         title = "The most experienced employee:"
-        result = f"{name} has gone on {int(voyages)} voyages."
+
+        for name, voyages in most_exper:
+            result += f"{name} has gone on {int(voyages)} voyages."
 
         action = self.menus.print_the_info(title, result)
         return action
