@@ -159,8 +159,11 @@ class ValidationLL():
         return len(airport_name) >=3 and "Airport" in airport_name and all((char.isalpha()for char in name_values))
     
     def validate_distance_from_iceland(self, distance_from_iceland: int) -> bool:
-        return (distance_from_iceland) >=0 and (distance_from_iceland) <= 400000 and all((digit.isdigit()for digit in distance_from_iceland))
-    
+        try:
+            distance_from_iceland = int(distance_from_iceland)
+            return (distance_from_iceland) >=0 and (distance_from_iceland) <= 400000 and all((digit.isdigit()for digit in distance_from_iceland))
+        except ValueError:
+            return False
     
 # menu 
     def validate_back_or_quit(self, user_input: str):

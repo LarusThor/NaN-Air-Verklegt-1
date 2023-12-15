@@ -53,30 +53,30 @@ class DestinationsUI:
         
         print("New destination")
         
-        id = input("Enter the ID: ")
+        id = input("Enter the 3 letter ID: ").upper()
         while not self.validation.validate_destination_name(id):
             print("ERROR: Invalid name. \nName has to be a string of length < 3. ")
-            id = input("Enter the ID: ")
+            id = input("Enter the 3 letter ID: ").upper()
         
-        country = input("Enter the country: ")
+        country = input("Enter the country: ").title()
         while not self.validation.validate_destination_id(country):
             print("ERROR: Invalid destination id. \nID has to be a string of length 3. ")
-            country = input("Enter the country: ")
+            country = input("Enter the country: ").title()
         
-        airport = input("Enter the airport: ")
+        airport = input("Enter the airport: ").title()
         while not self.validation.validate_airport(airport):
             print("ERROR: Invalid airport. \nAirport name has to be a string of length > 3 and contain the word Airport.")
-            airport = input("Enter the airport: ")
+            airport = input("Enter the airport: ").title()
         
         distance_from_iceland = input("Enter the distance form Iceland: ")
         while not self.validation.validate_distance_from_iceland(distance_from_iceland):
             print("ERROR: Invalid distance. \nDistance has to be an integer less than 40.000.")
             distance_from_iceland = input("Enter the distance form Iceland: ")
         
-        contact_name = input("Enter the name of the contact person:")
+        contact_name = input("Enter the name of the contact person:").title()
         while not self.validation.validate_name(contact_name):
             print("ERROR: Invalid name. \nName has to be a string of length < 3. ")
-            contact_name = input("Enter the name of the contact person: ")
+            contact_name = input("Enter the name of the contact person: ").title()
         
         contact_number = input("Enter the number of the contact number: ")
         while not self.validation.validate_number(contact_number):
