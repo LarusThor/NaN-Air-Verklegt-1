@@ -66,6 +66,7 @@ class ValidationLL:
             return False
 
     def validate_airplane_choice(self, airplane_choice: int) -> bool:
+        """Validates airplane choices."""
         try:
             airplane_choice = int(airplane_choice)
             return True
@@ -76,6 +77,7 @@ class ValidationLL:
         return "Fokker" in manufacturer_name or "BAE" in manufacturer_name
 
     def validate_model_name(self, model_name) -> bool:
+        """Validates model name"""
         return "F100" in model_name or "F28" in model_name or "146" in model_name
 
     def validate_weeks(self, week: str) -> bool:
@@ -122,6 +124,7 @@ class ValidationLL:
         )
 
     def validate_distance_from_iceland(self, distance_from_iceland: int) -> bool:
+        """Validates distance from iceland."""
         try:
             distance_from_iceland = int(distance_from_iceland)
             return (distance_from_iceland >= 0) >=0 and (distance_from_iceland <= 40000) and all((digit.isdigit()for digit in str(distance_from_iceland)))
@@ -132,6 +135,7 @@ class ValidationLL:
 
 # menu 
     def validate_back_or_quit(self, user_input: str):
+        """Validates back or quit fucntion."""
         return user_input.lower() == "b" or user_input == "q"
 
     # voyages
@@ -152,6 +156,7 @@ class ValidationLL:
     
 
     def validate_date(self, date:str) -> bool:
+        """Validates dates"""
         if len(date) == 10:
             if date[0:4].isdigit() == True:
                 if date[4] == "-" and date[7] == "-":
@@ -162,6 +167,7 @@ class ValidationLL:
     
 
     def validate_time(self, time) -> bool:
+        """Validates time."""
         if len(time) == 8:
             if time[0:2].isdigit() == True:
                 if time[3] == ":" and time[5] == ":":
