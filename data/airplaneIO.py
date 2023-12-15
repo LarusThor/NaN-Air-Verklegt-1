@@ -11,13 +11,7 @@ class AirplaneIO:
             lines = f.readlines()
             for line in lines[1:]:
                 line = line.strip()
-                (
-                    plane_insignia,
-                    plane_type_id,
-                    manufacturer,
-                    model,
-                    capacity,
-                ) = line.split(",")
+                (plane_insignia, plane_type_id, manufacturer, model, capacity,) = line.split(",")
                 aircraft = Airplane(
                     plane_insignia=plane_insignia,
                     plane_type_id=plane_type_id,

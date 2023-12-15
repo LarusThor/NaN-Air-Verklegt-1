@@ -78,7 +78,16 @@ class ScheduleUI:
 
     def get_employee(self) -> str:
         """TODO: add docstring"""
-        employee = self.employeeUI.get_not_social_id()
+        social_id = input("Enter social ID: ")
+        valid_id = False
+
+        while valid_id != True:
+            try:
+                employee = self.logic_wrapper.employee_info(social_id)
+                valid_id = True
+            except KeyError or AttributeError:
+                print("ERROR: Employee is not in the system! ")
+                social_id = input("Social ID: ")
         return employee
 
 
