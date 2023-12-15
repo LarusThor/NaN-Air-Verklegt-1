@@ -140,7 +140,16 @@ class VoyagesUI:
         elif save_prompt == "n":
             print("New voyage was not saved.")
 
+    def get_voyage_flight_number(self) -> str:
+        """TODO: add docstring"""
+        flight_number = input("Enter flight number: ")
+        return flight_number
 
+    def get_voyage_date(self) -> str:
+        """TODO: add docstring"""
+        date = input("Enter year date; year-month-day: ")
+        return date
+        
     #############################################################################################################################################
 
     def __get_flight_attendants(self, available_employees: dict[str, Employee]):

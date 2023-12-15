@@ -195,6 +195,10 @@ class LogicWrapper():
     def staff_availability_check(self,captain, departure, return_flight_arrival):
         return self.list_upcoming_voyage.staff_availability(captain, departure, return_flight_arrival)
     
+    def voyage_info_for_return_flight(self, voyage_flight_number: str, voyage_date: str) -> UpcomingVoyage:
+        return self.list_upcoming_voyage.detect_voyage_info_return_flight(voyage_flight_number, voyage_date)
+    
+     
 
     def get_available_airplanes_over_period(self, period_start: datetime, period_end: datetime) -> dict[str, Employee]:
         """ Returns a list of all airplanes that are available over a given period. 

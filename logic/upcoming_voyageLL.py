@@ -59,7 +59,16 @@ class UpcomingVoyageLL:
                 #license_check in pilots_by_license.keys() and pilot_name in pilots_by_license.values():
                     return True
                 
+    def detect_voyage_info_return_flight(self, voyage_flight_number: str, voyage_date: str) -> UpcomingVoyage: #TODO: typehint, mögulega skila sem lista
+        flight_info = self.logic.upcoming_voyages()
+        for key, item in flight_info.items():
+            # for id_key, some in key: #1, (UPcomingVoyage(id=1, flight=Na021))
+            if voyage_flight_number == item.flight_nr and voyage_date in item.departure.strftime("%Y-%m-%d %H:%M:%S"):
+                id_of_flight = key
 
+        return_flight_id = int(id_of_flight) + 1
+        return flight_info[str(return_flight_id)]
+    
     def get_voyage_by_flight_nr_and_date(self, flight_nr: str, departure_date: str) -> UpcomingVoyage:
         voyages = self.logic.data_wrapper.get_upcoming_flights()
 
