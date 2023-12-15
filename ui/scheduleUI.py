@@ -123,8 +123,16 @@ class ScheduleUI:
         """ TODO docstring """
         print("See total hours an employee has worked! ")
 
-        social_id = self.employeeUI.get_not_social_id()
-        employee = self.logic_wrapper.employee_info(social_id)
+        valid_id = False
+        social_id = self.employeeUI.get_social_id()
+        while valid_id == False:
+            try:
+                employee = self.logic_wrapper.employee_info(social_id)
+                valid_id = True
+            except KeyError:
+                print("There is no employee in the system with that ID \nTry again!")
+                social_id = self.employeeUI.get_social_id()
+
         print(f"Choose what dates to see {employee.name}'s work schedule for.")
         print("\nStart of time period. ")
 
