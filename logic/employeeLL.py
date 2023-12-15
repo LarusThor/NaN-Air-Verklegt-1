@@ -105,7 +105,7 @@ class EmployeeLL:
 
         return flights_list, total_hours
     
-    def get_total_future_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> tuple[list[str], float]:
+    def get_total_future_hours_worked(self, employee: Employee, start: datetime, end: datetime) -> float:
         """Returns total hours an employee has worked."""
         total_hours = 0
         upcoming_voyage_dict = self.logic.upcoming_voyages()
@@ -158,3 +158,32 @@ class EmployeeLL:
    
 
         return(max_list)
+
+
+    def get_available_employees_over_period(self, period_start: datetime, period_end: datetime) -> dict[str, Employee]:
+        """" TODO: add docstring. """
+        employees = list(self.logic.data_wrapper.get_all_staff_members().values())
+
+        available_employees = {}
+        for employee in employees:
+            if self.get_total_future_hours_worked(employee, period_start, period_end) == 0:
+                available_employees[employee.social_id] = employee
+
+        return available_employees
+
+    def __get_available_pilots_fot_plane_type_and_rank(self, plane_type_id: str, rank: str) -> dict[str, Employee]:
+        employees = list(self.logic.data_wrapper.get_all_staff_members().values())
+
+        qualified_captains = {}
+        for employee in employees:
+            if employee.rank == rank and employee.licence == plane_type_id:
+                qualified_captains[employee.social_id] = employee
+        return qualified_captains
+
+
+    def get_qualified_captains_for_plane_type(self, plane_type_id: str) -> dict[str, Employee]:
+        return self.__get_available_pilots_fot_plane_type_and_rank(plane_type_id, "Captain")
+
+    def get_qualified_copilots_for_plane_type(self, plane_type_id: str) -> dict[str, Employee]:
+        return self.__get_available_pilots_fot_plane_type_and_rank(plane_type_id, "Copilot")
+

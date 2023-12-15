@@ -1,7 +1,10 @@
 from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
 from datetime import datetime, date
+from typing import Any, Callable
 from model.upcoming_voyage_model import UpcomingVoyage
+from model.employee_model import Employee
+from model.upcoming_voyage_model import UNSTAFFED
 
 VOYAGES_OPTIONS = [
     "1. Create a voyage",
@@ -10,6 +13,7 @@ VOYAGES_OPTIONS = [
     "4. Cancel a voyage",
 ]
 
+NUM_FLIGHT_ATTENDANTS_PER_FLIGHT = 5
 LIST_VOYAGES_OPTIONS = ["1. List of voyages by day", "2. List of voyages by week"]
 PAST_OR_PRESENT_VOYAGES = ["1. List of upcoming voyages", "2. List of past voyages"]
 VOYAGE_HEADER = "{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format(
@@ -26,70 +30,78 @@ VOYAGE_HEADER = "{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format(
 
 class VoyagesUI:
     def __init__(self) -> None:
-        """ TODO: add docstring """
+        """TODO: add docstring"""
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
 
-
     def voyages_options(self) -> str:
-        """ TODO: add docstring """
+        """TODO: add docstring"""
         self.menus.display_options("Voyages:", VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
-#############################################################################################################################################
+    #############################################################################################################################################
 
     def add_voyage(self) -> None:
-        """ TODO: add docstring. """
+        """TODO: add docstring."""
         destination_list = self.logic_wrapper.destination_list()
         find_last_id = list(self.logic_wrapper.upcoming_voyages().keys())
 
         print("New voyage: ")
         print("=" + "-=" * 20)
 
+        flight_number = input(
+            "Enter flight number: "
+        )  # TODO: validate - format og lengd
+        departure_location = "Kef"  # NaN air always departs from Kef
 
-        flight_number = input("Enter flight number: ")#TODO: validate - format og lengd
-        departure_location = "Kef" #NaN air always departs from Kef
-        
         print("Choose an arrival destination")
         for index, destination in enumerate(destination_list):
             print(f"{index + 1}. {destination.destination}")
-        
+
         action = int(input("Enter choice: "))
-        arrival_location = destination_list[action -1]
+        arrival_location = destination_list[action - 1]
 
+        departure_date = input(
+            f"Enter departure date from {departure_location}: year-month-day: "
+        )  # TODO: validate
+        departure_time = input(
+            f"Enter departure time from {departure_location}: hours:minutes:seconds"
+        )  # TODO: bæta við formatti hvernig þið viljið tímann og validate
 
-        departure_date = input(f"Enter departure date from {departure_location}: year-month-day: ") #TODO: validate
-        departure_time = input(f"Enter departure time from {departure_location}: hours:minutes:seconds") #TODO: bæta við formatti hvernig þið viljið tímann og validate
-
-        return_flight_date = input(f"Enter departure date from {arrival_location.destination}: year-month-day: ")#TODO: validate
-        return_flight_time = input(f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds")#TODO: validate
-
+        return_flight_date = input(
+            f"Enter departure date from {arrival_location.destination}: year-month-day: "
+        )  # TODO: validate
+        return_flight_time = input(
+            f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds"
+        )  # TODO: validate
 
         # TODO: use datetime module
-        #Calculate arrical time from departure time
+        # Calculate arrical time from departure time
         date_format = "%Y-%m-%d %H:%M:%S"
         departure_date_time = departure_date + " " + departure_time
         arrival_date_time = return_flight_date + " " + return_flight_time
         departure_date_time = datetime.strptime(departure_date_time, date_format)
-        arrival_date_time = datetime.strptime(arrival_date_time, date_format) 
-    
-        calculated_arrival_flight_time = self.logic_wrapper.flight_time(arrival_location, departure_date_time)
-        calculated_return_flight_time = self.logic_wrapper.flight_time(arrival_location, arrival_date_time )
+        arrival_date_time = datetime.strptime(arrival_date_time, date_format)
 
+        calculated_arrival_flight_time = self.logic_wrapper.flight_time(
+            arrival_location, departure_date_time
+        )
+        calculated_return_flight_time = self.logic_wrapper.flight_time(
+            arrival_location, arrival_date_time
+        )
 
         the_last_id = find_last_id[-1]
         the_last_id = int(the_last_id)
         the_last_id += 1
-        
-        new_flight_number = int(flight_number[-2:]) + 1 #TODO commenta
+
+        new_flight_number = int(flight_number[-2:]) + 1  # TODO commenta
         if new_flight_number >= 100:
             back_flight_number = flight_number[:-3] + str(new_flight_number)
         else:
             back_flight_number = flight_number[:-2] + str(new_flight_number)
 
-
-        print("Would you like to save this new voyage: ") #TODO laga þetta heheheh
+        print("Would you like to save this new voyage: ")  # TODO laga þetta heheheh
         print("~" * 20)
         print("Flight id: ", the_last_id)
         print("Flight Number: ", flight_number)
@@ -98,19 +110,17 @@ class VoyagesUI:
         print("Departure date and time: ", departure_date_time)
         print("Arrival date and time: ", arrival_date_time)
 
-
-
         save_prompt = input("Would you like to save this new voyage, (y)es or (n)o? ")
         if save_prompt == "y":
-            #Two flights to make one voyage
+            # Two flights to make one voyage
 
             upcoming_flight1 = UpcomingVoyage(
                 id=the_last_id,
                 flight_nr=flight_number,
                 dep_from=departure_location,
                 arr_at=arrival_location.destination_id,
-                departure=departure_date_time, 
-                arrival=calculated_arrival_flight_time, 
+                departure=departure_date_time,
+                arrival=calculated_arrival_flight_time,
             )
 
             upcoming_flight2 = UpcomingVoyage(
@@ -119,7 +129,7 @@ class VoyagesUI:
                 dep_from=arrival_location.destination_id,
                 arr_at=departure_location,
                 departure=arrival_date_time,
-                arrival=calculated_return_flight_time, #
+                arrival=calculated_return_flight_time,  #
             )
 
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight1)
@@ -129,197 +139,222 @@ class VoyagesUI:
 
         elif save_prompt == "n":
             print("New voyage was not saved.")
-        
+
     def get_voyage_flight_number(self) -> str:
         """TODO: add docstring"""
         flight_number = input("Enter flight number: ")
         return flight_number
 
-    def get_voyage_date(self) -> str: 
+    def get_voyage_date(self) -> str:
         """TODO: add docstring"""
         date = input("Enter year date; year-month-day: ")
         return date
-    
-#############################################################################################################################################
 
-    def __get_flight_attendants(self, flight: UpcomingVoyage, return_flight: UpcomingVoyage):
+    #############################################################################################################################################
 
-        flight_attendants = []
-        
-        # TODO: rethink this whole thinkg
-        flight_attendant_check = False
-        while not flight_attendant_check:
-            flight_attendant_id = input("Enter social id of an additional flight attendant: ")
-            employee = self.logic_wrapper.employee_info(add_flight_attendant)
-            
-            if add_flight_attendant == "":
-                flight_attendants.extend(["N/A"] * 5)
-            
-            else:
-                if employee_information[add_flight_attendant].rank == "Flight Attendant":
-                    if self.logic_wrapper.staff_availability_check(employee, flight.departure, return_flight.arrival) == 0:
-                        flight_attendants = [add_flight_attendant]
-                        flight_attendant_check = True
-                    else:
-                        print(f"Flight Attendant {flight_attendant_id} not available on between {flight.departure} and {return_flight.arrival}")
-                        flight_attendant_check = False
+    def __get_flight_attendants(self, available_employees: dict[str, Employee]):
+        available_flight_attendants = [
+            employee
+            for employee in available_employees.values()
+            if employee.rank == "Flight Attendant"
+        ]
 
-                else:
-                    print(f"{add_flight_attendant} is not a Flight Attendant")
-                    flight_attendant_check = False
+        chosen_flight_attendants = []
 
+        while len(chosen_flight_attendants) < NUM_FLIGHT_ATTENDANTS_PER_FLIGHT:
+            choice_idx = self.__choose_element_from_list(
+                available_flight_attendants,
+                display_function=lambda fa: f"{fa.name}",
+                prompt=f"Choose flight attendant [{len(chosen_flight_attendants) + 1}/{NUM_FLIGHT_ATTENDANTS_PER_FLIGHT}]: ",
+                top_prompt="Available flight attendants",
+                allow_cancel=True,
+                cancel_option="Finish picking flight attendants",
+            )
 
-        while add_flight_attendant:
-            if len(flight_attendants) == 5:
-                add_flight_attendant = ""
-            flight_attendant_check = False
-            if len(flight_attendants) < 5:
-                while not flight_attendant_check:
-                    add_flight_attendant = input("Enter social id of an additional flight attendant: ")
-                    if add_flight_attendant not in flight_attendants:
-                        employee = self.logic_wrapper.employee_info(copilot)
-                        if add_flight_attendant == "": 
-                            unstaffed = 5 - len(flight_attendants)
-                            for flight_attendant in range(unstaffed):
-                                flight_attendants.append("N/A")
-                                flight_attendant_check = True
+            if choice_idx is None:
+                break
 
-                        else:
-                            if employee_information[add_flight_attendant].rank == "Flight Attendant":
-                                if self.logic_wrapper.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
-                                    flight_attendants.append(add_flight_attendant)
-                                    flight_attendant_check = True
+            flight_attendant = available_flight_attendants[choice_idx]
+            chosen_flight_attendants.append(flight_attendant)
 
-                                else:
-                                    print(f"Flight Attendant {flight_service_manager} not available on between {voyages_info.departure} and {return_flight_arrival}")
-                                    flight_attendant_check = False
+            del available_flight_attendants[choice_idx]
 
-                            else:
-                                print(f"{add_flight_attendant} is not a Flight Attendant")
-                                flight_attendant_check = False
-                    else:
-                        print("Employee already assigned, please try again.")
-                        flight_attendant_check = False
+        return chosen_flight_attendants
 
-        assert len(flight_attendants) == 5
+    def __choose_element_from_list(
+        self,
+        element_list: list[Any],
+        display_function: Callable[[Any], str],
+        prompt: str,
+        top_prompt: str = None,
+        allow_cancel=False,
+        cancel_option: str = None,
+    ) -> Any:
+        print()
+        if top_prompt:
+            print(top_prompt)
 
-        return flight_attendants
+        for index, element in enumerate(element_list):
+            print(f"{index + 1}. {display_function(element)}")
 
-    def manager_staffs_voyage(self, voyage_flight_number: str, voyage_date: str) -> None:
+        if allow_cancel:
+            if cancel_option is None:
+                cancel_option = "Cancel"
+            print(f"c. {cancel_option}")
+
+        while True:
+            choice = input(prompt).strip()
+
+            if allow_cancel and choice == "c":
+                return None
+
+            if choice.isnumeric():
+                choice_int = int(choice)
+                if 1 <= choice_int <= len(element_list):
+                    return choice_int - 1
+            print("Invalid choice!")
+
+    def manager_staffs_voyage(
+        self, voyage_flight_number: str, voyage_date: str
+    ) -> None:
         """TODO: add docstring"""
         # TODO: accept voyage_date as date object
 
         # get flight and return flight
-        flight: UpcomingVoyage = self.logic.get_upcoming_voyage_by_flight_nr_and_date(voyage_flight_number, voyage_date)
-        return_flight: UpcomingVoyage = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
-
-        employee_information = self.logic_wrapper.show_employee_info() #TODO: tengja frekar við emoloyee dict
+        flight: UpcomingVoyage = (
+            self.logic_wrapper.get_upcoming_voyage_by_flight_nr_and_date(
+                voyage_flight_number, voyage_date
+            )
+        )
+        return_flight: UpcomingVoyage = (
+            self.logic_wrapper.voyage_info_for_return_flight(
+                voyage_flight_number, voyage_date
+            )
+        )
 
         # get the aircraft to assign to the flights
-        aircraft_check = False
-        aircraft_id = None
-        while not aircraft_check:
-            # TODO: change to list select
-            plane_insignia = input("Enter a valid aircraft: ")
+        available_aircrafts = self.logic_wrapper.get_available_airplanes_over_period(
+            flight.departure, return_flight.arrival
+        )
+        aircraft_idx = self.__choose_element_from_list(
+            available_aircrafts,
+            lambda a: f"{a.plane_insignia}, {a.plane_type_id}",
+            "Choose aircraft: ",
+        )
+        aircraft = available_aircrafts[aircraft_idx]
+        aircraft_id = aircraft.plane_insignia
 
-            aircraft_id = self.logic_wrapper.get_airplanes_info_overview(plane_insignia)
-
-            if self.logic_wrapper.aircraft_availability(aircraft_id, flight.departure, return_flight.arrival) == 0:
-                aircraft_check = True
-            else:
-                print(f"Airplane {plane_insignia} not available on between {flight.departure} and {return_flight.arrival}")
-                aircraft_check = False
-            
         flight.aircraft_id = aircraft_id
         return_flight.aircraft_id = aircraft_id
 
+        # we can filter this list later later
+        available_employees = self.logic_wrapper.get_available_employees_over_period(
+            flight.departure, return_flight.arrival
+        )
+
         # get captain
-        captain_check = False
-        captain_social_id = None
-        while not captain_check:
-            captain_social_id = input("Enter captain social id: ")
-            employee = self.logic_wrapper.employee_info(captain_social_id)
-            valid_rank, available_for_date, valid_license = self.logic_wrapper.captain_availability(captain_social_id, employee_information, plane_insignia, employee, voyages_info, return_flight.arrival)
-            if available_for_date == False:
-                print(f"Captain {captain_social_id} not available on between {flight.departure} and {return_flight.arrival}")
-            elif valid_license == False:
-                print(f"Captain {captain_social_id} does not have the license to fligh {plane_insignia}")
-            elif valid_rank == False:
-                print(f"{captain_social_id} is not a captain")
-            if valid_rank == True and available_for_date == True and valid_license == True:
-                captain_check = True
-        
-        flight.captain = captain_social_id
-        return_flight.captain = captain_social_id
+        qualified_captains = self.logic_wrapper.get_qualified_captains_for_plane_type(
+            aircraft.plane_type_id
+        )
+
+        available_captains = [
+            available_employees[captain_id]
+            for captain_id in qualified_captains
+            if captain_id in available_employees
+        ]
+
+        captain_idx = self.__choose_element_from_list(
+            available_captains,
+            lambda c: f"{c.name}",
+            "Choose captain: ",
+            top_prompt="List of available and qualified captains.",
+        )
+        captain = available_captains[captain_idx]
+
+        flight.captain = captain.social_id
+        return_flight.captain = captain.social_id
 
         # get copilot
-        copilot_check = False
-        copilot_social_id = None
-        while not copilot_check:
-            copilot_social_id = input("Enter copilot's social id: ")
-            employee = self.logic_wrapper.employee_info(copilot_social_id)
-            valid_rank, available_for_date, valid_license = self.logic_wrapper.copilot_availability(copilot_social_id, employee_information, plane_insignia, employee, voyages_info, return_flight.arrival)
-            if available_for_date == False:
-                print(f"Copilot {copilot_social_id} not available on between {flight.departure} and {return_flight.arrival}")
-            elif valid_license == False:
-                print(f"Copilot {copilot_social_id} does not have the license to fligh {plane_insignia}")
-            elif valid_rank == False:
-                print(f"{copilot_social_id} is not a copilot")
-            if valid_rank == True and available_for_date == True and valid_license == True:
-                copilot_check = True
-        
-        flight.copilot = copilot_social_id
-        return_flight.copilot = copilot_social_id
+        qualified_copilots = self.logic_wrapper.get_qualified_copilots_for_plane_type(
+            aircraft.plane_type_id
+        )
+
+        available_copilots = [
+            available_employees[copilot_id]
+            for copilot_id in qualified_copilots
+            if copilot_id in available_employees
+        ]
+
+        copilot_idx = self.__choose_element_from_list(
+            available_copilots,
+            lambda c: f"{c.name}",
+            "Choose copilot: ",
+            top_prompt="List of available and qualified copilots.",
+        )
+        copilot = available_copilots[copilot_idx]
+
+        flight.copilot = copilot.social_id
+        return_flight.copilot = copilot.social_id
 
         # get flight service manager
-        flight_service_manager_check = False
-        flight_service_manager = None
-        while not flight_service_manager_check:               
-            flight_service_manager = input("Enter Flight service manager's social id: ")
-            employee = self.logic_wrapper.employee_info(flight_service_manager)
-            available_for_date, valid_rank = self.logic_wrapper.flight_service_manager_availability(flight_service_manager, employee_information, employee, voyages_info, return_flight.arrival)
-            if available_for_date == False:
-                print(f"Flight service manager {flight_service_manager} not available on between {flight.departure} and {return_flight.arrival}")
-            elif valid_rank == False:
-                print(f"{flight_service_manager} is not a flight service manager")
-            if valid_rank == True and available_for_date == True:
-                flight_service_manager_check = True
+        available_flight_service_managers = [
+            employee
+            for employee in available_employees.values()
+            if employee.rank == "Flight Service Manager"
+        ]
+        fsm_idx = self.__choose_element_from_list(
+            available_flight_service_managers,
+            lambda c: f"{c.name}",
+            "Choose flight service manager: ",
+            top_prompt="List of available flight service managers.",
+        )
+        fsm = available_flight_service_managers[fsm_idx]
 
-        flight.fsm = flight_service_manager
-        return_flight.fsm = flight_service_manager
+        flight.fsm = fsm.social_id
+        return_flight.fsm = fsm.social_id
 
         # get flight attendants
-        flight_attendants = self.__get_flight_attendants(flight, return_flight)
+        flight_attendants = self.__get_flight_attendants(available_employees)
+
+        flight_attendants_social_ids = [fa.social_id for fa in flight_attendants] + [
+            UNSTAFFED
+        ] * (NUM_FLIGHT_ATTENDANTS_PER_FLIGHT - len(flight_attendants))
 
         # assign them
-        flight.fa1 = flight_attendants[0]
-        flight.fa2 = flight_attendants[1]
-        flight.fa3 = flight_attendants[2]
-        flight.fa4 = flight_attendants[3]
-        flight.fa5 = flight_attendants[4]
+        (
+            flight.fa1,
+            flight.fa2,
+            flight.fa3,
+            flight.fa4,
+            flight.fa5,
+        ) = flight_attendants_social_ids
 
-        return_flight.fa1 = flight_attendants[0]
-        return_flight.fa2 = flight_attendants[1]
-        return_flight.fa3 = flight_attendants[2]
-        return_flight.fa4 = flight_attendants[3]
-        return_flight.fa5 = flight_attendants[4]
+        (
+            return_flight.fa1,
+            return_flight.fa2,
+            return_flight.fa3,
+            return_flight.fa4,
+            return_flight.fa5,
+        ) = flight_attendants_social_ids
 
         # confirm changes
-        print("Crew overview: ") 
+        print("Crew overview: ")
         print("~" * 20)
-        print("Captain: ", captain_social_id)
-        print("Copilot: ", copilot_social_id)
-        print("Flight Service Manager: ", flight_service_manager)
+        print("Captain: ", captain.name)
+        print("Copilot: ", copilot.name)
+        print("Flight Service Manager: ", fsm.name)
         for flight_attendant in flight_attendants:
-            print("Flight Attendant:", flight_attendant)
+            print("Flight Attendant:", flight_attendant.name)
 
-        save_prompt = input(f"Would you like to add this staff to flights {flight.flight_nr} and {return_flight.flight_nr}, (y)es or (n)o? ")
+        save_prompt = input(
+            f"Would you like to add this staff to flights {flight.flight_nr} and {return_flight.flight_nr}, (y)es or (n)o? "
+        )
         if save_prompt == "y":
             self.logic_wrapper.add_staff_to_voyage(flight)
             self.logic_wrapper.add_staff_to_voyage(return_flight)
             print("Voyages have been staffed!")
 
-#############################################################################################################################################
+    #############################################################################################################################################
 
     def list_voyage_options(self) -> str:
         """TODO: add docstring"""
@@ -356,7 +391,7 @@ class VoyagesUI:
                 if voyage_counter == 2:
                     voyage_counter = 0
                     result += "-" * 130 + "\n"
-        
+
         self.menus.print_the_info(title, result)
 
     def get_upcoming_voyage_by_week(self, year: str, week_nr: str) -> None:
@@ -367,18 +402,17 @@ class VoyagesUI:
 
         for flight_values in self.logic_wrapper.upcoming_voyages().values():
             weeks = str(flight_values.departure.isocalendar().week)
-            if year in flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):
+            if year in flight_values.departure.strftime("%Y-%m-%d %H:%M:%S"):
                 if weeks == week_nr:
                     result += f"{flight_values.flight_nr:^13}{flight_values.dep_from:^10}{flight_values.arr_at:^7}{flight_values.departure.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.arrival.strftime('%Y-%m-%d %H:%M:%S'):^22}{flight_values.captain:^15}{flight_values.copilot:^16}{flight_values.fsm:^24}\n"
                     voyage_counter += 1
                     if voyage_counter == 2:
                         voyage_counter = 0
                         result += "-" * 130 + "\n"
-        
+
         self.menus.print_the_info(title, result)
 
-#############################################################################################################################################
-
+    #############################################################################################################################################
 
     def get_past_voyage_by_date(self, date: date) -> str:
         """TODO: add docstring"""
@@ -394,11 +428,10 @@ class VoyagesUI:
                 if voyage_counter == 2:
                     voyage_counter = 0
                     result += "-" * 130 + "\n"
-    
+
         self.menus.print_the_info(title, result)
 
-
-    def get_past_voyage_by_week(self, year:str,  week_nr:str) -> None:
+    def get_past_voyage_by_week(self, year: str, week_nr: str) -> None:
         """
         TODO: add docstring
         TODO: add typehints
@@ -425,9 +458,8 @@ class VoyagesUI:
                     if voyage_counter == 2:
                         voyage_counter = 0
                         result += "-" * 130 + "\n"
-        
-        self.menus.print_the_info(title, result)
 
+        self.menus.print_the_info(title, result)
 
     def cancel_voyage(self) -> None:  # define
         """Cancels a voyage in the system."""

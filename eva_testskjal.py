@@ -13,9 +13,12 @@ logic = LogicWrapper()
 de = DestinationsUI()
 sc = ScheduleUI()
 
-dd = date(2023, 11, 6)
+dd = datetime(2023, 11, 6, 0, 0, 0)
+dt = datetime(2023, 11, 7, 0, 0, 0)
 
-print(sc.who_was_working(dd))
+print(logic.airplane_insignia_by_types())
+
+print(logic.pilots_by_license())
 
 
 #print(logic.airplane_types())

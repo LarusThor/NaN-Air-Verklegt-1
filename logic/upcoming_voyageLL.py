@@ -67,7 +67,7 @@ class UpcomingVoyageLL:
                 id_of_flight = key
 
         return_flight_id = int(id_of_flight) + 1
-        return flight_info[return_flight_id]
+        return flight_info[str(return_flight_id)]
 
         # return_flight_values = flight_info[str(return_flight_id)] 
         # return_flight_id = return_flight_values.id
@@ -80,11 +80,13 @@ class UpcomingVoyageLL:
         # return return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival 
 
     def get_voyage_by_flight_nr_and_date(self, flight_nr: str, departure_date: str) -> UpcomingVoyage:
-        voyages = self.data_wrapper.read_upcoming_flights()
+        voyages = self.logic.data_wrapper.get_upcoming_flights()
 
         for voyage in voyages.values():
-            if voyage.flight_nr == flight_nr and voyage.departure == departure_date:
+            if voyage.flight_nr == flight_nr and voyage.departure.strftime("%Y-%m-%d") == departure_date:
                 return voyage
+
+        raise ValueError("Voyage not found")
 
 
     def add_staff_for_voyage(self, staff_to_add: str) -> None:
