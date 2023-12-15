@@ -46,9 +46,9 @@ class ScheduleLL:
 
         name = self.logic.employee_info(employee)
         if flights:
-            return f"{name.name} is scheduled for these flights in week {week_nr}:\n{result} "
+            return f"{name.name} - Schedule in week {week_nr}, year {year}:\n{result} "
         else:
-            return f"{name.name} is not scheduled for any flights in week {week_nr}!"
+            return f"{name.name} - Not scheduled for work in week {week_nr}, year {year}!"
 
     def employee_working(self, date_working: date) -> set[tuple[Employee, str]]:
         """Returns a list of all eployees not working on a specific day.
