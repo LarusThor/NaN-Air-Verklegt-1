@@ -154,17 +154,12 @@ class DestinationsUI:
             print(f"{index + 1}. {destination.destination}")
 
         destination_choice = input("Choose destination: ")
-        while (
-            destination_choice != "1"
-            and destination_choice != "2"
-            and destination_choice != "3"
-            and destination_choice != "4"
-            and destination_choice != "5"
-        ):
+        while destination_choice != "1" and destination_choice != "2" and destination_choice != "3" and destination_choice != "4" and destination_choice != "5":
             print("Invalid input! You can choose 1, 2, 3, 4 and 5")
             print("-" * 30)
             destination_choice = input("Destination: ")
-        destination_info = destination_list[destination_choice - 1]
+
+        destination_info = destination_list[int(destination_choice) - 1]
 
         print(f"Options to change for {destination_info.destination}")
         options = f"""

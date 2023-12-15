@@ -36,6 +36,7 @@ class ValidationLL:
         return "@" in email and "." in email
 
     def validate_address(self, address: str) -> bool:
+        """Validates address"""
         address_values = address.split()
         if len(address_values) == 2:
             if address_values[1].isdigit() == True:
@@ -48,6 +49,7 @@ class ValidationLL:
             return len(address) >= 3 and all((char.isalpha() for char in address[0]))
 
     def validate_yes_no(self, input: str) -> bool:
+        """Validates yes and no options"""
         if input == "y" or input == "n":
             return True
         else:
