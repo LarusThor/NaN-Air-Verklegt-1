@@ -47,7 +47,7 @@ class DestinationLL:
                 continue
             
         most_popular = max(set(destination_list), key=destination_list.count)
-        return most_popular
+        return (most_popular, destination_dict[most_popular])
 
     def change_destination_info(self, destination: Destination) -> None:  # breyta í klasaritinu
         """Changes destination info"""
