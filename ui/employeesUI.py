@@ -179,7 +179,7 @@ class EmployeeUI:
             Any other to quit
 
         """
-        action = "N/A"  # TODO: spyrja hvað við ættum actually að hafa hérna
+        action = "N/A" 
 
         while action != "d":
             action = input(f"Select an option: {options} \n").lower().strip()

@@ -49,7 +49,7 @@ class DestinationsUI:
         return user_input
 
     def add_destination(self) -> None:
-        """TODO: add docstring"""
+        """Lets user add a destination to the system."""
         self.validation = self.logic_wrapper.validation
 
         print("New destination")
@@ -142,7 +142,6 @@ class DestinationsUI:
 
     def change_destination_info(self) -> None:
         """Changes information about a destination in the system."""
-        # TODO: validate
         destination_list = self.logic_wrapper.destination_list()
 
         print("\nChanging destination information")

@@ -141,7 +141,7 @@ class Main:
 
 
             def airplane() -> None:
-                """TODO: in this code we are in airplanes and starting loops with the feature of backing out and quiting
+                """In this code we are in airplanes and starting loops with the feature of backing out and quiting
                     we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 
                 user_input1 = ""
@@ -294,7 +294,7 @@ class Main:
 
 
             def employees() -> None:
-                """TODO: in this code we are in employee and starting loops with the feature of backing out and quiting
+                """In this code we are in employee and starting loops with the feature of backing out and quiting
                     we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 
                 user_input = ""
@@ -383,7 +383,7 @@ class Main:
 
             
             def schedule() -> None:
-                """TODO: in this code we are in schedule and starting loops with the feature of backing out and quiting
+                """In this code we are in schedule and starting loops with the feature of backing out and quiting
                     we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 
                 user_input1 = ""
@@ -497,7 +497,7 @@ class Main:
                                 
 # voyages
             def voyages() -> None:
-                """TODO: in this code we are in voyages and starting loops with the feature of backing out and quiting
+                """In this code we are in voyages and starting loops with the feature of backing out and quiting
                     we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 action1=""
                 action2 = ""

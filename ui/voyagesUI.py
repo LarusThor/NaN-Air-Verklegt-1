@@ -50,7 +50,7 @@ class VoyagesUI:
         print("New voyage: ")
         print("=" + "-=" * 20)
 
-        flight_number = input("Enter flight number: ")  # TODO: validate - format og lengd
+        flight_number = input("Enter flight number: ")
         while not self.validation.validate_flight_nr(flight_number):
             print("ERROR: invalid flight number.\nMust start with NA and contain three numbers. ")
             flight_number = input("Enter flight number: ")
@@ -71,28 +71,27 @@ class VoyagesUI:
                action = int(input("Enter choice: ")) 
             
 
-        departure_date = input(f"Enter departure date from {departure_location} (YYYY-MM-DD): ")  # TODO: validate
+        departure_date = input(f"Enter departure date from {departure_location} (YYYY-MM-DD): ")  
         while not self.validation.validate_date(departure_date):
             print("Invalid date entered. ")
             departure_date = input(f"Enter departure date from {departure_location} (YYYY-MM-DD): ")
 
-        departure_time = input(f"Enter departure time from {departure_location}: hours:minutes:seconds: ")  # TODO: bæta við formatti hvernig þið viljið tímann og validate
+        departure_time = input(f"Enter departure time from {departure_location}: hours:minutes:seconds: ") 
         while not self.validation.validate_time(departure_time):
             print("Invalid time entered. ")
             departure_time = input(f"Enter departure date from {departure_location}: hours:minutes:seconds: ")
 
-        return_flight_date = input(f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): ")  # TODO: validate
-
+        return_flight_date = input(f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): ")
         while not self.validation.validate_date(return_flight_date):
             print("Invalid date entered. ")
             return_flight_date = input(f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): ")
-        return_flight_time = input(f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds: ")  # TODO: validate
+        return_flight_time = input(f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds: ")
 
         while not self.validation.validate_time(return_flight_time):
             print("Invalid time entered. ")
             return_flight_time = input(f"Enter departure date from {arrival_location.destination}: hours:minutes:seconds: ")
 
-        # TODO: use datetime module
+      
         # Calculate arrical time from departure time
         date_format = "%Y-%m-%d %H:%M:%S"
         departure_date_time = departure_date + " " + departure_time
@@ -111,13 +110,15 @@ class VoyagesUI:
         the_last_id = int(the_last_id)
         the_last_id += 1
 
-        new_flight_number = int(flight_number[-2:]) + 1  # TODO commenta
+
+        #calculates flight number for return flight by adding 1 to the number
+        new_flight_number = int(flight_number[-2:]) + 1
         if new_flight_number >= 100:
             back_flight_number = flight_number[:-3] + str(new_flight_number)
         else:
             back_flight_number = flight_number[:-2] + str(new_flight_number)
 
-        print("Would you like to save this new voyage: ")  # TODO laga þetta heheheh
+        print("Would you like to save this new voyage: ") 
         print("~" * 20)
         print("Flight id: ", the_last_id)
         print("Flight Number: ", flight_number)
