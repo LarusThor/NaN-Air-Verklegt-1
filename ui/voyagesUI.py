@@ -10,7 +10,6 @@ VOYAGES_OPTIONS = [
     "1. Create a voyage",
     "2. List of voyages",
     "3. Staff a voyage",
-    "4. Cancel a voyage",
 ]
 
 NUM_FLIGHT_ATTENDANTS_PER_FLIGHT = 5

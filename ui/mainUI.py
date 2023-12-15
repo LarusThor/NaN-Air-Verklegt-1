@@ -44,10 +44,8 @@ class Main:
             
 
             def airplane() -> None:
-                """TODO: in this code we are in airplanes and starting loops 
-                    with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables 
-                    and making sure the user puts the right input in:"""
+                """TODO: in this code we are in airplanes and starting loops with the feature of backing out and quiting
+                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 action1 = "" # initialize a varible and stores the users input
                 action2 = ""
                 action3 = ""
@@ -207,10 +205,8 @@ class Main:
                                 
 
             def employees() -> None:
-                """TODO: in this code we are in employee and starting loops 
-                    with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables 
-                    and making sure the user puts the right input in:"""
+                """TODO: in this code we are in employee and starting loops with the feature of backing out and quiting
+                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 action6 = ""# initialize a varible and stores the users input
                 action7 = ""
                 action8 = ""
@@ -271,7 +267,7 @@ class Main:
                                         case _:
                                             print("Input was invalid, try again ")
                                             time.sleep(INVALID_INPUT_SLEEP)
-                                            print("BUUUG") #TODO: laga alls staðar
+                                            action11 = "b"
                                         
                         # Add employee :
                         case "3":
@@ -280,6 +276,8 @@ class Main:
                                 quit()
                         
                         
+
+# schedule                       
             def schedule_by_day():
                 date = self.schedule_ui.get_schedule_by_day()
                 
@@ -306,8 +304,6 @@ class Main:
                             user_input = BACK
                 
                 return user_input
-
-
 
 
             def schedule_by_employee():
@@ -367,13 +363,6 @@ class Main:
                     
                 if user_input2 == "q":
                     quit()
-
-
-
-
-
-
-
 
                 # action1 = ""# initialize a varible and stores the users input
                 # action2 = ""
@@ -442,12 +431,10 @@ class Main:
                                     
                                 
                                 
-
+# voyages
             def voyages() -> None:
-                """TODO: in this code we are in voyages and starting loops 
-                    with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables 
-                    and making sure the user puts the right input in:"""
+                """TODO: in this code we are in voyages and starting loops with the feature of backing out and quiting
+                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 action1=""
                 action2 = ""
                 action14=""
@@ -544,11 +531,10 @@ class Main:
                             voyage_date = self.voyages_ui.get_voyage_date()
                             self.voyages_ui.manager_staffs_voyage(voyage_number, voyage_date)
      
-                        case "4":
-                            self.voyages_ui.staff_voyage()
                             
                         case "b":
                             continue
+
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
