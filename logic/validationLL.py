@@ -72,8 +72,15 @@ class ValidationLL():
     
     #Airplane types and license, Pilots by license
         #Licensed pilots for a specific airplane type (ofkokfsd) = ValueError
-    #Add new airplane
-        #Enter an Name: kfokofksdf == works
+    
+    def validate_airplane_choice(self, airplane_choice: int) -> bool:
+        try:
+            airplane_choice = int(airplane_choice)
+            return True
+        except ValueError:
+            return False
+            
+
     
     
 
@@ -119,5 +126,24 @@ class ValidationLL():
 
 #destination
 
-    def validate_all_destinations(self,all_destinations) -> bool:
-        return 
+    def validate_destination_name(self, destination_name: str) -> bool:
+        """ Validates name input. """
+        name_values = destination_name.split()
+        return len(destination_name) >=3 and all((char.isalpha()for char in name_values))
+    
+    def validate_destination_id(self, destination_id: str) -> bool:
+        """ Validates name input. """
+        name_values = destination_id.split()
+        return len(destination_id) >=3 and all((char.isalpha()for char in name_values))
+    
+    def validate_airport(self, airport_name: str) -> bool:
+        """ Validates name input. """
+        name_values = airport_name.split()
+        return len(airport_name) >=3 and "Airport" in airport_name and all((char.isalpha()for char in name_values))
+    
+    def validate_distance_from_iceland(self, distance_from_iceland: str) -> bool:
+        return len(distance_from_iceland) >=0 and len(distance_from_iceland) <=400000 and all((digit.isdigit()for digit in distance_from_iceland))
+    
+    
+    
+    
