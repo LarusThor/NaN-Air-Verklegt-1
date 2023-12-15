@@ -297,7 +297,7 @@ class EmployeeUI:
             ranks = {"1": "Captain", "2": "Copilot"}
             print("Rank:\n1. Captain\n2. Copilot")
             print("-" * 15)
-            rank_choice = input("\nChoose a rank: ").strip()
+            rank_choice = input("Choose a rank: ").strip()
 
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")
@@ -316,8 +316,13 @@ class EmployeeUI:
                         tuple_list.append(item)
                     print(f"{index}. {tuple_list[0]}")
 
-                licence_choice = int(input("Choose license: "))
-                licence = licences[licence_choice]
+                licence_choice = input("Choose license: ")
+                while licence_choice != "1" and licence_choice != "2" and licence_choice != "3":
+                    print("Invalid input! You can choose 1, 2 or 3")
+                    print("-" * 15)
+                    licence_choice = input("Choose license: ")
+                licence_choice_int = int(licence_choice)
+                licence = licences[licence_choice_int]
             else:
                 licence = "N/A"
 
@@ -325,7 +330,7 @@ class EmployeeUI:
             ranks = {"1": "Flight Service Manager", "2": "Flight Attendant"}
             print("Rank:\n1. Flight Service Manager\n2. Flight Attendant")
             print("-" * 15)
-            rank_choice = input("\nChoose a rank: ").strip()
+            rank_choice = input("Choose a rank: ").strip()
 
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")
