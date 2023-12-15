@@ -2,6 +2,7 @@ from itertools import chain
 from collections import defaultdict 
 from datetime import datetime
 from model.airplane_model import Airplane
+from collections import defaultdict
 
 class AirplaneLL():
     def __init__(self, logic_wrapper) -> None:
@@ -112,9 +113,10 @@ class AirplaneLL():
         return pilots_by_license
     
 
-    def get_total_future_hours_for_airplane(self, airplane: Airplane, start: datetime, end: datetime) -> tuple[list[str], float]:
+    def get_total_future_hours_for_airplane(self, airplane: Airplane, start: datetime, end: datetime) -> float:
         """ Takes an instance of the model class Airplane, start time, and end as datetime and 
         returns total hours an employee has worked."""
+        #TODO: eyða
         total_hours_flown = 0
         upcoming_voyage_dict = self.logic.upcoming_voyages()
 
@@ -142,6 +144,29 @@ class AirplaneLL():
 
         return total_hours_flown
     
+    def get_available_airplanes_over_period(self, period_start: datetime, period_end: datetime) -> list[Airplane]:
+        """ Returns a list of all airplanes that are available over a given period. 
+
+        Args:
+            period_start: Start of the period.
+            period_end: End of the period.
+        """
+
+        plane_voyages = defaultdict(list)
+        for voyage in self.logic.upcoming_voyages().values():
+            plane_voyages[voyage.aircraft_id].append(voyage)
+
+        available_planes = []
+        for airplane in self.logic.data_wrapper.get_airplanes().values():
+
+            for voyage in plane_voyages[airplane.plane_insignia]:
+                if voyage.departure <= period_end and voyage.arrival >= period_start:
+                    # plane is not available
+                    break
+            else:
+                available_planes.append(airplane)
+        return available_planes
+
     
     def airplane_insignia_by_type(self) -> dict:
         """ Dictionary which sorts airplanes in use by their types """

@@ -31,7 +31,7 @@ class AirplaneUI:
         return user_input
     
 
-    def pilots_by_licanse(self) -> None: # 1-1-1
+    def pilots_by_license(self) -> None: # 1-1-1
         """ TODO: add docstring """
         self.menus.display_options("Pilots by license:", PILOTS_BY_LICENSE_OPTIONS)
         user_input = str(input("Enter your action: ").lower())
@@ -67,7 +67,7 @@ class AirplaneUI:
 
             
 
-    def list_pilots_by_licanse(self) -> None: # 1-1-1-2
+    def list_pilots_by_license(self) -> None: # 1-1-1-2
         """Goes through the pilots and license from the logic wrapper and adds it to the result string. 
         Then calls the function in the menu_manager that takes care of printing tha information out."""
         
@@ -121,7 +121,10 @@ class AirplaneUI:
         print("Examples of airplane names:  TF-EPG, TF-UVR, TF-XZR")
 
     
-        name = input("Enter an Name: ") #TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
+        name = input("Enter airplane insignia: ") #TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
+        while not self.validation.validate_airplane_name(name):
+            print("ERROR: Invalid airplane insignia. \nInsignia must be in the form: TF-AAA  ")
+            name = input("Enter airplane insignia: ")
 
         planes = {(i+1): plane for i, plane in enumerate(airplane_types)}
 
