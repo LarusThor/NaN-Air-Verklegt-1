@@ -74,7 +74,7 @@ class AirplaneUI:
         for index, plane in enumerate(pilots_by_license.keys()):
             print(f"{index + 1}. {plane}")
 
-        airplane_choice = input("Enter an airplane choice: ").stirp()
+        airplane_choice = input("Enter an airplane choice: ").strip()
         while not self.validation.validate_choice(airplane_choice, len(planes)):
             print("Invalid choice \nTry again.")
             airplane_choice = input("Enter an airplane choice: ").strip()
