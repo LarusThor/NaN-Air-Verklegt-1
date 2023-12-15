@@ -48,10 +48,9 @@ class EmployeeUI:
         """Prints out the options that come up when the user chooses to get the employees information.
         And gets the action input from the user
         """
-        self.menus.display_options(
-            "Employee information:", EMPLOYEE_INFORMATION_OPTIONS
-        )
+        self.menus.display_options("Employee information:", EMPLOYEE_INFORMATION_OPTIONS)
         action = input("Enter your action: ").lower().strip()
+        
         return action
 
     def get_pilots(self) -> None:
