@@ -26,23 +26,21 @@ class ScheduleUI:
     def schedule_options(self) -> str:
         """Shows the options the user can choose from when they choose schedule from the main menu"""
         self.menus.display_options("Schedule:", SCHEDULE_OPTIONS)
-        action = str(input("Enter your action: ").lower())
+        action = input("Enter your action: ").lower()
 
         return action
 
     def schedule_for_employee_options(self) -> str:
         """Shows the options the user can choose from when they enter in the employee social id"""
         self.menus.display_options("Schedule for employee:", SCHEDULE_FOR_EMPLOYEE)
-        action = str(input("Enter your action: ").lower())
+        action = input("Enter your action: ").lower()
 
         return action
 
-    def schedule_for_a_day_options(self) -> str:
+    def schedule_for_a_day_options(self, date) -> str:
         """Lets user pick options to see for the day they chose."""
-        self.menus.display_options(
-            "Schedule for a specific day:", SCHEDULE_FOR_A_DAY_OPTIONS
-        )
-        action = str(input("Enter your action: ").lower())
+        self.menus.display_options(f"Schedule for {date}:", SCHEDULE_FOR_A_DAY_OPTIONS)
+        action = input("Enter your action: ").lower()
 
         return action
 
@@ -93,16 +91,18 @@ class ScheduleUI:
                 valid_id = True
             except KeyError or AttributeError:
                 print("ERROR: Employee is not in the system! ")
-                social_id = input("Enter social ID: ")
+                social_id = input("Social ID: ")
         return employee
 
     def get_schedule_for_employee(self, employee: str) -> None:
         """Let's the user choose a time period to see the employees work time."""
         year = input("Enter year: ")
+
         while not self.validation.validate_year(year):
             print("ERROR: invalid year.\nYear must be a number.")
             year = input("Enter year: ")
         week = input("Enter week: ")
+
         while not self.validation.validate_weeks(week):
             print("ERROR: invalid week number.\nWeek must be from 1-52.")
             week = input("Enter week: ")

@@ -321,7 +321,7 @@ class Main:
                 
                 user_input = BACK
                 while user_input == BACK:
-                    user_input = self.schedule_ui.schedule_for_a_day_options()
+                    user_input = self.schedule_ui.schedule_for_a_day_options(date)
 
                     match user_input:
                         case "q":
