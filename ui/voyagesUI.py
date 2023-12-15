@@ -140,15 +140,6 @@ class VoyagesUI:
         elif save_prompt == "n":
             print("New voyage was not saved.")
 
-    def get_voyage_flight_number(self) -> str:
-        """TODO: add docstring"""
-        flight_number = input("Enter flight number: ")
-        return flight_number
-
-    def get_voyage_date(self) -> str:
-        """TODO: add docstring"""
-        date = input("Enter year date; year-month-day: ")
-        return date
 
     #############################################################################################################################################
 
@@ -464,7 +455,7 @@ class VoyagesUI:
     def cancel_voyage(self) -> None:  # define
         """Cancels a voyage in the system."""
 
-        flight_number = input("Enter flight number: ")
+        flight_number = input("Enter flight number: ") #validate
         save_prompt = input(
             f"Would you like to cancel voyage {flight_number}? (y)es or (n)o"
         )
