@@ -258,25 +258,9 @@ class VoyagesUI:
         # TODO: accept voyage_date as date object
 
         # get flight and return flight
-        flight: UpcomingVoyage = (
-            self.logic_wrapper.get_upcoming_voyage_by_flight_nr_and_date(
-                voyage_flight_number, voyage_date
-            )
-        )
-        valid_flight = False
-        while valid_flight == False:
-            try:
-                return_flight: UpcomingVoyage = (self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date))
-                valid_flight = True
-            except ValueError:
-                voyage_flight_number =  input("Enter flight number: ") #TODO: Fönn validate
-                #while not self.validation.validate_flight_nr(flight_number):
-                #    print("ERROR: invalid flight number, flight does not exist.\nMust start with NA and contain three numbers. ")
-                #    flight_number = input("Enter flight number: ")
-                voyage_date = input("Enter voyage date: ")#TODO: fönn validate
-                #while not self.validation.validate_date(departure_date):
-                #    print("Invalid date entered. ")
-                #    departure_date = input(f"Enter departure date (YYYY-MM-DD): ")
+        flight: UpcomingVoyage = self.logic_wrapper.get_upcoming_voyage_by_flight_nr_and_date(voyage_flight_number, voyage_date)
+        return_flight: UpcomingVoyage = self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date)
+ 
 
         # get the aircraft to assign to the flights
         available_aircrafts = self.logic_wrapper.get_available_airplanes_over_period(
@@ -375,10 +359,7 @@ class VoyagesUI:
             flight.fa5,
         ) = flight_attendants_social_ids
 
-        # self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_first_flight)
-        # self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_return_flight)
-        # user_input = self.menus.print_the_info("Voyage has been staffed!")
-        # return user_input
+   
         (
             return_flight.fa1,
             return_flight.fa2,
