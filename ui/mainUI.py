@@ -206,7 +206,7 @@ class Main:
                 
 
             def destinations() -> None:
-                """TODO: in this code we are in destination and starting loops with the feature of backing out and quitting
+                """In this code we are in destination and starting loops with the feature of backing out and quitting
                     we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 
                 user_input1 = ""

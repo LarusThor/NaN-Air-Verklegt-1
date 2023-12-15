@@ -139,7 +139,7 @@ class AirplaneUI:
         print("\nAdding a new airplane to the system: ")
         print("Examples of airplane names:  TF-EPG, TF-UVR, TF-XZR")
 
-        name = input("Enter airplane insignia: ")  # TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
+        name = input("Enter airplane insignia: ")
         while not self.validation.validate_airplane_name(name):
             print("ERROR: Invalid airplane insignia. \nInsignia must start with TF- followed by 3 letters. ")
             name = input("Enter airplane insignia: ")
