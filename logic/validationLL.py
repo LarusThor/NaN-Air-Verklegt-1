@@ -142,9 +142,6 @@ class ValidationLL():
         return 
 
 
-# menu 
-    def validate_back_or_quit(self, user_input: str):
-        return user_input.lower() == "b" or user_input == "q"
             
     def validate_destination_name(self, destination_name: str) -> bool:
         """ Validates name input. """
@@ -165,5 +162,8 @@ class ValidationLL():
         return (distance_from_iceland) >=0 and (distance_from_iceland) <= 400000 and all((digit.isdigit()for digit in distance_from_iceland))
     
     
+# menu 
+    def validate_back_or_quit(self, user_input: str):
+        return user_input.lower() == "b" or user_input == "q"
     
     
