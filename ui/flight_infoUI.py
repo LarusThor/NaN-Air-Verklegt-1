@@ -1,55 +1,38 @@
 from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
 
-FLIGHT_INFORMATION_OPTIONS = ["1. Booking status for specific voyage", "2. Booking status for a specific date"]
+FLIGHT_STATUS_OPTIONS = [
+    "1. Booking status for specific voyage",
+    "2. Booking status for a specific date",
+]
+
 
 class FlightInfoUI:
     def __init__(self) -> None:
-        """ TODO: add docstring """
+        """ "Instantiate a FlightInfoUI object."""
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
-        self.flight_booking = self.logic_wrapper.flight_fully_booked()
 
+    def get_flight_status(self) -> None:  # define
+        """Gets information about the upcoming voyages from the logic wrapper. Makes a title and the results
+        (which is the information that will be printed out). Calls the function in the menu_manager that takes care of
+        prints out the title and the information.
+        """
+        flights = self.logic_wrapper.flight_fully_booked()
 
-    def flight_info_options(self) -> str:
-        """ TODO: add docstring """
-        self.menus.display_options(FLIGHT_INFORMATION_OPTIONS)
-        action = str(input("Enter your action: ").lower())
-        return action
-    
+        title = f"Flight status: \n{'='*70}\n{'Departure date':<16} {'Flight number':<15} {'Flight destination':<20} {'Flight status':<15}"
+        result = ""
 
-    def get_voyage(self) -> str:
-        """ TODO: add docstring """
-        flight_number = input("Enter flight number: ")
-        return flight_number
-         
+        for flight, status in flights:
+            date = str(flight.departure.date())
+            if status == "Booked":
+                booked = "Fully booked!"
+                result += (
+                    f"{date:^15} {flight.flight_nr:^15} {flight.arr_at:^21} {booked}\n"
+                )
+            else:
+                result += f"{date:^15} {flight.flight_nr:^15} {flight.arr_at:^21} {status:<3} seats left\n"
 
-    def get_date(self) -> str:
-        """ TODO: add docstring """
-        date = input("Enter date; day/month/year: ") 
-        return date 
-         
+        user_input = self.menus.print_the_info(title, result)
 
-    def get_flight_status_by_voyage(self, voyage): #define
-        """ TODO: add docstring """
-        status = self.flight_booking.get(voyage)
-        while status == None:
-            print("There is no flight number", voyage)
-            voyage = input("Enter flight number: ")
-            status = self.flight_booking.get(voyage)
-
-        title = "Flight status:"
-        try:
-            int(status)
-            result = f"{voyage} has {status} seats left."
-            self.menus.print_the_info(title, result)
-        except:
-            result = f"{voyage} is fully booked."
-            self.menus.print_the_info(title, result)
-
-        
-    def get_flight_status_by_date(self, date): #define
-        """ TODO: add docstring """
-        pass
-         
-         
+        return user_input
