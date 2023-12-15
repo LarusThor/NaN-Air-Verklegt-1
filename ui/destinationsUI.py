@@ -20,7 +20,6 @@ class DestinationsUI:
         return action
 
 
-
     def get_all_destinations(self) -> None:
         """Will get all the destinations from the logic wrapper and turn them into a one string. 
         Then calls a function in the menu_manager that will take care of printing everything out."""
@@ -142,7 +141,11 @@ class DestinationsUI:
         for index, destination in enumerate(destination_list):
             print(f"{index + 1}. {destination.destination}")
 
-        destination_choice = int(input("Choose destination: "))
+        destination_choice = input("Choose destination: ")
+        while destination_choice != "1" and destination_choice != "2" and destination_choice != "3" and destination_choice != "4" and destination_choice != "5":
+            print("Invalid input! You can choose 1, 2, 3, 4 and 5")
+            print("-" * 30)
+            destination_choice = input("Destination: ")
         destination_info = destination_list[destination_choice - 1]
 
 
