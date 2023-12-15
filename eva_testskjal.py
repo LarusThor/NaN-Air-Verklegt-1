@@ -11,7 +11,6 @@ from ui.destinationsUI import DestinationsUI
 
 logic = LogicWrapper()
 de = DestinationsUI()
-sc = ScheduleUI()
 
 dd = datetime(2023, 11, 6, 0, 0, 0)
 dt = datetime(2023, 11, 7, 0, 0, 0)

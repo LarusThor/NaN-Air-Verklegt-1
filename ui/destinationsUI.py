@@ -32,7 +32,8 @@ class DestinationsUI:
         for destination in list(enumerate(destinations, start=1)):
             result += f"{destination[0]}: {destination[1]}\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
     def get_most_popular_destination(self) -> None:
@@ -42,19 +43,29 @@ class DestinationsUI:
         popular = self.logic_wrapper.popular_destination()
         title = "The most popular destination:"
 
-        self.menus.print_the_info(title, popular[0])
+        user_input = self.menus.print_the_info(title, popular[0])
+        return user_input
 
 
     def add_destination(self) -> None:
         """ TODO: add docstring """
+        self.validation = self.logic_wrapper.validation
         print("New destination")
+        
         id = input("Enter the ID: ")
+        
         country = input("Enter the country: ")
+        
         airport = input("Enter the airport: ")
+        
         distance_from_iceland = input("Enter the distance form Iceland: ")
+        
         contact_name = input("Enter the name of the contact person:")
+        
         contact_number = input("Enter the number of the contact number: ")
+        
         estimated_flight_time = input("Enter the estimated flight time: ")
+        
         
         print("New destination:")
         print("=" + "-=" * 20)
@@ -65,9 +76,9 @@ class DestinationsUI:
         print("Estimated flight time: ", estimated_flight_time)
         print("Contact name: ", contact_name)
         print("Contact number: ", contact_number)
+        
         save_prompt = input("Would you like to save this new destionation, (y)es or (n)o? ").lower()
         if save_prompt == "y":
-            print("Destination saved!")
             dest = Destination(destination_id = id, 
             destination = country, 
             emergency_contact_name = contact_name, 
@@ -76,8 +87,11 @@ class DestinationsUI:
             distance_from_iceland = distance_from_iceland, 
             estimated_flight_time = estimated_flight_time)
             self.logic_wrapper.add_destination(dest)
+            user_input = self.menus.print_the_info("Destination saved!")
+            return user_input
         elif save_prompt == "n":
-            print("Destionation not saved.")
+            user_input = self.menus.print_the_info("Destionation not saved.")
+            return user_input
 
 
 
@@ -143,6 +157,8 @@ class DestinationsUI:
         
         if save_prompt == "y":
             self.logic_wrapper.update_destination_info(destination_info)
-            self.menus.print_the_info("Changes have been saved!")
+            user_input = self.menus.print_the_info("Changes have been saved!")
+            return user_input
         elif save_prompt == "n":
-            self.menus.print_the_info("Changes were not saved.")
+            user_input = self.menus.print_the_info("Changes were not saved.")
+            return user_input

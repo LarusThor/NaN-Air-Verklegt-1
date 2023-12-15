@@ -27,15 +27,15 @@ class AirplaneUI:
     def airplane_types_and_licence(self) -> str: # 1-1
         """ TODO: add docstring """
         self.menus.display_options("Airplane types and license:", AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
-        action = str(input("Enter your action: ").lower())
-        return action
+        user_input = str(input("Enter your action: ").lower())
+        return user_input
     
 
-    def pilots_by_licanse(self) -> None: # 1-1-1
+    def pilots_by_license(self) -> None: # 1-1-1
         """ TODO: add docstring """
         self.menus.display_options("Pilots by license:", PILOTS_BY_LICENSE_OPTIONS)
-        action = str(input("Enter your action: ").lower())
-        return action
+        user_input = str(input("Enter your action: ").lower())
+        return user_input
     
 
     def get_pilots_for_a_specific_type(self) -> None: # 1-1-1-1
@@ -62,12 +62,12 @@ class AirplaneUI:
         for pilot in pilots:
             result += pilot + "\n"
         
-        action = self.menus.print_the_info(title, result)
-        return action
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
             
 
-    def list_pilots_by_licanse(self) -> None: # 1-1-1-2
+    def list_pilots_by_license(self) -> None: # 1-1-1-2
         """Goes through the pilots and license from the logic wrapper and adds it to the result string. 
         Then calls the function in the menu_manager that takes care of printing tha information out."""
         
@@ -77,7 +77,8 @@ class AirplaneUI:
         for keys, values in self.logic_wrapper.pilots_by_license().items():
             result += "{:<14} | {} \n".format(keys, ", ".join(sorted(values)))
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
     def get_number_of_pilots_for_airplanes(self) -> None: # 1-1-1-3
@@ -90,7 +91,8 @@ class AirplaneUI:
         for key, value in self.logic_wrapper.pilots_by_license().items():
             result += f"{key}: \n  {len(value)} licensed pilots.\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
     def types(self) -> str: # 1-1-2
@@ -99,10 +101,14 @@ class AirplaneUI:
         title = "Airplane types: "
         result = ""
 
-        for item in self.logic_wrapper.airplane_types():
-            result += item + "\n"
+        for flight_type_tuple in self.logic_wrapper.airplane_types(): 
+            flight_type_list = []
+            for flight_type in flight_type_tuple:
+                flight_type_list.append(flight_type)
+            result += f"{flight_type_list[0]}\n"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
 
@@ -110,13 +116,15 @@ class AirplaneUI:
         """ TODO: add docstring """ 
         airplane_types = self.logic_wrapper.airplane_types()
 
-        print((airplane_types))
 
-        print("Adding a new airplane to the system: ")
+        print("\nAdding a new airplane to the system: ")
         print("Examples of airplane names:  TF-EPG, TF-UVR, TF-XZR")
 
     
-        name = input("Enter an Name: ") #TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
+        name = input("Enter airplane insignia: ") #TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
+        while not self.validation.validate_airplane_name(name):
+            print("ERROR: Invalid airplane insignia \n Insignia must be in the form: TF-AAA  ")
+            name = input("Enter airplane insignia: ")
 
         planes = {(i+1): plane for i, plane in enumerate(airplane_types)}
 
@@ -133,20 +141,23 @@ class AirplaneUI:
         result = f"\nName: {name}\nType: {plane_type}\nManufacturer: {manufacturer}\nModel: {model}\nNumber of seats: {number_of_seats}"
         print(result)
        
-        save_prompt = input("\nWould you like to save this new airplane, (y)es or (n)o? ").lower()
+        save_prompt = input("\nWould you like to save this new airplane, (y)es or (n)o? ").lower() #TODO validate input, y or n
         if save_prompt == "y":
             airplane = Airplane(name,plane_type,manufacturer,model,number_of_seats)
             self.logic_wrapper.add_airplane(airplane)
-        else:
-            None
+            user_input = self.menus.print_the_info("New airplane has been saved!")
+            return user_input
+        elif save_prompt == "n":
+            user_input = self.menus.print_the_info("New airplane was not saved")
+            return user_input
         
 
     def airplane_usage_options(self) -> str: # 1-3
         """Calls a function in the menu_manager that prints out the options. Then asks the user for their action and returns the input"""
         
         self.menus.display_options("Airplane usage:", AIRPLANE_USAGE)
-        action = str(input("Enter your action: ").lower())
-        return action
+        user_input = str(input("Enter your action: ").lower())
+        return user_input
 
 
     def most_used_airplane(self) -> None: # 1-3-1
@@ -155,7 +166,8 @@ class AirplaneUI:
         title = "The mose used airplane is:"
         result = f"{self.logic_wrapper.airplane_usage()[0]} - {self.logic_wrapper.airplane_usage()[1][self.logic_wrapper.airplane_usage()[0]]} voyages"
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
     def flown_furthest_airplane(self) -> None: # 1-3-2
@@ -164,4 +176,5 @@ class AirplaneUI:
         title = "The airplane that has flown the furthest:"
         result = f"Airplane name: {self.logic_wrapper.furthest_flown()[0]} - Distance: {self.logic_wrapper.furthest_flown()[1]}km."
 
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
