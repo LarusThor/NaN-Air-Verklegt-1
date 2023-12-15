@@ -316,6 +316,10 @@ class Main:
                         case "3":
 
                             user_input2 = self.employee_ui.add_employee()
+                        case _:
+                            print("Input was invalid, try again ")
+                            time.sleep(INVALID_INPUT_SLEEP)
+                            user_input = BACK
                             
                     if user_input == "q":
                         quit()
