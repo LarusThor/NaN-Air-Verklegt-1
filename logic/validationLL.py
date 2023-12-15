@@ -32,7 +32,7 @@ class ValidationLL():
         
     def validate_number(self, number: str) -> bool:
         """ TODO: add docstring """
-        return len(number) == 7 and all((digit.isdigit()for digit in number))
+        return len(number) == 7 and all(digit.isdigit()for digit in number) and int(number) > 1
         
 
     def validate_email(self, email: str) -> bool:
@@ -141,30 +141,44 @@ class ValidationLL():
     def validate_all_destinations(self,all_destinations) -> bool:
         return 
 
-
             
     def validate_destination_name(self, destination_name: str) -> bool:
         """ Validates name input. """
         name_values = destination_name.split()
         return len(destination_name) >=3 and all((char.isalpha()for char in name_values))
     
+
     def validate_destination_id(self, destination_id: str) -> bool:
         """ Validates name input. """
         name_values = destination_id.split()
         return len(destination_id) >=3 and all((char.isalpha()for char in name_values))
     
+
     def validate_airport(self, airport_name: str) -> bool:
         """ Validates name input. """
         name_values = airport_name.split()
         return len(airport_name) >=3 and "Airport" in airport_name and all((char.isalpha()for char in name_values))
     
+
     def validate_distance_from_iceland(self, distance_from_iceland: int) -> bool:
         try:
             distance_from_iceland = int(distance_from_iceland)
-            return (distance_from_iceland) >=0 and (distance_from_iceland) <= 400000 and all((digit.isdigit()for digit in distance_from_iceland))
+            return (distance_from_iceland >= 0) >=0 and (distance_from_iceland <= 40000) and all((digit.isdigit()for digit in str(distance_from_iceland)))
         except ValueError:
             return False
+        
+
+    def validate_flight_time(self, flight_time) -> bool:
+        if len(flight_time) == 8:
+            if flight_time[0:2].isdigit() == True:
+                if flight_time[2] == ":" and flight_time[5] == ":":
+                    if flight_time[3:5].isdigit() == True:
+                        if flight_time[6:8].isdigit() == True:
+                            return True
+        else:
+            return False
     
+
 # menu 
     def validate_back_or_quit(self, user_input: str):
         return user_input.lower() == "b" or user_input == "q"
