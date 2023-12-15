@@ -2,6 +2,8 @@ Dagbok
 Dagur 1.
 Fundarstjóri: Bjarki
 Markmið Dagsins:
+Vid viljum kynnast a[eins sem hopur.
+I dag aetlum vid ad vinna oll verkin saman og ekki skipta theim.
 Klára Initial Mapping fyrir skilning yfir verkefnið
 Klára Use case um Kröfur A og eins mikið í B 
 Vinna á User groups yfir Kröfur í A
@@ -14,6 +16,7 @@ Hvað var náð að klárast
 Dagur 2.
 Fundarstjóri: Lárus
 Markmið Dagsins:
+Allir eru maettir.
 Klára use cases fyrir A, B ,C
 Klára handbook
 
@@ -28,6 +31,7 @@ Lögðum lokahönd á git handbókina.
 Gerðum requirement list.
 
 Dagur 3.
+Allir eru maettir
 Fundarstjóri: Tinna
 Markmið Dagsins:
 Klára kröfulistann.
@@ -43,9 +47,10 @@ Notkunarvirknin, kröfulistinn, model diagram, data diagram, logic diagram var a
 
 Dagur 4.
 Markmið Dagsins:
+Allir eru maettir
 Fundarstjóri dagsins er Logi Freyr Arnarsson.
-Klára UI class diagram.
-klára wireframe og happy path.
+Larus, Logi og Bjarki Klára UI class diagram.
+Eva, Tinna og Fonn, klára wireframe og happy path.
 
 Hvað var náð að klárast
 UI Class Diagram
@@ -54,7 +59,8 @@ meiri hluti af happy path (klárum rest á morgun)
 Dagur 5.
 Markmið Dagsins:
 Fundarstjóri dagsins er Eva Rut Ómarsdóttir
-Klára skýrsluna og gera hana flotta. Fínpússa.
+Allir eru maettir
+Klára skýrsluna og gera hana flotta. Fínpússa oll saman.
 Fara úr skólanum í góðu skapi :)
 
 Hvað var náð að klárast
@@ -63,6 +69,7 @@ Við fórum öll mjög ánægð og sátt heim. Erum mjög stolt af þessari frá
 
 Dagur 6.
 Fundarstjóri dagsins: Lárus Þóroddsson
+Allir maettir
 Markmið Dagsins:
 Uppsetning á beinagrind, skipta niður verkefnum þannig allir hafi sitt að gera.
 Klára flæðirit fyrir mögulegar leiðir kerfisins. Tinna ætlar að byrja að UI layer, Eva tekur að sér að byrja á logic layer.
@@ -74,9 +81,12 @@ Uppsetning á beinagrind fyrir hvert layer var unnið í. Flæðirit var klára�
 Dagur 7.
 Fundarstjóri dagsins: Logi Freyr Arnarsson
 Markmið Dagsins:
+Allir maettir
 klára allar sem flestar kröfur í employees. Tinna og Fönn ætla að halda áfram með UI, Bjarki og Lárus vinna í data.
 Eva og Logi taka að sér logic.
-Gerðum Trello til að skipuleggja vel.
+Eva er ad gera employee logic
+Logi er ad byrja a destinations.
+Gerðum Trello til að skipuleggja verkefnid vel.
 
 Hvað var náð að klárast
 komumst langt með kröfulistan í employees og náðum fyrstu tengingum milli UI, Logic og data.
@@ -86,7 +96,7 @@ Dagur 8.
 Fundarstjóri: Tinna María
 Markmið Dagsins: 
 Vinna í A kröfum; viljum allavegana ná að klára að geta bætt við starfsmanni og svo förum við í fleiri A kröfur. 
-Fá data og model fyrir past flights. 
+Fá data og model fyrir past flights.
 Skilgreina föllin okkar betur.
 
 
@@ -98,7 +108,7 @@ Dagur 9.
 Markmið Dagsins:
 Fundarstjóri: Fönn Harðard.
 Í dag ætlum við að láta main runna á ný. Ætlum líka að halda áfram með voyage og reyna að komast eins langt og við getum með það.
-Þurfum að aflúsa smá og laga attributeError í UI.  
+Þurfum að aflúsa smá og laga attributeError í UI.
 
 
 Hvað var náð að klárast:
@@ -106,7 +116,8 @@ Main var lagað! Komin flott tafla í voyage og all á uppleið. Allt systemið 
 
 Dagur 10.
 Markmið Dagsins: Vinna í A kröfum, aðallega voyage og schedule, smá í employees. Logi og Tinna eru í skólaferð með tvíund úti í Amsterdam.
-Bjarki er veikur heima greyjið.
+Bjarki er veikur heima greyjið. Eva, Fonn og Larus eru sterk i ad halda afram med logic.
+Nadum fyrstu tengingunum a milli allra lagana.
 
 
 Hvað var náð að klárast
@@ -114,15 +125,20 @@ Við náðum að klára helling í A kröfum, það gekk allt mjög vel og allir
 
 Dagur 11
 Markmið Dagsins:
+Fundastjori: Eva Rut Ómarsdóttir
+Eva, Fonn, Larus og Bjarki eru maett
 Við ætlum að reyna að halda uppi móralinum eftir að fá einkunnir í forritun. Í verkefninu ætlum við að reyna að klára kóðan fyrir voyages. Aðallega að vinna með flugtíman. Og reyna að laga pínu í logicinu. 
+Eva aetlar ad vinna i flight infromation logic.
 
 Hvað var náð að klárast
 Við náðum að vinna í voyage hlutanum og bæta logic layerið.
+Eva klaradi flight info.
 
 Dagur 12.
 Markmið Dagsins:
 Fundarstjóri: Bjarki már
 Erum að klára eins margar kröfur og við getum, og na að klara að tangja UI hlutan og byrja að gera allt fallegt og sja ef allt virkar.
+
 
 
 Það sem náðist að klára í dag:
@@ -170,4 +186,5 @@ Eva lagar ALLT.
 Bjarki ætlar að gera video og skýrslu.
 Logi leitar að bugs og fer í skýrslu
 
-Hvað var náð að klárast
+Hvað var náð að klárast:
+Verkefnid var klarad og erum vid oll svakalega satt og anaegd med forritid okkar! :)
