@@ -94,6 +94,9 @@ class ScheduleUI:
     def get_schedule_for_employee(self, employee: str) -> None:
         """TODO: add docstring"""
         year = input("Enter year: ")
+        while not self.validation.validate_year():
+            print("ERROR: invalid year.\n year must be a number.")
+            year = input("Enter year: ")
         week = input("Enter week: ")
 
         while not self.validation.validate_weeks(week):
