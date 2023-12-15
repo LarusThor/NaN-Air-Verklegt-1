@@ -5,7 +5,7 @@ FLIGHT_STATUS_OPTIONS = ["1. Booking status for specific voyage", "2. Booking st
 
 class FlightInfoUI:
     def __init__(self) -> None:
-        """"Instantiate a ArplaneUI object."""
+        """"Instantiate a FlightInfoUI object."""
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()         
 

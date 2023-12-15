@@ -277,6 +277,10 @@ class LogicWrapper:
         """TODO: einhver sem skilur þennan skilgreina."""
         self.validation.validate_voyage(voyage)
 
-    def date_validation(self, date: datetime) -> bool:
-        """validates date."""
-        self.validation.date_validation(date)
+    # def date_validation(self, date: datetime) -> bool:
+    #     """validates date."""
+    #     self.validation.date_validation(date)
+
+    def validate_date(self, date:str) -> bool:
+        """ Validates a date """
+        self.validation.validate_date(date)
