@@ -11,7 +11,7 @@ class EmployeeLL:
         self.logic = logic_wrapper
 
     
-    def employee_info_overview(self): #TODO eyða 
+    def employee_info_overview(self): #Er notað í get_social_id og validate_social_id_non_existant
         """ Returns a dictionary containing information about the systems staff members. """
         return self.logic.data_wrapper.get_all_staff_members()
 
@@ -49,8 +49,9 @@ class EmployeeLL:
     def get_employee(self, social_id: str) -> Employee:
         """ Returns information about a chosen employee. """
         employee_dict = self.logic.data_wrapper.get_all_staff_members()
-        
+
         return employee_dict[social_id]
+   
 
 
     def change_employee_info(self, employee: Employee) -> None:

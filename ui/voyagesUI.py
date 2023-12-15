@@ -134,12 +134,13 @@ class VoyagesUI:
 
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight1)
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight2)
-            print("saving_files")
-            print("New voyage has been saved!")
+            user_input = self.menus.print_the_info("New voyage has been saved!")
+            return user_input
 
         elif save_prompt == "n":
-            print("New voyage was not saved.")
-
+            user_input = self.menus.print_the_info("New voyage was not saved.")
+            return user_input
+        
     def get_voyage_flight_number(self) -> str:
         """TODO: add docstring"""
         flight_number = input("Enter flight number: ")
@@ -329,6 +330,10 @@ class VoyagesUI:
             flight.fa5,
         ) = flight_attendants_social_ids
 
+                    # self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_first_flight)
+                    # self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_return_flight)
+                    # user_input = self.menus.print_the_info("Voyage has been staffed!")
+                    # return user_input
         (
             return_flight.fa1,
             return_flight.fa2,
@@ -352,7 +357,7 @@ class VoyagesUI:
         if save_prompt == "y":
             self.logic_wrapper.add_staff_to_voyage(flight)
             self.logic_wrapper.add_staff_to_voyage(return_flight)
-            print("Voyages have been staffed!")
+            user_input = self.menus.print_the_info("Voyages have been staffed!")
 
     #############################################################################################################################################
 
@@ -391,8 +396,9 @@ class VoyagesUI:
                 if voyage_counter == 2:
                     voyage_counter = 0
                     result += "-" * 130 + "\n"
-
-        self.menus.print_the_info(title, result)
+        
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
     def get_upcoming_voyage_by_week(self, year: str, week_nr: str) -> None:
         """TODO: add docstring"""
@@ -409,8 +415,9 @@ class VoyagesUI:
                     if voyage_counter == 2:
                         voyage_counter = 0
                         result += "-" * 130 + "\n"
-
-        self.menus.print_the_info(title, result)
+        
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
     #############################################################################################################################################
 
@@ -428,8 +435,9 @@ class VoyagesUI:
                 if voyage_counter == 2:
                     voyage_counter = 0
                     result += "-" * 130 + "\n"
-
-        self.menus.print_the_info(title, result)
+    
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
     def get_past_voyage_by_week(self, year: str, week_nr: str) -> None:
         """
@@ -458,6 +466,9 @@ class VoyagesUI:
                     if voyage_counter == 2:
                         voyage_counter = 0
                         result += "-" * 130 + "\n"
+        
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
         self.menus.print_the_info(title, result)
 

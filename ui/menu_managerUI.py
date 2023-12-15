@@ -1,4 +1,4 @@
-from logic.validationLL import ValidationLL
+from logic.logic_wrapper import LogicWrapper
 import os
 OUTLINE = "="*70
 MAIN_MENU_OPTIONS = ["1. Airplane", "2. Destinations", "3. Employees", "4. Schedule", "5. Voyages", "6. Flight status"]
@@ -22,8 +22,10 @@ TITLE16="                 =  ===(_________)                      "
 
 
 class Menu():
-    def init(self) -> None:
+    def __init__(self) -> None:
         """ TODO: add docstring """
+        self.logic_wrapper = LogicWrapper()
+        self.validation = self.logic_wrapper.validation
 
 
     def main_menu(self) -> None:
@@ -129,7 +131,13 @@ class Menu():
     def get_next_action(self) -> str:
         """ TODO: add docstring """
         print("Enter (b) for back or (q) for quit")
+        
         action = input("Enter in your action: ").lower()
+
+        while self.validation.validate_back_or_quit(action) == False:
+            print("\nERROR: Invalid input. You can choose b or q")
+            action = input("Enter in your action: ")
+
         return action
         
     

@@ -48,13 +48,13 @@ class ValidationLL():
         if len(address_values) == 1:
             return len(address) >=3 and all((char.isalpha()for char in address [0]))
         
-    def validate_landline(self, landline: str) -> bool:
-        if landline == "y" or landline == "n":
+    def validate_yes_no(self, input: str) -> bool:
+        if input == "y" or input == "n":
             return True
         else:
             return False
-        
-        
+    
+
     #airplanes   
     def validate_aircraft_by_specific_type(self, aircraft_specific_type) -> bool:
         return "N/A" in aircraft_specific_type
@@ -144,6 +144,11 @@ class ValidationLL():
 
 #destination
 
+    def validate_all_destinations(self,all_destinations) -> bool:
+        return 
+
+
+            
     def validate_destination_name(self, destination_name: str) -> bool:
         """ Validates name input. """
         name_values = destination_name.split()
@@ -159,9 +164,15 @@ class ValidationLL():
         name_values = airport_name.split()
         return len(airport_name) >=3 and "Airport" in airport_name and all((char.isalpha()for char in name_values))
     
-    def validate_distance_from_iceland(self, distance_from_iceland: str) -> bool:
-        return len(distance_from_iceland) >=0 and len(distance_from_iceland) <=400000 and all((digit.isdigit()for digit in distance_from_iceland))
+    def validate_distance_from_iceland(self, distance_from_iceland: int) -> bool:
+        try:
+            distance_from_iceland = int(distance_from_iceland)
+            return (distance_from_iceland) >=0 and (distance_from_iceland) <= 400000 and all((digit.isdigit()for digit in distance_from_iceland))
+        except ValueError:
+            return False
     
-    
+# menu 
+    def validate_back_or_quit(self, user_input: str):
+        return user_input.lower() == "b" or user_input == "q"
     
     

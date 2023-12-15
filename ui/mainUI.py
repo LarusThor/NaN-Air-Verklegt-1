@@ -9,9 +9,10 @@ from ui.flight_infoUI import FlightInfoUI
 
 import time
 
-INVALID_INPUT_SLEEP = 2
+INVALID_INPUT_SLEEP = 1
 BACK = "b"
 QUIT = "q"
+INVALID_INPUT = "Input was invalid, try again."
 # the menu
 MAIN_MENU_OPTIONS = [
     "1. Airplane",
@@ -150,41 +151,60 @@ class Main:
                             time.sleep(INVALID_INPUT_SLEEP)
 
 
-            def destinations() -> None:
-                """TODO: in this code we are in destination and starting loops 
-                    with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables 
-                    and making sure the user puts the right input in:"""
-                action4 = ""# initialize a varible and stores the users input
-                action5 = ""
-                while ( action4 != BACK):
-                    action4 = self.destinations_ui.destinations()
-                    action5 = ""
+
+
+
+
+
+
+            def destinations_options_input(user_input):
+                match user_input:
+                    case "q":
+                        quit(0)
+
+                    case "1":
+                        user_input = self.destinations_ui.get_all_destinations()
+
+                    case "2":
+                        user_input = self.destinations_ui.get_most_popular_destination()
+
+                    case "3":
+                        user_input = self.destinations_ui.add_destination()
+
+                    case "4":
+                        user_input = self.destinations_ui.change_destination_info()
+
+                    case "b":
+                        return BACK
+
+                    case _:
+                        print(INVALID_INPUT)
+                        time.sleep(INVALID_INPUT_SLEEP)
+                        return BACK
                     
-                    while(action5 != BACK):
-                        if action5 == "q":
-                            quit()
-                        match action4:
-                            case "q":
-                                quit(0)
-                            case "1":
-                                action5 = self.destinations_ui.get_all_destinations()
+                return user_input
+                
 
-                            case "2":
-                                action5 = self.destinations_ui.get_most_popular_destination()
+            def destinations() -> None:
+                """TODO: in this code we are in destination and starting loops with the feature of backing out and quiting
+                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                
+                user_input1 = ""
+                user_input2 = "b"
+                
+                while user_input1 != BACK and user_input2 == BACK:
+                    user_input1 = self.destinations_ui.destinations_options()
 
-                            case "3":
-                                action5 = self.destinations_ui.add_destination()
+                    user_input2 = destinations_options_input(user_input1)
 
-                            case "4":
-                                # while (action5 != "b"):
-                                action5 = self.destinations_ui.change_destination_info()
+                    if user_input2 == "q":
+                        quit()
 
-                            case "b":
-                                continue
-                            case _:
-                                print("Input was invalid, try again ")
-                                time.sleep(INVALID_INPUT_SLEEP)
+                
+
+
+
+            
                                 
                                 
 
@@ -210,6 +230,7 @@ class Main:
                                 # action6 =""
                                 action7 = self.employee_ui.list_employees_options()
                                 action10 = action7
+
                                 while(action10 != BACK):
                                     if action10 == "q":
                                         quit()
@@ -252,6 +273,7 @@ class Main:
                                         case _:
                                             print("Input was invalid, try again ")
                                             time.sleep(INVALID_INPUT_SLEEP)
+                                            print("BUUUG") #TODO: laga alls staðar
                                         
                         # Add employee :
                         case "3":
@@ -306,7 +328,8 @@ class Main:
                                         time.sleep(INVALID_INPUT_SLEEP)
 
                                 action2 = action12
-                                
+
+                               
 
                         case "2":
                             while(action12 != BACK):
@@ -340,82 +363,101 @@ class Main:
                     with the feature of backing out and quiting
                     we are storing the user inputs in a action variables 
                     and making sure the user puts the right input in:"""
-                action13=""
+                action1=""
+                action2 = ""
                 action14=""
                 action15=""
                 action16=""
-                while(action13 != BACK):
-                    action14=""
-                    action15=""
-                    action16=""
-                    action = self.voyages_ui.voyages_options()
-                    match action:
+                while(action1 != BACK):
+                    action1 = self.voyages_ui.voyages_options()
+                    action2 = ""
+                    action3 = ""
+                    action4 = ""
+                    action5 = "b"
+                    action6 = ""
+                    action7 = "b"
+                    action14 = "b"
+
+                    match action1:
                         case "q":
                             quit(0)
+
                         case "1":
-                            self.voyages_ui.add_voyage()
+                            while(action2 != BACK):
+                                action1 = ""
+                                action2 = self.voyages_ui.add_voyage()
+                                if action2 == "q":
+                                    quit()
 
                         case "2":
-                            while(action14 != BACK):
-                                action13=""
+                            while(action14 == BACK):
                                 action14 = self.voyages_ui.voyage_past_or_present_options()
+                                
                                 match action14:
+
                                     case "q":
                                         quit(0)
+
                                     case "1":
-                                        while(action15 != BACK):
-                                            action15 = self.voyages_ui.list_voyage_options()
-                                            match action15:
+                                        while(action5 == BACK):
+                                            action4 = self.voyages_ui.list_voyage_options()
+                                            
+                                            match action4:
                                                 case "q":
                                                     quit(0)
+
                                                 case "1":
                                                     date = self.voyages_ui.get_date()
-                                                    self.voyages_ui.get_upcoming_voyage_by_date(
-                                                        date
-                                                    )
+                                                    action5 = self.voyages_ui.get_upcoming_voyage_by_date(date)
+
                                                 case "2":
                                                     year, week = self.voyages_ui.get_week()
-                                                    self.voyages_ui.get_upcoming_voyage_by_week(
-                                                        year, week
-                                                    )
+                                                    action5 = self.voyages_ui.get_upcoming_voyage_by_week(year, week)
+
                                                 case "b":
-                                                    continue
+                                                    break
+
                                                 case _:
                                                     print("Input was invalid, try again ")
-                                                    time.sleep(INVALID_INPUT_SLEEP)    
+                                                    time.sleep(INVALID_INPUT_SLEEP)
+
 
                                     case "2":
-                                        while(action16 != BACK):
-                                            action16 = self.voyages_ui.list_voyage_options()
-                                            match action16:
+                                        while(action7 == BACK):
+                                            action6 = self.voyages_ui.list_voyage_options()
+
+                                            match action6:
+
                                                 case "q":
                                                     quit(0)
+
                                                 case "1":
                                                     date = self.voyages_ui.get_date()
-                                                    self.voyages_ui.get_past_voyage_by_date(date)
+                                                    action7 = self.voyages_ui.get_past_voyage_by_date(date)
+
                                                 case "2":
                                                     year, week = self.voyages_ui.get_week()
-                                                    self.voyages_ui.get_past_voyage_by_week(
-                                                        year, week
-                                                    )
+                                                    action7 = self.voyages_ui.get_past_voyage_by_week(year, week)
+
                                                 case "b":
-                                                    continue
+                                                    break
+                                                
                                                 case _:
                                                     print("Input was invalid, try again ")
                                                     time.sleep(INVALID_INPUT_SLEEP)
                                                     
-                                                    
                                     case "b":
                                         continue
+
                                     case _:
                                         print("Input was invalid, try again ")
                                         time.sleep(INVALID_INPUT_SLEEP)
+
+
                         case "3":
                             voyage_number = self.voyages_ui.get_voyage_flight_number()
                             voyage_date = self.voyages_ui.get_voyage_date()
-                            self.voyages_ui.manager_staffs_voyage(
-                                voyage_number, voyage_date
-                            )
+                            self.voyages_ui.manager_staffs_voyage(voyage_number, voyage_date)
      
                         case "4":
                             self.voyages_ui.staff_voyage()
