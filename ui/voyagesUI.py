@@ -177,6 +177,7 @@ class VoyagesUI:
         return date
 
     def __get_flight_attendants(self, available_employees: dict[str, Employee]):
+        """Gets available flight attendants."""
         available_flight_attendants = [
             employee
             for employee in available_employees.values()
@@ -214,6 +215,7 @@ class VoyagesUI:
         allow_cancel=False,
         cancel_option: str = None,
     ) -> Any:
+        """Reusable print function for lists and lets user pick an option"""
         print()
         if top_prompt:
             print(top_prompt)
@@ -239,8 +241,7 @@ class VoyagesUI:
             print("Invalid choice!")
 
     def manager_staffs_voyage(self, voyage_flight_number: str, voyage_date: str) -> None:
-        """TODO: add docstring"""
-        # TODO: accept voyage_date as date object
+        """Adds staff and aircraft to the voyage."""
 
         # get flight and return flight
         flight: UpcomingVoyage = self.logic_wrapper.get_upcoming_voyage_by_flight_nr_and_date(voyage_flight_number, voyage_date)
