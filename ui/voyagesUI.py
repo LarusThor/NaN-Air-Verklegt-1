@@ -38,7 +38,7 @@ class VoyagesUI:
     def voyages_options(self) -> str:
         """Displays user options in voyages."""
         self.menus.display_options("Voyages:", VOYAGES_OPTIONS)
-        action = str(input("Enter your action: ").lower())
+        action = str(input("Enter your action: ").lower().strip())
 
         return action
 
@@ -50,17 +50,17 @@ class VoyagesUI:
         print("New voyage: ")
         print("=" + "-=" * 20)
 
-        flight_number = input("Enter flight number: ")
+        flight_number = input("Enter flight number: ").strip()
         while not self.validation.validate_flight_nr(flight_number):
             print("ERROR: invalid flight number.\nMust start with NA and contain three numbers. ")
-            flight_number = input("Enter flight number: ")
+            flight_number = input("Enter flight number: ").strip()
         departure_location = "Kef"  # NaN air always departs from Kef
 
         print("Choose an arrival destination")
         for index, destination in enumerate(destination_list):
             print(f"{index + 1}. {destination.destination}")
 
-        action = int(input("Enter choice: "))
+        action = int(input("Enter choice: ").strip())
         valid_choice = False
         while valid_choice == False:
             try:
@@ -68,28 +68,28 @@ class VoyagesUI:
                 valid_choice = True
             except:
                print("Invalid choice \nTry again!")
-               action = int(input("Enter choice: ")) 
+               action = int(input("Enter choice: ").strip()) 
             
 
-        departure_date = input(f"Enter departure date from {departure_location} (YYYY-MM-DD): ")  
+        departure_date = input(f"Enter departure date from {departure_location} (YYYY-MM-DD): ").strip() 
         while not self.validation.validate_date(departure_date):
             print("Invalid date entered. ")
-            departure_date = input(f"Enter departure date from {departure_location} (YYYY-MM-DD): ")
+            departure_date = input(f"Enter departure date from {departure_location} (YYYY-MM-DD): ").strip()
 
-        departure_time = input(f"Enter departure time from {departure_location} (HH:MM:SS): ") 
+        departure_time = input(f"Enter departure time from {departure_location} (HH:MM:SS): ").strip()
         while not self.validation.validate_time(departure_time):
             print("Invalid time entered. ")
             departure_time = input(f"Enter departure date from {departure_location} (HH:MM:SS): ")
 
-        return_flight_date = input(f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): ")
+        return_flight_date = input(f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): ").strip()
         while not self.validation.validate_date(return_flight_date):
             print("Invalid date entered. ")
-            return_flight_date = input(f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): ")
-        return_flight_time = input(f"Enter departure time from {arrival_location.destination} (HH:MM:SS): ")
+            return_flight_date = input(f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): ").strip()
+        return_flight_time = input(f"Enter departure time from {arrival_location.destination} (HH:MM:SS): ").strip()
 
         while not self.validation.validate_time(return_flight_time):
             print("Invalid time entered. ")
-            return_flight_time = input(f"Enter departure date from {arrival_location.destination} (HH:MM:SS): ")
+            return_flight_time = input(f"Enter departure date from {arrival_location.destination} (HH:MM:SS): ").strip()
 
       
         # Calculate arrical time from departure time
@@ -127,7 +127,7 @@ class VoyagesUI:
         print("Departure date and time: ", departure_date_time)
         print("Arrival date and time: ", arrival_date_time)
 
-        save_prompt = input("Would you like to save this new voyage, (y)es or (n)o? ")
+        save_prompt = input("Would you like to save this new voyage, (y)es or (n)o? ").strip()
         if save_prompt == "y":
             # Two flights to make one voyage
 
@@ -160,18 +160,18 @@ class VoyagesUI:
 
     def get_voyage_flight_number(self) -> str:
         """Lets user input a flight number."""
-        flight_number = input("Enter flight number: ")
+        flight_number = input("Enter flight number: ").strip()
 
         while not self.validation.validate_flight_nr(flight_number):
             print("ERROR: invalid flight number.\nMust start with NA and contain three numbers. ")
-            flight_number = input("Enter flight number: ")
+            flight_number = input("Enter flight number: ").strip()
 
         return flight_number
 
     def get_voyage_date(self) -> str:
         """Gets date input from user."""
 
-        date = input("Enter year date (YYYY-MM-DD): ")
+        date = input("Enter year date (YYYY-MM-DD): ").strip()
         while not self.validation.validate_date(date):
             print("Invalid date entered. ")
             date = input("Input date (YYYY-MM-DD): ").strip()
@@ -364,7 +364,7 @@ class VoyagesUI:
         for flight_attendant in flight_attendants:
             print("Flight Attendant:", flight_attendant.name)
 
-        save_prompt = input(f"Would you like to add this staff to flights {flight.flight_nr} and {return_flight.flight_nr}, (y)es or (n)o? ")
+        save_prompt = input(f"Would you like to add this staff to flights {flight.flight_nr} and {return_flight.flight_nr}, (y)es or (n)o? ").strip()
         if save_prompt == "y":
             self.logic_wrapper.add_staff_to_voyage(flight)
             self.logic_wrapper.add_staff_to_voyage(return_flight)
@@ -377,18 +377,18 @@ class VoyagesUI:
     def list_voyage_options(self) -> str:
         """Lists user options in voyages."""
         self.menus.display_options("List voyages", LIST_VOYAGES_OPTIONS)
-        action = str(input("Enter your action: ").lower())
+        action = str(input("Enter your action: ").lower().strip())
         return action
 
     def voyage_past_or_present_options(self) -> str:
         """Prints options to see information about future voyages or past voyages."""
         self.menus.display_options("List voyages:", PAST_OR_PRESENT_VOYAGES)
-        action = str(input("Enter your action: ").lower())
+        action = str(input("Enter your action: ").lower().strip())
         return action
 
     def get_date(self) -> str:
         """Gets a date from the user."""
-        date = input("Enter date (YYYY-MM-DD): ")
+        date = input("Enter date (YYYY-MM-DD): ").strip()
         while not self.validation.validate_date(date):
             print("Invalid date entered. ")
             date = input("Input date (YYYY-MM-DD): ").strip()
@@ -396,14 +396,14 @@ class VoyagesUI:
 
     def get_week(self) -> str:
         """Gets week from user."""
-        year = input("Enter year: ")
+        year = input("Enter year: ").strip()
         while not self.validation.validate_year(year):
             print("ERROR: invalid year.\nYear must be a number.")
-            year = input("Enter year: ")
-        week = input("Enter week number (1-52): ")
+            year = input("Enter year: ").strip()
+        week = input("Enter week number (1-52): ").strip()
         while not self.validation.validate_weeks(week):
             print("ERROR: invalid week number.\nWeek must be from 1-52.")
-            week = input("Enter week: ")
+            week = input("Enter week: ").strip()
         return year, week
 
     def get_upcoming_voyage_by_date(self, date: date) -> str:

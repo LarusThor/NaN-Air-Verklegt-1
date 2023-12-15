@@ -60,7 +60,7 @@ class ValidationLL:
         return "N/A" in aircraft_specific_type
 
     def validate_airplane_name(self, aircraft_name) -> bool:
-        if aircraft_name[0:2] == "TF":
+        if aircraft_name[0:2] == "TF" and len(aircraft_name[3:]) == 3:
             if aircraft_name[2] == "-":
                 if type(aircraft_name[3:6]) == str:
                     return True

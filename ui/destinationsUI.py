@@ -19,7 +19,7 @@ class DestinationsUI:
     def destinations_options(self) -> str:
         """Displays destination options."""
         self.menus.display_options("Destinations:", DESTINATIONS_OPTIONS)
-        action = str(input("Enter your action: ").lower())
+        action = str(input("Enter your action: ").lower().strip())
 
         return action
 
@@ -54,60 +54,60 @@ class DestinationsUI:
 
         print("New destination")
 
-        id = input("Enter the 3 letter ID: ").upper()
+        id = input("Enter the 3 letter ID: ").upper().strip()
         destinations = self.logic_wrapper.destination_info_overview()
         while not self.validation.validate_destination_id(id):
             print("ERROR: Invalid ID. \nID has to be a string of length 3. ")
-            id = input("Enter the 3 letter ID: ").upper()
+            id = input("Enter the 3 letter ID: ").upper().strip()
             while id in destinations.keys():
                 print("Destination already exists, please enter a valid id")
-                id = input("Enter the 3 letter ID: ").upper()
+                id = input("Enter the 3 letter ID: ").upper().strip()
 
-        country = input("Enter the destination: ").title()
+        country = input("Enter the destination: ").title().strip()
         while not self.validation.validate_destination_name(country):
             print("ERROR: Invalid destination. \nDestination has to be a string of length > 3. ")
-            country = input("Enter the destination: ").title()
+            country = input("Enter the destination: ").title().strip()
 
-        airport = input("Enter the airport: ").title()
+        airport = input("Enter the airport: ").title().strip()
         airport_exists = True
         while airport_exists:
             for values in destinations.values():
                 if airport in values.airport_name:
                     print("Airport already in use, please enter a valid airport name")
                     airport_exists = True
-                    airport = input("Enter the airport: ").title()
+                    airport = input("Enter the airport: ").title().strip()
                 else:
                     airport_exists = False
         while not self.validation.validate_airport(airport):
             print(
                 "ERROR: Invalid airport. \nAirport name has to be a string of length > 3 and contain the word Airport."
             )
-            airport = input("Enter the airport: ").title()
+            airport = input("Enter the airport: ").title().strip()
 
-        distance_from_iceland = input("Enter the distance form Iceland: ")
+        distance_from_iceland = input("Enter the distance form Iceland: ").strip()
         while not self.validation.validate_distance_from_iceland(distance_from_iceland):
             print(
                 "ERROR: Invalid distance. \nDistance has to be an integer less than 40.000."
             )
-            distance_from_iceland = input("Enter the distance form Iceland: ")
+            distance_from_iceland = input("Enter the distance form Iceland: ").strip()
 
-        contact_name = input("Enter the name of the contact person: ").title()
+        contact_name = input("Enter the name of the contact person: ").title().strip()
         while not self.validation.validate_name(contact_name):
             print("ERROR: Invalid name. \nName has to be a string of length <= 3. ")
-            contact_name = input("Enter the name of the contact person: ").title()
+            contact_name = input("Enter the name of the contact person: ").title().strip()
 
-        contact_number = input("Enter the number of the contact number: ")
+        contact_number = input("Enter the number of the contact number: ").strip()
         while not self.validation.validate_number(contact_number):
             print("ERROR: Invalid phone number. \n Phone number should be 7 digits. ")
-            contact_number = input("Enter the number of the contact number: ")
+            contact_number = input("Enter the number of the contact number: ").strip()
             return contact_number
 
-        estimated_flight_time = input("Enter the estimated flight time: ")
+        estimated_flight_time = input("Enter the estimated flight time: (HH:MM:SS): ").strip()
         while not self.validation.validate_time(estimated_flight_time):
             print(
                 "ERROR: Invalid flight time. \nFlight time should be in the format: 00:00:00. "
             )
-            estimated_flight_time = input("Enter the estimated flight time: ")
+            estimated_flight_time = input("Enter the estimated flight time: (HH:MM:SS): ").strip()
 
         print("New destination:")
         print("=" + "-=" * 20)
@@ -121,7 +121,7 @@ class DestinationsUI:
 
         save_prompt = input(
             "Would you like to save this new destionation, (y)es or (n)o? "
-        ).lower()
+        ).lower().strip()
         if save_prompt == "y":
             dest = Destination(
                 destination_id=id,
@@ -151,11 +151,11 @@ class DestinationsUI:
         for index, destination in enumerate(destination_list):
             print(f"{index + 1}. {destination.destination}")
 
-        destination_choice = input("Choose destination: ")
+        destination_choice = input("Choose destination: ").strip()
         while destination_choice != "1" and destination_choice != "2" and destination_choice != "3" and destination_choice != "4" and destination_choice != "5":
             print("Invalid input! You can choose 1, 2, 3, 4 and 5")
             print("-" * 30)
-            destination_choice = input("Destination: ")
+            destination_choice = input("Destination: ").strip()
 
         destination_info = destination_list[int(destination_choice) - 1]
 
@@ -176,27 +176,26 @@ class DestinationsUI:
                 case "1":
                     destination_info.airport_name = input(
                         "Enter new airport name: "
-                    ).title()
-                    action = input("Choose action: ")
+                    ).title().strip()
+                    action = input("Choose action: ").strip()
 
                 case "2":
                     destination_info.emergency_contact_name = input(
                         "Enter the name for the new emergency contact: "
-                    )
-                    action = input("Choose action: ")
+                    ).capitalize().strip()
+                    action = input("Choose action: ").strip()
 
                 case "3":
                     destination_info.emergency_contact_number = input(
                         "Enter a new number for the contact: "
-                    ).title()
-                    action = input("Choose action: ")
-
+                    ).title().strip()
+                    action = input("Choose action: ").strip()
                 case "4":
                     print("So you've got fast planes now? ")
                     destination_info.estimated_flight_time = input(
                         "How fast can they fly to the destiantion? "
-                    )
-                    action = input("Choose action: ")
+                    ).strip()
+                    action = input("Choose action: ").strip()
 
                 case _:
                     break
@@ -213,7 +212,7 @@ class DestinationsUI:
 
         save_prompt = input(
             "Would you like to save this new destionation, (y)es or (n)o? "
-        ).lower()
+        ).lower().strip()
 
         if save_prompt == "y":
             self.logic_wrapper.update_destination_info(destination_info)

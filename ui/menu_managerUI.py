@@ -133,11 +133,11 @@ class Menu():
 
         print("Enter (b) for back or (q) for quit")
         
-        action = input("Enter in your action: ").lower()
+        action = input("Enter in your action: ").lower().strip()
 
         while self.validation.validate_back_or_quit(action) == False:
             print("\nERROR: Invalid input. You can choose b or q")
-            action = input("Enter in your action: ")
+            action = input("Enter in your action: ").strip()
 
         return action
         
