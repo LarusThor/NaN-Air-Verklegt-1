@@ -1,6 +1,7 @@
 from ui.menu_managerUI import Menu
 from logic.logic_wrapper import LogicWrapper
 from datetime import date, datetime
+from ui.employeesUI import EmployeeUI
 
 SCHEDULE_OPTIONS = ["1. Schedule for a specific day", "2. Schedule for specific employee"]
 SCHEDULE_FOR_EMPLOYEE = ["1. View their weekly schedule", "2. View their total work hours over a specific time"]
@@ -11,6 +12,8 @@ class ScheduleUI:
     def __init__(self) -> None:
         self.menus = Menu()
         self.logic_wrapper = LogicWrapper()
+        self.employeeUI = EmployeeUI()
+        self.validation = self.logic_wrapper.validation
 
     def schedule_options(self) -> str:
         """Shows the options the user can choose from when they choose schedule from the main menu"""
@@ -65,13 +68,16 @@ class ScheduleUI:
 
     def get_employee(self) -> str:
         """TODO: add docstring"""
-        employee = input("Enter the employees social ID: ")
+        employee = self.employeeUI.get_not_social_id()
         return employee
 
     def get_schedule_for_employee(self, employee: str) -> None:
         """TODO: add docstring"""
         year = input("Enter year: ")
         week = input("Enter week: ")
+        while not self.validation.validate_weeks(week):
+            print("ERROR: invalid week number.\nWeek must be from 1-52.")
+            week = input("Enter week: ")  
         title = "Week schedule: "
         result = self.logic_wrapper.employee_schedule_by_week(employee, year, week)
         
@@ -88,7 +94,9 @@ class ScheduleUI:
 
     def get_total_hours_worked(self) -> None:
         print("See total hours an employee has worked! ")
-        social_id = input("Enter social ID: ").strip()
+
+        social_id = self.employeeUI.get_not_social_id()
+
         employee = self.logic_wrapper.employee_info(social_id)
 
 

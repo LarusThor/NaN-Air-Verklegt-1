@@ -103,7 +103,7 @@ class EmployeeUI:
         social_id = str(input("Enter employee social ID: ")).strip()
 
         while not self.validation.validate_social_ID(social_id):
-            print("ERROR: Invalid social ID \nSocial ID should be 10 digits. ")
+            print("ERROR: Invalid social ID. \nSocial ID should be 10 digits. ")
             social_id = str(input("Enter employee social ID: ")).strip()
         
         employee = employee_info(social_id)
@@ -130,7 +130,7 @@ class EmployeeUI:
         """ Changes employees information. 
         Not name or social ID 
         """
-        social_id = self.get_social_id()
+        social_id = self.get_not_social_id()
         employee = self.logic_wrapper.employee_info(social_id)
         print(employee.social_id)
         
@@ -250,7 +250,7 @@ class EmployeeUI:
         """User inputs a phone number for employee."""
         phone_number = input("Phone number: ")
         while not self.validation.validate_number(phone_number):
-            print("ERROR: Invalid phone number \nPhone number should be 7 digits. ")
+            print("ERROR: Invalid phone number. \nPhone number should be 7 digits. ")
             phone_number = input("Phone number: ")
         return phone_number
     
@@ -259,7 +259,7 @@ class EmployeeUI:
         """User inputs email for employee"""
         email = input("Email: ")
         while not self.validation.validate_email(email):
-            print("ERROR: Invalid email \nEmail should include @ and a top level domain e.g. (.com/.org/.is)")
+            print("ERROR: Invalid email. \nEmail should include @ and a top level domain e.g. (.com/.org/.is)")
             email = input("Email: ")
         return email
     
@@ -268,7 +268,7 @@ class EmployeeUI:
         """User inputs an address for employee."""
         home_address = input("Home address: ")
         while not self.validation.validate_address(home_address):
-            print("ERROR: Invalid address \nAddress should be a string and above >3")
+            print("ERROR: Invalid address. \nAddress should be a string and above >3")
             home_address = input("Home address: ")
         return home_address
 
@@ -326,7 +326,20 @@ class EmployeeUI:
         employee = self.logic_wrapper.show_employee_info()
         social_id = input("Social ID: ")
         while not self.validation.validate_social_ID(social_id):
-            print("ERROR: Invalid social ID \nPlease enter a valid Social ID, should be 10 digits. ")
+            print("ERROR: Invalid social ID. \nPlease enter a valid Social ID, should be 10 digits. ")
+            social_id = input("Social ID: ")
+
+        return social_id
+    
+    def get_not_social_id(self) -> str:
+        """Gets a social id number from the user"""
+        employee = self.logic_wrapper.show_employee_info()
+        social_id = input("Social ID: ")
+        while social_id not in employee.keys():
+            print("There is no employee with this socialID!")
+            social_id = input("Social ID: ")
+        while not self.validation.validate_social_ID(social_id):
+            print("ERROR: Invalid social ID \n Please enter a valid Social ID, should be 10 digits. ")
             social_id = input("Social ID: ")
 
         return social_id
@@ -346,7 +359,7 @@ class EmployeeUI:
         
         name = input("Name: ").title()
         while not self.validation.validate_name(name):
-            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
+            print("ERROR: Invalid name. \nName has to be a string of length > 3. ")
             name = input("Name: ").title()
         
         social_id = self.get_social_id()

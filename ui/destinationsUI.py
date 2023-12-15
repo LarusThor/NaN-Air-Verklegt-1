@@ -55,32 +55,32 @@ class DestinationsUI:
         
         id = input("Enter the ID: ")
         while not self.validation.validate_destination_name(id):
-            print("ERROR: Invalid name \nName has to be a string of length < 3. ")
+            print("ERROR: Invalid name. \nName has to be a string of length < 3. ")
             id = input("Enter the ID: ")
         
         country = input("Enter the country: ")
         while not self.validation.validate_destination_id(country):
-            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
+            print("ERROR: Invalid destination id. \nID has to be a string of length 3. ")
             country = input("Enter the country: ")
         
         airport = input("Enter the airport: ")
         while not self.validation.validate_airport(airport):
-            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
+            print("ERROR: Invalid airport. \nAirport name has to be a string of length > 3 and contain the word Airport.")
             airport = input("Enter the airport: ")
         
         distance_from_iceland = input("Enter the distance form Iceland: ")
         while not self.validation.validate_distance_from_iceland(distance_from_iceland):
-            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
+            print("ERROR: Invalid distance. \nDistance has to be an integer less than 40.000.")
             distance_from_iceland = input("Enter the distance form Iceland: ")
         
         contact_name = input("Enter the name of the contact person:")
         while not self.validation.validate_name(contact_name):
-            print("ERROR: Invalid name \nName has to be a string of length < 3. ")
+            print("ERROR: Invalid name. \nName has to be a string of length < 3. ")
             contact_name = input("Enter the name of the contact person: ")
         
         contact_number = input("Enter the number of the contact number: ")
         while not self.validation.validate_number(contact_number):
-            print("ERROR: Invalid phone number \n Phone number should be 7 digits. ")
+            print("ERROR: Invalid phone number. \n Phone number should be 7 digits. ")
             contact_number = input("Enter the number of the contact number: ")
             return contact_number
         

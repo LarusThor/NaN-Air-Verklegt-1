@@ -99,6 +99,18 @@ class ValidationLL():
         
     #def validate_number_of_seats(self, number_of_seats) -> bool:
     #    return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
+
+#validate the choosing weeks
+
+    def validate_weeks(self, week: str) -> bool:
+        try:
+            int_week = int(week)
+        except ValueError:
+            return False
+        if int_week <= 0 or int_week > 52:
+            return False
+        else:
+            return True
         
               
     def validate_save_new(self, str) -> bool:
@@ -142,7 +154,7 @@ class ValidationLL():
         return len(airport_name) >=3 and "Airport" in airport_name and all((char.isalpha()for char in name_values))
     
     def validate_distance_from_iceland(self, distance_from_iceland: str) -> bool:
-        return len(distance_from_iceland) >=0 and len(distance_from_iceland) <=400000 and all((digit.isdigit()for digit in distance_from_iceland))
+        return len(distance_from_iceland) >=0 and len(distance_from_iceland) <= 400000 and all((digit.isdigit()for digit in distance_from_iceland))
     
     
     
