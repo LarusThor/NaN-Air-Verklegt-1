@@ -89,7 +89,7 @@ class ScheduleUI:
 
         while valid_id != True:
             try:
-                employee = self.logic_wrapper.employee_info(social_id)
+                employee = self.logic_wrapper.employee_info(social_id).social_id
                 valid_id = True
             except KeyError or AttributeError:
                 print("ERROR: Employee is not in the system! ")
