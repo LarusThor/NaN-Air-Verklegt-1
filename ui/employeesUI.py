@@ -106,7 +106,7 @@ class EmployeeUI:
 
         employee_info = self.logic_wrapper.employee_info
 
-        social_id = str(input("Enter employee social ID: ")).strip()#TODO: validate
+        social_id = str(input("Enter employee social ID: ")).strip()#: validate
 
         while not self.validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID. \nSocial ID should be 10 digits. ")
@@ -141,7 +141,7 @@ class EmployeeUI:
         """ Changes employees information. 
         Not name or social ID 
         """
-        social_id = self.get_not_social_id()
+        social_id = self.get_social_id()
         employee = self.logic_wrapper.employee_info(social_id)
         print(employee.social_id)
         

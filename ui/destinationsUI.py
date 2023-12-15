@@ -54,6 +54,10 @@ class DestinationsUI:
         print("New destination")
         
         id = input("Enter the 3 letter ID: ").upper()
+        destinations = self.logic_wrapper.destination_info_overview()
+        while id in destinations.keys():
+            print("Destination already exists, please enter a valid id")
+            id = input("Enter the 3 letter ID: ").upper()
         while not self.validation.validate_destination_name(id):
             print("ERROR: Invalid name. \nName has to be a string of length < 3. ")
             id = input("Enter the 3 letter ID: ").upper()
@@ -64,6 +68,15 @@ class DestinationsUI:
             country = input("Enter the country: ").title()
         
         airport = input("Enter the airport: ").title()
+        airport_exists = True
+        while airport_exists:
+            for values in destinations.values():
+                if airport in values.airport_name:
+                    print("Airport already in use, please enter a valid airport name")
+                    airport_exists = True
+                    airport = input("Enter the airport: ").title()
+                else:
+                    airport_exists = False
         while not self.validation.validate_airport(airport):
             print("ERROR: Invalid airport. \nAirport name has to be a string of length > 3 and contain the word Airport.")
             airport = input("Enter the airport: ").title()
@@ -73,7 +86,7 @@ class DestinationsUI:
             print("ERROR: Invalid distance. \nDistance has to be an integer less than 40.000.")
             distance_from_iceland = input("Enter the distance form Iceland: ")
         
-        contact_name = input("Enter the name of the contact person:").title()
+        contact_name = input("Enter the name of the contact person: ").title()
         while not self.validation.validate_name(contact_name):
             print("ERROR: Invalid name. \nName has to be a string of length < 3. ")
             contact_name = input("Enter the name of the contact person: ").title()
@@ -85,8 +98,10 @@ class DestinationsUI:
             return contact_number
         
         estimated_flight_time = input("Enter the estimated flight time: ")
-        
-        
+        while not self.validation.validate_flight_time(estimated_flight_time):
+            print("ERROR: Invalid flight time. \nFlight time should be in the format: 00:00:00. ")
+            estimated_flight_time = input("Enter the estimated flight time: ")
+            
         print("New destination:")
         print("=" + "-=" * 20)
         print("Country:", country)

@@ -95,7 +95,7 @@ class ScheduleUI:
         """TODO: add docstring"""
         year = input("Enter year: ")
         while not self.validation.validate_year(year):
-            print("ERROR: invalid year.\n year must be a number.")
+            print("ERROR: invalid year.\nYear must be a number.")
             year = input("Enter year: ")
         week = input("Enter week: ")
         while not self.validation.validate_weeks(week):
@@ -104,6 +104,7 @@ class ScheduleUI:
 
         title = "Week schedule: "
         result = self.logic_wrapper.employee_schedule_by_week(employee, year, week)
+        
         user_input = self.menus.print_the_info(title, result)
         
         return user_input
@@ -121,8 +122,16 @@ class ScheduleUI:
         """ TODO docstring """
         print("See total hours an employee has worked! ")
 
-        social_id = self.employeeUI.get_not_social_id()
-        employee = self.logic_wrapper.employee_info(social_id)
+        valid_id = False
+        social_id = self.employeeUI.get_social_id()
+        while valid_id == False:
+            try:
+                employee = self.logic_wrapper.employee_info(social_id)
+                valid_id = True
+            except KeyError:
+                print("There is no employee in the system with that ID \nTry again!")
+                social_id = self.employeeUI.get_social_id()
+
         print(f"Choose what dates to see {employee.name}'s work schedule for.")
         print("\nStart of time period. ")
 

@@ -10,7 +10,6 @@ VOYAGES_OPTIONS = [
     "1. Create a voyage",
     "2. List of voyages",
     "3. Staff a voyage",
-    "4. Cancel a voyage",
 ]
 
 NUM_FLIGHT_ATTENDANTS_PER_FLIGHT = 5
@@ -33,6 +32,7 @@ class VoyagesUI:
         """TODO: add docstring"""
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
+        self.validation = self.logic_wrapper.validation
 
 
     def voyages_options(self) -> str:
@@ -54,6 +54,9 @@ class VoyagesUI:
         flight_number = input(
             "Enter flight number: "
         )  # TODO: validate - format og lengd
+        while not self.validation.validate_flight_nr(flight_number):
+            print("ERROR: invalid flight number.\nMust start with NA and contain three numbers. ")
+            flight_number = input("Enter flight number: ")
         departure_location = "Kef"  # NaN air always departs from Kef
 
         print("Choose an arrival destination")
@@ -146,6 +149,9 @@ class VoyagesUI:
     def get_voyage_flight_number(self) -> str:
         """TODO: add docstring"""
         flight_number = input("Enter flight number: ")
+        while not self.validation.validate_flight_nr(flight_number):
+            print("ERROR: invalid flight number.\nMust start with NA and contain three numbers. ")
+            flight_number = input("Enter flight number: ")
         return flight_number
 
 
