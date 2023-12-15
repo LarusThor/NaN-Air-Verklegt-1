@@ -15,8 +15,6 @@ The third step is is to find the NaN-air-verklegt by entering this command in th
 The last step is run the program thruw the terminal by applying Python3 main.py behind the cd above,
 
 
-
-
 Here is the first screen that pops up when you launch the system 
 
 ======================================================================================================================================================================================
