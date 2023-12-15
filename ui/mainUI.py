@@ -44,6 +44,8 @@ class Main:
             
 # airplanes
             def pilots_by_license_options():
+                """ Calls a function that will print out a menu and return the users input and store it in the user_input. 
+                It then matched the input with the right case and gets outputs from those functions and inputs that is restored in the user_input."""
                 
                 user_input = ""
 
@@ -113,6 +115,7 @@ class Main:
             def airplane_usage_options():
                 """ This function is called if the user enters first 1 and that 3. Calls a function that will print out a menu 
                 and return the users input. It then calls the right action according to the input and returns the input from that function."""
+
                 user_input = ""
                 user_input2 = BACK
 
@@ -145,8 +148,8 @@ class Main:
 
             def airplane() -> None:
                 """In this code we are in airplanes and starting loops with the feature of backing out and quitting
-                    we are storing the user inputs in a user_input variables and making sure the user puts the right input in. 
-                    It then calls the right action according to the input"""
+                we are storing the user inputs in a user_input variables and making sure the user puts the right input in. 
+                It then calls the right action according to the input"""
                 
                 user_input1 = ""
                 user_input2 = BACK
@@ -183,6 +186,8 @@ class Main:
 
 # destinations
             def destinations_options_input(user_input):
+                """ Takes in the users input and calls the right functions to print everything out and return an input that is stored in the user_input. """
+
                 match user_input:
                     case "q":
                         exit()
@@ -211,8 +216,8 @@ class Main:
                 
 
             def destinations() -> None:
-                """TODO: in this code we are in destination and starting loops with the feature of backing out and quitting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                """ Function that prints out the optins for destination and gets the user input and stored it in the user_input. Than calls another function
+                to that will take care of printing out the right ting according to the input. """
                 
                 user_input1 = ""
                 user_input2 = BACK
@@ -228,6 +233,9 @@ class Main:
 
 # employees
             def list_employees_opt():
+                """ Prints out a menu and stores the input options in the user_input variable. From that input the right functions are called, 
+                they will get an input and store it in the user_input2 """
+
                 user_input = BACK
                 user_input2 = ""
 
@@ -265,6 +273,9 @@ class Main:
                     
 
             def employee_info_opt():
+                """ Prints out a menu and stores the input in the user_input variable. From that input the right functions are called, 
+                they will get an input and store it in the user_input2 """
+
                 user_input = BACK
                 user_input2 = ""
 
@@ -296,8 +307,9 @@ class Main:
 
 
             def employees() -> None:
-                """In this code we are in employee and starting loops with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                """ In this code we are in employee and starting loops with the feature of backing out and quitting. This function will call a 
+                function that prints out tha options for employee and than get an input that is returned and stored in the user_input. Then it calls 
+                the right function from the userss input. """
                 
                 user_input = ""
                 user_input2 = BACK
@@ -332,6 +344,9 @@ class Main:
                         
 # schedule                       
             def schedule_by_day():
+                """ Gets a date form the input. Prints out a menu and stores the input in the user_input variable. From that input the right functions are called, 
+                they will get an input and store it in the user_input2 """
+                
                 date = self.schedule_ui.get_schedule_by_day()
                 
                 user_input = BACK
@@ -360,6 +375,9 @@ class Main:
 
 
             def schedule_by_employee():
+                """ Prints out a menu and stores the input in the user_input variable. From that input the right functions are called, 
+                they will get an input and store it in the user_input2 """
+
                 user_input = BACK
                 while user_input == BACK:
                     user_input =self.schedule_ui.schedule_for_employee_options()
@@ -388,7 +406,7 @@ class Main:
             
             def schedule() -> None:
                 """In this code we are in schedule and starting loops with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 
                 user_input1 = ""
                 user_input2 = BACK
@@ -421,7 +439,8 @@ class Main:
 # voyages
             def voyages() -> None:
                 """In this code we are in voyages and starting loops with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                we are storing the inputs in a user_input variables and making sure the user puts the right input in. 
+                From that input it will match it with the right case and continue doing that."""
                 
                 user_input1 = ""
                 user_input2 = ""
