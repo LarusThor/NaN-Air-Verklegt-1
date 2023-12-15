@@ -42,7 +42,6 @@ class Main:
         while True:
             self.menus.main_menu()
             
-
 # airplanes
             def pilots_by_license_options():
                 user_input = ""
@@ -223,7 +222,6 @@ class Main:
                 
 
 # employees
-
             def list_employees_opt():
                 user_input = BACK
                 user_input2 = ""
@@ -314,6 +312,7 @@ class Main:
                             
                     if user_input == "q":
                         quit()
+
                         
 # schedule                       
             def schedule_by_day():
@@ -510,7 +509,7 @@ class Main:
 
             
 
-
+# Flight information
             def flight_status() -> None:
                 """If the user chooses to see the flight information. This function calls a function in the flight information UI
                  and will print out a table that shows the flight status."""
@@ -519,7 +518,6 @@ class Main:
 
                 if user_input == "q":
                     quit()
-
 
 
 # Main menu

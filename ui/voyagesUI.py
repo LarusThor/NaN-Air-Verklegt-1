@@ -369,6 +369,10 @@ class VoyagesUI:
             self.logic_wrapper.add_staff_to_voyage(flight)
             self.logic_wrapper.add_staff_to_voyage(return_flight)
             user_input = self.menus.print_the_info("Voyages have been staffed!")
+        
+        elif save_prompt == "n":
+            user_input = self.menus.print_the_info("Voyages was not staffed!")
+
 
     def list_voyage_options(self) -> str:
         """Lists user options in voyages."""
