@@ -48,22 +48,22 @@ class VoyagesUI:
         print("=" + "-=" * 20)
 
 
-        flight_number = input("Enter flight number: ")#TODO: validate - format og lengd
+        flight_number = input("Enter flight number : ")#TODO: validate - format og lengd
         departure_location = "Kef" #NaN air always departs from Kef
         
         print("Choose an arrival destination")
         for index, destination in enumerate(destination_list):
             print(f"{index + 1}. {destination.destination}")
         
-        action = int(input("Enter choice: "))
+        action = int(input("Enter choice : "))
         arrival_location = destination_list[action -1]
 
 
-        departure_date = input(f"Enter departure date from {departure_location}: year-month-day: ") #TODO: validate
-        departure_time = input(f"Enter departure time from {departure_location}: hours:minutes:seconds") #TODO: bæta við formatti hvernig þið viljið tímann og validate
+        departure_date = input(f"Enter departure date from {departure_location}: year-month-day : ") #TODO: validate
+        departure_time = input(f"Enter departure time from {departure_location}: hours:minutes:seconds : ") #TODO: bæta við formatti hvernig þið viljið tímann og validate
 
-        return_flight_date = input(f"Enter departure date from {arrival_location.destination}: year-month-day: ")#TODO: validate
-        return_flight_time = input(f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds")#TODO: validate
+        return_flight_date = input(f"Enter departure date from {arrival_location.destination}: year-month-day : ")#TODO: validate
+        return_flight_time = input(f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds :")#TODO: validate
 
 
         # TODO: use datetime module
@@ -124,11 +124,12 @@ class VoyagesUI:
 
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight1)
             self.logic_wrapper.add_upcoming_voyages(upcoming_flight2)
-            print("saving_files")
-            print("New voyage has been saved!")
+            user_input = self.menus.print_the_info("New voyage has been saved!")
+            return user_input
 
         elif save_prompt == "n":
-            print("New voyage was not saved.")
+            user_input = self.menus.print_the_info("New voyage was not saved.")
+            return user_input
         
     def get_voyage_flight_number(self) -> str:
         """TODO: add docstring"""
@@ -320,7 +321,8 @@ class VoyagesUI:
 
                     self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_first_flight)
                     self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_return_flight)
-                    print("Voyage has been staffed!")
+                    user_input = self.menus.print_the_info("Voyage has been staffed!")
+                    return user
 
 #############################################################################################################################################
 
@@ -360,7 +362,8 @@ class VoyagesUI:
                     voyage_counter = 0
                     result += "-" * 130 + "\n"
         
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
     def get_upcoming_voyage_by_week(self, year: str, week_nr: str) -> None:
         """TODO: add docstring"""
@@ -378,7 +381,8 @@ class VoyagesUI:
                         voyage_counter = 0
                         result += "-" * 130 + "\n"
         
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 #############################################################################################################################################
 
@@ -398,7 +402,8 @@ class VoyagesUI:
                     voyage_counter = 0
                     result += "-" * 130 + "\n"
     
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
     def get_past_voyage_by_week(self, year:str,  week_nr:str) -> None:
@@ -429,7 +434,8 @@ class VoyagesUI:
                         voyage_counter = 0
                         result += "-" * 130 + "\n"
         
-        self.menus.print_the_info(title, result)
+        user_input = self.menus.print_the_info(title, result)
+        return user_input
 
 
     def cancel_voyage(self) -> None:  # define

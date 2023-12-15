@@ -121,3 +121,9 @@ class ValidationLL():
 
     def validate_all_destinations(self,all_destinations) -> bool:
         return 
+
+
+# menu 
+    def validate_back_or_quit(self, user_input: str):
+        return user_input.lower() == "b" or user_input == "q"
+            
