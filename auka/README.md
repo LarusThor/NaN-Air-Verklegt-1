@@ -14,6 +14,7 @@ The second step is search up Terminal
 The third step is is to find the NaN-air-verklegt by entering this command in the terminal Cd /Users/larusthor/Documents/GitHub/NaN-Air-Verklegt-1/
 The last step is run the program thruw the terminal by applying Python3 main.py behind the cd above,
 
+Video demonstration link: https://youtu.be/JKloX2aAW0Q
 
 Here is the first screen that pops up when you launch the system 
 
