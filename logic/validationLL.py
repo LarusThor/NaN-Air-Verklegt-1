@@ -128,11 +128,6 @@ class ValidationLL():
         pass
 
 
-    def validate_flight_nr(self, flight_nr: str) -> bool:
-        """ TODO: add docstring """
-        pass
-
-
     def validate_voyage(self, voyage: str) -> bool:
         """ TODO: add docstring """
         pass
@@ -176,3 +171,14 @@ class ValidationLL():
         return user_input.lower() == "b" or user_input == "q"
     
     
+# voyages
+    def validate_flight_nr(slef, flight_number: str) -> bool:
+        """ Validates a flight numeber that the user inputs, checks whether the input is in the format
+        NA000. That is, starts with NA and three numbers follow.
+        """
+        try:
+            flight_number_int = int(flight_number[2:])
+        except ValueError:
+            flight_number_int = None
+            return False
+        return (flight_number[:2] == "NA") and 999 >= flight_number_int >= 100 and len(flight_number) == 5

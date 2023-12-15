@@ -86,7 +86,7 @@ class ScheduleUI:
         """TODO: add docstring"""
         year = input("Enter year: ")
         while not self.validation.validate_year():
-            print("ERROR: invalid year.\n year must be a number.")
+            print("ERROR: invalid year.\nYear must be a number.")
             year = input("Enter year: ")
         week = input("Enter week: ")
 
