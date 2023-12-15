@@ -46,7 +46,7 @@ class ValidationLL:
                     and (digit.isdigit() for digit in address[1])
                 )
         if len(address_values) == 1:
-            return len(address) >= 3 and all((char.isalpha() for char in address[0]))
+            return len(address) >= 3 and all((char.isalpha() for char in address))
 
     def validate_yes_no(self, input: str) -> bool:
         """Validates yes and no options"""

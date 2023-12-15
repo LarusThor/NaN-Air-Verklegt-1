@@ -285,7 +285,7 @@ class EmployeeUI:
         """User inputs an address for employee."""
         home_address = input("Home address: ")
         while not self.validation.validate_address(home_address):
-            print("ERROR: Invalid address. \nAddress should be a string and above >3")
+            print("ERROR: Invalid address. \nAddress can be a word with 3 letters or more, optionally followed by address number.")
             home_address = input("Home address: ")
         return home_address
 
@@ -360,7 +360,7 @@ class EmployeeUI:
 
         name = input("Name: ").title()
         while not self.validation.validate_name(name):
-            print("ERROR: Invalid name. \nName has to be a string of length > 3. ")
+            print("ERROR: Invalid name. \nName has to be a string of length >= 3. ")
             name = input("Name: ").title()
 
         social_id = self.get_social_id()
