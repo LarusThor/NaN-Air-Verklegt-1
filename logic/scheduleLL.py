@@ -14,7 +14,11 @@ class ScheduleLL:
     def employee_schedule_by_week(self, employee: str, year: str, week_nr: str) -> str:
         """Returns employee schedule for a chosen week."""
         flights = []
-        voyage_list = self.logic.get_all_voyages()
+        past_voyage_list = self.logic.get_past_voyages()
+        upcoming_voyage_list = self.logic.upcoming_voyages()
+
+        voyage_list = past_voyage_list | upcoming_voyage_list
+
         for flight in voyage_list.values():
             weeks = str(flight.departure.isocalendar().week)
             workers = [

@@ -11,4 +11,4 @@ from ui.employeesUI import EmployeeUI
 emp = EmployeeUI()
 logic = LogicWrapper()
 
-print(emp.get_all_employees())
+print(logic.employee_schedule_by_week("3009907461", "2023", "51"))
