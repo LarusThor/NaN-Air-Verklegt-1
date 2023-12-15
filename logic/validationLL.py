@@ -159,13 +159,17 @@ class ValidationLL:
     def validate_date(self, date:str) -> bool:
         """Validates dates"""
         if len(date) == 10:
-            if date[0:4].isdigit() == True:
-                if date[4] == "-" and date[7] == "-":
-                    if date[5:7].isdigit() == True:
-                        if date[8:].isdigit() == True:
-                            return True
-        return False
-    
+            year = date[0:4]
+            month = date[5:7]
+            day = date[8:]
+
+            try:
+                datetime.strptime(f"{year}-{month}-{day}", "%Y-%m-%d")
+                return True
+            except ValueError:
+                return False
+        else:
+            return False
 
     def validate_time(self, time) -> bool:
         """Validates time."""

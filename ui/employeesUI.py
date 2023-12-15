@@ -153,8 +153,15 @@ class EmployeeUI:
         Not name or social ID
         """
         social_id = self.get_social_id()
-        employee = self.logic_wrapper.employee_info(social_id)
-        print(employee.social_id)
+        valid_id = False
+        while not valid_id:
+            try:
+                employee = self.logic_wrapper.employee_info(social_id)
+                print(employee.social_id)
+                valid_id = True
+            except KeyError:
+                print("Employee does not exist in the system \nTry again!")
+                social_id = self.get_social_id()
 
         # setting up variables so we can change or not change them
         social_id = employee.social_id
