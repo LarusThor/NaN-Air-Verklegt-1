@@ -326,7 +326,7 @@ class EmployeeUI:
                     print("-" * 15)
                     licence_choice = input("Choose license: ")
                 licence_choice_int = int(licence_choice)
-                license = license_list[licence_choice_int + 1]
+                license = license_list[licence_choice_int - 1]
             else:
                 license = "N/A"
 
