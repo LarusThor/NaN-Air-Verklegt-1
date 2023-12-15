@@ -77,7 +77,7 @@ class AirplaneUI:
         airplane_choice = input("Enter an airplane choice: ")
         while not self.validation.validate_choice(airplane_choice, len(planes)):
             print("Invalid choice \nTry again.")
-            airplane_choice = int(input("Enter an airplane choice: "))
+            airplane_choice = input("Enter an airplane choice: ")
 
         title = f"\nAll pilots qualified to fly {planes[airplane_choice]}:"
         result = ""
