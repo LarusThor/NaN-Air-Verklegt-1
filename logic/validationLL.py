@@ -76,6 +76,18 @@ class ValidationLL():
         
     #def validate_number_of_seats(self, number_of_seats) -> bool:
     #    return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
+
+#validate the choosing weeks
+
+    def validate_weeks(self, week: str) -> bool:
+        try:
+            int_week = int(week)
+        except ValueError:
+            return False
+        if int_week <= 0 or int_week > 52:
+            return False
+        else:
+            return True
         
               
     def validate_save_new(self, str) -> bool:

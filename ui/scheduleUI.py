@@ -65,13 +65,16 @@ class ScheduleUI:
 
     def get_employee(self) -> str:
         """TODO: add docstring"""
-        employee = input("Enter the employees social ID: ")
+        employee = self.employeeUI.get_not_social_id()
         return employee
 
     def get_schedule_for_employee(self, employee: str) -> None:
         """TODO: add docstring"""
         year = input("Enter year: ")
         week = input("Enter week: ")
+        while not self.validation.validate_weeks(week):
+            print("ERROR: invalid week number.\nWeek must be from 1-52.")
+            week = input("Enter week: ")  
         title = "Week schedule: "
         result = self.logic_wrapper.employee_schedule_by_week(employee, year, week)
         
