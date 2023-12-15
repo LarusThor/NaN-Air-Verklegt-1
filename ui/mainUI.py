@@ -259,12 +259,12 @@ class Main:
                             user_input2 = self.employee_ui.get_most_experienced()
 
                         case "b":
-                            user_input2 = BACK
+                            user_input = BACK
 
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
-                            user_input2 = BACK
+                            user_input = BACK
                     
                     if user_input == QUIT or user_input2 == QUIT:
                         exit()
@@ -293,12 +293,12 @@ class Main:
                             user_input2 = self.employee_ui.change_info_options()
                         
                         case "b":
-                            user_input2 = BACK
+                            user_input = BACK
 
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
-                            user_input2 = BACK
+                            user_input = BACK
 
                     if user_input == QUIT or user_input2 == QUIT:
                         exit()
@@ -336,7 +336,7 @@ class Main:
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
-                            user_input = BACK
+                            user_input2 = BACK
                             
                     if user_input == QUIT:
                         exit()
