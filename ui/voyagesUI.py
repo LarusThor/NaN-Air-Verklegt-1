@@ -394,7 +394,13 @@ class VoyagesUI:
     def get_week(self) -> str:
         """TODO: add docstring"""
         year = input("Enter year: ")
+        while not self.validation.validate_year():
+            print("ERROR: invalid year.\nYear must be a number.")
+            year = input("Enter year: ")
         week = input("Enter week number (1-52): ")
+        while not self.validation.validate_weeks(week):
+            print("ERROR: invalid week number.\nWeek must be from 1-52.")
+            week = input("Enter week: ")
         return year, week
 
 
