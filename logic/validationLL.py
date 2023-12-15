@@ -144,16 +144,6 @@ class ValidationLL:
         except ValueError:
             return False
         
-
-    def validate_flight_time(self, flight_time) -> bool:
-        if len(flight_time) == 8:
-            if flight_time[0:2].isdigit() == True:
-                if flight_time[2] == ":" and flight_time[5] == ":":
-                    if flight_time[3:5].isdigit() == True:
-                        if flight_time[6:8].isdigit() == True:
-                            return True
-        else:
-            return False
     
 
 # menu 
@@ -175,3 +165,23 @@ class ValidationLL:
             and 999 >= flight_number_int >= 100
             and len(flight_number) == 5
         )
+    
+
+    def validate_date(self, date:str) -> bool:
+        if len(date) == 10:
+            if date[0:4].isdigit() == True:
+                if date[4] == "-" and date[7] == "-":
+                    if date[5:7].isdigit() == True:
+                        if date[8:].isdigit() == True:
+                            return True
+        return False
+    
+
+    def validate_time(self, time) -> bool:
+        if len(time) == 8:
+            if time[0:2].isdigit() == True:
+                if time[3] == ":" and time[5] == ":":
+                    if time[3:5].isdigit() == True:
+                        if time[6:].isdigit() == True:
+                            return True
+        return False
