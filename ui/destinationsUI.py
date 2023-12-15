@@ -135,6 +135,7 @@ class DestinationsUI:
             self.logic_wrapper.add_destination(dest)
             user_input = self.menus.print_the_info("Destination saved!")
             return user_input
+        
         elif save_prompt == "n":
             user_input = self.menus.print_the_info("Destionation not saved.")
             return user_input
