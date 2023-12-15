@@ -150,6 +150,9 @@ class VoyagesUI:
     def get_voyage_flight_number(self) -> str:
         """TODO: add docstring"""
         flight_number = input("Enter flight number: ")
+        while not self.validation.validate_flight_nr(flight_number):
+            print("ERROR: invalid flight number.\nMust start with NA and contain three numbers. ")
+            flight_number = input("Enter flight number: ")
         return flight_number
 
 
