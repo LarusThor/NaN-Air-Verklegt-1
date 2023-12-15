@@ -11,4 +11,4 @@ class Employee:
     email: str
     phonenumber: str
     home_address: str
-    landline: str = None
+    landline: str = "N/A"

@@ -285,7 +285,7 @@ class EmployeeUI:
         """User inputs an address for employee."""
         home_address = input("Home address: ")
         while not self.validation.validate_address(home_address):
-            print("ERROR: Invalid address. \nAddress should be a string and above >3")
+            print("ERROR: Invalid address. \nAddress can be a word with 3 letters or more, optionally followed by address number.")
             home_address = input("Home address: ")
         return home_address
 
@@ -297,7 +297,7 @@ class EmployeeUI:
             ranks = {"1": "Captain", "2": "Copilot"}
             print("Rank:\n1. Captain\n2. Copilot")
             print("-" * 15)
-            rank_choice = input("\nChoose a rank: ").strip()
+            rank_choice = input("Choose a rank: ").strip()
 
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")
@@ -310,31 +310,37 @@ class EmployeeUI:
                 }
 
                 print("Licenses:")
-                for index, license in licences.items():
+                license_list = []
+                for index, license in enumerate(licences.values()):
                     tuple_list = []
-                    for item in license:
-                        tuple_list.append(item)
-                    print(f"{index}. {tuple_list[0]}")
+                    license_list.append(license[0])
+                    print(f"{index+1}. {license[0]}")
 
-                licence_choice = int(input("Choose license: "))
-                licence = licences[licence_choice]
+                licence_choice = input("Choose license: ")
+                while licence_choice != "1" and licence_choice != "2" and licence_choice != "3":
+                    print("Invalid input! You can choose 1, 2 or 3")
+                    print("-" * 15)
+                    licence_choice = input("Choose license: ")
+                licence_choice_int = int(licence_choice)
+                license = license_list[licence_choice_int + 1]
             else:
-                licence = "N/A"
+                license = "N/A"
 
         elif role == "Cabincrew":
             ranks = {"1": "Flight Service Manager", "2": "Flight Attendant"}
             print("Rank:\n1. Flight Service Manager\n2. Flight Attendant")
             print("-" * 15)
-            rank_choice = input("\nChoose a rank: ").strip()
+            rank_choice = input("Choose a rank: ").strip()
 
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")
                 print("-" * 15)
                 rank_choice = input("Rank: ")
-            licence = "N/A"
+            license = "N/A"
 
         rank = ranks[rank_choice]
-        return rank, licence
+
+        return rank, license
 
     def get_social_id(self) -> str:
         """Gets a social id number from the user"""
@@ -355,7 +361,7 @@ class EmployeeUI:
 
         name = input("Name: ").title()
         while not self.validation.validate_name(name):
-            print("ERROR: Invalid name. \nName has to be a string of length > 3. ")
+            print("ERROR: Invalid name. \nName has to be a string of length >= 3. ")
             name = input("Name: ").title()
 
         social_id = self.get_social_id()
@@ -406,7 +412,7 @@ class EmployeeUI:
         print("Home adress:", home_address)
         print("Role:", role)
         print("Rank:", rank)
-        print("License:", license_list[0])
+        print("License:", license)
         print("Landline number:", landline)
 
         employee = Employee(
@@ -415,7 +421,7 @@ class EmployeeUI:
             phonenumber=phone_number,
             role=role,
             rank=rank,
-            licence=license_list[0],
+            licence=license,
             email=email,
             home_address=home_address,
             landline=landline,

@@ -76,12 +76,12 @@ class VoyagesUI:
             f"Enter departure date from {departure_location}: year-month-day: "
         )
         departure_time = input(
-            f"Enter departure time from {departure_location}: hours:minutes:seconds"
+            f"Enter departure time from {departure_location}: hours:minutes:seconds: "
         )  # TODO: bæta við formatti hvernig þið viljið tímann og validate
         while not self.validation.validate_time(departure_time):
             print("Invalid time entered. ")
             departure_time = input(
-            f"Enter departure date from {departure_location}: hours:minutes:seconds. "
+            f"Enter departure date from {departure_location}: hours:minutes:seconds: "
         )
         return_flight_date = input(
             f"Enter departure date from {arrival_location.destination}: year-month-day: "
@@ -92,12 +92,12 @@ class VoyagesUI:
             f"Enter departure date from {arrival_location.destination}: year-month-day: "
         )
         return_flight_time = input(
-            f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds."
+            f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds: "
         )  # TODO: validate
         while not self.validation.validate_time(return_flight_time):
             print("Invalid time entered. ")
             return_flight_time = input(
-            f"Enter departure date from {arrival_location.destination}: hours:minutes:seconds. "
+            f"Enter departure date from {arrival_location.destination}: hours:minutes:seconds: "
         )
 
         # TODO: use datetime module
