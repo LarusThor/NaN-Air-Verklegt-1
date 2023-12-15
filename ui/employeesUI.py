@@ -68,7 +68,7 @@ class EmployeeUI:
         user_input = self.menus.print_the_info(title, result)
         return user_input
 
-    
+
 
     def get_all_employees(self) -> None:
         """Gets all the employees from the logic wrapper. Calls a function in the menu_manager that takes care of 
