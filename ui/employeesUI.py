@@ -411,7 +411,7 @@ class EmployeeUI:
         print("Home adress:", home_address)
         print("Role:", role)
         print("Rank:", rank)
-        print("License:", license_list[0])
+        print("License:", license)
         print("Landline number:", landline)
 
         employee = Employee(
@@ -420,7 +420,7 @@ class EmployeeUI:
             phonenumber=phone_number,
             role=role,
             rank=rank,
-            licence=license_list[0],
+            licence=license,
             email=email,
             home_address=home_address,
             landline=landline,
