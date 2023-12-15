@@ -284,3 +284,7 @@ class LogicWrapper:
     def validate_date(self, date:str) -> bool:
         """ Validates a date """
         self.validation.validate_date(date)
+    
+    def validate_destination_id(self, destination_id: str) -> bool:
+        """ validates a destination ID input from user """
+        self.validation.validate_destination_id(destination_id)
