@@ -34,7 +34,7 @@ class AirplaneUI:
         """Displays the options a user can chose in Airplanes."""
 
         self.menus.display_options("Airplane:", AIRPLANE_OPTIONS)
-        action = input("Enter your action: ").lower()
+        action = input("Enter your action: ").lower().strip()
 
         return action
 
@@ -42,7 +42,7 @@ class AirplaneUI:
 
         """Lets a user chose options for airplane types and licence."""
         self.menus.display_options("Airplane types and license:", AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
-        user_input = input("Enter your action: ").lower()
+        user_input = input("Enter your action: ").lower().strip()
 
         return user_input
 
@@ -50,7 +50,7 @@ class AirplaneUI:
         """Displays user options for pilots by license."""
         
         self.menus.display_options("Pilots by license:", PILOTS_BY_LICENSE_OPTIONS)
-        user_input = input("Enter your action: ").lower()
+        user_input = input("Enter your action: ").lower().strip()
 
         return user_input
     
@@ -58,7 +58,7 @@ class AirplaneUI:
         """Calls a function in the menu_manager that prints out the options. Then asks the user for their action and returns the input"""
 
         self.menus.display_options("Airplane usage:", AIRPLANE_USAGE)
-        user_input = input("Enter your action: ").lower()
+        user_input = input("Enter your action: ").lower().strip()
 
         return user_input
 
@@ -74,14 +74,14 @@ class AirplaneUI:
         for index, plane in enumerate(pilots_by_license.keys()):
             print(f"{index + 1}. {plane}")
 
-        airplane_choice = int(input("Enter an airplane choice: "))
+        airplane_choice = input("Enter an airplane choice: ").strip()
         while not self.validation.validate_choice(airplane_choice, len(planes)):
             print("Invalid choice \nTry again.")
-            airplane_choice = int(input("Enter an airplane choice: "))
+            airplane_choice = input("Enter an airplane choice: ").strip()
 
-        title = f"\nAll pilots qualified to fly {planes[airplane_choice]}:"
+        title = f"\nAll pilots qualified to fly {planes[int(airplane_choice)]}:"
         result = ""
-        pilots = pilots_by_license[planes[airplane_choice]]
+        pilots = pilots_by_license[planes[int(airplane_choice)]]
 
         for pilot in pilots:
             result += pilot + "\n"
@@ -139,17 +139,17 @@ class AirplaneUI:
         print("\nAdding a new airplane to the system: ")
         print("Examples of airplane names:  TF-EPG, TF-UVR, TF-XZR")
 
-        name = input("Enter airplane insignia: ")  # TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
+        name = input("Enter airplane insignia: ").strip()
         while not self.validation.validate_airplane_name(name):
             print("ERROR: Invalid airplane insignia. \nInsignia must start with TF- followed by 3 letters. ")
-            name = input("Enter airplane insignia: ")
+            name = input("Enter airplane insignia: ").strip()
 
         planes = {(i + 1): plane for i, plane in enumerate(airplane_types)}
 
         for index, plane in enumerate(airplane_types):
             print(f"{index + 1}. {plane[0]}")
 
-        type_choice = int(input("Enter airplane type: "))
+        type_choice = int(input("Enter airplane type: ").strip())
         plane_type = planes[type_choice][0]
         manufacturer = planes[type_choice][1]
         model = planes[type_choice][2]
@@ -158,8 +158,7 @@ class AirplaneUI:
         result = f"\nName: {name}\nType: {plane_type}\nManufacturer: {manufacturer}\nModel: {model}\nNumber of seats: {number_of_seats}"
         print(result)
 
-        save_prompt = input("\nWould you like to save this new airplane, (y)es or (n)o? ").lower()  # TODO validate input, y or n
-
+        save_prompt = input("\nWould you like to save this new airplane, (y)es or (n)o? ").lower().strip()        
         if save_prompt == "y":
             airplane = Airplane(name, plane_type, manufacturer, model, number_of_seats)
             self.logic_wrapper.add_airplane(airplane)
@@ -174,7 +173,7 @@ class AirplaneUI:
     def most_used_airplane(self) -> None:  # 1-3-1
         """Calls a function in the menu_manager that takes care of printing the title and the result of the most used airplane."""
 
-        title = "The mose used airplane is:"
+        title = "The most used airplane is:"
         result = f"{self.logic_wrapper.airplane_usage()[0]} - {self.logic_wrapper.airplane_usage()[1][self.logic_wrapper.airplane_usage()[0]]} voyages"
 
         user_input = self.menus.print_the_info(title, result)

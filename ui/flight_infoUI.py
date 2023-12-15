@@ -33,8 +33,6 @@ class FlightInfoUI:
             else:
                 result += f"{date:^15} {flight.flight_nr:^15} {flight.arr_at:^21} {status:<3} seats left\n"
 
-        user_input = self.menus.print_the_info(
-            title, result
-        )
-        
+        user_input = self.menus.print_the_info(title, result)
+
         return user_input

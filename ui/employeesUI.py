@@ -35,23 +35,22 @@ class EmployeeUI:
     def employees_options(self) -> str:
         """Displays options for information and actions about employees."""
         self.menus.display_options("Employee:", EMPLOYEES_OPTIONS)
-        action = input("Enter your action: ").lower()
+        action = input("Enter your action: ").lower().strip()
         return action
 
     def list_employees_options(self) -> str:
         """Prints out the options for witch tipe of employee list the user wants to see. Returns for the action input"""
         self.menus.display_options("List employees:", LIST_EMPLOYEES_OPTIONS)
-        action = input("Enter your action: ").lower()
+        action = input("Enter your action: ").lower().strip()
         return action
 
     def employee_info_options(self) -> str:
         """Prints out the options that come up when the user chooses to get the employees information.
         And gets the action input from the user
         """
-        self.menus.display_options(
-            "Employee information:", EMPLOYEE_INFORMATION_OPTIONS
-        )
-        action = input("Enter your action: ").lower()
+        self.menus.display_options("Employee information:", EMPLOYEE_INFORMATION_OPTIONS)
+        action = input("Enter your action: ").lower().strip()
+        
         return action
 
     def get_pilots(self) -> None:
@@ -153,8 +152,15 @@ class EmployeeUI:
         Not name or social ID
         """
         social_id = self.get_social_id()
-        employee = self.logic_wrapper.employee_info(social_id)
-        print(employee.social_id)
+        valid_id = False
+        while not valid_id:
+            try:
+                employee = self.logic_wrapper.employee_info(social_id)
+                print(employee.social_id)
+                valid_id = True
+            except KeyError:
+                print("Employee does not exist in the system \nTry again!")
+                social_id = self.get_social_id()
 
         # setting up variables so we can change or not change them
         social_id = employee.social_id
@@ -179,7 +185,7 @@ class EmployeeUI:
             Any other to quit
 
         """
-        action = "N/A"  # TODO: spyrja hvað við ættum actually að hafa hérna
+        action = "N/A" 
 
         while action != "d":
             action = input(f"Select an option: {options} \n").lower().strip()
@@ -232,13 +238,13 @@ class EmployeeUI:
 
         save_prompt = input(
             "Would you like to save the new employee, (y)es or (n)o? "
-        ).lower()
+        ).lower().strip()
         save_promt_check = self.validation.validate_yes_no(save_prompt)
         while save_promt_check == False:
             print("Invalid input!")
             save_prompt = input(
                 "Would you like to save the new employee, (y)es or (n)o? "
-            ).lower()
+            ).lower().strip()
             save_promt_check = self.validation.validate_yes_no(save_prompt)
         if save_prompt == "y":
             self.logic_wrapper.change_employee_info(employee)
@@ -257,43 +263,43 @@ class EmployeeUI:
 
         print("Role:\n1. Pilot\n2. Cabincrew")
         print("-" * 15)
-        role_choice = input("Choose role: ")
+        role_choice = input("Choose role: ").strip()
 
         while role_choice != "1" and role_choice != "2":
             print("Invalid input! You can choose 1, 2")
             print("-" * 15)
-            role_choice = input("Role: ")
+            role_choice = input("Role: ").strip()
         role = roles[role_choice]
 
         return role
 
     def get_phone_nr(self) -> str:
         """User inputs a phone number for employee."""
-        phone_number = input("Phone number: ")
+        phone_number = input("Phone number: ").strip()
 
         while not self.validation.validate_number(phone_number):
             print("ERROR: Invalid phone number. \nPhone number should be 7 digits. ")
-            phone_number = input("Phone number: ")
+            phone_number = input("Phone number: ").strip()
 
         return phone_number
 
     def get_email(self) -> str:
         """User inputs email for employee"""
-        email = input("Email: ")
+        email = input("Email: ").strip()
 
         while not self.validation.validate_email(email):
             print("ERROR: Invalid email. \nEmail should include @ and a top level domain e.g. (.com/.org/.is)")
-            email = input("Email: ")
+            email = input("Email: ").strip()
 
         return email
 
     def get_address(self) -> str:
         """User inputs an address for employee."""
-        home_address = input("Home address: ")
+        home_address = input("Home address: ").strip()
 
         while not self.validation.validate_address(home_address):
             print("ERROR: Invalid address. \nAddress can be a word with 3 letters or more, optionally followed by address number.")
-            home_address = input("Home address: ")
+            home_address = input("Home address: ").strip()
 
         return home_address
 
@@ -310,7 +316,7 @@ class EmployeeUI:
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")
                 print("-" * 15)
-                rank_choice = input("Rank: ")
+                rank_choice = input("Rank: ").strip()
             if rank_choice == "1" or rank_choice == "2":
                 # A dictionary of all the airplane types, updates if new airplane type is added
                 licences = {
@@ -324,11 +330,11 @@ class EmployeeUI:
                     license_list.append(license[0])
                     print(f"{index+1}. {license[0]}")
 
-                licence_choice = input("Choose license: ")
+                licence_choice = input("Choose license: ").strip()
                 while licence_choice != "1" and licence_choice != "2" and licence_choice != "3":
                     print("Invalid input! You can choose 1, 2 or 3")
                     print("-" * 15)
-                    licence_choice = input("Choose license: ")
+                    licence_choice = input("Choose license: ").strip()
                 licence_choice_int = int(licence_choice)
                 license = license_list[licence_choice_int - 1]
             else:
@@ -343,7 +349,7 @@ class EmployeeUI:
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")
                 print("-" * 15)
-                rank_choice = input("Rank: ")
+                rank_choice = input("Rank: ").strip()
             license = "N/A"
 
         rank = ranks[rank_choice]
@@ -353,10 +359,10 @@ class EmployeeUI:
     def get_social_id(self) -> str:
         """Gets a social id number from the user"""
         employee = self.logic_wrapper.employee_dict()
-        social_id = input("Social ID: ")
+        social_id = input("Social ID: ").strip()
         while not self.validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID. \nPlease enter a valid Social ID, should be 10 digits. ")
-            social_id = input("Social ID: ")
+            social_id = input("Social ID: ").strip()
 
         return social_id
 
@@ -365,10 +371,10 @@ class EmployeeUI:
         """Allows user to add an employee to the system."""
         print("Fill out the following information about the new employee:")
 
-        name = input("Name: ").title()
+        name = input("Name: ").title().strip()
         while not self.validation.validate_name(name):
             print("ERROR: Invalid name. \nName has to be a string of length >= 3. ")
-            name = input("Name: ").title()
+            name = input("Name: ").title().strip()
 
         social_id = self.get_social_id()
         valid_social_id = False
@@ -395,12 +401,12 @@ class EmployeeUI:
         for item in license:
             license_list.append(item)
 
-        optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
+        optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower().strip()
         landline_check = self.validation.validate_yes_no(optional_landline)
         
         while landline_check == False:
             print("Please enter a valid input")
-            optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
+            optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower().strip()
             landline_check = self.validation.validate_yes_no(optional_landline)
 
         if optional_landline == "y":
@@ -437,12 +443,12 @@ class EmployeeUI:
 
         while save_promt_check == False:
             print("Please enter a valid input")
-            save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
+            save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower().strip()
             save_promt_check = self.validation.validate_yes_no(save_prompt)
 
         while save_prompt != "y" and save_prompt != "n":
             print("Please enter a valid input")
-            save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
+            save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower().strip()
 
         if save_prompt == "y":
             self.logic_wrapper.add_employee(employee)

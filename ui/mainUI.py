@@ -42,23 +42,29 @@ class Main:
         while True:
             self.menus.main_menu()
             
-
+# airplanes
             def pilots_by_license_options():
+                """ Calls a function that will print out a menu and return the users input and store it in the user_input. 
+                It then matched the input with the right case and gets outputs from those functions and inputs that is restored in the user_input."""
+                
                 user_input = ""
+                user_input2 = BACK
 
-                while user_input != BACK:
-
+                while user_input != BACK and user_input2 == BACK:
                     user_input = self.airplane_ui.pilots_by_license()
 
                     match user_input:
+                        case "q":
+                            exit()
+
                         case "1":
-                            user_input = self.airplane_ui.get_pilots_for_a_specific_type()
+                            user_input2 = self.airplane_ui.get_pilots_for_a_specific_type()
 
                         case "2":
-                            user_input = self.airplane_ui.list_pilots_by_license()
+                            user_input2 = self.airplane_ui.list_pilots_by_license()
 
                         case "3":
-                            user_input = self.airplane_ui.get_number_of_pilots_for_airplanes()
+                            user_input2 = self.airplane_ui.get_number_of_pilots_for_airplanes()
 
                         case "b":
                             user_input = BACK
@@ -68,24 +74,25 @@ class Main:
                             time.sleep(INVALID_INPUT_SLEEP)
                             user_input = BACK
 
-                if user_input == "q":
-                    quit()
+                if user_input == QUIT or user_input2 == QUIT:
+                    exit()
 
-                return user_input
+                return user_input2
             
 
-
             def airplane_types_and_license_options():
-
-                user_input = ""
-                user_input2 = BACK
+                """ This function is called if the user enters first 1 and that 1 again. Calls a function that will print out a menu 
+                and return the users input. It then calls the right action according to the input and returns the input from that function."""
+                
+                user_input = "" # define a verible
+                user_input2 = BACK # defult for the while loop does not go into the cases with the user_input2
 
                 while user_input != BACK and user_input2 == BACK:
                     user_input = self.airplane_ui.airplane_types_and_licence()
                     
                     match user_input:
                         case "q":
-                            quit(0)
+                            exit()
 
                         case "1":
                             user_input2 = pilots_by_license_options()
@@ -93,23 +100,24 @@ class Main:
                         case "2":
                             user_input2 = self.airplane_ui.types()
                             
-                            
                         case "b":
-                            user_input = BACK
+                            user_input = BACK # if the input is "b" then it will go out of this loop and back to the function before with the menu before.
 
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
-                            user_input = BACK
+                            user_input2 = BACK # if it is not a valid input than it will go and loop again
 
-                if user_input == "q" or user_input2 == "q":
-                    quit()
+                if user_input == QUIT or user_input2 == QUIT:
+                    exit()
 
-                return user_input
-
+                return user_input2
 
 
             def airplane_usage_options():
+                """ This function is called if the user enters first 1 and that 3. Calls a function that will print out a menu 
+                and return the users input. It then calls the right action according to the input and returns the input from that function."""
+
                 user_input = ""
                 user_input2 = BACK
 
@@ -118,10 +126,7 @@ class Main:
 
                     match user_input:
                         case "q":
-                            quit(0)
-
-                        case "b":
-                            user_input = BACK
+                            exit()
 
                         case "1":
                             user_input2 = self.airplane_ui.most_used_airplane() 
@@ -129,20 +134,24 @@ class Main:
                         case "2":
                             user_input2 = self.airplane_ui.flown_furthest_airplane()
 
+                        case "b":
+                            user_input = BACK
+
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
-                            user_input = BACK
+                            user_input2 = BACK
                 
-                if user_input2 == "q":
-                    quit()
+                if user_input2 == QUIT:
+                    exit()
                     
-                return user_input
+                return user_input2
 
 
             def airplane() -> None:
-                """TODO: in this code we are in airplanes and starting loops with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                """In this code we are in airplanes and starting loops with the feature of backing out and quitting
+                we are storing the user inputs in a user_input variables and making sure the user puts the right input in. 
+                It then calls the right action according to the input"""
                 
                 user_input1 = ""
                 user_input2 = BACK
@@ -151,12 +160,11 @@ class Main:
                     user_input1 = self.airplane_ui.airplane_options()
                     
                     match user_input1:
-                        case "q":# quit feature for the system
-                            quit(0)
+                        case "q": # quit feature for the system
+                            exit()
 
                         case "1":  # airplane types and license
-                            user_input2 = airplane_types_and_license_options()
-                                    
+                            user_input2 = airplane_types_and_license_options()    
                                     
                         case "2":  # add new airplane
                             user_input2 = self.airplane_ui.add_airplane()
@@ -165,29 +173,26 @@ class Main:
                             user_input2 = airplane_usage_options()
 
                         case "b":
-                            continue
+                            user_input1 = BACK
 
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
+                            user_input1 = BACK
 
-                if user_input1 == "q" or user_input2 == "q":
-                    quit()
+                if user_input1 == QUIT or user_input2 == QUIT:
+                    exit()
 
-                return user_input1
-
-
-
-
-
-
+                return user_input2
 
 
 # destinations
             def destinations_options_input(user_input):
+                """ Takes in the users input and calls the right functions to print everything out and return an input that is stored in the user_input. """
+
                 match user_input:
                     case "q":
-                        quit(0)
+                        exit()
 
                     case "1":
                         user_input = self.destinations_ui.get_all_destinations()
@@ -213,8 +218,8 @@ class Main:
                 
 
             def destinations() -> None:
-                """TODO: in this code we are in destination and starting loops with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                """ Function that prints out the optins for destination and gets the user input and stored it in the user_input. Than calls another function
+                to that will take care of printing out the right ting according to the input. """
                 
                 user_input1 = ""
                 user_input2 = BACK
@@ -224,25 +229,24 @@ class Main:
 
                     user_input2 = destinations_options_input(user_input1)
 
-                    if user_input2 == "q":
-                        quit()
+                    if user_input2 == QUIT:
+                        exit()
 
-                
-
-            
 
 # employees
-
             def list_employees_opt():
-                user_input = BACK
-                user_input2 = ""
+                """ Prints out a menu and stores the input options in the user_input variable. From that input the right functions are called, 
+                they will get an input and store it in the user_input2 """
 
-                while user_input == BACK and user_input2 != BACK:
+                user_input = ""
+                user_input2 = BACK
+
+                while user_input != BACK and user_input2 == BACK:
                     user_input = self.employee_ui.list_employees_options()
 
                     match user_input:
                         case "q":
-                            quit(0)
+                            exit()
                         
                         case "1":
                             user_input2 = self.employee_ui.get_pilots()
@@ -257,55 +261,67 @@ class Main:
                             user_input2 = self.employee_ui.get_most_experienced()
 
                         case "b":
-                            user_input2 = BACK
+                            user_input = BACK
 
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
                             user_input2 = BACK
                     
-                    if user_input == "q" or user_input2 == "q":
-                        quit()
+                if user_input == QUIT or user_input2 == QUIT:
+                    exit()
 
                 return user_input2
                     
 
             def employee_info_opt():
-                action8 = ""
-                while(action8 != BACK):
-                    action8 = self.employee_ui.employee_info_options()
-                    action11 = action8
-                    while(action11 != "b"):
-                        match action11:
-                            case "q":
-                                quit(0)
+                """ Prints out a menu and stores the input in the user_input variable. From that input the right functions are called, 
+                they will get an input and store it in the user_input2 """
 
-                            case "1":
-                                action11 = self.employee_ui.get_info()
-                            
+                user_input = ""
+                user_input2 = BACK
 
-                            case "2": #TODO laga back og quit TINNA
-                                action11 = self.employee_ui.change_info_options()
+                while user_input != BACK and user_input2 == BACK:
+                    user_input = self.employee_ui.employee_info_options()
+                    
+                    match user_input:
+                        case "q":
+                            exit()
 
-                            case _:
-                                print("Input was invalid, try again ")
-                                time.sleep(INVALID_INPUT_SLEEP)
-                                action11 = "b"
+                        case "1":
+                            user_input2 = self.employee_ui.get_info()
+                        
+                        case "2": #TODO laga back og quit TINNA
+                            user_input2 = self.employee_ui.change_info_options()
+                        
+                        case "b":
+                            user_input = BACK
+
+                        case _:
+                            print("Input was invalid, try again ")
+                            time.sleep(INVALID_INPUT_SLEEP)
+                            user_input2 = BACK
+
+                if user_input == QUIT or user_input2 == QUIT:
+                    exit()
+
+                return user_input2
 
 
             def employees() -> None:
-                """TODO: in this code we are in employee and starting loops with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                """ In this code we are in employee and starting loops with the feature of backing out and quitting. This function will call a 
+                function that prints out tha options for employee and than get an input that is returned and stored in the user_input. Then it calls 
+                the right function from the userss input. """
                 
                 user_input = ""
                 user_input2 = BACK
-                while user_input != BACK and user_input2 == BACK:
 
+                while user_input != BACK and user_input2 == BACK:
                     user_input = self.employee_ui.employees_options()
                     
                     match user_input:
                         case "q":
-                            quit(0)
+                            exit()
 
                         case "1":
                             user_input2 = list_employees_opt()
@@ -316,75 +332,95 @@ class Main:
                         case "3":
 
                             user_input2 = self.employee_ui.add_employee()
+                        
+                        case "b":
+                            user_input = BACK
+
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
-                            user_input = BACK
+                            user_input2 = BACK
                             
-                    if user_input == "q":
-                        quit()
+                if user_input == QUIT or user_input2 == QUIT:
+                    exit()
+                
+                return user_input2
                         
-                        
-
 # schedule                       
             def schedule_by_day():
+                """ Gets a date form the input. Prints out a menu and stores the input in the user_input variable. From that input the right functions are called, 
+                they will get an input and store it in the user_input2 """
+                
                 date = self.schedule_ui.get_schedule_by_day()
                 
-                user_input = BACK
-                while user_input == BACK:
-                    user_input = self.schedule_ui.schedule_for_a_day_options()
+                user_input = ""
+                user_input2 = BACK
+
+                while user_input != BACK and user_input2 == BACK:
+                    user_input = self.schedule_ui.schedule_for_a_day_options(date)
 
                     match user_input:
                         case "q":
-                            quit()
+                            exit()
 
                         case "b":
-                            return BACK
+                            user_input = BACK
 
                         case "1":
-                            user_input = self.schedule_ui.who_was_working(date)
+                            user_input2 = self.schedule_ui.who_was_working(date)
                         
                         case "2":
-                            user_input = self.schedule_ui.get_who_was_not_working(date)
+                            user_input2 = self.schedule_ui.get_who_was_not_working(date)
 
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
-                            user_input = BACK
+                            user_input2 = BACK
                 
-                return user_input
+                if user_input == QUIT or user_input2 == QUIT:
+                    exit()
+
+                return user_input2
 
 
             def schedule_by_employee():
-                user_input = BACK
-                while user_input == BACK:
+                """ Prints out a menu and stores the input in the user_input variable. From that input the right functions are called, 
+                they will get an input and store it in the user_input2 """
+
+                user_input = ""
+                user_input2 = BACK
+
+                while user_input != BACK and user_input2 == BACK:
                     user_input =self.schedule_ui.schedule_for_employee_options()
 
                     match user_input:
                         case "q":
-                            quit()
+                            exit()
 
                         case "b":
-                            return BACK
+                            user_input = BACK
                     
                         case "1":
                             employee = self.schedule_ui.get_employee()
-                            user_input = self.schedule_ui.get_schedule_for_employee(employee)
+                            user_input2 = self.schedule_ui.get_schedule_for_employee(employee)
 
                         case "2":
-                            user_input = self.schedule_ui.get_total_hours_worked()
+                            user_input2 = self.schedule_ui.get_total_hours_worked()
 
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
-                            user_input = BACK
+                            user_input2 = BACK
+                    
+                if user_input == QUIT or user_input2 == QUIT:
+                    exit()
 
-                return user_input
+                return user_input2
 
             
             def schedule() -> None:
-                """TODO: in this code we are in schedule and starting loops with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                """In this code we are in schedule and starting loops with the feature of backing out and quiting
+                we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 
                 user_input1 = ""
                 user_input2 = BACK
@@ -397,7 +433,7 @@ class Main:
                             quit()
 
                         case "b":
-                            return BACK
+                            user_input1 = BACK
 
                         case "1":
                             user_input2 = schedule_by_day()
@@ -410,145 +446,68 @@ class Main:
                             time.sleep(INVALID_INPUT_SLEEP)
                             user_input2 = BACK
                     
-                if user_input2 == "q":
-                    quit()
+                if user_input2 == QUIT or user_input1 == QUIT:
+                    exit()    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                action1 = ""# initialize a varible and stores the users input
-                action2 = ""
-                action12 = ""
-                
-                while(action1 != BACK):
-                    action1 = self.schedule_ui.schedule_options()
-                    action12 = ""
-                    action2 = ""
-
-                    match action1:
-                        case "q":
-                            quit(0)
-
-                        case "1":
-                            while(action2 != BACK):
-                                
-                                date = self.schedule_ui.get_schedule_by_day()
-                                action2 = self.schedule_ui.schedule_for_a_day_options()
-                                
-                                action12 = action2
-                                if action12 == "q":
-                                    quit()
-                                elif action12 == "b":
-                                    break
-
-                                match action2:
-                                    case "q":
-                                        quit(0)
-                                    case "1":
-                                        action12 = self.schedule_ui.who_was_working(date)
-                                    case "2":
-                                        action12 = self.schedule_ui.get_who_was_not_working(date)
-                                    case "b":
-                                        continue
-                                    case _:
-                                        print("Input was invalid, try again ")
-                                        time.sleep(INVALID_INPUT_SLEEP)
-
-                                action2 = action12
-
-
-                        case "2":
-                            while(action12 != BACK):
-                                action12 = self.schedule_ui.schedule_for_employee_options()
-                                action2 = ""
-
-                                match action12:
-                                    case "q":
-                                        quit(0)
-                                    case "1":
-                                        employee = self.schedule_ui.get_employee()
-                                        action2 = self.schedule_ui.get_schedule_for_employee(employee)
-                                    case "2":
-                                        action2 = self.schedule_ui.get_total_hours_worked()
-                                    case "b":
-                                        continue
-                                    case _:
-                                        print("Input was invalid, try again ")
-                                        time.sleep(INVALID_INPUT_SLEEP)
-                        case "b":
-                            continue
-                        case _:
-                            print("Input was invalid, try again ")
-                            time.sleep(INVALID_INPUT_SLEEP)
-                                    
+                return user_input2                                
                                 
                                 
 # voyages
             def voyages() -> None:
-                """TODO: in this code we are in voyages and starting loops with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
-                action1=""
-                action2 = ""
-                action14=""
-                action15=""
-                action16=""
-                while(action1 != BACK):
-                    action1 = self.voyages_ui.voyages_options()
-                    action2 = ""
-                    action3 = ""
-                    action4 = ""
-                    action5 = "b"
-                    action6 = ""
-                    action7 = "b"
-                    action14 = ""
+                """In this code we are in voyages and starting loops with the feature of backing out and quiting
+                we are storing the inputs in a user_input variables and making sure the user puts the right input in. 
+                From that input it will match it with the right case and continue doing that."""
+                
+                user_input1 = ""
+                user_input2 = ""
+                user_input3 = ""
 
-                    match action1:
+                while(user_input1 != BACK):
+                    user_input1 = self.voyages_ui.voyages_options()
+                    user_input2 = ""
+                    user_input4 = ""
+                    user_input5 = ""
+                    user_input6 = ""
+                    user_input7 = ""
+                    user_input3 = ""
+
+                    match user_input1:
                         case "q":
-                            quit(0)
+                            exit()
 
                         case "1":
-                            while(action2 != BACK):
-                                action1 = ""
-                                action2 = self.voyages_ui.add_voyage()
-                                if action2 == "q":
-                                    quit()
+                            while(user_input2 != BACK):
+                                user_input1 = ""
+                                user_input2 = self.voyages_ui.add_voyage()
+                                
+                                if user_input2 == QUIT:
+                                    exit()
 
                         case "2":
-                            while(action14 != BACK):
-                                action14 = self.voyages_ui.voyage_past_or_present_options()
+                            while(user_input3 != BACK):
+                                user_input3 = self.voyages_ui.voyage_past_or_present_options()
                                 
-                                match action14:
+                                match user_input3:
 
                                     case "q":
-                                        quit(0)
+                                        exit()
 
                                     case "1":
-                                        while(action5 == BACK):
-                                            action4 = self.voyages_ui.list_voyage_options()
+                                        user_input5 = BACK
+                                        while(user_input5 == BACK):
+                                            user_input4 = self.voyages_ui.list_voyage_options()
                                             
-                                            match action4:
+                                            match user_input4:
                                                 case "q":
-                                                    quit(0)
+                                                    exit()
 
                                                 case "1":
                                                     date = self.voyages_ui.get_date()
-                                                    action5 = self.voyages_ui.get_upcoming_voyage_by_date(date)
+                                                    user_input5 = self.voyages_ui.get_upcoming_voyage_by_date(date)
 
                                                 case "2":
                                                     year, week = self.voyages_ui.get_week()
-                                                    action5 = self.voyages_ui.get_upcoming_voyage_by_week(year, week)
+                                                    user_input5 = self.voyages_ui.get_upcoming_voyage_by_week(year, week)
 
                                                 case "b":
                                                     break
@@ -559,21 +518,22 @@ class Main:
 
 
                                     case "2":
-                                        while(action7 == BACK):
-                                            action6 = self.voyages_ui.list_voyage_options()
+                                        user_input7 = BACK
+                                        while(user_input7 == BACK):
+                                            user_input6 = self.voyages_ui.list_voyage_options()
 
-                                            match action6:
+                                            match user_input6:
 
                                                 case "q":
-                                                    quit(0)
+                                                    exit()
 
                                                 case "1":
                                                     date = self.voyages_ui.get_date()
-                                                    action7 = self.voyages_ui.get_past_voyage_by_date(date)
+                                                    user_input7 = self.voyages_ui.get_past_voyage_by_date(date)
 
                                                 case "2":
                                                     year, week = self.voyages_ui.get_week()
-                                                    action7 = self.voyages_ui.get_past_voyage_by_week(year, week)
+                                                    user_input7 = self.voyages_ui.get_past_voyage_by_week(year, week)
 
                                                 case "b":
                                                     break
@@ -605,22 +565,18 @@ class Main:
 
             
 
-
-            
-            
+# Flight information
             def flight_status() -> None:
                 """If the user chooses to see the flight information. This function calls a function in the flight information UI
                  and will print out a table that shows the flight status."""
                 
-                user_input = self.flight_info.get_flight_status() #TODO validate, can just be b or q
-                if user_input == "q":
-                    quit()
+                user_input = self.flight_info.get_flight_status() 
+
+                if user_input == QUIT:
+                    exit()
 
 
-
-
-
-
+# Main menu
             options = {
                 "1": airplane,
                 "2": destinations,
@@ -631,10 +587,10 @@ class Main:
             }
 
 
-            action = str(input("Enter your action: ").lower())
+            action = input("Enter your action: ").lower().strip()
 
             while not self.validation.validate_choice(action, len(options)):
                 print("Invalid action! \nTry again.")
-                action = input("Enter your action: ").lower()
+                action = input("Enter your action: ").lower().strip()
 
             options[action]()
