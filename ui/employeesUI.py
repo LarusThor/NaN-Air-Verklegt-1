@@ -236,10 +236,12 @@ class EmployeeUI:
             }
         
         print("Role:\n1. Pilot\n2. Cabincrew")
+        print("-" * 15)
         role_choice = input("Choose role: ")
         
         while role_choice != "1" and role_choice != "2":
             print("Invalid input! You can choose 1, 2")
+            print("-" * 15)
             role_choice = input("Role: ")
         role = roles[role_choice]
         
@@ -283,10 +285,12 @@ class EmployeeUI:
             "2": "Copilot"
             }
             print("Rank:\n1. Captain\n2. Copilot")
+            print("-" * 15)
             rank_choice = input("\nChoose a rank: ").strip()
             
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")
+                print("-" * 15)
                 rank_choice = input("Rank: ")
             if rank_choice == "1" or rank_choice == "2":
                 # A dictionary of all the airplane types, updates if new airplane type is added
@@ -310,10 +314,12 @@ class EmployeeUI:
             "2": "Flight Attendant"
             }
             print("Rank:\n1. Flight Service Manager\n2. Flight Attendant")
+            print("-" * 15)
             rank_choice = input("\nChoose a rank: ").strip()
 
             while rank_choice != "1" and rank_choice != "2":
                 print("Invalid input! You can choose 1 or 2")
+                print("-" * 15)
                 rank_choice = input("Rank: ")
             licence = "N/A"
 
