@@ -104,8 +104,8 @@ class ValidationLL:
     # destination
     def validate_destination_name(self, destination_name: str) -> bool:
         """Validates name input."""
-        name_values = destination_name.split()
-        return len(destination_name) >= 3 and all(
+        name_values = destination_name
+        return len(name_values) >= 3 and all(
             (char.isalpha() for char in name_values)
         )
 
