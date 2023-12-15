@@ -133,9 +133,6 @@ class EmployeeUI:
                 social_id = str(input("Enter employee social ID: ")).strip()
 
 
-        #TODO: spyrja um ef það er skrifað 10 digits en ekki retti employee
-
-
     def change_info_options(self) -> None:
         """ Changes employees information. 
         Not name or social ID 

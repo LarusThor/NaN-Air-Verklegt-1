@@ -18,21 +18,21 @@ class AirplaneUI:
 
 
     def airplane_options(self) -> str: #1
-        """ TODO: add docstring """
+        """Displays the options a user can chose in Airplanes."""
         self.menus.display_options("Airplane:", AIRPLANE_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
     
 
     def airplane_types_and_licence(self) -> str: # 1-1
-        """ TODO: add docstring """
+        """Lets a user chose options for airplane types and licence."""
         self.menus.display_options("Airplane types and license:", AIRPLANE_TYPES_AND_LICENSE_OPTIONS)
         user_input = str(input("Enter your action: ").lower())
         return user_input
     
 
     def pilots_by_license(self) -> None: # 1-1-1
-        """ TODO: add docstring """
+        """Displays user options for pilots by license."""
         self.menus.display_options("Pilots by license:", PILOTS_BY_LICENSE_OPTIONS)
         user_input = str(input("Enter your action: ").lower())
         return user_input

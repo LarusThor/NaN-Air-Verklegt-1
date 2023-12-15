@@ -34,7 +34,7 @@ class ScheduleUI:
 
 
     def schedule_for_a_day_options(self) -> str:
-        """ TODO: add docstring """
+        """Lets user pick options to see for the day they chose."""
         self.menus.display_options("Schedule for a specific day:", SCHEDULE_FOR_A_DAY_OPTIONS)
         action = str(input("Enter your action: ").lower())
         
@@ -42,7 +42,7 @@ class ScheduleUI:
 
 
     def get_schedule_by_day(self) -> str:
-        """TODO: add docsting"""
+        """Gets the date the user wants to see a schedule for."""
         date_input = input("Input date (year-month-day): ").strip()
         date_format = "%Y-%m-%d"
         a_date = datetime.strptime(date_input, date_format)
@@ -51,7 +51,7 @@ class ScheduleUI:
 
 
     def who_was_working(self, date_working: date) -> None:
-        """ TODO: add docstring """
+        """Prints who was working on a chosen day"""
         title = f"The people that were working on {date_working}:"
         result = ""
         employees = self.logic_wrapper.employee_working(date_working)
@@ -78,7 +78,7 @@ class ScheduleUI:
 
 
     def get_employee(self) -> str:
-        """TODO: add docstring"""
+        """Gets information about a specific employee"""
         social_id = input("Enter social ID: ")
         valid_id = False
 
@@ -93,7 +93,7 @@ class ScheduleUI:
 
 
     def get_schedule_for_employee(self, employee: str) -> None:
-        """TODO: add docstring"""
+        """Let's the user choose a time period to see the employees work time."""
         year = input("Enter year: ")
         while not self.validation.validate_year(year):
             print("ERROR: invalid year.\nYear must be a number.")
@@ -112,6 +112,7 @@ class ScheduleUI:
 
     
     def get_datetime(self) -> date:
+        """Gets a date from the user and converts it into datetime."""
         date_input = input("Input date (year-month-day): ").strip()
         date_format = "%Y-%m-%d"
         a_date = datetime.strptime(date_input, date_format)
@@ -120,7 +121,7 @@ class ScheduleUI:
 
 
     def get_total_hours_worked(self) -> None:
-        """ TODO docstring """
+        """Prints total hours an employee worked over a specidic period of time"""
         print("See total hours an employee has worked! ")
 
         valid_id = False
