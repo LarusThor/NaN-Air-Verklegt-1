@@ -130,7 +130,7 @@ class EmployeeUI:
         """ Changes employees information. 
         Not name or social ID 
         """
-        social_id = self.get_social_id()
+        social_id = self.get_not_social_id()
         employee = self.logic_wrapper.employee_info(social_id)
         print(employee.social_id)
         
@@ -326,6 +326,19 @@ class EmployeeUI:
         social_id = input("Social ID: ")
         while social_id in employee.keys():
             print("Employee with same social id already exists!")
+            social_id = input("Social ID: ")
+        while not self.validation.validate_social_ID(social_id):
+            print("ERROR: Invalid social ID \n Please enter a valid Social ID, should be 10 digits. ")
+            social_id = input("Social ID: ")
+
+        return social_id
+    
+    def get_not_social_id(self) -> str:
+        """Gets a social id number from the user"""
+        employee = self.logic_wrapper.show_employee_info()
+        social_id = input("Social ID: ")
+        while social_id not in employee.keys():
+            print("There is no employee with this socialID!")
             social_id = input("Social ID: ")
         while not self.validation.validate_social_ID(social_id):
             print("ERROR: Invalid social ID \n Please enter a valid Social ID, should be 10 digits. ")
