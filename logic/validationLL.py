@@ -147,14 +147,13 @@ class ValidationLL:
         """
         try:
             flight_number_int = int(flight_number[2:])
+            flight_number_int += 1
+            if len(flight_number[2:]) == 3 and flight_number[:2] == "NA":
+                return True
+            else:
+                return False
         except ValueError:
-            flight_number_int = None
             return False
-        return (
-            (flight_number[:2] == "NA")
-            and 999 >= flight_number_int >= 100
-            and len(flight_number) == 5
-        )
     
 
     def validate_date(self, date:str) -> bool:
