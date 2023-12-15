@@ -45,7 +45,7 @@ class DestinationsUI:
         popular = self.logic_wrapper.popular_destination()
         title = "The most popular destination:"
 
-        user_input = self.menus.print_the_info(title, popular[0])
+        user_input = self.menus.print_the_info(title, popular)
         return user_input
 
     def add_destination(self) -> None:
@@ -93,7 +93,7 @@ class DestinationsUI:
 
         contact_name = input("Enter the name of the contact person: ").title()
         while not self.validation.validate_name(contact_name):
-            print("ERROR: Invalid name. \nName has to be a string of length < 3. ")
+            print("ERROR: Invalid name. \nName has to be a string of length <= 3. ")
             contact_name = input("Enter the name of the contact person: ").title()
 
         contact_number = input("Enter the number of the contact number: ")

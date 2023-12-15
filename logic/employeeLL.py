@@ -40,7 +40,6 @@ class EmployeeLL:
 
     def get_employee(self, social_id: str) -> Employee:
         """Returns information about a chosen employee."""
-
         employee_dict = self.logic.data_wrapper.get_all_staff_members()
         return employee_dict[social_id]
 
