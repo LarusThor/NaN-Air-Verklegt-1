@@ -59,30 +59,43 @@ class UpcomingVoyageLL:
                 #license_check in pilots_by_license.keys() and pilot_name in pilots_by_license.values():
                     return True
                 
-    def detect_voyage_info_return_flight(self, voyage_flight_number: str, voyage_date: str): #TODO: typehint, mögulega skila sem lista
+    def detect_voyage_info_return_flight(self, voyage_flight_number: str, voyage_date: str) -> UpcomingVoyage: #TODO: typehint, mögulega skila sem lista
         flight_info = self.logic.upcoming_voyages()
         for key, item in flight_info.items():
             # for id_key, some in key: #1, (UPcomingVoyage(id=1, flight=Na021))
             if voyage_flight_number == item.flight_nr and voyage_date in item.departure.strftime("%Y-%m-%d %H:%M:%S"):
                 id_of_flight = key
+
         return_flight_id = int(id_of_flight) + 1
-        return_flight_values = flight_info[str(return_flight_id)] 
-        return_flight_id = return_flight_values.id
-        return_flight_number = return_flight_values.flight_nr
-        return_flight_dep_from = return_flight_values.dep_from
-        return_flight_arr_at = return_flight_values.arr_at
-        return_flight_date_departure = return_flight_values.departure
-        return_flight_arrival = return_flight_values.arrival
-        return return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival 
+        return flight_info[str(return_flight_id)]
+
+        # return_flight_values = flight_info[str(return_flight_id)] 
+        # return_flight_id = return_flight_values.id
+        # return_flight_number = return_flight_values.flight_nr
+        # return_flight_dep_from = return_flight_values.dep_from
+        # return_flight_arr_at = return_flight_values.arr_at
+        # return_flight_date_departure = return_flight_values.departure
+        # return_flight_arrival = return_flight_values.arrival
+
+        # return return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival 
+
+    def get_voyage_by_flight_nr_and_date(self, flight_nr: str, departure_date: str) -> UpcomingVoyage:
+        voyages = self.logic.data_wrapper.get_upcoming_flights()
+
+        for voyage in voyages.values():
+            if voyage.flight_nr == flight_nr and voyage.departure.strftime("%Y-%m-%d") == departure_date:
+                return voyage
+
+        raise ValueError("Voyage not found")
+
 
     def add_staff_for_voyage(self, staff_to_add: str) -> None:
         """ Adds staff to a voyage. """
         return self.logic.data_wrapper.add_staff(staff_to_add)
     
 
-    def aircraft_availability(self, plane_insignia: Airplane, start: datetime, end: datetime):
-        total_hours_flown = self.logic.get_total_future_hours_for_airplane(plane_insignia, start, end)
-        return total_hours_flown
+    def aircraft_availability(self, plane_insignia: Airplane, start: datetime, end: datetime) -> float:
+        return self.logic.get_total_future_hours_for_airplane(plane_insignia, start, end)
 
     def staff_availability(self, captain: Employee, departure: date, return_flight_arrival: date) -> int:
         """ Checks wether an employee is scheduled to work during a specified time period. """

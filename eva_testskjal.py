@@ -12,18 +12,12 @@ from ui.destinationsUI import DestinationsUI
 logic = LogicWrapper()
 de = DestinationsUI()
 
-dd = datetime(2024, 1, 5, 7, 5, 0)
+dd = datetime(2023, 11, 6, 0, 0, 0)
+dt = datetime(2023, 11, 7, 0, 0, 0)
 
-dest_str = "03:00:00"
+print(logic.airplane_insignia_by_types())
 
-
-dest = logic.destination_list()[1]
-
-
-print(logic.flight_time(dest, dd))
-
-
-
+print(logic.pilots_by_license())
 
 
 #print(logic.airplane_types())
