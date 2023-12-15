@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 
 
-UNSTAFFED = 'N/A'
+UNSTAFFED = "N/A"
 @dataclass
 class UpcomingVoyage:
     id: int
@@ -11,7 +11,7 @@ class UpcomingVoyage:
     arr_at: str
     departure: datetime
     arrival: datetime
-    aircraft_id: str
+    aircraft_id: str = UNSTAFFED
     captain: str = UNSTAFFED
     copilot: str = UNSTAFFED
     fsm: str = UNSTAFFED
