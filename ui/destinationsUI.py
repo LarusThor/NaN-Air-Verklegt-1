@@ -62,7 +62,7 @@ class DestinationsUI:
         
         country = input("Enter the destination: ").title()
         while not self.validation.validate_destination_id(country):
-            print("ERROR: Invalid destination id. \nID has to be a string of length 3. ")
+            print("ERROR: Invalid destination. \nID has to be a string of length 3. ")
             country = input("Enter the destination: ").title()
         
         airport = input("Enter the airport: ").title()
