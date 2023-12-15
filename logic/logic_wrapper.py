@@ -80,6 +80,16 @@ class LogicWrapper():
     def get_most_experienced_employee(self) -> list[tuple]:
         """ Returns the employee who has gone on the most voyages. """
         return self.employee.get_most_experienced_employee()
+    
+    def get_available_employees_over_period(self, period_start: datetime, period_end: datetime) -> list[Employee]:
+        """ TODO: add docstring"""
+        return self.employee.get_available_employees_over_period(period_start, period_end)
+
+    def get_qualified_captains_for_plane_type(self, plane_type_id: str) -> dict[str, Employee]:
+        return self.employee.get_qualified_captains_for_plane_type(plane_type_id)
+
+    def get_qualified_copilots_for_plane_type(self, plane_type_id: str) -> dict[str, Employee]:
+        return self.employee.get_qualified_copilots_for_plane_type(plane_type_id)
 
     #Destinations:
     def destination_info_overview(self) -> dict:
@@ -159,7 +169,7 @@ class LogicWrapper():
         return self.airplane.get_airplane_usage()
     
     
-    def get_total_future_hours_for_airplane(self, plane_insignia: str, start: datetime, end: datetime):
+    def get_total_future_hours_for_airplane(self, plane_insignia: str, start: datetime, end: datetime) -> float:
         return self.airplane.get_total_future_hours_for_airplane(plane_insignia, start, end)
 
 
@@ -188,7 +198,7 @@ class LogicWrapper():
         return self.list_upcoming_voyage.add_staff_for_voyage(added_staff)
 
 
-    def voyage_info_for_return_flight(self, voyage_flight_number, voyage_date) -> tuple:
+    def voyage_info_for_return_flight(self, voyage_flight_number: str, voyage_date: str) -> UpcomingVoyage:
         return self.list_upcoming_voyage.detect_voyage_info_return_flight(voyage_flight_number, voyage_date)
     
     
@@ -196,9 +206,14 @@ class LogicWrapper():
         return self.list_upcoming_voyage.staff_availability(captain, departure, return_flight_arrival)
     
 
-    def aircraft_availability(self, aircraft_id, departure, return_flight_arrival):
-        return self.list_upcoming_voyage.aircraft_availability(aircraft_id, departure, return_flight_arrival)
-    
+    def get_available_airplanes_over_period(self, period_start: datetime, period_end: datetime) -> dict[str, Employee]:
+        """ Returns a list of all airplanes that are available over a given period. 
+
+        Args:
+            period_start: Start of the period.
+            period_end: End of the period.
+        """ 
+        return self.airplane.get_available_airplanes_over_period(period_start, period_end)
 
     def captain_availability(self, captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival):
         return self.list_upcoming_voyage.captain_availability(captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
@@ -211,7 +226,11 @@ class LogicWrapper():
     def flight_service_manager_availability(self, flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival):
         return self.list_upcoming_voyage.flight_service_manager_availability(flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival)
 
+    def get_upcoming_voyage_by_flight_nr_and_date(self, flight_nr: str, departure_date: str) -> UpcomingVoyage:
+        return self.list_upcoming_voyage.get_voyage_by_flight_nr_and_date(flight_nr, departure_date)
 
+
+    
     #Past voyages:
 
     def get_past_voyages(self) -> dict:
