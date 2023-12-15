@@ -531,10 +531,10 @@ class Main:
             }
 
 
-            action = input("Enter your action: ").lower()
+            action = input("Enter your action: ").lower().strip()
 
             while not self.validation.validate_choice(action, len(options)):
                 print("Invalid action! \nTry again.")
-                action = input("Enter your action: ").lower()
+                action = input("Enter your action: ").lower().strip()
 
             options[action]()

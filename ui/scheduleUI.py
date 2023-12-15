@@ -26,21 +26,21 @@ class ScheduleUI:
     def schedule_options(self) -> str:
         """Shows the options the user can choose from when they choose schedule from the main menu"""
         self.menus.display_options("Schedule:", SCHEDULE_OPTIONS)
-        action = input("Enter your action: ").lower()
+        action = input("Enter your action: ").lower().strip()
 
         return action
 
     def schedule_for_employee_options(self) -> str:
         """Shows the options the user can choose from when they enter in the employee social id"""
         self.menus.display_options("Schedule for employee:", SCHEDULE_FOR_EMPLOYEE)
-        action = input("Enter your action: ").lower()
+        action = input("Enter your action: ").lower().strip()
 
         return action
 
     def schedule_for_a_day_options(self, date) -> str:
         """Lets user pick options to see for the day they chose."""
         self.menus.display_options(f"Schedule for {date}:", SCHEDULE_FOR_A_DAY_OPTIONS)
-        action = input("Enter your action: ").lower()
+        action = input("Enter your action: ").lower().strip()
 
         return action
 
@@ -82,7 +82,7 @@ class ScheduleUI:
 
     def get_employee(self) -> str:
         """Gets information about a specific employee"""
-        social_id = input("Enter social ID: ")
+        social_id = input("Enter social ID: ").strip()
         valid_id = False
 
         while valid_id != True:
@@ -91,21 +91,21 @@ class ScheduleUI:
                 valid_id = True
             except KeyError or AttributeError:
                 print("ERROR: Employee is not in the system! ")
-                social_id = input("Social ID: ")
+                social_id = input("Social ID: ").strip()
         return employee
 
     def get_schedule_for_employee(self, employee: str) -> None:
         """Let's the user choose a time period to see the employees work time."""
-        year = input("Enter year: ")
+        year = input("Enter year: ").strip()
 
         while not self.validation.validate_year(year):
             print("ERROR: invalid year.\nYear must be a number.")
-            year = input("Enter year: ")
-        week = input("Enter week: ")
+            year = input("Enter year: ").strip()
+        week = input("Enter week: ").strip()
 
         while not self.validation.validate_weeks(week):
             print("ERROR: invalid week number.\nWeek must be from 1-52.")
-            week = input("Enter week: ")
+            week = input("Enter week: ").strip()
 
         title = "Week schedule: "
         result = self.logic_wrapper.employee_schedule_by_week(employee, year, week)
