@@ -253,9 +253,7 @@ class VoyagesUI:
                     return choice_int - 1
             print("Invalid choice!")
 
-    def manager_staffs_voyage(
-        self, voyage_flight_number: str, voyage_date: str
-    ) -> None:
+    def manager_staffs_voyage(self, voyage_flight_number: str, voyage_date: str) -> None:
         """TODO: add docstring"""
         # TODO: accept voyage_date as date object
 
@@ -265,11 +263,14 @@ class VoyagesUI:
                 voyage_flight_number, voyage_date
             )
         )
-        return_flight: UpcomingVoyage = (
-            self.logic_wrapper.voyage_info_for_return_flight(
-                voyage_flight_number, voyage_date
-            )
-        )
+        valid_flight = False
+        while valid_flight == False:
+            try:
+                return_flight: UpcomingVoyage = (self.logic_wrapper.voyage_info_for_return_flight(voyage_flight_number, voyage_date))
+                valid_flight = True
+            except ValueError:
+                voyage_flight_number =  input("Enter flight number: ") #TODO: Fönn validate
+                voyage_date = input("Enter voyage date: ")#TODO: fönn validate
 
         # get the aircraft to assign to the flights
         available_aircrafts = self.logic_wrapper.get_available_airplanes_over_period(

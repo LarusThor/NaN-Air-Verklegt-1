@@ -85,7 +85,7 @@ class UpcomingVoyageLL:
             ):
                 return voyage
 
-        raise ValueError("Voyage not found")
+        #raise ValueError("Voyage not found")
 
     def add_staff_for_voyage(self, staff_to_add: str) -> None:
         """Adds staff to a voyage."""
