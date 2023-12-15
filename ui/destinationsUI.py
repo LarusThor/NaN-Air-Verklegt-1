@@ -17,7 +17,7 @@ class DestinationsUI:
         self.menus = Menu()
 
     def destinations_options(self) -> str:
-        """TODO: add docstring"""
+        """Displays destination options."""
         self.menus.display_options("Destinations:", DESTINATIONS_OPTIONS)
         action = str(input("Enter your action: ").lower())
 

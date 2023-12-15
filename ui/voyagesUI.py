@@ -36,7 +36,7 @@ class VoyagesUI:
         self.validation = self.logic_wrapper.validation
 
     def voyages_options(self) -> str:
-        """TODO: add docstring"""
+        """Displays user options in voyages."""
         self.menus.display_options("Voyages:", VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
 
@@ -270,7 +270,13 @@ class VoyagesUI:
                 valid_flight = True
             except ValueError:
                 voyage_flight_number =  input("Enter flight number: ") #TODO: Fönn validate
+                #while not self.validation.validate_flight_nr(flight_number):
+                #    print("ERROR: invalid flight number, flight does not exist.\nMust start with NA and contain three numbers. ")
+                #    flight_number = input("Enter flight number: ")
                 voyage_date = input("Enter voyage date: ")#TODO: fönn validate
+                #while not self.validation.validate_date(departure_date):
+                #    print("Invalid date entered. ")
+                #    departure_date = input(f"Enter departure date (YYYY-MM-DD): ")
 
         # get the aircraft to assign to the flights
         available_aircrafts = self.logic_wrapper.get_available_airplanes_over_period(
@@ -419,7 +425,7 @@ class VoyagesUI:
         return date
 
     def get_week(self) -> str:
-        """TODO: add docstring"""
+        """Gets week from user."""
         year = input("Enter year: ")
         while not self.validation.validate_year(year):
             print("ERROR: invalid year.\nYear must be a number.")
@@ -466,7 +472,7 @@ class VoyagesUI:
         return user_input
 
     def get_past_voyage_by_date(self, date: date) -> str:
-        """TODO: add docstring"""
+        """Gets past voyages on a specific date."""
 
         title = f"Past voyages on {date}:"
         result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"

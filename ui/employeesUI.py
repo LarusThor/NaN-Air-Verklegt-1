@@ -57,14 +57,17 @@ class EmployeeUI:
     def get_pilots(self) -> None:
         """Gets the pilots from the logic wrapper. Calls a function in the menu_manager that takes care of
         printing the pilots and the title out."""
-
-        pilot_list = self.logic_wrapper.pilot_list()
+        pilot_list_model = self.logic_wrapper.pilot_list()
         title = "All pilots:"
+        return_pilot_list = []
         result = ""
 
-        for pilot in pilot_list:
-            result += pilot.name + "\n"
-
+        for pilot in pilot_list_model:
+            return_pilot_list.append(pilot.name)
+            
+        for pilot in sorted(return_pilot_list):
+            result += pilot + "\n"
+            
         user_input = self.menus.print_the_info(title, result)
         return user_input
 
@@ -76,7 +79,7 @@ class EmployeeUI:
         title = "All flight attendants:"
         result = ""
 
-        for person in flight_attendant_list:
+        for person in sorted(flight_attendant_list):
             result += person + "\n"
 
         user_input = self.menus.print_the_info(title, result)
@@ -89,10 +92,11 @@ class EmployeeUI:
         title = "All employees:"
         result = ""
 
-        for person in employees:
+        for person in sorted(employees):
             result += person + "\n"
 
         user_input = self.menus.print_the_info(title, result)
+
         return user_input
 
     def get_employee(self) -> Employee:
