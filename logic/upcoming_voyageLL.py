@@ -68,17 +68,7 @@ class UpcomingVoyageLL:
 
         return_flight_id = int(id_of_flight) + 1
         return flight_info[str(return_flight_id)]
-
-        # return_flight_values = flight_info[str(return_flight_id)] 
-        # return_flight_id = return_flight_values.id
-        # return_flight_number = return_flight_values.flight_nr
-        # return_flight_dep_from = return_flight_values.dep_from
-        # return_flight_arr_at = return_flight_values.arr_at
-        # return_flight_date_departure = return_flight_values.departure
-        # return_flight_arrival = return_flight_values.arrival
-
-        # return return_flight_id, return_flight_number, return_flight_dep_from, return_flight_arr_at, return_flight_date_departure, return_flight_arrival 
-
+    
     def get_voyage_by_flight_nr_and_date(self, flight_nr: str, departure_date: str) -> UpcomingVoyage:
         voyages = self.logic.data_wrapper.get_upcoming_flights()
 
@@ -93,68 +83,3 @@ class UpcomingVoyageLL:
         """ Adds staff to a voyage. """
         return self.logic.data_wrapper.add_staff(staff_to_add)
     
-
-    def aircraft_availability(self, plane_insignia: Airplane, start: datetime, end: datetime) -> float:
-        return self.logic.get_total_future_hours_for_airplane(plane_insignia, start, end)
-
-    def staff_availability(self, captain: Employee, departure: date, return_flight_arrival: date) -> int:
-        """ Checks wether an employee is scheduled to work during a specified time period. """
-        total_hours_worked = self.logic.get_total_future_hours_worked(captain, departure, return_flight_arrival)
-        return total_hours_worked
-
-    
-    def captain_availability(self, captain:str, employee_information:dict, plane_insignia:str, employee:dict, voyages_info:dict, return_flight_arrival:str) -> bool:
-        """ Takes captains social id, info about the employee, a specific airplanes insignia or id, 
-        a specific instance of an employee, voyages information which checks departure time and time of return flights arrival """
-        available_for_date = True
-        valid_license = True
-        valid_rank = True
-        employee_information = self.logic.show_employee_info()
-        if employee_information[captain].rank == "Captain":
-            if self.logic.check_pilot_qualifications(plane_insignia, captain):
-                if self.logic.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
-                    available_for_date = True  
-                    valid_license = True 
-                    valid_rank = True
-                else:
-                    available_for_date = False
-            else:
-                valid_license = False
-        else:
-            valid_rank = False
-        return valid_rank, available_for_date, valid_license
-    
-
-    def copilot_availability(self, copilot:str, employee_information:dict, plane_insignia:str, employee:dict, voyages_info:dict, return_flight_arrival:str) -> bool:
-        """ Takes copilot social id, info about the employee, a specific airplanes insignia or id, 
-        a specific instance of an employee, voyages information which checks departure time and time of return flights arrival """
-        employee_information = self.logic.show_employee_info()
-        if employee_information[copilot].rank == "Copilot":
-            if self.logic.check_pilot_qualifications(plane_insignia, copilot):
-                if self.logic.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
-                    available_for_date = True  
-                    valid_license = True 
-                    valid_rank = True
-                else:
-                    available_for_date = False
-            else:
-                valid_license = False
-        else:
-            valid_rank = False
-        return valid_rank, available_for_date, valid_license
-        
-    
-    def flight_service_manager_availability(self, flight_service_manager:str, employee_information:dict, employee:dict, voyages_info:dict, return_flight_arrival:str) -> bool:
-        """  Takes flight service manager social id, info about the employee, a specific instance of an employee, 
-        voyages information which checks departure time and time of return flights arrival """
-        employee_information = self.logic.show_employee_info()
-        if employee_information[flight_service_manager].rank == "Flight Service Manager":
-            if self.logic.staff_availability_check(employee, voyages_info.departure, return_flight_arrival) == 0:
-                available_for_date = True  
-                valid_rank = True
-            else:
-                available_for_date = False
-        else:
-            valid_rank = False
-        return valid_rank, available_for_date
-          

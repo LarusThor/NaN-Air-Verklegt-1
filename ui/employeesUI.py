@@ -362,6 +362,7 @@ class EmployeeUI:
         optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
         landline_check = self.validation.validate_landline(optional_landline)
         while landline_check == False:
+                print("Please enter a valid input")
                 optional_landline = input("Do you want to add a landline number? (y)es or (n)o? ").lower()
                 landline_check = self.validation.validate_landline(optional_landline)
         if optional_landline == "y":
@@ -387,16 +388,21 @@ class EmployeeUI:
             phonenumber=phone_number,
             role=role, 
             rank=rank,
-            licence=license,
+            licence=license_list[0],
             email=email,
             home_address=home_address,
             landline=landline
         )
 
         save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
+        save_promt_check = self.validation.validate_landline(save_prompt)
+        while save_promt_check == False:
+                print("Please enter a valid input")
+                save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
+                save_promt_check = self.validation.validate_landline(save_prompt)
         while save_prompt != "y" and save_prompt != "n":
-            print("Invalid input!")
-            save_prompt = input("Enter Y for yes or N for no: ").lower()
+            print("Please enter a valid input")
+            save_prompt = input("Would you like to save the new employee, (y)es or (n)o? ").lower()
 
         if save_prompt == "y":
             self.logic_wrapper.add_employee(employee)

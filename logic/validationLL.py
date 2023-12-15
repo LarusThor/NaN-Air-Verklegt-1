@@ -72,8 +72,15 @@ class ValidationLL():
     
     #Airplane types and license, Pilots by license
         #Licensed pilots for a specific airplane type (ofkokfsd) = ValueError
-    #Add new airplane
-        #Enter an Name: kfokofksdf == works
+    
+    def validate_airplane_choice(self, airplane_choice: int) -> bool:
+        try:
+            airplane_choice = int(airplane_choice)
+            return True
+        except ValueError:
+            return False
+            
+
     
     
 
