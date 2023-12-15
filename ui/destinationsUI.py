@@ -60,17 +60,17 @@ class DestinationsUI:
         
         country = input("Enter the country: ")
         while not self.validation.validate_destination_id(country):
-            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
+            print("ERROR: Invalid destination id \nID has to be a string of length 3. ")
             country = input("Enter the country: ")
         
         airport = input("Enter the airport: ")
         while not self.validation.validate_airport(airport):
-            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
+            print("ERROR: Invalid airport \nAirport name has to be a string of length > 3 and contain the word Airport.")
             airport = input("Enter the airport: ")
         
         distance_from_iceland = input("Enter the distance form Iceland: ")
         while not self.validation.validate_distance_from_iceland(distance_from_iceland):
-            print("ERROR: Invalid name \nName has to be a string of length > 3. ")
+            print("ERROR: Invalid distance \nDistance has to be an integer less than 40.000.")
             distance_from_iceland = input("Enter the distance form Iceland: ")
         
         contact_name = input("Enter the name of the contact person:")
