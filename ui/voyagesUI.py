@@ -33,14 +33,16 @@ class VoyagesUI:
         """TODO: add docstring"""
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
+        self.validation = self.logic_wrapper.validation
+
 
     def voyages_options(self) -> str:
         """TODO: add docstring"""
         self.menus.display_options("Voyages:", VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
+        
         return action
 
-    #############################################################################################################################################
 
     def add_voyage(self) -> None:
         """TODO: add docstring."""
@@ -53,6 +55,9 @@ class VoyagesUI:
         flight_number = input(
             "Enter flight number: "
         )  # TODO: validate - format og lengd
+        while not self.validation.validate_flight_nr(flight_number):
+            print("ERROR: invalid flight number.\nMust start with NA and contain three numbers. ")
+            flight_number = input("Enter flight number: ")
         departure_location = "Kef"  # NaN air always departs from Kef
 
         print("Choose an arrival destination")
@@ -140,18 +145,19 @@ class VoyagesUI:
         elif save_prompt == "n":
             user_input = self.menus.print_the_info("New voyage was not saved.")
             return user_input
-        
+
+
     def get_voyage_flight_number(self) -> str:
         """TODO: add docstring"""
         flight_number = input("Enter flight number: ")
         return flight_number
+
 
     def get_voyage_date(self) -> str:
         """TODO: add docstring"""
         date = input("Enter year date; year-month-day: ")
         return date
         
-    #############################################################################################################################################
 
     def __get_flight_attendants(self, available_employees: dict[str, Employee]):
         available_flight_attendants = [
@@ -181,6 +187,7 @@ class VoyagesUI:
             del available_flight_attendants[choice_idx]
 
         return chosen_flight_attendants
+
 
     def __choose_element_from_list(
         self,
@@ -214,6 +221,7 @@ class VoyagesUI:
                 if 1 <= choice_int <= len(element_list):
                     return choice_int - 1
             print("Invalid choice!")
+
 
     def manager_staffs_voyage(
         self, voyage_flight_number: str, voyage_date: str
@@ -359,7 +367,6 @@ class VoyagesUI:
             self.logic_wrapper.add_staff_to_voyage(return_flight)
             user_input = self.menus.print_the_info("Voyages have been staffed!")
 
-    #############################################################################################################################################
 
     def list_voyage_options(self) -> str:
         """TODO: add docstring"""
@@ -367,22 +374,26 @@ class VoyagesUI:
         action = str(input("Enter your action: ").lower())
         return action
 
+
     def voyage_past_or_present_options(self) -> str:
         """TODO: add docstring"""
         self.menus.display_options("List voyages:", PAST_OR_PRESENT_VOYAGES)
         action = str(input("Enter your action: ").lower())
         return action
 
+
     def get_date(self) -> str:
         """TODO: add docstring"""
         date = input("Enter date; year-month-day: ")
         return date
+
 
     def get_week(self) -> str:
         """TODO: add docstring"""
         year = input("Enter year: ")
         week = input("Enter week number (1-52): ")
         return year, week
+
 
     def get_upcoming_voyage_by_date(self, date: date) -> str:
         """TODO: add docstring"""
@@ -399,6 +410,7 @@ class VoyagesUI:
         
         user_input = self.menus.print_the_info(title, result)
         return user_input
+
 
     def get_upcoming_voyage_by_week(self, year: str, week_nr: str) -> None:
         """TODO: add docstring"""
@@ -419,7 +431,6 @@ class VoyagesUI:
         user_input = self.menus.print_the_info(title, result)
         return user_input
 
-    #############################################################################################################################################
 
     def get_past_voyage_by_date(self, date: date) -> str:
         """TODO: add docstring"""
@@ -438,6 +449,7 @@ class VoyagesUI:
     
         user_input = self.menus.print_the_info(title, result)
         return user_input
+
 
     def get_past_voyage_by_week(self, year: str, week_nr: str) -> None:
         """
@@ -471,6 +483,7 @@ class VoyagesUI:
         return user_input
 
         self.menus.print_the_info(title, result)
+
 
     def cancel_voyage(self) -> None:  # define
         """Cancels a voyage in the system."""

@@ -271,6 +271,7 @@ class Main:
                                         case _:
                                             print("Input was invalid, try again ")
                                             time.sleep(INVALID_INPUT_SLEEP)
+                                            print("BUUUG") #TODO: laga alls staðar
                                         
                         # Add employee :
                         case "3":

@@ -100,7 +100,7 @@ class ValidationLL():
     #def validate_number_of_seats(self, number_of_seats) -> bool:
     #    return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
 
-#validate the choosing weeks
+#validate the choosing dates
 
     def validate_weeks(self, week: str) -> bool:
         try:
@@ -111,6 +111,12 @@ class ValidationLL():
             return False
         else:
             return True
+    
+    def validate_year(self, year: str) -> bool:
+        try:
+            int_year = int(year)
+        except ValueError:
+            return False
         
               
     def validate_save_new(self, str) -> bool:
@@ -118,11 +124,6 @@ class ValidationLL():
     
     
     def validate_flight(self, flight: str) -> bool:
-        """ TODO: add docstring """
-        pass
-
-
-    def validate_flight_nr(self, flight_nr: str) -> bool:
         """ TODO: add docstring """
         pass
 
@@ -170,3 +171,14 @@ class ValidationLL():
         return user_input.lower() == "b" or user_input == "q"
     
     
+# voyages
+    def validate_flight_nr(slef, flight_number: str) -> bool:
+        """ Validates a flight numeber that the user inputs, checks whether the input is in the format
+        NA000. That is, starts with NA and three numbers follow.
+        """
+        try:
+            flight_number_int = int(flight_number[2:])
+        except ValueError:
+            flight_number_int = None
+            return False
+        return (flight_number[:2] == "NA") and 999 >= flight_number_int >= 100 and len(flight_number) == 5

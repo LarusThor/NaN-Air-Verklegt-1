@@ -64,7 +64,6 @@ class AirplaneUI:
         
         user_input = self.menus.print_the_info(title, result)
         return user_input
-
             
 
     def list_pilots_by_license(self) -> None: # 1-1-1-2
@@ -111,15 +110,12 @@ class AirplaneUI:
         return user_input
 
 
-
     def add_airplane(self) -> None: #define
         """ TODO: add docstring """ 
         airplane_types = self.logic_wrapper.airplane_types()
 
-
         print("\nAdding a new airplane to the system: ")
         print("Examples of airplane names:  TF-EPG, TF-UVR, TF-XZR")
-
     
         name = input("Enter airplane insignia: ") #TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
         while not self.validation.validate_airplane_name(name):
@@ -136,7 +132,6 @@ class AirplaneUI:
         manufacturer = planes[type_choice][1]
         model = planes[type_choice][2] 
         number_of_seats = planes[type_choice][3]  
-
    
         result = f"\nName: {name}\nType: {plane_type}\nManufacturer: {manufacturer}\nModel: {model}\nNumber of seats: {number_of_seats}"
         print(result)
