@@ -286,5 +286,9 @@ class LogicWrapper:
         self.validation.validate_date(date)
     
     def validate_destination_id(self, destination_id: str) -> bool:
-        """ validates a destination ID input from user """
+        """ Validates a destination ID input from user """
         self.validation.validate_destination_id(destination_id)
+
+    def validation_destination_name(self, destination_name: str) -> bool:
+        """ Validate name of a destination that the user inputs """
+        self.validation.validate_destination_name(destination_name)

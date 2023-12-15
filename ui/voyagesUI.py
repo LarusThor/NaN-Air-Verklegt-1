@@ -28,24 +28,22 @@ VOYAGE_HEADER = "{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format(
 
 
 class VoyagesUI:
-    """"Instantiate a VoyageUI object."""
+    """ "Instantiate a VoyageUI object."""
+
     def __init__(self) -> None:
-        """TODO: add docstring"""
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()
         self.validation = self.logic_wrapper.validation
-
 
     def voyages_options(self) -> str:
         """TODO: add docstring"""
         self.menus.display_options("Voyages:", VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
-        
+
         return action
 
-
     def add_voyage(self) -> None:
-        """TODO: add docstring."""
+        """Let's user fill in information about the voyage they want to add."""
         destination_list = self.logic_wrapper.destination_list()
         find_last_id = list(self.logic_wrapper.upcoming_voyages().keys())
 
@@ -56,7 +54,9 @@ class VoyagesUI:
             "Enter flight number: "
         )  # TODO: validate - format og lengd
         while not self.validation.validate_flight_nr(flight_number):
-            print("ERROR: invalid flight number.\nMust start with NA and contain three numbers. ")
+            print(
+                "ERROR: invalid flight number.\nMust start with NA and contain three numbers. "
+            )
             flight_number = input("Enter flight number: ")
         departure_location = "Kef"  # NaN air always departs from Kef
 
@@ -165,24 +165,23 @@ class VoyagesUI:
             user_input = self.menus.print_the_info("New voyage was not saved.")
             return user_input
 
-
     def get_voyage_flight_number(self) -> str:
-        """TODO: add docstring"""
+        """Lets user input a flight number."""
         flight_number = input("Enter flight number: ")
         while not self.validation.validate_flight_nr(flight_number):
-            print("ERROR: invalid flight number.\nMust start with NA and contain three numbers. ")
+            print(
+                "ERROR: invalid flight number.\nMust start with NA and contain three numbers. "
+            )
             flight_number = input("Enter flight number: ")
         return flight_number
 
-
     def get_voyage_date(self) -> str:
-        """TODO: add docstring"""
+        """Gets date input from user."""
         date = input("Enter year date; year-month-day: ")
         while not self.validation.validate_date(date):
             print("Invalid date entered. ")
             date = input("Input date (year-month-day): ").strip()
         return date
-        
 
     def __get_flight_attendants(self, available_employees: dict[str, Employee]):
         available_flight_attendants = [
@@ -212,7 +211,6 @@ class VoyagesUI:
             del available_flight_attendants[choice_idx]
 
         return chosen_flight_attendants
-
 
     def __choose_element_from_list(
         self,
@@ -246,7 +244,6 @@ class VoyagesUI:
                 if 1 <= choice_int <= len(element_list):
                     return choice_int - 1
             print("Invalid choice!")
-
 
     def manager_staffs_voyage(
         self, voyage_flight_number: str, voyage_date: str
@@ -363,10 +360,10 @@ class VoyagesUI:
             flight.fa5,
         ) = flight_attendants_social_ids
 
-                    # self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_first_flight)
-                    # self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_return_flight)
-                    # user_input = self.menus.print_the_info("Voyage has been staffed!")
-                    # return user_input
+        # self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_first_flight)
+        # self.logic_wrapper.add_staff_to_voyage(upcoming_voyage_staff_return_flight)
+        # user_input = self.menus.print_the_info("Voyage has been staffed!")
+        # return user_input
         (
             return_flight.fa1,
             return_flight.fa2,
@@ -392,20 +389,17 @@ class VoyagesUI:
             self.logic_wrapper.add_staff_to_voyage(return_flight)
             user_input = self.menus.print_the_info("Voyages have been staffed!")
 
-
     def list_voyage_options(self) -> str:
         """TODO: add docstring"""
         self.menus.display_options("List voyages", LIST_VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
-
     def voyage_past_or_present_options(self) -> str:
         """TODO: add docstring"""
         self.menus.display_options("List voyages:", PAST_OR_PRESENT_VOYAGES)
         action = str(input("Enter your action: ").lower())
         return action
-
 
     def get_date(self) -> str:
         """TODO: add docstring"""
@@ -414,7 +408,6 @@ class VoyagesUI:
             print("Invalid date entered. ")
             date = input("Input date (year-month-day): ").strip()
         return date
-
 
     def get_week(self) -> str:
         """TODO: add docstring"""
@@ -428,7 +421,6 @@ class VoyagesUI:
             week = input("Enter week: ")
         return year, week
 
-
     def get_upcoming_voyage_by_date(self, date: date) -> str:
         """TODO: add docstring"""
         title = f"Upcoming voyages on {date}:"
@@ -441,10 +433,9 @@ class VoyagesUI:
                 if voyage_counter == 2:
                     voyage_counter = 0
                     result += "-" * 130 + "\n"
-        
+
         user_input = self.menus.print_the_info(title, result)
         return user_input
-
 
     def get_upcoming_voyage_by_week(self, year: str, week_nr: str) -> None:
         """TODO: add docstring"""
@@ -461,10 +452,9 @@ class VoyagesUI:
                     if voyage_counter == 2:
                         voyage_counter = 0
                         result += "-" * 130 + "\n"
-        
+
         user_input = self.menus.print_the_info(title, result)
         return user_input
-
 
     def get_past_voyage_by_date(self, date: date) -> str:
         """TODO: add docstring"""
@@ -480,10 +470,9 @@ class VoyagesUI:
                 if voyage_counter == 2:
                     voyage_counter = 0
                     result += "-" * 130 + "\n"
-    
+
         user_input = self.menus.print_the_info(title, result)
         return user_input
-
 
     def get_past_voyage_by_week(self, year: str, week_nr: str) -> None:
         """Returns past voyages over a specific time"""
@@ -501,6 +490,6 @@ class VoyagesUI:
                     if voyage_counter == 2:
                         voyage_counter = 0
                         result += "-" * 130 + "\n"
-        
+
         user_input = self.menus.print_the_info(title, result)
         return user_input
