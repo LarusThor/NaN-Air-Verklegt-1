@@ -42,7 +42,6 @@ class Main:
         while True:
             self.menus.main_menu()
             
-
 # airplanes
             def pilots_by_license_options():
                 user_input = ""
@@ -223,7 +222,6 @@ class Main:
                 
 
 # employees
-
             def list_employees_opt():
                 user_input = BACK
                 user_input2 = ""
@@ -314,6 +312,7 @@ class Main:
                             
                     if user_input == "q":
                         quit()
+
                         
 # schedule                       
             def schedule_by_day():
@@ -407,56 +406,53 @@ class Main:
             def voyages() -> None:
                 """In this code we are in voyages and starting loops with the feature of backing out and quiting
                     we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
-                action1=""
-                action2 = ""
-                action14=""
-                action15=""
-                action16=""
-                while(action1 != BACK):
-                    action1 = self.voyages_ui.voyages_options()
-                    action2 = ""
-                    action3 = ""
-                    action4 = ""
-                    action5 = "b"
-                    action6 = ""
-                    action7 = "b"
-                    action14 = ""
+                user_input1 = ""
+                user_input2 = ""
+                user_input3 = ""
+                while(user_input1 != BACK):
+                    user_input1 = self.voyages_ui.voyages_options()
+                    user_input2 = ""
+                    user_input4 = ""
+                    user_input5 = ""
+                    user_input6 = ""
+                    user_input7 = ""
+                    user_input3 = ""
 
-                    match action1:
+                    match user_input1:
                         case "q":
                             quit(0)
 
                         case "1":
-                            while(action2 != BACK):
-                                action1 = ""
-                                action2 = self.voyages_ui.add_voyage()
-                                if action2 == "q":
+                            while(user_input2 != BACK):
+                                user_input1 = ""
+                                user_input2 = self.voyages_ui.add_voyage()
+                                if user_input2 == "q":
                                     quit()
 
                         case "2":
-                            while(action14 != BACK):
-                                action14 = self.voyages_ui.voyage_past_or_present_options()
+                            while(user_input3 != BACK):
+                                user_input3 = self.voyages_ui.voyage_past_or_present_options()
                                 
-                                match action14:
+                                match user_input3:
 
                                     case "q":
                                         quit(0)
 
                                     case "1":
-                                        while(action5 == BACK):
-                                            action4 = self.voyages_ui.list_voyage_options()
+                                        while(user_input5 == BACK):
+                                            user_input4 = self.voyages_ui.list_voyage_options()
                                             
-                                            match action4:
+                                            match user_input4:
                                                 case "q":
                                                     quit(0)
 
                                                 case "1":
                                                     date = self.voyages_ui.get_date()
-                                                    action5 = self.voyages_ui.get_upcoming_voyage_by_date(date)
+                                                    user_input5 = self.voyages_ui.get_upcoming_voyage_by_date(date)
 
                                                 case "2":
                                                     year, week = self.voyages_ui.get_week()
-                                                    action5 = self.voyages_ui.get_upcoming_voyage_by_week(year, week)
+                                                    user_input5 = self.voyages_ui.get_upcoming_voyage_by_week(year, week)
 
                                                 case "b":
                                                     break
@@ -467,21 +463,21 @@ class Main:
 
 
                                     case "2":
-                                        while(action7 == BACK):
-                                            action6 = self.voyages_ui.list_voyage_options()
+                                        while(user_input7 == BACK):
+                                            user_input6 = self.voyages_ui.list_voyage_options()
 
-                                            match action6:
+                                            match user_input6:
 
                                                 case "q":
                                                     quit(0)
 
                                                 case "1":
                                                     date = self.voyages_ui.get_date()
-                                                    action7 = self.voyages_ui.get_past_voyage_by_date(date)
+                                                    user_input7 = self.voyages_ui.get_past_voyage_by_date(date)
 
                                                 case "2":
                                                     year, week = self.voyages_ui.get_week()
-                                                    action7 = self.voyages_ui.get_past_voyage_by_week(year, week)
+                                                    user_input7 = self.voyages_ui.get_past_voyage_by_week(year, week)
 
                                                 case "b":
                                                     break
@@ -513,7 +509,7 @@ class Main:
 
             
 
-
+# Flight information
             def flight_status() -> None:
                 """If the user chooses to see the flight information. This function calls a function in the flight information UI
                  and will print out a table that shows the flight status."""
@@ -522,7 +518,6 @@ class Main:
 
                 if user_input == "q":
                     quit()
-
 
 
 # Main menu
