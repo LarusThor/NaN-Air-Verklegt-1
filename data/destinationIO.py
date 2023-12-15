@@ -10,16 +10,8 @@ class DestinationIO:
             lines = f.readlines()
             for line in lines[1:]:
                 line = line.strip()
-                (
-                    id,
-                    destination,
-                    emergency_contact_name,
-                    emergency_contact_number,
-                    airport_name,
-                    distance_from_iceland,
-                    estimated_flight_time,
-                ) = line.split(",")
-                
+                (id, destination, emergency_contact_name, emergency_contact_number, airport_name, distance_from_iceland, estimated_flight_time,) = line.split(",")
+
                 destination = Destination(
                     id,
                     destination,
