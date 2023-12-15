@@ -310,11 +310,11 @@ class EmployeeUI:
                 }
 
                 print("Licenses:")
-                for index, license in licences.items():
+                license_list = []
+                for index, license in enumerate(licences.values()):
                     tuple_list = []
-                    for item in license:
-                        tuple_list.append(item)
-                    print(f"{index}. {tuple_list[0]}")
+                    license_list.append(license[0])
+                    print(f"{index+1}. {license[0]}")
 
                 licence_choice = input("Choose license: ")
                 while licence_choice != "1" and licence_choice != "2" and licence_choice != "3":
@@ -322,9 +322,9 @@ class EmployeeUI:
                     print("-" * 15)
                     licence_choice = input("Choose license: ")
                 licence_choice_int = int(licence_choice)
-                licence = licences[licence_choice_int]
+                license = license_list[licence_choice_int + 1]
             else:
-                licence = "N/A"
+                license = "N/A"
 
         elif role == "Cabincrew":
             ranks = {"1": "Flight Service Manager", "2": "Flight Attendant"}
@@ -336,10 +336,11 @@ class EmployeeUI:
                 print("Invalid input! You can choose 1 or 2")
                 print("-" * 15)
                 rank_choice = input("Rank: ")
-            licence = "N/A"
+            license = "N/A"
 
         rank = ranks[rank_choice]
-        return rank, licence
+
+        return rank, license
 
     def get_social_id(self) -> str:
         """Gets a social id number from the user"""

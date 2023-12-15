@@ -11,7 +11,7 @@ from ui.employeesUI import EmployeeUI
 emp = EmployeeUI()
 logic = LogicWrapper()
 
-print(emp.get_employee())
+print(emp.choose_rank_and_licence("Pilot"))
 
 
 

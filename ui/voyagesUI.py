@@ -65,7 +65,15 @@ class VoyagesUI:
             print(f"{index + 1}. {destination.destination}")
 
         action = int(input("Enter choice: "))
-        arrival_location = destination_list[action - 1]
+        valid_choice = False
+        while valid_choice == False:
+            try:
+                arrival_location = destination_list[action - 1]
+                valid_choice = True
+            except:
+               print("Invalid choice \nTry again!")
+               action = int(input("Enter choice: ")) 
+            
 
         departure_date = input(
             f"Enter departure date from {departure_location}: year-month-day: "

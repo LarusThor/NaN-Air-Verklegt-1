@@ -89,10 +89,10 @@ class Main:
                             quit(0)
 
                         case "1":
-                            user_input = pilots_by_license_options()
+                            user_input2 = pilots_by_license_options()
                         
                         case "2":
-                            user_input = self.airplane_ui.types()
+                            user_input2 = self.airplane_ui.types()
                             
                             
                         case "b":
@@ -232,80 +232,94 @@ class Main:
 
             
 
-
-                                
 # employees
+
+            def list_employees_opt():
+                user_input = BACK
+                user_input2 = ""
+
+                while user_input == BACK and user_input2 != BACK:
+                    user_input = self.employee_ui.list_employees_options()
+
+                    match user_input:
+                        case "q":
+                            quit(0)
+                        
+                        case "1":
+                            user_input2 = self.employee_ui.get_pilots()
+
+                        case "2":
+                            user_input2 = self.employee_ui.get_flight_attendants()
+
+                        case "3":
+                            user_input2 = self.employee_ui.get_all_employees()
+
+                        case "4":
+                            user_input2 = self.employee_ui.get_most_experienced()
+
+                        case "b":
+                            user_input2 = BACK
+
+                        case _:
+                            print("Input was invalid, try again ")
+                            time.sleep(INVALID_INPUT_SLEEP)
+                            user_input2 = BACK
+                    
+                    if user_input == "q" or user_input2 == "q":
+                        quit()
+
+                return user_input2
+                    
+
+            def employee_info_opt():
+                action8 = ""
+                while(action8 != BACK):
+                    action8 = self.employee_ui.employee_info_options()
+                    action11 = action8
+                    while(action11 != "b"):
+                        match action11:
+                            case "q":
+                                quit(0)
+
+                            case "1":
+                                action11 = self.employee_ui.get_info()
+                            
+
+                            case "2": #TODO laga back og quit TINNA
+                                action11 = self.employee_ui.change_info_options()
+
+                            case _:
+                                print("Input was invalid, try again ")
+                                time.sleep(INVALID_INPUT_SLEEP)
+                                action11 = "b"
+
+
             def employees() -> None:
                 """TODO: in this code we are in employee and starting loops with the feature of backing out and quiting
                     we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
-                action6 = ""# initialize a varible and stores the users input
-                action7 = ""
-                action8 = ""
-                action10 = ""
-                while (action6 != BACK):
-                    action6 = self.employee_ui.employees_options()
-                    action7 = ""
-                    action10 = ""
-                    match action6:
+                
+                user_input = ""
+                user_input2 = BACK
+                while user_input != BACK and user_input2 == BACK:
+
+                    user_input = self.employee_ui.employees_options()
+                    
+                    match user_input:
                         case "q":
                             quit(0)
-                    # list employees :
+
                         case "1":
+                            user_input2 = list_employees_opt()
 
-                            while(action7 != BACK):
-                                # action6 =""
-                                action7 = self.employee_ui.list_employees_options()
-                                action10 = action7
-
-                                while(action10 != BACK):
-                                    if action10 == "q":
-                                        quit()
-                                    match action7:
-                                        case "q":
-                                            quit(0)
-                                        
-                                        case "1":
-                                            action10 = self.employee_ui.get_pilots()
-                                        case "2":
-                                            action10 = self.employee_ui.get_flight_attendants()
-                                        case "3":
-                                            action10 = self.employee_ui.get_all_employees()
-                                        case "4":
-                                            action10 = self.employee_ui.get_most_experienced()
-                                        case "b":
-                                            continue
-                                        case _:
-                                            print("Input was invalid, try again ")
-                                            time.sleep(INVALID_INPUT_SLEEP)
-
-                    # Employee info :
                         case "2":
-                            action8 = ""
-                            while(action8 != BACK):
-                                action8 = self.employee_ui.employee_info_options()
-                                action11 = action8
-                                while(action11 != "b"):
-                                    match action11:
-                                        case "q":
-                                            quit(0)
-
-                                        case "1":
-                                            action11 = self.employee_ui.get_info()
+                            user_input2 = employee_info_opt()
                                         
-
-                                        case "2": #TODO laga back og quit TINNA
-                                            action11 = self.employee_ui.change_info_options()
-
-                                        case _:
-                                            print("Input was invalid, try again ")
-                                            time.sleep(INVALID_INPUT_SLEEP)
-                                            action11 = "b"
-                                        
-                        # Add employee:
                         case "3":
-                            action11 = self.employee_ui.add_employee()
-                            if action11 == "q":
-                                quit()
+
+                            user_input2 = self.employee_ui.add_employee()
+                            
+                    if user_input == "q":
+                        quit()
                         
                         
 
@@ -396,70 +410,85 @@ class Main:
                 if user_input2 == "q":
                     quit()
 
-                # action1 = ""# initialize a varible and stores the users input
-                # action2 = ""
-                # action12 = ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                action1 = ""# initialize a varible and stores the users input
+                action2 = ""
+                action12 = ""
                 
-                # while(action1 != BACK):
-                #     action1 = self.schedule_ui.schedule_options()
-                #     action12 = ""
-                #     action2 = ""
+                while(action1 != BACK):
+                    action1 = self.schedule_ui.schedule_options()
+                    action12 = ""
+                    action2 = ""
 
-                #     match action1:
-                #         case "q":
-                #             quit(0)
+                    match action1:
+                        case "q":
+                            quit(0)
 
-                #         case "1":
-                #             while(action2 != BACK):
+                        case "1":
+                            while(action2 != BACK):
                                 
-                #                 date = self.schedule_ui.get_schedule_by_day()
-                #                 action2 = self.schedule_ui.schedule_for_a_day_options()
+                                date = self.schedule_ui.get_schedule_by_day()
+                                action2 = self.schedule_ui.schedule_for_a_day_options()
                                 
-                #                 action12 = action2
-                #                 if action12 == "q":
-                #                     quit()
-                #                 elif action12 == "b":
-                #                     break
+                                action12 = action2
+                                if action12 == "q":
+                                    quit()
+                                elif action12 == "b":
+                                    break
 
-                #                 match action2:
-                #                     case "q":
-                #                         quit(0)
-                #                     case "1":
-                #                         action12 = self.schedule_ui.who_was_working(date)
-                #                     case "2":
-                #                         action12 = self.schedule_ui.get_who_was_not_working(date)
-                #                     case "b":
-                #                         continue
-                #                     case _:
-                #                         print("Input was invalid, try again ")
-                #                         time.sleep(INVALID_INPUT_SLEEP)
+                                match action2:
+                                    case "q":
+                                        quit(0)
+                                    case "1":
+                                        action12 = self.schedule_ui.who_was_working(date)
+                                    case "2":
+                                        action12 = self.schedule_ui.get_who_was_not_working(date)
+                                    case "b":
+                                        continue
+                                    case _:
+                                        print("Input was invalid, try again ")
+                                        time.sleep(INVALID_INPUT_SLEEP)
 
-                #                 action2 = action12
+                                action2 = action12
 
 
-                        # case "2":
-                        #     while(action12 != BACK):
-                        #         action12 = self.schedule_ui.schedule_for_employee_options()
-                        #         action2 = ""
+                        case "2":
+                            while(action12 != BACK):
+                                action12 = self.schedule_ui.schedule_for_employee_options()
+                                action2 = ""
 
-                        #         match action12:
-                        #             case "q":
-                        #                 quit(0)
-                        #             case "1":
-                        #                 employee = self.schedule_ui.get_employee()
-                        #                 action2 = self.schedule_ui.get_schedule_for_employee(employee)
-                        #             case "2":
-                        #                 action2 = self.schedule_ui.get_total_hours_worked()
-                        #             case "b":
-                        #                 continue
-                        #             case _:
-                        #                 print("Input was invalid, try again ")
-                        #                 time.sleep(INVALID_INPUT_SLEEP)
-                        # case "b":
-                        #     continue
-                        # case _:
-                        #     print("Input was invalid, try again ")
-                        #     time.sleep(INVALID_INPUT_SLEEP)
+                                match action12:
+                                    case "q":
+                                        quit(0)
+                                    case "1":
+                                        employee = self.schedule_ui.get_employee()
+                                        action2 = self.schedule_ui.get_schedule_for_employee(employee)
+                                    case "2":
+                                        action2 = self.schedule_ui.get_total_hours_worked()
+                                    case "b":
+                                        continue
+                                    case _:
+                                        print("Input was invalid, try again ")
+                                        time.sleep(INVALID_INPUT_SLEEP)
+                        case "b":
+                            continue
+                        case _:
+                            print("Input was invalid, try again ")
+                            time.sleep(INVALID_INPUT_SLEEP)
                                     
                                 
                                 
@@ -480,7 +509,7 @@ class Main:
                     action5 = "b"
                     action6 = ""
                     action7 = "b"
-                    action14 = "b"
+                    action14 = ""
 
                     match action1:
                         case "q":
@@ -494,7 +523,7 @@ class Main:
                                     quit()
 
                         case "2":
-                            while(action14 == BACK):
+                            while(action14 != BACK):
                                 action14 = self.voyages_ui.voyage_past_or_present_options()
                                 
                                 match action14:
@@ -551,7 +580,7 @@ class Main:
                                                     time.sleep(INVALID_INPUT_SLEEP)
                                                     
                                     case "b":
-                                        continue
+                                        break
 
                                     case _:
                                         print("Input was invalid, try again ")
@@ -565,7 +594,7 @@ class Main:
      
                             
                         case "b":
-                            continue
+                            break
 
                         case _:
                             print("Input was invalid, try again ")
@@ -603,6 +632,6 @@ class Main:
 
             while not self.validation.validate_choice(action, len(options)):
                 print("Invalid action! \nTry again.")
-                action = str(input("Enter your action: ").lower())
+                action = input("Enter your action: ").lower()
 
             options[action]()
