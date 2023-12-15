@@ -93,7 +93,7 @@ class ScheduleUI:
                 valid_id = True
             except KeyError or AttributeError:
                 print("ERROR: Employee is not in the system! ")
-                social_id = input("Social ID: ")
+                social_id = input("Enter social ID: ")
         return employee
 
     def get_schedule_for_employee(self, employee: str) -> None:
