@@ -36,14 +36,18 @@ class DestinationLL:
         voyage_list = past_voyage_list
         voyage_list.update(upcoming_voyage_list)
         for voyage in voyage_list.values():
-            destination_list.append(voyage.dep_from)
+            if voyage.dep_from != "KEF":
+                destination_list.append(voyage.dep_from)
 
         for destination in destination_list:
-            counter = destination_list.count(destination)
-            destination_dict[destination] = counter
+            if destination != "KEF":
+                counter = destination_list.count(destination)
+                destination_dict[destination] = counter
+            else:
+                continue
+            
         most_popular = max(set(destination_list), key=destination_list.count)
-
-        return most_popular, destination_dict
+        return most_popular
 
     def change_destination_info(self, destination: Destination) -> None:  # breyta í klasaritinu
         """Changes destination info"""

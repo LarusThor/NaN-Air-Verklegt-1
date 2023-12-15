@@ -25,6 +25,7 @@ MAIN_MENU_OPTIONS = [
 
 
 class Main:
+    """"Instantiate a Main object."""
     def __init__(self) -> None:
         """TODO: add docstring"""
         self.menus = Menu()

@@ -277,6 +277,18 @@ class LogicWrapper:
         """TODO: einhver sem skilur þennan skilgreina."""
         self.validation.validate_voyage(voyage)
 
-    def date_validation(self, date: datetime) -> bool:
-        """validates date."""
-        self.validation.date_validation(date)
+    # def date_validation(self, date: datetime) -> bool:
+    #     """validates date."""
+    #     self.validation.date_validation(date)
+
+    def validate_date(self, date:str) -> bool:
+        """ Validates a date """
+        self.validation.validate_date(date)
+    
+    def validate_destination_id(self, destination_id: str) -> bool:
+        """ Validates a destination ID input from user """
+        self.validation.validate_destination_id(destination_id)
+
+    def validation_destination_name(self, destination_name: str) -> bool:
+        """ Validate name of a destination that the user inputs """
+        self.validation.validate_destination_name(destination_name)

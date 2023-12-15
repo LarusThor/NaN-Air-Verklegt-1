@@ -24,7 +24,7 @@ class UpcomingVoyageLL:
         """Adds an upcoming voyage to the system."""
         self.logic.data_wrapper.add_upcoming_flights(upcoming_voyage)
 
-    def calculate_flight_time(self, arr_at: Destination, departure_date_time: datetime) -> datetime:  # TODO: change name to calculate arrival time
+    def calculate_flight_time(self, arr_at: Destination, departure_date_time: datetime) -> datetime:
         """Calculates the flight time."""
 
         estimated_flight_time_str = arr_at.estimated_flight_time.strip()

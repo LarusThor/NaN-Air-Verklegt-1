@@ -9,8 +9,9 @@ from ui.destinationsUI import DestinationsUI
 from ui.employeesUI import EmployeeUI
 #kemur aldrei upp að þau séu að vinna í vikunni
 emp = EmployeeUI()
+logic = LogicWrapper()
 
-print(emp.get_info())
+print(emp.get_employee())
 
 
 

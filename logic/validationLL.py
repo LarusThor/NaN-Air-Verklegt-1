@@ -32,10 +32,11 @@ class ValidationLL:
         
 
     def validate_email(self, email: str) -> bool:
-        """TODO: add docstring"""
+        """Validates emails"""
         return "@" in email and "." in email
 
     def validate_address(self, address: str) -> bool:
+        """Validates address"""
         address_values = address.split()
         if len(address_values) == 2:
             if address_values[1].isdigit() == True:
@@ -48,6 +49,7 @@ class ValidationLL:
             return len(address) >= 3 and all((char.isalpha() for char in address[0]))
 
     def validate_yes_no(self, input: str) -> bool:
+        """Validates yes and no options"""
         if input == "y" or input == "n":
             return True
         else:
@@ -66,6 +68,7 @@ class ValidationLL:
             return False
 
     def validate_airplane_choice(self, airplane_choice: int) -> bool:
+        """Validates airplane choices."""
         try:
             airplane_choice = int(airplane_choice)
             return True
@@ -76,6 +79,7 @@ class ValidationLL:
         return "Fokker" in manufacturer_name or "BAE" in manufacturer_name
 
     def validate_model_name(self, model_name) -> bool:
+        """Validates model name"""
         return "F100" in model_name or "F28" in model_name or "146" in model_name
 
     def validate_weeks(self, week: str) -> bool:
@@ -97,26 +101,7 @@ class ValidationLL:
             return False
     
 
-    def validate_save_new(self, str) -> bool:
-        pass
-
-    def validate_flight(self, flight: str) -> bool:
-        """TODO: add docstring"""
-        pass
-
-    def validate_voyage(self, voyage: str) -> bool:
-        """TODO: add docstring"""
-        pass
-
-    def date_validation(self, departure: datetime) -> bool:
-        """TODO: add docstring"""
-        pass
-
     # destination
-
-    def validate_all_destinations(self, all_destinations) -> bool:
-        return
-
     def validate_destination_name(self, destination_name: str) -> bool:
         """Validates name input."""
         name_values = destination_name.split()
@@ -126,8 +111,8 @@ class ValidationLL:
 
     def validate_destination_id(self, destination_id: str) -> bool:
         """Validates name input."""
-        name_values = destination_id.split()
-        return len(destination_id) >= 3 and all(
+        name_values = destination_id
+        return len(name_values) == 3 and all(
             (char.isalpha() for char in name_values)
         )
 
@@ -141,26 +126,18 @@ class ValidationLL:
         )
 
     def validate_distance_from_iceland(self, distance_from_iceland: int) -> bool:
+        """Validates distance from iceland."""
         try:
             distance_from_iceland = int(distance_from_iceland)
             return (distance_from_iceland >= 0) >=0 and (distance_from_iceland <= 40000) and all((digit.isdigit()for digit in str(distance_from_iceland)))
         except ValueError:
             return False
         
-
-    def validate_flight_time(self, flight_time) -> bool:
-        if len(flight_time) == 8:
-            if flight_time[0:2].isdigit() == True:
-                if flight_time[2] == ":" and flight_time[5] == ":":
-                    if flight_time[3:5].isdigit() == True:
-                        if flight_time[6:8].isdigit() == True:
-                            return True
-        else:
-            return False
     
 
 # menu 
     def validate_back_or_quit(self, user_input: str):
+        """Validates back or quit fucntion."""
         return user_input.lower() == "b" or user_input == "q"
 
     # voyages
@@ -178,3 +155,25 @@ class ValidationLL:
             and 999 >= flight_number_int >= 100
             and len(flight_number) == 5
         )
+    
+
+    def validate_date(self, date:str) -> bool:
+        """Validates dates"""
+        if len(date) == 10:
+            if date[0:4].isdigit() == True:
+                if date[4] == "-" and date[7] == "-":
+                    if date[5:7].isdigit() == True:
+                        if date[8:].isdigit() == True:
+                            return True
+        return False
+    
+
+    def validate_time(self, time) -> bool:
+        """Validates time."""
+        if len(time) == 8:
+            if time[0:2].isdigit() == True:
+                if time[3] == ":" and time[5] == ":":
+                    if time[3:5].isdigit() == True:
+                        if time[6:].isdigit() == True:
+                            return True
+        return False
