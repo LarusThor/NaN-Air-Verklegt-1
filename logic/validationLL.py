@@ -27,7 +27,7 @@ class ValidationLL:
         return len(socialID) == 10 and all((digit.isdigit() for digit in socialID))
 
     def validate_number(self, number: str) -> bool:
-        """ TODO: add docstring """
+        """Validates a phone number."""
         return len(number) == 7 and all(digit.isdigit()for digit in number) and int(number) > 1
         
 

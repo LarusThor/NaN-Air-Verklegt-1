@@ -106,11 +106,10 @@ class EmployeeUI:
 
         employee_info = self.logic_wrapper.employee_info
 
-        social_id = str(input("Enter employee social ID: ")).strip()#: validate
+        social_id = str(input("Enter employee social ID: ")).strip()
 
-        while not self.validation.validate_social_ID(social_id):
-            print("ERROR: Invalid social ID. \nSocial ID should be 10 digits. ")
-            social_id = str(input("Enter employee social ID: ")).strip()
+        valid_id = False
+        while valid_id == False:
         
             try:
                 employee = employee_info(social_id)

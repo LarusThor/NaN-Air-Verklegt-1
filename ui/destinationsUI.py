@@ -7,7 +7,7 @@ DESTINATIONS_OPTIONS = ["1. List of destinations", "2. Most popular destination"
 
 class DestinationsUI:
     def __init__(self) -> None:
-        """ TODO: add docstring """
+        """"Instantiate a DestinationUI object."""
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()     
 
