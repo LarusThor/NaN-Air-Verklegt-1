@@ -431,7 +431,7 @@ class Main:
                                     
                                 
                                 
-
+# voyages
             def voyages() -> None:
                 """TODO: in this code we are in voyages and starting loops with the feature of backing out and quiting
                     we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
@@ -531,11 +531,10 @@ class Main:
                             voyage_date = self.voyages_ui.get_voyage_date()
                             self.voyages_ui.manager_staffs_voyage(voyage_number, voyage_date)
      
-                        case "4":
-                            self.voyages_ui.staff_voyage()
                             
                         case "b":
                             continue
+
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
