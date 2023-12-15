@@ -76,12 +76,12 @@ class VoyagesUI:
             
 
         departure_date = input(
-            f"Enter departure date from {departure_location}: year-month-day: "
+            f"Enter departure date from {departure_location} (YYYY-MM-DD): "
         )  # TODO: validate
         while not self.validation.validate_date(departure_date):
             print("Invalid date entered. ")
             departure_date = input(
-            f"Enter departure date from {departure_location}: year-month-day: "
+            f"Enter departure date from {departure_location} (YYYY-MM-DD): "
         )
         departure_time = input(
             f"Enter departure time from {departure_location}: hours:minutes:seconds: "
@@ -92,12 +92,12 @@ class VoyagesUI:
             f"Enter departure date from {departure_location}: hours:minutes:seconds: "
         )
         return_flight_date = input(
-            f"Enter departure date from {arrival_location.destination}: year-month-day: "
+            f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): "
         )  # TODO: validate
         while not self.validation.validate_date(return_flight_date):
             print("Invalid date entered. ")
             return_flight_date = input(
-            f"Enter departure date from {arrival_location.destination}: year-month-day: "
+            f"Enter departure date from {arrival_location.destination} (YYYY-MM-DD): "
         )
         return_flight_time = input(
             f"Enter departure time from {arrival_location.destination}: hours:minutes:seconds: "
@@ -185,10 +185,10 @@ class VoyagesUI:
 
     def get_voyage_date(self) -> str:
         """Gets date input from user."""
-        date = input("Enter year date; year-month-day: ")
+        date = input("Enter year date (YYYY-MM-DD): ")
         while not self.validation.validate_date(date):
             print("Invalid date entered. ")
-            date = input("Input date (year-month-day): ").strip()
+            date = input("Input date (YYYY-MM-DD): ").strip()
         return date
 
     def __get_flight_attendants(self, available_employees: dict[str, Employee]):
@@ -412,10 +412,10 @@ class VoyagesUI:
 
     def get_date(self) -> str:
         """Gets a date from the user."""
-        date = input("Enter date; year-month-day: ")
+        date = input("Enter date (YYYY-MM-DD): ")
         while not self.validation.validate_date(date):
             print("Invalid date entered. ")
-            date = input("Input date (year-month-day): ").strip()
+            date = input("Input date (YYYY-MM-DD): ").strip()
         return date
 
     def get_week(self) -> str:
