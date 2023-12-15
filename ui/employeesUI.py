@@ -360,7 +360,7 @@ class EmployeeUI:
 
         name = input("Name: ").title()
         while not self.validation.validate_name(name):
-            print("ERROR: Invalid name. \nName has to be a string of length > 3. ")
+            print("ERROR: Invalid name. \nName has to be a string of length >= 3. ")
             name = input("Name: ").title()
 
         social_id = self.get_social_id()
