@@ -48,13 +48,13 @@ class ValidationLL():
         if len(address_values) == 1:
             return len(address) >=3 and all((char.isalpha()for char in address [0]))
         
-    def validate_landline(self, landline: str) -> bool:
-        if landline == "y" or landline == "n":
+    def validate_yes_no(self, input: str) -> bool:
+        if input == "y" or input == "n":
             return True
         else:
             return False
-        
-        
+    
+
     #airplanes   
     def validate_aircraft_by_specific_type(self, aircraft_specific_type) -> bool:
         return "N/A" in aircraft_specific_type
