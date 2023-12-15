@@ -184,7 +184,7 @@ class EmployeeUI:
                     role = self.choose_role()
 
                 case "2":
-                    rank, licence = self.choose_rank_and_licence()
+                    rank, licence = self.choose_rank_and_licence(role)
 
                 case "3":
                     email = self.get_email()
