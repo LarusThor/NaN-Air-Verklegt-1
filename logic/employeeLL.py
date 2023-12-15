@@ -40,9 +40,10 @@ class EmployeeLL:
 
     def get_employee(self, social_id: str) -> Employee:
         """Returns information about a chosen employee."""
-        employee_dict = self.logic.data_wrapper.get_all_staff_members()
 
+        employee_dict = self.logic.data_wrapper.get_all_staff_members()
         return employee_dict[social_id]
+
 
     def change_employee_info(self, employee: Employee) -> None:
         """Let's user change employee information."""
@@ -176,7 +177,7 @@ class EmployeeLL:
         return max_list
 
     def get_available_employees_over_period(self, period_start: datetime, period_end: datetime) -> dict[str, Employee]:
-        """Returns a list of all available staff over a certain time period."""
+        """Returns a list of all available staff over a certain time"""
         employees = list(self.logic.data_wrapper.get_all_staff_members().values())
 
         available_employees = {}
