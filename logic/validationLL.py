@@ -100,7 +100,7 @@ class ValidationLL():
     #def validate_number_of_seats(self, number_of_seats) -> bool:
     #    return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
 
-#validate the choosing weeks
+#validate the choosing dates
 
     def validate_weeks(self, week: str) -> bool:
         try:
@@ -111,6 +111,12 @@ class ValidationLL():
             return False
         else:
             return True
+    
+    def validate_year(self, year: str) -> bool:
+        try:
+            int_year = int(year)
+        except ValueError:
+            return False
         
               
     def validate_save_new(self, str) -> bool:
