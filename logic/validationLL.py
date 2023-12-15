@@ -48,13 +48,13 @@ class ValidationLL():
         if len(address_values) == 1:
             return len(address) >=3 and all((char.isalpha()for char in address [0]))
         
-    def validate_landline(self, landline: str) -> bool:
-        if landline == "y" or landline == "n":
+    def validate_yes_no(self, input: str) -> bool:
+        if input == "y" or input == "n":
             return True
         else:
             return False
-        
-        
+    
+
     #airplanes   
     def validate_aircraft_by_specific_type(self, aircraft_specific_type) -> bool:
         return "N/A" in aircraft_specific_type
@@ -72,8 +72,15 @@ class ValidationLL():
     
     #Airplane types and license, Pilots by license
         #Licensed pilots for a specific airplane type (ofkokfsd) = ValueError
-    #Add new airplane
-        #Enter an Name: kfokofksdf == works
+    
+    def validate_airplane_choice(self, airplane_choice: int) -> bool:
+        try:
+            airplane_choice = int(airplane_choice)
+            return True
+        except ValueError:
+            return False
+            
+
     
     
 
@@ -92,6 +99,18 @@ class ValidationLL():
         
     #def validate_number_of_seats(self, number_of_seats) -> bool:
     #    return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
+
+#validate the choosing weeks
+
+    def validate_weeks(self, week: str) -> bool:
+        try:
+            int_week = int(week)
+        except ValueError:
+            return False
+        if int_week <= 0 or int_week > 52:
+            return False
+        else:
+            return True
         
               
     def validate_save_new(self, str) -> bool:
@@ -127,3 +146,24 @@ class ValidationLL():
     def validate_back_or_quit(self, user_input: str):
         return user_input.lower() == "b" or user_input == "q"
             
+    def validate_destination_name(self, destination_name: str) -> bool:
+        """ Validates name input. """
+        name_values = destination_name.split()
+        return len(destination_name) >=3 and all((char.isalpha()for char in name_values))
+    
+    def validate_destination_id(self, destination_id: str) -> bool:
+        """ Validates name input. """
+        name_values = destination_id.split()
+        return len(destination_id) >=3 and all((char.isalpha()for char in name_values))
+    
+    def validate_airport(self, airport_name: str) -> bool:
+        """ Validates name input. """
+        name_values = airport_name.split()
+        return len(airport_name) >=3 and "Airport" in airport_name and all((char.isalpha()for char in name_values))
+    
+    def validate_distance_from_iceland(self, distance_from_iceland: int) -> bool:
+        return (distance_from_iceland) >=0 and (distance_from_iceland) <= 400000 and all((digit.isdigit()for digit in distance_from_iceland))
+    
+    
+    
+    
