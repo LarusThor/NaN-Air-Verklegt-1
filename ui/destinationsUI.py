@@ -53,12 +53,12 @@ class DestinationsUI:
         
         id = input("Enter the 3 letter ID: ").upper()
         destinations = self.logic_wrapper.destination_info_overview()
-        while id in destinations.keys():
-            print("Destination already exists, please enter a valid id")
-            id = input("Enter the 3 letter ID: ").upper()
         while not self.validation.validate_destination_id(id):
             print("ERROR: Invalid ID. \nID has to be a string of length 3. ")
             id = input("Enter the 3 letter ID: ").upper()
+            while id in destinations.keys():
+                print("Destination already exists, please enter a valid id")
+                id = input("Enter the 3 letter ID: ").upper()
         
         country = input("Enter the destination: ").title()
         while not self.validation.validate_destination_id(country):
