@@ -265,7 +265,7 @@ class Main:
                             time.sleep(INVALID_INPUT_SLEEP)
                             user_input2 = BACK
                     
-                    if user_input == "q" or user_input2 != "q":
+                    if user_input == "q" or user_input2 == "q":
                         quit()
 
                 return user_input2
@@ -299,7 +299,8 @@ class Main:
                     we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
                 
                 user_input = ""
-                while user_input != BACK:
+                user_input2 = BACK
+                while user_input != BACK and user_input2 == BACK:
 
                     user_input = self.employee_ui.employees_options()
                     
@@ -308,14 +309,14 @@ class Main:
                             quit(0)
 
                         case "1":
-                                user_input = list_employees_opt()
+                            user_input2 = list_employees_opt()
 
                         case "2":
-                            user_input = employee_info_opt()
+                            user_input2 = employee_info_opt()
                                         
                         case "3":
 
-                            user_input = self.employee_ui.add_employee()
+                            user_input2 = self.employee_ui.add_employee()
                             
                     if user_input == "q":
                         quit()
