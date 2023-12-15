@@ -35,5 +35,6 @@ class FlightInfoUI:
 
         user_input = self.menus.print_the_info(
             title, result
-        )  # TODO validate, can just be b or q
+        )
+        
         return user_input
