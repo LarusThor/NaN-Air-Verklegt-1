@@ -44,6 +44,7 @@ class Main:
             
 # airplanes
             def pilots_by_license_options():
+                
                 user_input = ""
 
                 while user_input != BACK:
@@ -68,14 +69,16 @@ class Main:
                             time.sleep(INVALID_INPUT_SLEEP)
                             user_input = BACK
 
-                if user_input == "q":
-                    quit()
+                if user_input == QUIT:
+                    exit()
 
                 return user_input
             
 
             def airplane_types_and_license_options():
-
+                """ This function is called if the user enters first 1 and that 1 again. Calls a function that will print out a menu 
+                and return the users input. It then calls the right action according to the input and returns the input from that function."""
+                
                 user_input = ""
                 user_input2 = BACK
 
@@ -84,7 +87,7 @@ class Main:
                     
                     match user_input:
                         case "q":
-                            quit(0)
+                            exit()
 
                         case "1":
                             user_input2 = pilots_by_license_options()
@@ -101,13 +104,15 @@ class Main:
                             time.sleep(INVALID_INPUT_SLEEP)
                             user_input = BACK
 
-                if user_input == "q" or user_input2 == "q":
-                    quit()
+                if user_input == QUIT or user_input2 == QUIT:
+                    exit()
 
                 return user_input
 
 
             def airplane_usage_options():
+                """ This function is called if the user enters first 1 and that 3. Calls a function that will print out a menu 
+                and return the users input. It then calls the right action according to the input and returns the input from that function."""
                 user_input = ""
                 user_input2 = BACK
 
@@ -116,7 +121,7 @@ class Main:
 
                     match user_input:
                         case "q":
-                            quit(0)
+                            exit()
 
                         case "b":
                             user_input = BACK
@@ -132,15 +137,16 @@ class Main:
                             time.sleep(INVALID_INPUT_SLEEP)
                             user_input = BACK
                 
-                if user_input2 == "q":
-                    quit()
+                if user_input2 == QUIT:
+                    exit()
                     
                 return user_input
 
 
             def airplane() -> None:
-                """In this code we are in airplanes and starting loops with the feature of backing out and quiting
-                    we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                """In this code we are in airplanes and starting loops with the feature of backing out and quitting
+                    we are storing the user inputs in a user_input variables and making sure the user puts the right input in. 
+                    It then calls the right action according to the input"""
                 
                 user_input1 = ""
                 user_input2 = BACK
@@ -149,8 +155,8 @@ class Main:
                     user_input1 = self.airplane_ui.airplane_options()
                     
                     match user_input1:
-                        case "q":# quit feature for the system
-                            quit(0)
+                        case "q": # quit feature for the system
+                            exit()
 
                         case "1":  # airplane types and license
                             user_input2 = airplane_types_and_license_options()
@@ -169,8 +175,8 @@ class Main:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
 
-                if user_input1 == "q" or user_input2 == "q":
-                    quit()
+                if user_input1 == QUIT or user_input2 == QUIT:
+                    exit()
 
                 return user_input1
 
@@ -179,7 +185,7 @@ class Main:
             def destinations_options_input(user_input):
                 match user_input:
                     case "q":
-                        quit(0)
+                        exit()
 
                     case "1":
                         user_input = self.destinations_ui.get_all_destinations()
@@ -216,10 +222,9 @@ class Main:
 
                     user_input2 = destinations_options_input(user_input1)
 
-                    if user_input2 == "q":
-                        quit()
+                    if user_input2 == QUIT:
+                        exit()
 
-                
 
 # employees
             def list_employees_opt():
@@ -231,7 +236,7 @@ class Main:
 
                     match user_input:
                         case "q":
-                            quit(0)
+                            exit()
                         
                         case "1":
                             user_input2 = self.employee_ui.get_pilots()
@@ -253,33 +258,41 @@ class Main:
                             time.sleep(INVALID_INPUT_SLEEP)
                             user_input2 = BACK
                     
-                    if user_input == "q" or user_input2 == "q":
-                        quit()
+                    if user_input == QUIT or user_input2 == QUIT:
+                        exit()
 
                 return user_input2
                     
 
             def employee_info_opt():
-                action8 = ""
-                while(action8 != BACK):
-                    action8 = self.employee_ui.employee_info_options()
-                    action11 = action8
-                    while(action11 != "b"):
-                        match action11:
-                            case "q":
-                                quit(0)
+                user_input = BACK
+                user_input2 = ""
 
-                            case "1":
-                                action11 = self.employee_ui.get_info()
-                            
+                while user_input == BACK and user_input2 != BACK:
+                    user_input = self.employee_ui.employee_info_options()
+                    
+                    match user_input:
+                        case "q":
+                            exit()
 
-                            case "2": #TODO laga back og quit TINNA
-                                action11 = self.employee_ui.change_info_options()
+                        case "1":
+                            user_input2 = self.employee_ui.get_info()
+                        
+                        case "2": #TODO laga back og quit TINNA
+                            user_input2 = self.employee_ui.change_info_options()
+                        
+                        case "b":
+                            user_input2 = BACK
 
-                            case _:
-                                print("Input was invalid, try again ")
-                                time.sleep(INVALID_INPUT_SLEEP)
-                                action11 = "b"
+                        case _:
+                            print("Input was invalid, try again ")
+                            time.sleep(INVALID_INPUT_SLEEP)
+                            user_input2 = BACK
+
+                    if user_input == QUIT or user_input2 == QUIT:
+                        exit()
+
+                return user_input2
 
 
             def employees() -> None:
@@ -294,7 +307,7 @@ class Main:
                     
                     match user_input:
                         case "q":
-                            quit(0)
+                            exit()
 
                         case "1":
                             user_input2 = list_employees_opt()
@@ -305,13 +318,16 @@ class Main:
                         case "3":
 
                             user_input2 = self.employee_ui.add_employee()
+                        
+                        case "b":
+                            user_input2 = BACK
                         case _:
                             print("Input was invalid, try again ")
                             time.sleep(INVALID_INPUT_SLEEP)
                             user_input = BACK
                             
-                    if user_input == "q":
-                        quit()
+                    if user_input == QUIT:
+                        exit()
 
                         
 # schedule                       
@@ -324,7 +340,7 @@ class Main:
 
                     match user_input:
                         case "q":
-                            quit()
+                            exit()
 
                         case "b":
                             return BACK
@@ -350,7 +366,7 @@ class Main:
 
                     match user_input:
                         case "q":
-                            quit()
+                            exit()
 
                         case "b":
                             return BACK
@@ -398,17 +414,19 @@ class Main:
                             time.sleep(INVALID_INPUT_SLEEP)
                             user_input2 = BACK
                     
-                if user_input2 == "q":
-                    quit()                                    
+                if user_input2 == QUIT:
+                    exit()                                    
                                 
                                 
 # voyages
             def voyages() -> None:
                 """In this code we are in voyages and starting loops with the feature of backing out and quiting
                     we are storing the user inputs in a action variables and making sure the user puts the right input in:"""
+                
                 user_input1 = ""
                 user_input2 = ""
                 user_input3 = ""
+
                 while(user_input1 != BACK):
                     user_input1 = self.voyages_ui.voyages_options()
                     user_input2 = ""
@@ -420,14 +438,15 @@ class Main:
 
                     match user_input1:
                         case "q":
-                            quit(0)
+                            exit()
 
                         case "1":
                             while(user_input2 != BACK):
                                 user_input1 = ""
                                 user_input2 = self.voyages_ui.add_voyage()
-                                if user_input2 == "q":
-                                    quit()
+                                
+                                if user_input2 == QUIT:
+                                    exit()
 
                         case "2":
                             while(user_input3 != BACK):
@@ -436,15 +455,16 @@ class Main:
                                 match user_input3:
 
                                     case "q":
-                                        quit(0)
+                                        exit()
 
                                     case "1":
+                                        user_input5 = BACK
                                         while(user_input5 == BACK):
                                             user_input4 = self.voyages_ui.list_voyage_options()
                                             
                                             match user_input4:
                                                 case "q":
-                                                    quit(0)
+                                                    exit()
 
                                                 case "1":
                                                     date = self.voyages_ui.get_date()
@@ -463,13 +483,14 @@ class Main:
 
 
                                     case "2":
+                                        user_input7 = BACK
                                         while(user_input7 == BACK):
                                             user_input6 = self.voyages_ui.list_voyage_options()
 
                                             match user_input6:
 
                                                 case "q":
-                                                    quit(0)
+                                                    exit()
 
                                                 case "1":
                                                     date = self.voyages_ui.get_date()
@@ -516,8 +537,8 @@ class Main:
                 
                 user_input = self.flight_info.get_flight_status() 
 
-                if user_input == "q":
-                    quit()
+                if user_input == QUIT:
+                    exit()
 
 
 # Main menu
