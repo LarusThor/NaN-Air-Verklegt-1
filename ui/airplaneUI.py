@@ -119,7 +119,7 @@ class AirplaneUI:
     
         name = input("Enter airplane insignia: ") #TODO: validate á að splita á "-" og 2 stafir fyrir framan og þrír fyrir aftan :)
         while not self.validation.validate_airplane_name(name):
-            print("ERROR: Invalid airplane insignia. \nInsignia must be in the form: TF-AAA  ")
+            print("ERROR: Invalid airplane insignia. \nInsignia must start with TF- followed by 3 letters. ")
             name = input("Enter airplane insignia: ")
 
         planes = {(i+1): plane for i, plane in enumerate(airplane_types)}

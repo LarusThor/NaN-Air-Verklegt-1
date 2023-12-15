@@ -27,8 +27,9 @@ class ValidationLL:
         return len(socialID) == 10 and all((digit.isdigit() for digit in socialID))
 
     def validate_number(self, number: str) -> bool:
-        """TODO: add docstring"""
-        return len(number) == 7 and all((digit.isdigit() for digit in number))
+        """ TODO: add docstring """
+        return len(number) == 7 and all(digit.isdigit()for digit in number) and int(number) > 1
+        
 
     def validate_email(self, email: str) -> bool:
         """TODO: add docstring"""
@@ -139,15 +140,23 @@ class ValidationLL:
     def validate_distance_from_iceland(self, distance_from_iceland: int) -> bool:
         try:
             distance_from_iceland = int(distance_from_iceland)
-            return (
-                (distance_from_iceland) >= 0
-                and (distance_from_iceland) <= 400000
-                and all((digit.isdigit() for digit in distance_from_iceland))
-            )
+            return (distance_from_iceland >= 0) >=0 and (distance_from_iceland <= 40000) and all((digit.isdigit()for digit in str(distance_from_iceland)))
         except ValueError:
             return False
+        
 
-    # menu
+    def validate_flight_time(self, flight_time) -> bool:
+        if len(flight_time) == 8:
+            if flight_time[0:2].isdigit() == True:
+                if flight_time[2] == ":" and flight_time[5] == ":":
+                    if flight_time[3:5].isdigit() == True:
+                        if flight_time[6:8].isdigit() == True:
+                            return True
+        else:
+            return False
+    
+
+# menu 
     def validate_back_or_quit(self, user_input: str):
         return user_input.lower() == "b" or user_input == "q"
 
