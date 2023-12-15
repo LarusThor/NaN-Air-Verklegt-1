@@ -131,7 +131,7 @@ class DestinationsUI:
 
 
     def change_destination_info(self) -> None: 
-        """ TODO: add docstring """
+        """ Changes information about a destination in the system. """
         #TODO: validate
         destination_list = self.logic_wrapper.destination_list()
 

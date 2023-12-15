@@ -9,6 +9,7 @@ class FlightInfoUI:
         self.logic_wrapper = LogicWrapper()
         self.menus = Menu()         
 
+
     def get_flight_status(self) -> None: #define
         """ Gets information about the upcoming voyages from the logic wrapper. Makes a title and the results 
         (which is the information that will be printed out). Calls the function in the menu_manager that takes care of 
@@ -26,7 +27,6 @@ class FlightInfoUI:
                 result += f"{date:^15} {flight.flight_nr:^15} {flight.arr_at:^21} {booked}\n"
             else:
                 result += f"{date:^15} {flight.flight_nr:^15} {flight.arr_at:^21} {status:<3} seats left\n"
-
 
         user_input = self.menus.print_the_info(title, result) #TODO validate, can just be b or q
         return user_input
