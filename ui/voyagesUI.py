@@ -390,19 +390,19 @@ class VoyagesUI:
             user_input = self.menus.print_the_info("Voyages have been staffed!")
 
     def list_voyage_options(self) -> str:
-        """TODO: add docstring"""
+        """Lists user options in voyages."""
         self.menus.display_options("List voyages", LIST_VOYAGES_OPTIONS)
         action = str(input("Enter your action: ").lower())
         return action
 
     def voyage_past_or_present_options(self) -> str:
-        """TODO: add docstring"""
+        """Prints options to see information about future voyages or past voyages."""
         self.menus.display_options("List voyages:", PAST_OR_PRESENT_VOYAGES)
         action = str(input("Enter your action: ").lower())
         return action
 
     def get_date(self) -> str:
-        """TODO: add docstring"""
+        """Gets a date from the user."""
         date = input("Enter date; year-month-day: ")
         while not self.validation.validate_date(date):
             print("Invalid date entered. ")
@@ -422,7 +422,7 @@ class VoyagesUI:
         return year, week
 
     def get_upcoming_voyage_by_date(self, date: date) -> str:
-        """TODO: add docstring"""
+        """Prints upcoming voyages by day."""
         title = f"Upcoming voyages on {date}:"
         result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"
         voyage_counter = 0
@@ -438,7 +438,7 @@ class VoyagesUI:
         return user_input
 
     def get_upcoming_voyage_by_week(self, year: str, week_nr: str) -> None:
-        """TODO: add docstring"""
+        """Prints upcoming voyages by week"""
         title = f"Upcoming voyages on week {week_nr}:"
         result = "=" * 130 + "\n" + VOYAGE_HEADER + "\n" + "=" * 130 + "\n"
         voyage_counter = 0
