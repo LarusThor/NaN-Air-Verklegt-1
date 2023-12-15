@@ -22,6 +22,7 @@ TITLE16="                 =  ===(_________)                      "
 
 
 class Menu():
+    """"Instantiate a Menu object."""
     def __init__(self) -> None:
         """ TODO: add docstring """
         self.logic_wrapper = LogicWrapper()

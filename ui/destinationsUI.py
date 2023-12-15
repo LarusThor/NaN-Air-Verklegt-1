@@ -39,7 +39,6 @@ class DestinationsUI:
     def get_most_popular_destination(self) -> None:
         """Gets the most popular destination from the logic wrapper and sends the title and the 
         result(the most popular destination) to a function in the menu_manager that takes care of printing it out."""
-
         popular = self.logic_wrapper.popular_destination()
         title = "The most popular destination:"
 

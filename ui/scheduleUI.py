@@ -9,6 +9,7 @@ SCHEDULE_FOR_A_DAY_OPTIONS = ["1. See who was working", "2. See who was not work
 
 
 class ScheduleUI:
+    """"Instantiate a ScheduleUI object."""
     def __init__(self) -> None:
         self.menus = Menu()
         self.logic_wrapper = LogicWrapper()

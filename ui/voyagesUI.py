@@ -28,6 +28,7 @@ VOYAGE_HEADER = "{:^10}{:^10}{:^6}{:^22}{:^22}{:^15}{:^17}{:^27}".format(
 
 
 class VoyagesUI:
+    """"Instantiate a VoyageUI object."""
     def __init__(self) -> None:
         """TODO: add docstring"""
         self.logic_wrapper = LogicWrapper()
