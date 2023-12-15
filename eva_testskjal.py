@@ -10,7 +10,7 @@ from ui.employeesUI import EmployeeUI
 #kemur aldrei upp að þau séu að vinna í vikunni
 emp = EmployeeUI()
 
-print(emp.get_most_experienced())
+print(emp.get_info())
 
 
 

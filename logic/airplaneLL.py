@@ -77,7 +77,6 @@ class AirplaneLL:
             counter = (airplane_list.count(destination)) // 2
             airplane_dict[destination] = counter
         most_popular = max(set(airplane_list), key=airplane_list.count)
-        # TODO: finna út hvernig ég raða listan í stærðarröð út frá dicts
 
         return most_popular, airplane_dict
 
