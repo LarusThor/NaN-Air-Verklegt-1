@@ -28,11 +28,6 @@ class LogicWrapper():
 
 
     #Employee:
-    def show_employee_info(self):
-        """ Returns information about all employees. """
-        return self.employee.employee_info_overview()
-
-
     def employee_dict(self)  -> list[str]:
         """ Returns a list of all employees. """
         return self.employee.get_employee_dict()
@@ -197,14 +192,13 @@ class LogicWrapper():
     def add_staff_to_voyage(self, added_staff) -> None:
         return self.list_upcoming_voyage.add_staff_for_voyage(added_staff)
 
-
-    def voyage_info_for_return_flight(self, voyage_flight_number: str, voyage_date: str) -> UpcomingVoyage:
-        return self.list_upcoming_voyage.detect_voyage_info_return_flight(voyage_flight_number, voyage_date)
-    
-    
     def staff_availability_check(self,captain, departure, return_flight_arrival):
         return self.list_upcoming_voyage.staff_availability(captain, departure, return_flight_arrival)
     
+    def voyage_info_for_return_flight(self, voyage_flight_number: str, voyage_date: str) -> UpcomingVoyage:
+        return self.list_upcoming_voyage.detect_voyage_info_return_flight(voyage_flight_number, voyage_date)
+    
+     
 
     def get_available_airplanes_over_period(self, period_start: datetime, period_end: datetime) -> dict[str, Employee]:
         """ Returns a list of all airplanes that are available over a given period. 
@@ -215,17 +209,7 @@ class LogicWrapper():
         """ 
         return self.airplane.get_available_airplanes_over_period(period_start, period_end)
 
-    def captain_availability(self, captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival):
-        return self.list_upcoming_voyage.captain_availability(captain, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
-
-
-    def copilot_availability(self, copilot, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival):
-        return self.list_upcoming_voyage.copilot_availability(copilot, employee_information, plane_insignia, employee, voyages_info, return_flight_arrival)
-    
-    
-    def flight_service_manager_availability(self, flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival):
-        return self.list_upcoming_voyage.flight_service_manager_availability(flight_service_manager, employee_information, employee, voyages_info, return_flight_arrival)
-
+     
     def get_upcoming_voyage_by_flight_nr_and_date(self, flight_nr: str, departure_date: str) -> UpcomingVoyage:
         return self.list_upcoming_voyage.get_voyage_by_flight_nr_and_date(flight_nr, departure_date)
 

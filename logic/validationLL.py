@@ -72,8 +72,15 @@ class ValidationLL():
     
     #Airplane types and license, Pilots by license
         #Licensed pilots for a specific airplane type (ofkokfsd) = ValueError
-    #Add new airplane
-        #Enter an Name: kfokofksdf == works
+    
+    def validate_airplane_choice(self, airplane_choice: int) -> bool:
+        try:
+            airplane_choice = int(airplane_choice)
+            return True
+        except ValueError:
+            return False
+            
+
     
     
 
@@ -92,6 +99,18 @@ class ValidationLL():
         
     #def validate_number_of_seats(self, number_of_seats) -> bool:
     #    return len(number_of_seats) <= 110 and len(number_of_seats) >= 84
+
+#validate the choosing weeks
+
+    def validate_weeks(self, week: str) -> bool:
+        try:
+            int_week = int(week)
+        except ValueError:
+            return False
+        if int_week <= 0 or int_week > 52:
+            return False
+        else:
+            return True
         
               
     def validate_save_new(self, str) -> bool:

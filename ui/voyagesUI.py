@@ -149,7 +149,7 @@ class VoyagesUI:
         """TODO: add docstring"""
         date = input("Enter year date; year-month-day: ")
         return date
-
+        
     #############################################################################################################################################
 
     def __get_flight_attendants(self, available_employees: dict[str, Employee]):
@@ -464,7 +464,7 @@ class VoyagesUI:
     def cancel_voyage(self) -> None:  # define
         """Cancels a voyage in the system."""
 
-        flight_number = input("Enter flight number: ")
+        flight_number = input("Enter flight number: ") #validate
         save_prompt = input(
             f"Would you like to cancel voyage {flight_number}? (y)es or (n)o"
         )
